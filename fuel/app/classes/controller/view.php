@@ -15,8 +15,9 @@ class Controller_View extends Controller_Layout
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
 
-		$events = [];
-		$events[] = Model_Event::find_by_pk($division->end_event_id);
+		$events = Model_Event::get_by_division_id($division->id);
+		$end = Model_Event::find_by_pk($division->end_event_id);
+		array_unshift($events, $end);
 		$events[] = Model_Event::find_by_pk($division->start_event_id);
 
 		// ビューを設定

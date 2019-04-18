@@ -15,6 +15,14 @@ time {
 	height: 100%;
 	z-index: 400;
 }
+.timeline h3 {
+	font-size: 1.2rem;
+}
+.timeline > .add {
+	padding-left: 60px;
+	font-size: 20px;
+	color: #999999;
+}
 .timeline > article {
 	margin: 20px 0;
 	padding-left: 60px;

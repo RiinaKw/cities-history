@@ -29,5 +29,17 @@ class Model_Event extends Model_Base
 		]);
 		$object->save();
 		return $object;
-	} // function set_path()
-} // class Model_Division
+	} // function create()
+
+	public static function get_by_division_id($division_id)
+	{
+		$query = DB::select()
+			->from([self::$_table_name, 'e'])
+			->join(['event_details', 'd'])
+			->on('e.id', '=', 'd.event_id')
+			->where('d.division_id', '=', $division_id)
+			->order_by('e.date', 'desc');
+
+		return $query->as_object('Model_Event')->execute()->as_array();
+	} // function get_by_division_id()
+} // class Model_Event
