@@ -12,5 +12,7 @@ abstract class Controller_Base extends Controller
 	public function before()
 	{
 		parent::before();
+		
+		Config::load('uri', true);
 	} // function before()
 } // class Controller_Base

@@ -33,7 +33,7 @@ class Model_Event extends Model_Base
 
 	public static function get_by_division_id($division_id)
 	{
-		$query = DB::select()
+		$query = DB::select('e.*')
 			->from([self::$_table_name, 'e'])
 			->join(['event_details', 'd'])
 			->on('e.id', '=', 'd.event_id')

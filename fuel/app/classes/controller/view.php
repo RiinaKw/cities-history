@@ -24,6 +24,32 @@ class Controller_View extends Controller_Layout
 		$content = View_Smarty::forge('city_timeline.tpl');
 		$content->path = $path;
 		$content->events = $events;
+		$content->url_event_add = Helper_Uri::create('event.add');
+		$content->url_event_edit = Helper_Uri::create('event.edit');
+		$content->url_event_delete = Helper_Uri::create('event.delete');
+
+		$this->_set_view_var('content', $content);
+		$this->_set_view_var('title', 'hello');
+		return $this->_get_view();
+	}
+
+	public function action_list()
+	{
+		$divisions = Model_Division::find_all();
+		foreach ($divisions as &$division)
+		{
+			$division->path = $division->name;
+			$parent_id = $division->parent_division_id;
+			while($parent_id) {
+				$parent = Model_Division::find_by_pk($parent_id);
+				$division->path = $parent->name.'/'.$division->path;
+				$parent_id = $parent->parent_division_id;
+			}
+		}
+
+		// ビューを設定
+		$content = View_Smarty::forge('list.tpl');
+		$content->divisions = $divisions;
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', 'hello');

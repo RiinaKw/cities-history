@@ -6,5 +6,7 @@ return array(
 	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
 
 	'add(/:path)?'  => 'add/index',
+
+	'view/list' => 'view/list',
 	'view(/:path)?' => 'view/index',
 );

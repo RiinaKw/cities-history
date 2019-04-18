@@ -1,19 +1,17 @@
 
 			<h2>{{$path}}</h2>
 			<div class="col-md-6 offset-md-3">
-				<div class="timeline">
+				<section class="timeline">
 {{foreach name=events from=$events item=event}}
-{{if $smarty.foreach.events.index != 0}}
-					<p class="add"><i class="fas fa-plus"></i></p>
-{{/if}}
-					<article class="clearfix editable">
+					<article class="clearfix editable" data-event-id="{{$event.id}}">
 						<header>
 							<h3 class="float-left">{{$event.type}}</h3>
 							<time class="float-right">{{$event.date|date_format:'Y-m-d'}}</time>
 						</header>
 					</article>
 {{/foreach}}
-				</div>
+					<p class="add"><i class="fas fa-plus"></i></p>
+				</section>
 			</div>
 
 			<div id="change-event" class="modal fade" tabindex="-1" role="dialog">
@@ -26,6 +24,7 @@
 							</button>
 						</div><!-- /.modal-header -->
 						<div class="modal-body">
+							<input type="hidden" id="event-id" name="event_id" value="">
 							<p>モーダルボディの本文。</p>
 						</div><!-- /.modal-body -->
 						<div class="modal-footer">
@@ -43,17 +42,20 @@
 $(document).on("click", ".add", function(){
 	var $modal = $('#change-event').modal();
 	$(".modal-title", $modal).text("イベントを追加…");
+	$("form", $modal).attr("action", "{{$url_event_add}}");
 	$(".btn-danger", $modal).hide();
 });
 
 $(document).on("click", ".editable", function(){
 	var $modal = $('#change-event').modal();
 	$(".modal-title", $modal).text("イベントを変更…");
+	$("form", $modal).attr("action", "{{$url_event_edit}}");
+	$("#event-id", $modal).val( $(this).data("event-id") );
 	$(".btn-danger", $modal).show();
 });
 
 $(document).on("click", "#change-event .btn-danger", function(){
-	alert(0);
-	return false;
+	var $modal = $('#change-event');
+	$("form", $modal).attr("action", "{{$url_event_delete}}");
 });
 			</script>

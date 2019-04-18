@@ -27,8 +27,8 @@ class Model_Division extends Model_Base
 			->add_rule('required')
 			->add_rule('max_length', 20);
 		$field = $validation->add('parent_division_id', '親自治体');
-		$field = $validation->add('start_event',        '設置イベント');
-		$field = $validation->add('end_event',          '廃止イベント');
+		$field = $validation->add('start_event_id',     '設置イベント');
+		$field = $validation->add('end_event_id',       '廃止イベント');
 
 		return $validation;
 	} // function validation()
