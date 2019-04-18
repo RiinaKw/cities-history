@@ -9,6 +9,7 @@ class Create_events
 		\DBUtil::create_table('events', array(
 			'id'                 => array('type' => 'int', 'unsigned' => true, 'null' => false, 'auto_increment' => true, 'constraint' => 11),
 			'date'               => array( 'type' => 'date', 'null' => false),
+			'type'               => array('constraint' => 20,  'null' => false, 'type' => 'varchar'),
 			'created_at'         => array( 'type' => 'timestamp', 'null' => true),
 			'updated_at'         => array( 'type' => 'timestamp', 'null' => true),
 			'deleted_at'         => array( 'type' => 'timestamp', 'null' => true),

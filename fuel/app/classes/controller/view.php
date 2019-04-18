@@ -8,7 +8,7 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_View extends Controller
+class Controller_View extends Controller_Layout
 {
 	public function action_index()
 	{

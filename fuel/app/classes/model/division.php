@@ -2,11 +2,11 @@
 
 class Model_Division extends Model_Base
 {
-	protected static $_table_name	= 'divisions';
-	protected static $_primary_key	= 'id';
-	protected static $_created_at	= 'created_at';
-	protected static $_updated_at	= 'updated_at';
-	protected static $_deleted_at	= 'deleted_at';
+	protected static $_table_name  = 'divisions';
+	protected static $_primary_key = 'id';
+	protected static $_created_at  = 'created_at';
+	protected static $_updated_at  = 'updated_at';
+	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
 	public function validation($is_new = false, $factory = null)	// 引数は単なる識別子、何でもいい
@@ -27,6 +27,8 @@ class Model_Division extends Model_Base
 			->add_rule('required')
 			->add_rule('max_length', 20);
 		$field = $validation->add('parent_division_id', '親自治体');
+		$field = $validation->add('start_event',        '設置イベント');
+		$field = $validation->add('end_event',          '廃止イベント');
 
 		return $validation;
 	} // function validation()
