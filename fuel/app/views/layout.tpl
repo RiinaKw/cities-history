@@ -7,7 +7,7 @@
 
 	{{Asset::css('bootstrap.min.css')}}
 		<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	{{Asset::css('style.css')}}
 
 	{{Asset::js('jquery-3.3.1.min.js')}}
 	{{Asset::js('jquery-ui.min.js')}}

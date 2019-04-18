@@ -13,6 +13,19 @@ class Controller_View extends Controller_Layout
 	public function action_index()
 	{
 		$path = $this->param('path');
-		Debug::dump( Model_Division::get_by_path($path) );
+		$division = Model_Division::get_by_path($path);
+
+		$events = [];
+		$events[] = Model_Event::find_by_pk($division->end_event_id);
+		$events[] = Model_Event::find_by_pk($division->start_event_id);
+
+		// ビューを設定
+		$content = View_Smarty::forge('city_timeline.tpl');
+		$content->path = $path;
+		$content->events = $events;
+
+		$this->_set_view_var('content', $content);
+		$this->_set_view_var('title', 'hello');
+		return $this->_get_view();
 	}
 }
