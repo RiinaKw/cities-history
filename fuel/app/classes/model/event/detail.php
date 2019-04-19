@@ -17,7 +17,21 @@ class Model_Event_Detail extends Model_Base
 		$field = $validation->add('date', '日付')
 			->add_rule('required')
 			->add_rule('valid_date', 'Y-m-d');
+		$field = $validation->add('division_result', 'イベント結果')
+			->add_rule('required');
 
 		return $validation;
 	} // function validation()
+
+	public static function get_by_division_id($division_id)
+	{
+		$query = DB::select('d.*', 'e.date')
+			->from([self::$_table_name, 'd'])
+			->join(['events', 'e'])
+			->on('e.id', '=', 'd.event_id')
+			->where('d.division_id', '=', $division_id)
+			->order_by('e.date', 'desc');
+
+		return $query->as_object('Model_Event_Detail')->execute()->as_array();
+	} // function get_by_division_id()
 } // class Model_Event_Detail

@@ -3,11 +3,20 @@
 			<div class="col-md-6 offset-md-3">
 				<section class="timeline">
 {{foreach name=events from=$events item=event}}
-					<article class="clearfix editable" data-event-id="{{$event.id}}">
-						<header>
-							<h3 class="float-left">{{$event.type}}</h3>
+					<article class="editable" data-event-id="{{$event.event_id}}">
+						<header class="clearfix">
+							<h3 class="float-left">{{$event.division_result}}</h3>
 							<time class="float-right">{{$event.date|date_format:'Y-m-d'}}</time>
 						</header>
+						<ul>
+{{foreach from=$event.divisions item=division}}
+							<li>
+								<a href="{{$division->url_detail}}">
+									{{$division.name}}, {{$division.division_result}}
+								</a>
+							</li>
+{{/foreach}}
+						</ul>
 					</article>
 {{/foreach}}
 					<p class="add"><i class="fas fa-plus"></i></p>
@@ -46,7 +55,7 @@ $(document).on("click", ".add", function(){
 	$(".btn-danger", $modal).hide();
 });
 
-$(document).on("click", ".editable", function(){
+$(document).on("dblclick", ".editable", function(){
 	var $modal = $('#change-event').modal();
 	$(".modal-title", $modal).text("イベントを変更…");
 	$("form", $modal).attr("action", "{{$url_event_edit}}");

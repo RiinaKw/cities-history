@@ -14,4 +14,7 @@ return array(
 		'edit'      => 'event/edit',
 		'delete'      => 'event/delete',
 	),
+	'view' => array(
+		'division' => 'view/:path'
+	),
 );

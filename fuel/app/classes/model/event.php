@@ -31,15 +31,14 @@ class Model_Event extends Model_Base
 		return $object;
 	} // function create()
 
-	public static function get_by_division_id($division_id)
+	public static function get_relative_division($event_id)
 	{
-		$query = DB::select('e.*')
-			->from([self::$_table_name, 'e'])
-			->join(['event_details', 'd'])
-			->on('e.id', '=', 'd.event_id')
-			->where('d.division_id', '=', $division_id)
-			->order_by('e.date', 'desc');
+		$query = DB::select('d.*', 'e.division_result')
+			->from(['event_details', 'e'])
+			->join(['divisions', 'd'])
+			->on('e.division_id', '=', 'd.id')
+			->where('e.event_id', '=', $event_id);
 
-		return $query->as_object('Model_Event')->execute()->as_array();
-	} // function get_by_division_id()
+		return $query->as_object('Model_Division')->execute()->as_array();
+	}
 } // class Model_Event

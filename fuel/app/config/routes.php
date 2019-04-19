@@ -9,4 +9,6 @@ return array(
 
 	'view/list' => 'view/list',
 	'view(/:path)?' => 'view/index',
+
+	'event/(.+?)' => 'rest/event/detail/$1',
 );
