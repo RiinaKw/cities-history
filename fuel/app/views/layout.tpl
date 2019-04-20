@@ -18,7 +18,7 @@
 		<!-- Begin page content -->
 		<main role="main" class="container">
 
-			<nav class="breadcrumbs">
+			<nav aria-label="パンくずリスト">
 				<ol class="breadcrumb">
 {{foreach from=$breadcrumbs key=name item=url}}
 {{if $url}}

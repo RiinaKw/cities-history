@@ -23,6 +23,11 @@ class Controller_View extends Controller_Layout
 		*/
 		foreach ($events as &$event)
 		{
+			$event->birth = false;
+			if ($division->start_event_id == $event->event_id)
+			{
+				$event->birth = true;
+			}
 			$divisions = Model_Event::get_relative_division($event->event_id);
 			if ($divisions)
 			{

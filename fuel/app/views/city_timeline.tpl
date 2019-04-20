@@ -3,7 +3,7 @@
 			<div class="col-md-6 offset-md-3">
 				<section class="timeline">
 {{foreach name=events from=$events item=event}}
-					<article class="editable" data-event-id="{{$event.event_id}}">
+					<article class="editable {{if $event->birth}}birth{{/if}}" data-event-id="{{$event.event_id}}">
 						<header class="clearfix">
 							<h3 class="float-left">{{$event.division_result}}</h3>
 							<time class="float-right">{{$event.date}}</time>
