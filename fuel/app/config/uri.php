@@ -17,4 +17,7 @@ return array(
 	'view' => array(
 		'division' => 'view/:path'
 	),
+	'belongto' => array(
+		'division' => 'belongto/:path'
+	),
 );

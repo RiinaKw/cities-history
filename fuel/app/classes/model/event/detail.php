@@ -28,9 +28,16 @@ class Model_Event_Detail extends Model_Base
 		$query = DB::select('d.*', 'e.date')
 			->from([self::$_table_name, 'd'])
 			->join(['events', 'e'])
-			->on('e.id', '=', 'd.event_id')
-			->where('d.division_id', '=', $division_id)
-			->order_by('e.date', 'desc');
+			->on('e.id', '=', 'd.event_id');
+		if (is_array($division_id))
+		{
+			$query->where('d.division_id', 'in', $division_id);
+		}
+		else
+		{
+			$query->where('d.division_id', '=', $division_id);
+		}
+		$query->order_by('e.date', 'desc');
 
 		return $query->as_object('Model_Event_Detail')->execute()->as_array();
 	} // function get_by_division_id()

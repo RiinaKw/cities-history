@@ -9,6 +9,7 @@ return array(
 
 	'view' => 'view/list',
 	'view(/:path)?' => 'view/index',
+	'belongto(/:path)?' => 'view/belongto',
 
 	'event/(.+?)' => 'rest/event/detail/$1',
 );

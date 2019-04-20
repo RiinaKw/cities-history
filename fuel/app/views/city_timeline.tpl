@@ -1,5 +1,10 @@
 
 			<h2>{{$path}}</h2>
+			<ul>
+				<li><a href="{{$url_detail}}">自治体詳細</a></li>
+				<li><a href="{{$url_belongto}}">所属自治体</a></li>
+			</ul>
+
 			<div class="col-md-6 offset-md-3">
 				<section class="timeline">
 {{foreach name=events from=$events item=event}}
