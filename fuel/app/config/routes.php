@@ -7,7 +7,7 @@ return array(
 
 	'add(/:path)?'  => 'add/index',
 
-	'view/list' => 'view/list',
+	'view' => 'view/list',
 	'view(/:path)?' => 'view/index',
 
 	'event/(.+?)' => 'rest/event/detail/$1',

@@ -40,14 +40,7 @@ class Controller_View extends Controller_Layout
 		$cur_path = '';
 		foreach ($arr as $name)
 		{
-			if ($cur_path)
-			{
-				$cur_path .= '/'.$name;
-			}
-			else
-			{
-				$cur_path .= $name;
-			}
+			$cur_path .= '/'.$name;
 			if ($cur_path == $path)
 			{
 				$breadcrumbs[$name] = '';
@@ -78,6 +71,7 @@ class Controller_View extends Controller_Layout
 		foreach ($divisions as &$division)
 		{
 			$division->path = $division->get_path(null, true);
+			$division->url_detail = Helper_Uri::create('view.division', ['path' => $division->path]);
 		}
 
 		// ビューを設定
@@ -86,6 +80,7 @@ class Controller_View extends Controller_Layout
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', 'hello');
+		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
 		return $this->_get_view();
 	} // function action_list()
 } // class Controller_View
