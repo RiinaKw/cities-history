@@ -6,7 +6,7 @@
 					<article class="editable" data-event-id="{{$event.event_id}}">
 						<header class="clearfix">
 							<h3 class="float-left">{{$event.division_result}}</h3>
-							<time class="float-right">{{$event.date|date_format:'Y-m-d'}}</time>
+							<time class="float-right">{{$event.date}}</time>
 						</header>
 						<ul>
 {{foreach from=$event.divisions item=division}}
