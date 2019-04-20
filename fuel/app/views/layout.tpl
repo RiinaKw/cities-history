@@ -18,6 +18,18 @@
 		<!-- Begin page content -->
 		<main role="main" class="container">
 
+			<nav class="breadcrumbs">
+				<ol class="breadcrumb">
+{{foreach from=$breadcrumbs key=name item=url}}
+{{if $url}}
+					<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
+{{else}}
+					<li class="breadcrumb-item active" aria-current="page">{{$name}}</li>
+{{/if}}
+{{/foreach}}
+				<ol>
+			</nav>
+
 {{$content}}
 
 		</main>

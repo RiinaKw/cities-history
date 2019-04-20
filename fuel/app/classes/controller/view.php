@@ -35,6 +35,29 @@ class Controller_View extends Controller_Layout
 			$event->divisions = $divisions;
 		}
 
+		$breadcrumbs = [];
+		$arr = explode('/', $path);
+		$cur_path = '';
+		foreach ($arr as $name)
+		{
+			if ($cur_path)
+			{
+				$cur_path .= '/'.$name;
+			}
+			else
+			{
+				$cur_path .= $name;
+			}
+			if ($cur_path == $path)
+			{
+				$breadcrumbs[$name] = '';
+			}
+			else
+			{
+				$breadcrumbs[$name] = Helper_Uri::create('view.division', ['path' => $cur_path]);
+			}
+		}
+
 		// ビューを設定
 		$content = View_Smarty::forge('city_timeline.tpl');
 		$content->path = $path;
@@ -45,6 +68,7 @@ class Controller_View extends Controller_Layout
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', $path);
+		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_index()
 
