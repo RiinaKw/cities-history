@@ -88,6 +88,25 @@ class Model_Division extends Model_Base
 		}
 	} // function _get_one_by_name_and_parent_id()
 
+	public static function get_by_parent_division_id($division_id)
+	{
+		$divisions = Model_Division::find_by_parent_division_id($division_id);
+		$d_arr = [];
+		if ($divisions)
+		{
+			foreach ($divisions as $d)
+			{
+				$d_arr[] = $d->id;
+				$child_arr = static::get_by_parent_division_id($d->id);
+				if ($child_arr)
+				{
+					$d_arr = array_merge($d_arr, $child_arr);
+				}
+			}
+		}
+		return $d_arr;
+	}
+
 	public function get_path($current, $force_fullpath = false)
 	{
 		if ($force_fullpath)

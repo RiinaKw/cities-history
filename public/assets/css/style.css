@@ -36,6 +36,15 @@ time {
 	height: 20px;
 	z-index: 400;
 }
+.timeline > article.birth header:before {
+	border: 3px solid #00ff00;
+}
+.timeline > article.live header:before {
+	border: 3px solid #00ff00;
+}
+.timeline > article.death header:before {
+	border: 3px solid #ff0000;
+}
 .timeline > article ul {
 	margin: 0;
 	padding-bottom: 1rem;

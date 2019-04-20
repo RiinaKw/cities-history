@@ -19,9 +19,23 @@ class Controller_View extends Controller_Layout
 		foreach ($events as &$event)
 		{
 			$event->birth = false;
+			$event->live = false;
+			$event->death = false;
 			if ($division->start_event_id == $event->event_id)
 			{
 				$event->birth = true;
+			}
+			if ($division->end_event_id == $event->event_id)
+			{
+				switch ($event->division_result)
+				{
+					case '存続':
+						$event->live = true;
+					break;
+					case '廃止':
+						$event->death = true;
+					break;
+				}
 			}
 			$divisions = Model_Event::get_relative_division($event->event_id);
 			if ($divisions)
@@ -79,38 +93,47 @@ class Controller_View extends Controller_Layout
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
 
-		$belong = Model_Division::find_by_parent_division_id($division->id);
-		$division_id_arr = [$division->id];
-		foreach ($belong as $d)
-		{
-			$division_id_arr[] = $d->id;
-		}
+		$division_id_arr = Model_Division::get_by_parent_division_id($division->id);
 
-		$events = Model_Event_Detail::get_by_division_id($division_id_arr);
 		$events_arr = [];
-		foreach ($events as &$event)
+		if ($division_id_arr)
 		{
-			if (isset($events_arr[$event->event_id]))
+			$events = Model_Event_Detail::get_by_division_id($division_id_arr);
+			foreach ($events as &$event)
 			{
-				continue;
-			}
-			$event->birth = false;
-			if ($division->start_event_id == $event->event_id)
-			{
-				$event->birth = true;
-			}
-			$divisions = Model_Event::get_relative_division($event->event_id);
-			if ($divisions)
-			{
-				foreach ($divisions as &$d)
+				if (isset($events_arr[$event->event_id]))
 				{
-					$d_path = $d->get_path(null, true);
-					$d->url_detail = Helper_Uri::create('view.division', ['path' => $d_path]);
+					continue;
 				}
+				$event->birth = false;
+				$event->live = false;
+				$event->death = false;
+				if ($division->start_event_id == $event->event_id)
+				{
+					$event->birth = true;
+				}
+				switch ($event->division_result)
+				{
+					case '存続':
+						$event->live = true;
+					break;
+					case '廃止':
+						$event->death = true;
+					break;
+				}
+				$divisions = Model_Event::get_relative_division($event->event_id);
+				if ($divisions)
+				{
+					foreach ($divisions as &$d)
+					{
+						$d_path = $d->get_path(null, true);
+						$d->url_detail = Helper_Uri::create('view.division', ['path' => $d_path]);
+					}
+				}
+				$event->divisions = $divisions;
+				$events_arr[$event->event_id] = $event;
 			}
-			$event->divisions = $divisions;
-			$events_arr[$event->event_id] = $event;
-		}
+		} // if ($division_id_arr)
 
 		$breadcrumbs = [];
 		$arr = explode('/', $path);
