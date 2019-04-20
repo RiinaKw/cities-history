@@ -24,7 +24,7 @@
 {{if $url}}
 					<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
 {{else}}
-					<li class="breadcrumb-item active" aria-current="page">{{$name}}</li>
+					<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
 {{/if}}
 {{/foreach}}
 				<ol>

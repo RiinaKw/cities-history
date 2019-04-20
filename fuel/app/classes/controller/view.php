@@ -25,17 +25,14 @@ class Controller_View extends Controller_Layout
 			{
 				$event->birth = true;
 			}
-			if ($division->end_event_id == $event->event_id)
+			switch ($event->division_result)
 			{
-				switch ($event->division_result)
-				{
-					case '存続':
-						$event->live = true;
-					break;
-					case '廃止':
-						$event->death = true;
-					break;
-				}
+				case '存続':
+					$event->live = true;
+				break;
+				case '廃止':
+					$event->death = true;
+				break;
 			}
 			$divisions = Model_Event::get_relative_division($event->event_id);
 			if ($divisions)
