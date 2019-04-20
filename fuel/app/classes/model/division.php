@@ -94,12 +94,13 @@ class Model_Division extends Model_Base
 		{
 			$path = $this->name;
 			$parent_id = $this->parent_division_id;
-			while($parent_id) {
+			while ($parent_id)
+			{
 				$parent = Model_Division::find_by_pk($parent_id);
 				$path = $parent->name.'/'.$path;
 				$parent_id = $parent->parent_division_id;
 			}
 			return $path;
 		}
-	}
+	} // function get_path()
 } // class Model_Division

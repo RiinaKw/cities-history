@@ -28,8 +28,8 @@ class Controller_View extends Controller_Layout
 			{
 				foreach ($divisions as &$d)
 				{
-					$path = $d->get_path(null, true);
-					$d->url_detail = Helper_Uri::create('view.division', ['path' => $path]);
+					$d_path = $d->get_path(null, true);
+					$d->url_detail = Helper_Uri::create('view.division', ['path' => $d_path]);
 				}
 			}
 			$event->divisions = $divisions;
@@ -44,9 +44,9 @@ class Controller_View extends Controller_Layout
 		$content->url_event_delete = Helper_Uri::create('event.delete');
 
 		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', 'hello');
+		$this->_set_view_var('title', $path);
 		return $this->_get_view();
-	}
+	} // function action_index()
 
 	public function action_list()
 	{
@@ -63,5 +63,5 @@ class Controller_View extends Controller_Layout
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', 'hello');
 		return $this->_get_view();
-	}
-}
+	} // function action_list()
+} // class Controller_View
