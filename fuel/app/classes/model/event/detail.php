@@ -28,7 +28,9 @@ class Model_Event_Detail extends Model_Base
 		$query = DB::select('d.*', 'e.date')
 			->from([self::$_table_name, 'd'])
 			->join(['events', 'e'])
-			->on('e.id', '=', 'd.event_id');
+			->on('e.id', '=', 'd.event_id')
+			->where('e.deleted_at', '=', null)
+			->where('d.deleted_at', '=', null);
 		if (is_array($division_id))
 		{
 			$query->where('d.division_id', 'in', $division_id);

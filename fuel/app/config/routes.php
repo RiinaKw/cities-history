@@ -11,5 +11,8 @@ return array(
 	'view(/:path)?' => 'view/index',
 	'belongto(/:path)?' => 'view/belongto',
 
-	'event/(.+?)' => 'rest/event/detail/$1',
+	'event/add'          => 'event/add',
+	'event/(.+?)/edit'   => 'event/edit/$1',
+	'event/(.+?)/delete' => 'event/delete/$1',
+	'event/(.+?)'        => 'rest/event/detail/$1',
 );

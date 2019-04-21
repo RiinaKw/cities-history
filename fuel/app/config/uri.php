@@ -11,8 +11,9 @@ return array(
 
 	'event' => array(
 		'add'      => 'event/add',
-		'edit'      => 'event/edit',
-		'delete'      => 'event/delete',
+		'detail'   => 'event/:id.json',
+		'edit'     => 'event/:id/edit',
+		'delete'   => 'event/:id/delete',
 	),
 	'view' => array(
 		'division' => 'view/:path'

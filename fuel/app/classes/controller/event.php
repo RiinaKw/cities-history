@@ -10,18 +10,167 @@
  */
 class Controller_Event extends Controller_Layout
 {
-	public function action_add()
+	public function post_add()
 	{
-		Debug::dump( Input::post() );exit;
-	} // action_add()
+		// POST データを整形
+		$arr = [];
+		foreach (Input::post('id') as $key => $id)
+		{
+			$arr[] = [
+				'id'       => Input::post('id.'.$key),
+				'division' => Input::post('division.'.$key),
+				'result'   => Input::post('result.'.$key),
+				'delete'   => Input::post('delete.'.$key),
+			];
+		}
 
-	public function action_edit()
-	{
-		Debug::dump( Input::post() );exit;
-	} // action_edit()
+		try
+		{
+			DB::start_transaction();
 
-	public function action_delete()
+			$event = Model_Event::forge([
+				'date' => Input::post('date'),
+				'type' => Input::post('type'),
+			]);
+			$event->save();
+
+			foreach ($arr as $item)
+			{
+				$id = $item['id'];
+				$divisions = Model_Division::set_path($item['division']);
+				$division = array_pop($divisions);
+
+				if ($item['delete'])
+				{
+					continue;
+				}
+
+				$detail = Model_Event_Detail::forge([
+					'event_id' => $event->id,
+					'division_id' => $division->id,
+					'division_result' => $item['result'],
+				]);
+				$detail->save();
+
+				switch ($item['result'])
+				{
+					case '新設':
+						$division->start_event_id = $event->id;
+						$division->save();
+					break;
+					case '廃止':
+						$division->end_event_id = $event->id;
+						$division->save();
+					break;
+				} // switch ($item['result'])
+
+			} // foreach ($arr as $item)
+
+			DB::commit_transaction();
+		}
+		catch (Exception $e)
+		{
+			// 内部エラー
+			DB::rollback_transaction();
+			throw new HttpServerErrorException($e->getMessage());
+		} // try
+
+		Helper_Uri::redirect('view.division', ['path' => Input::post('path')]);
+		return;
+	} // function post_add()
+
+	public function action_edit($event_id)
 	{
-		Debug::dump( Input::post() );exit;
-	} // action_delete()
+		$event = Model_Event::find_by_pk($event_id);
+		if ( ! $event)
+		{
+			throw new HttpNotFoundException('イベントが見つかりません。');
+		} // if ( ! $event)
+
+		// POST データを整形
+		$arr = [];
+		foreach (Input::post('id') as $key => $id)
+		{
+			$arr[] = [
+				'id'       => Input::post('id.'.$key),
+				'division' => Input::post('division.'.$key),
+				'result'   => Input::post('result.'.$key),
+				'delete'   => Input::post('delete.'.$key),
+			];
+		}
+
+		try
+		{
+			DB::start_transaction();
+
+			foreach ($arr as $item)
+			{
+				$id = $item['id'];
+				$divisions = Model_Division::set_path($item['division']);
+				$division = array_pop($divisions);
+
+				if ($item['delete'])
+				{
+					if ($id != 'new')
+					{
+						$detail = Model_Event_Detail::find_by_pk($id);
+						$detail->soft_delete();
+					}
+				}
+				else
+				{
+					if ($id == 'new')
+					{
+						$detail = Model_Event_Detail::forge([
+							'event_id' => $event->id,
+							'division_id' => $division->id,
+							'division_result' => $item['result'],
+						]);
+						$detail->save();
+					}
+					else
+					{
+						$detail = Model_Event_Detail::find_by_pk($id);
+						$detail->division_result = $item['result'];
+						$detail->save();
+					} // if ($id == 'new')
+				} // if ($item['delete'])
+
+				switch ($item['result'])
+				{
+					case '新設':
+						$division->start_event_id = $event->id;
+						$division->save();
+					break;
+					case '廃止':
+						$division->end_event_id = $event->id;
+						$division->save();
+					break;
+				} // switch ($item['result'])
+
+			} // foreach ($arr as $item)
+
+			DB::commit_transaction();
+		}
+		catch (Exception $e)
+		{
+			// 内部エラー
+			DB::rollback_transaction();
+			throw new HttpServerErrorException($e->getMessage());
+		} // try
+
+		Helper_Uri::redirect('view.division', ['path' => Input::post('path')]);
+		return;
+	} // function action_edit()
+
+	public function action_delete($event_id)
+	{
+		$event = Model_Event::find_by_pk($event_id);
+		if ( ! $event)
+		{
+			throw new HttpNotFoundException('イベントが見つかりません。');
+		} // if ( ! $event)
+
+		Debug::dump( $event_id, Input::post() );exit;
+	} // function action_delete()
 } // Controller_Event

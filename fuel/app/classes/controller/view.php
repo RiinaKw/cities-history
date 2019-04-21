@@ -75,6 +75,7 @@ class Controller_View extends Controller_Layout
 		$content->events = $events;
 		$content->url_detail = Helper_Uri::create('view.division', ['path' => $path]);
 		$content->url_belongto = Helper_Uri::create('belongto.division', ['path' => $path]);
+		$content->url_event_detail = Helper_Uri::create('event.detail');
 		$content->url_event_add = Helper_Uri::create('event.add');
 		$content->url_event_edit = Helper_Uri::create('event.edit');
 		$content->url_event_delete = Helper_Uri::create('event.delete');
@@ -161,6 +162,7 @@ class Controller_View extends Controller_Layout
 		$content->events = $events_arr;
 		$content->url_detail = Helper_Uri::create('view.division', ['path' => $path]);
 		$content->url_belongto = Helper_Uri::create('belongto.division', ['path' => $path]);
+		$content->url_event_detail = Helper_Uri::create('event.detail');
 		$content->url_event_add = Helper_Uri::create('event.add');
 		$content->url_event_edit = Helper_Uri::create('event.edit');
 		$content->url_event_delete = Helper_Uri::create('event.delete');
