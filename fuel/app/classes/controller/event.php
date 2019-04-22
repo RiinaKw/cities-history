@@ -106,6 +106,10 @@ class Controller_Event extends Controller_Layout
 		{
 			DB::start_transaction();
 
+			$event->date = Input::post('date');
+			$event->type = Input::post('type');
+			$event->save();
+
 			foreach ($arr as $item)
 			{
 				$id = $item['id'];

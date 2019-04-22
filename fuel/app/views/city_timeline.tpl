@@ -15,7 +15,7 @@
 						class="editable {{if $event->birth}}birth{{/if}} {{if $event->live}}live{{/if}} {{if $event->death}}death{{/if}}"
 						data-event-id="{{$event.event_id}}">
 						<header class="clearfix">
-							<h3 class="float-left">{{$event.division_result}}</h3>
+							<h3 class="float-left">{{$event.type}}</h3>
 							<time class="float-right">{{$event.date}}</time>
 						</header>
 						<ul>
