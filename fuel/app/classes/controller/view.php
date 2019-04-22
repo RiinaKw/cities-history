@@ -40,7 +40,7 @@ class Controller_View extends Controller_Layout
 				foreach ($divisions as &$d)
 				{
 					$d_path = $d->get_path(null, true);
-					$d->url_detail = Helper_Uri::create('view.division', ['path' => $d_path]);
+					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
 				}
 			}
 			$event->divisions = $divisions;
@@ -65,16 +65,18 @@ class Controller_View extends Controller_Layout
 			}
 			else
 			{
-				$breadcrumbs[$name] = Helper_Uri::create('view.division', ['path' => $cur_path]);
+				$breadcrumbs[$name] = Helper_Uri::create('division.detail', ['path' => $cur_path]);
 			}
 		}
 
 		// ビューを設定
 		$content = View_Smarty::forge('city_timeline.tpl');
 		$content->path = $path;
+		$content->division = $division;
 		$content->events = $events;
-		$content->url_detail = Helper_Uri::create('view.division', ['path' => $path]);
-		$content->url_belongto = Helper_Uri::create('belongto.division', ['path' => $path]);
+		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
+		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_event_detail = Helper_Uri::create('event.detail');
 		$content->url_event_add = Helper_Uri::create('event.add');
 		$content->url_event_edit = Helper_Uri::create('event.edit');
@@ -125,7 +127,7 @@ class Controller_View extends Controller_Layout
 					foreach ($divisions as &$d)
 					{
 						$d_path = $d->get_path(null, true);
-						$d->url_detail = Helper_Uri::create('view.division', ['path' => $d_path]);
+						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
 					}
 				}
 				$event->divisions = $divisions;
@@ -152,16 +154,18 @@ class Controller_View extends Controller_Layout
 			}
 			else
 			{
-				$breadcrumbs[$name] = Helper_Uri::create('view.division', ['path' => $cur_path]);
+				$breadcrumbs[$name] = Helper_Uri::create('division.detail', ['path' => $cur_path]);
 			}
 		}
 
 		// ビューを設定
 		$content = View_Smarty::forge('city_timeline.tpl');
 		$content->path = $path;
+		$content->division = $division;
 		$content->events = $events_arr;
-		$content->url_detail = Helper_Uri::create('view.division', ['path' => $path]);
-		$content->url_belongto = Helper_Uri::create('belongto.division', ['path' => $path]);
+		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
+		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_event_detail = Helper_Uri::create('event.detail');
 		$content->url_event_add = Helper_Uri::create('event.add');
 		$content->url_event_edit = Helper_Uri::create('event.edit');
@@ -172,6 +176,24 @@ class Controller_View extends Controller_Layout
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_belongto()
+
+	public function action_edit()
+	{
+		$path = $this->param('path');
+		$division = Model_Division::get_by_path($path);
+
+		$division->name         = Input::post('name');
+		$division->name_kana    = Input::post('name_kana');
+		$division->postfix      = Input::post('postfix');
+		$division->postfix_kana = Input::post('postfix_kana');
+		$division->identify     = Input::post('identify') ?: null;
+		$division->save();
+
+		$path_new = $division->get_path(null, true);
+
+		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
+		return;
+	} // function action_edit()
 
 	public function action_list()
 	{

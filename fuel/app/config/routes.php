@@ -10,6 +10,7 @@ return array(
 	'view' => 'view/list',
 	'view(/:path)?' => 'view/index',
 	'belongto(/:path)?' => 'view/belongto',
+	'edit(/:path)?' => 'view/edit',
 
 	'event/add'          => 'event/add',
 	'event/(.+?)/edit'   => 'event/edit/$1',

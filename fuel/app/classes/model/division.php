@@ -20,12 +20,14 @@ class Model_Division extends Model_Base
 		$field = $validation->add('name_kana', '自治体名かな')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('type', '自治体名種別')
+		$field = $validation->add('postfix', '自治体名種別')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('type_kana', '自治体名種別かな')
+		$field = $validation->add('postfix_kana', '自治体名種別かな')
 			->add_rule('required')
 			->add_rule('max_length', 20);
+		$field = $validation->add('identify', '識別名')
+			->add_rule('max_length', 50);
 		$field = $validation->add('parent_division_id', '親自治体');
 		$field = $validation->add('start_event_id',     '設置イベント');
 		$field = $validation->add('end_event_id',       '廃止イベント');
@@ -40,10 +42,13 @@ class Model_Division extends Model_Base
 		$divisions = [];
 		foreach ($arr as $name)
 		{
-			if ( ! $division = self::get_one_by_name_and_parent_id($name, $parent_id))
+			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|市|郡|区|町|村)(\((?<identify>.+?)\))?$/', $name, $matches);
+			if ( ! $division = self::get_one_by_name_and_parent_id($matches, $parent_id))
 			{
 				$division = self::forge([
-					'name' => $name,
+					'name' => $matches['place'],
+					'postfix' => $matches['postfix'],
+					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
 					'parent_division_id' => $parent_id,
 				]);
 				$division->save();
@@ -61,7 +66,8 @@ class Model_Division extends Model_Base
 		$parent_id = null;
 		foreach ($arr as $name)
 		{
-			$result = self::get_one_by_name_and_parent_id($name, $parent_id);
+			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|市|郡|区|町|村)(\((?<identify>.+?)\))?$/', $name, $matches);
+			$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
 			if ($result)
 			{
 				$division = $result;
@@ -75,8 +81,13 @@ class Model_Division extends Model_Base
 	{
 		$query = DB::select()
 			->from(self::$_table_name)
-			->where('name', '=', $name)
-			->where('parent_division_id', '=', $parent_id);
+			->where('parent_division_id', '=', $parent_id)
+			->where('name', '=', $name['place'])
+			->where('postfix', '=', $name['postfix']);
+		if (isset($name['identify']))
+		{
+			$query->where('identify', '=', $name['identify']);
+		}
 
 		$result = $query->as_object('Model_Division')->execute()->as_array();
 		if ($result)
@@ -111,15 +122,37 @@ class Model_Division extends Model_Base
 	{
 		if ($force_fullpath)
 		{
-			$path = $this->name;
+			$path = $this->name.$this->postfix;
+			if ($this->identify)
+			{
+				$path .= '('.$this->identify.')';
+			}
 			$parent_id = $this->parent_division_id;
 			while ($parent_id)
 			{
 				$parent = Model_Division::find_by_pk($parent_id);
-				$path = $parent->name.'/'.$path;
+				$name = $parent->name.$parent->postfix;
+				if ($parent->identify)
+				{
+					$name .= '('.$parent->identify.')';
+				}
+				$path = $name.'/'.$path;
 				$parent_id = $parent->parent_division_id;
 			}
 			return $path;
 		}
 	} // function get_path()
+
+	public function get_parent_path()
+	{
+		if ($this->parent_division_id)
+		{
+			$path = $this->get_path(null, true);
+			return dirname($path);
+		}
+		else
+		{
+			return null;
+		}
+	} // function get_parent_path()
 } // class Model_Division

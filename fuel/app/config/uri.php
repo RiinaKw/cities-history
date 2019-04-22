@@ -15,10 +15,9 @@ return array(
 		'edit'     => 'event/:id/edit',
 		'delete'   => 'event/:id/delete',
 	),
-	'view' => array(
-		'division' => 'view/:path'
-	),
-	'belongto' => array(
-		'division' => 'belongto/:path'
+	'division' => array(
+		'detail'   => 'view/:path',
+		'belongto' => 'belongto/:path',
+		'edit'     => 'edit/:path',
 	),
 );

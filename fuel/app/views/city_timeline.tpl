@@ -1,5 +1,8 @@
 
-			<h2>{{$path}}</h2>
+			<header class="clearfix">
+				<h2 class="float-left">{{$path}}</h2>
+				<button class="btn btn-success float-right" data-toggle="modal" data-target="#change-division">自治体変更</button>
+			</header>
 			<ul>
 				<li><a href="{{$url_detail}}">自治体詳細</a></li>
 				<li><a href="{{$url_belongto}}">所属自治体</a></li>
@@ -19,7 +22,7 @@
 {{foreach from=$event.divisions item=division}}
 							<li>
 								<a href="{{$division->url_detail}}">
-									{{$division.name}}, {{$division.division_result}}
+									{{$division.fullname}}, {{$division.division_result}}
 								</a>
 							</li>
 {{/foreach}}
@@ -32,8 +35,65 @@
 				</section>
 			</div>
 
-			<div id="change-event" class="modal fade" tabindex="-1" role="dialog">
+			<div id="change-division" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
+					<form class="modal-content" action="{{$url_edit}}" method="post">
+						<div class="modal-header">
+							<h5 class="modal-title">自治体を変更……</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div><!-- /.modal-header -->
+						<div class="modal-body">
+							<label class="row">
+								<span class="col-4">所属自治体</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="parent" value="{{$division->get_parent_path()}}">
+								</div>
+							</label>
+							<label class="row">
+								<span class="col-4">自治体名</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="name" value="{{$division->name}}">
+								</div>
+							</label>
+							<label class="row">
+								<span class="col-4">自治体名かな</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="name_kana" value="{{$division->name_kana}}">
+								</div>
+							</label>
+							<label class="row">
+								<span class="col-4">接尾語</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="postfix" value="{{$division->postfix}}">
+								</div>
+							</label>
+							<label class="row">
+								<span class="col-4">接尾語かな</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="postfix_kana" value="{{$division->postfix_kana}}">
+								</div>
+							</label>
+							<label class="row">
+								<span class="col-4">識別名</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="identify" value="{{$division->identify}}">
+								</div>
+							</label>
+						</div><!-- /.modal-body -->
+						<div class="modal-footer">
+							<nav>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+								<button type="submit" class="btn btn-primary">変更を保存</button>
+							</nav>
+						</div><!-- /.modal-footer -->
+					</form><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+			<div id="change-event" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-lg" role="document">
 					<form class="modal-content" action="#" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">イベントを変更……</h5>
@@ -44,24 +104,25 @@
 						<div class="modal-body">
 							<input type="hidden" id="path" name="path" value="" />
 							<input type="hidden" id="event-id" value="" />
-							<p>モーダルボディの本文。</p>
-							<div class="row">
-								<label class="col-4">イベント種別</label>
+							<label class="row">
+								<span class="col-4">イベント種別</span>
 								<div class="col-8">
 									<input class="form-control" type="text" id="type" name="type">
 								</div>
-							</div>
-							<div class="row">
-								<label class="col-4">日付</label>
+							</label>
+							<label class="row">
+								<span class="col-4">日付</span>
 								<div class="col-8">
 									<input class="form-control" type="text" id="date" name="date">
 								</div>
-							</div>
+							</label>
 							<table class="table table-sm table-borderless">
 								<thead>
 									<tr>
-										<th scope="col" style="width: 70%;">自治体</th>
+										<th scope="col" style="width: 50%;">自治体</th>
 										<th scope="col" style="width: 20%;">結果</th>
+										<th scope="col" style="width: 10%;">新設</th>
+										<th scope="col" style="width: 10%;">廃止</th>
 										<th scope="col" style="width: 10%;">削除</th>
 									</tr>
 								</thead>
@@ -114,16 +175,36 @@ $(document).on("dblclick", ".editable", function(){
 		for (idx in data) {
 			var detail = data[idx];
 			var $tr = $("<tr />").appendTo($tbody);
+
 			var $input_id = $('<input type="hidden">').appendTo($tr);
 			$input_id.attr("value", detail.id).attr("name", "id["+idx+"]");
+
 			var $td_division = $("<td />").appendTo($tr);
 			var $input_division = $('<input type="text">').addClass("form-control");
 			$input_division.attr("value", detail.path).attr("name", "division["+idx+"]");
 			$input_division.appendTo($td_division);
+
 			var $td_result = $("<td />").appendTo($tr);
 			var $input_result = $('<input type="text">').addClass("form-control");
 			$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
 			$input_result.appendTo($td_result);
+
+			var $td_birth = $("<td />").appendTo($tr);
+			var $input_birth = $('<input type="checkbox">');
+			$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
+			$input_birth.appendTo($td_birth);
+			if (detail.birth) {
+				$input_birth.prop("checked", true);
+			}
+
+			var $td_death = $("<td />").appendTo($tr);
+			var $input_death = $('<input type="checkbox">');
+			$input_death.attr("value", "true").attr("name", "death["+idx+"]");
+			$input_death.appendTo($td_death);
+			if (detail.death) {
+				$input_death.prop("checked", true);
+			}
+
 			var $td_delete = $("<td />").appendTo($tr);
 			var $input_delete = $('<input type="checkbox">');
 			$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");
@@ -139,16 +220,30 @@ $(document).on("click", "#change-event .row_add", function(){
 	var idx = $("tbody tr", $modal).length;
 
 	var $tr = $("<tr />").appendTo($tbody);
+
 	var $input_id = $('<input type="hidden">').appendTo($tr);
 	$input_id.attr("value", "new").attr("name", "id["+idx+"]");
+
 	var $td_division = $("<td />").appendTo($tr);
 	var $input_division = $('<input type="text">');
 	$input_division.addClass("form-control").attr("name", "division["+idx+"]");
 	$input_division.appendTo($td_division);
+
 	var $td_result = $("<td />").appendTo($tr);
 	var $input_result = $('<input type="text">');
 	$input_result.addClass("form-control").attr("name", "result["+idx+"]");
 	$input_result.appendTo($td_result);
+
+	var $td_birth = $("<td />").appendTo($tr);
+	var $input_birth = $('<input type="checkbox">');
+	$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
+	$input_birth.appendTo($td_birth);
+
+	var $td_death = $("<td />").appendTo($tr);
+	var $input_death = $('<input type="checkbox">');
+	$input_death.attr("value", "true").attr("name", "death["+idx+"]");
+	$input_death.appendTo($td_death);
+
 	var $td_delete = $("<td />").appendTo($tr);
 	var $input_delete = $('<input type="checkbox">');
 	$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");

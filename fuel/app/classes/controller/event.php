@@ -20,6 +20,8 @@ class Controller_Event extends Controller_Layout
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
 				'result'   => Input::post('result.'.$key),
+				'birth'    => Input::post('birth.'.$key),
+				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
 			];
 		}
@@ -52,17 +54,16 @@ class Controller_Event extends Controller_Layout
 				]);
 				$detail->save();
 
-				switch ($item['result'])
+				if ($item['birth'])
 				{
-					case '新設':
-						$division->start_event_id = $event->id;
-						$division->save();
-					break;
-					case '廃止':
-						$division->end_event_id = $event->id;
-						$division->save();
-					break;
-				} // switch ($item['result'])
+					$division->start_event_id = $event->id;
+					$division->save();
+				}
+				if ($item['death'])
+				{
+					$division->end_event_id = $event->id;
+					$division->save();
+				}
 
 			} // foreach ($arr as $item)
 
@@ -75,7 +76,7 @@ class Controller_Event extends Controller_Layout
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
 
-		Helper_Uri::redirect('view.division', ['path' => Input::post('path')]);
+		Helper_Uri::redirect('division.detail', ['path' => Input::post('path')]);
 		return;
 	} // function post_add()
 
@@ -95,6 +96,8 @@ class Controller_Event extends Controller_Layout
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
 				'result'   => Input::post('result.'.$key),
+				'birth'    => Input::post('birth.'.$key),
+				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
 			];
 		}
@@ -136,17 +139,16 @@ class Controller_Event extends Controller_Layout
 					} // if ($id == 'new')
 				} // if ($item['delete'])
 
-				switch ($item['result'])
+				if ($item['birth'])
 				{
-					case '新設':
-						$division->start_event_id = $event->id;
-						$division->save();
-					break;
-					case '廃止':
-						$division->end_event_id = $event->id;
-						$division->save();
-					break;
-				} // switch ($item['result'])
+					$division->start_event_id = $event->id;
+					$division->save();
+				}
+				if ($item['death'])
+				{
+					$division->end_event_id = $event->id;
+					$division->save();
+				}
 
 			} // foreach ($arr as $item)
 
@@ -159,7 +161,7 @@ class Controller_Event extends Controller_Layout
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
 
-		Helper_Uri::redirect('view.division', ['path' => Input::post('path')]);
+		Helper_Uri::redirect('division.detail', ['path' => Input::post('path')]);
 		return;
 	} // function action_edit()
 
