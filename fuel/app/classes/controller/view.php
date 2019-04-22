@@ -182,6 +182,15 @@ class Controller_View extends Controller_Layout
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
 
+		$parent = Input::post('parent');
+		$parent_division = Model_Division::get_by_path($parent);
+		if ( ! $parent_division)
+		{
+			$parent_division = Model_Division::set_path($parent);
+			$parent_division = array_pop($parent_division);
+		}
+		$division->parent_division_id = $parent_division->id;
+
 		$division->name         = Input::post('name');
 		$division->name_kana    = Input::post('name_kana');
 		$division->postfix      = Input::post('postfix');
