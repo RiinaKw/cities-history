@@ -8,7 +8,7 @@
 				<li><a href="{{$url_belongto}}">所属自治体</a></li>
 			</ul>
 
-			<div class="col-md-6 offset-md-3">
+			<div class="col-md-6 offset-md-3 pb-3">
 				<section class="timeline">
 {{foreach name=events from=$events item=event}}
 					<article

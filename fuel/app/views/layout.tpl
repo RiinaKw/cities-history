@@ -15,26 +15,26 @@
 	</head>
 	<body>
 
-		<!-- Begin page content -->
-		<main role="main" class="container">
-
-			<nav aria-label="パンくずリスト">
-				<ol class="breadcrumb">
+		<nav aria-label="パンくずリスト">
+			<ol class="breadcrumb">
 {{foreach from=$breadcrumbs key=name item=url}}
 {{if $url}}
-					<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
+				<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
 {{else}}
-					<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
+				<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
 {{/if}}
 {{/foreach}}
-				<ol>
-			</nav>
+			<ol>
+		</nav>
+
+		<!-- Begin page content -->
+		<main role="main" class="container">
 
 {{$content}}
 
 		</main>
 
-		<footer class="footer">
+		<footer class="footer mt-auto py-3">
 			<div class="container">
 				<span class="text-muted">copyright</span>
 			</div>
