@@ -17,6 +17,7 @@ abstract class Controller_Layout extends Controller_Base
 
 		// レイアウトのテンプレートを設定
 		$this->_view = View_Smarty::forge('layout.tpl');
+		$this->_set_view_var('root', Helper_Uri::root());
 	} // function before()
 
 	protected function _set_view_var($key, $value)

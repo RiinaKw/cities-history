@@ -142,10 +142,16 @@
 			</div><!-- /.modal -->
 
 			<script>
+
 $(document).on("click", ".add", function(){
 	var $modal = $('#change-event').modal();
 	$(".modal-title", $modal).text("イベントを追加…");
 	$("form", $modal).attr("action", "{{$url_event_add}}");
+	$("#event-id", $modal).val("");
+	$("#path", $modal).val("");
+	$("#type", $modal).val("");
+	$("#date", $modal).val("");
+	$("tbody", $modal).empty();
 	$(".btn-danger", $modal).hide();
 	var path = $("h2").html();
 	$("#path", $modal).val(path);
@@ -184,6 +190,10 @@ $(document).on("dblclick", ".editable", function(){
 			$input_division.attr("value", detail.path).attr("name", "division["+idx+"]");
 			$input_division.appendTo($td_division);
 
+			$input_division.devbridgeAutocomplete({
+				serviceUrl: "{{$root}}/division/list.json"
+			});
+
 			var $td_result = $("<td />").appendTo($tr);
 			var $input_result = $('<input type="text">').addClass("form-control");
 			$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
@@ -213,7 +223,7 @@ $(document).on("dblclick", ".editable", function(){
 	});
 });
 
-$(document).on("click", "#change-event .row_add", function(){
+$(document).on("click", "#change-event .row_add", function() {
 	var $modal = $('#change-event');
 	var $tbody = $("tbody", $modal);
 
@@ -228,6 +238,10 @@ $(document).on("click", "#change-event .row_add", function(){
 	var $input_division = $('<input type="text">');
 	$input_division.addClass("form-control").attr("name", "division["+idx+"]");
 	$input_division.appendTo($td_division);
+
+	$input_division.devbridgeAutocomplete({
+		serviceUrl: "{{$root}}/division/list.json"
+	});
 
 	var $td_result = $("<td />").appendTo($tr);
 	var $input_result = $('<input type="text">');

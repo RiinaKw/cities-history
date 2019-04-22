@@ -10,8 +10,8 @@
 	{{Asset::css('style.css')}}
 
 	{{Asset::js('jquery-3.3.1.min.js')}}
-	{{Asset::js('jquery-ui.min.js')}}
 	{{Asset::js('bootstrap.min.js')}}
+	{{Asset::js('jquery.autocomplete.min.js')}}
 	</head>
 	<body>
 
