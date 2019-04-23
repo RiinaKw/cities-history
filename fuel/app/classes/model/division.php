@@ -155,4 +155,9 @@ class Model_Division extends Model_Base
 			return null;
 		}
 	} // function get_parent_path()
+
+	public function get_fullname()
+	{
+		return $this->name.$this->postfix;
+	}
 } // class Model_Division

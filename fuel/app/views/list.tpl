@@ -5,7 +5,7 @@
 {{foreach from=$divisions item=division}}
 					<article>
 						<header>
-							<h3><a href="{{$division.url_detail}}">{{$division.name}}</a></h3>
+							<h3><a href="{{$division.url_detail}}">{{$division->get_fullname()}}</a></h3>
 						</header>
 					</article>
 {{/foreach}}
