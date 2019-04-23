@@ -8,9 +8,9 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_View extends Controller_Layout
+class Controller_Division extends Controller_Layout
 {
-	public function action_index()
+	public function action_detail()
 	{
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
@@ -46,7 +46,9 @@ class Controller_View extends Controller_Layout
 			$event->divisions = $divisions;
 		} // foreach ($events as &$event)
 
-		$breadcrumbs = [];
+		$breadcrumbs = [
+			'一覧' => Helper_Uri::create('list'),
+		];
 		$arr = explode('/', $path);
 		$cur_path = '';
 		foreach ($arr as $name)
@@ -86,7 +88,7 @@ class Controller_View extends Controller_Layout
 		$this->_set_view_var('title', $path);
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
-	} // function action_index()
+	} // function action_detail()
 
 	public function action_belongto()
 	{
@@ -135,7 +137,9 @@ class Controller_View extends Controller_Layout
 			}
 		} // if ($division_id_arr)
 
-		$breadcrumbs = [];
+		$breadcrumbs = [
+			'一覧' => Helper_Uri::create('list'),
+		];
 		$arr = explode('/', $path);
 		$cur_path = '';
 		foreach ($arr as $name)
@@ -203,23 +207,4 @@ class Controller_View extends Controller_Layout
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
 		return;
 	} // function action_edit()
-
-	public function action_list()
-	{
-		$divisions = Model_Division::find_all();
-		foreach ($divisions as &$division)
-		{
-			$division->path = $division->get_path(null, true);
-			$division->url_detail = Helper_Uri::create('view.division', ['path' => $division->path]);
-		}
-
-		// ビューを設定
-		$content = View_Smarty::forge('list.tpl');
-		$content->divisions = $divisions;
-
-		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', 'hello');
-		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
-		return $this->_get_view();
-	} // function action_list()
 } // class Controller_View

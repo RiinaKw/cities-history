@@ -1,16 +1,9 @@
 <?php
 return array(
-	'_root_'  => 'welcome/index',  // The default route
+	'_root_'  => 'list/index',  // The default route
 	'_404_'   => 'welcome/404',    // The main 404 route
 
-	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
-
 	'add(/:path)?'  => 'add/index',
-
-	'view' => 'view/list',
-	'view(/:path)?' => 'view/index',
-	'belongto(/:path)?' => 'view/belongto',
-	'edit(/:path)?' => 'view/edit',
 
 	'division/list' => 'rest/division/list',
 
@@ -18,4 +11,8 @@ return array(
 	'event/(.+?)/edit'   => 'event/edit/$1',
 	'event/(.+?)/delete' => 'event/delete/$1',
 	'event/(.+?)'        => 'rest/event/detail/$1',
+
+	'division/belongto(/:path)?' => 'division/belongto',
+	'division/edit(/:path)?'     => 'division/edit',
+	'division(/:path)?'          => 'division/detail',
 );

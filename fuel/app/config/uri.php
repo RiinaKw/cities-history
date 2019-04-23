@@ -16,8 +16,9 @@ return array(
 		'delete'   => 'event/:id/delete',
 	),
 	'division' => array(
-		'detail'   => 'view/:path',
-		'belongto' => 'belongto/:path',
-		'edit'     => 'edit/:path',
+		'detail'   => 'division/:path',
+		'belongto' => 'division/belongto/:path',
+		'edit'     => 'division/edit/:path',
 	),
+	'list' => '/'
 );
