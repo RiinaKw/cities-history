@@ -15,6 +15,7 @@
 	</head>
 	<body>
 
+{{if isset($breadcrumbs) && $breadcrumbs}}
 		<nav aria-label="パンくずリスト">
 			<ol class="breadcrumb">
 {{foreach from=$breadcrumbs key=name item=url}}
@@ -26,6 +27,7 @@
 {{/foreach}}
 			<ol>
 		</nav>
+{{/if}}
 
 		<!-- Begin page content -->
 		<main role="main" class="container">

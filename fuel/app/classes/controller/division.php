@@ -14,6 +14,10 @@ class Controller_Division extends Controller_Layout
 	{
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
+		if ( ! $division || $division->get_path(null, true) != $path)
+		{
+			throw new HttpNotFoundException('自治体が見つかりません。');
+		}
 
 		$events = Model_Event_Detail::get_by_division_id($division->id);
 		foreach ($events as &$event)
@@ -191,7 +195,6 @@ class Controller_Division extends Controller_Layout
 			}
 			$cur_division = Model_Division::get_by_path($cur_path);
 			$cur_kana .= ($cur_kana ? '/' : '').$cur_division->name_kana.'・'.$cur_division->postfix_kana;
-			Debug::dump($cur_division);
 			if ($cur_path == $path)
 			{
 				$breadcrumbs[$name] = '';

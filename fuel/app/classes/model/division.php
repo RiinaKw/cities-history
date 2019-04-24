@@ -67,11 +67,14 @@ class Model_Division extends Model_Base
 		foreach ($arr as $name)
 		{
 			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|市|郡|区|町|村)(\((?<identify>.+?)\))?$/', $name, $matches);
-			$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
-			if ($result)
+			if ($matches)
 			{
-				$division = $result;
-				$parent_id = $division->id;
+				$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
+				if ($result)
+				{
+					$division = $result;
+					$parent_id = $division->id;
+				}
 			}
 		}
 		return $division;
