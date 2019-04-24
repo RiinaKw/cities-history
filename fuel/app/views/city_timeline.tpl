@@ -1,7 +1,7 @@
 
 			<header class="clearfix">
 				<div class="float-left">
-					<h2>{{$path}}</h2>
+					<h2>{{$path|escape}}</h2>
 					<p>{{$path_kana}}</p>
 				</div>
 				<button class="btn btn-success float-right" data-toggle="modal" data-target="#change-division">自治体変更</button>
@@ -18,14 +18,14 @@
 						class="editable {{if $event->birth}}birth{{/if}} {{if $event->live}}live{{/if}} {{if $event->death}}death{{/if}}"
 						data-event-id="{{$event.event_id}}">
 						<header class="clearfix">
-							<h3 class="float-left">{{$event.type}}</h3>
-							<time class="float-right">{{$event.date}}</time>
+							<h3 class="float-left">{{$event.type|escape}}</h3>
+							<time class="float-right">{{$event.date|escape}}</time>
 						</header>
 						<ul>
 {{foreach from=$event.divisions item=division}}
 							<li>
 								<a href="{{$division->url_detail}}">
-									{{$division.fullname}}, {{$division.division_result}}
+									{{$division.fullname|escape}}, {{$division.division_result|escape}}
 								</a>
 							</li>
 {{/foreach}}
