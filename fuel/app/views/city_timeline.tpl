@@ -1,6 +1,9 @@
 
 			<header class="clearfix">
-				<h2 class="float-left">{{$path}}</h2>
+				<div class="float-left">
+					<h2>{{$path}}</h2>
+					<p>{{$path_kana}}</p>
+				</div>
 				<button class="btn btn-success float-right" data-toggle="modal" data-target="#change-division">自治体変更</button>
 			</header>
 			<ul>
