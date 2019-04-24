@@ -12,7 +12,7 @@ return array(
 	'event/(.+?)/delete' => 'event/delete/$1',
 	'event/(.+?)'        => 'rest/event/detail/$1',
 
-	'division/belongto(/:path)?' => 'division/belongto',
-	'division/edit(/:path)?'     => 'division/edit',
-	'division(/:path)?'          => 'division/detail',
+	'division/belongto/:path' => 'division/belongto',
+	'division/edit/:path'     => 'division/edit',
+	'division/:path'          => 'division/detail',
 );
