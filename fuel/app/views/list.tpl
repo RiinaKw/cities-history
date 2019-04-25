@@ -5,7 +5,7 @@
 				</div>
 {{if $admin}}
 				<nav class="float-right">
-					<button class="btn btn-success" data-toggle="modal" data-target="#edit-division">自治体追加</button>
+					<button class="btn btn-success" data-toggle="modal" data-target="#add-division">自治体追加</button>
 				</nav>
 {{/if}}
 			</header>
