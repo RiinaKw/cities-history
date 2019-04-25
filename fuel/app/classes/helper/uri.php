@@ -8,6 +8,11 @@ class Helper_Uri
 		$base = Config::get('base_url');
 		if ($base)
 		{
+			if (preg_match('/\/$/', $base))
+			{
+				// スラッシュで終わる場合は削除
+				$base = substr($base, 0, -1);
+			}
 			return $base;
 		}
 		else
