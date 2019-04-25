@@ -29,13 +29,19 @@
 {{/if}}
 				</ul>
 				<form class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">
-					<input class="form-control mr-sm-2" type="text" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					<div class="input-group">
+						<input class="form-control" type="text" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
+						<span class="input-group-append">
+							<button class="btn btn-outline-default my-2 my-sm-0" type="submit">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
 				</form>
 {{if $admin}}
-				<a class="btn btn-outline-primary mt-sm-2 mt-md-0" href="{{$url_logout}}">Logout</a>
+				<a class="btn btn-outline-danger mt-sm-2 mt-md-0" href="{{$url_logout}}">Logout</a>
 {{else}}
-				<a class="btn btn-outline-primary mt-sm-2 mt-md-0" href="{{$url_login}}">Login</a>
+				<a class="btn btn-outline-success mt-sm-2 mt-md-0" href="{{$url_login}}">Login</a>
 {{/if}}
 			</div>
 		</header>
