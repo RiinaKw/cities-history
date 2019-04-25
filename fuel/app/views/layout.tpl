@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<!-- Fixed navbar -->
-		<header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<header class="navbar navbar-expand-md navbar-light">
 			<a class="navbar-brand" href="#">Cities History</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
 						<a class="nav-link disabled" href="#">Disabled</a>
 					</li>
 				</ul>
-				<form class="form-inline mt-2 mt-md-0 mr-3" method="get" action="">
+				<form class="form-inline mt-2 mt-md-0 mr-3" method="get" action="{{$url_search}}">
 					<input class="form-control mr-sm-2" type="text" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
@@ -59,7 +59,7 @@
 {{/if}}
 
 		<!-- Begin page content -->
-		<main role="main" class="container">
+		<main role="main" class="container pb-2">
 
 {{$content}}
 
