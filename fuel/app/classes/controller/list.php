@@ -45,7 +45,7 @@ class Controller_List extends Controller_Layout
 
 					$towns_arr[] = $town;
 				}
-				$country->path = $d->get_path(null, true);
+				$country->path = $country->get_path(null, true);
 				$country->url_detail = Helper_Uri::create('division.detail', ['path' => $country->path]);
 				$country->towns = $towns_arr;
 			}
@@ -58,7 +58,7 @@ class Controller_List extends Controller_Layout
 		$content->divisions = $divisions;
 
 		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', 'hello');
+		$this->_set_view_var('title', '自治体一覧');
 		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
 		return $this->_get_view();
 	} // function action_index()

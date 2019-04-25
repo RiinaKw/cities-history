@@ -4,7 +4,10 @@
 					<h2>{{$path|escape}}</h2>
 					<p>{{$path_kana}}</p>
 				</div>
-				<button class="btn btn-success float-right" data-toggle="modal" data-target="#change-division">自治体変更</button>
+				<nav class="float-right">
+					<button class="btn btn-success" data-toggle="modal" data-target="#change-division">自治体変更</button>
+					<button class="btn btn-danger" data-toggle="modal" data-target="#delete-division">自治体削除</button>
+				</nav>
 			</header>
 			<ul>
 				<li><a href="{{$url_detail}}">自治体詳細</a></li>
@@ -89,6 +92,28 @@
 							<nav>
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
 								<button type="submit" class="btn btn-primary">変更を保存</button>
+							</nav>
+						</div><!-- /.modal-footer -->
+					</form><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
+			<div id="delete-division" class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<form class="modal-content" action="{{$url_delete}}" method="post">
+						<div class="modal-header">
+							<h5 class="modal-title">自治体を削除……</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div><!-- /.modal-header -->
+						<div class="modal-body">
+							<p>削除してよろしいですか？</p>
+						</div><!-- /.modal-body -->
+						<div class="modal-footer">
+							<nav>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+								<button type="submit" class="btn btn-danger">削除</button>
 							</nav>
 						</div><!-- /.modal-footer -->
 					</form><!-- /.modal-content -->

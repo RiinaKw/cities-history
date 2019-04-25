@@ -63,6 +63,7 @@ class Controller_Division extends Controller_Layout
 		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
 		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
+		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
 		$content->url_event_detail = Helper_Uri::create('event.detail');
 		$content->url_event_add = Helper_Uri::create('event.add');
 		$content->url_event_edit = Helper_Uri::create('event.edit');
@@ -134,6 +135,7 @@ class Controller_Division extends Controller_Layout
 		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
 		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
+		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
 		$content->url_event_detail = Helper_Uri::create('event.detail');
 		$content->url_event_add = Helper_Uri::create('event.add');
 		$content->url_event_edit = Helper_Uri::create('event.edit');
@@ -174,6 +176,23 @@ class Controller_Division extends Controller_Layout
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
 		return;
 	} // function action_edit()
+
+	public function action_delete()
+	{
+			$path = $this->param('path');
+			$division = Model_Division::get_by_path($path);
+			$path = $division->get_parent_path();
+			$division->soft_delete();
+
+			if ($path)
+			{
+				Helper_Uri::redirect('division.detail', ['path' => $path]);
+			}
+			else
+			{
+				Helper_Uri::redirect('top');
+			}
+	}
 
 	protected function _breadcrumb_and_kana($path)
 	{

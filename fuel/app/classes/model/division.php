@@ -106,6 +106,7 @@ class Model_Division extends Model_Base
 	{
 		$query = DB::select()
 			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
 			->where('parent_division_id', '=', null);
 
 		return $query->as_object('Model_Division')->execute()->as_array();

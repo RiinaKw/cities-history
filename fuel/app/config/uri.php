@@ -19,6 +19,7 @@ return array(
 		'detail'   => 'division/:path',
 		'belongto' => 'division/belongto/:path',
 		'edit'     => 'division/edit/:path',
+		'delete'   => 'division/delete/:path',
 	),
 	'list' => '/'
 );
