@@ -1,13 +1,8 @@
 <?php
 
 return array(
-	'top'             => '',
-	'login'           => 'login',
-	'logout'          => 'logout',
-	'reissue'         => 'reissue',
-	'withdraw'        => 'withdraw',
-	'impression'      => 'impression',
-	'switch_login'    => 'switch',
+	'login'   => 'login',
+	'logout'  => 'logout',
 
 	'event' => array(
 		'add'      => 'event/add',

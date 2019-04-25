@@ -1,6 +1,6 @@
 <?php
 /**
- * The View Controller.
+ * The List Controller.
  *
  * A basic controller example.  Has examples of how to set the
  * response body and status.
