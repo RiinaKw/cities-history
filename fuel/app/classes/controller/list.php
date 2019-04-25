@@ -58,7 +58,7 @@ class Controller_List extends Controller_Layout
 		else
 		{
 			$divisions = [];
-		}
+		} // if ($divisions)
 
 		// ビューを設定
 		$content = View_Smarty::forge('list.tpl');
@@ -95,5 +95,5 @@ class Controller_List extends Controller_Layout
 		$this->_set_view_var('title', '自治体検索');
 		$this->_set_view_var('breadcrumbs', ['検索' => '']);
 		return $this->_get_view();
-	}
+	} // function action_search()
 } // class Controller_List

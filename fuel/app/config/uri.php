@@ -5,6 +5,9 @@ return array(
 	'logout'  => 'logout',
 	'search'  => 'search',
 
+	'admin' => array(
+		'divisions' => 'admin/divisions',
+	),
 	'event' => array(
 		'add'      => 'event/add',
 		'detail'   => 'event/:id.json',

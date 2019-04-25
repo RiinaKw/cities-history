@@ -11,8 +11,6 @@ return array(
 
 	'search'   => 'list/search',
 
-	'add(/:path)?'  => 'add/index',
-
 	'division/list' => 'rest/division/list',
 
 	'event/add'          => 'event/add',

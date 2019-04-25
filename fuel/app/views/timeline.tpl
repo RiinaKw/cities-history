@@ -41,7 +41,7 @@
 					<p>no events</p>
 {{/foreach}}
 {{if $admin}}
-					<span class="add"><i class="fas fa-plus"></i> 追加</span>
+					<span class="add"><i class="fas fa-plus"></i> イベントを追加…</span>
 {{/if}}
 				</section>
 			</div>

@@ -35,6 +35,15 @@ class Model_Division extends Model_Base
 		return $validation;
 	} // function validation()
 
+	public static function get_all()
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null);
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	} // function get_all()
+
 	public static function search($q)
 	{
 		$q = str_replace(array('\\', '%', '_'), array('\\\\', '\%', '\_'), $q);
