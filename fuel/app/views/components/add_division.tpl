@@ -48,8 +48,14 @@
 						</div><!-- /.modal-body -->
 						<div class="modal-footer">
 							<nav>
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-								<button type="submit" class="btn btn-primary">変更を保存</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">
+									<i class="fa fa-times"></i>
+									閉じる
+								</button>
+								<button type="submit" class="btn btn-primary">
+									<i class="fa fa-edit"></i>
+									保存
+								</button>
 							</nav>
 						</div><!-- /.modal-footer -->
 					</form><!-- /.modal-content -->
