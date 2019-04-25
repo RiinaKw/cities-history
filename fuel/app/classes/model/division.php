@@ -102,6 +102,25 @@ class Model_Division extends Model_Base
 		}
 	} // function _get_one_by_name_and_parent_id()
 
+	public static function get_top_level()
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('parent_division_id', '=', null);
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	} // function get_top_level()
+
+	public static function get_by_postfix($parent_id, $postfix)
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('postfix', '=', $postfix)
+			->where('parent_division_id', '=', $parent_id);
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	} // function get_by_postfix()
+
 	public static function get_by_parent_division_id($division_id)
 	{
 		$divisions = Model_Division::find_by_parent_division_id($division_id);
@@ -119,6 +138,11 @@ class Model_Division extends Model_Base
 			}
 		}
 		return $d_arr;
+	}
+
+	public function get_parent()
+	{
+		return self::find_by_pk($this->parent_division_id);
 	}
 
 	public function get_path($current, $force_fullpath = false)
@@ -142,6 +166,7 @@ class Model_Division extends Model_Base
 				$path = $name.'/'.$path;
 				$parent_id = $parent->parent_division_id;
 			}
+
 			return $path;
 		}
 	} // function get_path()
@@ -161,6 +186,11 @@ class Model_Division extends Model_Base
 
 	public function get_fullname()
 	{
-		return $this->name.$this->postfix;
+		$name = $this->name.$this->postfix;
+		if ($this->identify)
+		{
+			$name .= '('.$this->identify.')';
+		}
+		return $name;
 	}
 } // class Model_Division

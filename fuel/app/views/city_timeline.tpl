@@ -24,7 +24,7 @@
 						<ul>
 {{foreach from=$event.divisions item=division}}
 							<li>
-								<a href="{{$division->url_detail}}">
+								<a href="{{$division->url_detail|escape}}">
 									{{$division.fullname|escape}}, {{$division.division_result|escape}}
 								</a>
 							</li>
