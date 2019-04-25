@@ -63,6 +63,12 @@ class Controller_List extends Controller_Layout
 		// ビューを設定
 		$content = View_Smarty::forge('list.tpl');
 		$content->divisions = $divisions;
+		$content->url_add = Helper_Uri::create('division.add');
+
+		$components = [
+			'add_division' => View_Smarty::forge('components/add_division.tpl'),
+		];
+		$content->components = $components;
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', '自治体一覧');

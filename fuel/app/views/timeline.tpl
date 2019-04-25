@@ -7,7 +7,7 @@
 {{if $admin}}
 				<nav class="float-right">
 					<button class="btn btn-success" data-toggle="modal" data-target="#add-division">自治体追加</button>
-					<button class="btn btn-primary" data-toggle="modal" data-target="#change-division">自治体変更</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#edit-division">自治体変更</button>
 					<button class="btn btn-danger" data-toggle="modal" data-target="#delete-division">自治体削除</button>
 				</nav>
 {{/if}}
@@ -48,6 +48,7 @@
 
 {{if $admin}}
 
+{{$components.add_division}}
 {{$components.edit_division}}
 {{$components.delete_division}}
 {{$components.change_event}}

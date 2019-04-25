@@ -62,6 +62,7 @@ class Controller_Division extends Controller_Layout
 		$content->path_kana = $path_kana;
 		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
 		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
 		$content->url_event_detail = Helper_Uri::create('event.detail');
@@ -70,6 +71,7 @@ class Controller_Division extends Controller_Layout
 		$content->url_event_delete = Helper_Uri::create('event.delete');
 
 		$components = [
+			'add_division' => View_Smarty::forge('components/add_division.tpl'),
 			'edit_division' => View_Smarty::forge('components/edit_division.tpl'),
 			'delete_division' => View_Smarty::forge('components/delete_division.tpl'),
 			'change_event' => View_Smarty::forge('components/change_event.tpl'),
@@ -141,6 +143,7 @@ class Controller_Division extends Controller_Layout
 		$content->path_kana = $path_kana;
 		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
 		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
 		$content->url_event_detail = Helper_Uri::create('event.detail');
@@ -148,11 +151,55 @@ class Controller_Division extends Controller_Layout
 		$content->url_event_edit = Helper_Uri::create('event.edit');
 		$content->url_event_delete = Helper_Uri::create('event.delete');
 
+		$components = [
+			'add_division' => View_Smarty::forge('components/add_division.tpl'),
+			'edit_division' => View_Smarty::forge('components/edit_division.tpl'),
+			'delete_division' => View_Smarty::forge('components/delete_division.tpl'),
+			'change_event' => View_Smarty::forge('components/change_event.tpl'),
+		];
+		$content->components = $components;
+
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', $path);
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_belongto()
+
+	public function action_add()
+	{
+		if ( ! $this->admin)
+		{
+			throw new HttpNoAccessException("permission denied");
+		}
+		if ( ! Input::post())
+		{
+			throw new HttpBadRequestException("post required");
+		}
+
+		$division = Model_Division::forge();
+		$parent = Input::post('parent');
+		if ($parent)
+		{
+			$parent_division = Model_Division::get_by_path($parent);
+			if ( ! $parent_division)
+			{
+				$parent_division = Model_Division::set_path($parent);
+				$parent_division = array_pop($parent_division);
+			}
+			$division->parent_division_id = $parent_division->id;
+		}
+		$division->name         = Input::post('name');
+		$division->name_kana    = Input::post('name_kana');
+		$division->postfix      = Input::post('postfix');
+		$division->postfix_kana = Input::post('postfix_kana');
+		$division->identify     = Input::post('identify') ?: null;
+		$division->save();
+
+		$path_new = $division->get_path(null, true);
+
+		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
+		return;
+	} // function action_add()
 
 	public function action_edit()
 	{

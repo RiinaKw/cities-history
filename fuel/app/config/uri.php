@@ -14,6 +14,7 @@ return array(
 	'division' => array(
 		'detail'   => 'division/:path',
 		'belongto' => 'division/belongto/:path',
+		'add'      => 'division/add',
 		'edit'     => 'division/edit/:path',
 		'delete'   => 'division/delete/:path',
 	),

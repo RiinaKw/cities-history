@@ -1,9 +1,9 @@
 
-			<div id="edit-division" class="modal fade" tabindex="-1" role="dialog">
+			<div id="add-division" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
-					<form class="modal-content" action="{{$url_edit}}" method="post">
+					<form class="modal-content" action="{{$url_add}}" method="post">
 						<div class="modal-header">
-							<h5 class="modal-title">自治体を変更……</h5>
+							<h5 class="modal-title">自治体を追加……</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -12,37 +12,37 @@
 							<label class="row">
 								<span class="col-4">所属自治体</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="parent-division" name="parent" value="{{$division->get_parent_path()}}">
+									<input class="form-control" type="text" id="parent-division" name="parent" value="">
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">自治体名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name" value="{{$division->name}}">
+									<input class="form-control" type="text" name="name" value="">
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">自治体名かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name_kana" value="{{$division->name_kana}}">
+									<input class="form-control" type="text" name="name_kana" value="">
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix" value="{{$division->postfix}}">
+									<input class="form-control" type="text" name="postfix" value="">
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix_kana" value="{{$division->postfix_kana}}">
+									<input class="form-control" type="text" name="postfix_kana" value="">
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">識別名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="identify" value="{{$division->identify}}">
+									<input class="form-control" type="text" name="identify" value="">
 								</div>
 							</label>
 						</div><!-- /.modal-body -->

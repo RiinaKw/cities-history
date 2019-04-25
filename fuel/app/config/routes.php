@@ -20,8 +20,9 @@ return array(
 	'event/(.+?)/delete' => 'event/delete/$1',
 	'event/(.+?)'        => 'rest/event/detail/$1',
 
-	'division/belongto/:path' => 'division/belongto',
+	'division/add'            => 'division/add',
 	'division/edit/:path'     => 'division/edit',
 	'division/delete/:path'   => 'division/delete',
+	'division/belongto/:path' => 'division/belongto',
 	'division/:path'          => 'division/detail',
 );
