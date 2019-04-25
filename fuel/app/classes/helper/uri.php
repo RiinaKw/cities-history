@@ -5,20 +5,28 @@ class Helper_Uri
 	public static function root()
 	{
 		// 各種サーバ情報を取得
-		$protocol = (isset($_SERVER['HTTPS']) ? 'https' : 'http');
-		$server = $_SERVER['HTTP_HOST'];
-
-		$path = dirname($_SERVER['SCRIPT_NAME']);
-		$path = str_replace('\\', '/', $path);
-
-		// publicディレクトリへの絶対URLを生成
-		$uri = $protocol.'://'.$server.$path;
-		if (preg_match('/\/$/', $uri))
+		$base = Config::get('base_url');
+		if ($base)
 		{
-			// スラッシュで終わる場合は削除
-			$uri = substr($uri, 0, -1);
+			return $base;
 		}
-		return $uri;
+		else
+		{
+			$protocol = (isset($_SERVER['HTTPS']) ? 'https' : 'http');
+			$server = $_SERVER['HTTP_HOST'];
+
+			$path = dirname($_SERVER['SCRIPT_NAME']);
+			$path = str_replace('\\', '/', $path);
+
+			// publicディレクトリへの絶対URLを生成
+			$uri = $protocol.'://'.$server.$path;
+			if (preg_match('/\/$/', $uri))
+			{
+				// スラッシュで終わる場合は削除
+				$uri = substr($uri, 0, -1);
+			}
+			return $uri;
+		}
 	} // function root()
 
 	public static function create($config, $params = [], $get_params = [])

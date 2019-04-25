@@ -6,9 +6,9 @@
 				</div>
 {{if $admin}}
 				<nav class="float-right">
-					<button class="btn btn-success" data-toggle="modal" data-target="#add-division">自治体追加</button>
-					<button class="btn btn-primary" data-toggle="modal" data-target="#edit-division">自治体変更</button>
-					<button class="btn btn-danger" data-toggle="modal" data-target="#delete-division">自治体削除</button>
+					<button class="btn btn-success mb-1" data-toggle="modal" data-target="#add-division">自治体追加</button>
+					<button class="btn btn-primary mb-1" data-toggle="modal" data-target="#edit-division">自治体変更</button>
+					<button class="btn btn-danger mb-1" data-toggle="modal" data-target="#delete-division">自治体削除</button>
 				</nav>
 {{/if}}
 			</header>
