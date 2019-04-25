@@ -69,6 +69,13 @@ class Controller_Division extends Controller_Layout
 		$content->url_event_edit = Helper_Uri::create('event.edit');
 		$content->url_event_delete = Helper_Uri::create('event.delete');
 
+		$components = [
+			'edit_division' => View_Smarty::forge('components/edit_division.tpl'),
+			'delete_division' => View_Smarty::forge('components/delete_division.tpl'),
+			'change_event' => View_Smarty::forge('components/change_event.tpl'),
+		];
+		$content->components = $components;
+
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', $path);
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
