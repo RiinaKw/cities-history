@@ -37,10 +37,13 @@
 {{foreachelse}}
 					<p>no events</p>
 {{/foreach}}
+{{if $admin}}
 					<span class="add"><i class="fas fa-plus"></i> 追加</span>
+{{/if}}
 				</section>
 			</div>
 
+{{if $admin}}
 			<div id="change-division" class="modal fade" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<form class="modal-content" action="{{$url_edit}}" method="post">
@@ -299,3 +302,4 @@ $(document).on("click", "#change-event .btn-danger", function(){
 	$("form", $modal).attr("action", url);
 });
 			</script>
+{{/if}}

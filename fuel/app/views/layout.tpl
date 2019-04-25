@@ -37,9 +37,9 @@
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
 {{if $admin}}
-				<a class="btn btn-outline-primary" href="{{$url_logout}}">Log out</a>
+				<a class="btn btn-outline-primary" href="{{$url_logout}}">Logout</a>
 {{else}}
-				<a class="btn btn-outline-primary" href="{{$url_login}}">Log in</a>
+				<a class="btn btn-outline-primary" href="{{$url_login}}">Login</a>
 {{/if}}
 			</div>
 		</header>

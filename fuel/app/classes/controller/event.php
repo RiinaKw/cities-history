@@ -10,6 +10,16 @@
  */
 class Controller_Event extends Controller_Layout
 {
+	public function before()
+	{
+		parent::before();
+
+		if ( ! $this->admin)
+		{
+			throw new HttpNoAccessException("permission denied");
+		}
+	} // function before()
+
 	public function post_add()
 	{
 		// POST データを整形

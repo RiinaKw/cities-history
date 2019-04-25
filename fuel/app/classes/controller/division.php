@@ -55,7 +55,7 @@ class Controller_Division extends Controller_Layout
 		$path_kana = $breadcrumbs_arr['path_kana'];
 
 		// ビューを設定
-		$content = View_Smarty::forge('city_timeline.tpl');
+		$content = View_Smarty::forge('timeline.tpl');
 		$content->path = $path;
 		$content->division = $division;
 		$content->events = $events;
@@ -127,7 +127,7 @@ class Controller_Division extends Controller_Layout
 		$path_kana = $breadcrumbs_arr['path_kana'];
 
 		// ビューを設定
-		$content = View_Smarty::forge('city_timeline.tpl');
+		$content = View_Smarty::forge('timeline.tpl');
 		$content->path = $path;
 		$content->division = $division;
 		$content->events = $events_arr;
@@ -149,6 +149,11 @@ class Controller_Division extends Controller_Layout
 
 	public function action_edit()
 	{
+		if ( ! $this->admin)
+		{
+			throw new HttpNoAccessException("permission denied");
+		}
+
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
 
@@ -179,19 +184,24 @@ class Controller_Division extends Controller_Layout
 
 	public function action_delete()
 	{
-			$path = $this->param('path');
-			$division = Model_Division::get_by_path($path);
-			$path = $division->get_parent_path();
-			$division->soft_delete();
+		if ( ! $this->admin)
+		{
+			throw new HttpNoAccessException("permission denied");
+		}
 
-			if ($path)
-			{
-				Helper_Uri::redirect('division.detail', ['path' => $path]);
-			}
-			else
-			{
-				Helper_Uri::redirect('top');
-			}
+		$path = $this->param('path');
+		$division = Model_Division::get_by_path($path);
+		$path = $division->get_parent_path();
+		$division->soft_delete();
+
+		if ($path)
+		{
+			Helper_Uri::redirect('division.detail', ['path' => $path]);
+		}
+		else
+		{
+			Helper_Uri::redirect('top');
+		}
 	}
 
 	protected function _breadcrumb_and_kana($path)
