@@ -1,6 +1,7 @@
 <?php
 
 return array(
+	'top'   => '/',
 	'login'   => 'login',
 	'logout'  => 'logout',
 	'search'  => 'search',
