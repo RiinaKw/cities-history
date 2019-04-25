@@ -36,7 +36,7 @@
 
 		<footer class="footer mt-auto py-3">
 			<div class="container">
-				<span class="text-muted">copyright</span>
+				<span class="text-muted">{{Config::get('copyright.0')}}</span>
 			</div>
 		</footer>
 	</body>

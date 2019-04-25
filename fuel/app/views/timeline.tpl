@@ -152,9 +152,9 @@
 									<tr>
 										<th scope="col" style="width: 50%;">自治体</th>
 										<th scope="col" style="width: 20%;">結果</th>
-										<th scope="col" style="width: 10%;">新設</th>
-										<th scope="col" style="width: 10%;">廃止</th>
-										<th scope="col" style="width: 10%;">削除</th>
+										<th class="text-center" scope="col" style="width: 10%;">新設</th>
+										<th class="text-center" scope="col" style="width: 10%;">廃止 /<br />存続</th>
+										<th class="text-center" scope="col" style="width: 10%;">削除</th>
 									</tr>
 								</thead>
 								<tbody></tbody>
@@ -230,7 +230,7 @@ $(document).on("dblclick", ".editable", function(){
 			$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
 			$input_result.appendTo($td_result);
 
-			var $td_birth = $("<td />").appendTo($tr);
+			var $td_birth = $("<td />").appendTo($tr).addClass("text-center");;
 			var $input_birth = $('<input type="checkbox">');
 			$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
 			$input_birth.appendTo($td_birth);
@@ -238,7 +238,7 @@ $(document).on("dblclick", ".editable", function(){
 				$input_birth.prop("checked", true);
 			}
 
-			var $td_death = $("<td />").appendTo($tr);
+			var $td_death = $("<td />").appendTo($tr).addClass("text-center");
 			var $input_death = $('<input type="checkbox">');
 			$input_death.attr("value", "true").attr("name", "death["+idx+"]");
 			$input_death.appendTo($td_death);
@@ -246,7 +246,7 @@ $(document).on("dblclick", ".editable", function(){
 				$input_death.prop("checked", true);
 			}
 
-			var $td_delete = $("<td />").appendTo($tr);
+			var $td_delete = $("<td />").appendTo($tr).addClass("text-center");
 			var $input_delete = $('<input type="checkbox">');
 			$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");
 			$input_delete.appendTo($td_delete);
