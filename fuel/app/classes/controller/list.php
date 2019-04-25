@@ -13,44 +13,51 @@ class Controller_List extends Controller_Layout
 	public function action_index()
 	{
 		$divisions = Model_Division::find_all();
-		$divisions_arr = [];
-		foreach ($divisions as &$division)
+		if ($divisions)
 		{
-			$division->path = $division->get_path(null, true);
-			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
-
-		}
-		$divisions = Model_Division::get_top_level();
-		foreach ($divisions as &$division)
-		{
-			$division->path = $division->get_path(null, true);
-			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
-
-			$cities = Model_Division::get_by_postfix($division->id, '市');
-			foreach ($cities as &$d)
+			$divisions_arr = [];
+			foreach ($divisions as &$division)
 			{
-				$d->path = $d->get_path(null, true);
-				$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
+				$division->path = $division->get_path(null, true);
+				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
+
 			}
-			$countries = Model_Division::get_by_postfix($division->id, '郡');
-			foreach ($countries as &$country)
+			$divisions = Model_Division::get_top_level();
+			foreach ($divisions as &$division)
 			{
-				$towns = Model_Division::get_by_parent_division_id($country->id);
-				$towns_arr = [];
-				foreach ($towns as $town_id)
+				$division->path = $division->get_path(null, true);
+				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
+
+				$cities = Model_Division::get_by_postfix($division->id, '市');
+				foreach ($cities as &$d)
 				{
-					$town = Model_Division::find_by_pk($town_id);
-					$town->path = $town->get_path(null, true);
-					$town->url_detail = Helper_Uri::create('division.detail', ['path' => $town->path]);
-
-					$towns_arr[] = $town;
+					$d->path = $d->get_path(null, true);
+					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
 				}
-				$country->path = $country->get_path(null, true);
-				$country->url_detail = Helper_Uri::create('division.detail', ['path' => $country->path]);
-				$country->towns = $towns_arr;
+				$countries = Model_Division::get_by_postfix($division->id, '郡');
+				foreach ($countries as &$country)
+				{
+					$towns = Model_Division::get_by_parent_division_id($country->id);
+					$towns_arr = [];
+					foreach ($towns as $town_id)
+					{
+						$town = Model_Division::find_by_pk($town_id);
+						$town->path = $town->get_path(null, true);
+						$town->url_detail = Helper_Uri::create('division.detail', ['path' => $town->path]);
+
+						$towns_arr[] = $town;
+					}
+					$country->path = $country->get_path(null, true);
+					$country->url_detail = Helper_Uri::create('division.detail', ['path' => $country->path]);
+					$country->towns = $towns_arr;
+				}
+				$division->cities = $cities;
+				$division->countries = $countries;
 			}
-			$division->cities = $cities;
-			$division->countries = $countries;
+		}
+		else
+		{
+			$divisions = [];
 		}
 
 		// ビューを設定
