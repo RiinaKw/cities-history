@@ -127,7 +127,7 @@ class Controller_Top extends Controller_Base
 			}
 		}
 
-		$view = View_Smarty::forge('admin/admin_login.tpl');
+		$view = View_Smarty::forge('login.tpl');
 		$view->error_string = $error_string;
 		$view->url_login = Helper_Uri::create('login');
 
