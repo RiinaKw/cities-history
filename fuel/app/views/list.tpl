@@ -1,5 +1,16 @@
 
-			<h2>List</h2>
+			<header class="clearfix">
+				<div class="float-left">
+					<h2>List</h2>
+				</div>
+{{if $admin}}
+				<nav class="float-right">
+					<button class="btn btn-success" data-toggle="modal" data-target="#add-division">自治体追加</button>
+				</nav>
+{{/if}}
+			</header>
+
+
 			<div>
 				<section class="pref-list">
 {{foreach from=$divisions item=division}}

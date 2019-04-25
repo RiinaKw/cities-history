@@ -4,10 +4,13 @@
 					<h2>{{$path|escape}}</h2>
 					<p>{{$path_kana}}</p>
 				</div>
+{{if $admin}}
 				<nav class="float-right">
-					<button class="btn btn-success" data-toggle="modal" data-target="#change-division">自治体変更</button>
+					<button class="btn btn-success" data-toggle="modal" data-target="#add-division">自治体追加</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#change-division">自治体変更</button>
 					<button class="btn btn-danger" data-toggle="modal" data-target="#delete-division">自治体削除</button>
 				</nav>
+{{/if}}
 			</header>
 			<ul>
 				<li><a href="{{$url_detail}}">自治体詳細</a></li>
