@@ -49,5 +49,17 @@ class Model_Event extends Model_Base
 			}
 		}
 		return $result;
-	}
+	} // function get_relative_division()
+
+	public function delete()
+	{
+		$detail = Model_Event_Detail::find_by_event_id($this->id);
+		foreach ($detail as $d)
+		{
+			$d->soft_delete();
+		}
+		$this->soft_delete();
+		
+		Helper_Uri::redirect('top');
+	} // function delete()
 } // class Model_Event

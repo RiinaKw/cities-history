@@ -187,6 +187,8 @@ class Controller_Event extends Controller_Layout
 			throw new HttpNotFoundException('イベントが見つかりません。');
 		} // if ( ! $event)
 
+		$event->delete();
+
 		Debug::dump( $event_id, Input::post() );exit;
 	} // function action_delete()
 } // Controller_Event
