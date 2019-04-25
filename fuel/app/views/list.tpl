@@ -3,7 +3,7 @@
 				<div class="float-left">
 					<h2>List</h2>
 				</div>
-{{if $admin}}
+{{if $user}}
 				<nav class="float-right">
 					<button class="btn btn-success mb-1" data-toggle="modal" data-target="#add-division">
 						<i class="fa fa-plus"></i>
@@ -65,7 +65,7 @@
 				</section>
 			</div>
 
-{{if $admin}}
+{{if $user}}
 
 {{$components.add_division}}
 

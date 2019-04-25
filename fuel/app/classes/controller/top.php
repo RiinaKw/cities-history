@@ -25,7 +25,7 @@ class Controller_Top extends Controller_Base
 	public function action_index()
 	{
 		$admin_id = Session::get('admin.id');
-		$admin = Model_Admin::find_by_pk($admin_id);
+		$admin = Model_User::find_by_pk($admin_id);
 		if ($admin)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
@@ -38,7 +38,7 @@ class Controller_Top extends Controller_Base
 			if ($remember_me_hash)
 			{
 				// ハッシュ値から管理者情報を復元
-				$admin = Model_Admin::find_one_by_remember_me_hash($remember_me_hash);
+				$admin = Model_User::find_one_by_remember_me_hash($remember_me_hash);
 				if ($admin && ! $admin->deleted_at)
 				{
 					$this->_remember_me($admin);
@@ -60,7 +60,7 @@ class Controller_Top extends Controller_Base
 	 */
 	protected function _remember_me($admin)
 	{
-		$hash = Model_Admin::create_remember_me_hash();
+		$hash = Model_User::create_remember_me_hash();
 		Cookie::set(self::COOKIE_REMEMBER_ME, $hash, self::COOKIE_REMEMBER_ME_EXPIRE);
 		$admin->remember_me_hash = $hash;
 		$admin->save();
@@ -89,7 +89,7 @@ class Controller_Top extends Controller_Base
 	public function action_login()
 	{
 		$admin_id = Session::get('admin.id');
-		$admin = Model_Admin::find_by_pk($admin_id);
+		$admin = Model_User::find_by_pk($admin_id);
 		if ($admin)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
@@ -105,7 +105,7 @@ class Controller_Top extends Controller_Base
 			if ($login_id !== '' && $password !== '')
 			{
 				// ログインチェック
-				$admin = Model_Admin::login($login_id, $password);
+				$admin = Model_User::login($login_id, $password);
 				if ($admin)
 				{
 					if (Input::post('remember-me'))
@@ -143,7 +143,7 @@ class Controller_Top extends Controller_Base
 	public function action_logout()
 	{
 		$admin_id = Session::get('admin.id');
-		$admin = Model_Admin::find_by_pk($admin_id);
+		$admin = Model_User::find_by_pk($admin_id);
 		if ($admin)
 		{
 			// remember me キーを削除

@@ -1,8 +1,8 @@
 <?php
 
-class Model_Admin extends Model_Base
+class Model_User extends Model_Base
 {
-	protected static $_table_name	= 'admins';
+	protected static $_table_name	= 'users';
 	protected static $_primary_key	= 'id';
 	protected static $_created_at	= 'created_at';
 	protected static $_updated_at	= 'updated_at';

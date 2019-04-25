@@ -11,6 +11,7 @@ return array (
         2 => '003_create_event_details',
         3 => '004_create_admins',
         4 => '005_create_activities',
+        5 => '006_rename_admins_to_users',
       ),
     ),
     'module' => 

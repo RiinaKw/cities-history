@@ -1,6 +1,6 @@
 <?php
 /**
- * The Admin Controller.
+ * The User Controller.
  *
  * A basic controller example.  Has examples of how to set the
  * response body and status.
@@ -8,7 +8,7 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Admin extends Controller_Layout
+class Controller_User extends Controller_Layout
 {
 	public function action_divisions()
 	{
@@ -24,7 +24,7 @@ class Controller_Admin extends Controller_Layout
 		}
 
 		// ビューを設定
-		$content = View_Smarty::forge('admin/admin_divisions.tpl');
+		$content = View_Smarty::forge('user/user_divisions.tpl');
 		$content->divisions = $divisions;
 
 		$this->_set_view_var('content', $content);

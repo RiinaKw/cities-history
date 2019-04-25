@@ -4,7 +4,7 @@
 					<h2>{{$path|escape}}</h2>
 					<p>{{$path_kana}}</p>
 				</div>
-{{if $admin}}
+{{if $user}}
 				<nav class="float-right">
 					<button class="btn btn-success mb-1" data-toggle="modal" data-target="#add-division">
 						<i class="fa fa-plus"></i>
@@ -49,13 +49,13 @@
 {{foreachelse}}
 					<p>no events</p>
 {{/foreach}}
-{{if $admin}}
+{{if $user}}
 					<span class="add"><i class="fas fa-plus"></i> イベントを追加…</span>
 {{/if}}
 				</section>
 			</div>
 
-{{if $admin}}
+{{if $user}}
 
 {{$components.add_division}}
 {{$components.edit_division}}

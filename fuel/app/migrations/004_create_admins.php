@@ -15,11 +15,11 @@ class Create_admins
 			'updated_at' => array( 'type' => 'timestamp', 'null' => true),
 			'deleted_at' => array( 'type' => 'timestamp', 'null' => true),
 		), array('id'));
-		\DBUtil::create_index('admins', 'login_id', 'uq_admins_login_id', 'unique');
+		\DBUtil::create_index('admins', 'login_id', 'uq_users_login_id', 'unique');
 	}
 
 	public function down()
 	{
-		\DBUtil::drop_table('admins');
+		\DBUtil::drop_table('users');
 	}
 }

@@ -22,7 +22,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
-{{if $admin}}
+{{if $user}}
 					<li class="nav-item">
 						<a class="nav-link" href="{{$url_admin_divisions}}">Division Manage</a>
 					</li>
@@ -38,7 +38,7 @@
 						</span>
 					</div>
 				</form>
-{{if $admin}}
+{{if $user}}
 				<a class="btn btn-outline-danger mt-sm-2 mt-md-0" href="{{$url_logout}}">Logout</a>
 {{else}}
 				<a class="btn btn-outline-success mt-sm-2 mt-md-0" href="{{$url_login}}">Login</a>
