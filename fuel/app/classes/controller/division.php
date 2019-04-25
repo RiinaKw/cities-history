@@ -188,6 +188,10 @@ class Controller_Division extends Controller_Layout
 			}
 			$division->parent_division_id = $parent_division->id;
 		}
+		else
+		{
+			$division->parent_division_id = null;
+		}
 		$division->name         = Input::post('name');
 		$division->name_kana    = Input::post('name_kana');
 		$division->postfix      = Input::post('postfix');
