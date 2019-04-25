@@ -70,7 +70,9 @@ class Model_Division extends Model_Base
 			{
 				$division = self::forge([
 					'name' => $matches['place'],
+					'name_kana' => '',
 					'postfix' => $matches['postfix'],
+					'postfix_kana' => '',
 					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
 					'parent_division_id' => $parent_id,
 				]);
