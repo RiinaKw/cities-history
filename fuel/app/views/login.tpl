@@ -16,7 +16,10 @@
 	<body class="text-center">
 
 		<form class="form-signin col-4 offset-4 py-4" action="{{$url_login}}" method="post">
-			<h1 class="h3 mb-4 font-weight-normal">cities-history 管理画面</h1>
+			{{Asset::img('icon.png', ['width' => 100])}}
+			<h1 class="h3 mb-4 font-weight-normal">
+				cities-history 管理画面
+			</h1>
 {{if $error_string}}
 			<p class="text-danger">{{$error_string}}</p>
 {{/if}}
@@ -34,10 +37,5 @@
 			</nav>
 		</form>
 
-		<footer class="footer mt-auto py-3">
-			<div class="container">
-				<span class="text-muted">{{Config::get('copyright.0')}}</span>
-			</div>
-		</footer>
 	</body>
 </html>
