@@ -62,4 +62,25 @@ class Controller_List extends Controller_Layout
 		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
 		return $this->_get_view();
 	} // function action_index()
+
+	public function action_search()
+	{
+		$q = Input::get('q');
+		$result = Model_Division::search($q);
+
+		foreach ($result as &$division)
+		{
+			$division->path = $division->get_path(null, true);
+			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
+		}
+
+		// ビューを設定
+		$content = View_Smarty::forge('search.tpl');
+		$content->divisions = $result;
+
+		$this->_set_view_var('content', $content);
+		$this->_set_view_var('title', '自治体検索');
+		$this->_set_view_var('breadcrumbs', ['検索' => '']);
+		return $this->_get_view();
+	}
 } // class Controller_List

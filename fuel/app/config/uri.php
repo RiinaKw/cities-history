@@ -3,6 +3,7 @@
 return array(
 	'login'   => 'login',
 	'logout'  => 'logout',
+	'search'  => 'search',
 
 	'event' => array(
 		'add'      => 'event/add',

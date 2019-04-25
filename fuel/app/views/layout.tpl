@@ -33,7 +33,7 @@
 					</li>
 				</ul>
 				<form class="form-inline mt-2 mt-md-0 mr-3" method="get" action="">
-					<input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
+					<input class="form-control mr-sm-2" type="text" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
 {{if $admin}}

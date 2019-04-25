@@ -35,6 +35,20 @@ class Model_Division extends Model_Base
 		return $validation;
 	} // function validation()
 
+	public static function search($q)
+	{
+		$q = str_replace(array('\\', '%', '_'), array('\\\\', '\%', '\_'), $q);
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
+			->and_where_open()
+			->where(DB::expr('concat(name, postfix)'), 'LIKE', '%'.$q.'%')
+			->or_where(DB::expr('concat(name_kana, postfix_kana)'), 'LIKE', '%'.$q.'%')
+			->and_where_close();
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	} // function search()
+
 	public static function set_path($path)
 	{
 		$arr = explode('/', $path);

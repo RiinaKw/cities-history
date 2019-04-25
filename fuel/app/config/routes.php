@@ -9,6 +9,8 @@ return array(
 	'login'    => 'top/login',
 	'logout'   => 'top/logout',
 
+	'search'   => 'list/search',
+
 	'add(/:path)?'  => 'add/index',
 
 	'division/list' => 'rest/division/list',
