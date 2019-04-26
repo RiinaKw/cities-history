@@ -32,7 +32,7 @@
 					<div class="input-group">
 						<input class="form-control" type="text" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
 						<span class="input-group-append">
-							<button class="btn btn-outline-default my-2 my-sm-0" type="submit">
+							<button class="btn btn-outline-default mb-2 my-sm-0" type="submit">
 								<i class="fa fa-search"></i>
 							</button>
 						</span>
