@@ -13,7 +13,7 @@ class Create_activities
 			'target_id'  => array('constraint' => 11, 'null' => true, 'type' => 'int'),
 			'ip'         => array('constraint' => 100, 'null' => false, 'type' => 'varchar'),
 			'host'       => array('constraint' => 100, 'null' => false, 'type' => 'varchar'),
-			'user_agent' => array('constraint' => 100, 'null' => false, 'type' => 'varchar'),
+			'user_agent' => array('constraint' => 200, 'null' => false, 'type' => 'varchar'),
 			'created_at' => array( 'type' => 'timestamp', 'null' => true),
 			'updated_at' => array( 'type' => 'timestamp', 'null' => true),
 			'deleted_at' => array( 'type' => 'timestamp', 'null' => true),
