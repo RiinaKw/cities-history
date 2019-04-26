@@ -50,7 +50,7 @@ class Controller_Top extends Controller_Base
 		}
 		// ログインしていなければログインページへリダイレクト
 		Helper_Uri::redirect('login');
-	}
+	} // function action_index()
 
 	/**
 	 * remember me クッキーをセット
@@ -64,7 +64,7 @@ class Controller_Top extends Controller_Base
 		Cookie::set(self::COOKIE_REMEMBER_ME, $hash, self::COOKIE_REMEMBER_ME_EXPIRE);
 		$user->remember_me_hash = $hash;
 		$user->save();
-	}
+	} // function _remember_me()
 
 	/**
 	 * ログイン成功時のセッション保存とリダイレクト処理
@@ -78,7 +78,7 @@ class Controller_Top extends Controller_Base
 		$user->frozen(true);
 		Session::set('user.id', $user->id);
 		Helper_Uri::redirect('list');
-	}
+	} // function _login_success()
 
 	/**
 	 * ログイン
@@ -132,7 +132,7 @@ class Controller_Top extends Controller_Base
 		$view->url_login = Helper_Uri::create('login');
 
 		return $view;
-	}
+	} // function action_login()
 
 	/**
 	 * ログアウト
@@ -162,5 +162,5 @@ class Controller_Top extends Controller_Base
 
 		// トップページへリダイレクト
 		Helper_Uri::redirect('list');
-	}
-}
+	} // function action_logout()
+} // class Controller_Top
