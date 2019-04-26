@@ -192,11 +192,12 @@ class Controller_Division extends Controller_Layout
 		{
 			$division->parent_division_id = null;
 		}
-		$division->name         = Input::post('name');
-		$division->name_kana    = Input::post('name_kana');
-		$division->postfix      = Input::post('postfix');
-		$division->postfix_kana = Input::post('postfix_kana');
-		$division->identify     = Input::post('identify') ?: null;
+		$division->name            = Input::post('name');
+		$division->name_kana       = Input::post('name_kana');
+		$division->postfix         = Input::post('postfix');
+		$division->postfix_kana    = Input::post('postfix_kana');
+		$division->identify        = Input::post('identify') ?: null;
+		$division->government_code = Input::post('government_code') ?: null;
 		$division->save();
 
 		Model_Activity::insert_log([
@@ -233,11 +234,12 @@ class Controller_Division extends Controller_Layout
 			$division->parent_division_id = $parent_division->id;
 		}
 
-		$division->name         = Input::post('name');
-		$division->name_kana    = Input::post('name_kana');
-		$division->postfix      = Input::post('postfix');
-		$division->postfix_kana = Input::post('postfix_kana');
-		$division->identify     = Input::post('identify') ?: null;
+		$division->name            = Input::post('name');
+		$division->name_kana       = Input::post('name_kana');
+		$division->postfix         = Input::post('postfix');
+		$division->postfix_kana    = Input::post('postfix_kana');
+		$division->identify        = Input::post('identify') ?: null;
+		$division->government_code = Input::post('government_code') ?: null;
 		$division->save();
 
 		Model_Activity::insert_log([

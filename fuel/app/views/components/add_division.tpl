@@ -45,6 +45,12 @@
 									<input class="form-control" type="text" name="identify" value="">
 								</div>
 							</label>
+							<label class="row">
+								<span class="col-4">全国地方公共団体コード</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="government_code" value="">
+								</div>
+							</label>
 						</div><!-- /.modal-body -->
 						<div class="modal-footer">
 							<nav>

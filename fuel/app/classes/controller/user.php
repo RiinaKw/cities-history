@@ -21,6 +21,7 @@ class Controller_User extends Controller_Layout
 			$division->valid_kana = $division->name_kana && $division->postfix_kana;
 			$division->valid_start_event = !! $division->start_event_id;
 			$division->valid_end_event = !! $division->end_event_id;
+			$division->valid_government_code = !! $division->government_code;
 		}
 
 		// ビューを設定

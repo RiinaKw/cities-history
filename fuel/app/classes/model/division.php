@@ -31,6 +31,9 @@ class Model_Division extends Model_Base
 		$field = $validation->add('parent_division_id', '親自治体');
 		$field = $validation->add('start_event_id',     '設置イベント');
 		$field = $validation->add('end_event_id',       '廃止イベント');
+		$field = $validation->add('government_code',    '全国地方公共団体コード')
+			->add_rule('min_length', 6)
+			->add_rule('max_length', 7);
 
 		return $validation;
 	} // function validation()

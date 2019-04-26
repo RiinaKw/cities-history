@@ -34,7 +34,13 @@
 								終了イベントが指定されていません。
 							</div>
 {{/if}}
-{{if $division->valid_kana && $division->valid_start_event && $division->valid_end_event}}
+{{if ! $division->valid_government_code}}
+							<div class="alert alert-warning" role="alert">
+								<strong>Warning!</strong>
+								全国地方公共団体コードが指定されていません。
+							</div>
+{{/if}}
+{{if $division->valid_kana && $division->valid_start_event && $division->valid_end_event && $division->valid_government_code}}
 							<div class="alert alert-success" role="alert">
 								<strong>Yeah!</strong>
 								データは完璧です！

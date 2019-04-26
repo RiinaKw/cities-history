@@ -9,9 +9,9 @@ return array (
         0 => '001_create_divisions',
         1 => '002_create_events',
         2 => '003_create_event_details',
-        3 => '004_create_admins',
+        3 => '004_create_users',
         4 => '005_create_activities',
-        5 => '006_rename_admins_to_users',
+        5 => '006_add_government_code_to_divisions',
       ),
     ),
     'module' => 
