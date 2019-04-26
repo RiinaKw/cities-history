@@ -18,7 +18,7 @@ class Create_activities
 			'updated_at' => array( 'type' => 'timestamp', 'null' => true),
 			'deleted_at' => array( 'type' => 'timestamp', 'null' => true),
 		), array('id'));
-		\DBUtil::create_index('activities', 'admin_id', 'idx_activities_admin_id');
+		\DBUtil::create_index('activities', 'user_id', 'idx_activities_user_id');
 	}
 
 	public function down()

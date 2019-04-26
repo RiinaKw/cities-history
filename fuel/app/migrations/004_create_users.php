@@ -20,6 +20,6 @@ class Create_users
 
 	public function down()
 	{
-		\DBUtil::drop_table('admins');
+		\DBUtil::drop_table('users');
 	}
 }
