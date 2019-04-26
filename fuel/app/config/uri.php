@@ -6,8 +6,8 @@ return array(
 	'logout'  => 'logout',
 	'search'  => 'search',
 
-	'admin' => array(
-		'divisions' => 'admin/divisions',
+	'user' => array(
+		'divisions' => 'user/divisions',
 	),
 	'event' => array(
 		'add'      => 'event/add',

@@ -24,7 +24,7 @@
 				<ul class="navbar-nav mr-auto">
 {{if $user}}
 					<li class="nav-item">
-						<a class="nav-link" href="{{$url_admin_divisions}}">Division Manage</a>
+						<a class="nav-link" href="{{$url_user_divisions}}">Division Manage</a>
 					</li>
 {{/if}}
 				</ul>
