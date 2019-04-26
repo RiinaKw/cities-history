@@ -11,7 +11,7 @@
 class Controller_Top extends Controller_Base
 {
 	// remember me に使用するクッキー名
-	const COOKIE_REMEMBER_ME = 'admin_hash';
+	const COOKIE_REMEMBER_ME = 'user_hash';
 
 	// remember me の有効期限（30日）
 	const COOKIE_REMEMBER_ME_EXPIRE = 60 * 60 * 24 * 30;
@@ -24,9 +24,9 @@ class Controller_Top extends Controller_Base
 	 */
 	public function action_index()
 	{
-		$admin_id = Session::get('admin.id');
-		$admin = Model_User::find_by_pk($admin_id);
-		if ($admin)
+		$user_id = Session::get('user.id');
+		$user = Model_User::find_by_pk($user_id);
+		if ($user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
 			Helper_Uri::redirect('list');
@@ -38,13 +38,13 @@ class Controller_Top extends Controller_Base
 			if ($remember_me_hash)
 			{
 				// ハッシュ値から管理者情報を復元
-				$admin = Model_User::find_one_by_remember_me_hash($remember_me_hash);
-				if ($admin && ! $admin->deleted_at)
+				$user = Model_User::find_one_by_remember_me_hash($remember_me_hash);
+				if ($user && ! $user->deleted_at)
 				{
-					$this->_remember_me($admin);
+					$this->_remember_me($user);
 
 					// ログイン成功時の処理
-					$this->_login_success($admin);
+					$this->_login_success($user);
 				}
 			}
 		}
@@ -58,12 +58,12 @@ class Controller_Top extends Controller_Base
 	 * @access  protected
 	 * @return  Response
 	 */
-	protected function _remember_me($admin)
+	protected function _remember_me($user)
 	{
 		$hash = Model_User::create_remember_me_hash();
 		Cookie::set(self::COOKIE_REMEMBER_ME, $hash, self::COOKIE_REMEMBER_ME_EXPIRE);
-		$admin->remember_me_hash = $hash;
-		$admin->save();
+		$user->remember_me_hash = $hash;
+		$user->save();
 	}
 
 	/**
@@ -72,11 +72,11 @@ class Controller_Top extends Controller_Base
 	 * @access  protected
 	 * @return  Response
 	 */
-	protected function _login_success($admin)
+	protected function _login_success($user)
 	{
 		// ログインに成功したら管理者ダッシュボードへリダイレクト
-		$admin->frozen(true);
-		Session::set('admin.id', $admin->id);
+		$user->frozen(true);
+		Session::set('user.id', $user->id);
 		Helper_Uri::redirect('list');
 	}
 
@@ -88,12 +88,12 @@ class Controller_Top extends Controller_Base
 	 */
 	public function action_login()
 	{
-		$admin_id = Session::get('admin.id');
-		$admin = Model_User::find_by_pk($admin_id);
-		if ($admin)
+		$user_id = Session::get('user.id');
+		$user = Model_User::find_by_pk($user_id);
+		if ($user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
-			Helper_Uri::redirect('admin.dashboard');
+			Helper_Uri::redirect('user.dashboard');
 		}
 
 		$error_string = '';
@@ -105,16 +105,16 @@ class Controller_Top extends Controller_Base
 			if ($login_id !== '' && $password !== '')
 			{
 				// ログインチェック
-				$admin = Model_User::login($login_id, $password);
-				if ($admin)
+				$user = Model_User::login($login_id, $password);
+				if ($user)
 				{
 					if (Input::post('remember-me'))
 					{
 						// ログイン状態を保存する
-						$this->_remember_me($admin);
+						$this->_remember_me($user);
 					}
 					// ログインに成功
-					$this->_login_success($admin);
+					$this->_login_success($user);
 				}
 				else
 				{
@@ -142,23 +142,23 @@ class Controller_Top extends Controller_Base
 	 */
 	public function action_logout()
 	{
-		$admin_id = Session::get('admin.id');
-		$admin = Model_User::find_by_pk($admin_id);
-		if ($admin)
+		$user_id = Session::get('user.id');
+		$user = Model_User::find_by_pk($user_id);
+		if ($user)
 		{
 			// remember me キーを削除
-			$admin->is_new(false);
-			$admin->frozen(false);
-			$admin->remember_me_hash = null;
-			$admin->save();
+			$user->is_new(false);
+			$user->frozen(false);
+			$user->remember_me_hash = null;
+			$user->save();
 		}
 
 		// remember me クッキーを削除
 		Cookie::delete(self::COOKIE_REMEMBER_ME);
 
 		// セッションを全削除
-		Session::delete('admin');
-		Session::delete('admin_data');
+		Session::delete('user');
+		Session::delete('user_data');
 
 		// トップページへリダイレクト
 		Helper_Uri::redirect('list');

@@ -167,7 +167,7 @@ class Controller_Division extends Controller_Layout
 
 	public function action_add()
 	{
-		if ( ! $this->admin)
+		if ( ! $this->user)
 		{
 			throw new HttpNoAccessException("permission denied");
 		}
@@ -199,6 +199,12 @@ class Controller_Division extends Controller_Layout
 		$division->identify     = Input::post('identify') ?: null;
 		$division->save();
 
+		Model_Activity::insert_log([
+			'user_id' => Session::get('user.id'),
+			'target' => 'add division',
+			'target_id' => $division->id,
+		]);
+
 		$path_new = $division->get_path(null, true);
 
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
@@ -207,7 +213,7 @@ class Controller_Division extends Controller_Layout
 
 	public function action_edit()
 	{
-		if ( ! $this->admin)
+		if ( ! $this->user)
 		{
 			throw new HttpNoAccessException("permission denied");
 		}
@@ -234,6 +240,12 @@ class Controller_Division extends Controller_Layout
 		$division->identify     = Input::post('identify') ?: null;
 		$division->save();
 
+		Model_Activity::insert_log([
+			'user_id' => Session::get('user.id'),
+			'target' => 'edit division',
+			'target_id' => $division->id,
+		]);
+
 		$path_new = $division->get_path(null, true);
 
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
@@ -242,7 +254,7 @@ class Controller_Division extends Controller_Layout
 
 	public function action_delete()
 	{
-		if ( ! $this->admin)
+		if ( ! $this->user)
 		{
 			throw new HttpNoAccessException("permission denied");
 		}
@@ -251,6 +263,12 @@ class Controller_Division extends Controller_Layout
 		$division = Model_Division::get_by_path($path);
 		$path = $division->get_parent_path();
 		$division->soft_delete();
+
+		Model_Activity::insert_log([
+			'user_id' => Session::get('user.id'),
+			'target' => 'delete division',
+			'target_id' => $division->id,
+		]);
 
 		if ($path)
 		{

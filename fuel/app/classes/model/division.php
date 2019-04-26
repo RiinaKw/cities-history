@@ -77,6 +77,12 @@ class Model_Division extends Model_Base
 					'parent_division_id' => $parent_id,
 				]);
 				$division->save();
+
+				Model_Activity::insert_log([
+					'user_id' => Session::get('user.id'),
+					'target' => 'add division',
+					'target_id' => $division->id,
+				]);
 			}
 			$divisions[] = $division;
 			$parent_id = $division->id;

@@ -15,7 +15,7 @@ abstract class Controller_Layout extends Controller_Base
 	{
 		parent::before();
 
-		$admin_id = Session::get('admin.id');
+		$admin_id = Session::get('user.id');
 		$this->user = Model_User::find_by_pk($admin_id);
 
 		$q = Input::get('q');

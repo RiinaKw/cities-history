@@ -8,7 +8,7 @@ class Create_activities
 	{
 		\DBUtil::create_table('activities', array(
 			'id'         => array('type' => 'int', 'unsigned' => true, 'null' => false, 'auto_increment' => true, 'constraint' => 11),
-			'admin_id'    => array('constraint' => 11, 'null' => false, 'type' => 'int'),
+			'user_id'    => array('constraint' => 11, 'null' => false, 'type' => 'int'),
 			'target'     => array('constraint' => 100, 'null' => false, 'type' => 'varchar'),
 			'target_id'  => array('constraint' => 11, 'null' => true, 'type' => 'int'),
 			'ip'         => array('constraint' => 100, 'null' => false, 'type' => 'varchar'),

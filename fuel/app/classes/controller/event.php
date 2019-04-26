@@ -14,7 +14,7 @@ class Controller_Event extends Controller_Layout
 	{
 		parent::before();
 
-		if ( ! $this->admin)
+		if ( ! $this->user)
 		{
 			throw new HttpNoAccessException("permission denied");
 		}
@@ -26,6 +26,10 @@ class Controller_Event extends Controller_Layout
 		$arr = [];
 		foreach (Input::post('id') as $key => $id)
 		{
+			if ( ! Input::post('division.'.$key))
+			{
+				continue;
+			}
 			$arr[] = [
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
@@ -49,6 +53,10 @@ class Controller_Event extends Controller_Layout
 			foreach ($arr as $item)
 			{
 				$id = $item['id'];
+				if ( ! $id)
+				{
+					continue;
+				}
 				$divisions = Model_Division::set_path($item['division']);
 				$division = array_pop($divisions);
 
@@ -77,6 +85,12 @@ class Controller_Event extends Controller_Layout
 
 			} // foreach ($arr as $item)
 
+			Model_Activity::insert_log([
+				'user_id' => Session::get('user.id'),
+				'target' => 'add event',
+				'target_id' => $event->id,
+			]);
+
 			DB::commit_transaction();
 		}
 		catch (Exception $e)
@@ -102,6 +116,10 @@ class Controller_Event extends Controller_Layout
 		$arr = [];
 		foreach (Input::post('id') as $key => $id)
 		{
+			if ( ! Input::post('division.'.$key))
+			{
+				continue;
+			}
 			$arr[] = [
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
@@ -166,6 +184,12 @@ class Controller_Event extends Controller_Layout
 
 			} // foreach ($arr as $item)
 
+			Model_Activity::insert_log([
+				'user_id' => Session::get('user.id'),
+				'target' => 'edit event',
+				'target_id' => $event->id,
+			]);
+
 			DB::commit_transaction();
 		}
 		catch (Exception $e)
@@ -188,6 +212,12 @@ class Controller_Event extends Controller_Layout
 		} // if ( ! $event)
 
 		$event->delete();
+
+		Model_Activity::insert_log([
+			'user_id' => Session::get('user.id'),
+			'target' => 'delete event',
+			'target_id' => $event->id,
+		]);
 
 		Debug::dump( $event_id, Input::post() );exit;
 	} // function action_delete()
