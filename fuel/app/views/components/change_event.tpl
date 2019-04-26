@@ -116,7 +116,7 @@ $(function(){
 				$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
 				$input_result.appendTo($td_result);
 
-				var $td_birth = $("<td />").addClass("text-center").appendTo($tr);
+				var $td_birth = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
 				var $input_birth = $('<input type="checkbox">');
 				$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
 				$input_birth.appendTo($td_birth);
@@ -124,7 +124,7 @@ $(function(){
 					$input_birth.prop("checked", true);
 				}
 
-				var $td_death = $("<td />").addClass("text-center").appendTo($tr);
+				var $td_death = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
 				var $input_death = $('<input type="checkbox">');
 				$input_death.attr("value", "true").attr("name", "death["+idx+"]");
 				$input_death.appendTo($td_death);
@@ -132,7 +132,7 @@ $(function(){
 					$input_death.prop("checked", true);
 				}
 
-				var $td_delete = $("<td />").addClass("text-center").appendTo($tr);
+				var $td_delete = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
 				var $input_delete = $('<input type="checkbox">');
 				$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");
 				$input_delete.appendTo($td_delete);

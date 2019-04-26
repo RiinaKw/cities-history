@@ -70,6 +70,14 @@ h1 {
 	}
 }
 
+.table .checkbox-wrapper {
+	vertical-align: middle;
+}
+.table .checkbox-wrapper input {
+	width: 20px;
+	height: 20px;
+}
+
 .footer {
 	position: absolute;
 	bottom: 0;
