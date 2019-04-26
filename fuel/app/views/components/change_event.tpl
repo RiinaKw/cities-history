@@ -1,5 +1,5 @@
 
-			<div id="change-event" class="modal fade" tabindex="-1" role="dialog">
+			<div id="change-event" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal-lg" role="document">
 					<form class="modal-content" action="#" method="post">
 						<div class="modal-header">

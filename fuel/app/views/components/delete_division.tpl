@@ -1,5 +1,5 @@
 
-			<div id="delete-division" class="modal fade" tabindex="-1" role="dialog">
+			<div id="delete-division" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<form class="modal-content" action="{{$url_delete}}" method="post">
 						<div class="modal-header">
