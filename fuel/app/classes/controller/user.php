@@ -17,11 +17,17 @@ class Controller_User extends Controller_Layout
 		{
 			$division->path = $division->get_path(null, true);
 			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
+			$end_event = Model_Event::find_by_pk($division->end_event_id);
 
 			$division->valid_kana = $division->name_kana && $division->postfix_kana;
 			$division->valid_start_event = !! $division->start_event_id;
 			$division->valid_end_event = !! $division->end_event_id;
-			$division->valid_government_code = ($division->postfix == '郡') || !! $division->government_code;
+			$division->valid_government_code =
+				($division->postfix == '郡')
+				||
+				$division->government_code
+				||
+				$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
 		}
 
 		// ビューを設定

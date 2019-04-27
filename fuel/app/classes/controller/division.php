@@ -32,7 +32,6 @@ class Controller_Division extends Controller_Layout
 			switch ($event->division_result)
 			{
 				case '存続':
-				case '新設':
 					$event->live = true;
 				break;
 				case '廃止':
