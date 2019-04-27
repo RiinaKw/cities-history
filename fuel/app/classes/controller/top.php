@@ -93,7 +93,7 @@ class Controller_Top extends Controller_Base
 		if ($user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
-			Helper_Uri::redirect('user.dashboard');
+			Helper_Uri::redirect('list');
 		}
 
 		$error_string = '';
