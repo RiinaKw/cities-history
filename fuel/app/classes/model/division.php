@@ -150,6 +150,7 @@ class Model_Division extends Model_Base
 	{
 		$query = DB::select()
 			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
 			->where('postfix', '=', $postfix)
 			->where('parent_division_id', '=', $parent_id);
 

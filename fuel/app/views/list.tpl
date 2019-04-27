@@ -24,6 +24,7 @@
 							<h3><a href="{{$division.url_detail}}">{{$division->get_fullname()}}</a></h3>
 						</header>
 						<div class="grid-container">
+{{if $division.cities}}
 							<section class="grid cities">
 								<ul>
 {{foreach from=$division.cities item=city}}
@@ -37,6 +38,7 @@
 {{/foreach}}
 								</ul>
 							</section><!-- .grid.cities -->
+{{/if}}
 {{foreach from=$division.countries item=country}}
 							<section class="grid countries">
 								<article>
