@@ -11,7 +11,7 @@ class Controller_Rest_Division extends Controller_Rest
 	{
 		$query = Input::get('query');
 
-		$divisions = Model_Division::find_all();
+		$divisions = Model_Division::get_all();
 		$pathes = [];
 		foreach ($divisions as $division)
 		{
