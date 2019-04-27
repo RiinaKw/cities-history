@@ -10,7 +10,7 @@
 				<ul class="search-result">
 {{foreach from=$divisions item=division}}
 					<li>
-						<h5><a href="{{$division.url_detail}}">{{$division->get_fullname()}}</a></h5>
+						<h5><a href="{{$division.url_detail}}">{{$division->path}}</a></h5>
 					</li>
 {{/foreach}}
 				</ul>
