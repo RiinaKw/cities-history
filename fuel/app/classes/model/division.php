@@ -159,7 +159,12 @@ class Model_Division extends Model_Base
 
 	public static function get_by_parent_division_id($division_id)
 	{
-		$divisions = Model_Division::find_by_parent_division_id($division_id);
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
+			->where('parent_division_id', '=', $division_id);
+		$divisions = $query->as_object('Model_Division')->execute()->as_array();
+
 		$d_arr = [];
 		if ($divisions)
 		{
