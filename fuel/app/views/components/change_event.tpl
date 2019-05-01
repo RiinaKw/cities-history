@@ -80,7 +80,7 @@ $(function(){
 		var event_id = $(this).data("event-id");
 		var path = $("h2").html();
 		var type = $("h3", $(this)).html();
-		var date = $("time", $(this)).html();
+		var date = $("time", $(this)).attr("datetime");
 		var url = "{{$url_event_edit}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
 		$("#event-id", $modal).val(event_id);
