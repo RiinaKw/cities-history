@@ -34,7 +34,7 @@
 						data-event-id="{{$event.event_id}}">
 						<header class="clearfix">
 							<h3 class="float-left">{{$event.type|escape}}</h3>
-							<time class="float-right">{{$event.date|escape}}</time>
+							<time class="float-right">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
 						</header>
 						<ul>
 {{foreach from=$event.divisions item=division}}

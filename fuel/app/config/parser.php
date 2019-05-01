@@ -11,9 +11,9 @@ return array(
 		'delimiters'  => array('left' => '{{', 'right' => '}}'),
 		'environment' => array(
 			'compile_dir'       => APPPATH.'tmp'.DS.'Smarty'.DS.'templates_c'.DS,
-			'config_dir'        => APPPATH.'tmp'.DS.'Smarty'.DS.'configs'.DS,
+			'config_dir'        => APPPATH.'smarty'.DS.'configs'.DS,
 			'cache_dir'         => APPPATH.'cache'.DS.'Smarty'.DS,
-			'plugins_dir'       => array(),
+			'plugins_dir'       => array(APPPATH.'smarty'.DS.'plugins'.DS),
 			'caching'           => false,
 			'cache_lifetime'    => 0,
 			'force_compile'     => false,
