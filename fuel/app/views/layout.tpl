@@ -24,7 +24,7 @@
 				<ul class="navbar-nav mr-auto">
 {{if $user}}
 					<li class="nav-item">
-						<a class="nav-link" href="{{$url_user_divisions}}">Division Manage</a>
+						<a class="nav-link" href="{{$url_admin_divisions}}">Division Manage</a>
 					</li>
 {{/if}}
 				</ul>
@@ -46,26 +46,27 @@
 			</div>
 		</header>
 
+		<div class="main-container">
 {{if isset($breadcrumbs) && $breadcrumbs}}
-		<nav aria-label="パンくずリスト">
-			<ol class="breadcrumb">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
 {{foreach from=$breadcrumbs key=name item=url}}
 {{if $url}}
-				<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
+					<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
 {{else}}
-				<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
+					<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
 {{/if}}
 {{/foreach}}
-			<ol>
-		</nav>
+				<ol>
+			</nav>
 {{/if}}
 
-		<!-- Begin page content -->
-		<main role="main" class="container pb-2">
+			<main role="main" class="container pb-2">
 
 {{$content}}
 
-		</main>
+			</main>
+		</div><!-- .main-container -->
 
 		<footer class="footer text-center mt-auto py-3">
 			<div class="container">

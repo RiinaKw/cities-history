@@ -19,6 +19,10 @@ h1 {
 	font-size: 1.5rem;
 }
 
+.main-container {
+	margin-top: 58px;
+}
+
 .grid-container {
 	-webkit-column-count: 3;
 	-webkit-column-gap: 15px;
@@ -143,7 +147,6 @@ time {
 	background-color: #e9ecef;
 }
 .breadcrumb {
-	margin-top: 58px;
 	background-color: #f8f9fa;
 }
 

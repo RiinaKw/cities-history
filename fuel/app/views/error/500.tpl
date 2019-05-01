@@ -3,7 +3,7 @@
 			<div class="main-contents container">
 				<div class="inner-container">
 
-					<h1>500</h1>
+					<h2>500</h2>
 					<p>{{$message}}</p>
 
 				</div>

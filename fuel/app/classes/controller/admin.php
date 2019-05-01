@@ -1,6 +1,6 @@
 <?php
 /**
- * The User Controller.
+ * The Admin Controller.
  *
  * A basic controller example.  Has examples of how to set the
  * response body and status.
@@ -8,10 +8,15 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_User extends Controller_Layout
+class Controller_Admin extends Controller_Layout
 {
 	public function action_divisions()
 	{
+		if ( ! $this->user)
+		{
+			throw new HttpNoAccessException("permission denied");
+		}
+
 		$divisions = Model_Division::get_all();
 		foreach ($divisions as &$division)
 		{
@@ -38,5 +43,5 @@ class Controller_User extends Controller_Layout
 		$this->_set_view_var('title', '自治体一覧');
 		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
 		return $this->_get_view();
-	} // function action_index()
-} // class Controller_List
+	} // function action_divisions()
+} // class Controller_Admin
