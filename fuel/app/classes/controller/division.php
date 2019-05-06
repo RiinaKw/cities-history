@@ -90,7 +90,7 @@ class Controller_Division extends Controller_Layout
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
 
-		$division_id_arr = Model_Division::get_by_parent_division_id($division->id);
+		$division_id_arr = Model_Division::get_by_parent_division_id_and_date($division->id);
 
 		$events_arr = [];
 		if ($division_id_arr)
