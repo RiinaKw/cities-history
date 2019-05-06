@@ -16,6 +16,11 @@
 			<nav>
 				<ol>
 					<li>
+						<a href="{{$url_all_list}}">
+							すべて
+						</a>
+					</li>
+					<li>
 						<a href="{{$meiji_after.url|escape}}">
 							明治の大合併直後（{{$meiji_after.date|date_format2:'Y(Jk)-m-d'}}）
 						</a>

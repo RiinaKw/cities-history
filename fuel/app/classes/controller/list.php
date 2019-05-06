@@ -94,6 +94,7 @@ class Controller_List extends Controller_Layout
 		$content = View_Smarty::forge('list.tpl');
 		$content->divisions = $divisions;
 		$content->url_add = Helper_Uri::create('division.add');
+		$content->url_all_list = Helper_Uri::create('list.index');
 
 		$meiji_after = '1889-04-01';
 		$content->meiji_after = [
@@ -115,7 +116,7 @@ class Controller_List extends Controller_Layout
 			'date' => $heisei_before,
 			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $heisei_before]),
 		];
-		$heisei_after = '2010-04-01';
+		$heisei_after = '2014-04-05';
 		$content->heisei_after = [
 			'date' => $heisei_after,
 			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $heisei_after]),
@@ -125,7 +126,7 @@ class Controller_List extends Controller_Layout
 			'date' => $now,
 			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $now]),
 		];
-		
+
 		$components = [
 			'add_division' => View_Smarty::forge('components/add_division.tpl'),
 		];
