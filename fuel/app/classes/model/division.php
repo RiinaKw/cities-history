@@ -146,23 +146,73 @@ class Model_Division extends Model_Base
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_top_level()
 
-	public static function get_by_postfix($parent_id, $postfix)
+	public static function get_by_postfix_and_date($parent_id, $postfix, $date = null)
 	{
-		$query = DB::select()
-			->from(self::$_table_name)
-			->where('deleted_at', '=', null)
-			->where('postfix', '=', $postfix)
-			->where('parent_division_id', '=', $parent_id);
+		$query = DB::select('d.*')
+			->from([self::$_table_name, 'd'])
+			->join(['events', 's'])
+			->on('d.start_event_id', '=', 's.id')
+			->join(['events', 'e'])
+			->on('d.end_event_id', '=', 'e.id')
+			->where('d.deleted_at', '=', null)
+			->where('d.postfix', '=', $postfix)
+			->where('d.parent_division_id', '=', $parent_id);
+		if ($date)
+		{
+			$query->where('s.date', '<=', $date)
+				->where('e.date', '>=', $date);
+		}
 
 		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_by_postfix()
+	} // function get_by_postfix_and_date()
 
-	public static function get_by_parent_division_id($division_id)
+	public static function get_by_date($date = null, $parent_id = null)
 	{
-		$query = DB::select()
-			->from(self::$_table_name)
-			->where('deleted_at', '=', null)
+		$query = DB::select('d.*')
+			->from([self::$_table_name, 'd'])
+			->join(['events', 's'], 'LEFT OUTER')
+			->on('d.start_event_id', '=', 's.id')
+			->join(['events', 'e'], 'LEFT OUTER')
+			->on('d.end_event_id', '=', 'e.id')
+			->where('d.deleted_at', '=', null)
+			->where('s.deleted_at', '=', null)
+			->where('e.deleted_at', '=', null);
+		if ($date)
+		{
+			$query->and_where_open()
+				->where('s.date', '<=', $date)
+				->or_where('s.date', '=', null)
+				->and_where_close()
+				->where('e.date', '>=', $date);
+		}
+		if ($parent_id)
+		{
+			$query->where('d.parent_division_id', '=', $parent_id);
+		}
+		$divisions = $query->as_object('Model_Division')->execute()->as_array();
+		return $divisions;
+	} // function get_by_date()
+
+	public static function get_by_parent_division_id_and_date($division_id, $date = null)
+	{
+		$query = DB::select('d.*')
+			->from([self::$_table_name, 'd'])
+			->join(['events', 's'], 'LEFT OUTER')
+			->on('d.start_event_id', '=', 's.id')
+			->join(['events', 'e'], 'LEFT OUTER')
+			->on('d.end_event_id', '=', 'e.id')
+			->where('d.deleted_at', '=', null)
+			->where('s.deleted_at', '=', null)
+			->where('e.deleted_at', '=', null)
 			->where('parent_division_id', '=', $division_id);
+		if ($date)
+		{
+			$query->and_where_open()
+				->where('s.date', '<=', $date)
+				->or_where('s.date', '=', null)
+				->and_where_close()
+				->where('e.date', '>=', $date);
+		}
 		$divisions = $query->as_object('Model_Division')->execute()->as_array();
 
 		$d_arr = [];
@@ -171,7 +221,7 @@ class Model_Division extends Model_Base
 			foreach ($divisions as $d)
 			{
 				$d_arr[] = $d->id;
-				$child_arr = static::get_by_parent_division_id($d->id);
+				$child_arr = static::get_by_parent_division_id_and_date($d->id, $date);
 				if ($child_arr)
 				{
 					$d_arr = array_merge($d_arr, $child_arr);
@@ -179,12 +229,12 @@ class Model_Division extends Model_Base
 			}
 		}
 		return $d_arr;
-	}
+	} // get_by_parent_division_id_and_date
 
 	public function get_parent()
 	{
 		return self::find_by_pk($this->parent_division_id);
-	}
+	} // function get_parent()
 
 	public function get_path($current, $force_fullpath = false)
 	{

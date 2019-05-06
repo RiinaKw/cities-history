@@ -23,4 +23,6 @@ return array(
 	'division/delete/:path'   => 'division/delete',
 	'division/belongto/:path' => 'division/belongto',
 	'division/:path'          => 'division/detail',
+
+	'list/:path'          => 'list/index',
 );

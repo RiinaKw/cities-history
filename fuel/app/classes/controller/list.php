@@ -12,32 +12,45 @@ class Controller_List extends Controller_Layout
 {
 	public function action_index()
 	{
-		$divisions = Model_Division::find_all();
-		if ($divisions)
+		$path = $this->param('path');
+		$date = Input::get('date');
+		$date = $date ? date('Y-m-d', strtotime($date)) : null;
+		$top_division = null;
+		if ($path)
 		{
-			$divisions_arr = [];
-			foreach ($divisions as &$division)
+			$top_division = Model_Division::get_by_path($path);
+			if ( ! $top_division || $top_division->get_path(null, true) != $path)
 			{
-				$division->path = $division->get_path(null, true);
-				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
-
+				throw new HttpNotFoundException('自治体が見つかりません。');
 			}
+		}
+
+		$divisions = [];
+		if ($top_division)
+		{
+			$divisions[] = $top_division;
+		}
+		else
+		{
 			$divisions = Model_Division::get_top_level();
+		}
+		if ($top_division == null || $top_division && $top_division->postfix == '県')
+		{
 			foreach ($divisions as &$division)
 			{
 				$division->path = $division->get_path(null, true);
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 
-				$cities = Model_Division::get_by_postfix($division->id, '市');
-				foreach ($cities as &$d)
+				$cities = Model_Division::get_by_postfix_and_date($division->id, '市', $date);
+				foreach ($cities as &$city)
 				{
-					$d->path = $d->get_path(null, true);
-					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
+					$city->path = $city->get_path(null, true);
+					$city->url_detail = Helper_Uri::create('division.detail', ['path' => $city->path]);
 				}
-				$countries = Model_Division::get_by_postfix($division->id, '郡');
+				$countries = Model_Division::get_by_postfix_and_date($division->id, '郡', $date);
 				foreach ($countries as &$country)
 				{
-					$towns = Model_Division::get_by_parent_division_id($country->id);
+					$towns = Model_Division::get_by_parent_division_id_and_date($country->id, $date);
 					$towns_arr = [];
 					foreach ($towns as $town_id)
 					{
@@ -57,8 +70,25 @@ class Controller_List extends Controller_Layout
 		}
 		else
 		{
-			$divisions = [];
-		} // if ($divisions)
+			foreach ($divisions as &$division)
+			{
+				$division->path = $division->get_path(null, true);
+				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
+
+				$towns = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
+				$towns_arr = [];
+				foreach ($towns as $town_id)
+				{
+					$town = Model_Division::find_by_pk($town_id);
+					$town->path = $town->get_path(null, true);
+					$town->url_detail = Helper_Uri::create('division.detail', ['path' => $town->path]);
+
+					$towns_arr[] = $town;
+				}
+				$division->cities = $towns_arr;
+				$division->countries = [];
+			}
+		}
 
 		// ビューを設定
 		$content = View_Smarty::forge('list.tpl');
