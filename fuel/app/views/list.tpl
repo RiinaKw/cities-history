@@ -37,7 +37,7 @@
 					</li>
 					<li>
 						<a href="{{$heisei_after.url|escape}}">
-							昭和の大合併直後（{{$heisei_after.date|date_format2:'Y(Jk)-m-d'}}）
+							平成の大合併直後（{{$heisei_after.date|date_format2:'Y(Jk)-m-d'}}）
 						</a>
 					</li>
 					<li>
