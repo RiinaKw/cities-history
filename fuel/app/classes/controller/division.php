@@ -286,7 +286,7 @@ class Controller_Division extends Controller_Layout
 	protected function _breadcrumb_and_kana($path)
 	{
 		$breadcrumbs = [
-			'一覧' => Helper_Uri::create('list'),
+			'一覧' => Helper_Uri::create('list.index'),
 		];
 		$arr = explode('/', $path);
 		$cur_path = '';
