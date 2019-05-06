@@ -95,6 +95,37 @@ class Controller_List extends Controller_Layout
 		$content->divisions = $divisions;
 		$content->url_add = Helper_Uri::create('division.add');
 
+		$meiji_after = '1889-04-01';
+		$content->meiji_after = [
+			'date' => $meiji_after,
+			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $meiji_after]),
+		];
+		$showa_before = '1953-10-01';
+		$content->showa_before = [
+			'date' => $showa_before,
+			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $showa_before]),
+		];
+		$showa_after = '1961-04-01';
+		$content->showa_after = [
+			'date' => $showa_after,
+			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $showa_after]),
+		];
+		$heisei_before = '1999-03-31';
+		$content->heisei_before = [
+			'date' => $heisei_before,
+			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $heisei_before]),
+		];
+		$heisei_after = '2010-04-01';
+		$content->heisei_after = [
+			'date' => $heisei_after,
+			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $heisei_after]),
+		];
+		$now = '2019-04-01';
+		$content->now = [
+			'date' => $now,
+			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $now]),
+		];
+		
 		$components = [
 			'add_division' => View_Smarty::forge('components/add_division.tpl'),
 		];

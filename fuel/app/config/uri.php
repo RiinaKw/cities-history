@@ -22,5 +22,8 @@ return array(
 		'edit'     => 'division/edit/:path',
 		'delete'   => 'division/delete/:path',
 	),
-	'list' => '/'
+	'list' => array(
+		'index' => '/',
+		'division' => '/list/:path',
+	),
 );
