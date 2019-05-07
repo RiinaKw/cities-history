@@ -14,6 +14,6 @@ abstract class Controller_Base extends Controller
 		parent::before();
 
 		Config::load('uri', true);
-		Config::load('copyright', true);
+		Config::load('common', true);
 	} // function before()
 } // class Controller_Base

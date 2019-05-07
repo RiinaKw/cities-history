@@ -41,6 +41,7 @@ class Controller_Admin extends Controller_Layout
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', '自治体一覧');
+		$this->_set_view_var('nav_item', 'division');
 		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
 		return $this->_get_view();
 	} // function action_divisions()

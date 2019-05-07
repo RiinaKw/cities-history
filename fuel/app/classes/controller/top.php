@@ -77,7 +77,7 @@ class Controller_Top extends Controller_Base
 		// ログインに成功したら管理者ダッシュボードへリダイレクト
 		$user->frozen(true);
 		Session::set('user.id', $user->id);
-		Helper_Uri::redirect('list');
+		Helper_Uri::redirect('list.index');
 	} // function _login_success()
 
 	/**

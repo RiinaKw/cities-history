@@ -22,32 +22,32 @@
 					</li>
 					<li>
 						<a href="{{$meiji_after.url|escape}}">
-							明治の大合併直後（{{$meiji_after.date|date_format2:'Y(Jk)-m-d'}}）
+							明治の大合併直後 - {{$meiji_after.date|date_format2:'Y(Jk)-m-d'}}
 						</a>
 					</li>
 					<li>
 						<a href="{{$showa_before.url|escape}}">
-							昭和の大合併直前（{{$showa_before.date|date_format2:'Y(Jk)-m-d'}}）
+							昭和の大合併直前 - {{$showa_before.date|date_format2:'Y(Jk)-m-d'}}
 						</a>
 					</li>
 					<li>
 						<a href="{{$showa_after.url|escape}}">
-							昭和の大合併直後（{{$showa_after.date|date_format2:'Y(Jk)-m-d'}}）
+							昭和の大合併直後 - {{$showa_after.date|date_format2:'Y(Jk)-m-d'}}
 						</a>
 					</li>
 					<li>
 						<a href="{{$heisei_before.url|escape}}">
-							平成の大合併直前（{{$heisei_before.date|date_format2:'Y(Jk)-m-d'}}）
+							平成の大合併直前 - {{$heisei_before.date|date_format2:'Y(Jk)-m-d'}}
 						</a>
 					</li>
 					<li>
 						<a href="{{$heisei_after.url|escape}}">
-							平成の大合併直後（{{$heisei_after.date|date_format2:'Y(Jk)-m-d'}}）
+							平成の大合併直後 - {{$heisei_after.date|date_format2:'Y(Jk)-m-d'}}
 						</a>
 					</li>
 					<li>
 						<a href="{{$now.url|escape}}">
-							現在（{{$now.date|date_format2:'Y(Jk)-m-d'}}）
+							現在 - {{$now.date|date_format2:'Y(Jk)-m-d'}}
 						</a>
 					</li>
 				</ol>

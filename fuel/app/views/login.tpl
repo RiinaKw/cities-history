@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<title>cities-history 管理画面ログイン</title>
+		<title>ログイン - {{Config::get('common.title')}}</title>
 
 {{Asset::css('bootstrap.min.css')}}
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -15,10 +15,10 @@
 	</head>
 	<body class="text-center">
 
-		<form class="form-signin col-4 offset-4 py-4" action="{{$url_login}}" method="post">
+		<form class="form-signin col-8 offset-4 py-4" action="{{$url_login}}" method="post">
 			{{Asset::img('icon.png', ['width' => 100])}}
 			<h1 class="h3 mb-4 font-weight-normal">
-				cities-history 管理画面
+				{{Config::get('common.title')}} 管理画面
 			</h1>
 {{if $error_string}}
 			<p class="text-danger">{{$error_string}}</p>

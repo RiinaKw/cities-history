@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<title>{{$title}}</title>
+		<title>{{$title}} - {{Config::get('common.title')}}</title>
 
 	{{Asset::css('bootstrap.min.css')}}
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -24,7 +24,8 @@
 				<ul class="navbar-nav mr-auto">
 {{if $user}}
 					<li class="nav-item">
-						<a class="nav-link" href="{{$url_admin_divisions}}">Division Manage</a>
+						<a class="nav-link {{if $nav_item == 'division'}}active{{/if}}"
+							href="{{$url_admin_divisions}}">Division Manage</a>
 					</li>
 {{/if}}
 				</ul>
@@ -70,7 +71,7 @@
 
 		<footer class="footer text-center mt-auto py-3">
 			<div class="container">
-				<span class="text-muted">{{Config::get('copyright.0')}}</span>
+				<span class="text-muted">{{Config::get('common.copyright')}}</span>
 			</div>
 		</footer>
 	</body>
