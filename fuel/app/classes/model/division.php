@@ -150,9 +150,9 @@ class Model_Division extends Model_Base
 	{
 		$query = DB::select('d.*')
 			->from([self::$_table_name, 'd'])
-			->join(['events', 's'])
+			->join(['events', 's'], 'LEFT OUTER')
 			->on('d.start_event_id', '=', 's.id')
-			->join(['events', 'e'])
+			->join(['events', 'e'], 'LEFT OUTER')
 			->on('d.end_event_id', '=', 'e.id')
 			->where('d.deleted_at', '=', null)
 			->where('d.postfix', '=', $postfix)

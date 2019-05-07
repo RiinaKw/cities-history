@@ -51,8 +51,8 @@
 {{if isset($breadcrumbs) && $breadcrumbs}}
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-{{foreach from=$breadcrumbs key=name item=url}}
-{{if $url}}
+{{foreach name=breadcrumbs from=$breadcrumbs key=name item=url}}
+{{if $url && ! $smarty.foreach.breadcrumbs.last}}
 					<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
 {{else}}
 					<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>

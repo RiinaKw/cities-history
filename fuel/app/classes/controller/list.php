@@ -89,6 +89,8 @@ class Controller_List extends Controller_Layout
 				$division->countries = [];
 			}
 		}
+		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
+		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 
 		// ビューを設定
 		$content = View_Smarty::forge('list.tpl');
@@ -134,7 +136,7 @@ class Controller_List extends Controller_Layout
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', '自治体一覧');
-		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
+		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_index()
 

@@ -51,7 +51,7 @@ class Controller_Division extends Controller_Layout
 			$event->divisions = $divisions;
 		} // foreach ($events as &$event)
 
-		$breadcrumbs_arr = $this->_breadcrumb_and_kana($path);
+		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
 		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 		$path_kana = $breadcrumbs_arr['path_kana'];
 
@@ -132,7 +132,7 @@ class Controller_Division extends Controller_Layout
 			}
 		} // if ($division_id_arr)
 
-		$breadcrumbs_arr = $this->_breadcrumb_and_kana($path);
+		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
 		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 		$path_kana = $breadcrumbs_arr['path_kana'];
 
@@ -282,40 +282,4 @@ class Controller_Division extends Controller_Layout
 			Helper_Uri::redirect('top');
 		}
 	}
-
-	protected function _breadcrumb_and_kana($path)
-	{
-		$breadcrumbs = [
-			'一覧' => Helper_Uri::create('list.index'),
-		];
-		$arr = explode('/', $path);
-		$cur_path = '';
-		$cur_kana = '';
-		foreach ($arr as $name)
-		{
-			if ($cur_path)
-			{
-				$cur_path .= '/'.$name;
-			}
-			else
-			{
-				$cur_path .= $name;
-			}
-			$cur_division = Model_Division::get_by_path($cur_path);
-			$cur_kana .= ($cur_kana ? '/' : '').$cur_division->name_kana.'・'.$cur_division->postfix_kana;
-			if ($cur_path == $path)
-			{
-				$breadcrumbs[$name] = '';
-			}
-			else
-			{
-				$breadcrumbs[$name] = Helper_Uri::create('division.detail', ['path' => $cur_path]);
-			}
-		} // foreach ($arr as $name)
-
-		return [
-			'breadcrumbs' => $breadcrumbs,
-			'path_kana' => $cur_kana,
-		];
-	} // function _breadcrumb_and_kana()
 } // class Controller_View
