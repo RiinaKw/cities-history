@@ -91,9 +91,12 @@ class Controller_List extends Controller_Layout
 		}
 		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
 		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
+		$path_kana = $breadcrumbs_arr['path_kana'];
 
 		// ビューを設定
 		$content = View_Smarty::forge('list.tpl');
+		$content->path = $path;
+		$content->path_kana = $path_kana;
 		$content->divisions = $divisions;
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_all_list = Helper_Uri::create('list.index');

@@ -22,8 +22,9 @@
 {{/if}}
 			</header>
 			<ul>
-				<li><a href="{{$url_detail}}">自治体詳細</a></li>
-				<li><a href="{{$url_belongto}}">所属自治体</a></li>
+				<li><a href="{{$url_detail}}">所属自治体</a></li>
+				<li><a href="{{$url_detail_timeline}}">自治体タイムライン</a></li>
+				<li><a href="{{$url_belongto_timeline}}">所属自治体タイムライン</a></li>
 			</ul>
 
 			<div class="col-md-6 offset-md-3 pb-3">

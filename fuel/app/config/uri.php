@@ -24,6 +24,6 @@ return array(
 	),
 	'list' => array(
 		'index' => '/',
-		'division' => '/list/:path',
+		'division' => 'list/:path',
 	),
 );

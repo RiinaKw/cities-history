@@ -61,8 +61,9 @@ class Controller_Division extends Controller_Layout
 		$content->division = $division;
 		$content->events = $events;
 		$content->path_kana = $path_kana;
-		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
+		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
+		$content->url_belongto_timeline = Helper_Uri::create('division.belongto', ['path' => $path]);
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
@@ -142,8 +143,9 @@ class Controller_Division extends Controller_Layout
 		$content->division = $division;
 		$content->events = $events_arr;
 		$content->path_kana = $path_kana;
-		$content->url_detail = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_belongto = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
+		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
+		$content->url_belongto_timeline = Helper_Uri::create('division.belongto', ['path' => $path]);
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);

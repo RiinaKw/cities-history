@@ -1,7 +1,8 @@
 
 			<header class="clearfix">
 				<div class="float-left">
-					<h2>List</h2>
+					<h2>{{$path|escape}}</h2>
+					<p>{{$path_kana}}</p>
 				</div>
 {{if $user}}
 				<nav class="float-right">
