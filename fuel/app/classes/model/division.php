@@ -161,8 +161,14 @@ class Model_Division extends Model_Base
 			->where('d.parent_division_id', '=', $parent_id);
 		if ($date)
 		{
-			$query->where('s.date', '<=', $date)
-				->where('e.date', '>=', $date);
+			$query->and_where_open()
+				->where('s.date', '<=', $date)
+				->or_where('s.date', '=', null)
+				->and_where_close()
+				->and_where_open()
+				->where('e.date', '>=', $date)
+				->or_where('e.date', '=', null)
+				->and_where_close();
 		}
 		$query->order_by('d.name_kana', 'ASC');
 
@@ -183,6 +189,7 @@ class Model_Division extends Model_Base
 				->where('s.date', '<=', $date)
 				->or_where('s.date', '=', null)
 				->and_where_close()
+				->and_where_open()
 				->where('e.date', '>=', $date)
 				->or_where('e.date', '=', null)
 				->and_where_close();
