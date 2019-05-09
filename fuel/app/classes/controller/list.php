@@ -88,6 +88,9 @@ class Controller_List extends Controller_Layout
 
 					$towns_arr[] = $town;
 				}
+				usort($towns_arr, function($a, $b){
+					return strcmp($a->name_kana, $b->name_kana);
+				});
 				$division->cities = $towns_arr;
 				$division->countries = [];
 			}
