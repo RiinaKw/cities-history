@@ -37,7 +37,9 @@
 							</tr>
 {{foreachelse}}
 							<tr>
-								<td colspan="2"　class="text-center">参照日付がありません。</td>
+								<td colspan="2">
+									<div class="text-center">参照日付がありません。</div>
+								</td>
 							</tr>
 {{/foreach}}
 						</tbody>

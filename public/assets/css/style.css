@@ -81,6 +81,12 @@ h1 {
 	width: 20px;
 	height: 20px;
 }
+.table tbody {
+	border-bottom: 1px solid #dee2e6;
+}
+.table-borderless tbody {
+	border-bottom: none;
+}
 
 .footer {
 	position: absolute;

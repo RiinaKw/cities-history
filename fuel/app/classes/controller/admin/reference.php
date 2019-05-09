@@ -19,7 +19,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 		// ビューを設定
 		$content = View_Smarty::forge('admin/admin_reference.tpl');
-		$content->dates = Model_Referencedate::find_all();
+		$content->dates = Model_Referencedate::get_all();
 
 		$content->url_add    = Helper_Uri::create('admin.reference.add');
 		$content->url_edit   = Helper_Uri::create('admin.reference.edit');
