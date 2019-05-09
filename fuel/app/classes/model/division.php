@@ -244,23 +244,18 @@ class Model_Division extends Model_Base
 	{
 		if ($force_fullpath)
 		{
-			$path = $this->name.$this->postfix;
-			if ($this->identify)
-			{
-				$path .= '('.$this->identify.')';
-			}
-			$parent_id = $this->parent_division_id;
-			while ($parent_id)
-			{
-				$parent = Model_Division::find_by_pk($parent_id);
-				$name = $parent->name.$parent->postfix;
-				if ($parent->identify)
+			$division = $this;
+			$path = '';
+			do {
+				$name = $division->name.$division->postfix;
+				if ($division->identify)
 				{
-					$name .= '('.$parent->identify.')';
+					$name .= '('.$division->identify.')';
 				}
-				$path = $name.'/'.$path;
-				$parent_id = $parent->parent_division_id;
-			}
+				$path = ($path ? $name.'/'.$path : $name);
+				$parent_id = $division->parent_division_id;
+				$division = Model_Division::find_by_pk($parent_id);
+			} while ($division);
 
 			return $path;
 		}
