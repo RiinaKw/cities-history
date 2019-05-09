@@ -176,17 +176,16 @@ class Model_Division extends Model_Base
 			->join(['events', 's'], 'LEFT OUTER')
 			->on('d.start_event_id', '=', 's.id')
 			->join(['events', 'e'], 'LEFT OUTER')
-			->on('d.end_event_id', '=', 'e.id')
-			->where('d.deleted_at', '=', null)
-			->where('s.deleted_at', '=', null)
-			->where('e.deleted_at', '=', null);
+			->on('d.end_event_id', '=', 'e.id');
 		if ($date)
 		{
 			$query->and_where_open()
 				->where('s.date', '<=', $date)
 				->or_where('s.date', '=', null)
 				->and_where_close()
-				->where('e.date', '>=', $date);
+				->where('e.date', '>=', $date)
+				->or_where('e.date', '=', null)
+				->and_where_close();
 		}
 		if ($parent_id)
 		{
@@ -206,9 +205,6 @@ class Model_Division extends Model_Base
 			->on('d.start_event_id', '=', 's.id')
 			->join(['events', 'e'], 'LEFT OUTER')
 			->on('d.end_event_id', '=', 'e.id')
-			->where('d.deleted_at', '=', null)
-			->where('s.deleted_at', '=', null)
-			->where('e.deleted_at', '=', null)
 			->where('parent_division_id', '=', $division_id);
 		if ($date)
 		{
@@ -216,7 +212,10 @@ class Model_Division extends Model_Base
 				->where('s.date', '<=', $date)
 				->or_where('s.date', '=', null)
 				->and_where_close()
-				->where('e.date', '>=', $date);
+				->and_where_open()
+				->where('e.date', '>=', $date)
+				->or_where('e.date', '=', null)
+				->and_where_close();
 		}
 
 		$divisions = $query->as_object('Model_Division')->execute()->as_array();
