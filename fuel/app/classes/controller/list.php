@@ -101,7 +101,7 @@ class Controller_List extends Controller_Layout
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_all_list = Helper_Uri::create('list.index');
 
-		$dates = Model_Referencedate::find_all();
+		$dates = Model_Referencedate::get_all();
 		foreach ($dates as &$date)
 		{
 			$date->url = Helper_Uri::create('list.division', ['path' => $path], ['date' => $date->date]);

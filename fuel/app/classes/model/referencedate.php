@@ -25,4 +25,15 @@ class Model_Referencedate extends Model_Base
 
 		return $validation;
 	} // function validation()
+
+	public static function get_all()
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
+			->order_by('date', 'desc');
+
+			$result = $query->as_object('Model_Referencedate')->execute()->as_array();
+			return $result ?: [];
+	} // function get_all()
 } // class Model_Referencedate
