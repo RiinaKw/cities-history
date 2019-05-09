@@ -24,7 +24,7 @@
 {{foreach from=$reference_dates item=date}}
 					<li>
 						<a href="{{$date.url|escape}}">
-							{{$date.description|escape}} - {{$date.date|date_format2:'Y(Jk)-m-d'}}
+							{{$date.date|date_format2:'Y(Jk)-m-d'}} - {{$date.description|escape}}
 						</a>
 					</li>
 {{/foreach}}
