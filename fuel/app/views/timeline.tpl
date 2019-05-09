@@ -38,10 +38,15 @@
 							<time class="float-right" datetime="{{$event.date}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
 						</header>
 						<ul>
-{{foreach from=$event.divisions item=division}}
+{{foreach from=$event.divisions item=d}}
 							<li>
-								<a href="{{$division->url_detail|escape}}">
-									{{$division.fullname|escape}}, {{$division.division_result|escape}}
+								<a href="{{$d->url_detail|escape}}">
+{{if $division.id == $d.id}}
+									<b>{{$d.fullname|escape}}</b>,
+{{else}}
+									{{$d.fullname|escape}},
+{{/if}}
+									{{$d.division_result|escape}}
 								</a>
 							</li>
 {{/foreach}}
