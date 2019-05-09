@@ -36,7 +36,9 @@
 								<td class="description">{{$date.description|escape}}</td>
 							</tr>
 {{foreachelse}}
-							<tr colspan="2">参照日付がありません。</tr>
+							<tr>
+								<td colspan="2">参照日付がありません。</td>
+							</tr>
 {{/foreach}}
 						</tbody>
 					</table>
