@@ -8,15 +8,10 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Admin extends Controller_Layout
+class Controller_Admin_Divisions extends Controller_Admin_Base
 {
-	public function action_divisions()
+	public function action_index()
 	{
-		if ( ! $this->user)
-		{
-			throw new HttpNoAccessException("permission denied");
-		}
-
 		$divisions = Model_Division::get_all();
 		foreach ($divisions as &$division)
 		{
@@ -36,7 +31,7 @@ class Controller_Admin extends Controller_Layout
 		}
 
 		// ビューを設定
-		$content = View_Smarty::forge('user/user_divisions.tpl');
+		$content = View_Smarty::forge('admin/admin_divisions.tpl');
 		$content->divisions = $divisions;
 
 		$this->_set_view_var('content', $content);
@@ -44,5 +39,5 @@ class Controller_Admin extends Controller_Layout
 		$this->_set_view_var('nav_item', 'division');
 		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
 		return $this->_get_view();
-	} // function action_divisions()
+	} // function action_index()
 } // class Controller_Admin

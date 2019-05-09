@@ -92,4 +92,4 @@ class Model_User extends Model_Base
 		}
 		return Helper_Random::forge($table);
 	} // functino create_remember_me_hash()
-} // class Model_Admin
+} // class Model_User

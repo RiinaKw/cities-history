@@ -12,43 +12,43 @@
 							<label class="row">
 								<span class="col-4">所属自治体</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="parent-division" name="parent" value="">
+									<input class="form-control" type="text" id="parent-division" name="parent" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">自治体名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name" value="">
+									<input class="form-control" type="text" name="name" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">自治体名かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name_kana" value="">
+									<input class="form-control" type="text" name="name_kana" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix" value="">
+									<input class="form-control" type="text" name="postfix" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix_kana" value="">
+									<input class="form-control" type="text" name="postfix_kana" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">識別名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="identify" value="">
+									<input class="form-control" type="text" name="identify" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">全国地方公共団体コード</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="government_code" value="">
+									<input class="form-control" type="text" name="government_code" value="" />
 								</div>
 							</label>
 						</div><!-- /.modal-body -->

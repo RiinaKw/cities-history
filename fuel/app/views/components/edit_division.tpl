@@ -12,43 +12,43 @@
 							<label class="row">
 								<span class="col-4">所属自治体</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="parent-division" name="parent" value="{{$division->get_parent_path()}}">
+									<input class="form-control" type="text" id="parent-division" name="parent" value="{{$division->get_parent_path()}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">自治体名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name" value="{{$division->name}}">
+									<input class="form-control" type="text" name="name" value="{{$division->name}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">自治体名かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name_kana" value="{{$division->name_kana}}">
+									<input class="form-control" type="text" name="name_kana" value="{{$division->name_kana}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix" value="{{$division->postfix}}">
+									<input class="form-control" type="text" name="postfix" value="{{$division->postfix}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix_kana" value="{{$division->postfix_kana}}">
+									<input class="form-control" type="text" name="postfix_kana" value="{{$division->postfix_kana}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">識別名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="identify" value="{{$division->identify}}">
+									<input class="form-control" type="text" name="identify" value="{{$division->identify}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">全国地方公共団体コード</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="government_code" value="{{$division->government_code}}">
+									<input class="form-control" type="text" name="government_code" value="{{$division->government_code}}" />
 								</div>
 							</label>
 						</div><!-- /.modal-body -->

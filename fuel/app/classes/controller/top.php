@@ -161,6 +161,6 @@ class Controller_Top extends Controller_Base
 		Session::delete('user_data');
 
 		// トップページへリダイレクト
-		Helper_Uri::redirect('list');
+		Helper_Uri::redirect('list.index');
 	} // function action_logout()
 } // class Controller_Top

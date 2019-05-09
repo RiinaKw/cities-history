@@ -5,7 +5,6 @@
 				</div>
 			</header>
 
-
 			<div>
 				<section>
 {{foreach from=$divisions item=division}}

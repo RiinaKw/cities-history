@@ -12,6 +12,7 @@ return array (
         3 => '004_create_users',
         4 => '005_create_activities',
         5 => '006_add_government_code_to_divisions',
+        6 => '007_create_reference_dates',
       ),
     ),
     'module' => 

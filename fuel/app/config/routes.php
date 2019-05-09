@@ -25,4 +25,9 @@ return array(
 	'division/:path'          => 'division/detail',
 
 	'list/:path'          => 'list/index',
+
+	'admin/reference/add'          => 'admin/reference/add',
+	'admin/reference/(.+?)/edit'   => 'admin/reference/edit/$1',
+	'admin/reference/(.+?)/delete' => 'admin/reference/delete/$1',
+	'admin/reference'              => 'admin/reference/list',
 );

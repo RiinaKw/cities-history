@@ -8,6 +8,12 @@ return array(
 
 	'admin' => array(
 		'divisions' => 'admin/divisions',
+		'reference' => array(
+			'list'   => 'admin/reference',
+			'add'    => 'admin/reference/add',
+			'edit'   => 'admin/reference/:id/edit',
+			'delete' => 'admin/reference/:id/delete',
+		),
 	),
 	'event' => array(
 		'add'      => 'event/add',

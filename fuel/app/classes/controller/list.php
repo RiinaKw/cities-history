@@ -101,36 +101,13 @@ class Controller_List extends Controller_Layout
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_all_list = Helper_Uri::create('list.index');
 
-		$meiji_after = '1889-04-01';
-		$content->meiji_after = [
-			'date' => $meiji_after,
-			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $meiji_after]),
-		];
-		$showa_before = '1953-10-01';
-		$content->showa_before = [
-			'date' => $showa_before,
-			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $showa_before]),
-		];
-		$showa_after = '1961-04-01';
-		$content->showa_after = [
-			'date' => $showa_after,
-			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $showa_after]),
-		];
-		$heisei_before = '1999-03-31';
-		$content->heisei_before = [
-			'date' => $heisei_before,
-			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $heisei_before]),
-		];
-		$heisei_after = '2014-04-05';
-		$content->heisei_after = [
-			'date' => $heisei_after,
-			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $heisei_after]),
-		];
-		$now = '2019-04-01';
-		$content->now = [
-			'date' => $now,
-			'url' => Helper_Uri::create('list.division', ['path' => $path], ['date' => $now]),
-		];
+		$dates = Model_Referencedate::find_all();
+		foreach ($dates as &$date)
+		{
+			$date->url = Helper_Uri::create('list.division', ['path' => $path], ['date' => $date->date]);
+		}
+		$content->reference_dates = $dates;
+		$content->url_all = Helper_Uri::create('list.division', ['path' => $path]);
 
 		$components = [
 			'add_division' => View_Smarty::forge('components/add_division.tpl'),
@@ -138,7 +115,14 @@ class Controller_List extends Controller_Layout
 		$content->components = $components;
 
 		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', '自治体一覧');
+		if ($path)
+		{
+			$this->_set_view_var('title', $path);
+		}
+		else
+		{
+			$this->_set_view_var('title', '自治体一覧');
+		}
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_index()

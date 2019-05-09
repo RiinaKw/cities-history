@@ -27,6 +27,10 @@
 						<a class="nav-link {{if $nav_item == 'division'}}active{{/if}}"
 							href="{{$url_admin_divisions}}">Division Manage</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link {{if $nav_item == 'reference'}}active{{/if}}"
+							href="{{$url_admin_reference}}">Reference Manage</a>
+					</li>
 {{/if}}
 				</ul>
 				<form class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">

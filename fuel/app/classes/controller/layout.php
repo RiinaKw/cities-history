@@ -29,7 +29,9 @@ abstract class Controller_Layout extends Controller_Base
 		$this->_set_view_var('url_logout', Helper_Uri::create('logout'));
 		$this->_set_view_var('url_search', Helper_Uri::create('search'));
 		$this->_set_view_var('nav_item', '');
+
 		$this->_set_view_var('url_admin_divisions', Helper_Uri::create('admin.divisions'));
+		$this->_set_view_var('url_admin_reference', Helper_Uri::create('admin.reference.list'));
 	} // function before()
 
 	protected function _set_view_var($key, $value)
