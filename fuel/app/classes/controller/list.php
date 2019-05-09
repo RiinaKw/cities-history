@@ -60,6 +60,9 @@ class Controller_List extends Controller_Layout
 
 						$towns_arr[] = $town;
 					}
+					usort($towns_arr, function($a, $b){
+						return strcmp($a->name_kana, $b->name_kana);
+					});
 					$country->path = $country->get_path(null, true);
 					$country->url_detail = Helper_Uri::create('division.detail', ['path' => $country->path]);
 					$country->towns = $towns_arr;

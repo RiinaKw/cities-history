@@ -42,7 +42,8 @@ class Model_Division extends Model_Base
 	{
 		$query = DB::select()
 			->from(self::$_table_name)
-			->where('deleted_at', '=', null);
+			->where('deleted_at', '=', null)
+			->order_by('name_kana', 'ASC');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_all()
@@ -56,7 +57,8 @@ class Model_Division extends Model_Base
 			->and_where_open()
 			->where(DB::expr('concat(name, postfix)'), 'LIKE', '%'.$q.'%')
 			->or_where(DB::expr('concat(name_kana, postfix_kana)'), 'LIKE', '%'.$q.'%')
-			->and_where_close();
+			->and_where_close()
+			->order_by('name_kana', 'ASC');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function search()
@@ -162,6 +164,7 @@ class Model_Division extends Model_Base
 			$query->where('s.date', '<=', $date)
 				->where('e.date', '>=', $date);
 		}
+		$query->order_by('d.name_kana', 'ASC');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_by_postfix_and_date()
@@ -189,6 +192,8 @@ class Model_Division extends Model_Base
 		{
 			$query->where('d.parent_division_id', '=', $parent_id);
 		}
+		$query->order_by('d.name_kana', 'ASC');
+
 		$divisions = $query->as_object('Model_Division')->execute()->as_array();
 		return $divisions;
 	} // function get_by_date()
@@ -213,8 +218,8 @@ class Model_Division extends Model_Base
 				->and_where_close()
 				->where('e.date', '>=', $date);
 		}
-		$divisions = $query->as_object('Model_Division')->execute()->as_array();
 
+		$divisions = $query->as_object('Model_Division')->execute()->as_array();
 		$d_arr = [];
 		if ($divisions)
 		{
