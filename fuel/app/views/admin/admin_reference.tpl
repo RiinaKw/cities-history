@@ -35,6 +35,8 @@
 								<td>{{$date.date|date_format2:'Y(Jk)-m-d'}}</td>
 								<td class="description">{{$date.description|escape}}</td>
 							</tr>
+{{foreachelse}}
+							<tr colspan="2">参照日付がありません。</tr>
 {{/foreach}}
 						</tbody>
 					</table>
