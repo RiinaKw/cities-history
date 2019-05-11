@@ -24,20 +24,20 @@ class Controller_Division extends Controller_Layout
 		// 終了インベントを先頭に
 		foreach ($events as $key => $event)
 		{
-			if ($event->id == $division->start_event_id)
+			if ($event->event_id == $division->end_event_id)
 			{
-				unset($event[$key]);
-				array_push($event);
+				unset($events[$key]);
+				array_unshift($events, $event);
 				break;
 			}
 		}
 		// 開始イベントを末尾に
 		foreach ($events as $key => $event)
 		{
-			if ($event->id == $division->end_event_id)
+			if ($event->event_id == $division->start_event_id)
 			{
-				unset($event[$key]);
-				array_unshift($event);
+				unset($events[$key]);
+				array_push($events, $event);
 				break;
 			}
 		}
