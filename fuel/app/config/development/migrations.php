@@ -13,6 +13,7 @@ return array (
         4 => '005_create_activities',
         5 => '006_add_government_code_to_divisions',
         6 => '007_create_reference_dates',
+        7 => '008_add_no_to_event_details',
       ),
     ),
     'module' => 

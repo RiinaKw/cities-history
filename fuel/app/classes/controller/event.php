@@ -31,6 +31,7 @@ class Controller_Event extends Controller_Layout
 				continue;
 			}
 			$arr[] = [
+				'no'       => Input::post('no.'.$key),
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
 				'result'   => Input::post('result.'.$key),
@@ -66,6 +67,7 @@ class Controller_Event extends Controller_Layout
 				}
 
 				$detail = Model_Event_Detail::forge([
+					'no' => $item['no'],
 					'event_id' => $event->id,
 					'division_id' => $division->id,
 					'division_result' => $item['result'],
@@ -121,6 +123,7 @@ class Controller_Event extends Controller_Layout
 				continue;
 			}
 			$arr[] = [
+				'no'       => Input::post('no.'.$key),
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
 				'result'   => Input::post('result.'.$key),
@@ -157,6 +160,7 @@ class Controller_Event extends Controller_Layout
 					if ($id == 'new')
 					{
 						$detail = Model_Event_Detail::forge([
+							'no' => $item['no'],
 							'event_id' => $event->id,
 							'division_id' => $division->id,
 							'division_result' => $item['result'],
@@ -166,6 +170,7 @@ class Controller_Event extends Controller_Layout
 					else
 					{
 						$detail = Model_Event_Detail::find_by_pk($id);
+						$detail->no = $item['no'];
 						$detail->division_result = $item['result'];
 						$detail->save();
 					} // if ($id == 'new')

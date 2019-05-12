@@ -38,7 +38,8 @@ class Model_Event extends Model_Base
 			->join(['divisions', 'd'])
 			->on('e.division_id', '=', 'd.id')
 			->where('e.deleted_at', '=', null)
-			->where('e.event_id', '=', $event_id);
+			->where('e.event_id', '=', $event_id)
+			->order_by('e.no', 'asc');
 
 		$result = $query->as_object('Model_Division')->execute()->as_array();
 		foreach ($result as &$item)
@@ -59,7 +60,7 @@ class Model_Event extends Model_Base
 			$d->soft_delete();
 		}
 		$this->soft_delete();
-		
+
 		Helper_Uri::redirect('top');
 	} // function delete()
 } // class Model_Event

@@ -26,11 +26,12 @@
 							<table class="table table-sm table-borderless">
 								<thead>
 									<tr>
-										<th scope="col" style="width: 50%;">自治体</th>
-										<th scope="col" style="width: 20%;">結果</th>
-										<th class="text-center" scope="col" style="width: 10%;">新設</th>
-										<th class="text-center" scope="col" style="width: 10%;">廃止 /<br />存続</th>
-										<th class="text-center" scope="col" style="width: 10%;">削除</th>
+										<th class="text-center" scope="col" style="width: 3%;"></th>
+										<th scope="col" style="width: 60%;">自治体</th>
+										<th scope="col" style="width: 12%;">結果</th>
+										<th class="text-center" scope="col" style="width: 8%;">新設</th>
+										<th class="text-center" scope="col" style="width: 8%;">廃止 /<br />存続</th>
+										<th class="text-center" scope="col" style="width: 8%;">削除</th>
 									</tr>
 								</thead>
 								<tbody></tbody>
@@ -58,7 +59,64 @@
 			</div><!-- /.modal -->
 
 			<script>
+function add_row($tbody, idx, detail)
+{
+	var $tr = $("<tr />").addClass("ui-state-default").appendTo($tbody);
+
+	var $input_id = $('<input type="hidden" />').appendTo($tr);
+	$input_id.attr("value", detail.id).attr("name", "id["+idx+"]");
+	var $input_no = $('<input type="hidden" />').addClass("row-no").appendTo($tr);
+	$input_no.attr("name", "no["+idx+"]").val(idx);
+
+	var $handle = $("<td />").addClass("handle").appendTo($tr);
+	$handle.append('<i class="fa fa-bars"></i>');
+
+	var $td_division = $("<td />").appendTo($tr);
+	var $input_division = $('<input type="text" />').addClass("form-control");
+	$input_division.attr("value", detail.path).attr("name", "division["+idx+"]");
+	$input_division.appendTo($td_division);
+
+	$input_division.devbridgeAutocomplete({
+		serviceUrl: "{{$root}}/division/list.json"
+	});
+
+	var $td_result = $("<td />").appendTo($tr);
+	var $input_result = $('<input type="text" />').addClass("form-control");
+	$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
+	$input_result.appendTo($td_result);
+
+	var $td_birth = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $input_birth = $('<input type="checkbox" />');
+	$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
+	$input_birth.appendTo($td_birth);
+	if (detail.birth) {
+		$input_birth.prop("checked", true);
+	}
+
+	var $td_death = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $input_death = $('<input type="checkbox" />');
+	$input_death.attr("value", "true").attr("name", "death["+idx+"]");
+	$input_death.appendTo($td_death);
+	if (detail.death) {
+		$input_death.prop("checked", true);
+	}
+
+	var $td_delete = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $input_delete = $('<input type="checkbox" />');
+	$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");
+	$input_delete.appendTo($td_delete);
+} // function add_row()
+
 $(function(){
+
+	$("#change-event tbody").sortable({
+		stop: function(event, ui) {
+			console.log(event);
+			$(".row-no").each(function(v){
+				$(this).val(v);
+			});
+		}
+	});
 
 	$(document).on("click", ".add", function(){
 		var $modal = $('#change-event').modal();
@@ -96,48 +154,19 @@ $(function(){
 		.done(function(data, message, xhr){
 			var $tbody = $("tbody", $modal).empty();
 			for (idx in data) {
-				var detail = data[idx];
-				var $tr = $("<tr />").appendTo($tbody);
-
-				var $input_id = $('<input type="hidden">').appendTo($tr);
-				$input_id.attr("value", detail.id).attr("name", "id["+idx+"]");
-
-				var $td_division = $("<td />").appendTo($tr);
-				var $input_division = $('<input type="text">').addClass("form-control");
-				$input_division.attr("value", detail.path).attr("name", "division["+idx+"]");
-				$input_division.appendTo($td_division);
-
-				$input_division.devbridgeAutocomplete({
-					serviceUrl: "{{$root}}/division/list.json"
-				});
-
-				var $td_result = $("<td />").appendTo($tr);
-				var $input_result = $('<input type="text">').addClass("form-control");
-				$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
-				$input_result.appendTo($td_result);
-
-				var $td_birth = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
-				var $input_birth = $('<input type="checkbox">');
-				$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
-				$input_birth.appendTo($td_birth);
-				if (detail.birth) {
-					$input_birth.prop("checked", true);
-				}
-
-				var $td_death = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
-				var $input_death = $('<input type="checkbox">');
-				$input_death.attr("value", "true").attr("name", "death["+idx+"]");
-				$input_death.appendTo($td_death);
-				if (detail.death) {
-					$input_death.prop("checked", true);
-				}
-
-				var $td_delete = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
-				var $input_delete = $('<input type="checkbox">');
-				$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");
-				$input_delete.appendTo($td_delete);
+				add_row($tbody, idx, data[idx]);
 			}
 		});
+	});
+
+	$(document).on("click", "#change-event .move_up", function() {
+		var $tr = $(this).parents("tr");
+		console.log($tr);
+	});
+	$(document).on("click", "#change-event .move_down", function() {
+		var $tr = $(this).parents("tr");
+		var $next = $tr.next();
+		console.log($next);
 	});
 
 	$(document).on("click", "#change-event .row_add", function() {
@@ -145,40 +174,7 @@ $(function(){
 		var $tbody = $("tbody", $modal);
 
 		var idx = $("tbody tr", $modal).length;
-
-		var $tr = $("<tr />").appendTo($tbody);
-
-		var $input_id = $('<input type="hidden">').appendTo($tr);
-		$input_id.attr("value", "new").attr("name", "id["+idx+"]");
-
-		var $td_division = $("<td />").appendTo($tr);
-		var $input_division = $('<input type="text">');
-		$input_division.addClass("form-control").attr("name", "division["+idx+"]");
-		$input_division.appendTo($td_division);
-
-		$input_division.devbridgeAutocomplete({
-			serviceUrl: "{{$root}}/division/list.json"
-		});
-
-		var $td_result = $("<td />").appendTo($tr);
-		var $input_result = $('<input type="text">');
-		$input_result.addClass("form-control").attr("name", "result["+idx+"]");
-		$input_result.appendTo($td_result);
-
-		var $td_birth = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
-		var $input_birth = $('<input type="checkbox">');
-		$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
-		$input_birth.appendTo($td_birth);
-
-		var $td_death = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
-		var $input_death = $('<input type="checkbox">');
-		$input_death.attr("value", "true").attr("name", "death["+idx+"]");
-		$input_death.appendTo($td_death);
-
-		var $td_delete = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
-		var $input_delete = $('<input type="checkbox">');
-		$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");
-		$input_delete.appendTo($td_delete);
+		add_row($tbody, idx, {});
 	});
 
 	$(document).on("click", "#change-event .btn-danger", function(){

@@ -79,6 +79,7 @@ h1 {
 	margin-bottom: 0.2rem;
 }
 
+.table .handle,
 .table .checkbox-wrapper {
 	vertical-align: middle;
 }
