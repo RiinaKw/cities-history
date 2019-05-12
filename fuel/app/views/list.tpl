@@ -56,21 +56,6 @@
 							{{/strip}}</p>
 						</header>
 						<div class="grid-container">
-{{if $division.cities}}
-							<section class="grid cities">
-								<ul>
-{{foreach from=$division.cities item=city}}
-									<li>
-										<article>
-											<header>
-												<h4><a href="{{$city.url_detail}}">{{$city->get_fullname()}}</a></h4>
-											</header>
-										</article>
-									</li>
-{{/foreach}}
-								</ul>
-							</section><!-- .grid.cities -->
-{{/if}}
 {{if $division.wards}}
 							<section class="grid wards">
 								<ul>
@@ -85,6 +70,21 @@
 {{/foreach}}
 								</ul>
 							</section><!-- .grid.wards -->
+{{/if}}
+{{if $division.cities}}
+							<section class="grid cities">
+								<ul>
+{{foreach from=$division.cities item=city}}
+									<li>
+										<article>
+											<header>
+												<h4><a href="{{$city.url_detail}}">{{$city->get_fullname()}}</a></h4>
+											</header>
+										</article>
+									</li>
+{{/foreach}}
+								</ul>
+							</section><!-- .grid.cities -->
 {{/if}}
 {{foreach from=$division.countries item=country}}
 							<section class="grid countries">

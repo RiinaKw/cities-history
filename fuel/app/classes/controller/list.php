@@ -36,7 +36,7 @@ class Controller_List extends Controller_Layout
 		}
 		$count = [];
 		if ($top_division == null
-			|| $top_division && ($top_division->postfix == '府' || $top_division->postfix == '県'))
+			|| $top_division && ($top_division->postfix == '都' || $top_division->postfix == '府' || $top_division->postfix == '県'))
 		{
 			foreach ($divisions as &$division)
 			{
