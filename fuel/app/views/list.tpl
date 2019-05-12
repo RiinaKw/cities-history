@@ -71,6 +71,21 @@
 								</ul>
 							</section><!-- .grid.cities -->
 {{/if}}
+{{if $division.wards}}
+							<section class="grid wards">
+								<ul>
+{{foreach from=$division.wards item=ward}}
+									<li>
+										<article>
+											<header>
+												<h4><a href="{{$ward.url_detail}}">{{$ward->get_fullname()}}</a></h4>
+											</header>
+										</article>
+									</li>
+{{/foreach}}
+								</ul>
+							</section><!-- .grid.wards -->
+{{/if}}
 {{foreach from=$division.countries item=country}}
 							<section class="grid countries">
 								<article>

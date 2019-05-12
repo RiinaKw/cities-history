@@ -35,7 +35,8 @@ class Controller_List extends Controller_Layout
 			$divisions = Model_Division::get_top_level();
 		}
 		$count = [];
-		if ($top_division == null || $top_division && $top_division->postfix == '県')
+		if ($top_division == null
+			|| $top_division && ($top_division->postfix == '府' || $top_division->postfix == '県'))
 		{
 			foreach ($divisions as &$division)
 			{
@@ -48,6 +49,12 @@ class Controller_List extends Controller_Layout
 				{
 					$city->path = $city->get_path(null, true);
 					$city->url_detail = Helper_Uri::create('division.detail', ['path' => $city->path]);
+				}
+				$wards = Model_Division::get_by_postfix_and_date($division->id, '区', $date);
+				foreach ($wards as &$ward)
+				{
+					$ward->path = $ward->get_path(null, true);
+					$ward->url_detail = Helper_Uri::create('division.detail', ['path' => $ward->path]);
 				}
 				$countries = Model_Division::get_by_postfix_and_date($division->id, '郡', $date);
 				foreach ($countries as &$country)
@@ -85,6 +92,7 @@ class Controller_List extends Controller_Layout
 					$country->towns = $towns_arr;
 				}
 				$division->cities = $cities;
+				$division->wards = $wards;
 				$division->countries = $countries;
 			}
 		}
@@ -110,6 +118,7 @@ class Controller_List extends Controller_Layout
 					return strcmp($a->name_kana, $b->name_kana);
 				});
 				$division->cities = $towns_arr;
+				$division->wards = [];
 				$division->countries = [];
 			}
 		}
