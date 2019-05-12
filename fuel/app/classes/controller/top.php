@@ -67,20 +67,6 @@ class Controller_Top extends Controller_Base
 	} // function _remember_me()
 
 	/**
-	 * ログイン成功時のセッション保存とリダイレクト処理
-	 *
-	 * @access  protected
-	 * @return  Response
-	 */
-	protected function _login_success($user)
-	{
-		// ログインに成功したら管理者ダッシュボードへリダイレクト
-		$user->frozen(true);
-		Session::set('user.id', $user->id);
-		Helper_Uri::redirect('list.index');
-	} // function _login_success()
-
-	/**
 	 * ログイン
 	 *
 	 * @access  public
@@ -90,10 +76,11 @@ class Controller_Top extends Controller_Base
 	{
 		$user_id = Session::get('user.id');
 		$user = Model_User::find_by_pk($user_id);
+		$redirect = Input::get('url');
 		if ($user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
-			Helper_Uri::redirect('list');
+			Response::redirect($redirect);
 		}
 
 		$error_string = '';
@@ -114,7 +101,9 @@ class Controller_Top extends Controller_Base
 						$this->_remember_me($user);
 					}
 					// ログインに成功
-					$this->_login_success($user);
+					$user->frozen(true);
+					Session::set('user.id', $user->id);
+					Response::redirect($redirect);
 				}
 				else
 				{
@@ -129,7 +118,7 @@ class Controller_Top extends Controller_Base
 
 		$view = View_Smarty::forge('login.tpl');
 		$view->error_string = $error_string;
-		$view->url_login = Helper_Uri::create('login');
+		$view->url_login = Helper_Uri::create('login', [], ['url' => Input::get('url')]);
 
 		return $view;
 	} // function action_login()
@@ -144,6 +133,7 @@ class Controller_Top extends Controller_Base
 	{
 		$user_id = Session::get('user.id');
 		$user = Model_User::find_by_pk($user_id);
+		$redirect = Input::get('url');
 		if ($user)
 		{
 			// remember me キーを削除
@@ -160,7 +150,7 @@ class Controller_Top extends Controller_Base
 		Session::delete('user');
 		Session::delete('user_data');
 
-		// トップページへリダイレクト
-		Helper_Uri::redirect('list.index');
+		// 見ていたページにリダイレクト
+		Response::redirect($redirect);
 	} // function action_logout()
 } // class Controller_Top

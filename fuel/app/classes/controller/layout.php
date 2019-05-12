@@ -25,8 +25,8 @@ abstract class Controller_Layout extends Controller_Base
 		$this->_set_view_var('root', Helper_Uri::root());
 		$this->_set_view_var('user', $this->user);
 		$this->_set_view_var('q', $q);
-		$this->_set_view_var('url_login', Helper_Uri::create('login'));
-		$this->_set_view_var('url_logout', Helper_Uri::create('logout'));
+		$this->_set_view_var('url_login', Helper_Uri::create('login', [], ['url' => Helper_Uri::current()]));
+		$this->_set_view_var('url_logout', Helper_Uri::create('logout', [], ['url' => Helper_Uri::current()]));
 		$this->_set_view_var('url_search', Helper_Uri::create('search'));
 		$this->_set_view_var('nav_item', '');
 
