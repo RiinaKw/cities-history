@@ -27,8 +27,8 @@
 								<thead>
 									<tr>
 										<th class="text-center" scope="col" style="width: 3%;"></th>
-										<th scope="col" style="width: 60%;">自治体</th>
-										<th scope="col" style="width: 12%;">結果</th>
+										<th scope="col" style="width: 50%;">自治体</th>
+										<th scope="col" style="width: 18%;">結果</th>
 										<th class="text-center" scope="col" style="width: 8%;">新設</th>
 										<th class="text-center" scope="col" style="width: 8%;">廃止 /<br />存続</th>
 										<th class="text-center" scope="col" style="width: 8%;">削除</th>
@@ -64,7 +64,12 @@ function add_row($tbody, idx, detail)
 	var $tr = $("<tr />").addClass("ui-state-default").appendTo($tbody);
 
 	var $input_id = $('<input type="hidden" />').appendTo($tr);
-	$input_id.attr("value", detail.id).attr("name", "id["+idx+"]");
+	$input_id.attr("name", "id["+idx+"]");
+	if (detail.id) {
+		$input_id.val(detail.id);
+	} else {
+		$input_id.val("new");
+	}
 	var $input_no = $('<input type="hidden" />').addClass("row-no").appendTo($tr);
 	$input_no.attr("name", "no["+idx+"]").val(idx);
 
@@ -73,7 +78,10 @@ function add_row($tbody, idx, detail)
 
 	var $td_division = $("<td />").appendTo($tr);
 	var $input_division = $('<input type="text" />').addClass("form-control");
-	$input_division.attr("value", detail.path).attr("name", "division["+idx+"]");
+	$input_division.attr("name", "division["+idx+"]");
+	if (detail.path) {
+		$input_division.val(detail.path);
+	}
 	$input_division.appendTo($td_division);
 
 	$input_division.devbridgeAutocomplete({
@@ -83,6 +91,9 @@ function add_row($tbody, idx, detail)
 	var $td_result = $("<td />").appendTo($tr);
 	var $input_result = $('<input type="text" />').addClass("form-control");
 	$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
+	if (detail.result) {
+		$input_result.val(detail.result);
+	}
 	$input_result.appendTo($td_result);
 
 	var $td_birth = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
