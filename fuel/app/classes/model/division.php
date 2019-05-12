@@ -102,7 +102,7 @@ class Model_Division extends Model_Base
 		$parent_id = null;
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|市|郡|区|町|村)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 			if ($matches)
 			{
 				$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
