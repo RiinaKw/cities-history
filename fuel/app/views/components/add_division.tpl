@@ -18,13 +18,13 @@
 							<label class="row">
 								<span class="col-4">自治体名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name" value="" />
+									<input class="form-control" type="text" name="name" value="" required="required" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">自治体名かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name_kana" value="" />
+									<input class="form-control" type="text" name="name_kana" value="" required="required" />
 								</div>
 							</label>
 							<label class="row">

@@ -34,10 +34,12 @@ class Controller_List extends Controller_Layout
 		{
 			$divisions = Model_Division::get_top_level();
 		}
+		$count = [];
 		if ($top_division == null || $top_division && $top_division->postfix == '県')
 		{
 			foreach ($divisions as &$division)
 			{
+				$count[$division->id] = $division->get_postfix_count($date);
 				$division->path = $division->get_path(null, true);
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 
@@ -50,6 +52,21 @@ class Controller_List extends Controller_Layout
 				$countries = Model_Division::get_by_postfix_and_date($division->id, '郡', $date);
 				foreach ($countries as &$country)
 				{
+					$count[$country->id] = $country->get_postfix_count($date);
+					if ($country->parent_division_id)
+					{
+						foreach ($count[$country->id] as $postfix => $postfix_count)
+						{
+							if (isset($count[$country->parent_division_id][$postfix]))
+							{
+								$count[$country->parent_division_id][$postfix] += $postfix_count;
+							}
+							else
+							{
+								$count[$country->parent_division_id][$postfix] = $postfix_count;
+							}
+						}
+					}
 					$towns = Model_Division::get_by_parent_division_id_and_date($country->id, $date);
 					$towns_arr = [];
 					foreach ($towns as $town_id)
@@ -77,6 +94,7 @@ class Controller_List extends Controller_Layout
 			{
 				$division->path = $division->get_path(null, true);
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
+				$count[$division->id] = $division->get_postfix_count($date);
 
 				$towns = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
 				$towns_arr = [];
@@ -104,6 +122,7 @@ class Controller_List extends Controller_Layout
 		$content->path = $path;
 		$content->path_kana = $path_kana;
 		$content->divisions = $divisions;
+		$content->count = $count;
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_all_list = Helper_Uri::create('list.index');
 

@@ -35,7 +35,7 @@
 				</ul>
 				<form class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">
 					<div class="input-group">
-						<input class="form-control" type="text" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
+						<input class="form-control" type="search" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
 						<span class="input-group-append">
 							<button class="btn btn-outline-default mb-2 my-sm-0" type="submit">
 								<i class="fa fa-search"></i>

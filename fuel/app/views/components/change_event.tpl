@@ -14,13 +14,13 @@
 							<label class="row">
 								<span class="col-4">イベント種別</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="type" name="type" />
+									<input class="form-control" type="text" id="type" name="type" required="required" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">日付</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="date" name="date" />
+									<input class="form-control" type="text" id="date" name="date" required="required" />
 								</div>
 							</label>
 							<table class="table table-sm table-borderless">

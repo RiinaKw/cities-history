@@ -175,6 +175,38 @@ class Model_Division extends Model_Base
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_by_postfix_and_date()
 
+	public function get_postfix_count($date)
+	{
+		$query = DB::select('d.postfix', [DB::expr('COUNT(d.postfix)'), 'postfix_count'])
+			->from([self::$_table_name, 'd'])
+			->join(['events', 's'], 'LEFT OUTER')
+			->on('d.start_event_id', '=', 's.id')
+			->join(['events', 'e'], 'LEFT OUTER')
+			->on('d.end_event_id', '=', 'e.id')
+			->where('d.deleted_at', '=', null)
+			->where('d.parent_division_id', '=', $this->id)
+			->group_by('d.postfix');
+		if ($date)
+		{
+			$query->and_where_open()
+				->where('s.date', '<=', $date)
+				->or_where('s.date', '=', null)
+				->and_where_close()
+				->and_where_open()
+				->where('e.date', '>=', $date)
+				->or_where('e.date', '=', null)
+				->and_where_close();
+		}
+
+		$arr = $query->execute()->as_array();
+		$result = [];
+		foreach ($arr as $item)
+		{
+			$result[$item['postfix']] = (int)$item['postfix_count'];
+		}
+		return $result;
+	}
+
 	public static function get_by_date($date = null, $parent_id = null)
 	{
 		$query = DB::select('d.*')

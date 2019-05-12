@@ -20,6 +20,7 @@ h1 {
 }
 
 .main-container {
+	/* Margin top by header height */
 	margin-top: 58px;
 }
 
@@ -72,6 +73,10 @@ h1 {
 	.grid {
 		display: block !important;
 	}
+}
+
+.count {
+	margin-bottom: 0.2rem;
 }
 
 .table .checkbox-wrapper {
