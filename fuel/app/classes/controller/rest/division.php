@@ -21,6 +21,9 @@ class Controller_Rest_Division extends Controller_Rest
 				$pathes[] = $path;
 			}
 		}
+		usort($pathes, function($a, $b){
+			return mb_strlen($a) < mb_strlen($b) ? -1 : (mb_strlen($a) > mb_strlen($b) ? 1 : 0);
+		});
 		$response = [
 			'query' => $query,
 			'suggestions' => $pathes,
