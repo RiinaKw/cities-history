@@ -38,11 +38,11 @@
 						<header>
 							<h3><a href="{{$division.url_detail}}">{{$division->get_fullname()}}</a></h3>
 							<p class="count">{{strip}}
-								{{if isset($count[$division->id]['市']) && $count[$division->id]['市']}}
-									{{$count[$division->id]['市']}}市
-								{{/if}}
 								{{if isset($count[$division->id]['区']) && $count[$division->id]['区']}}
 									{{$count[$division->id]['区']}}区
+								{{/if}}
+								{{if isset($count[$division->id]['市']) && $count[$division->id]['市']}}
+									{{$count[$division->id]['市']}}市
 								{{/if}}
 								{{if isset($count[$division->id]['郡']) && $count[$division->id]['郡']}}
 									{{$count[$division->id]['郡']}}郡
