@@ -20,7 +20,6 @@ class Create_divisions
 			'updated_at'         => array( 'type' => 'timestamp', 'null' => true),
 			'deleted_at'         => array( 'type' => 'timestamp', 'null' => true),
 		), array('id'));
-		\DBUtil::create_index('divisions', 'name', 'idx_divisions_name');
 		\DBUtil::create_index('divisions', 'parent_division_id', 'idx_divisions_parent_division_id');
 	}
 
