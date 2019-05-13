@@ -19,7 +19,6 @@ class Controller_Division extends Controller_Layout
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 
-
 		$events = Model_Event_Detail::get_by_division_id($division->id);
 		// 終了インベントを先頭に
 		foreach ($events as $key => $event)

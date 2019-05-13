@@ -48,6 +48,17 @@ class Model_Division extends Model_Base
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_all()
 
+	public static function query($q)
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
+			//->where(DB::expr('MATCH(fullname)'), 'AGAINST', DB::expr('(\'+'.$q.'\' IN BOOLEAN MODE)'));
+			->where('fullname', 'LIKE', '%'.$q.'%');
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	}
+
 	public static function search($q)
 	{
 		$q = str_replace(array('\\', '%', '_'), array('\\\\', '\%', '\_'), $q);
@@ -55,8 +66,8 @@ class Model_Division extends Model_Base
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null)
 			->and_where_open()
-			->where(DB::expr('concat(name, postfix)'), 'LIKE', '%'.$q.'%')
-			->or_where(DB::expr('concat(name_kana, postfix_kana)'), 'LIKE', '%'.$q.'%')
+			->where('fullname', 'LIKE', '%'.$q.'%')
+			->or_where('fullname_kana', 'LIKE', '%'.$q.'%')
 			->and_where_close()
 			->order_by('name_kana', 'ASC');
 

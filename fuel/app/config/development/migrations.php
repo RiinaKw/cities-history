@@ -14,6 +14,8 @@ return array (
         5 => '006_add_government_code_to_divisions',
         6 => '007_create_reference_dates',
         7 => '008_add_no_to_event_details',
+        8 => '009_add_fullname_to_divisions',
+        9 => '010_update_fullname_in_divisions',
       ),
     ),
     'module' => 

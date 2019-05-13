@@ -9,9 +9,11 @@ class Controller_Rest_Division extends Controller_Rest
 {
 	public function get_list()
 	{
+		$start = microtime(true);
+
 		$query = Input::get('query');
 
-		$divisions = Model_Division::get_all();
+		$divisions = Model_Division::query($query);
 		$pathes = [];
 		foreach ($divisions as $division)
 		{
@@ -24,7 +26,12 @@ class Controller_Rest_Division extends Controller_Rest
 		usort($pathes, function($a, $b){
 			return mb_strlen($a) < mb_strlen($b) ? -1 : (mb_strlen($a) > mb_strlen($b) ? 1 : 0);
 		});
+
+		$end = microtime(true);
+
 		$response = [
+			'time' => $end - $start,
+			'sql' => DB::last_query(),
 			'query' => $query,
 			'suggestions' => $pathes,
 		];
