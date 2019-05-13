@@ -44,18 +44,34 @@ class Controller_List extends Controller_Layout
 				$division->path = $division->get_path(null, true);
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 
+				// 都道府県 > 市
 				$cities = Model_Division::get_by_postfix_and_date($division->id, '市', $date);
 				foreach ($cities as &$city)
 				{
 					$city->path = $city->get_path(null, true);
 					$city->url_detail = Helper_Uri::create('division.detail', ['path' => $city->path]);
+
+					// 都道府県 > 市 > 区
+					$wards = Model_Division::get_by_postfix_and_date($city->id, '区', $date);
+					$wards_count = $city->get_postfix_count($date);
+					foreach ($wards as &$ward)
+					{
+						$ward->path = $ward->get_path(null, true);
+						$ward->url_detail = Helper_Uri::create('division.detail', ['path' => $ward->path]);
+					}
+					$city->wards = $wards;
+					$city->wards_count = $wards_count['区'];
 				}
+
+				// 都道府県 > 区
 				$wards = Model_Division::get_by_postfix_and_date($division->id, '区', $date);
 				foreach ($wards as &$ward)
 				{
 					$ward->path = $ward->get_path(null, true);
 					$ward->url_detail = Helper_Uri::create('division.detail', ['path' => $ward->path]);
 				}
+
+				// 都道府県 > 郡
 				$countries = Model_Division::get_by_postfix_and_date($division->id, '郡', $date);
 				foreach ($countries as &$country)
 				{
@@ -74,6 +90,7 @@ class Controller_List extends Controller_Layout
 							}
 						}
 					}
+					// 都道府県 > 郡 > 町村
 					$towns = Model_Division::get_by_parent_division_id_and_date($country->id, $date);
 					$towns_arr = [];
 					foreach ($towns as $town_id)

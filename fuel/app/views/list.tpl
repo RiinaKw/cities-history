@@ -80,6 +80,22 @@
 											<header>
 												<h4><a href="{{$city.url_detail}}">{{$city->get_fullname()}}</a></h4>
 											</header>
+{{if $city->wards}}
+											<p class="count">{{strip}}
+												{{$city.wards_count}}区
+											{{/strip}}</p>
+											<ul>
+{{foreach from=$city->wards item=ward}}
+												<li>
+													<article>
+														<header>
+															<h5><a href="{{$ward.url_detail}}">{{$ward->get_fullname()}}</a></h5>
+														</header>
+													</article>
+												</li>
+{{/foreach}}
+											</ul>
+{{/if}}
 										</article>
 									</li>
 {{/foreach}}
