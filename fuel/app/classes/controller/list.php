@@ -59,8 +59,11 @@ class Controller_List extends Controller_Layout
 						$ward->path = $ward->get_path(null, true);
 						$ward->url_detail = Helper_Uri::create('division.detail', ['path' => $ward->path]);
 					}
-					$city->wards = $wards;
-					$city->wards_count = $wards_count['区'];
+					if ($wards)
+					{
+						$city->wards = $wards;
+						$city->wards_count = $wards_count['区'];
+					}
 				}
 
 				// 都道府県 > 区

@@ -80,9 +80,9 @@
 											<header>
 												<h4><a href="{{$city.url_detail}}">{{$city->get_fullname()}}</a></h4>
 											</header>
-{{if $city->wards}}
+{{if isset($city->wards)}}
 											<p class="count">{{strip}}
-												{{$city.wards_count}}区
+												{{$city->wards_count}}区
 											{{/strip}}</p>
 											<ul>
 {{foreach from=$city->wards item=ward}}
