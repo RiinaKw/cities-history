@@ -200,7 +200,9 @@ function create_map(id, shapes)
 {{/foreach}}
 							</ul>
 						</section>
-						<div class="map col-sm-5 mb-4" id="map-{{$event.event_id}}"></div>
+						<div class="map col-sm-5 mb-4" id="map-{{$event.event_id}}">
+							<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+						</div>
 						<script>
 							$(function(){
 								var shapes = [];
@@ -210,8 +212,8 @@ function create_map(id, shapes)
 {{/if}}
 {{/foreach}}
 								if (shapes.length) {
-									create_map("map-{{$event.event_id}}", shapes);
 									$("#map-{{$event.event_id}}").show();
+									create_map("map-{{$event.event_id}}", shapes);
 								}
 							});
 						</script>
