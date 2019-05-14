@@ -32,4 +32,5 @@ return array(
 		'index' => '/',
 		'division' => 'list/:path',
 	),
+	'geoshape' => 'geoshape?path=:path',
 );

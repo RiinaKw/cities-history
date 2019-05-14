@@ -38,7 +38,7 @@ class Controller_Event extends Controller_Layout
 				'birth'    => Input::post('birth.'.$key),
 				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
-				'json'     => Input::post('json.'.$key),
+				'geoshape' => Input::post('geoshape.'.$key),
 			];
 		}
 
@@ -72,7 +72,7 @@ class Controller_Event extends Controller_Layout
 					'event_id' => $event->id,
 					'division_id' => $division->id,
 					'division_result' => $item['result'],
-					'json' => $item['json'],
+					'geoshape' => $item['geoshape'],
 				]);
 				$detail->save();
 
@@ -132,7 +132,7 @@ class Controller_Event extends Controller_Layout
 				'birth'    => Input::post('birth.'.$key),
 				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
-				'json'     => Input::post('json.'.$key),
+				'geoshape' => Input::post('geoshape.'.$key),
 			];
 		}
 
@@ -167,7 +167,7 @@ class Controller_Event extends Controller_Layout
 							'event_id' => $event->id,
 							'division_id' => $division->id,
 							'division_result' => $item['result'],
-							'json' => $item['json'],
+							'geoshape' => $item['geoshape'],
 						]);
 						$detail->save();
 					}
@@ -176,7 +176,7 @@ class Controller_Event extends Controller_Layout
 						$detail = Model_Event_Detail::find_by_pk($id);
 						$detail->no = $item['no'];
 						$detail->division_result = $item['result'];
-						$detail->json = $item['json'];
+						$detail->geoshape = $item['geoshape'];
 						$detail->save();
 					} // if ($id == 'new')
 				} // if ($item['delete'])

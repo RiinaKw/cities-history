@@ -211,8 +211,8 @@ function create_map(id, shapes)
 							$(function(){
 								var shapes = [];
 {{foreach from=$event.divisions item=d}}
-{{if $d && $d.json}}
-								shapes.push("{{$d.json}}");
+{{if $d && $d.url_geoshape}}
+								shapes.push("{{$d.url_geoshape}}");
 {{/if}}
 {{/foreach}}
 								if (shapes.length) {

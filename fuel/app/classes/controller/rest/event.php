@@ -27,13 +27,13 @@ class Controller_Rest_Event extends Controller_Rest
 		foreach ($divisions as $division)
 		{
 			$response[] = [
-				'id'     => $division->event_detail_id,
-				'name'   => $division->name,
-				'path'   => $division->get_path(null, true),
-				'result' => $division->division_result,
-				'birth'  => ($division->start_event_id == $event->id),
-				'death'  => ($division->end_event_id == $event->id),
-				'json'   => $division->json,
+				'id'        => $division->event_detail_id,
+				'name'      => $division->name,
+				'path'      => $division->get_path(null, true),
+				'result'    => $division->division_result,
+				'birth'     => ($division->start_event_id == $event->id),
+				'death'     => ($division->end_event_id == $event->id),
+				'geoshape'  => $division->geoshape,
 			];
 		}
 		return $this->response($response);

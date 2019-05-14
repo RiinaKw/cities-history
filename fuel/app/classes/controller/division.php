@@ -66,6 +66,14 @@ class Controller_Division extends Controller_Layout
 				{
 					$d_path = $d->get_path(null, true);
 					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
+					if ($d->geoshape)
+					{
+						$d->url_geoshape = Helper_Uri::create('geoshape', ['path' => $d->geoshape]);
+					}
+					else
+					{
+						$d->url_geoshape = '';
+					}
 				}
 			}
 			$event->divisions = $divisions;

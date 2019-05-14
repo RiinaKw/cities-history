@@ -16,7 +16,7 @@ return array (
         7 => '008_add_no_to_event_details',
         8 => '009_add_fullname_to_divisions',
         9 => '010_update_fullname_in_divisions',
-        10 => '011_add_json_to_event_details',
+        10 => '011_add_geoshape_to_event_details',
       ),
     ),
     'module' => 

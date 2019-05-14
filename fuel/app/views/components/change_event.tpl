@@ -83,12 +83,12 @@ function add_row($tbody, idx, detail)
 		$input_division.val(detail.path);
 	}
 	$input_division.appendTo($td_division);
-	var $input_json = $('<input type="text" />').addClass("form-control");
-	$input_json.attr("name", "json["+idx+"]");
-	if (detail.json) {
-		$input_json.val(detail.json);
+	var $input_geoshape = $('<input type="text" />').addClass("form-control");
+	$input_geoshape.attr("name", "geoshape["+idx+"]");
+	if (detail.geoshape) {
+		$input_geoshape.val(detail.geoshape);
 	}
-	$input_json.appendTo($td_division);
+	$input_geoshape.appendTo($td_division);
 
 	$input_division.devbridgeAutocomplete({
 		serviceUrl: "{{$root}}/division/list.json"
