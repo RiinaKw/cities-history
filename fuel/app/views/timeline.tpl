@@ -217,8 +217,7 @@ function create_map(id, shapes)
 {{/foreach}}
 								if (shapes.length) {
 									create_map("map-{{$event.event_id}}", shapes);
-								} else {
-									$("#map-{{$event.event_id}}").hide();
+									$("#map-{{$event.event_id}}").show();
 								}
 							});
 						</script>

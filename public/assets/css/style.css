@@ -152,10 +152,11 @@ time {
 }
 .timeline > article ul {
 	margin: 0;
-	padding-bottom: 1rem;
+	padding: 0 0 1rem 0.5rem;
 }
 
 .timeline .map {
+	display: none;
 	height: 300px;
 }
 .timeline .map path {
