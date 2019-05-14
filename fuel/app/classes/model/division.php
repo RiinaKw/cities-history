@@ -90,6 +90,7 @@ class Model_Division extends Model_Base
 					'postfix' => $matches['postfix'],
 					'postfix_kana' => '',
 					'fullname' => $matches['place'].$matches['postfix'],
+					'fullname_kana' => '',
 					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
 					'parent_division_id' => $parent_id,
 				]);
