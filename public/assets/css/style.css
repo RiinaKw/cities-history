@@ -156,9 +156,7 @@ time {
 }
 
 .timeline .map {
-	margin-bottom: 20px;
-	width: 200px;
-	height: 200px;
+	height: 300px;
 }
 .timeline .map path {
 	stroke: #ff0000;

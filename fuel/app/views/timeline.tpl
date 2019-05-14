@@ -186,7 +186,7 @@ function create_map(id, shapes)
 					<article
 						class="row editable {{if $event->birth}}birth{{/if}} {{if $event->live}}live{{/if}} {{if $event->death}}death{{/if}}"
 						data-event-id="{{$event.event_id}}">
-						<section class="col-sm-9">
+						<section class="col-sm-7">
 							<header class="clearfix">
 								<h3 class="float-left">{{$event.type|escape}}</h3>
 								<time class="float-right" datetime="{{$event.date}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
@@ -206,7 +206,7 @@ function create_map(id, shapes)
 {{/foreach}}
 							</ul>
 						</section>
-						<div class="map col-sm-3" id="map-{{$event.event_id}}"></div>
+						<div class="map col-sm-5 mb-4" id="map-{{$event.event_id}}"></div>
 						<script>
 							$(function(){
 								var shapes = [];
