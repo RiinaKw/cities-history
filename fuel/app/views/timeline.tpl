@@ -59,11 +59,6 @@ function set_coord(map, coord)
 	var lng = coord[0];
 	var lat = coord[1];
 
-	var count = map.coord_count;
-	map.lng_avg = map.lng_avg * count / (count + 1) + lng / (count + 1);
-	map.lat_avg = map.lat_avg * count / (count + 1) + lat / (count + 1);
-	++map.coord_count;
-
 	if (map.lng_min > lng) {
 		map.lng_min = lng;
 	}
@@ -80,14 +75,16 @@ function set_coord(map, coord)
 
 function set_map_center(map)
 {
+	var lng_center = (map.lng_max + map.lng_min) / 2;
+	var lat_center = (map.lat_max + map.lat_min) / 2;
 	var width = map.lng_max - map.lng_min;
 	var height = map.lat_max - map.lat_min;
 	var size = (width > height ? width : height);
 
-	var zoom = Math.floor( 9 + 0.15 / size );
+	var zoom = Math.floor( 10 + 0.15 / size );
 
 	map.setView(
-		[map.lat_avg, map.lng_avg], // center
+		[lat_center, lng_center], // center
 		zoom // zoom
 	); // map.setView()
 } // function set_map_center()
@@ -153,9 +150,6 @@ function load(map, url, success)
 function create_map(id, shapes)
 {
 	var map = L.map(id);
-	map.coord_count = 0;
-	map.lng_avg = 0;
-	map.lat_avg = 0;
 	map.lng_min = 180;
 	map.lat_min = 90;
 	map.lng_max = -180;
