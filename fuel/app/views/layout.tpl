@@ -78,7 +78,12 @@
 
 		<footer class="footer text-center mt-auto py-3">
 			<div class="container">
-				<span class="text-muted">{{Config::get('common.copyright')}}</span>
+				<div class="copyright text-muted">{{Config::get('common.copyright')}}</div>
+				<div class="small text-muted">
+					行政区域データは
+					<a href="http://geoshape.ex.nii.ac.jp/city/" target="_blank">歴史的行政区域データセットβ版 | Geoshapeリポジトリ</a>
+					の図形データを使用しています。
+				</div>
 			</div>
 		</footer>
 	</body>
