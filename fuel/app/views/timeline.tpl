@@ -27,30 +27,201 @@
 				<li><a href="{{$url_belongto_timeline}}">所属自治体タイムライン</a></li>
 			</ul>
 
-			<div class="col-md-6 offset-md-3 pb-3">
+<style>
+	.leaflet-container {background: #fff;}
+</style>
+<script>
+"use strict";
+
+function geojson_style(prop) {
+  var s = {};
+  for(var name in prop) {
+    if(name.match(/^_/) && !name.match(/_markerType/)){
+      if( prop['_markerType']=='Circle' && name =='_radius'){continue;}
+      s[name.substr(1)]=prop[name];
+    }
+  }
+  return s;
+}
+
+function popup_properties(prop) {
+  var s = ''
+  for(var name in prop) {
+    if(!name.match(/^_/)){
+      s += name + "：" + prop[name] + "<br />";
+    }
+  }
+  return s;
+}
+
+function set_coord(map, coord)
+{
+	var lng = coord[0];
+	var lat = coord[1];
+
+	var count = map.coord_count;
+	map.lng_avg = map.lng_avg * count / (count + 1) + lng / (count + 1);
+	map.lat_avg = map.lat_avg * count / (count + 1) + lat / (count + 1);
+	++map.coord_count;
+
+	if (map.lng_min > lng) {
+		map.lng_min = lng;
+	}
+	if (lng > map.lng_max) {
+		map.lng_max = lng;
+	}
+	if (map.lat_min > lat) {
+		map.lat_min = lat;
+	}
+	if (lat > map.lat_max) {
+		map.lat_max = lat;
+	}
+} // function set_coord()
+
+function set_map_center(map)
+{
+	var width = map.lng_max - map.lng_min;
+	var height = map.lat_max - map.lat_min;
+	var size = (width > height ? width : height);
+
+	var zoom = Math.floor( 9 + 0.15 / size );
+
+	map.setView(
+		[map.lat_avg, map.lng_avg], // center
+		zoom // zoom
+	); // map.setView()
+} // function set_map_center()
+
+function load(map, url, success)
+{
+	$.getJSON(
+		url,
+		function(data) {
+			// 区域の中心を算出
+			for (var idx in data.features[0].geometry.coordinates) {
+				var shape = data.features[0].geometry.coordinates[idx];
+				for (var idx2 in shape[0]) {
+					set_coord(map, shape[0][idx2]);
+				}
+			}
+
+			var divisionLayer = L.geoJson(data, {
+				pointToLayer: function (feature, latlng) {
+					var s = geojson_style(feature.properties);
+					if(feature.properties['_markerType']=='Icon') {
+						var myIcon = L.icon(s);
+						return L.marker(latlng, {icon: myIcon});
+					}
+					if(feature.properties['_markerType']=='DivIcon') {
+						var myIcon = L.divIcon(s);
+						return L.marker(latlng, {icon: myIcon});
+					}
+					if(feature.properties['_markerType']=='Circle') {
+						return L.circle(latlng,feature.properties['_radius'],s);
+					}
+					if(feature.properties['_markerType']=='CircleMarker') {
+						return L.circleMarker(latlng,s);
+					}
+				},
+				style: function (feature) {
+					if(!feature.properties['_markerType']) {
+						var s = geojson_style(feature.properties);
+						return s;
+					}
+				},
+				onEachFeature: function (feature, layer) {
+					var name = feature.properties.N03_001;
+					if (feature.properties.N03_002) {
+						name += feature.properties.N03_002;
+					}
+					if (feature.properties.N03_003) {
+						name += feature.properties.N03_003;
+					}
+					if (feature.properties.N03_004) {
+						name += feature.properties.N03_004;
+					}
+				  layer.bindPopup(popup_properties({'名称': name}));
+				}
+			}); // L.geoJson
+
+			set_map_center(map);
+			divisionLayer.addTo(map);
+		}
+	); // $.getJSON
+} // function load()
+
+function create_map(id, shapes)
+{
+	var map = L.map(id);
+	map.coord_count = 0;
+	map.lng_avg = 0;
+	map.lat_avg = 0;
+	map.lng_min = 180;
+	map.lat_min = 90;
+	map.lng_max = -180;
+	map.lat_max = -90;
+
+	for (var idx in shapes) {
+		load(map, shapes[idx]);
+	}
+
+	// 背景地図設定
+	var std = L.tileLayer(
+		'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
+		{
+			attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル（標準地図）</a>",
+			maxNativeZoom: 18,
+			maxZoom: 18,
+			opacity: 0.5
+		}
+	).addTo(map);
+
+	L.control.scale({imperial: false}).addTo(map);
+} // function create_map()
+</script>
+
+			<div class="col-md-10 offset-md-1 pb-3">
 				<section class="timeline">
 {{foreach name=events from=$events item=event}}
 					<article
-						class="editable {{if $event->birth}}birth{{/if}} {{if $event->live}}live{{/if}} {{if $event->death}}death{{/if}}"
+						class="row editable {{if $event->birth}}birth{{/if}} {{if $event->live}}live{{/if}} {{if $event->death}}death{{/if}}"
 						data-event-id="{{$event.event_id}}">
-						<header class="clearfix">
-							<h3 class="float-left">{{$event.type|escape}}</h3>
-							<time class="float-right" datetime="{{$event.date}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
-						</header>
-						<ul>
+						<section class="col-sm-9">
+							<header class="clearfix">
+								<h3 class="float-left">{{$event.type|escape}}</h3>
+								<time class="float-right" datetime="{{$event.date}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
+							</header>
+							<ul>
 {{foreach from=$event.divisions item=d}}
-							<li>
-								<a href="{{$d->url_detail|escape}}">
+								<li>
+									<a href="{{$d->url_detail|escape}}">
 {{if $division.id == $d.id}}
-									<b>{{$d.fullname|escape}}</b>,
+										<b>{{$d.fullname|escape}}</b>,
 {{else}}
-									{{$d.fullname|escape}},
+										{{$d.fullname|escape}},
 {{/if}}
-									{{$d.division_result|escape}}
-								</a>
-							</li>
+										{{$d.division_result|escape}}
+									</a>
+								</li>
 {{/foreach}}
-						</ul>
+							</ul>
+						</section>
+						<div class="map col-sm-3" id="map-{{$event.event_id}}"></div>
+						<script>
+							$(function(){
+								var shapes = [];
+{{foreach from=$event.divisions item=d}}
+{{if $d && $d.json}}
+								shapes.push("{{$d.json}}");
+{{/if}}
+{{/foreach}}
+								if (shapes.length) {
+									create_map("map-{{$event.event_id}}", shapes);
+								} else {
+									$("#map-{{$event.event_id}}").hide();
+								}
+							});
+						</script>
 					</article>
 {{foreachelse}}
 					<p>no events</p>

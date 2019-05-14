@@ -33,6 +33,7 @@ class Controller_Rest_Event extends Controller_Rest
 				'result' => $division->division_result,
 				'birth'  => ($division->start_event_id == $event->id),
 				'death'  => ($division->end_event_id == $event->id),
+				'json'   => $division->json,
 			];
 		}
 		return $this->response($response);
