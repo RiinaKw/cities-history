@@ -29,9 +29,10 @@
 										<th class="text-center" scope="col" style="width: 3%;"></th>
 										<th scope="col" style="width: 50%;">自治体</th>
 										<th scope="col" style="width: 18%;">結果</th>
-										<th class="text-center" scope="col" style="width: 8%;">新設</th>
-										<th class="text-center" scope="col" style="width: 8%;">廃止 /<br />存続</th>
-										<th class="text-center" scope="col" style="width: 8%;">削除</th>
+										<th class="text-center" scope="col" style="width: 6%;">新設</th>
+										<th class="text-center" scope="col" style="width: 6%;">廃止 /<br />存続</th>
+										<th class="text-center" scope="col" style="width: 6%;">参照</th>
+										<th class="text-center" scope="col" style="width: 6%;">削除</th>
 									</tr>
 								</thead>
 								<tbody></tbody>
@@ -116,6 +117,14 @@ function add_row($tbody, idx, detail)
 	$input_death.appendTo($td_death);
 	if (detail.death) {
 		$input_death.prop("checked", true);
+	}
+
+	var $td_refer = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $input_refer = $('<input type="checkbox" />');
+	$input_refer.attr("value", "true").attr("name", "refer["+idx+"]");
+	$input_refer.appendTo($td_refer);
+	if (detail.is_refer) {
+		$input_refer.prop("checked", true);
 	}
 
 	var $td_delete = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);

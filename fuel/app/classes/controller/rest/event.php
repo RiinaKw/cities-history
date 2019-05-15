@@ -34,6 +34,7 @@ class Controller_Rest_Event extends Controller_Rest
 				'birth'     => ($division->start_event_id == $event->id),
 				'death'     => ($division->end_event_id == $event->id),
 				'geoshape'  => $division->geoshape,
+				'is_refer'  => (int)$division->is_refer,
 			];
 		}
 		return $this->response($response);

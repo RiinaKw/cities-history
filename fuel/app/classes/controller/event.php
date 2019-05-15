@@ -41,6 +41,7 @@ class Controller_Event extends Controller_Layout
 				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
 				'geoshape' => Input::post('geoshape.'.$key),
+				'refer'    => Input::post('refer.'.$key),
 			];
 		}
 
@@ -75,6 +76,7 @@ class Controller_Event extends Controller_Layout
 					'division_id' => $division->id,
 					'division_result' => $item['result'],
 					'geoshape' => $item['geoshape'],
+					'is_refer' => $item['refer'] ? true : false,
 				]);
 				$detail->save();
 
@@ -136,6 +138,7 @@ class Controller_Event extends Controller_Layout
 				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
 				'geoshape' => Input::post('geoshape.'.$key),
+				'refer'    => Input::post('refer.'.$key),
 			];
 		}
 
@@ -171,6 +174,7 @@ class Controller_Event extends Controller_Layout
 							'division_id' => $division->id,
 							'division_result' => $item['result'],
 							'geoshape' => $item['geoshape'],
+							'is_refer' => $item['refer'] ? true : false,
 						]);
 						$detail->save();
 					}
@@ -180,6 +184,7 @@ class Controller_Event extends Controller_Layout
 						$detail->no = $item['no'];
 						$detail->division_result = $item['result'];
 						$detail->geoshape = $item['geoshape'];
+						$detail->is_refer = $item['refer'] ? true : false;
 						$detail->save();
 					} // if ($id == 'new')
 				} // if ($item['delete'])

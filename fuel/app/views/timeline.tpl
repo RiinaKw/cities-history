@@ -201,6 +201,7 @@ function create_map(id, shapes)
 							</header>
 							<ul>
 {{foreach from=$event.divisions item=d}}
+{{if ! $d->is_refer}}
 								<li>
 									<a href="{{$d->url_detail|escape}}">
 {{if $division.id == $d.id}}
@@ -211,6 +212,7 @@ function create_map(id, shapes)
 										{{$d.division_result|escape}}
 									</a>
 								</li>
+{{/if}}
 {{/foreach}}
 							</ul>
 						</section>
