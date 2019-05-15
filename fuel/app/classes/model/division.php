@@ -217,7 +217,19 @@ class Model_Division extends Model_Base
 		{
 			$result[$item['postfix']] = (int)$item['postfix_count'];
 		}
-		return $result;
+
+		$sorted = [];
+		if (isset($result['町']) && $result['町'])
+		{
+			$sorted['町'] = $result['町'];
+			unset($result['町']);
+		}
+		if (isset($result['村']) && $result['村'])
+		{
+			$sorted['村'] = $result['村'];
+			unset($result['村']);
+		}
+		return array_merge($sorted, $result);
 	}
 
 	public static function get_by_date($date = null, $parent_id = null)
