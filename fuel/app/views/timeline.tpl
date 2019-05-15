@@ -96,43 +96,34 @@ function set_map_center(map)
 	); // map.setView()
 } // function set_map_center()
 
-function load(map, url, success)
+function load(map, shape)
 {
 	$.getJSON(
-		url,
+		shape.url,
 		function(data) {
 			// 区域の中心を算出
 			for (var idx in data.features[0].geometry.coordinates) {
-				var shape = data.features[0].geometry.coordinates[idx];
-				for (var idx2 in shape[0]) {
-					set_coord(map, shape[0][idx2]);
+				var polygon = data.features[0].geometry.coordinates[idx];
+				for (var idx2 in polygon[0]) {
+					set_coord(map, polygon[0][idx2]);
 				}
 			}
 
+			console.log(shape);
+			var style = {};
+			if (shape.split) {
+				style.color = "#ff0000";
+			}
 			var divisionLayer = L.geoJson(data, {
-				pointToLayer: function (feature, latlng) {
-					var s = geojson_style(feature.properties);
-					if(feature.properties['_markerType']=='Icon') {
-						var myIcon = L.icon(s);
-						return L.marker(latlng, {icon: myIcon});
-					}
-					if(feature.properties['_markerType']=='DivIcon') {
-						var myIcon = L.divIcon(s);
-						return L.marker(latlng, {icon: myIcon});
-					}
-					if(feature.properties['_markerType']=='Circle') {
-						return L.circle(latlng,feature.properties['_radius'],s);
-					}
-					if(feature.properties['_markerType']=='CircleMarker') {
-						return L.circleMarker(latlng,s);
-					}
-				},
+				/*
 				style: function (feature) {
 					if(!feature.properties['_markerType']) {
 						var s = geojson_style(feature.properties);
 						return s;
 					}
 				},
+				*/
+				style: style,
 				onEachFeature: function (feature, layer) {
 					var name = feature.properties.N03_001;
 					if (feature.properties.N03_002) {
@@ -226,7 +217,10 @@ function create_map(id, shapes)
 								var shapes = [];
 {{foreach from=$event.divisions item=d}}
 {{if $d && $d.url_geoshape}}
-								shapes.push("{{$d.url_geoshape}}");
+								shapes.push({
+									url: "{{$d.url_geoshape}}",
+									split: "{{$d.split}}"
+								});
 {{/if}}
 {{/foreach}}
 								if (shapes.length) {
