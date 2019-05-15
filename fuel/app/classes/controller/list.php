@@ -146,7 +146,20 @@ class Controller_List extends Controller_Layout
 			{
 				$division->path = $division->get_path(null, true);
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
-				$count[$division->id] = $division->get_postfix_count($date);
+
+				$count_arr = $division->get_postfix_count($date);
+				$count[$division->id] = [];
+				if (isset($count_arr['町']) && $count_arr['町'])
+				{
+					$count[$division->id]['町'] = $count_arr['町'];
+					unset($count_arr['町']);
+				}
+				if (isset($count_arr['村']) && $count_arr['村'])
+				{
+					$count[$division->id]['村'] = $count_arr['村'];
+					unset($count_arr['村']);
+				}
+				$count[$division->id] = array_merge($count[$division->id], $count_arr);
 
 				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
 				$belongto_divisions = [
