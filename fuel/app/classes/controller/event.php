@@ -10,6 +10,8 @@
  */
 class Controller_Event extends Controller_Layout
 {
+	const SESSION_DIVISION_LIST = 'division';
+
 	public function before()
 	{
 		parent::before();
@@ -104,7 +106,8 @@ class Controller_Event extends Controller_Layout
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
 
-		Helper_Uri::redirect('division.detail', ['path' => Input::post('path')]);
+		$url = Session::get(self::SESSION_DIVISION_LIST);
+		Response::redirect($url);
 		return;
 	} // function post_add()
 
@@ -209,7 +212,8 @@ class Controller_Event extends Controller_Layout
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
 
-		Helper_Uri::redirect('division.detail', ['path' => Input::post('path')]);
+		$url = Session::get(self::SESSION_DIVISION_LIST);
+		Response::redirect($url);
 		return;
 	} // function action_edit()
 
