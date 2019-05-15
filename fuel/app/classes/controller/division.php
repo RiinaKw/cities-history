@@ -337,5 +337,5 @@ class Controller_Division extends Controller_Layout
 		{
 			Helper_Uri::redirect('top');
 		}
-	}
-} // class Controller_View
+	} // function action_delete()
+} // class Controller_Division

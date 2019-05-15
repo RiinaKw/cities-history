@@ -14,7 +14,7 @@ class Controller_Error extends Controller_Layout
 	public function before()
 	{
 		parent::before();
-	}
+	} // function before()
 
 	/**
 	 * The 400 action for the application.
