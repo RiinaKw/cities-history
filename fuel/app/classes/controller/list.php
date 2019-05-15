@@ -136,24 +136,6 @@ class Controller_List extends Controller_Layout
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 				$count[$division->id] = $division->get_postfix_count($date);
 
-/*
-				$towns = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
-				$towns_arr = [];
-				foreach ($towns as $town_id)
-				{
-					$town = Model_Division::find_by_pk($town_id);
-					$town->path = $town->get_path(null, true);
-					$town->url_detail = Helper_Uri::create('division.detail', ['path' => $town->path]);
-
-					$towns_arr[] = $town;
-				}
-				usort($towns_arr, function($a, $b){
-					return strcmp($a->name_kana, $b->name_kana);
-				});
-				$division->cities = $towns_arr;
-				$division->wards = [];
-				$division->countries = [];*/
-
 				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
 				$belongto_divisions = [
 					'区' => [],
