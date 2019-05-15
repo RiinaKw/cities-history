@@ -29,7 +29,7 @@ class Model_Event_Detail extends Model_Base
 			->from([self::$_table_name, 'd'])
 			->join(['events', 'e'])
 			->on('e.id', '=', 'd.event_id')
-			->where('e.is_refer', '=', false)
+			->where('d.is_refer', '=', false)
 			->where('e.deleted_at', '=', null)
 			->where('d.deleted_at', '=', null);
 		if (is_array($division_id))
