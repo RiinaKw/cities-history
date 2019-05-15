@@ -29,7 +29,7 @@ class Controller_Top extends Controller_Base
 		if ($user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
-			Helper_Uri::redirect('list');
+			Helper_Uri::redirect('top');
 		}
 		else
 		{
@@ -80,7 +80,14 @@ class Controller_Top extends Controller_Base
 		if ($user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
-			Response::redirect($redirect);
+			if ($redirect)
+			{
+				Response::redirect($redirect);
+			}
+			else
+			{
+				Helper_Uri::redirect('top');
+			}
 		}
 
 		$error_string = '';
