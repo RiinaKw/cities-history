@@ -153,6 +153,8 @@ function load(map, url, success)
 
 function create_map(id, shapes)
 {
+	$("#" + id).show();
+
 	var map = L.map(id);
 	map.lng_min = 180;
 	map.lat_min = 90;
@@ -161,8 +163,6 @@ function create_map(id, shapes)
 	map.$loading_pane = $("#" + id + " .loading");
 	map.shapes_count = shapes.length;
 	map.spapes_loaded = 0;
-
-	$("#" + id).show();
 
 	for (var idx in shapes) {
 		load(map, shapes[idx]);

@@ -159,10 +159,6 @@ time {
 	display: none;
 	height: 300px;
 }
-.timeline .map path {
-	stroke: #ff0000;
-	stroke-width: 3px;
-}
 .timeline .map .loading {
 	width: 100%;
 	height: 100%;
@@ -173,6 +169,12 @@ time {
 .timeline .map .loading img {
 	width: 24px;
 	height: 24px;
+}
+/* map svg */
+.timeline .map path {
+	stroke: #ff0000;
+	stroke-width: 3px;
+	stroke-opacity: 0.8;
 }
 
 .navbar {
