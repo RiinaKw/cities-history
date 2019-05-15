@@ -37,4 +37,4 @@ class Controller_Rest_Division extends Controller_Rest
 		];
 		return $this->response($response);
 	} // function get_list()
-} // class Controller_Rest_Job_Stoppedreport
+} // class Controller_Rest_Division

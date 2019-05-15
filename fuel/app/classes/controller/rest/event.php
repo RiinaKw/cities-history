@@ -39,4 +39,4 @@ class Controller_Rest_Event extends Controller_Rest
 		}
 		return $this->response($response);
 	} // function get_detail()
-} // class Controller_Rest_Job_Stoppedreport
+} // class Controller_Rest_Event
