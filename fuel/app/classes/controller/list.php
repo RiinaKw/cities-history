@@ -151,7 +151,7 @@ class Controller_List extends Controller_Layout
 						$d->path = $d->get_path(null, true);
 						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
 						$postfix = $d->postfix;
-						if ($postfix == '町' || $postfix == '村')
+						if ($postfix != '区' && $postfix != '市' && $postfix != '郡')
 						{
 							$postfix = '町村';
 						}

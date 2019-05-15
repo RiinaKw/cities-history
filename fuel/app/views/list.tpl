@@ -38,21 +38,9 @@
 						<header>
 							<h3><a href="{{$division.url_detail}}">{{$division->get_fullname()}}</a></h3>
 							<p class="count">{{strip}}
-								{{if isset($count[$division->id]['区']) && $count[$division->id]['区']}}
-									{{$count[$division->id]['区']}}区
-								{{/if}}
-								{{if isset($count[$division->id]['市']) && $count[$division->id]['市']}}
-									{{$count[$division->id]['市']}}市
-								{{/if}}
-								{{if isset($count[$division->id]['郡']) && $count[$division->id]['郡']}}
-									{{$count[$division->id]['郡']}}郡
-								{{/if}}
-								{{if isset($count[$division->id]['町']) && $count[$division->id]['町']}}
-									{{$count[$division->id]['町']}}町
-								{{/if}}
-								{{if isset($count[$division->id]['村']) && $count[$division->id]['村']}}
-									{{$count[$division->id]['村']}}村
-								{{/if}}
+								{{foreach from=$count[$division->id] key=postfix item=count}}
+									{{$count}}{{$postfix}}
+								{{/foreach}}
 							{{/strip}}</p>
 						</header>
 						<div class="grid-container">
@@ -123,21 +111,9 @@
 									<header>
 										<h4><a href="{{$country.url_detail}}">{{$country->get_fullname()}}</a></h4>
 										<p class="count">{{strip}}
-											{{if isset($count[$country->id]['市']) && $count[$country->id]['市']}}
-												{{$count[$country->id]['市']}}市
-											{{/if}}
-											{{if isset($count[$country->id]['区']) && $count[$country->id]['区']}}
-												{{$count[$country->id]['区']}}区
-											{{/if}}
-											{{if isset($count[$country->id]['郡']) && $count[$country->id]['郡']}}
-												{{$count[$country->id]['郡']}}郡
-											{{/if}}
-											{{if isset($count[$country->id]['町']) && $count[$country->id]['町']}}
-												{{$count[$country->id]['町']}}町
-											{{/if}}
-											{{if isset($count[$country->id]['村']) && $count[$country->id]['村']}}
-												{{$count[$country->id]['村']}}村
-											{{/if}}
+											{{foreach from=$count[$country->id] key=postfix item=count}}
+												{{$count}}{{$postfix}}
+											{{/foreach}}
 										{{/strip}}</p>
 									</header>
 									<section class="towns">
