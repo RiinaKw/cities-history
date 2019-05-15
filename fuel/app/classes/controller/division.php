@@ -234,28 +234,7 @@ class Controller_Division extends Controller_Layout
 		}
 
 		$division = Model_Division::forge();
-		$parent = Input::post('parent');
-		if ($parent)
-		{
-			$parent_division = Model_Division::get_by_path($parent);
-			if ( ! $parent_division)
-			{
-				$parent_division = Model_Division::set_path($parent);
-				$parent_division = array_pop($parent_division);
-			}
-			$division->parent_division_id = $parent_division->id;
-		}
-		else
-		{
-			$division->parent_division_id = null;
-		}
-		$division->name            = Input::post('name');
-		$division->name_kana       = Input::post('name_kana');
-		$division->postfix         = Input::post('postfix');
-		$division->postfix_kana    = Input::post('postfix_kana');
-		$division->identify        = Input::post('identify') ?: null;
-		$division->government_code = Input::post('government_code') ?: null;
-		$division->save();
+		$division->create(Input::post());
 
 		Model_Activity::insert_log([
 			'user_id' => Session::get('user.id'),
@@ -278,26 +257,7 @@ class Controller_Division extends Controller_Layout
 
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
-
-		$parent = Input::post('parent');
-		if ($parent)
-		{
-			$parent_division = Model_Division::get_by_path($parent);
-			if ( ! $parent_division)
-			{
-				$parent_division = Model_Division::set_path($parent);
-				$parent_division = array_pop($parent_division);
-			}
-			$division->parent_division_id = $parent_division->id;
-		}
-
-		$division->name            = Input::post('name');
-		$division->name_kana       = Input::post('name_kana');
-		$division->postfix         = Input::post('postfix');
-		$division->postfix_kana    = Input::post('postfix_kana');
-		$division->identify        = Input::post('identify') ?: null;
-		$division->government_code = Input::post('government_code') ?: null;
-		$division->save();
+		$division->create(Input::post());
 
 		Model_Activity::insert_log([
 			'user_id' => Session::get('user.id'),

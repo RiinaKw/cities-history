@@ -44,9 +44,32 @@ class Controller_List extends Controller_Layout
 				$division->path = $division->get_path(null, true);
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 
+				// 都道府県直下
+				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
+				$belongto_divisions = [
+					'区' => [],
+					'市' => [],
+					'郡' => [],
+					'町村' => [],
+				];
+				foreach ($ids as $id)
+				{
+					$d = Model_Division::find_by_pk($id);
+					if ($d->parent_division_id == $division->id)
+					{
+						$d->path = $d->get_path(null, true);
+						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
+						$postfix = $d->postfix;
+						if ($postfix == '町' || $postfix == '村')
+						{
+							$postfix = '町村';
+						}
+						$belongto_divisions[$postfix][] = $d;
+					}
+				}
+
 				// 都道府県 > 市
-				$cities = Model_Division::get_by_postfix_and_date($division->id, '市', $date);
-				foreach ($cities as &$city)
+				foreach ($belongto_divisions['市'] as &$city)
 				{
 					$city->path = $city->get_path(null, true);
 					$city->url_detail = Helper_Uri::create('division.detail', ['path' => $city->path]);
@@ -66,17 +89,8 @@ class Controller_List extends Controller_Layout
 					}
 				}
 
-				// 都道府県 > 区
-				$wards = Model_Division::get_by_postfix_and_date($division->id, '区', $date);
-				foreach ($wards as &$ward)
-				{
-					$ward->path = $ward->get_path(null, true);
-					$ward->url_detail = Helper_Uri::create('division.detail', ['path' => $ward->path]);
-				}
-
 				// 都道府県 > 郡
-				$countries = Model_Division::get_by_postfix_and_date($division->id, '郡', $date);
-				foreach ($countries as &$country)
+				foreach ($belongto_divisions['郡'] as &$country)
 				{
 					$count[$country->id] = $country->get_postfix_count($date);
 					if ($country->parent_division_id)
@@ -111,9 +125,7 @@ class Controller_List extends Controller_Layout
 					$country->url_detail = Helper_Uri::create('division.detail', ['path' => $country->path]);
 					$country->towns = $towns_arr;
 				}
-				$division->cities = $cities;
-				$division->wards = $wards;
-				$division->countries = $countries;
+				$division->belongto = $belongto_divisions;
 			}
 		}
 		else

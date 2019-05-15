@@ -56,10 +56,10 @@
 							{{/strip}}</p>
 						</header>
 						<div class="grid-container">
-{{if $division.wards}}
+{{if $division.belongto['区']}}
 							<section class="grid wards">
 								<ul>
-{{foreach from=$division.wards item=ward}}
+{{foreach from=$division.belongto['区'] item=ward}}
 									<li>
 										<article>
 											<header>
@@ -71,10 +71,10 @@
 								</ul>
 							</section><!-- .grid.wards -->
 {{/if}}
-{{if $division.cities}}
+{{if $division.belongto['市']}}
 							<section class="grid cities">
 								<ul>
-{{foreach from=$division.cities item=city}}
+{{foreach from=$division.belongto['市'] item=city}}
 									<li>
 										<article>
 											<header>
@@ -102,7 +102,22 @@
 								</ul>
 							</section><!-- .grid.cities -->
 {{/if}}
-{{foreach from=$division.countries item=country}}
+{{if $division.belongto['町村']}}
+	<section class="grid countries">
+		<ul>
+{{foreach from=$division.belongto['町村'] item=town}}
+			<li>
+				<article>
+					<header>
+						<h4><a href="{{$town.url_detail}}">{{$town->get_fullname()}}</a></h4>
+					</header>
+				</article>
+			</li>
+{{/foreach}}
+		</ul>
+	</section><!-- .grid.wards -->
+{{/if}}
+{{foreach from=$division.belongto['郡'] item=country}}
 							<section class="grid countries">
 								<article>
 									<header>

@@ -257,7 +257,8 @@ class Model_Division extends Model_Base
 			->on('d.start_event_id', '=', 's.id')
 			->join(['events', 'e'], 'LEFT OUTER')
 			->on('d.end_event_id', '=', 'e.id')
-			->where('parent_division_id', '=', $division_id);
+			->where('d.parent_division_id', '=', $division_id)
+			->where('d.deleted_at', '=', null);
 		if ($date)
 		{
 			$query->and_where_open()
@@ -334,5 +335,36 @@ class Model_Division extends Model_Base
 			$name .= '('.$this->identify.')';
 		}
 		return $name;
-	}
+	} // function get_fullname()
+
+	public function create($input)
+	{
+		$parent = $input['parent'];
+		if ($parent)
+		{
+			$parent_division = Model_Division::get_by_path($parent);
+			if ( ! $parent_division)
+			{
+				$parent_division = Model_Division::set_path($parent);
+				$parent_division = array_pop($parent_division);
+			}
+			$this->parent_division_id = $parent_division->id;
+		}
+		else
+		{
+			$this->parent_division_id = null;
+		}
+
+		$this->name            = $input['name'];
+		$this->name_kana       = $input['name_kana'];
+		$this->postfix         = $input['postfix'];
+		$this->postfix_kana    = $input['postfix_kana'];
+		$this->identify        = $input['identify'] ?: null;
+		$this->government_code = $input['government_code'] ?: null;
+		$this->save();
+
+		$this->fullname = $this->get_path(null, true);
+		$this->fullname_kana = $this->name_kana.$this->postfix_kana;
+		$this->save();
+	} // function create()
 } // class Model_Division
