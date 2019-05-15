@@ -39,7 +39,9 @@
 							<h3><a href="{{$division.url_detail}}">{{$division->get_fullname()}}</a></h3>
 							<p class="count">{{strip}}
 								{{foreach from=$count[$division->id] key=postfix item=count}}
-									{{$count}}{{$postfix}}
+									{{if $count}}
+										{{$count}}{{$postfix}}
+									{{/if}}
 								{{/foreach}}
 							{{/strip}}</p>
 						</header>
@@ -112,7 +114,9 @@
 										<h4><a href="{{$country.url_detail}}">{{$country->get_fullname()}}</a></h4>
 										<p class="count">{{strip}}
 											{{foreach from=$count[$country->id] key=postfix item=count}}
-												{{$count}}{{$postfix}}
+												{{if $count}}
+													{{$count}}{{$postfix}}
+												{{/if}}
 											{{/foreach}}
 										{{/strip}}</p>
 									</header>

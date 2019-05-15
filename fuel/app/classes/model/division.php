@@ -218,7 +218,28 @@ class Model_Division extends Model_Base
 			$result[$item['postfix']] = (int)$item['postfix_count'];
 		}
 
-		$sorted = [];
+		$sorted = [
+			'区' => 0,
+			'市' => 0,
+			'郡' => 0,
+			'町' => 0,
+			'村' => 0,
+		];
+		if (isset($result['区']) && $result['区'])
+		{
+			$sorted['区'] = $result['区'];
+			unset($result['区']);
+		}
+		if (isset($result['市']) && $result['市'])
+		{
+			$sorted['市'] = $result['市'];
+			unset($result['市']);
+		}
+		if (isset($result['郡']) && $result['郡'])
+		{
+			$sorted['郡'] = $result['郡'];
+			unset($result['郡']);
+		}
 		if (isset($result['町']) && $result['町'])
 		{
 			$sorted['町'] = $result['町'];
