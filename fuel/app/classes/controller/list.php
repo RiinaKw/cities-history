@@ -92,7 +92,19 @@ class Controller_List extends Controller_Layout
 				// 都道府県 > 郡
 				foreach ($belongto_divisions['郡'] as &$country)
 				{
-					$count[$country->id] = $country->get_postfix_count($date);
+					$count_arr = $country->get_postfix_count($date);
+					$count[$country->id] = [];
+					if (isset($count_arr['町']) && $count_arr['町'])
+					{
+						$count[$country->id]['町'] = $count_arr['町'];
+						unset($count_arr['町']);
+					}
+					if (isset($count_arr['村']) && $count_arr['村'])
+					{
+						$count[$country->id]['村'] = $count_arr['村'];
+						unset($count_arr['村']);
+					}
+					$count[$country->id] = array_merge($count[$country->id], $count_arr);
 					if ($country->parent_division_id)
 					{
 						foreach ($count[$country->id] as $postfix => $postfix_count)
