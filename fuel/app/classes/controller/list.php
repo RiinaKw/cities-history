@@ -136,6 +136,7 @@ class Controller_List extends Controller_Layout
 				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 				$count[$division->id] = $division->get_postfix_count($date);
 
+/*
 				$towns = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
 				$towns_arr = [];
 				foreach ($towns as $town_id)
@@ -151,7 +152,31 @@ class Controller_List extends Controller_Layout
 				});
 				$division->cities = $towns_arr;
 				$division->wards = [];
-				$division->countries = [];
+				$division->countries = [];*/
+
+				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
+				$belongto_divisions = [
+					'区' => [],
+					'市' => [],
+					'郡' => [],
+					'町村' => [],
+				];
+				foreach ($ids as $id)
+				{
+					$d = Model_Division::find_by_pk($id);
+					if ($d->parent_division_id == $division->id)
+					{
+						$d->path = $d->get_path(null, true);
+						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
+						$postfix = $d->postfix;
+						if ($postfix == '町' || $postfix == '村')
+						{
+							$postfix = '町村';
+						}
+						$belongto_divisions[$postfix][] = $d;
+					}
+				}
+				$division->belongto = $belongto_divisions;
 			}
 		}
 		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
