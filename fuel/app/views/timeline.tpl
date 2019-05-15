@@ -162,6 +162,8 @@ function create_map(id, shapes)
 	map.shapes_count = shapes.length;
 	map.spapes_loaded = 0;
 
+	$("#" + id).show();
+
 	for (var idx in shapes) {
 		load(map, shapes[idx]);
 	}
