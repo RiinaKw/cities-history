@@ -169,6 +169,7 @@ class Controller_Division extends Controller_Layout
 						{
 							$d->url_geoshape = '';
 						}
+						$d->split = ($d->division_result == '分割廃止');
 					}
 				}
 				$event->divisions = $divisions;
