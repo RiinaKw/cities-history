@@ -143,6 +143,10 @@ function load(map, url, success)
 
 			set_map_center(map);
 			divisionLayer.addTo(map);
+			++map.spapes_loaded;
+			if (map.spapes_loaded == map.shapes_count) {
+				map.$loading_pane.remove();
+			}
 		}
 	); // $.getJSON
 } // function load()
@@ -154,6 +158,9 @@ function create_map(id, shapes)
 	map.lat_min = 90;
 	map.lng_max = -180;
 	map.lat_max = -90;
+	map.$loading_pane = $("#" + id + " .loading");
+	map.shapes_count = shapes.length;
+	map.spapes_loaded = 0;
 
 	for (var idx in shapes) {
 		load(map, shapes[idx]);
@@ -201,7 +208,9 @@ function create_map(id, shapes)
 							</ul>
 						</section>
 						<div class="map col-sm-5 mb-4" id="map-{{$event.event_id}}">
-							<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+							<div class="loading">
+								{{Asset::img('loading.gif')}}
+							</div>
 						</div>
 						<script>
 							$(function(){
