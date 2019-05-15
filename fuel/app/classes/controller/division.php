@@ -91,7 +91,12 @@ class Controller_Division extends Controller_Layout
 		$content->path_kana = $path_kana;
 		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
 		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_belongto_timeline = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_belongto_timeline = [
+			'平成' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1989-01-01', 'end' => '2019-04-01']),
+			'昭和後期' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1950-01-01', 'end' => '1988-12-31']),
+			'大正～昭和前期' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1912-01-01', 'end' => '1949-12-31']),
+			'明治' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1878-01-01', 'end' => '1911-12-31']),
+		];
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
@@ -117,6 +122,8 @@ class Controller_Division extends Controller_Layout
 	public function action_belongto()
 	{
 		$path = $this->param('path');
+		$start = Input::get('start');
+		$end = Input::get('end');
 		$division = Model_Division::get_by_path($path);
 
 		$division_id_arr = Model_Division::get_by_parent_division_id_and_date($division->id);
@@ -124,7 +131,7 @@ class Controller_Division extends Controller_Layout
 		$events_arr = [];
 		if ($division_id_arr)
 		{
-			$events = Model_Event_Detail::get_by_division_id($division_id_arr);
+			$events = Model_Event_Detail::get_by_division_id($division_id_arr, $start, $end);
 			foreach ($events as &$event)
 			{
 				if (isset($events_arr[$event->event_id]))
@@ -181,7 +188,12 @@ class Controller_Division extends Controller_Layout
 		$content->path_kana = $path_kana;
 		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
 		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_belongto_timeline = Helper_Uri::create('division.belongto', ['path' => $path]);
+		$content->url_belongto_timeline = [
+			'平成' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1989-01-01', 'end' => '2019-04-01']),
+			'昭和後期' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1950-01-01', 'end' => '1988-12-31']),
+			'大正～昭和前期' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1912-01-01', 'end' => '1949-12-31']),
+			'明治' => Helper_Uri::create('division.belongto', ['path' => $path, 'start' => '1878-01-01', 'end' => '1911-12-31']),
+		];
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);

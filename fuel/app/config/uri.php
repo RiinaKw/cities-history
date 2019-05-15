@@ -23,7 +23,7 @@ return array(
 	),
 	'division' => array(
 		'detail'   => 'division/:path',
-		'belongto' => 'division/belongto/:path',
+		'belongto' => 'division/belongto/:path?start=:start&end=:end',
 		'add'      => 'division/add',
 		'edit'     => 'division/edit/:path',
 		'delete'   => 'division/delete/:path',

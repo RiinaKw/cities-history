@@ -23,7 +23,7 @@ class Model_Event_Detail extends Model_Base
 		return $validation;
 	} // function validation()
 
-	public static function get_by_division_id($division_id)
+	public static function get_by_division_id($division_id, $start_date = null, $end_date = null)
 	{
 		$query = DB::select('d.*', 'e.type', 'e.date')
 			->from([self::$_table_name, 'd'])
@@ -38,6 +38,14 @@ class Model_Event_Detail extends Model_Base
 		else
 		{
 			$query->where('d.division_id', '=', $division_id);
+		}
+		if ($start_date)
+		{
+			$query->where('e.date', '>=', $start_date);
+		}
+		if ($end_date)
+		{
+			$query->where('e.date', '<=', $end_date);
 		}
 		$query->order_by('e.date', 'desc');
 

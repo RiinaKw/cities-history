@@ -24,7 +24,14 @@
 			<ul>
 				<li><a href="{{$url_detail}}">所属自治体</a></li>
 				<li><a href="{{$url_detail_timeline}}">自治体タイムライン</a></li>
-				<li><a href="{{$url_belongto_timeline}}">所属自治体タイムライン</a></li>
+				<li>
+					所属自治体タイムライン
+					<ul>
+{{foreach from=$url_belongto_timeline key=label item=url}}
+						<li><a href="{{$url}}">{{$label}}</a></li>
+{{/foreach}}
+					</ul>
+				</li>
 			</ul>
 
 <style>
@@ -153,8 +160,6 @@ function load(map, url, success)
 
 function create_map(id, shapes)
 {
-	$("#" + id).show();
-
 	var map = L.map(id);
 	map.lng_min = 180;
 	map.lat_min = 90;
@@ -223,8 +228,9 @@ function create_map(id, shapes)
 {{/if}}
 {{/foreach}}
 								if (shapes.length) {
-									$("#map-{{$event.event_id}}").show();
-									create_map("map-{{$event.event_id}}", shapes);
+									var id = "map-{{$event.event_id}}"
+									$("#" + id).show();
+									create_map(id, shapes);
 								}
 							});
 						</script>
