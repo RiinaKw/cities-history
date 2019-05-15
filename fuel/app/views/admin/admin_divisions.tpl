@@ -10,9 +10,10 @@
 {{foreach from=$divisions item=division}}
 					<article class="card mb-4">
 						<header class="card-header px-3 pb-1">
-							<h3 class="h5">
+							<h3 class="h5 float-left">
 								<a href="{{$division.url_detail}}">{{$division->path}}</a>
 							</h3>
+							<a class="float-left ml-4" href="{{$division.url_belongto}}">所属自治体</a>
 						</header>
 						<div class="card-body p-3">
 {{if ! $division->valid_kana}}

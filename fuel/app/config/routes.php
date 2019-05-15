@@ -26,6 +26,8 @@ return array(
 
 	'list/:path'          => 'list/index',
 
+	'admin/divisions/:path'        => 'admin/divisions/index',
+
 	'admin/reference/add'          => 'admin/reference/add',
 	'admin/reference/(.+?)/edit'   => 'admin/reference/edit/$1',
 	'admin/reference/(.+?)/delete' => 'admin/reference/delete/$1',

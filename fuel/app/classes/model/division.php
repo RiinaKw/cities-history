@@ -48,6 +48,22 @@ class Model_Division extends Model_Base
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_all()
 
+	public static function get_all_id()
+	{
+		$query = DB::select('id')
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
+			->order_by('name_kana', 'ASC');
+
+		$result = $query->execute()->as_array();
+		$arr = [];
+		foreach ($result as $item)
+		{
+			$arr[] = $item['id'];
+		}
+		return $arr;
+	} // function get_all_id()
+
 	public static function query($q)
 	{
 		$query = DB::select()

@@ -12,9 +12,35 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 {
 	public function action_index()
 	{
-		$divisions = Model_Division::get_all();
-		foreach ($divisions as &$division)
+		$path = $this->param('path');
+		if ($path)
 		{
+			$parent = Model_Division::get_by_path($path);
+			$ids = Model_Division::get_by_parent_division_id_and_date($parent->id);
+			array_unshift($ids, $parent->id);
+		}
+		else
+		{
+			$ids = Model_Division::get_all_id();
+
+			$top_arr = Model_Division::get_top_level();
+			$ids = [];
+			foreach ($top_arr as $d)
+			{
+				$ids[] = $d->id;
+			}
+			foreach ($top_arr as $d)
+			{
+				$parent = Model_Division::find_by_pk($d->id);
+				$temp = Model_Division::get_by_parent_division_id_and_date($d->id);
+				$ids = array_merge($ids, $temp);
+			}
+		}
+
+		$divisions = [];
+		foreach ($ids as $id)
+		{
+			$division = Model_Division::find_by_pk($id);
 			$division->path = $division->get_path(null, true);
 			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 			$end_event = Model_Event::find_by_pk($division->end_event_id);
@@ -28,6 +54,9 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 				$division->government_code
 				||
 				$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
+
+			$division->url_belongto = Helper_Uri::create('admin.divisions', ['path' => $division->path]);
+			$divisions[] = $division;
 		}
 
 		// ビューを設定

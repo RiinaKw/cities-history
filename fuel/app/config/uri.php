@@ -7,7 +7,7 @@ return array(
 	'search'  => 'search',
 
 	'admin' => array(
-		'divisions' => 'admin/divisions',
+		'divisions' => 'admin/divisions/:path',
 		'reference' => array(
 			'list'   => 'admin/reference',
 			'add'    => 'admin/reference/add',
