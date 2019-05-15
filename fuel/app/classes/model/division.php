@@ -373,6 +373,8 @@ class Model_Division extends Model_Base
 		$this->postfix_kana    = $input['postfix_kana'];
 		$this->identify        = $input['identify'] ?: null;
 		$this->government_code = $input['government_code'] ?: null;
+		$this->fullname        = '';
+		$this->fullname_kana   = '';
 		$this->save();
 
 		$this->fullname = $this->get_path(null, true);
