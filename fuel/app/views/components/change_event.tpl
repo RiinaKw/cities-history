@@ -185,16 +185,6 @@ $(function(){
 		});
 	});
 
-	$(document).on("click", "#change-event .move_up", function() {
-		var $tr = $(this).parents("tr");
-		console.log($tr);
-	});
-	$(document).on("click", "#change-event .move_down", function() {
-		var $tr = $(this).parents("tr");
-		var $next = $tr.next();
-		console.log($next);
-	});
-
 	$(document).on("click", "#change-event .row_add", function() {
 		var $modal = $('#change-event');
 		var $tbody = $("tbody", $modal);
