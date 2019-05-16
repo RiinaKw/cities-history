@@ -51,6 +51,10 @@ class Controller_Division extends Controller_Layout
 			{
 				$event->birth = true;
 			}
+			else if ($division->end_event_id == $event->event_id)
+			{
+				$event->death = true;
+			}
 			switch ($event->division_result)
 			{
 				case '存続':
@@ -144,6 +148,10 @@ class Controller_Division extends Controller_Layout
 				if ($division->start_event_id == $event->event_id)
 				{
 					$event->birth = true;
+				}
+				else if ($division->end_event_id == $event->event_id)
+				{
+					$event->death = true;
 				}
 				switch ($event->division_result)
 				{

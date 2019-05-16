@@ -141,13 +141,13 @@ time {
 	height: 20px;
 	z-index: 400;
 }
-.timeline > article.birth header:before {
+.timeline > article.birth section:before {
 	border: 3px solid #00ff00;
 }
-.timeline > article.live header:before {
+.timeline > article.live section:before {
 	border: 3px solid #00ff00;
 }
-.timeline > article.death header:before {
+.timeline > article.death section:before {
 	border: 3px solid #ff0000;
 }
 .timeline > article ul {
