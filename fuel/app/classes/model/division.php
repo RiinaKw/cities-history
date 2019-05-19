@@ -78,14 +78,18 @@ class Model_Division extends Model_Base
 	public static function search($q)
 	{
 		$q = str_replace(array('\\', '%', '_'), array('\\\\', '\%', '\_'), $q);
+		$q_arr = preg_split('/[\s　]/', $q);
 		$query = DB::select()
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null)
-			->and_where_open()
-			->where('fullname', 'LIKE', '%'.$q.'%')
-			->or_where('fullname_kana', 'LIKE', '%'.$q.'%')
-			->and_where_close()
 			->order_by('name_kana', 'ASC');
+		foreach ($q_arr as $word)
+		{
+			$query->and_where_open()
+				->where('fullname', 'LIKE', '%'.$word.'%')
+				->or_where('fullname_kana', 'LIKE', '%'.$word.'%')
+				->and_where_close();
+		}
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function search()
