@@ -78,7 +78,7 @@ class Model_Division extends Model_Base
 	public static function search($q)
 	{
 		$q = str_replace(array('\\', '%', '_'), array('\\\\', '\%', '\_'), $q);
-		$q_arr = preg_split('/([\s]+)|(　+)/', $q);
+		$q_arr = preg_split('/(\s+)|(　+)/', $q);
 		$query = DB::select()
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null)
