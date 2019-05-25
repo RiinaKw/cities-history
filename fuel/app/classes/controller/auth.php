@@ -1,6 +1,6 @@
 <?php
 /**
- * The Top Controller.
+ * The Auth Controller.
  *
  * A basic controller example.  Has examples of how to set the
  * response body and status.
@@ -8,7 +8,7 @@
  * @package  app
  * @extends  Controller_Base
  */
-class Controller_Top extends Controller_Base
+class Controller_Auth extends Controller_Base
 {
 	// remember me に使用するクッキー名
 	const COOKIE_REMEMBER_ME = 'user_hash';
