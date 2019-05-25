@@ -2,9 +2,22 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<title>{{$title}} - {{Config::get('common.title')}}</title>
 		<meta name="description" content="{{$description}}" />
+{{if isset($robots)}}
+		<meta name="robots" content="{{$robots}}" />
+{{/if}}
+		<meta property="og:url" content="{{Helper_Uri::current()}}" />
+		<meta property="og:title" content="{{$title}} - {{Config::get('common.title')}}" />
+		<meta property="og:site_name" content="{{Config::get('common.title')}}" />
+		<meta property="og:description" content="{{$description}}" />
+		<meta property="og:image" content="{{Asset::get_file('icon.png', 'img')}}">
+		<meta property="og:type" content="{{$og_type}}" />
+		<meta property="og:locale" content="ja_JP" />
+
+		<meta property="fb:app_id" content="801803333535562" />
 
 	{{Asset::css('bootstrap.min.css')}}
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">

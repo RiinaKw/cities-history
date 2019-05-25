@@ -204,6 +204,7 @@ class Controller_List extends Controller_Layout
 			$description .= Helper_Date::date(' Y(Jk)-m-d', $date->date);
 		}
 		$this->_set_view_var('description', $description);
+		$this->_set_view_var('og_type', 'article');
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_index()
@@ -225,7 +226,9 @@ class Controller_List extends Controller_Layout
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', '自治体検索');
-		$this->_set_view_var('description', '');
+		$this->_set_view_var('description', '自治体検索検索結果 : ' . $q);
+		$this->_set_view_var('robots', 'noindex,nofollow');
+		$this->_set_view_var('og_type', 'article');
 		$this->_set_view_var('breadcrumbs', ['検索' => '']);
 		return $this->_get_view();
 	} // function action_search()

@@ -96,7 +96,7 @@ class Controller_Division extends Controller_Layout
 		{
 			$event_parent = Model_Event::find_by_pk($event->event_id);
 			$date = Helper_Date::date('Y(Jk)-m-d', $event_parent->date);
-			$description .= $date.' '.$event_parent->type.' ';
+			$description .= ' | '.$date.' '.$event_parent->type;
 		}
 
 		Session::set(self::SESSION_LIST, Helper_Uri::current());
@@ -130,6 +130,7 @@ class Controller_Division extends Controller_Layout
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', $path);
 		$this->_set_view_var('description', $description);
+		$this->_set_view_var('og_type', 'article');
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_detail()
@@ -209,7 +210,7 @@ class Controller_Division extends Controller_Layout
 			{
 				$event_parent = Model_Event::find_by_pk($event->event_id);
 				$date = Helper_Date::date('Y(Jk)-m-d', $event_parent->date);
-				$description .= $date.' '.$event_parent->type.' ';
+				$description .= ' | '.$date.' '.$event_parent->type;
 			}
 		}
 
@@ -244,6 +245,7 @@ class Controller_Division extends Controller_Layout
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', $path);
 		$this->_set_view_var('description', $description);
+		$this->_set_view_var('og_type', 'article');
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_belongto()
