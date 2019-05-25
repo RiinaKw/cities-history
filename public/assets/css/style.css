@@ -107,6 +107,10 @@ time {
 	color: #007bff;
 }
 
+.list-nav .active,
+.timeline-nav .active {
+	font-weight: bold;
+}
 .timeline {
 	position: relative;
 	height: 100%;

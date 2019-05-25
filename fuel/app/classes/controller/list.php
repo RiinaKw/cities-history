@@ -167,6 +167,7 @@ class Controller_List extends Controller_Layout
 
 		// ビューを設定
 		$content = View_Smarty::forge('list.tpl');
+		$content->date = $date;
 		$content->path = $path;
 		$content->path_kana = $path_kana;
 		$content->divisions = $divisions;
@@ -175,9 +176,9 @@ class Controller_List extends Controller_Layout
 		$content->url_all_list = Helper_Uri::create('list.index');
 
 		$dates = Model_Referencedate::get_all();
-		foreach ($dates as &$date)
+		foreach ($dates as &$cur_date)
 		{
-			$date->url = Helper_Uri::create('list.division', ['path' => $path], ['date' => $date->date]);
+			$cur_date->url = Helper_Uri::create('list.division', ['path' => $path], ['date' => $cur_date->date]);
 		}
 		$content->reference_dates = $dates;
 		$content->url_all = Helper_Uri::create('list.division', ['path' => $path]);
@@ -190,12 +191,19 @@ class Controller_List extends Controller_Layout
 		$this->_set_view_var('content', $content);
 		if ($path)
 		{
-			$this->_set_view_var('title', $path);
+			$this->_set_view_var('title', $path.'の自治体一覧');
+			$description = $path.'の自治体一覧';
 		}
 		else
 		{
 			$this->_set_view_var('title', '自治体一覧');
+			$description = '全国の自治体一覧';
 		}
+		if ($date)
+		{
+			$description .= Helper_Date::date(' Y(Jk)-m-d', $date->date);
+		}
+		$this->_set_view_var('description', $description);
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
 	} // function action_index()
@@ -217,6 +225,7 @@ class Controller_List extends Controller_Layout
 
 		$this->_set_view_var('content', $content);
 		$this->_set_view_var('title', '自治体検索');
+		$this->_set_view_var('description', '');
 		$this->_set_view_var('breadcrumbs', ['検索' => '']);
 		return $this->_get_view();
 	} // function action_search()

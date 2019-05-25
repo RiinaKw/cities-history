@@ -21,18 +21,26 @@
 				</nav>
 {{/if}}
 			</header>
-			<ul>
-				<li><a href="{{$url_detail}}">所属自治体</a></li>
-				<li><a href="{{$url_detail_timeline}}">自治体タイムライン</a></li>
-				<li>
-					所属自治体タイムライン
-					<ul>
+			<nav class="timeline-nav">
+				<ul>
+					<li class="">
+						<a href="{{$url_detail}}">所属自治体</a>
+					</li>
+					<li class="{{if $current == 'detail'}}active{{/if}}">
+						<a href="{{$url_detail_timeline}}">自治体タイムライン</a>
+					</li>
+					<li>
+						所属自治体タイムライン
+						<ul>
 {{foreach from=$url_belongto_timeline key=label item=url}}
-						<li><a href="{{$url}}">{{$label}}</a></li>
+							<li class="{{if $current == $label}}active{{/if}}">
+								<a href="{{$url}}">{{$label}}</a>
+							</li>
 {{/foreach}}
-					</ul>
-				</li>
-			</ul>
+						</ul>
+					</li>
+				</ul>
+		</nav>
 
 			<div class="col-md-10 offset-md-1 pb-3">
 				<section class="timeline">

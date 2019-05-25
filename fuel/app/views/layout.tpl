@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<title>{{$title}} - {{Config::get('common.title')}}</title>
+		<meta name="description" content="{{$description}}" />
 
 	{{Asset::css('bootstrap.min.css')}}
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -20,7 +21,7 @@
 	<body>
 		<!-- Fixed navbar -->
 		<header class="navbar fixed-top navbar-expand-md navbar-light">
-			<h1><a class="navbar-brand" href="{{$root}}">Cities History Project</a></h1>
+			<h1><a class="navbar-brand" href="{{$root}}">{{Config::get('common.title')}}</a></h1>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -86,11 +87,7 @@
 		<footer class="footer text-center mt-auto py-3">
 			<div class="container">
 				<div class="copyright text-muted mx-2">{{Config::get('common.copyright')}}</div>
-				<div class="small text-muted">
-					行政区域データは
-					<a href="http://geoshape.ex.nii.ac.jp/city/" target="_blank">歴史的行政区域データセットβ版 | Geoshapeリポジトリ</a>
-					の図形データを使用しています。
-				</div>
+				<div class="small text-muted">{{Config::get('common.geoshape')}}</div>
 			</div>
 		</footer>
 	</body>

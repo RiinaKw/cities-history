@@ -14,17 +14,17 @@
 {{/if}}
 			</header>
 
-			<nav>
+			<nav class="list-nav">
 				<ol>
-					<li>
+					<li class="{{if ! $date}}active{{/if}}">
 						<a href="{{$url_all}}">
 							すべて
 						</a>
 					</li>
-{{foreach from=$reference_dates item=date}}
-					<li>
-						<a href="{{$date.url|escape}}">
-							{{$date.date|date_format2:'Y(Jk)-m-d'}} - {{$date.description|escape}}
+{{foreach from=$reference_dates item=cur_date}}
+					<li class="{{if $date == $cur_date.date}}active{{/if}}">
+						<a href="{{$cur_date.url|escape}}">
+							{{$cur_date.date|date_format2:'Y(Jk)-m-d'}} - {{$cur_date.description|escape}}
 						</a>
 					</li>
 {{/foreach}}
