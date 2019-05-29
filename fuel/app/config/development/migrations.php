@@ -18,6 +18,7 @@ return array (
         9 => '010_update_fullname_in_divisions',
         10 => '011_add_geoshape_to_event_details',
         11 => '012_add_is_refer_to_event_details',
+        12 => '013_add_belongs_to_divisions',
       ),
     ),
     'module' => 

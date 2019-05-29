@@ -201,7 +201,7 @@ class Controller_List extends Controller_Layout
 		}
 		if ($date)
 		{
-			$description .= Helper_Date::date(' Y(Jk)-m-d', $date->date);
+			$description .= Helper_Date::date(' Y(Jk)-m-d', $date);
 		}
 		$this->_set_view_var('description', $description);
 		$this->_set_view_var('og_type', 'article');

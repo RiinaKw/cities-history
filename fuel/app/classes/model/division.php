@@ -101,7 +101,7 @@ class Model_Division extends Model_Base
 		$divisions = [];
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|支庁|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 			if ( ! $division = self::get_one_by_name_and_parent_id($matches, $parent_id))
 			{
 				$division = self::forge([
@@ -109,11 +109,12 @@ class Model_Division extends Model_Base
 					'name_kana' => '',
 					'postfix' => $matches['postfix'],
 					'postfix_kana' => '',
-					'fullname' => $matches['place'].$matches['postfix'],
+					'fullname' => '',
 					'fullname_kana' => '',
 					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
 					'parent_division_id' => $parent_id,
 				]);
+				$division->fullname = $division->get_path(null, true);
 				$division->save();
 
 				Model_Activity::insert_log([
@@ -135,7 +136,7 @@ class Model_Division extends Model_Base
 		$parent_id = null;
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|支庁|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 			if ($matches)
 			{
 				$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
@@ -143,6 +144,12 @@ class Model_Division extends Model_Base
 				{
 					$division = $result;
 					$parent_id = $division->id;
+				}
+				else
+				{
+					$division = null;
+					$parent_id = null;
+					break;
 				}
 			}
 		}
@@ -380,6 +387,19 @@ class Model_Division extends Model_Base
 		}
 	} // function get_parent_path()
 
+	public function get_belongs_path()
+	{
+		if ($this->belongs_division_id)
+		{
+			$division = self::find_by_pk($this->belongs_division_id);
+			return $division->get_path(null, true);
+		}
+		else
+		{
+			return null;
+		}
+	} // function get_belongs_path()
+
 	public function get_fullname()
 	{
 		$name = $this->name.$this->postfix;
@@ -393,12 +413,13 @@ class Model_Division extends Model_Base
 	public function create($input)
 	{
 		$parent = $input['parent'];
+		$belongs = $input['belongs'];
 		if ($parent)
 		{
-			$parent_division = Model_Division::get_by_path($parent);
+			$parent_division = self::get_by_path($parent);
 			if ( ! $parent_division)
 			{
-				$parent_division = Model_Division::set_path($parent);
+				$parent_division = self::set_path($parent);
 				$parent_division = array_pop($parent_division);
 			}
 			$this->parent_division_id = $parent_division->id;
@@ -406,6 +427,20 @@ class Model_Division extends Model_Base
 		else
 		{
 			$this->parent_division_id = null;
+		}
+		if ($belongs)
+		{
+			$belongs_division = self::get_by_path($belongs);
+			if ( ! $belongs_division)
+			{
+				$belongs_division = self::set_path($belongs);
+				$belongs_division = array_pop($belongs_division);
+			}
+			$this->belongs_division_id = $belongs_division->id;
+		}
+		else
+		{
+			$this->belongs_division_id = null;
 		}
 
 		$this->name            = $input['name'];

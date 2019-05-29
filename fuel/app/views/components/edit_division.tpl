@@ -12,7 +12,13 @@
 							<label class="row">
 								<span class="col-4">所属自治体</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="parent-division" name="parent" value="{{$division->get_parent_path()}}" />
+									<input class="form-control" type="text" id="edit-parent-division" name="parent" value="{{$division->get_parent_path()}}" />
+								</div>
+							</label>
+							<label class="row">
+								<span class="col-4">支庁・振興局</span>
+								<div class="col-8">
+									<input class="form-control" type="text" id="edit-belongs-division" name="belongs" value="{{$division->get_belongs_path()}}" />
 								</div>
 							</label>
 							<label class="row">
@@ -70,7 +76,10 @@
 
 			<script>
 $(function(){
-	$("#parent-division").devbridgeAutocomplete({
+	$("#edit-parent-division").devbridgeAutocomplete({
+		serviceUrl: "{{$root}}/division/list.json"
+	});
+	$("#edit-belongs-division").devbridgeAutocomplete({
 		serviceUrl: "{{$root}}/division/list.json"
 	});
 });

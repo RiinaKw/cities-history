@@ -14,6 +14,7 @@ class Controller_Rest_Division extends Controller_Rest
 		$query = Input::get('query');
 
 		$divisions = Model_Division::query($query);
+		$sql = DB::last_query();
 		$pathes = [];
 		foreach ($divisions as $division)
 		{
@@ -31,7 +32,7 @@ class Controller_Rest_Division extends Controller_Rest
 
 		$response = [
 			'time' => $end - $start,
-			'sql' => DB::last_query(),
+			'sql' => $sql,
 			'query' => $query,
 			'suggestions' => $pathes,
 		];
