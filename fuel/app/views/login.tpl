@@ -19,7 +19,7 @@
 		<form class="form-signin col-8 offset-4 py-4" action="{{$url_login}}" method="post">
 			{{Asset::img('icon.png', ['width' => 100])}}
 			<h1 class="h3 mb-4 font-weight-normal">
-				{{Config::get('common.title')}} 管理画面
+				{{Config::get('common.title')}}<br />管理画面
 			</h1>
 {{if $error_string}}
 			<p class="text-danger">{{$error_string}}</p>
