@@ -42,7 +42,7 @@ class Controller_Division extends Controller_Layout
 				break;
 			}
 		}
-		foreach ($events as &$event)
+		foreach ($events as $event)
 		{
 			$event->birth = false;
 			$event->live = false;
@@ -68,7 +68,7 @@ class Controller_Division extends Controller_Layout
 			$divisions = Model_Event::get_relative_division($event->event_id);
 			if ($divisions)
 			{
-				foreach ($divisions as &$d)
+				foreach ($divisions as $d)
 				{
 					$d_path = $d->get_path(null, true);
 					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
@@ -90,6 +90,12 @@ class Controller_Division extends Controller_Layout
 		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 		$path_kana = $breadcrumbs_arr['path_kana'];
 
+		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
+		if ($belongs_division)
+		{
+			$belongs_division->url_detail = Helper_Uri::create('division.detail', ['path' => $belongs_division->get_path(null, true)]);
+		}
+
 		// meta description
 		$description = $path.'（'.$path_kana.') ';
 		foreach ($events as $event)
@@ -107,6 +113,7 @@ class Controller_Division extends Controller_Layout
 		$content->path = $path;
 		$content->path_kana = $path_kana;
 		$content->division = $division;
+		$content->belongs_division = $belongs_division;
 		$content->events = $events;
 		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
 		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
@@ -202,6 +209,12 @@ class Controller_Division extends Controller_Layout
 		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 		$path_kana = $breadcrumbs_arr['path_kana'];
 
+		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
+		if ($belongs_division)
+		{
+			$belongs_division->url_detail = Helper_Uri::create('division.detail', ['path' => $belongs_division->get_path(null, true)]);
+		}
+
 		// meta description
 		$description = $path.'（'.$path_kana.') ';
 		if ($division_id_arr)
@@ -222,6 +235,7 @@ class Controller_Division extends Controller_Layout
 		$content->path = $path;
 		$content->path_kana = $path_kana;
 		$content->division = $division;
+		$content->belongs_division = $belongs_division;
 		$content->events = $events_arr;
 		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
 		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);

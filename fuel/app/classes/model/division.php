@@ -224,7 +224,10 @@ class Model_Division extends Model_Base
 			->join(['events', 'e'], 'LEFT OUTER')
 			->on('d.end_event_id', '=', 'e.id')
 			->where('d.deleted_at', '=', null)
+			->and_where_open()
 			->where('d.parent_division_id', '=', $this->id)
+			->or_where('d.belongs_division_id', '=', $this->id)
+			->and_where_close()
 			->group_by('d.postfix');
 		if ($date)
 		{
@@ -246,12 +249,18 @@ class Model_Division extends Model_Base
 		}
 
 		$sorted = [
+			'支庁' => 0,
 			'区' => 0,
 			'市' => 0,
 			'郡' => 0,
 			'町' => 0,
 			'村' => 0,
 		];
+		if (isset($result['支庁']) && $result['支庁'])
+		{
+			$sorted['支庁'] = $result['支庁'];
+			unset($result['支庁']);
+		}
 		if (isset($result['区']) && $result['区'])
 		{
 			$sorted['区'] = $result['区'];
@@ -317,7 +326,10 @@ class Model_Division extends Model_Base
 			->on('d.start_event_id', '=', 's.id')
 			->join(['events', 'e'], 'LEFT OUTER')
 			->on('d.end_event_id', '=', 'e.id')
+			->and_where_open()
 			->where('d.parent_division_id', '=', $division_id)
+			->or_where('d.belongs_division_id', '=', $division_id)
+			->and_where_close()
 			->where('d.deleted_at', '=', null);
 		if ($date)
 		{
@@ -345,7 +357,7 @@ class Model_Division extends Model_Base
 				}
 			}
 		}
-		return $d_arr;
+		return array_unique($d_arr);
 	} // get_by_parent_division_id_and_date
 
 	public function get_parent()

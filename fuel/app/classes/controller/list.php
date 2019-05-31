@@ -46,7 +46,9 @@ class Controller_List extends Controller_Layout
 
 				// 都道府県直下
 				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
-				$belongto_divisions = [
+				Debug::dump( $ids );
+				$child_divisions = [
+					'支庁' => [],
 					'区' => [],
 					'市' => [],
 					'郡' => [],
@@ -64,12 +66,19 @@ class Controller_List extends Controller_Layout
 						{
 							$postfix = '町村';
 						}
-						$belongto_divisions[$postfix][] = $d;
+						$child_divisions[$postfix][] = $d;
 					}
 				}
 
+				// 都道府県 > 支庁
+				foreach ($child_divisions['支庁'] as &$depart)
+				{
+					$depart->path = $depart->get_path(null, true);
+					$depart->url_detail = Helper_Uri::create('division.detail', ['path' => $depart->path]);
+				}
+
 				// 都道府県 > 市
-				foreach ($belongto_divisions['市'] as &$city)
+				foreach ($child_divisions['市'] as &$city)
 				{
 					$city->path = $city->get_path(null, true);
 					$city->url_detail = Helper_Uri::create('division.detail', ['path' => $city->path]);
@@ -90,7 +99,7 @@ class Controller_List extends Controller_Layout
 				}
 
 				// 都道府県 > 郡
-				foreach ($belongto_divisions['郡'] as &$country)
+				foreach ($child_divisions['郡'] as &$country)
 				{
 					$count[$country->id] = $country->get_postfix_count($date);
 					if ($country->parent_division_id)
@@ -125,7 +134,7 @@ class Controller_List extends Controller_Layout
 					$country->url_detail = Helper_Uri::create('division.detail', ['path' => $country->path]);
 					$country->towns = $towns_arr;
 				}
-				$division->belongto = $belongto_divisions;
+				$division->children = $child_divisions;
 			}
 		}
 		else
@@ -137,7 +146,8 @@ class Controller_List extends Controller_Layout
 				$count[$division->id] = $division->get_postfix_count($date);
 
 				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
-				$belongto_divisions = [
+				$child_divisions = [
+					'支庁' => [],
 					'区' => [],
 					'市' => [],
 					'郡' => [],
@@ -146,19 +156,19 @@ class Controller_List extends Controller_Layout
 				foreach ($ids as $id)
 				{
 					$d = Model_Division::find_by_pk($id);
-					if ($d->parent_division_id == $division->id)
+					if ($d->parent_division_id == $division->id || $d->belongs_division_id == $division->id)
 					{
 						$d->path = $d->get_path(null, true);
 						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
 						$postfix = $d->postfix;
-						if ($postfix != '区' && $postfix != '市' && $postfix != '郡')
+						if ($postfix != '支庁' && $postfix != '区' && $postfix != '市' && $postfix != '郡')
 						{
 							$postfix = '町村';
 						}
-						$belongto_divisions[$postfix][] = $d;
+						$child_divisions[$postfix][] = $d;
 					}
 				}
-				$division->belongto = $belongto_divisions;
+				$division->children = $child_divisions;
 			}
 		}
 		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);

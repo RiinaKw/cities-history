@@ -1,7 +1,18 @@
 
 			<header class="clearfix">
 				<div class="float-left">
-					<h2>{{$path|escape}}</h2>
+					<h2>
+						{{$path|escape}}
+{{if $belongs_division}}
+						{{strip}}
+							（
+							<a href="{{$belongs_division->url_detail}}">
+								{{$belongs_division->fullname|escape}}
+							</a>
+							）
+						{{/strip}}
+{{/if}}
+					</h2>
 					<p>{{$path_kana}}</p>
 				</div>
 {{if $user}}

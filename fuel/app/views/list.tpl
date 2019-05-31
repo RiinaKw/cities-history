@@ -46,10 +46,34 @@
 							{{/strip}}</p>
 						</header>
 						<div class="grid-container">
-{{if $division.belongto['区']}}
+{{if $division.children['支庁']}}
+							<section class="grid departs">
+								<ul>
+{{foreach from=$division.children['支庁'] item=depart}}
+									<li>
+										<article>
+											<header>
+												<h4><a href="{{$depart.url_detail}}">{{$depart->get_fullname()}}</a></h4>
+												<p class="count">{{strip}}
+													{{if isset($count[$depart->id])}}
+														{{foreach from=$count[$depart->id] key=postfix item=count}}
+															{{if $count}}
+																{{$count}}{{$postfix}}
+															{{/if}}
+														{{/foreach}}
+													{{/if}}
+												{{/strip}}</p>
+											</header>
+										</article>
+									</li>
+{{/foreach}}
+								</ul>
+							</section><!-- .grid.departs -->
+{{/if}}
+{{if $division.children['区']}}
 							<section class="grid wards">
 								<ul>
-{{foreach from=$division.belongto['区'] item=ward}}
+{{foreach from=$division.children['区'] item=ward}}
 									<li>
 										<article>
 											<header>
@@ -61,10 +85,10 @@
 								</ul>
 							</section><!-- .grid.wards -->
 {{/if}}
-{{if $division.belongto['市']}}
+{{if $division.children['市']}}
 							<section class="grid cities">
 								<ul>
-{{foreach from=$division.belongto['市'] item=city}}
+{{foreach from=$division.children['市'] item=city}}
 									<li>
 										<article>
 											<header>
@@ -92,22 +116,22 @@
 								</ul>
 							</section><!-- .grid.cities -->
 {{/if}}
-{{if $division.belongto['町村']}}
-	<section class="grid countries">
-		<ul>
-{{foreach from=$division.belongto['町村'] item=town}}
-			<li>
-				<article>
-					<header>
-						<h4><a href="{{$town.url_detail}}">{{$town->get_fullname()}}</a></h4>
-					</header>
-				</article>
-			</li>
+{{if $division.children['町村']}}
+							<section class="grid countries">
+								<ul>
+{{foreach from=$division.children['町村'] item=town}}
+									<li>
+										<article>
+											<header>
+												<h4><a href="{{$town.url_detail}}">{{$town->get_fullname()}}</a></h4>
+											</header>
+										</article>
+									</li>
 {{/foreach}}
-		</ul>
-	</section><!-- .grid.wards -->
+								</ul>
+							</section><!-- .grid.wards -->
 {{/if}}
-{{foreach from=$division.belongto['郡'] item=country}}
+{{foreach from=$division.children['郡'] item=country}}
 							<section class="grid countries">
 								<article>
 									<header>
