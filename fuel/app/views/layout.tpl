@@ -26,6 +26,7 @@
 
 	{{Asset::js('jquery-3.3.1.min.js')}}
 	{{Asset::js('jquery-ui.min.js')}}
+	{{Asset::js('popper.min.js')}}
 	{{Asset::js('bootstrap.min.js')}}
 	{{Asset::js('jquery.autocomplete.min.js')}}
 		<script src="https://unpkg.com/leaflet@0.7.3/dist/leaflet.js"></script>

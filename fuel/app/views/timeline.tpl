@@ -68,7 +68,7 @@
 {{foreach from=$event.divisions item=d}}
 {{if ! $d->is_refer}}
 								<li>
-									<a href="{{$d->url_detail|escape}}">
+									<a href="{{$d->url_detail|escape}}" data-toggle="tooltip" title="{{$d->get_path(null, true)|escape}}">
 {{if $division.id == $d.id}}
 										<b>{{$d.fullname|escape}}</b>,
 {{else}}
@@ -113,6 +113,12 @@
 {{/if}}
 				</section>
 			</div>
+
+			<script>
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip();
+});
+			</script>
 
 {{if $user}}
 

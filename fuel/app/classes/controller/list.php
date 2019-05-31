@@ -46,7 +46,6 @@ class Controller_List extends Controller_Layout
 
 				// 都道府県直下
 				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
-				Debug::dump( $ids );
 				$child_divisions = [
 					'支庁' => [],
 					'区' => [],
