@@ -13,8 +13,14 @@
 						</div><!-- /.modal-body -->
 						<div class="modal-footer">
 							<nav>
-								<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-								<button type="submit" class="btn btn-danger">削除</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">
+									<i class="fa fa-times"></i>
+									閉じる
+								</button>
+								<button type="submit" class="btn btn-danger">
+									<i class="fa fa-trash"></i>
+									削除
+								</button>
 							</nav>
 						</div><!-- /.modal-footer -->
 					</form><!-- /.modal-content -->
