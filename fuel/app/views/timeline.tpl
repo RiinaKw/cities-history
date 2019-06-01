@@ -43,7 +43,7 @@
 					<li>
 						所属自治体タイムライン
 						<ul>
-{{foreach from=$url_belongto_timeline key=label item=url}}
+{{foreach from=$url_children_timeline key=label item=url}}
 							<li class="{{if $current == $label}}active{{/if}}">
 								<a href="{{$url}}">{{$label}}</a>
 							</li>

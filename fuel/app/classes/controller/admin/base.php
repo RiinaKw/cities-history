@@ -22,14 +22,14 @@ abstract class Controller_Admin_Base extends Controller_Layout
 			// ログインページへリダイレクト
 			Helper_Uri::redirect('login');
 		}
-	}
+	} // function before()
 
 	public function after($response)
 	{
 		$this->_set_view_var('description', '管理画面');
 		$this->_set_view_var('robots', 'noindex,nofollow');
 		$this->_set_view_var('og_type', 'article');
-		
+
 		return parent::after($response);
-	}
+	} // function after()
 } // class Controller_Admin_Base

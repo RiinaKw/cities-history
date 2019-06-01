@@ -16,6 +16,15 @@ class Controller_Error extends Controller_Layout
 		parent::before();
 	} // function before()
 
+	public function after($response)
+	{
+		$this->_set_view_var('description', '');
+		$this->_set_view_var('robots', 'noindex,nofollow');
+		$this->_set_view_var('og_type', '');
+
+		return parent::after($response);
+	} // function after()
+
 	/**
 	 * The 400 action for the application.
 	 *

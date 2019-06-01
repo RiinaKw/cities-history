@@ -117,7 +117,7 @@ class Controller_Division extends Controller_Layout
 		$content->events = $events;
 		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
 		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_belongto_timeline = $this->_get_belongto_url($path);
+		$content->url_children_timeline = $this->_get_children_url($path);
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
@@ -142,7 +142,7 @@ class Controller_Division extends Controller_Layout
 		return $this->_get_view();
 	} // function action_detail()
 
-	public function action_belongto()
+	public function action_children()
 	{
 		$path = $this->param('path');
 		$label = Input::get('label');
@@ -239,7 +239,7 @@ class Controller_Division extends Controller_Layout
 		$content->events = $events_arr;
 		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
 		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_belongto_timeline = $this->_get_belongto_url($path);
+		$content->url_children_timeline = $this->_get_children_url($path);
 		$content->url_add = Helper_Uri::create('division.add');
 		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
@@ -262,15 +262,15 @@ class Controller_Division extends Controller_Layout
 		$this->_set_view_var('og_type', 'article');
 		$this->_set_view_var('breadcrumbs', $breadcrumbs);
 		return $this->_get_view();
-	} // function action_belongto()
+	} // function action_children()
 
-	protected function _get_belongto_url($path)
+	protected function _get_children_url($path)
 	{
 		return [
-			'平成' => Helper_Uri::create('division.belongto', ['label' => '平成', 'path' => $path, 'start' => '1989-01-01', 'end' => '2019-04-01']),
-			'昭和後期' => Helper_Uri::create('division.belongto', ['label' => '昭和後期', 'path' => $path, 'start' => '1950-01-01', 'end' => '1988-12-31']),
-			'大正～昭和前期' => Helper_Uri::create('division.belongto', ['label' => '大正～昭和前期', 'path' => $path, 'start' => '1912-01-01', 'end' => '1949-12-31']),
-			'明治' => Helper_Uri::create('division.belongto', ['label' => '明治', 'path' => $path, 'start' => '1878-01-01', 'end' => '1911-12-31']),
+			'平成' => Helper_Uri::create('division.children', ['label' => '平成', 'path' => $path, 'start' => '1989-01-01', 'end' => '2019-04-01']),
+			'昭和後期' => Helper_Uri::create('division.children', ['label' => '昭和後期', 'path' => $path, 'start' => '1950-01-01', 'end' => '1988-12-31']),
+			'大正～昭和前期' => Helper_Uri::create('division.children', ['label' => '大正～昭和前期', 'path' => $path, 'start' => '1912-01-01', 'end' => '1949-12-31']),
+			'明治' => Helper_Uri::create('division.children', ['label' => '明治', 'path' => $path, 'start' => '1878-01-01', 'end' => '1911-12-31']),
 		];
 	}
 

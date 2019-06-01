@@ -21,7 +21,7 @@ return array(
 	'division/add'            => 'division/add',
 	'division/edit/:path'     => 'division/edit',
 	'division/delete/:path'   => 'division/delete',
-	'division/belongto/:path' => 'division/belongto',
+	'division/children/:path' => 'division/children',
 	'division/:path'          => 'division/detail',
 
 	'list/:path'          => 'list/index',
