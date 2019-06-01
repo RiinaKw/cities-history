@@ -149,6 +149,10 @@ class Controller_Division extends Controller_Layout
 		$start = Input::get('start');
 		$end = Input::get('end');
 		$division = Model_Division::get_by_path($path);
+		if ( ! $division || $division->get_path(null, true) != $path)
+		{
+			throw new HttpNotFoundException('自治体が見つかりません。');
+		}
 
 		$division_id_arr = Model_Division::get_by_parent_division_id_and_date($division->id);
 
