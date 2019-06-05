@@ -91,7 +91,11 @@
 			</nav>
 {{/if}}
 
-			<main role="main" class="container pb-2">
+			<main role="main" class="container {{strip}}
+				{{if ! isset($breadcrumbs) || ! $breadcrumbs}}
+					no-breadcrumb
+				{{/if}}
+			{{/strip}}">
 
 {{$content}}
 

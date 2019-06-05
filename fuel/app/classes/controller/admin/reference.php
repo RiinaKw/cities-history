@@ -33,11 +33,12 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 		$content->flash = $flash;
 
-		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', '参照日付一覧');
-		$this->_set_view_var('nav_item', 'reference');
-		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
-		return $this->_get_view();
+		$this->_view->content = $content;
+		$this->_view->title = '参照日付一覧';
+		$this->_view->nav_item = 'reference';
+		$this->_view->breadcrumbs = ['一覧' => ''];
+
+		return $this->_view;
 	} // function action_list()
 
 	public function action_add()

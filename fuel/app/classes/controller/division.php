@@ -8,7 +8,7 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Division extends Controller_Layout
+class Controller_Division extends Controller_Base
 {
 	const SESSION_LIST = 'division';
 
@@ -134,12 +134,13 @@ class Controller_Division extends Controller_Layout
 		];
 		$content->components = $components;
 
-		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', $path);
-		$this->_set_view_var('description', $description);
-		$this->_set_view_var('og_type', 'article');
-		$this->_set_view_var('breadcrumbs', $breadcrumbs);
-		return $this->_get_view();
+		$this->_view->content = $content;
+		$this->_view->title = $path;
+		$this->_view->description = $description;
+		$this->_view->og_type = 'article';
+		$this->_view->breadcrumbs = $breadcrumbs;
+
+		return $this->_view;
 	} // function action_detail()
 
 	public function action_children()
@@ -260,12 +261,13 @@ class Controller_Division extends Controller_Layout
 		];
 		$content->components = $components;
 
-		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', $path);
-		$this->_set_view_var('description', $description);
-		$this->_set_view_var('og_type', 'article');
-		$this->_set_view_var('breadcrumbs', $breadcrumbs);
-		return $this->_get_view();
+		$this->_view->content = $content;
+		$this->_view->title = $path;
+		$this->_view->description = $description;
+		$this->_view->og_type = 'article';
+		$this->_view->breadcrumbs = $breadcrumbs;
+
+		return $this->_view;
 	} // function action_children()
 
 	protected function _get_children_url($path)
@@ -280,7 +282,7 @@ class Controller_Division extends Controller_Layout
 
 	public function action_add()
 	{
-		if ( ! $this->user)
+		if ( ! $this->_user)
 		{
 			throw new HttpNoAccessException("permission denied");
 		}
@@ -306,7 +308,7 @@ class Controller_Division extends Controller_Layout
 
 	public function action_edit()
 	{
-		if ( ! $this->user)
+		if ( ! $this->_user)
 		{
 			throw new HttpNoAccessException("permission denied");
 		}
@@ -329,7 +331,7 @@ class Controller_Division extends Controller_Layout
 
 	public function action_delete()
 	{
-		if ( ! $this->user)
+		if ( ! $this->_user)
 		{
 			throw new HttpNoAccessException("permission denied");
 		}

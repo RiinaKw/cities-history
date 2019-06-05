@@ -1,6 +1,6 @@
 <?php
 return array(
-	'_root_'  => 'list/index',
+	'_root_'  => 'top/index',
 	'_400_'   => 'error/400',    // The main 400 route
 	'_403_'   => 'error/403',    // The main 403 route
 	'_404_'   => 'error/404',    // The main 404 route

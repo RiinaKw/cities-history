@@ -63,10 +63,11 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		$content = View_Smarty::forge('admin/admin_divisions.tpl');
 		$content->divisions = $divisions;
 
-		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', '自治体一覧');
-		$this->_set_view_var('nav_item', 'division');
-		$this->_set_view_var('breadcrumbs', ['一覧' => '']);
-		return $this->_get_view();
+		$this->_view->content = $content;
+		$this->_view->title = '自治体一覧';
+		$this->_view->nav_item = 'division';
+		$this->_view->breadcrumbs = ['一覧' => ''];
+
+		return $this->_view;
 	} // function action_index()
 } // class Controller_Admin

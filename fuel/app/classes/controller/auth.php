@@ -24,9 +24,7 @@ class Controller_Auth extends Controller_Base
 	 */
 	public function action_index()
 	{
-		$user_id = Session::get('user.id');
-		$user = Model_User::find_by_pk($user_id);
-		if ($user)
+		if ($this->_user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
 			Helper_Uri::redirect('top');
@@ -74,10 +72,8 @@ class Controller_Auth extends Controller_Base
 	 */
 	public function action_login()
 	{
-		$user_id = Session::get('user.id');
-		$user = Model_User::find_by_pk($user_id);
 		$redirect = Input::get('url');
-		if ($user)
+		if ($this->_user)
 		{
 			// 既にログインしている場合は認証をすっ飛ばす
 			if ($redirect)
@@ -109,7 +105,7 @@ class Controller_Auth extends Controller_Base
 					}
 					// ログインに成功
 					$user->frozen(true);
-					Session::set('user.id', $user->id);
+					Session::set('user', $user);
 					Response::redirect($redirect);
 				}
 				else
@@ -138,16 +134,14 @@ class Controller_Auth extends Controller_Base
 	 */
 	public function action_logout()
 	{
-		$user_id = Session::get('user.id');
-		$user = Model_User::find_by_pk($user_id);
 		$redirect = Input::get('url');
-		if ($user)
+		if ($this->_user)
 		{
 			// remember me キーを削除
-			$user->is_new(false);
-			$user->frozen(false);
-			$user->remember_me_hash = null;
-			$user->save();
+			$this->_user->is_new(false);
+			$this->_user->frozen(false);
+			$this->_user->remember_me_hash = null;
+			$this->_user->save();
 		}
 
 		// remember me クッキーを削除

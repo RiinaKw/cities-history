@@ -75,6 +75,26 @@ h1 {
 	}
 }
 
+.container {
+	padding-bottom: 1rem;
+}
+.no-breadcrumb {
+	padding-top: 1rem;
+}
+
+.toplevel-list {
+	margin: 1rem auto;
+}
+.toplevel-list ol {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	font-size: 1.5rem;
+}
+.toplevel-list li {
+	text-align: center;
+}
+
 .count {
 	margin-bottom: 0.2rem;
 }
@@ -186,6 +206,9 @@ time {
 }
 .breadcrumb {
 	background-color: #f8f9fa;
+}
+.no-breadcrumb {
+	padding-top: 1rem;
 }
 
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }

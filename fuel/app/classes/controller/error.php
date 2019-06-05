@@ -7,10 +7,8 @@
  * @package  app
  * @extends  Controller_Base
  */
-class Controller_Error extends Controller_Layout
+class Controller_Error extends Controller_Base
 {
-	private $_view = null;
-
 	public function before()
 	{
 		parent::before();
@@ -18,9 +16,9 @@ class Controller_Error extends Controller_Layout
 
 	public function after($response)
 	{
-		$this->_set_view_var('description', '');
-		$this->_set_view_var('robots', 'noindex,nofollow');
-		$this->_set_view_var('og_type', '');
+		$this->_view->description = '';
+		$this->_view->robots = 'noindex,nofollow';
+		$this->_view->og_type = '';
 
 		return parent::after($response);
 	} // function after()
@@ -38,11 +36,11 @@ class Controller_Error extends Controller_Layout
 
 		$content->message = $e->getMessage();
 
-		$this->_set_view_var('title', '400');
-		$this->_set_view_var('content', $content);
+		$this->_view->content = $content;
+		$this->_view->title = '400';
 
 		$this->response_status = 400;
-		return $this->_get_view();
+		return $this->_view;
 	} // function action_400()
 
 	/**
@@ -58,11 +56,11 @@ class Controller_Error extends Controller_Layout
 
 		$content->message = $e->getMessage();
 
-		$this->_set_view_var('title', '403');
-		$this->_set_view_var('content', $content);
+		$this->_view->content = $content;
+		$this->_view->title = '403';
 
 		$this->response_status = 403;
-		return $this->_get_view();
+		return $this->_view;
 	} // function action_403()
 
 	/**
@@ -78,11 +76,11 @@ class Controller_Error extends Controller_Layout
 
 		$content->message = $e->getMessage();
 
-		$this->_set_view_var('title', '404');
-		$this->_set_view_var('content', $content);
+		$this->_view->content = $content;
+		$this->_view->title = '404';
 
 		$this->response_status = 404;
-		return $this->_get_view();
+		return $this->_view;
 	} // function action_404()
 
 	/**
@@ -98,10 +96,10 @@ class Controller_Error extends Controller_Layout
 
 		$content->message = $e->getMessage();
 
-		$this->_set_view_var('title', '500');
-		$this->_set_view_var('content', $content);
+		$this->_view->content = $content;
+		$this->_view->title = '500';
 
 		$this->response_status = 500;
-		return $this->_get_view();
+		return $this->_view;
 	} // function action_500()
 } // class Controller_Error

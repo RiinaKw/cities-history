@@ -8,7 +8,7 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_List extends Controller_Layout
+class Controller_List extends Controller_Base
 {
 	public function action_index()
 	{
@@ -203,25 +203,28 @@ class Controller_List extends Controller_Layout
 		];
 		$content->components = $components;
 
-		$this->_set_view_var('content', $content);
 		if ($path)
 		{
-			$this->_set_view_var('title', $path.'の自治体一覧');
+			$title = $path.'の自治体一覧';
 			$description = $path.'の自治体一覧';
 		}
 		else
 		{
 			$this->_set_view_var('title', '自治体一覧');
+			$title = '自治体一覧';
 			$description = '全国の自治体一覧';
 		}
 		if ($date)
 		{
 			$description .= Helper_Date::date(' Y(Jk)-m-d', $date);
 		}
-		$this->_set_view_var('description', $description);
-		$this->_set_view_var('og_type', 'article');
-		$this->_set_view_var('breadcrumbs', $breadcrumbs);
-		return $this->_get_view();
+		$this->_view->content = $content;
+		$this->_view->title = $title;
+		$this->_view->description = $description;
+		$this->_view->og_type = 'article';
+		$this->_view->breadcrumbs = $breadcrumbs;
+
+		return $this->_view;
 	} // function action_index()
 
 	public function action_search()
@@ -239,12 +242,13 @@ class Controller_List extends Controller_Layout
 		$content = View_Smarty::forge('search.tpl');
 		$content->divisions = $result;
 
-		$this->_set_view_var('content', $content);
-		$this->_set_view_var('title', '自治体検索');
-		$this->_set_view_var('description', '自治体検索検索結果 : ' . $q);
-		$this->_set_view_var('robots', 'noindex,nofollow');
-		$this->_set_view_var('og_type', 'article');
-		$this->_set_view_var('breadcrumbs', ['検索' => '']);
-		return $this->_get_view();
+		$this->_view->content = $content;
+		$this->_view->title = '自治体検索';
+		$this->_view->description = '自治体検索検索結果 : '.$q;
+		$this->_view->robots = 'noindex,nofollow';
+		$this->_view->og_type = 'article';
+		$this->_view->breadcrumbs = ['検索' => ''];
+
+		return $this->_view;
 	} // function action_search()
 } // class Controller_List
