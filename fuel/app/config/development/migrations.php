@@ -19,6 +19,7 @@ return array (
         10 => '011_add_geoshape_to_event_details',
         11 => '012_add_is_refer_to_event_details',
         12 => '013_add_belongs_to_divisions',
+        13 => '014_add_show_postfix_to_divisions',
       ),
     ),
     'module' => 

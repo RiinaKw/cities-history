@@ -101,7 +101,7 @@ class Model_Division extends Model_Base
 		$divisions = [];
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|支庁|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 			if ( ! $division = self::get_one_by_name_and_parent_id($matches, $parent_id))
 			{
 				$division = self::forge([
@@ -136,9 +136,29 @@ class Model_Division extends Model_Base
 		$parent_id = null;
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|道|府|県|支庁|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+
 			if ($matches)
 			{
+				$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
+				if ($result)
+				{
+					$division = $result;
+					$parent_id = $division->id;
+				}
+				else
+				{
+					$division = null;
+					$parent_id = null;
+					break;
+				}
+			}
+			else
+			{
+				$matches = array(
+					'place' => $name,
+					'postfix' => '',
+				);
 				$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
 				if ($result)
 				{
@@ -161,8 +181,17 @@ class Model_Division extends Model_Base
 		$query = DB::select()
 			->from(self::$_table_name)
 			->where('parent_division_id', '=', $parent_id)
+			->and_where_open()
+			->and_where_open()
 			->where('name', '=', $name['place'])
-			->where('postfix', '=', $name['postfix']);
+			->where('postfix', '=', $name['postfix'])
+			->where('show_postfix', '=', true)
+			->and_where_close()
+			->or_where_open()
+			->where('name', '=', $name['place'].$name['postfix'])
+			->where('show_postfix', '=', false)
+			->or_where_close()
+			->and_where_close();
 		if (isset($name['identify']))
 		{
 			$query->where('identify', '=', $name['identify']);
@@ -372,7 +401,11 @@ class Model_Division extends Model_Base
 			$division = $this;
 			$path = '';
 			do {
-				$name = $division->name.$division->postfix;
+				$name = $division->name;
+				if ($division->show_postfix)
+				{
+					$name .= $division->postfix;
+				}
 				if ($division->identify)
 				{
 					$name .= '('.$division->identify.')';
@@ -385,6 +418,16 @@ class Model_Division extends Model_Base
 			return $path;
 		}
 	} // function get_path()
+
+	public function get_kana()
+	{
+		$kana = $this->name_kana;
+		if ($this->show_postfix)
+		{
+			$kana .= '・'.$this->postfix_kana;
+		}
+		return $kana;
+	} // function get_kana()
 
 	public function get_parent_path()
 	{
@@ -414,7 +457,11 @@ class Model_Division extends Model_Base
 
 	public function get_fullname()
 	{
-		$name = $this->name.$this->postfix;
+		$name = $this->name;
+		if ($this->show_postfix)
+		{
+			$name .= $this->postfix;
+		}
 		if ($this->identify)
 		{
 			$name .= '('.$this->identify.')';
@@ -459,6 +506,7 @@ class Model_Division extends Model_Base
 		$this->name_kana       = $input['name_kana'];
 		$this->postfix         = $input['postfix'];
 		$this->postfix_kana    = $input['postfix_kana'];
+		$this->show_postfix    = isset($input['show_postfix']) && $input['show_postfix'] ? true : false;
 		$this->identify        = $input['identify'] ?: null;
 		$this->government_code = $input['government_code'] ?: null;
 		$this->fullname        = '';

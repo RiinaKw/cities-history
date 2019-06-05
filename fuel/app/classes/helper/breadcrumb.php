@@ -24,7 +24,7 @@ class Helper_Breadcrumb
 			$cur_division = Model_Division::get_by_path($cur_path);
 			if ($cur_division)
 			{
-				$cur_kana .= ($cur_kana ? '/' : '').$cur_division->name_kana.'・'.$cur_division->postfix_kana;
+				$cur_kana .= ($cur_kana ? '/' : '').$cur_division->get_kana();
 				$breadcrumbs[$name] = Helper_Uri::create('division.detail', ['path' => $cur_path]);
 			}
 		} // foreach ($arr as $name)

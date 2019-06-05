@@ -46,6 +46,12 @@
 								</div>
 							</label>
 							<label class="row">
+								<span class="col-4">接尾語を使う</span>
+								<div class="col-8 checkbox-wrapper">
+									<input type="checkbox" name="show_postfix" value="true" {{if $division->show_postfix}}checked="checked"{{/if}} />
+								</div>
+							</label>
+							<label class="row">
 								<span class="col-4">識別名</span>
 								<div class="col-8">
 									<input class="form-control" type="text" name="identify" value="{{$division->identify}}" />
