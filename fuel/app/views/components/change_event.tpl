@@ -92,7 +92,7 @@ function add_row($tbody, idx, detail)
 	$input_geoshape.appendTo($td_division);
 
 	$input_division.devbridgeAutocomplete({
-		serviceUrl: "{{$root}}/division/list.json"
+		serviceUrl: "{{$url_root}}/division/list.json"
 	});
 
 	var $td_result = $("<td />").appendTo($tr);

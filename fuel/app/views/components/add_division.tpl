@@ -83,10 +83,10 @@
 			<script>
 $(function(){
 	$("#add-parent-division").devbridgeAutocomplete({
-		serviceUrl: "{{$root}}/division/list.json"
+		serviceUrl: "{{$url_root}}/division/list.json"
 	});
 	$("#add-belongs-division").devbridgeAutocomplete({
-		serviceUrl: "{{$root}}/division/list.json"
+		serviceUrl: "{{$url_root}}/division/list.json"
 	});
 });
 			</script>

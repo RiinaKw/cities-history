@@ -18,7 +18,7 @@ class Controller_Event extends Controller_Layout
 
 		if ( ! $this->user)
 		{
-			throw new HttpNoAccessException("permission denied");
+			throw new HttpNoAccessException('permission denied');
 		}
 	} // function before()
 
