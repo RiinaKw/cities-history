@@ -9,16 +9,7 @@ abstract class Presenter_Base extends Fuel\Core\Presenter
 	 * @var mixed
 	 */
 	protected $alt_view = null;
-	
-	protected $_user_id = null;
-	
-	public function before()
-	{
-		parent::before();
-		
-		$this->_user_id = Session::get('user_id');
-	}
-	
+
 	/**
 	 * テンプレートエンジンはsmartyを使うので、View_Smartyを利用
 	 */

@@ -1,6 +1,6 @@
 <?php
 /**
- * The View Controller.
+ * The Division Controller.
  *
  * A basic controller example.  Has examples of how to set the
  * response body and status.
@@ -86,61 +86,19 @@ class Controller_Division extends Controller_Base
 			$event->divisions = $divisions;
 		} // foreach ($events as &$event)
 
-		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
-		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
-		$path_kana = $breadcrumbs_arr['path_kana'];
-
 		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
-		if ($belongs_division)
-		{
-			$belongs_division->url_detail = Helper_Uri::create('division.detail', ['path' => $belongs_division->get_path(null, true)]);
-		}
-
-		// meta description
-		$description = $path.'（'.$path_kana.') ';
-		foreach ($events as $event)
-		{
-			$event_parent = Model_Event::find_by_pk($event->event_id);
-			$date = Helper_Date::date('Y(Jk)-m-d', $event_parent->date);
-			$description .= ' | '.$date.' '.$event_parent->type;
-		}
 
 		Session::set(self::SESSION_LIST, Helper_Uri::current());
 
 		// ビューを設定
-		$content = View_Smarty::forge('timeline.tpl');
+		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
 		$content->current = 'detail';
 		$content->path = $path;
-		$content->path_kana = $path_kana;
 		$content->division = $division;
 		$content->belongs_division = $belongs_division;
 		$content->events = $events;
-		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
-		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_children_timeline = $this->_get_children_url($path);
-		$content->url_add = Helper_Uri::create('division.add');
-		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
-		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
-		$content->url_event_detail = Helper_Uri::create('event.detail');
-		$content->url_event_add = Helper_Uri::create('event.add');
-		$content->url_event_edit = Helper_Uri::create('event.edit');
-		$content->url_event_delete = Helper_Uri::create('event.delete');
 
-		$components = [
-			'add_division' => View_Smarty::forge('components/add_division.tpl'),
-			'edit_division' => View_Smarty::forge('components/edit_division.tpl'),
-			'delete_division' => View_Smarty::forge('components/delete_division.tpl'),
-			'change_event' => View_Smarty::forge('components/change_event.tpl'),
-		];
-		$content->components = $components;
-
-		$this->_view->content = $content;
-		$this->_view->title = $path;
-		$this->_view->description = $description;
-		$this->_view->og_type = 'article';
-		$this->_view->breadcrumbs = $breadcrumbs;
-
-		return $this->_view;
+		return $content->view();
 	} // function action_detail()
 
 	public function action_children()
@@ -210,75 +168,21 @@ class Controller_Division extends Controller_Base
 			}
 		} // if ($division_id_arr)
 
-		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
-		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
-		$path_kana = $breadcrumbs_arr['path_kana'];
-
 		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
-		if ($belongs_division)
-		{
-			$belongs_division->url_detail = Helper_Uri::create('division.detail', ['path' => $belongs_division->get_path(null, true)]);
-		}
 
-		// meta description
-		$description = $path.'（'.$path_kana.') ';
-		if ($division_id_arr)
-		{
-			foreach ($events as $event)
-			{
-				$event_parent = Model_Event::find_by_pk($event->event_id);
-				$date = Helper_Date::date('Y(Jk)-m-d', $event_parent->date);
-				$description .= ' | '.$date.' '.$event_parent->type;
-			}
-		}
 
 		Session::set(self::SESSION_LIST, Helper_Uri::current());
 
 		// ビューを設定
-		$content = View_Smarty::forge('timeline.tpl');
+		$content = Presenter::forge('division/children', 'view', null, 'timeline.tpl');
 		$content->current = $label;
 		$content->path = $path;
-		$content->path_kana = $path_kana;
 		$content->division = $division;
 		$content->belongs_division = $belongs_division;
 		$content->events = $events_arr;
-		$content->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
-		$content->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
-		$content->url_children_timeline = $this->_get_children_url($path);
-		$content->url_add = Helper_Uri::create('division.add');
-		$content->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
-		$content->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
-		$content->url_event_detail = Helper_Uri::create('event.detail');
-		$content->url_event_add = Helper_Uri::create('event.add');
-		$content->url_event_edit = Helper_Uri::create('event.edit');
-		$content->url_event_delete = Helper_Uri::create('event.delete');
 
-		$components = [
-			'add_division' => View_Smarty::forge('components/add_division.tpl'),
-			'edit_division' => View_Smarty::forge('components/edit_division.tpl'),
-			'delete_division' => View_Smarty::forge('components/delete_division.tpl'),
-			'change_event' => View_Smarty::forge('components/change_event.tpl'),
-		];
-		$content->components = $components;
-
-		$this->_view->content = $content;
-		$this->_view->title = $path;
-		$this->_view->description = $description;
-		$this->_view->og_type = 'article';
-		$this->_view->breadcrumbs = $breadcrumbs;
-
-		return $this->_view;
+		return $content->view();
 	} // function action_children()
-
-	protected function _get_children_url($path)
-	{
-		return [
-			'平成' => Helper_Uri::create('division.children', ['label' => '平成', 'path' => $path, 'start' => '1989-01-01', 'end' => '2019-04-01']),
-			'昭和後期' => Helper_Uri::create('division.children', ['label' => '昭和後期', 'path' => $path, 'start' => '1950-01-01', 'end' => '1988-12-31']),
-			'大正～昭和前期' => Helper_Uri::create('division.children', ['label' => '大正～昭和前期', 'path' => $path, 'start' => '1912-01-01', 'end' => '1949-12-31']),
-			'明治' => Helper_Uri::create('division.children', ['label' => '明治', 'path' => $path, 'start' => '1878-01-01', 'end' => '1911-12-31']),
-		];
-	}
 
 	public function action_add()
 	{

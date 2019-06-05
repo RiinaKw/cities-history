@@ -9,20 +9,6 @@
  */
 class Controller_Error extends Controller_Base
 {
-	public function before()
-	{
-		parent::before();
-	} // function before()
-
-	public function after($response)
-	{
-		$this->_view->description = '';
-		$this->_view->robots = 'noindex,nofollow';
-		$this->_view->og_type = '';
-
-		return parent::after($response);
-	} // function after()
-
 	/**
 	 * The 400 action for the application.
 	 *
@@ -32,15 +18,14 @@ class Controller_Error extends Controller_Base
 	public function action_400($e)
 	{
 		// ビューを設定
-		$content = View_Smarty::forge('error/400.tpl');
+		$content = Presenter::forge('error', 'view', null, 'error.tpl');
 
+		$code = 400;
+		$content->code = $code;
 		$content->message = $e->getMessage();
 
-		$this->_view->content = $content;
-		$this->_view->title = '400';
-
-		$this->response_status = 400;
-		return $this->_view;
+		$this->response_status = $code;
+		return $content->view();
 	} // function action_400()
 
 	/**
@@ -52,15 +37,14 @@ class Controller_Error extends Controller_Base
 	public function action_403($e)
 	{
 		// ビューを設定
-		$content = View_Smarty::forge('error/403.tpl');
+		$content = Presenter::forge('error', 'view', null, 'error.tpl');
 
+		$code = 403;
+		$content->code = $code;
 		$content->message = $e->getMessage();
 
-		$this->_view->content = $content;
-		$this->_view->title = '403';
-
-		$this->response_status = 403;
-		return $this->_view;
+		$this->response_status = $code;
+		return $content->view();
 	} // function action_403()
 
 	/**
@@ -72,15 +56,14 @@ class Controller_Error extends Controller_Base
 	public function action_404($e)
 	{
 		// ビューを設定
-		$content = View_Smarty::forge('error/404.tpl');
+		$content = Presenter::forge('error', 'view', null, 'error.tpl');
 
+		$code = 404;
+		$content->code = $code;
 		$content->message = $e->getMessage();
 
-		$this->_view->content = $content;
-		$this->_view->title = '404';
-
-		$this->response_status = 404;
-		return $this->_view;
+		$this->response_status = $code;
+		return $content->view();
 	} // function action_404()
 
 	/**
@@ -92,14 +75,13 @@ class Controller_Error extends Controller_Base
 	public function action_500($e)
 	{
 		// ビューを設定
-		$content = View_Smarty::forge('error/500.tpl');
+		$content = Presenter::forge('error', 'view', null, 'error.tpl');
 
+		$code = 500;
+		$content->code = $code;
 		$content->message = $e->getMessage();
 
-		$this->_view->content = $content;
-		$this->_view->title = '500';
-
-		$this->response_status = 500;
-		return $this->_view;
+		$this->response_status = $code;
+		return $content->view();
 	} // function action_500()
 } // class Controller_Error

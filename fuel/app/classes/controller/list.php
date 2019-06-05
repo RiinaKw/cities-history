@@ -47,8 +47,6 @@ class Controller_List extends Controller_Base
 			foreach ($divisions as &$division)
 			{
 				$count[$division->id] = $division->get_postfix_count($date);
-				$division->path = $division->get_path(null, true);
-				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 
 				// 都道府県直下
 				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
@@ -64,8 +62,6 @@ class Controller_List extends Controller_Base
 					$d = Model_Division::find_by_pk($id);
 					if ($d->parent_division_id == $division->id)
 					{
-						$d->path = $d->get_path(null, true);
-						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
 						$postfix = $d->postfix;
 						if ($postfix == '町' || $postfix == '村')
 						{
@@ -75,27 +71,12 @@ class Controller_List extends Controller_Base
 					}
 				}
 
-				// 都道府県 > 支庁
-				foreach ($child_divisions['支庁'] as &$depart)
-				{
-					$depart->path = $depart->get_path(null, true);
-					$depart->url_detail = Helper_Uri::create('division.detail', ['path' => $depart->path]);
-				}
-
 				// 都道府県 > 市
 				foreach ($child_divisions['市'] as &$city)
 				{
-					$city->path = $city->get_path(null, true);
-					$city->url_detail = Helper_Uri::create('division.detail', ['path' => $city->path]);
-
 					// 都道府県 > 市 > 区
 					$wards = Model_Division::get_by_postfix_and_date($city->id, '区', $date);
 					$wards_count = $city->get_postfix_count($date);
-					foreach ($wards as &$ward)
-					{
-						$ward->path = $ward->get_path(null, true);
-						$ward->url_detail = Helper_Uri::create('division.detail', ['path' => $ward->path]);
-					}
 					if ($wards)
 					{
 						$city->wards = $wards;
@@ -127,16 +108,12 @@ class Controller_List extends Controller_Base
 					foreach ($towns as $town_id)
 					{
 						$town = Model_Division::find_by_pk($town_id);
-						$town->path = $town->get_path(null, true);
-						$town->url_detail = Helper_Uri::create('division.detail', ['path' => $town->path]);
 
 						$towns_arr[] = $town;
 					}
 					usort($towns_arr, function($a, $b){
 						return strcmp($a->name_kana, $b->name_kana);
 					});
-					$country->path = $country->get_path(null, true);
-					$country->url_detail = Helper_Uri::create('division.detail', ['path' => $country->path]);
 					$country->towns = $towns_arr;
 				}
 				$division->children = $child_divisions;
@@ -146,8 +123,6 @@ class Controller_List extends Controller_Base
 		{
 			foreach ($divisions as &$division)
 			{
-				$division->path = $division->get_path(null, true);
-				$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 				$count[$division->id] = $division->get_postfix_count($date);
 
 				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
@@ -163,8 +138,6 @@ class Controller_List extends Controller_Base
 					$d = Model_Division::find_by_pk($id);
 					if ($d->parent_division_id == $division->id || $d->belongs_division_id == $division->id)
 					{
-						$d->path = $d->get_path(null, true);
-						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d->path]);
 						$postfix = $d->postfix;
 						if ($postfix != '支庁' && $postfix != '区' && $postfix != '市' && $postfix != '郡')
 						{
@@ -176,55 +149,15 @@ class Controller_List extends Controller_Base
 				$division->children = $child_divisions;
 			}
 		}
-		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($path);
-		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
-		$path_kana = $breadcrumbs_arr['path_kana'];
 
 		// ビューを設定
-		$content = View_Smarty::forge('list.tpl');
+		$content = Presenter::forge('list/index', 'view', null, 'list.tpl');
 		$content->date = $date;
 		$content->path = $path;
-		$content->path_kana = $path_kana;
 		$content->divisions = $divisions;
 		$content->count = $count;
-		$content->url_add = Helper_Uri::create('division.add');
-		$content->url_all_list = Helper_Uri::create('list.index');
 
-		$dates = Model_Referencedate::get_all();
-		foreach ($dates as &$cur_date)
-		{
-			$cur_date->url = Helper_Uri::create('list.division', ['path' => $path], ['date' => $cur_date->date]);
-		}
-		$content->reference_dates = $dates;
-		$content->url_all = Helper_Uri::create('list.division', ['path' => $path]);
-
-		$components = [
-			'add_division' => View_Smarty::forge('components/add_division.tpl'),
-		];
-		$content->components = $components;
-
-		if ($path)
-		{
-			$title = $path.'の自治体一覧';
-			$description = $path.'の自治体一覧';
-		}
-		else
-		{
-			$this->_set_view_var('title', '自治体一覧');
-			$title = '自治体一覧';
-			$description = '全国の自治体一覧';
-		}
-		if ($date)
-		{
-			$description .= Helper_Date::date(' Y(Jk)-m-d', $date);
-		}
-		$this->_view->content = $content;
-		$this->_view->title = $title;
-		$this->_view->description = $description;
-		$this->_view->og_type = 'article';
-		$this->_view->breadcrumbs = $breadcrumbs;
-
-		return $this->_view;
+		return $content->view();
 	} // function action_index()
 
 	public function action_search()
@@ -239,16 +172,10 @@ class Controller_List extends Controller_Base
 		}
 
 		// ビューを設定
-		$content = View_Smarty::forge('search.tpl');
+		$content = Presenter::forge('list/search', 'view', null, 'search.tpl');
 		$content->divisions = $result;
+		$content->q = $q;
 
-		$this->_view->content = $content;
-		$this->_view->title = '自治体検索';
-		$this->_view->description = '自治体検索検索結果 : '.$q;
-		$this->_view->robots = 'noindex,nofollow';
-		$this->_view->og_type = 'article';
-		$this->_view->breadcrumbs = ['検索' => ''];
-
-		return $this->_view;
+		return $content->view();
 	} // function action_search()
 } // class Controller_List

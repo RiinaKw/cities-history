@@ -104,8 +104,7 @@ class Controller_Auth extends Controller_Base
 						$this->_remember_me($user);
 					}
 					// ログインに成功
-					$user->frozen(true);
-					Session::set('user', $user);
+					Session::set('user_id', $user->id);
 					Response::redirect($redirect);
 				}
 				else
@@ -119,11 +118,11 @@ class Controller_Auth extends Controller_Base
 			}
 		}
 
-		$view = View_Smarty::forge('login.tpl');
-		$view->error_string = $error_string;
-		$view->url_login = Helper_Uri::create('login', [], ['url' => Input::get('url')]);
+			// ビューを設定
+		$content = Presenter::forge('login', 'view', null, 'login.tpl');
+		$content->error_string = $error_string;
 
-		return $view;
+		return $content;
 	} // function action_login()
 
 	/**
@@ -138,17 +137,16 @@ class Controller_Auth extends Controller_Base
 		if ($this->_user)
 		{
 			// remember me キーを削除
-			$this->_user->is_new(false);
-			$this->_user->frozen(false);
-			$this->_user->remember_me_hash = null;
-			$this->_user->save();
+			$user = Model_User::find_by_pk($this->_user->id);
+			$user->remember_me_hash = null;
+			$user->save();
 		}
 
 		// remember me クッキーを削除
 		Cookie::delete(self::COOKIE_REMEMBER_ME);
 
 		// セッションを全削除
-		Session::delete('user');
+		Session::delete('user_id');
 		Session::delete('user_data');
 
 		// 見ていたページにリダイレクト

@@ -41,8 +41,6 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		foreach ($ids as $id)
 		{
 			$division = Model_Division::find_by_pk($id);
-			$division->path = $division->get_path(null, true);
-			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 			$end_event = Model_Event::find_by_pk($division->end_event_id);
 
 			$division->valid_kana = $division->name_kana && $division->postfix_kana;
@@ -54,20 +52,19 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 				$division->government_code
 				||
 				$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
-
-			$division->url_belongto = Helper_Uri::create('admin.divisions', ['path' => $division->path]);
 			$divisions[] = $division;
 		}
 
 		// ビューを設定
 		$content = View_Smarty::forge('admin/admin_divisions.tpl');
+		$content = Presenter::forge(
+			'admin/divisions/list',
+			'view',
+			null,
+			'admin/admin_divisions.tpl'
+		);
 		$content->divisions = $divisions;
 
-		$this->_view->content = $content;
-		$this->_view->title = '自治体一覧';
-		$this->_view->nav_item = 'division';
-		$this->_view->breadcrumbs = ['一覧' => ''];
-
-		return $this->_view;
+		return $content->view();
 	} // function action_index()
 } // class Controller_Admin

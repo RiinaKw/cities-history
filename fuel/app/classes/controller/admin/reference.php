@@ -14,31 +14,16 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 	public function action_list()
 	{
-		// フラッシュ変数を取得
-		$flash = Session::get_flash(self::SESSION_NAME_FLASH);
-
 		// ビューを設定
-		$content = View_Smarty::forge('admin/admin_reference.tpl');
-		$content->dates = Model_Referencedate::get_all();
+		$content = Presenter::forge(
+			'admin/reference/list',
+			'view',
+			null,
+			'admin/admin_reference.tpl'
+		);
+		$content->flash_name = self::SESSION_NAME_FLASH;
 
-		$content->url_add    = Helper_Uri::create('admin.reference.add');
-		$content->url_edit   = Helper_Uri::create('admin.reference.edit');
-		$content->url_delete = Helper_Uri::create('admin.reference.delete');
-		$components = [
-			'add_reference' => View_Smarty::forge('admin/components/add_reference.tpl'),
-			'edit_reference' => View_Smarty::forge('admin/components/edit_reference.tpl'),
-			'delete_reference' => View_Smarty::forge('admin/components/delete_reference.tpl'),
-		];
-		$content->components = $components;
-
-		$content->flash = $flash;
-
-		$this->_view->content = $content;
-		$this->_view->title = '参照日付一覧';
-		$this->_view->nav_item = 'reference';
-		$this->_view->breadcrumbs = ['一覧' => ''];
-
-		return $this->_view;
+		return $content->view();
 	} // function action_list()
 
 	public function action_add()
