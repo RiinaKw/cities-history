@@ -63,6 +63,12 @@
 									<input class="form-control" type="text" name="government_code" value="{{$division->government_code}}" />
 								</div>
 							</label>
+							<label class="row">
+								<span class="col-4">表示順</span>
+								<div class="col-8">
+									<input class="form-control" type="text" name="display_order" value="{{$division->display_order}}" />
+								</div>
+							</label>
 						</div><!-- /.modal-body -->
 						<div class="modal-footer">
 							<nav>

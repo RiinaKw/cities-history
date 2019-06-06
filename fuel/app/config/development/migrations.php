@@ -20,6 +20,7 @@ return array (
         11 => '012_add_is_refer_to_event_details',
         12 => '013_add_belongs_to_divisions',
         13 => '014_add_show_postfix_to_divisions',
+        14 => '015_add_display_order_to_divisions',
       ),
     ),
     'module' => 

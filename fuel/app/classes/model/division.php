@@ -34,6 +34,8 @@ class Model_Division extends Model_Base
 		$field = $validation->add('government_code',    '全国地方公共団体コード')
 			->add_rule('min_length', 6)
 			->add_rule('max_length', 7);
+		$field = $validation->add('display_order', '表示順')
+			->add_rule('valid_string', array('numeric'));
 
 		return $validation;
 	} // function validation()
@@ -212,7 +214,8 @@ class Model_Division extends Model_Base
 		$query = DB::select()
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null)
-			->where('parent_division_id', '=', null);
+			->where('parent_division_id', '=', null)
+			->order_by('display_order', 'asc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_top_level()
@@ -509,6 +512,7 @@ class Model_Division extends Model_Base
 		$this->show_postfix    = isset($input['show_postfix']) && $input['show_postfix'] ? true : false;
 		$this->identify        = $input['identify'] ?: null;
 		$this->government_code = $input['government_code'] ?: null;
+		$this->display_order   = $input['display_order'] ?: null;
 		$this->fullname        = '';
 		$this->fullname_kana   = '';
 		$this->save();
