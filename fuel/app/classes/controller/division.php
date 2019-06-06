@@ -98,7 +98,7 @@ class Controller_Division extends Controller_Base
 		$content->belongs_division = $belongs_division;
 		$content->events = $events;
 
-		return $content->view();
+		return $content;
 	} // function action_detail()
 
 	public function action_children()
@@ -181,25 +181,25 @@ class Controller_Division extends Controller_Base
 		$content->belongs_division = $belongs_division;
 		$content->events = $events_arr;
 
-		return $content->view();
+		return $content;
 	} // function action_children()
 
 	public function action_add()
 	{
 		if ( ! $this->_user)
 		{
-			throw new HttpNoAccessException("permission denied");
+			throw new HttpNoAccessException('permission denied');
 		}
 		if ( ! Input::post())
 		{
-			throw new HttpBadRequestException("post required");
+			throw new HttpBadRequestException('post required');
 		}
 
 		$division = Model_Division::forge();
 		$division->create(Input::post());
 
 		Model_Activity::insert_log([
-			'user_id' => Session::get('user.id'),
+			'user_id' => Session::get('user_id'),
 			'target' => 'add division',
 			'target_id' => $division->id,
 		]);
@@ -214,7 +214,7 @@ class Controller_Division extends Controller_Base
 	{
 		if ( ! $this->_user)
 		{
-			throw new HttpNoAccessException("permission denied");
+			throw new HttpNoAccessException('permission denied');
 		}
 
 		$path = $this->param('path');
@@ -222,7 +222,7 @@ class Controller_Division extends Controller_Base
 		$division->create(Input::post());
 
 		Model_Activity::insert_log([
-			'user_id' => Session::get('user.id'),
+			'user_id' => Session::get('user_id'),
 			'target' => 'edit division',
 			'target_id' => $division->id,
 		]);
@@ -237,7 +237,7 @@ class Controller_Division extends Controller_Base
 	{
 		if ( ! $this->_user)
 		{
-			throw new HttpNoAccessException("permission denied");
+			throw new HttpNoAccessException('permission denied');
 		}
 
 		$path = $this->param('path');

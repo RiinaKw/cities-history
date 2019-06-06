@@ -4,8 +4,6 @@ class Presenter_Admin_Reference_List extends Presenter_Layout
 {
 	public function view()
 	{
-		$layout = $this->layout();
-
 		$this->dates = Model_Referencedate::get_all();
 
 		$this->url_add    = Helper_Uri::create('admin.reference.add');
@@ -21,10 +19,8 @@ class Presenter_Admin_Reference_List extends Presenter_Layout
 		// フラッシュ変数を取得
 		$this->flash = Session::get_flash($this->flash_name);
 
-		$layout->title = '参照日付一覧';
-		$layout->nav_item = 'reference';
-		$layout->breadcrumbs = ['一覧' => ''];
-
-		return $layout;
-	}
-}
+		$this->title = '参照日付一覧';
+		$this->nav_item = 'reference';
+		$this->breadcrumbs = ['一覧' => ''];
+	} // function view()
+} // class Presenter_Admin_Reference_List

@@ -4,8 +4,6 @@ class Presenter_Division_Detail extends Presenter_Layout
 {
 	public function view()
 	{
-		$layout = $this->layout();
-
 		$this->url_detail = Helper_Uri::create('list.division', ['path' => $this->path]);
 		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $this->path]);
 		$this->url_children_timeline = Helper_Division::get_children_url($this->path);
@@ -47,13 +45,11 @@ class Presenter_Division_Detail extends Presenter_Layout
 			$description .= ' | '.$date.' '.$event_parent->type;
 		}
 
-		$layout->title = $this->path;
-		$layout->description = $description;
-		$layout->og_type = 'article';
-		$layout->breadcrumbs = $breadcrumbs;
+		$this->title = $this->path;
+		$this->description = $description;
+		$this->og_type = 'article';
+		$this->breadcrumbs = $breadcrumbs;
 
 		$this->url_add = Helper_Uri::create('division.add');
-
-		return $layout;
-	}
-}
+	} // function view()
+} // class Presenter_Division_Detail

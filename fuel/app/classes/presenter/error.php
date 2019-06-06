@@ -4,14 +4,10 @@ class Presenter_Error extends Presenter_Layout
 {
 	public function view()
 	{
-		$layout = $this->layout();
-
-		$layout->title = $this->code;
-		$layout->description = '';
-		$layout->robots = 'noindex,nofollow';
+		$this->title = $this->code;
+		$this->description = '';
+		$this->robots = 'noindex,nofollow';
 
 		$this->url_add = Helper_Uri::create('division.add');
-
-		return $layout;
-	}
-}
+	} // function view()
+} // class Presenter_Error

@@ -4,8 +4,6 @@ class Presenter_Top extends Presenter_Layout
 {
 	public function view()
 	{
-		$layout = $this->layout();
-
 		foreach ($this->divisions as &$division)
 		{
 			$division->path = $division->get_path(null, true);
@@ -17,12 +15,10 @@ class Presenter_Top extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$layout->title = '都道府県一覧';
-		$layout->description = '全国の都道府県一覧';
-		$layout->og_type = 'article';
+		$this->title = '都道府県一覧';
+		$this->description = '全国の都道府県一覧';
+		$this->og_type = 'article';
 
 		$this->url_add = Helper_Uri::create('division.add');
-
-		return $layout;
-	}
-}
+	} // function view()
+} // class Presenter_Top

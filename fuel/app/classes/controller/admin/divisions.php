@@ -65,6 +65,6 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		);
 		$content->divisions = $divisions;
 
-		return $content->view();
+		return $content;
 	} // function action_index()
 } // class Controller_Admin

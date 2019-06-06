@@ -4,8 +4,6 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 {
 	public function view()
 	{
-		$layout = $this->layout();
-
 		foreach ($this->divisions as $division)
 		{
 			$division->path = $division->get_path(null, true);
@@ -13,10 +11,8 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 			$division->url_belongto = Helper_Uri::create('admin.divisions', ['path' => $division->path]);
 		}
 
-		$layout->title = '自治体一覧';
-		$layout->nav_item = 'division';
-		$layout->breadcrumbs = ['一覧' => ''];
-
-		return $layout;
-	}
-}
+		$this->title = '自治体一覧';
+		$this->nav_item = 'division';
+		$this->breadcrumbs = ['一覧' => ''];
+	} // function view()
+} // class Presenter_Admin_Divisions_List

@@ -157,7 +157,7 @@ class Controller_List extends Controller_Base
 		$content->divisions = $divisions;
 		$content->count = $count;
 
-		return $content->view();
+		return $content;
 	} // function action_index()
 
 	public function action_search()
@@ -176,6 +176,6 @@ class Controller_List extends Controller_Base
 		$content->divisions = $result;
 		$content->q = $q;
 
-		return $content->view();
+		return $content;
 	} // function action_search()
 } // class Controller_List

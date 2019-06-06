@@ -8,7 +8,7 @@
  * @package  app
  * @extends  Controller
  */
-class Controller_Event extends Controller_Layout
+class Controller_Event extends Controller_Base
 {
 	const SESSION_DIVISION_LIST = 'division';
 
@@ -16,7 +16,7 @@ class Controller_Event extends Controller_Layout
 	{
 		parent::before();
 
-		if ( ! $this->user)
+		if ( ! $this->_user)
 		{
 			throw new HttpNoAccessException('permission denied');
 		}
@@ -94,7 +94,7 @@ class Controller_Event extends Controller_Layout
 			} // foreach ($arr as $item)
 
 			Model_Activity::insert_log([
-				'user_id' => Session::get('user.id'),
+				'user_id' => Session::get('user_id'),
 				'target' => 'add event',
 				'target_id' => $event->id,
 			]);
@@ -203,7 +203,7 @@ class Controller_Event extends Controller_Layout
 			} // foreach ($arr as $item)
 
 			Model_Activity::insert_log([
-				'user_id' => Session::get('user.id'),
+				'user_id' => Session::get('user_id'),
 				'target' => 'edit event',
 				'target_id' => $event->id,
 			]);
@@ -233,7 +233,7 @@ class Controller_Event extends Controller_Layout
 		$event->delete();
 
 		Model_Activity::insert_log([
-			'user_id' => Session::get('user.id'),
+			'user_id' => Session::get('user_id'),
 			'target' => 'delete event',
 			'target_id' => $event->id,
 		]);

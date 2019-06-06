@@ -32,8 +32,6 @@ class Presenter_List_Index extends Presenter_Layout
 
 	public function view()
 	{
-		$layout = $this->layout();
-
 		$this->_get_path($this->divisions);
 
 		$dates = Model_Referencedate::get_all();
@@ -69,19 +67,17 @@ class Presenter_List_Index extends Presenter_Layout
 		}
 		if ($this->date)
 		{
-			$description .= Helper_Date::date(' Y(Jk)-m-d', $date);
+			$description .= Helper_Date::date(' Y(Jk)-m-d', $this->date);
 		}
 
 		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->path);
 		$this->path_kana = $breadcrumbs_arr['path_kana'];
 
-		$layout->title = $title;
-		$layout->description = $description;
-		$layout->og_type = 'article';
-		$layout->breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
+		$this->title = $title;
+		$this->description = $description;
+		$this->og_type = 'article';
+		$this->breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 
 		$this->url_add = Helper_Uri::create('division.add');
-
-		return $layout;
 	} // function view()
 } // class Presenter_List_Index

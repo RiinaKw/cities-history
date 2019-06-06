@@ -23,7 +23,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 		);
 		$content->flash_name = self::SESSION_NAME_FLASH;
 
-		return $content->view();
+		return $content;
 	} // function action_list()
 
 	public function action_add()
