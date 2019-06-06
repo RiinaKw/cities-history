@@ -58,7 +58,7 @@
 										<article>
 											<header>
 												<h4>
-													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$depart.url_detail}}">
+													<a class="{{if $depart.is_unfinished}}unfinished{{/if}}" href="{{$depart.url_detail}}">
 														{{$depart->get_fullname()}}
 													</a>
 												</h4>
@@ -86,7 +86,7 @@
 										<article>
 											<header>
 												<h4>
-													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
+													<a class="{{if $ward.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
 														{{$ward->get_fullname()}}
 													</a>
 												</h4>
@@ -105,7 +105,7 @@
 										<article>
 											<header>
 												<h4>
-													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$city.url_detail}}">
+													<a class="{{if $city.is_unfinished}}unfinished{{/if}}" href="{{$city.url_detail}}">
 														{{$city->get_fullname()}}
 													</a>
 												</h4>
@@ -120,7 +120,7 @@
 													<article>
 														<header>
 															<h5>
-																<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
+																<a class="{{if $ward.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
 																	{{$ward->get_fullname()}}
 																</a>
 															</h5>
@@ -144,7 +144,7 @@
 										<article>
 											<header>
 												<h4>
-													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
+													<a class="{{if $town.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
 														{{$town->get_fullname()}}
 													</a>
 												</h4>
@@ -160,7 +160,7 @@
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$country.url_detail}}">
+											<a class="{{if $country.is_unfinished}}unfinished{{/if}}" href="{{$country.url_detail}}">
 												{{$country->get_fullname()}}
 											</a>
 										</h4>
@@ -179,7 +179,7 @@
 												<article>
 													<header>
 														<h5>
-															<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
+															<a class="{{if $town.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
 																{{$town->get_fullname()}}
 															</a>
 														</h5>
