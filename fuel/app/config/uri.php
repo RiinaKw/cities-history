@@ -29,7 +29,7 @@ return array(
 		'delete'   => 'division/delete/:path',
 	),
 	'list' => array(
-		'index' => '/',
+		'index' => 'list',
 		'division' => 'list/:path',
 	),
 	'geoshape' => 'geoshape?path=:path',

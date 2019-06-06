@@ -81,7 +81,7 @@
 		</header>
 
 		<div class="main-container">
-{{if isset($breadcrumbs) && $breadcrumbs}}
+{{if $breadcrumbs}}
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
 {{foreach name=breadcrumbs from=$breadcrumbs key=name item=url}}
@@ -96,7 +96,7 @@
 {{/if}}
 
 			<main role="main" class="container {{strip}}
-				{{if ! isset($breadcrumbs) || ! $breadcrumbs}}
+				{{if ! $breadcrumbs}}
 					no-breadcrumb
 				{{/if}}
 			{{/strip}}">
