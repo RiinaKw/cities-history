@@ -476,49 +476,80 @@ class Model_Division extends Model_Base
 	{
 		$parent = $input['parent'];
 		$belongs = $input['belongs'];
-		if ($parent)
-		{
-			$parent_division = self::get_by_path($parent);
-			if ( ! $parent_division)
-			{
-				$parent_division = self::set_path($parent);
-				$parent_division = array_pop($parent_division);
-			}
-			$this->parent_division_id = $parent_division->id;
-		}
-		else
-		{
-			$this->parent_division_id = null;
-		}
-		if ($belongs)
-		{
-			$belongs_division = self::get_by_path($belongs);
-			if ( ! $belongs_division)
-			{
-				$belongs_division = self::set_path($belongs);
-				$belongs_division = array_pop($belongs_division);
-			}
-			$this->belongs_division_id = $belongs_division->id;
-		}
-		else
-		{
-			$this->belongs_division_id = null;
-		}
 
-		$this->name            = $input['name'];
-		$this->name_kana       = $input['name_kana'];
-		$this->postfix         = $input['postfix'];
-		$this->postfix_kana    = $input['postfix_kana'];
-		$this->show_postfix    = isset($input['show_postfix']) && $input['show_postfix'] ? true : false;
-		$this->identify        = $input['identify'] ?: null;
-		$this->government_code = $input['government_code'] ?: null;
-		$this->display_order   = $input['display_order'] ?: null;
-		$this->fullname        = '';
-		$this->fullname_kana   = '';
-		$this->save();
+		try
+		{
+			DB::start_transaction();
 
-		$this->fullname = $this->get_path(null, true);
-		$this->fullname_kana = $this->name_kana.$this->postfix_kana;
-		$this->save();
+			if ($parent)
+			{
+				$parent_division = self::get_by_path($parent);
+				if ( ! $parent_division)
+				{
+					$parent_division = self::set_path($parent);
+					$parent_division = array_pop($parent_division);
+				}
+				$this->parent_division_id = $parent_division->id;
+			}
+			else
+			{
+				$this->parent_division_id = null;
+			}
+			if ($belongs)
+			{
+				$belongs_division = self::get_by_path($belongs);
+				if ( ! $belongs_division)
+				{
+					$belongs_division = self::set_path($belongs);
+					$belongs_division = array_pop($belongs_division);
+				}
+				$this->belongs_division_id = $belongs_division->id;
+			}
+			else
+			{
+				$this->belongs_division_id = null;
+			}
+
+			$this->name            = $input['name'];
+			$this->name_kana       = $input['name_kana'];
+			$this->postfix         = $input['postfix'];
+			$this->postfix_kana    = $input['postfix_kana'];
+			$this->show_postfix    = isset($input['show_postfix']) && $input['show_postfix'] ? true : false;
+			$this->identify        = $input['identify'] ?: null;
+			$this->government_code = $input['government_code'] ?: null;
+			$this->display_order   = $input['display_order'] ?: null;
+			$this->fullname        = '';
+			$this->fullname_kana   = '';
+			$this->save();
+
+			$this->fullname = $this->get_path(null, true);
+			$this->fullname_kana = $this->name_kana.$this->postfix_kana;
+
+			$query = DB::select()
+				->from(self::$_table_name)
+				->where('deleted_at', '=', null)
+				->where('fullname', '=', $this->fullname)
+				->where('id', '!=', $this->id)
+				;
+			if ($query->execute()->as_array())
+			{
+				throw new HttpBadRequestException('重複しています。');
+			}
+			$this->save();
+
+			DB::commit_transaction();
+		}
+		catch (HttpBadRequestException $e)
+		{
+			// 内部エラー
+			DB::rollback_transaction();
+			throw new HttpBadRequestException($e->getMessage());
+		}
+		catch (Exception $e)
+		{
+			// 内部エラー
+			DB::rollback_transaction();
+			throw new HttpServerErrorException($e->getMessage());
+		}
 	} // function create()
 } // class Model_Division
