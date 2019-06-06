@@ -34,7 +34,7 @@ class Presenter_Layout extends Presenter_Base
 		$this->_layout->set_global('url_login', Helper_Uri::create('login', [], ['url' => Helper_Uri::current()]));
 		$this->_layout->set_global('url_logout', Helper_Uri::create('logout', [], ['url' => Helper_Uri::current()]));
 		$this->_layout->set_global('url_search', Helper_Uri::create('search'));
-		$this->_layout->set_global('url_admin_divisions', Helper_Uri::create('admin.divisions', ['path' => '']));
+		$this->_layout->set_global('url_admin_divisions', Helper_Uri::create('admin.divisions.list'));
 		$this->_layout->set_global('url_admin_reference', Helper_Uri::create('admin.reference.list'));
 
 		// ビューをレイアウトに差し替え

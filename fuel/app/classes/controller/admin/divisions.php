@@ -56,13 +56,13 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		}
 
 		// ビューを設定
-		$content = View_Smarty::forge('admin/admin_divisions.tpl');
 		$content = Presenter::forge(
 			'admin/divisions/list',
 			'view',
 			null,
 			'admin/admin_divisions.tpl'
 		);
+		$content->path = $path;
 		$content->divisions = $divisions;
 
 		return $content;

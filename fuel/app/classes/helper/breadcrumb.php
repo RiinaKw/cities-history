@@ -2,10 +2,10 @@
 
 class Helper_Breadcrumb
 {
-	public static function breadcrumb_and_kana($path)
+	public static function breadcrumb_and_kana($path, $root_label = '一覧', $root_uri = 'top', $item_uri = 'division.detail')
 	{
 		$breadcrumbs = [
-			'一覧' => Helper_Uri::create('top'),
+			$root_label => Helper_Uri::create($root_uri),
 		];
 		$arr = explode('/', $path);
 		$cur_path = '';
@@ -25,7 +25,7 @@ class Helper_Breadcrumb
 			if ($cur_division)
 			{
 				$cur_kana .= ($cur_kana ? '/' : '').$cur_division->get_kana();
-				$breadcrumbs[$name] = Helper_Uri::create('division.detail', ['path' => $cur_path]);
+				$breadcrumbs[$name] = Helper_Uri::create($item_uri, ['path' => $cur_path]);
 			}
 		} // foreach ($arr as $name)
 

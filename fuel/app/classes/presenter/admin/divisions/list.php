@@ -8,11 +8,18 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		{
 			$division->path = $division->get_path(null, true);
 			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
-			$division->url_belongto = Helper_Uri::create('admin.divisions', ['path' => $division->path]);
+			$division->url_belongto = Helper_Uri::create('admin.divisions.detail', ['path' => $division->path]);
 		}
 
-		$this->title = '自治体一覧';
+		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana(
+			$this->path,
+			'自治体管理',
+			'admin.divisions.list',
+			'admin.divisions.detail'
+		);
+		$this->breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
+
+		$this->title = '自治体管理';
 		$this->nav_item = 'division';
-		$this->breadcrumbs = ['一覧' => ''];
 	} // function view()
 } // class Presenter_Admin_Divisions_List
