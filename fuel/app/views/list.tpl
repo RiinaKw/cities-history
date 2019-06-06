@@ -36,7 +36,11 @@
 {{foreach from=$divisions item=division}}
 					<article class="">
 						<header>
-							<h3><a href="{{$division.url_detail}}">{{$division->get_fullname()}}</a></h3>
+							<h3>
+								<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division.url_detail}}">
+									{{$division->get_fullname()}}
+								</a>
+							</h3>
 							<p class="count">{{strip}}
 								{{foreach from=$count[$division->id] key=postfix item=count}}
 									{{if $count}}
@@ -53,7 +57,11 @@
 									<li>
 										<article>
 											<header>
-												<h4><a href="{{$depart.url_detail}}">{{$depart->get_fullname()}}</a></h4>
+												<h4>
+													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$depart.url_detail}}">
+														{{$depart->get_fullname()}}
+													</a>
+												</h4>
 												<p class="count">{{strip}}
 													{{if isset($count[$depart->id])}}
 														{{foreach from=$count[$depart->id] key=postfix item=count}}
@@ -78,7 +86,7 @@
 										<article>
 											<header>
 												<h4>
-													<a href="{{$ward.url_detail}}">
+													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
 														{{$ward->get_fullname()}}
 													</a>
 												</h4>
@@ -97,7 +105,7 @@
 										<article>
 											<header>
 												<h4>
-													<a href="{{$city.url_detail}}">
+													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$city.url_detail}}">
 														{{$city->get_fullname()}}
 													</a>
 												</h4>
@@ -112,7 +120,7 @@
 													<article>
 														<header>
 															<h5>
-																<a href="{{$ward.url_detail}}">
+																<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
 																	{{$ward->get_fullname()}}
 																</a>
 															</h5>
@@ -136,7 +144,7 @@
 										<article>
 											<header>
 												<h4>
-													<a href="{{$town.url_detail}}">
+													<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
 														{{$town->get_fullname()}}
 													</a>
 												</h4>
@@ -152,7 +160,7 @@
 								<article>
 									<header>
 										<h4>
-											<a href="{{$country.url_detail}}">
+											<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$country.url_detail}}">
 												{{$country->get_fullname()}}
 											</a>
 										</h4>
@@ -171,7 +179,7 @@
 												<article>
 													<header>
 														<h5>
-															<a href="{{$town.url_detail}}">
+															<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
 																{{$town->get_fullname()}}
 															</a>
 														</h5>

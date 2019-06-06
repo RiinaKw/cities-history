@@ -520,6 +520,7 @@ class Model_Division extends Model_Base
 			$this->display_order   = $input['display_order'] ?: null;
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
+			$this->is_unfinished   = isset($input['is_unfinished']) && $input['is_unfinished'] ? true : false;
 			$this->save();
 
 			$this->fullname = $this->get_path(null, true);

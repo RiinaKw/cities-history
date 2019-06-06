@@ -82,6 +82,10 @@ h1 {
 	padding-top: 1rem;
 }
 
+.unfinished {
+	color: #ba0000;
+}
+
 .toplevel-list {
 	margin: 1rem auto;
 }

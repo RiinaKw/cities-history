@@ -69,6 +69,12 @@
 									<input class="form-control" type="text" name="display_order" value="" />
 								</div>
 							</label>
+							<label class="row">
+								<span class="col-4">未完成</span>
+								<div class="col-8 checkbox-wrapper">
+									<input type="checkbox" name="is_unfinished" value="true" checked="checked" />
+								</div>
+							</label>
 						</div><!-- /.modal-body -->
 						<div class="modal-footer">
 							<nav>
