@@ -5,7 +5,7 @@ class Helper_Breadcrumb
 	public static function breadcrumb_and_kana($path)
 	{
 		$breadcrumbs = [
-			'一覧' => Helper_Uri::create('list.index'),
+			'一覧' => Helper_Uri::create('top'),
 		];
 		$arr = explode('/', $path);
 		$cur_path = '';
