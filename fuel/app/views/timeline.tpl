@@ -68,7 +68,10 @@
 {{foreach from=$event.divisions item=d}}
 {{if ! $d->is_refer}}
 								<li>
-									<a href="{{$d->url_detail|escape}}" data-toggle="tooltip" title="{{$d->get_path(null, true)|escape}}">
+									<a class="{{if $d.is_unfinished}}unfinished{{/if}}"
+										href="{{$d->url_detail|escape}}"
+										data-toggle="tooltip"
+										title="{{$d->get_path(null, true)|escape}}">
 {{if $division.id == $d.id}}
 										<b>{{$d.fullname|escape}}</b>,
 {{else}}

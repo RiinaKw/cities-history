@@ -246,7 +246,7 @@ class Controller_Division extends Controller_Base
 		$division->soft_delete();
 
 		Model_Activity::insert_log([
-			'user_id' => Session::get('user.id'),
+			'user_id' => Session::get('user_id'),
 			'target' => 'delete division',
 			'target_id' => $division->id,
 		]);

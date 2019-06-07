@@ -9,7 +9,7 @@ class Add_is_unfinished_to_divisions
 		if ( ! \DBUtil::field_exists('divisions', array('is_unfinished')))
 		{
 			\DBUtil::add_fields('divisions', array(
-				'is_unfinished' => array('null' => false, 'type' => 'boolean', 'default' => false),
+				'is_unfinished' => array('null' => false, 'type' => 'boolean', 'default' => true),
 			));
 		}
 	}

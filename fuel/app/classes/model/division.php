@@ -113,14 +113,16 @@ class Model_Division extends Model_Base
 					'postfix_kana' => '',
 					'fullname' => '',
 					'fullname_kana' => '',
+					'show_postfix' => true,
 					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
 					'parent_division_id' => $parent_id,
+					'is_unfinished' => true,
 				]);
 				$division->fullname = $division->get_path(null, true);
 				$division->save();
 
 				Model_Activity::insert_log([
-					'user_id' => Session::get('user.id'),
+					'user_id' => Session::get('user_id'),
 					'target' => 'add division',
 					'target_id' => $division->id,
 				]);
@@ -548,6 +550,7 @@ class Model_Division extends Model_Base
 		}
 		catch (Exception $e)
 		{
+			Debug::dump($e, $e->getTraceAsString());exit;
 			// 内部エラー
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
