@@ -4,13 +4,13 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<title>{{$title}} - {{Config::get('common.title')}}</title>
+		<title>{{$title}} - {{Config::get('common.title')}}（{{Config::get('common.title_ja')}}）</title>
 		<meta name="description" content="{{$description}}" />
 {{if isset($robots)}}
 		<meta name="robots" content="{{$robots}}" />
 {{/if}}
 		<meta property="og:url" content="{{Helper_Uri::current()}}" />
-		<meta property="og:title" content="{{$title}} - {{Config::get('common.title')}}" />
+		<meta property="og:title" content="{{$title}} - {{Config::get('common.title')}}（{{Config::get('common.title_ja')}}）" />
 		<meta property="og:site_name" content="{{Config::get('common.title')}}" />
 		<meta property="og:description" content="{{$description}}" />
 		<meta property="og:image" content="{{Asset::get_file('icon.png', 'img')}}">

@@ -17,6 +17,7 @@ class Presenter_Layout extends Presenter_Base
 		// レイアウトテンプレートの初期値
 		$this->_layout = View_Smarty::forge('layout.tpl');
 		$this->_layout->title = '';
+		$this->_layout->title_ja = '';
 		$this->_layout->description = '';
 		$this->_layout->og_type = '';
 		$this->_layout->nav_item = '';
