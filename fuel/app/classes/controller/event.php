@@ -52,6 +52,7 @@ class Controller_Event extends Controller_Base
 			$event = Model_Event::forge([
 				'date' => Input::post('date'),
 				'type' => Input::post('type'),
+				'comment' => Input::post('comment'),
 			]);
 			$event->save();
 
@@ -148,6 +149,7 @@ class Controller_Event extends Controller_Base
 
 			$event->date = Input::post('date');
 			$event->type = Input::post('type');
+			$event->comment = Input::post('comment');
 			$event->save();
 
 			foreach ($arr as $item)

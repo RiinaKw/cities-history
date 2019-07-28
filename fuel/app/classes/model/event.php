@@ -25,7 +25,8 @@ class Model_Event extends Model_Base
 	{
 		$object = self::forge([
 			'date' => $param['date'],
-			'type' => $param['type']
+			'type' => $param['type'],
+			'comment' => $param['comment'],
 		]);
 		$object->save();
 		return $object;

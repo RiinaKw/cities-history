@@ -60,9 +60,14 @@
 						class="row editable {{if $event->birth}}birth{{/if}} {{if $event->live}}live{{/if}} {{if $event->death}}death{{/if}}"
 						data-event-id="{{$event.event_id}}">
 						<section class="col-sm-7">
-							<header class="clearfix">
-								<h3 class="float-left">{{$event.type|escape}}</h3>
-								<time class="float-right" datetime="{{$event.date}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
+							<header>
+								<div class="clearfix">
+									<h3 class="float-left">{{$event.type|escape}}</h3>
+									<time class="float-right" datetime="{{$event.date|escape}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
+								</div>
+{{if $event.comment}}
+								<p class="comment">{{$event.comment|escape}}</p>
+{{/if}}
 							</header>
 							<ul>
 {{foreach from=$event.divisions item=d}}

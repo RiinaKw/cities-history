@@ -23,6 +23,12 @@
 									<input class="form-control" type="text" id="date" name="date" required="required" />
 								</div>
 							</label>
+							<label class="row">
+								<span class="col-4">注釈</span>
+								<div class="col-8">
+									<textarea class="form-control" type="text" id="comment" name="comment"></textarea>
+								</div>
+							</label>
 							<table class="table table-sm table-borderless">
 								<thead>
 									<tr>
@@ -152,6 +158,7 @@ $(function(){
 		$("#path", $modal).val("");
 		$("#type", $modal).val("");
 		$("#date", $modal).val("");
+		$("#comment", $modal).val("");
 		$("tbody", $modal).empty();
 		$(".btn-danger", $modal).hide();
 		var path = $("h2").html();
@@ -162,15 +169,17 @@ $(function(){
 		var $modal = $('#change-event').modal();
 		$(".modal-title", $modal).text("イベントを変更…");
 		var event_id = $(this).data("event-id");
-		var path = $("h2").html();
+		var path = $("h2", $(this)).html();
 		var type = $("h3", $(this)).html();
 		var date = $("time", $(this)).attr("datetime");
+		var comment = $(".comment", $(this)).html();
 		var url = "{{$url_event_edit}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
 		$("#event-id", $modal).val(event_id);
 		$("#path", $modal).val(path);
 		$("#type", $modal).val(type);
 		$("#date", $modal).val(date);
+		$("#comment", $modal).val(comment);
 		$(".btn-danger", $modal).show();
 
 		$.ajax({

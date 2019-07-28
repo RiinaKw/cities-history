@@ -131,6 +131,9 @@ h1 {
 time {
 	color: #007bff;
 }
+.comment {
+	font-size: 75%;
+}
 
 .list-nav .active,
 .timeline-nav .active {
