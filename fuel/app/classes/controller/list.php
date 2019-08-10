@@ -111,9 +111,6 @@ class Controller_List extends Controller_Base
 
 						$towns_arr[] = $town;
 					}
-					usort($towns_arr, function($a, $b){
-						return strcmp($a->name_kana, $b->name_kana);
-					});
 					$country->towns = $towns_arr;
 				}
 				$division->children = $child_divisions;
