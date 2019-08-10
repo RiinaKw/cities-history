@@ -244,7 +244,11 @@ class Model_Division extends Model_Base
 				->or_where('e.date', '=', null)
 				->and_where_close();
 		}
-		$query->order_by('d.name_kana', 'ASC');
+		$query
+			->order_by(DB::expr('CASE WHEN d.government_code IS NULL THEN 2 WHEN d.government_code = "" THEN 1 ELSE 0 END'), 'asc')
+			->order_by('d.government_code', 'asc')
+			->order_by(DB::expr('CASE WHEN d.name_kana IS NULL THEN 2 WHEN d.name_kana = "" THEN 1 ELSE 0 END'), 'asc')
+			->order_by('d.name_kana', 'asc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_by_postfix_and_date()
