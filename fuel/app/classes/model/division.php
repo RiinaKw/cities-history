@@ -103,7 +103,7 @@ class Model_Division extends Model_Base
 		$divisions = [];
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 			if ( ! $division = self::get_one_by_name_and_parent_id($matches, $parent_id))
 			{
 				$division = self::forge([
@@ -140,7 +140,7 @@ class Model_Division extends Model_Base
 		$parent_id = null;
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 
 			if ($matches)
 			{
