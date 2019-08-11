@@ -78,9 +78,9 @@
 										data-toggle="tooltip"
 										title="{{$d->get_path(null, true)|escape}}">
 {{if $division.id == $d.id}}
-										<b>{{$d.fullname|escape}}</b>,
+										<b>{{$d->get_fullname()|escape}}</b>,
 {{else}}
-										{{$d.fullname|escape}},
+										{{$d->get_fullname()|escape}},
 {{/if}}
 										{{$d.division_result|escape}}
 									</a>
