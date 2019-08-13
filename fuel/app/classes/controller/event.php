@@ -199,6 +199,12 @@ class Controller_Event extends Controller_Base
 				if ($item['death'])
 				{
 					$division->end_event_id = $event->id;
+					$division->end_date = $event->date;
+					$division->save();
+				}
+				else
+				{
+					$division->end_date = '9999-12-31';
 					$division->save();
 				}
 

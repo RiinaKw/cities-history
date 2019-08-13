@@ -245,11 +245,11 @@ class Model_Division extends Model_Base
 				->and_where_close();
 		}
 		$query
-			->order_by(DB::expr('CASE WHEN d.government_code IS NULL THEN 2 WHEN d.government_code = "" THEN 1 ELSE 0 END'), 'asc')
+			->order_by('d.is_empty_government_code', 'asc')
 			->order_by('d.government_code', 'asc')
-			->order_by(DB::expr('CASE WHEN d.name_kana IS NULL THEN 2 WHEN d.name_kana = "" THEN 1 ELSE 0 END'), 'asc')
+			->order_by('is_empty_kana', 'asc')
 			->order_by('d.name_kana', 'asc')
-			->order_by(DB::expr('CASE WHEN e.date IS NULL THEN "9999-12-31" ELSE e.date END'), 'desc');
+			->order_by('d.end_date', 'desc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_by_postfix_and_date()
@@ -382,11 +382,11 @@ class Model_Division extends Model_Base
 				->and_where_close();
 		}
 		$query
-			->order_by(DB::expr('CASE WHEN d.government_code IS NULL THEN 2 WHEN d.government_code = "" THEN 1 ELSE 0 END'), 'asc')
+			->order_by('d.is_empty_government_code', 'asc')
 			->order_by('d.government_code', 'asc')
-			->order_by(DB::expr('CASE WHEN d.name_kana IS NULL THEN 2 WHEN d.name_kana = "" THEN 1 ELSE 0 END'), 'asc')
+			->order_by('is_empty_kana', 'asc')
 			->order_by('d.name_kana', 'asc')
-			->order_by(DB::expr('CASE WHEN e.date IS NULL THEN "9999-12-31" ELSE e.date END'), 'desc');
+			->order_by('d.end_date', 'desc');
 
 		$divisions = $query->as_object('Model_Division')->execute()->as_array();
 		$d_arr = [];
@@ -534,6 +534,8 @@ class Model_Division extends Model_Base
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->is_unfinished   = isset($input['is_unfinished']) && $input['is_unfinished'] ? true : false;
+			$this->is_empty_name_kana = empty($input['name_kana']);
+			$this->is_empty_government_code = empty($input['government_code']);
 			$this->save();
 
 			$this->fullname = $this->get_path(null, true);
