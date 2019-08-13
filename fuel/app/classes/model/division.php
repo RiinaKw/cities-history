@@ -117,6 +117,9 @@ class Model_Division extends Model_Base
 					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
 					'parent_division_id' => $parent_id,
 					'is_unfinished' => true,
+					'is_empty_government_code' => true,
+					'is_empty_kana' => true,
+					'end_date' => '9999-12-31',
 				]);
 				$division->fullname = $division->get_path(null, true);
 				$division->save();
@@ -326,7 +329,7 @@ class Model_Division extends Model_Base
 			unset($result['村']);
 		}
 		return array_merge($sorted, $result);
-	}
+	} // function get_postfix_count()
 
 	public static function get_by_date($date = null, $parent_id = null)
 	{
@@ -534,7 +537,7 @@ class Model_Division extends Model_Base
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->is_unfinished   = isset($input['is_unfinished']) && $input['is_unfinished'] ? true : false;
-			$this->is_empty_name_kana = empty($input['name_kana']);
+			$this->is_empty_kana = empty($input['name_kana']);
 			$this->is_empty_government_code = empty($input['government_code']);
 			$this->save();
 
