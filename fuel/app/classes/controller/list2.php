@@ -47,7 +47,7 @@ class Controller_List2 extends Controller_Base
 		}
 		else
 		{
-			$divisions = Model_Division::get_all_by_top_parent_division_id($top_division->id);
+			$divisions = Model_Division::get_by_top_parent_division_id_and_date($top_division->id, $date);
 		}
 		$count = [
 			'支庁' => 0,

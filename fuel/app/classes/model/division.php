@@ -69,22 +69,6 @@ class Model_Division extends Model_Base
 		return $arr;
 	} // function get_all_id()
 
-	public static function get_all_by_top_parent_division_id($id)
-	{
-		$query = DB::select()
-			->from(self::$_table_name)
-			->where('top_parent_division_id', '=', $id)
-			->where('deleted_at', '=', null);
-		$query
-			->order_by('is_empty_government_code', 'asc')
-			->order_by('government_code', 'asc')
-			->order_by('is_empty_kana', 'asc')
-			->order_by('name_kana', 'asc')
-			->order_by('end_date', 'desc');
-
-		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_all_by_top_parent_division_id()
-
 	public static function query($q)
 	{
 		$query = DB::select()
@@ -349,6 +333,38 @@ class Model_Division extends Model_Base
 		}
 		return array_merge($sorted, $result);
 	} // function get_postfix_count()
+
+	public static function get_by_top_parent_division_id_and_date($id, $date = null)
+	{
+		$query = DB::select('d.*')
+			->from([self::$_table_name, 'd'])
+			->join(['events', 's'], 'LEFT OUTER')
+			->on('d.start_event_id', '=', 's.id')
+			->join(['events', 'e'], 'LEFT OUTER')
+			->on('d.end_event_id', '=', 'e.id');
+		if ($date)
+		{
+			$query->and_where_open()
+				->where('s.date', '<=', $date)
+				->or_where('s.date', '=', null)
+				->and_where_close()
+				->and_where_open()
+				->where('e.date', '>=', $date)
+				->or_where('e.date', '=', null)
+				->and_where_close();
+		}
+		$query
+			->where('d.top_parent_division_id', '=', $id)
+			->where('d.deleted_at', '=', null);
+		$query
+			->order_by('d.is_empty_government_code', 'asc')
+			->order_by('d.government_code', 'asc')
+			->order_by('d.is_empty_kana', 'asc')
+			->order_by('d.name_kana', 'asc')
+			->order_by('d.end_date', 'desc');
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	} // function get_by_top_parent_division_id_and_date()
 
 	public static function get_by_date($date = null, $parent_id = null)
 	{
