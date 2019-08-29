@@ -1,6 +1,6 @@
 <?php
 
-class Presenter_List2_Detail extends Presenter_Layout
+class Presenter_List_Detail extends Presenter_Layout
 {
 	protected function _get_path($obj)
 	{

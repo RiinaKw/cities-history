@@ -34,11 +34,11 @@
 			</header>
 			<nav class="timeline-nav">
 				<ul>
-					<li class="">
-						<a href="{{$url_detail}}">所属自治体</a>
-					</li>
 					<li class="{{if $current == 'detail'}}active{{/if}}">
 						<a href="{{$url_detail_timeline}}">自治体タイムライン</a>
+					</li>
+					<li class="">
+						<a href="{{$url_detail}}">所属自治体</a>
 					</li>
 					<li>
 						所属自治体タイムライン

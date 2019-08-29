@@ -12,6 +12,17 @@ class Controller_List extends Controller_Base
 {
 	public function action_index()
 	{
+		$divisions = Model_Division::get_top_level();
+
+		// ビューを設定
+		$content = Presenter::forge('list/index', 'view', null, 'top.tpl');
+		$content->divisions = $divisions;
+
+		return $content;
+	} // function action_index()
+
+	public function action_detail()
+	{
 		$path = $this->param('path');
 		$date = Input::get('date');
 		$date = $date ? date('Y-m-d', strtotime($date)) : null;
@@ -26,136 +37,131 @@ class Controller_List extends Controller_Base
 		}
 
 		$divisions = [];
-		if ($top_division)
+		if ($top_division->top_parent_division_id)
 		{
-			$divisions[] = $top_division;
-		}
-		else
-		{
-			$divisions = Model_Division::get_top_level();
-		}
-		$count = [];
-		if ($top_division == null
-			|| $top_division && (
-				$top_division->postfix == '都'
-				|| $top_division->postfix == '道'
-				|| $top_division->postfix == '府'
-				|| $top_division->postfix == '県'
-			)
-		)
-		{
-			foreach ($divisions as &$division)
+			$ids = Model_Division::get_by_parent_division_id_and_date($top_division->id, $date);
+			foreach ($ids as $id)
 			{
-				$count[$division->id] = $division->get_postfix_count($date);
-
-				// 都道府県直下
-				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
-				$child_divisions = [
-					'支庁' => [],
-					'区' => [],
-					'市' => [],
-					'郡' => [],
-					'町村' => [],
-				];
-				foreach ($ids as $id)
-				{
-					$d = Model_Division::find_by_pk($id);
-					if ($d->parent_division_id == $division->id)
-					{
-						$postfix = $d->postfix;
-						if ($postfix == '町' || $postfix == '村')
-						{
-							$postfix = '町村';
-						}
-						$child_divisions[$postfix][] = $d;
-					}
-				}
-
-				// 都道府県 > 市
-				foreach ($child_divisions['市'] as &$city)
-				{
-					// 都道府県 > 市 > 区
-					$wards = Model_Division::get_by_postfix_and_date($city->id, '区', $date);
-					$wards_count = $city->get_postfix_count($date);
-					if ($wards)
-					{
-						$city->wards = $wards;
-						$city->wards_count = $wards_count['区'];
-					}
-				}
-
-				// 都道府県 > 郡
-				foreach ($child_divisions['郡'] as &$country)
-				{
-					$count[$country->id] = $country->get_postfix_count($date);
-					if ($country->parent_division_id)
-					{
-						foreach ($count[$country->id] as $postfix => $postfix_count)
-						{
-							if (isset($count[$country->parent_division_id][$postfix]))
-							{
-								$count[$country->parent_division_id][$postfix] += $postfix_count;
-							}
-							else
-							{
-								$count[$country->parent_division_id][$postfix] = $postfix_count;
-							}
-						}
-					}
-					// 都道府県 > 郡 > 町村
-					$towns = Model_Division::get_by_parent_division_id_and_date($country->id, $date);
-					$towns_arr = [];
-					foreach ($towns as $town_id)
-					{
-						$town = Model_Division::find_by_pk($town_id);
-
-						$towns_arr[] = $town;
-					}
-					$country->towns = $towns_arr;
-				}
-				$division->children = $child_divisions;
+				$divisions[] = Model_Division::find_by_pk($id);
 			}
 		}
 		else
 		{
-			foreach ($divisions as &$division)
-			{
-				$count[$division->id] = $division->get_postfix_count($date);
+			$divisions = Model_Division::get_by_top_parent_division_id_and_date($top_division->id, $date);
+		}
+		$count = [
+			'支庁' => 0,
+			'区' => 0,
+			'市' => 0,
+			'郡' => 0,
+			'町' => 0,
+			'村' => 0,
+		];
+		$child_divisions = [];
+		foreach ($divisions as $division)
+		{
+			$child_divisions[$division->id] = $division;
 
-				$ids = Model_Division::get_by_parent_division_id_and_date($division->id, $date);
-				$child_divisions = [
-					'支庁' => [],
-					'区' => [],
-					'市' => [],
-					'郡' => [],
-					'町村' => [],
+			if ( ! isset($count[$division->postfix]))
+			{
+				$count[$division->postfix] = 0;
+			}
+			$count[$division->postfix]++;
+		}
+
+		$ids_tree = [];
+		foreach ($child_divisions as $child)
+		{
+			if ( ! isset($ids_tree[$child->parent_division_id]))
+			{
+				$ids_tree[$child->parent_division_id] = [
+					'count' => [
+						'区' => 0,
+						'町' => 0,
+						'村' => 0,
+					],
+					'children' => [],
 				];
-				foreach ($ids as $id)
+			}
+			$ids_tree[$child->parent_division_id]['children'][$child->id] = $child->id;
+
+			if ( ! isset($ids_tree[$child->parent_division_id]['count'][$child->postfix]))
+			{
+				$ids_tree[$child->parent_division_id]['count'][$child->postfix] = 0;
+			}
+			$ids_tree[$child->parent_division_id]['count'][$child->postfix]++;
+		}
+		foreach ($ids_tree[$top_division->id]['children'] as $id)
+		{
+			if (isset($ids_tree[$id]))
+			{
+				$tree = $ids_tree[$id];
+				$ids_tree[$top_division->id]['children'][$id] = $tree;
+				unset($ids_tree[$id]);
+			}
+		}
+
+		$divisions_tree = [
+			'区' => [],
+			'市' => [],
+			'郡' => [],
+			'町村' => [],
+		];
+		foreach ($ids_tree[$top_division->id]['children'] as $id => $child)
+		{
+			$div = $child_divisions[$id];
+			$postfix = $div->postfix;
+			switch ($postfix)
+			{
+				case '支庁':
+				case '区':
+				case '市':
+				case '郡':
+				break;
+
+				default:
+					$postfix = '町村';
+				break;
+			} // swtich
+			if (is_array($child))
+			{
+				$div->_count = $child['count'];
+				$divisions_tree[$postfix][$id] = $div;
+				foreach ($child['children'] as $town_id)
 				{
-					$d = Model_Division::find_by_pk($id);
-					if ($d->parent_division_id == $division->id || $d->belongs_division_id == $division->id)
+					$town = $child_divisions[$town_id];
+					$town_postfix = $town->postfix;
+					switch ($town_postfix)
 					{
-						$postfix = $d->postfix;
-						if ($postfix != '支庁' && $postfix != '区' && $postfix != '市' && $postfix != '郡')
-						{
-							$postfix = '町村';
-						}
-						$child_divisions[$postfix][] = $d;
+						case '区':
+						break;
+
+						default:
+							$town_postfix = '町村';
+						break;
+					} // swtich
+					if ( ! isset($divisions_tree[$postfix][$id]->_children[$town_postfix]))
+					{
+						$divisions_tree[$postfix][$id]->_children[$town_postfix] = [];
 					}
-				}
-				$division->children = $child_divisions;
+					$divisions_tree[$postfix][$id]->_children[$town_postfix][$town_id] = $town;
+				} // foreach
+			}
+			else
+			{
+				$divisions_tree[$postfix][$id] = $div;
 			}
 		}
 
 		// ビューを設定
-		$content = Presenter::forge('list/index', 'view', null, 'list.tpl');
+		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');
 		$content->date = $date;
-		$content->path = $path;
-		$content->divisions = $divisions;
+		$content->division = $top_division;
+		$content->tree = $divisions_tree;
 		$content->count = $count;
 
 		return $content;
-	} // function action_index()
+	} // function action_detail()
 
 	public function action_search()
 	{

@@ -24,8 +24,8 @@ return array(
 	'division/children/:path' => 'division/children',
 	'division/:path'          => 'division/detail',
 
-	'list/:path'          => 'list/index',
-	'list2/:path'         => 'list2/detail',
+	'list/:path'         => 'list/detail',
+	'list'               => 'list/index',
 
 	'admin/divisions/:path'        => 'admin/divisions/index',
 

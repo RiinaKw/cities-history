@@ -80,7 +80,7 @@ class Helper_Date
 
 		// k : 和暦用年
 		if (strpos($format, 'k') !== false) {
-			$year = date('Y', $timestamp) - date('Y', $gengo['timestamp']) + 1;
+			$year = (int)date('Y', $timestamp) - (int)date('Y', (int)$gengo['timestamp']) + 1;
 			$format = preg_replace('/k/', $year, $format);
 		}
 
