@@ -65,7 +65,7 @@
 					</section><!-- .grid.departs -->
 {{/if}}
 {{if isset($tree['区']) && $tree['区']}}
-					<section class="grid wards">
+					<section class="{{if $division->postfix != '市'}}grid{{/if}} wards">
 						<ul>
 {{foreach from=$tree['区'] item=ward}}
 							<li>
@@ -123,7 +123,7 @@
 					</section><!-- .grid.cities -->
 {{/if}}
 {{if isset($tree['町村']) && $tree['町村']}}
-					<section class="grid towns">
+					<section class="{{if $division->postfix != '郡'}}grid{{/if}} towns">
 						<ul>
 {{foreach from=$tree['町村'] item=town}}
 							<li>
