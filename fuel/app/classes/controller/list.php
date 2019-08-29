@@ -91,13 +91,16 @@ class Controller_List extends Controller_Base
 			}
 			$ids_tree[$child->parent_division_id]['count'][$child->postfix]++;
 		}
-		foreach ($ids_tree[$top_division->id]['children'] as $id)
+		if ($ids_tree)
 		{
-			if (isset($ids_tree[$id]))
+			foreach ($ids_tree[$top_division->id]['children'] as $id)
 			{
-				$tree = $ids_tree[$id];
-				$ids_tree[$top_division->id]['children'][$id] = $tree;
-				unset($ids_tree[$id]);
+				if (isset($ids_tree[$id]))
+				{
+					$tree = $ids_tree[$id];
+					$ids_tree[$top_division->id]['children'][$id] = $tree;
+					unset($ids_tree[$id]);
+				}
 			}
 		}
 
@@ -107,50 +110,53 @@ class Controller_List extends Controller_Base
 			'郡' => [],
 			'町村' => [],
 		];
-		foreach ($ids_tree[$top_division->id]['children'] as $id => $child)
+		if ($ids_tree)
 		{
-			$div = $child_divisions[$id];
-			$postfix = $div->postfix;
-			switch ($postfix)
+			foreach ($ids_tree[$top_division->id]['children'] as $id => $child)
 			{
-				case '支庁':
-				case '区':
-				case '市':
-				case '郡':
-				break;
-
-				default:
-					$postfix = '町村';
-				break;
-			} // swtich
-			if (is_array($child))
-			{
-				$div->_count = $child['count'];
-				$divisions_tree[$postfix][$id] = $div;
-				foreach ($child['children'] as $town_id)
+				$div = $child_divisions[$id];
+				$postfix = $div->postfix;
+				switch ($postfix)
 				{
-					$town = $child_divisions[$town_id];
-					$town_postfix = $town->postfix;
-					switch ($town_postfix)
-					{
-						case '区':
-						break;
+					case '支庁':
+					case '区':
+					case '市':
+					case '郡':
+					break;
 
-						default:
-							$town_postfix = '町村';
-						break;
-					} // swtich
-					if ( ! isset($divisions_tree[$postfix][$id]->_children[$town_postfix]))
+					default:
+						$postfix = '町村';
+					break;
+				} // swtich
+				if (is_array($child))
+				{
+					$div->_count = $child['count'];
+					$divisions_tree[$postfix][$id] = $div;
+					foreach ($child['children'] as $town_id)
 					{
-						$divisions_tree[$postfix][$id]->_children[$town_postfix] = [];
-					}
-					$divisions_tree[$postfix][$id]->_children[$town_postfix][$town_id] = $town;
-				} // foreach
-			}
-			else
-			{
-				$divisions_tree[$postfix][$id] = $div;
-			}
+						$town = $child_divisions[$town_id];
+						$town_postfix = $town->postfix;
+						switch ($town_postfix)
+						{
+							case '区':
+							break;
+
+							default:
+								$town_postfix = '町村';
+							break;
+						} // swtich
+						if ( ! isset($divisions_tree[$postfix][$id]->_children[$town_postfix]))
+						{
+							$divisions_tree[$postfix][$id]->_children[$town_postfix] = [];
+						}
+						$divisions_tree[$postfix][$id]->_children[$town_postfix][$town_id] = $town;
+					} // foreach
+				}
+				else
+				{
+					$divisions_tree[$postfix][$id] = $div;
+				}
+			} // foreach
 		}
 
 		// ビューを設定
