@@ -72,24 +72,30 @@ class Controller_List extends Controller_Base
 		$ids_tree = [];
 		foreach ($child_divisions as $child)
 		{
-			if ( ! isset($ids_tree[$child->parent_division_id]))
+			$parent_ids = [$child->parent_division_id, $child->belongs_division_id];
+			foreach ($parent_ids as $parent_id)
 			{
-				$ids_tree[$child->parent_division_id] = [
-					'count' => [
-						'区' => 0,
-						'町' => 0,
-						'村' => 0,
-					],
-					'children' => [],
-				];
+				if ($parent_id)
+				{
+					if ( ! isset($ids_tree[$parent_id]))
+					{
+						$ids_tree[$parent_id] = [
+							'count' => [
+								'区' => 0,
+								'町' => 0,
+								'村' => 0,
+							],
+							'children' => [],
+						];
+					}
+					if ( ! isset($ids_tree[$parent_id]['count'][$child->postfix]))
+					{
+						$ids_tree[$parent_id]['count'][$child->postfix] = 0;
+					}
+					$ids_tree[$parent_id]['count'][$child->postfix]++;
+					$ids_tree[$parent_id]['children'][$child->id] = $child->id;
+				}
 			}
-			$ids_tree[$child->parent_division_id]['children'][$child->id] = $child->id;
-
-			if ( ! isset($ids_tree[$child->parent_division_id]['count'][$child->postfix]))
-			{
-				$ids_tree[$child->parent_division_id]['count'][$child->postfix] = 0;
-			}
-			$ids_tree[$child->parent_division_id]['count'][$child->postfix]++;
 		}
 		if ($ids_tree)
 		{

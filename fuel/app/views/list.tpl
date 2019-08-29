@@ -123,7 +123,7 @@
 					</section><!-- .grid.cities -->
 {{/if}}
 {{if isset($tree['町村']) && $tree['町村']}}
-					<section class="{{if $division->postfix != '郡'}}grid{{/if}} towns">
+					<section class="{{if $division->postfix != '郡' && $division->postfix != '支庁'}}grid{{/if}} towns">
 						<ul>
 {{foreach from=$tree['町村'] item=town}}
 							<li>
