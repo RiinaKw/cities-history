@@ -25,6 +25,7 @@ return array(
 	'division/:path'          => 'division/detail',
 
 	'list/:path'          => 'list/index',
+	'list2/:path'         => 'list2/detail',
 
 	'admin/divisions/:path'        => 'admin/divisions/index',
 

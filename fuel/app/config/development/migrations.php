@@ -25,6 +25,9 @@ return array (
         16 => '017_add_comment_to_events',
         17 => '018_add_sort_columns_to_divisions',
         18 => '019_update_sort_columns_in_divisions',
+        19 => '020_modify_belongs_in_divisions',
+        20 => '021_add_top_parent_division_id_to_divisions',
+        21 => '022_update_top_parent_id_to_divisions',
       ),
     ),
     'module' => 
