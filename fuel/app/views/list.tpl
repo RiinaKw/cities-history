@@ -47,7 +47,7 @@
 				<div class="grid-container">
 {{if isset($tree['支庁']) && $tree['支庁']}}
 					<section class="grid departs">
-						<ul>
+						<ul class="divisions">
 {{foreach from=$tree['支庁'] item=depart}}
 							<li>
 								<article>
@@ -66,7 +66,7 @@
 {{/if}}
 {{if isset($tree['区']) && $tree['区']}}
 					<section class="{{if $division->postfix != '市'}}grid{{/if}} wards">
-						<ul>
+						<ul class="divisions">
 {{foreach from=$tree['区'] item=ward}}
 							<li>
 								<article>
@@ -85,8 +85,8 @@
 {{/if}}
 {{if isset($tree['市']) && $tree['市']}}
 					<section class="grid cities">
-						<ul>
-{{foreach from=$tree['市'] item=city}}
+						<ul class="divisions">
+{{foreach name=city from=$tree['市'] item=city}}
 							<li>
 								<article>
 									<header>
@@ -99,7 +99,7 @@
 										<p class="count">{{strip}}
 											{{$city->_count['区']}}区
 										{{/strip}}</p>
-										<ul>
+										<ul class="divisions">
 {{foreach from=$city->_children['区'] item=ward}}
 											<li>
 												<article>
@@ -118,13 +118,19 @@
 									</header>
 								</article>
 							</li>
+{{if ! $smarty.foreach.city.last && isset($city->_children['区']) && $city->_children['区']}}
+						</ul>
+					</section><!-- .grid.cities -->
+					<section class="grid cities">
+						<ul class="divisions">
+{{/if}}
 {{/foreach}}
 						</ul>
 					</section><!-- .grid.cities -->
 {{/if}}
 {{if isset($tree['町村']) && $tree['町村']}}
 					<section class="{{if $division->postfix != '郡' && $division->postfix != '支庁'}}grid{{/if}} towns">
-						<ul>
+						<ul class="divisions">
 {{foreach from=$tree['町村'] item=town}}
 							<li>
 								<article>
@@ -158,7 +164,7 @@
 										{{/if}}
 									{{/foreach}}
 								{{/strip}}</p>
-								<ul>
+								<ul class="divisions">
 {{if isset($country->_children['町村']) && $country->_children['町村']}}
 {{foreach from=$country->_children['町村'] item=town}}
 									<li>

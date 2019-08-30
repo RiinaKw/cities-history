@@ -38,34 +38,22 @@ h1 {
 @media screen and (max-width: 767px) {
 	.grid-container {
 		-webkit-column-count: 2;
-		-webkit-column-gap: 15px;
-		-webkit-column-fill: auto;
 		-moz-column-count: 2;
-		-moz-column-gap: 15px;
-		-moz-column-fill: balance !important;
 		column-count: 2;
-		column-gap: 15px;
-		column-fill: auto;
 	}
 }
 @media screen and (max-width: 544px) {
 	.grid-container {
 		-webkit-column-count: 1;
-		-webkit-column-gap: 15px;
-		-webkit-column-fill: auto;
 		-moz-column-count: 1;
-		-moz-column-gap: 15px;
-		-moz-column-fill: balance !important;
 		column-count: 1;
-		column-gap: 15px;
-		column-fill: auto;
 	}
 }
 .grid {
 	display: inline-block;
-	-webkit-column-break-inside: avoid;
-	-moz-column-break-inside: avoid;
-	column-break-inside: avoid;
+	-webkit-break-inside: avoid;
+	-moz-break-inside: avoid;
+	break-inside: avoid;
 	margin-bottom: 2rem;
 }
 /* Google Chorome BugFix */
@@ -102,6 +90,9 @@ h1 {
 
 .count {
 	margin-bottom: 0.2rem;
+}
+.divisions {
+	margin-bottom: 2rem;
 }
 
 .table .handle,
