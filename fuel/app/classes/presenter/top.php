@@ -15,9 +15,9 @@ class Presenter_Top extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$this->title = '都道府県一覧';
+		$this->title = '';
 		$this->description = '全国の都道府県一覧';
-		$this->og_type = 'article';
+		$this->og_type = 'website';
 
 		$this->url_add = Helper_Uri::create('division.add');
 	} // function view()

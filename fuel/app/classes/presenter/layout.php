@@ -23,6 +23,19 @@ class Presenter_Layout extends Presenter_Base
 		$this->_layout->nav_item = '';
 		$this->_layout->breadcrumbs = [];
 
+		// タイトル生成
+		$site_title = Config::get('common.title') . '（' . Config::get('common.title_ja') . '）';
+		$title = $param['title'];
+		if ($title)
+		{
+			$title .= ' - ' . $site_title;
+		}
+		else
+		{
+			$title = $site_title;
+		}
+		$param['title'] = $title;
+
 		// レイアウトテンプレートに値をセット
 		$this->_layout->set($param);
 		$this->_layout->content = $this->_view;

@@ -4,13 +4,13 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<title>{{$title}} - {{Config::get('common.title')}}（{{Config::get('common.title_ja')}}）</title>
+		<title>{{$title}}</title>
 		<meta name="description" content="{{$description}}" />
 {{if isset($robots)}}
 		<meta name="robots" content="{{$robots}}" />
 {{/if}}
 		<meta property="og:url" content="{{Helper_Uri::current()}}" />
-		<meta property="og:title" content="{{$title}} - {{Config::get('common.title')}}（{{Config::get('common.title_ja')}}）" />
+		<meta property="og:title" content="{{$title}}" />
 		<meta property="og:site_name" content="{{Config::get('common.title')}}" />
 		<meta property="og:description" content="{{$description}}" />
 		<meta property="og:image" content="{{Asset::get_file('icon.png', 'img')}}">
@@ -21,14 +21,16 @@
 
 	{{Asset::css('bootstrap.min.css')}}
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 	{{Asset::css('style.css')}}
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.3/dist/leaflet.css"/>
 
 	{{Asset::js('jquery-3.3.1.min.js')}}
 	{{Asset::js('jquery-ui.min.js')}}
 	{{Asset::js('popper.min.js')}}
 	{{Asset::js('bootstrap.min.js')}}
 	{{Asset::js('jquery.autocomplete.min.js')}}
+		<!-- Leaflet interactive maps library -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.3/dist/leaflet.css"/>
 		<script src="https://unpkg.com/leaflet@0.7.3/dist/leaflet.js"></script>
 	{{Asset::js('geoshape.js')}}
 	</head>

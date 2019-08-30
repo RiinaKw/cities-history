@@ -12,13 +12,7 @@ class Controller_List extends Controller_Base
 {
 	public function action_index()
 	{
-		$divisions = Model_Division::get_top_level();
-
-		// ビューを設定
-		$content = Presenter::forge('list/index', 'view', null, 'top.tpl');
-		$content->divisions = $divisions;
-
-		return $content;
+		Helper_Uri::redirect('top');
 	} // function action_index()
 
 	public function action_detail()
