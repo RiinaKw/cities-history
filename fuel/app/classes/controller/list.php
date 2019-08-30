@@ -51,8 +51,8 @@ class Controller_List extends Controller_Base
 		}
 		$count = [
 			'支庁' => 0,
-			'区' => 0,
 			'市' => 0,
+			'区' => 0,
 			'郡' => 0,
 			'町' => 0,
 			'村' => 0,
