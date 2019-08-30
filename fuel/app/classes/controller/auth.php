@@ -104,6 +104,11 @@ class Controller_Auth extends Controller_Base
 						$this->_remember_me($user);
 					}
 					// ログインに成功
+					Model_Activity::insert_log([
+						'user_id' => $user->id,
+						'target' => 'login',
+						'target_id' => null,
+					]);
 					Session::set('user_id', $user->id);
 					Response::redirect($redirect);
 				}

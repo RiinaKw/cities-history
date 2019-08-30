@@ -11,17 +11,18 @@ class Model_Activity extends Model_Base
 
 	public static function insert_log($param)
 	{
+		$ip = Helper_Input::ip();
 		$activity = self::forge([
 			'user_id'    => $param['user_id'],
 			'target'     => $param['target'],
 			'target_id'  => $param['target_id'],
-			'ip'         => Input::real_ip(),
-			'host'       => gethostbyaddr(Input::real_ip()),
+			'ip'         => $ip,
+			'host'       => gethostbyaddr($ip),
 			'user_agent' => Input::user_agent(),
 		]);
 		$activity->save();
 	}
-	
+
 	public static function get_log($param)
 	{
 		// 初期値
@@ -31,7 +32,7 @@ class Model_Activity extends Model_Base
 			'pagination_url' => '',
 		);
 		$param = array_merge($default, $param);
-		
+
 		// クエリを生成
 		$query = DB::select()->from(self::$_table_name);
 		$query->where('user_id', '=', $param['user_id']);
@@ -41,7 +42,7 @@ class Model_Activity extends Model_Base
 			$query->where('deleted_at', '=', null);
 		}
 		$count = $query->execute()->count();
-		
+
 		// ページネーションオブジェクトを生成
 		$pagination_config = array(
 			'pagination_url' => $param['pagination_url'],
@@ -51,16 +52,16 @@ class Model_Activity extends Model_Base
 			'uri_segment'    => 'page',
 		);
 		$pagination = Pagination::forge('pagination_worker', $pagination_config);
-		
+
 		$query->limit($pagination->per_page);
 		$query->offset($pagination->offset);
-		
+
 		$query->order_by('created_at', 'desc');
-		
+
 		$result = $query->as_object('Model_Activity')->execute()->as_array();
 		$first = $pagination->offset + 1;
 		$last = $first + count($result) - 1;
-		
+
 		return array(
 			'result'     => $result,
 			'count'      => $count,
