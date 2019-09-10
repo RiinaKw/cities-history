@@ -34,17 +34,6 @@
 		<script src="https://unpkg.com/leaflet@0.7.3/dist/leaflet.js"></script>
 	{{Asset::js('geoshape.js')}}
 
-{{if Fuel::$env == 'production'}}
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46798910-3"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-46798910-3');
-		</script>
-{{/if}}
 	</head>
 	<body>
 		{{Fuel::$env}}
@@ -127,5 +116,16 @@
 				<div class="small text-muted">{{Config::get('common.geoshape')}}</div>
 			</div>
 		</footer>
+{{if Fuel::$env == 'production'}}
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46798910-3"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-46798910-3');
+		</script>
+{{/if}}
 	</body>
 </html>
