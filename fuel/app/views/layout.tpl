@@ -35,6 +35,7 @@
 	{{Asset::js('geoshape.js')}}
 	</head>
 	<body>
+		{{Fuel::$env}}
 		<!-- Fixed navbar -->
 		<header class="navbar fixed-top navbar-expand-md navbar-light">
 			<h1>
