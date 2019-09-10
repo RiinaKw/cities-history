@@ -116,6 +116,7 @@
 				<div class="small text-muted">{{Config::get('common.geoshape')}}</div>
 			</div>
 		</footer>
+
 {{if Fuel::$env == 'production'}}
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46798910-3"></script>
