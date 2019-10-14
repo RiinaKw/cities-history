@@ -2,6 +2,8 @@
 
 class Model_Division extends Model_Base
 {
+	const RE_SUFFIX = '/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/';
+
 	protected static $_table_name  = 'divisions';
 	protected static $_primary_key = 'id';
 	protected static $_created_at  = 'created_at';
@@ -78,7 +80,7 @@ class Model_Division extends Model_Base
 			->where('fullname', 'LIKE', '%'.$q.'%');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
-	}
+	} // function query()
 
 	public static function search($q)
 	{
@@ -106,7 +108,7 @@ class Model_Division extends Model_Base
 		$divisions = [];
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match(static::RE_SUFFIX, $name, $matches);
 			if ( ! $division = self::get_one_by_name_and_parent_id($matches, $parent_id))
 			{
 				$division = self::forge([
@@ -146,7 +148,7 @@ class Model_Division extends Model_Base
 		$parent_id = null;
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match(static::RE_SUFFIX, $name, $matches);
 
 			if ($matches)
 			{
