@@ -7,10 +7,10 @@
  */
 class Controller_Auth extends Controller_Base
 {
-	// remember me に使用するクッキー名
+	// cookie name for remember-me
 	const COOKIE_REMEMBER_ME = 'user_hash';
 
-	// remember me の有効期限（30日）
+	// expire of remember-me (30 days)
 	const COOKIE_REMEMBER_ME_EXPIRE = 60 * 60 * 24 * 30;
 
 	/**
@@ -28,11 +28,11 @@ class Controller_Auth extends Controller_Base
 		}
 		else
 		{
-			// check "remember me" cookie
+			// check remember-me cookie
 			$remember_me_hash = Cookie::get(self::COOKIE_REMEMBER_ME);
 			if ($remember_me_hash)
 			{
-				// restore user from cookie hash
+				// restore user from remember-me cookie hash
 				$user = Model_User::find_one_by_remember_me_hash($remember_me_hash);
 				if ($user && ! $user->deleted_at)
 				{
@@ -48,7 +48,7 @@ class Controller_Auth extends Controller_Base
 	} // function action_index()
 
 	/**
-	 * set "remember me" cookie
+	 * set remember-me cookie
 	 *
 	 * @access  protected
 	 * @return  Response
@@ -98,7 +98,7 @@ class Controller_Auth extends Controller_Base
 				{
 					if (Input::post('remember-me'))
 					{
-						// set "remember me"
+						// set remember-me
 						$this->_remember_me($user);
 					}
 					// login success
@@ -141,13 +141,13 @@ class Controller_Auth extends Controller_Base
 		$redirect = Input::get('url');
 		if ($this->_user)
 		{
-			// delete "remember me"
+			// forget remember-me
 			$user = Model_User::find_by_pk($this->_user->id);
 			$user->remember_me_hash = null;
 			$user->save();
 		}
 
-		// delete "remember me" cookie
+		// delete remember-me cookie
 		Cookie::delete(self::COOKIE_REMEMBER_ME);
 
 		// delete all sessions
