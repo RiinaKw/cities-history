@@ -93,7 +93,7 @@
 						</section>
 						<div class="map col-sm-5 mb-4" id="map-{{$event.event_id}}">
 							<div class="loading">
-								{{Asset::img('loading.gif')}}
+								<i class="fa-3x fas fa-spinner fa-spin"></i>
 							</div>
 						</div>
 						<script>
