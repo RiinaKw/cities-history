@@ -37,7 +37,6 @@
 		<script src="https://unpkg.com/leaflet@0.7.3/dist/leaflet.js"></script>
 
 	{{Asset::css('style.css')}}
-
 	{{Asset::js('geoshape.js')}}
 	</head>
 	<body>
