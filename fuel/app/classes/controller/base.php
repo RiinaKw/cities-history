@@ -2,7 +2,7 @@
 /**
  * The Base Controller.
  *
- * コントローラの基底クラス
+ * Base class for controller.
  *
  * @package  app
  * @extends  Controller

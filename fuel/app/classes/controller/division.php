@@ -2,11 +2,8 @@
 /**
  * The Division Controller.
  *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
- *
  * @package  app
- * @extends  Controller
+ * @extends  Controller_Base
  */
 class Controller_Division extends Controller_Base
 {
@@ -90,7 +87,7 @@ class Controller_Division extends Controller_Base
 
 		Session::set(self::SESSION_LIST, Helper_Uri::current());
 
-		// ビューを設定
+		// create Presenter object
 		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
 		$content->current = 'detail';
 		$content->path = $path;
@@ -173,7 +170,7 @@ class Controller_Division extends Controller_Base
 
 		Session::set(self::SESSION_LIST, Helper_Uri::current());
 
-		// ビューを設定
+		// create Presenter object
 		$content = Presenter::forge('division/children', 'view', null, 'timeline.tpl');
 		$content->current = $label;
 		$content->path = $path;

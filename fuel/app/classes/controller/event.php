@@ -2,11 +2,8 @@
 /**
  * The Event Controller.
  *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
- *
  * @package  app
- * @extends  Controller
+ * @extends  Controller_Base
  */
 class Controller_Event extends Controller_Base
 {
@@ -24,7 +21,7 @@ class Controller_Event extends Controller_Base
 
 	public function post_add()
 	{
-		// POST データを整形
+		// unify post data
 		$arr = [];
 		foreach (Input::post('id') as $key => $id)
 		{
@@ -104,7 +101,7 @@ class Controller_Event extends Controller_Base
 		}
 		catch (Exception $e)
 		{
-			// 内部エラー
+			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
@@ -220,7 +217,7 @@ class Controller_Event extends Controller_Base
 		}
 		catch (Exception $e)
 		{
-			// 内部エラー
+			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		} // try

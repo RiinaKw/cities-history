@@ -4,13 +4,13 @@ class Helper_Uri
 {
 	public static function root()
 	{
-		// 各種サーバ情報を取得
+		// get server information
 		$base = Config::get('base_url');
 		if ($base)
 		{
 			if (preg_match('/\/$/', $base))
 			{
-				// スラッシュで終わる場合は削除
+				// remove last slash
 				$base = substr($base, 0, -1);
 			}
 			return $base;
@@ -23,11 +23,11 @@ class Helper_Uri
 			$path = dirname($_SERVER['SCRIPT_NAME']);
 			$path = str_replace('\\', '/', $path);
 
-			// publicディレクトリへの絶対URLを生成
+			// absolute URL for public dir
 			$uri = $protocol.'://'.$server.$path;
 			if (preg_match('/\/$/', $uri))
 			{
-				// スラッシュで終わる場合は削除
+				// remove last slash
 				$uri = substr($uri, 0, -1);
 			}
 			return $uri;
@@ -44,7 +44,7 @@ class Helper_Uri
 		}
 		if (strpos($path, '/') === 0)
 		{
-			// スラッシュで始まる場合は削除
+			// remove last slash
 			$path = substr($path, 1);
 		}
 		return Uri::create(
@@ -66,7 +66,7 @@ class Helper_Uri
 		Response::redirect($uri);
 	} // function redirect()
 
-	// URLを取得
+	// get current uri
 	public static function current($param = true)
 	{
 		$path = '/';

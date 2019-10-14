@@ -9,11 +9,11 @@ class Model_Event extends Model_Base
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	public function validation($is_new = false, $factory = null)	// 引数は単なる識別子、何でもいい
+	public function validation($is_new = false, $factory = null)
 	{
 		$validation = Validation::forge($factory);
 
-		// 入力ルール
+		// rules
 		$field = $validation->add('date', '日付')
 			->add_rule('required')
 			->add_rule('valid_date', 'Y-m-d');

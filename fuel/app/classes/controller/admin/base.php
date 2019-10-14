@@ -2,7 +2,7 @@
 /**
  * The Admin Base Controller.
  *
- * 管理者画面の基底クラス
+ * Base of admin controller.
  *
  * @package  app
  * @extends  Controller_Base
@@ -13,11 +13,10 @@ abstract class Controller_Admin_Base extends Controller_Base
 	{
 		parent::before();
 
-		// 管理者ユーザ情報を取得
+		// is admin user?
 		if ( ! $this->_user)
 		{
-			//throw new HttpNoAccessException;
-			// ログインページへリダイレクト
+			// redirect to login form
 			Helper_Uri::redirect('login');
 		}
 	} // function before()

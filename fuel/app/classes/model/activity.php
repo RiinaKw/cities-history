@@ -21,11 +21,11 @@ class Model_Activity extends Model_Base
 			'user_agent' => Input::user_agent(),
 		]);
 		$activity->save();
-	}
+	} // function insert_log()
 
 	public static function get_log($param)
 	{
-		// 初期値
+		// initial params
 		$default = array(
 			'is_deleted'     => false,
 			'per_page'       => 10,
@@ -33,17 +33,17 @@ class Model_Activity extends Model_Base
 		);
 		$param = array_merge($default, $param);
 
-		// クエリを生成
+		// query
 		$query = DB::select()->from(self::$_table_name);
 		$query->where('user_id', '=', $param['user_id']);
 		if ( ! $param['is_deleted'])
 		{
-			// 削除されていないレコードを抽出
+			// only that not been deleted
 			$query->where('deleted_at', '=', null);
 		}
 		$count = $query->execute()->count();
 
-		// ページネーションオブジェクトを生成
+		// create pagination
 		$pagination_config = array(
 			'pagination_url' => $param['pagination_url'],
 			'num_links'      => 5,
@@ -69,5 +69,5 @@ class Model_Activity extends Model_Base
 			'last'       => $last,
 			'pagination' => $pagination,
 		);
-	}
-}
+	} // function get_log()
+} // class Model_Activity

@@ -9,7 +9,7 @@ class Model_User extends Model_Base
 	protected static $_deleted_at	= 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	public function validation($is_new = false, $factory = null)	// 引数は単なる識別子、何でもいい
+	public function validation($is_new = false, $factory = null)
 	{
 		$validation = Validation::forge($factory);
 		$validation->add_callable(new Helper_MyValidation());
@@ -20,7 +20,7 @@ class Model_User extends Model_Base
 
 		$password = Input::post('password');
 
-		// 入力ルール
+		// rules
 		$field = $validation->add('login_id', 'ログインID')
 			->add_rule('required')
 			->add_rule('max_length', 100)
@@ -53,31 +53,31 @@ class Model_User extends Model_Base
 		return $validation;
 	} // function validation()
 
-	// Blowfish アルゴリズムを使ったパスワードのハッシュ化
+	// make password hash using Blowfish
 	static function crypt_password($password)
 	{
 		return password_hash($password, PASSWORD_DEFAULT);
 	} // function crypt_password()
 
-	// ログイン
+	// login
 	public static function login($login_id, $password)
 	{
-		// login_id に一致するレコードを取得
+		// get record matching $login_id
 		$admin = self::find_one_by_login_id($login_id);
 		if ($admin)
 		{
-			// パスワードが一致するかチェック
+			// is password matches?
 			$password_match = password_verify($password, $admin->password_crypt);
 			if ($password_match)
 			{
-				// ログイン成功
+				// success
 				return $admin;
 			}
 		}
 		return false;
 	}
 
-	// remember-me クッキーに使用するユニークIDを生成
+	// make remember-me unique hash
 	public static function create_remember_me_hash()
 	{
 		$query = DB::select('id', 'remember_me_hash')

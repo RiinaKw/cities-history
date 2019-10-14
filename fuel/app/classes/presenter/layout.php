@@ -11,10 +11,10 @@ class Presenter_Layout extends Presenter_Base
 		$this->_user = Model_User::find_by_pk($user_id);
 		$q = Input::get('q');
 
-		// ビューのパラメータを取得
+		// get view parameters
 		$param = $this->_view->get();
 
-		// タイトル生成
+		// create title
 		$site_title = Config::get('common.title') . '（' . Config::get('common.title_ja') . '）';
 		$title = $param['title'];
 		if ($title)
@@ -25,16 +25,16 @@ class Presenter_Layout extends Presenter_Base
 		{
 			$title = $site_title;
 		}
-		
-		// レイアウトテンプレートに値をセット
+
+		// set to template
 		$this->q = $q;
 		$this->user = $this->_user;
-		
+
 		$this->title = $title;
 		$this->og_type = isset($param['og_type']) ? $param['og_type'] : '';
 		$this->nav_item = isset($param['nav_item']) ? $param['nav_item'] : '';
 		$this->breadcrumbs = isset($param['breadcrumbs']) ? $param['breadcrumbs'] : [];
-		
+
 		$this->url_root = Helper_Uri::root();
 		$this->url_login = Helper_Uri::create('login', [], ['url' => Helper_Uri::current()]);
 		$this->url_logout = Helper_Uri::create('logout', [], ['url' => Helper_Uri::current()]);

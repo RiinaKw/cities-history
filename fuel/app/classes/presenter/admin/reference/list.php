@@ -16,7 +16,6 @@ class Presenter_Admin_Reference_List extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		// フラッシュ変数を取得
 		$this->flash = Session::get_flash($this->flash_name);
 
 		$this->title = '参照日付一覧';

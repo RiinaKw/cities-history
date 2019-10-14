@@ -2,11 +2,8 @@
 /**
  * The List Controller.
  *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
- *
  * @package  app
- * @extends  Controller
+ * @extends  Controller_Base
  */
 class Controller_List extends Controller_Base
 {
@@ -51,6 +48,7 @@ class Controller_List extends Controller_Base
 			'町' => 0,
 			'村' => 0,
 		];
+		// count divisions by postfix
 		$child_divisions = [];
 		foreach ($divisions as $division)
 		{
@@ -63,6 +61,7 @@ class Controller_List extends Controller_Base
 			$count[$division->postfix]++;
 		}
 
+		// create tree
 		$ids_tree = [];
 		foreach ($child_divisions as $child)
 		{
@@ -159,7 +158,7 @@ class Controller_List extends Controller_Base
 			} // foreach
 		}
 
-		// ビューを設定
+		// create Presenter object
 		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');
 		$content->date = $date;
 		$content->division = $top_division;
@@ -180,7 +179,7 @@ class Controller_List extends Controller_Base
 			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 		}
 
-		// ビューを設定
+		// create Presenter object
 		$content = Presenter::forge('list/search', 'view', null, 'search.tpl');
 		$content->divisions = $result;
 		$content->q = $q;

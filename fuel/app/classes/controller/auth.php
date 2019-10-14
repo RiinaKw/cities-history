@@ -2,9 +2,6 @@
 /**
  * The Auth Controller.
  *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
- *
  * @package  app
  * @extends  Controller_Base
  */
@@ -17,7 +14,7 @@ class Controller_Auth extends Controller_Base
 	const COOKIE_REMEMBER_ME_EXPIRE = 60 * 60 * 24 * 30;
 
 	/**
-	 * トップページ
+	 * Index
 	 *
 	 * @access  public
 	 * @return  Response
@@ -26,32 +23,32 @@ class Controller_Auth extends Controller_Base
 	{
 		if ($this->_user)
 		{
-			// 既にログインしている場合は認証をすっ飛ばす
+			// already logined
 			Helper_Uri::redirect('top');
 		}
 		else
 		{
-			// remember me クッキーをチェック
+			// check "remember me" cookie
 			$remember_me_hash = Cookie::get(self::COOKIE_REMEMBER_ME);
 			if ($remember_me_hash)
 			{
-				// ハッシュ値から管理者情報を復元
+				// restore user from cookie hash
 				$user = Model_User::find_one_by_remember_me_hash($remember_me_hash);
 				if ($user && ! $user->deleted_at)
 				{
 					$this->_remember_me($user);
 
-					// ログイン成功時の処理
+					// login success
 					$this->_login_success($user);
 				}
 			}
 		}
-		// ログインしていなければログインページへリダイレクト
+		// if is not logined, redirect to login form
 		Helper_Uri::redirect('login');
 	} // function action_index()
 
 	/**
-	 * remember me クッキーをセット
+	 * set "remember me" cookie
 	 *
 	 * @access  protected
 	 * @return  Response
@@ -65,7 +62,7 @@ class Controller_Auth extends Controller_Base
 	} // function _remember_me()
 
 	/**
-	 * ログイン
+	 * Log in
 	 *
 	 * @access  public
 	 * @return  Response
@@ -75,9 +72,10 @@ class Controller_Auth extends Controller_Base
 		$redirect = Input::get('url');
 		if ($this->_user)
 		{
-			// 既にログインしている場合は認証をすっ飛ばす
+			// already logined
 			if ($redirect)
 			{
+				// redirect to previous page
 				Response::redirect($redirect);
 			}
 			else
@@ -89,21 +87,21 @@ class Controller_Auth extends Controller_Base
 		$error_string = '';
 		if(Input::post())
 		{
-			// 入力値を取得
+			// get form input
 			$login_id = Input::post('login_id');
 			$password = Input::post('password');
 			if ($login_id !== '' && $password !== '')
 			{
-				// ログインチェック
+				// validate for login
 				$user = Model_User::login($login_id, $password);
 				if ($user)
 				{
 					if (Input::post('remember-me'))
 					{
-						// ログイン状態を保存する
+						// set "remember me"
 						$this->_remember_me($user);
 					}
-					// ログインに成功
+					// login success
 					Model_Activity::insert_log([
 						'user_id' => $user->id,
 						'target' => 'login',
@@ -114,16 +112,18 @@ class Controller_Auth extends Controller_Base
 				}
 				else
 				{
+					// wrong input
 					$error_string = 'ユーザ名またはパスワードが違います。';
 				}
 			}
 			else
 			{
+				// empty input
 				$error_string = 'ユーザ名とパスワードを入力してください。';
 			}
 		}
 
-			// ビューを設定
+		// create Presenter object
 		$content = Presenter::forge('login', 'view', null, 'login.tpl');
 		$content->error_string = $error_string;
 
@@ -131,7 +131,7 @@ class Controller_Auth extends Controller_Base
 	} // function action_login()
 
 	/**
-	 * ログアウト
+	 * Lot out
 	 *
 	 * @access  public
 	 * @return  Response
@@ -141,20 +141,20 @@ class Controller_Auth extends Controller_Base
 		$redirect = Input::get('url');
 		if ($this->_user)
 		{
-			// remember me キーを削除
+			// delete "remember me"
 			$user = Model_User::find_by_pk($this->_user->id);
 			$user->remember_me_hash = null;
 			$user->save();
 		}
 
-		// remember me クッキーを削除
+		// delete "remember me" cookie
 		Cookie::delete(self::COOKIE_REMEMBER_ME);
 
-		// セッションを全削除
+		// delete all sessions
 		Session::delete('user_id');
 		Session::delete('user_data');
 
-		// 見ていたページにリダイレクト
+		// redirect to previous page
 		Response::redirect($redirect);
 	} // function action_logout()
-} // class Controller_Top
+} // class Controller_Auth

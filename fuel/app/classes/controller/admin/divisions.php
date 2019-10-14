@@ -2,11 +2,10 @@
 /**
  * The Admin Controller.
  *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
+ * Admin controller for edit divisions.
  *
  * @package  app
- * @extends  Controller
+ * @extends  Controller_Admin_Base
  */
 class Controller_Admin_Divisions extends Controller_Admin_Base
 {
@@ -55,7 +54,7 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 			$divisions[] = $division;
 		}
 
-		// ビューを設定
+		// create Presenter object
 		$content = Presenter::forge(
 			'admin/divisions/list',
 			'view',

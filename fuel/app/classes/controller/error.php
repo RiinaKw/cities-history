@@ -2,8 +2,6 @@
 /**
  * The Error Controller.
  *
- * エラー画面
- *
  * @package  app
  * @extends  Controller_Base
  */

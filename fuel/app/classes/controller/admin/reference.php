@@ -2,11 +2,10 @@
 /**
  * The Admin Controller.
  *
- * A basic controller example.  Has examples of how to set the
- * response body and status.
+ * Admin controller for edit date references.
  *
  * @package  app
- * @extends  Controller
+ * @extends  Controller_Admin_Base
  */
 class Controller_Admin_Reference extends Controller_Admin_Base
 {
@@ -14,7 +13,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 	public function action_list()
 	{
-		// ビューを設定
+		// create Presenter object
 		$content = Presenter::forge(
 			'admin/reference/list',
 			'view',
@@ -52,7 +51,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 		}
 		catch (Exception $e)
 		{
-			// 内部エラー
+			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
@@ -82,7 +81,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 		}
 		catch (Exception $e)
 		{
-			// 内部エラー
+			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
@@ -110,7 +109,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 		}
 		catch (Exception $e)
 		{
-			// 内部エラー
+			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
