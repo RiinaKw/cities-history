@@ -46,6 +46,7 @@ class Presenter_Division_Children extends Presenter_Layout
 		}
 
 		$this->title = $this->path;
+		$this->description = $this->path . 'の所属自治体変遷一覧';
 		$this->og_type = 'article';
 		$this->breadcrumbs = $breadcrumbs;
 

@@ -1,4 +1,6 @@
+{{extends file='layout.tpl'}}
 
+{{block name=content}}
 			<header class="clearfix">
 				<div class="float-left">
 					<h2>Reference Manage</h2>
@@ -50,3 +52,5 @@
 {{$components.add_reference}}
 {{$components.edit_reference}}
 {{$components.delete_reference}}
+
+{{/block}}

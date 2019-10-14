@@ -1,4 +1,6 @@
+{{extends file='layout.tpl'}}
 
+{{block name=content}}
 			<header class="clearfix">
 				<div class="float-left">
 					<h2>{{$division->path|escape}}</h2>
@@ -194,3 +196,5 @@
 {{$components.add_division}}
 
 {{/if}}
+
+{{/block}}

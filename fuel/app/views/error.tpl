@@ -1,4 +1,6 @@
+{{extends file='layout.tpl'}}
 
+{{block name=content}}
 		<main id="error">
 			<div class="main-contents container">
 				<div class="inner-container">
@@ -13,3 +15,5 @@
 				</div>
 			</div>
 		</main>
+
+{{/block}}

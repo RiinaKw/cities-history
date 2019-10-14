@@ -1,4 +1,6 @@
+{{extends file='layout.tpl'}}
 
+{{block name=content}}
 			<header class="mb-4">
 				<h2>Search Result</h2>
 				<div>
@@ -22,3 +24,5 @@
 				<p>no results.</p>
 {{/if}}
 			</div>
+
+{{/block}}

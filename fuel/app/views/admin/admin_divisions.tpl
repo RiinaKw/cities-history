@@ -1,4 +1,6 @@
+{{extends file='layout.tpl'}}
 
+{{block name=content}}
 			<header class="clearfix">
 				<div class="float-left">
 					<h2>Division Manage</h2>
@@ -51,3 +53,5 @@
 {{/foreach}}
 				</section>
 			</div>
+
+{{/block}}

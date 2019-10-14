@@ -105,7 +105,7 @@
 				{{/if}}
 			{{/strip}}">
 
-{{$content}}
+{{block name=content}}{{/block}}
 
 			</main>
 		</div><!-- .main-container -->
