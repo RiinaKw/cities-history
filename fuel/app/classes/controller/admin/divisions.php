@@ -42,11 +42,11 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 			$division = Model_Division::find_by_pk($id);
 			$end_event = Model_Event::find_by_pk($division->end_event_id);
 
-			$division->valid_kana = $division->name_kana && $division->postfix_kana;
+			$division->valid_kana = $division->name_kana && $division->suffix_kana;
 			$division->valid_start_event = !! $division->start_event_id;
 			$division->valid_end_event = !! $division->end_event_id;
 			$division->valid_government_code =
-				($division->postfix == '郡')
+				($division->suffix == '郡')
 				||
 				$division->government_code
 				||

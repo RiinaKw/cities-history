@@ -48,17 +48,17 @@ class Controller_List extends Controller_Base
 			'町' => 0,
 			'村' => 0,
 		];
-		// count divisions by postfix
+		// count divisions by suffix
 		$child_divisions = [];
 		foreach ($divisions as $division)
 		{
 			$child_divisions[$division->id] = $division;
 
-			if ( ! isset($count[$division->postfix]))
+			if ( ! isset($count[$division->suffix]))
 			{
-				$count[$division->postfix] = 0;
+				$count[$division->suffix] = 0;
 			}
-			$count[$division->postfix]++;
+			$count[$division->suffix]++;
 		}
 
 		// create tree
@@ -81,11 +81,11 @@ class Controller_List extends Controller_Base
 							'children' => [],
 						];
 					}
-					if ( ! isset($ids_tree[$parent_id]['count'][$child->postfix]))
+					if ( ! isset($ids_tree[$parent_id]['count'][$child->suffix]))
 					{
-						$ids_tree[$parent_id]['count'][$child->postfix] = 0;
+						$ids_tree[$parent_id]['count'][$child->suffix] = 0;
 					}
-					$ids_tree[$parent_id]['count'][$child->postfix]++;
+					$ids_tree[$parent_id]['count'][$child->suffix]++;
 					$ids_tree[$parent_id]['children'][$child->id] = $child->id;
 				}
 			}
@@ -114,8 +114,8 @@ class Controller_List extends Controller_Base
 			foreach ($ids_tree[$top_division->id]['children'] as $id => $child)
 			{
 				$div = $child_divisions[$id];
-				$postfix = $div->postfix;
-				switch ($postfix)
+				$suffix = $div->suffix;
+				switch ($suffix)
 				{
 					case '支庁':
 					case '区':
@@ -124,36 +124,36 @@ class Controller_List extends Controller_Base
 					break;
 
 					default:
-						$postfix = '町村';
+						$suffix = '町村';
 					break;
 				} // swtich
 				if (is_array($child))
 				{
 					$div->_count = $child['count'];
-					$divisions_tree[$postfix][$id] = $div;
+					$divisions_tree[$suffix][$id] = $div;
 					foreach ($child['children'] as $town_id)
 					{
 						$town = $child_divisions[$town_id];
-						$town_postfix = $town->postfix;
-						switch ($town_postfix)
+						$town_suffix = $town->suffix;
+						switch ($town_suffix)
 						{
 							case '区':
 							break;
 
 							default:
-								$town_postfix = '町村';
+								$town_suffix = '町村';
 							break;
 						} // swtich
-						if ( ! isset($divisions_tree[$postfix][$id]->_children[$town_postfix]))
+						if ( ! isset($divisions_tree[$suffix][$id]->_children[$town_suffix]))
 						{
-							$divisions_tree[$postfix][$id]->_children[$town_postfix] = [];
+							$divisions_tree[$suffix][$id]->_children[$town_suffix] = [];
 						}
-						$divisions_tree[$postfix][$id]->_children[$town_postfix][$town_id] = $town;
+						$divisions_tree[$suffix][$id]->_children[$town_suffix][$town_id] = $town;
 					} // foreach
 				}
 				else
 				{
-					$divisions_tree[$postfix][$id] = $div;
+					$divisions_tree[$suffix][$id] = $div;
 				}
 			} // foreach
 		}

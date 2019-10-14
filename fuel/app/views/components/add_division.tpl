@@ -36,19 +36,19 @@
 							<label class="row">
 								<span class="col-4">接尾語</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix" value="" />
+									<input class="form-control" type="text" name="suffix" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix_kana" value="" />
+									<input class="form-control" type="text" name="suffix_kana" value="" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語を使う</span>
 								<div class="col-8 checkbox-wrapper">
-									<input type="checkbox" name="show_postfix" value="true" checked="checked" />
+									<input type="checkbox" name="show_suffix" value="true" checked="checked" />
 								</div>
 							</label>
 							<label class="row">

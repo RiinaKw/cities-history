@@ -36,19 +36,19 @@
 							<label class="row">
 								<span class="col-4">接尾語</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix" value="{{$division->postfix}}" />
+									<input class="form-control" type="text" name="suffix" value="{{$division->suffix}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="postfix_kana" value="{{$division->postfix_kana}}" />
+									<input class="form-control" type="text" name="suffix_kana" value="{{$division->suffix_kana}}" />
 								</div>
 							</label>
 							<label class="row">
 								<span class="col-4">接尾語を使う</span>
 								<div class="col-8 checkbox-wrapper">
-									<input type="checkbox" name="show_postfix" value="true" {{if $division->show_postfix}}checked="checked"{{/if}} />
+									<input type="checkbox" name="show_suffix" value="true" {{if $division->show_suffix}}checked="checked"{{/if}} />
 								</div>
 							</label>
 							<label class="row">

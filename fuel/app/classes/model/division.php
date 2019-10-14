@@ -23,10 +23,10 @@ class Model_Division extends Model_Base
 		$field = $validation->add('name_kana', '自治体名かな')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('postfix', '自治体名種別')
+		$field = $validation->add('suffix', '自治体名種別')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('postfix_kana', '自治体名種別かな')
+		$field = $validation->add('suffix_kana', '自治体名種別かな')
 			->add_rule('required')
 			->add_rule('max_length', 20);
 		$field = $validation->add('identify', '識別名')
@@ -106,17 +106,17 @@ class Model_Division extends Model_Base
 		$divisions = [];
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 			if ( ! $division = self::get_one_by_name_and_parent_id($matches, $parent_id))
 			{
 				$division = self::forge([
 					'name' => $matches['place'],
 					'name_kana' => '',
-					'postfix' => $matches['postfix'],
-					'postfix_kana' => '',
+					'suffix' => $matches['suffix'],
+					'suffix_kana' => '',
 					'fullname' => '',
 					'fullname_kana' => '',
-					'show_postfix' => true,
+					'show_suffix' => true,
 					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
 					'parent_division_id' => $parent_id,
 					'is_unfinished' => true,
@@ -146,7 +146,7 @@ class Model_Division extends Model_Base
 		$parent_id = null;
 		foreach ($arr as $name)
 		{
-			preg_match('/^(?<place>.+?)(?<postfix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
+			preg_match('/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/', $name, $matches);
 
 			if ($matches)
 			{
@@ -167,7 +167,7 @@ class Model_Division extends Model_Base
 			{
 				$matches = array(
 					'place' => $name,
-					'postfix' => '',
+					'suffix' => '',
 				);
 				$result = self::get_one_by_name_and_parent_id($matches, $parent_id);
 				if ($result)
@@ -194,12 +194,12 @@ class Model_Division extends Model_Base
 			->and_where_open()
 			->and_where_open()
 			->where('name', '=', $name['place'])
-			->where('postfix', '=', $name['postfix'])
-			->where('show_postfix', '=', true)
+			->where('suffix', '=', $name['suffix'])
+			->where('show_suffix', '=', true)
 			->and_where_close()
 			->or_where_open()
-			->where('name', '=', $name['place'].$name['postfix'])
-			->where('show_postfix', '=', false)
+			->where('name', '=', $name['place'].$name['suffix'])
+			->where('show_suffix', '=', false)
 			->or_where_close()
 			->and_where_close();
 		if (isset($name['identify']))
@@ -228,7 +228,7 @@ class Model_Division extends Model_Base
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_top_level()
 
-	public static function get_by_postfix_and_date($parent_id, $postfix, $date = null)
+	public static function get_by_suffix_and_date($parent_id, $suffix, $date = null)
 	{
 		$query = DB::select('d.*')
 			->from([self::$_table_name, 'd'])
@@ -237,7 +237,7 @@ class Model_Division extends Model_Base
 			->join(['events', 'e'], 'LEFT OUTER')
 			->on('d.end_event_id', '=', 'e.id')
 			->where('d.deleted_at', '=', null)
-			->where('d.postfix', '=', $postfix)
+			->where('d.suffix', '=', $suffix)
 			->where('d.parent_division_id', '=', $parent_id);
 		if ($date)
 		{
@@ -258,11 +258,11 @@ class Model_Division extends Model_Base
 			->order_by('d.end_date', 'desc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_by_postfix_and_date()
+	} // function get_by_suffix_and_date()
 
-	public function get_postfix_count($date)
+	public function get_suffix_count($date)
 	{
-		$query = DB::select('d.postfix', [DB::expr('COUNT(d.postfix)'), 'postfix_count'])
+		$query = DB::select('d.suffix', [DB::expr('COUNT(d.suffix)'), 'suffix_count'])
 			->from([self::$_table_name, 'd'])
 			->join(['events', 's'], 'LEFT OUTER')
 			->on('d.start_event_id', '=', 's.id')
@@ -273,7 +273,7 @@ class Model_Division extends Model_Base
 			->where('d.parent_division_id', '=', $this->id)
 			->or_where('d.belongs_division_id', '=', $this->id)
 			->and_where_close()
-			->group_by('d.postfix');
+			->group_by('d.suffix');
 		if ($date)
 		{
 			$query->and_where_open()
@@ -290,7 +290,7 @@ class Model_Division extends Model_Base
 		$result = [];
 		foreach ($arr as $item)
 		{
-			$result[$item['postfix']] = (int)$item['postfix_count'];
+			$result[$item['suffix']] = (int)$item['suffix_count'];
 		}
 
 		$sorted = [
@@ -332,7 +332,7 @@ class Model_Division extends Model_Base
 			unset($result['村']);
 		}
 		return array_merge($sorted, $result);
-	} // function get_postfix_count()
+	} // function get_suffix_count()
 
 	public static function get_by_top_parent_division_id_and_date($id, $date = null)
 	{
@@ -456,9 +456,9 @@ class Model_Division extends Model_Base
 			$path = '';
 			do {
 				$name = $division->name;
-				if ($division->show_postfix)
+				if ($division->show_suffix)
 				{
-					$name .= $division->postfix;
+					$name .= $division->suffix;
 				}
 				if ($division->identify)
 				{
@@ -476,9 +476,9 @@ class Model_Division extends Model_Base
 	public function get_kana()
 	{
 		$kana = $this->name_kana;
-		if ($this->show_postfix)
+		if ($this->show_suffix)
 		{
-			$kana .= '・'.$this->postfix_kana;
+			$kana .= '・'.$this->suffix_kana;
 		}
 		return $kana;
 	} // function get_kana()
@@ -512,9 +512,9 @@ class Model_Division extends Model_Base
 	public function get_fullname()
 	{
 		$name = $this->name;
-		if ($this->show_postfix)
+		if ($this->show_suffix)
 		{
-			$name .= $this->postfix;
+			$name .= $this->suffix;
 		}
 		if ($this->identify)
 		{
@@ -563,9 +563,9 @@ class Model_Division extends Model_Base
 
 			$this->name            = $input['name'];
 			$this->name_kana       = $input['name_kana'];
-			$this->postfix         = $input['postfix'];
-			$this->postfix_kana    = $input['postfix_kana'];
-			$this->show_postfix    = isset($input['show_postfix']) && $input['show_postfix'] ? true : false;
+			$this->suffix          = $input['suffix'];
+			$this->suffix_kana     = $input['suffix_kana'];
+			$this->show_suffix     = isset($input['show_suffix']) && $input['show_suffix'] ? true : false;
 			$this->identify        = $input['identify'] ?: null;
 			$this->government_code = $input['government_code'] ?: null;
 			$this->display_order   = $input['display_order'] ?: null;
@@ -577,7 +577,7 @@ class Model_Division extends Model_Base
 			$this->save();
 
 			$this->fullname = $this->get_path(null, true);
-			$this->fullname_kana = $this->name_kana.$this->postfix_kana;
+			$this->fullname_kana = $this->name_kana.$this->suffix_kana;
 
 			$query = DB::select()
 				->from(self::$_table_name)

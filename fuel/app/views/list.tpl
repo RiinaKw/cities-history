@@ -40,9 +40,9 @@
 					</a>
 				</h3>
 				<p class="count">{{strip}}
-					{{foreach from=$count key=postfix item=cur_count}}
+					{{foreach from=$count key=suffix item=cur_count}}
 						{{if $cur_count}}
-							{{$cur_count}}{{$postfix}}
+							{{$cur_count}}{{$suffix}}
 						{{/if}}
 					{{/foreach}}
 				{{/strip}}</p>
@@ -67,7 +67,7 @@
 					</section><!-- .grid.departs -->
 {{/if}}
 {{if isset($tree['区']) && $tree['区']}}
-					<section class="{{if $division->postfix != '市'}}grid{{/if}} wards">
+					<section class="{{if $division->suffix != '市'}}grid{{/if}} wards">
 						<ul class="divisions">
 {{foreach from=$tree['区'] item=ward}}
 							<li>
@@ -131,7 +131,7 @@
 					</section><!-- .grid.cities -->
 {{/if}}
 {{if isset($tree['町村']) && $tree['町村']}}
-					<section class="{{if $division->postfix != '郡' && $division->postfix != '支庁'}}grid{{/if}} towns">
+					<section class="{{if $division->suffix != '郡' && $division->suffix != '支庁'}}grid{{/if}} towns">
 						<ul class="divisions">
 {{foreach from=$tree['町村'] item=town}}
 							<li>
@@ -160,9 +160,9 @@
 									</a>
 								</h4>
 								<p class="count">{{strip}}
-									{{foreach from=$country->_count key=postfix item=count}}
+									{{foreach from=$country->_count key=suffix item=count}}
 										{{if $count}}
-											{{$count}}{{$postfix}}
+											{{$count}}{{$suffix}}
 										{{/if}}
 									{{/foreach}}
 								{{/strip}}</p>
