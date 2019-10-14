@@ -12,11 +12,11 @@ class Model_Division extends Model_Base
 	public $_children = [];
 	public $_count = [];
 
-	public function validation($is_new = false, $factory = null)	// 引数は単なる識別子、何でもいい
+	public function validation($is_new = false, $factory = null)
 	{
 		$validation = Validation::forge($factory);
 
-		// 入力ルール
+		// rules
 		$field = $validation->add('name', '自治体名')
 			->add_rule('required')
 			->add_rule('max_length', 20);
@@ -595,14 +595,14 @@ class Model_Division extends Model_Base
 		}
 		catch (HttpBadRequestException $e)
 		{
-			// 内部エラー
+			// internal error
 			DB::rollback_transaction();
 			throw new HttpBadRequestException($e->getMessage());
 		}
 		catch (Exception $e)
 		{
 			Debug::dump($e, $e->getTraceAsString());exit;
-			// 内部エラー
+			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		}
