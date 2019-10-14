@@ -260,79 +260,145 @@ class Model_Division extends Model_Base
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_by_suffix_and_date()
 
-	public function get_suffix_count($date)
+	public function get_tree($date)
 	{
-		$query = DB::select('d.suffix', [DB::expr('COUNT(d.suffix)'), 'suffix_count'])
-			->from([self::$_table_name, 'd'])
-			->join(['events', 's'], 'LEFT OUTER')
-			->on('d.start_event_id', '=', 's.id')
-			->join(['events', 'e'], 'LEFT OUTER')
-			->on('d.end_event_id', '=', 'e.id')
-			->where('d.deleted_at', '=', null)
-			->and_where_open()
-			->where('d.parent_division_id', '=', $this->id)
-			->or_where('d.belongs_division_id', '=', $this->id)
-			->and_where_close()
-			->group_by('d.suffix');
-		if ($date)
+		$divisions = [];
+		if ($this->top_parent_division_id)
 		{
-			$query->and_where_open()
-				->where('s.date', '<=', $date)
-				->or_where('s.date', '=', null)
-				->and_where_close()
-				->and_where_open()
-				->where('e.date', '>=', $date)
-				->or_where('e.date', '=', null)
-				->and_where_close();
+			$ids = Model_Division::get_by_parent_division_id_and_date($this->id, $date);
+			foreach ($ids as $id)
+			{
+				$divisions[] = Model_Division::find_by_pk($id);
+			}
+		}
+		else
+		{
+			$divisions = Model_Division::get_by_top_parent_division_id_and_date($this->id, $date);
 		}
 
-		$arr = $query->execute()->as_array();
-		$result = [];
-		foreach ($arr as $item)
-		{
-			$result[$item['suffix']] = (int)$item['suffix_count'];
-		}
-
-		$sorted = [
+		// count divisions by suffix
+		$count = [
 			'支庁' => 0,
-			'区' => 0,
 			'市' => 0,
+			'区' => 0,
 			'郡' => 0,
 			'町' => 0,
 			'村' => 0,
 		];
-		if (isset($result['支庁']) && $result['支庁'])
+		$child_divisions = [];
+		foreach ($divisions as $division)
 		{
-			$sorted['支庁'] = $result['支庁'];
-			unset($result['支庁']);
+			$child_divisions[$division->id] = $division;
+
+			if ( ! isset($count[$division->suffix]))
+			{
+				$count[$division->suffix] = 0;
+			}
+			$count[$division->suffix]++;
 		}
-		if (isset($result['区']) && $result['区'])
+
+		// create tree
+		$ids_tree = [];
+		foreach ($child_divisions as $child)
 		{
-			$sorted['区'] = $result['区'];
-			unset($result['区']);
+			$parent_ids = [$child->parent_division_id, $child->belongs_division_id];
+			foreach ($parent_ids as $parent_id)
+			{
+				if ($parent_id)
+				{
+					if ( ! isset($ids_tree[$parent_id]))
+					{
+						$ids_tree[$parent_id] = [
+							'count' => [
+								'区' => 0,
+								'町' => 0,
+								'村' => 0,
+							],
+							'children' => [],
+						];
+					}
+					if ( ! isset($ids_tree[$parent_id]['count'][$child->suffix]))
+					{
+						$ids_tree[$parent_id]['count'][$child->suffix] = 0;
+					}
+					$ids_tree[$parent_id]['count'][$child->suffix]++;
+					$ids_tree[$parent_id]['children'][$child->id] = $child->id;
+				}
+			}
 		}
-		if (isset($result['市']) && $result['市'])
+		if ($ids_tree)
 		{
-			$sorted['市'] = $result['市'];
-			unset($result['市']);
+			foreach ($ids_tree[$this->id]['children'] as $id)
+			{
+				if (isset($ids_tree[$id]))
+				{
+					$tree = $ids_tree[$id];
+					$ids_tree[$this->id]['children'][$id] = $tree;
+					unset($ids_tree[$id]);
+				}
+			}
 		}
-		if (isset($result['郡']) && $result['郡'])
+
+		$divisions_tree = [
+			'区' => [],
+			'市' => [],
+			'郡' => [],
+			'町村' => [],
+		];
+		if ($ids_tree)
 		{
-			$sorted['郡'] = $result['郡'];
-			unset($result['郡']);
+			foreach ($ids_tree[$this->id]['children'] as $id => $child)
+			{
+				$div = $child_divisions[$id];
+				$suffix = $div->suffix;
+				switch ($suffix)
+				{
+					case '支庁':
+					case '区':
+					case '市':
+					case '郡':
+					break;
+
+					default:
+						$suffix = '町村';
+					break;
+				} // swtich
+				if (is_array($child))
+				{
+					$div->_count = $child['count'];
+					$divisions_tree[$suffix][$id] = $div;
+					foreach ($child['children'] as $town_id)
+					{
+						$town = $child_divisions[$town_id];
+						$town_suffix = $town->suffix;
+						switch ($town_suffix)
+						{
+							case '区':
+							break;
+
+							default:
+								$town_suffix = '町村';
+							break;
+						} // swtich
+						if ( ! isset($divisions_tree[$suffix][$id]->_children[$town_suffix]))
+						{
+							$divisions_tree[$suffix][$id]->_children[$town_suffix] = [];
+						}
+						$divisions_tree[$suffix][$id]->_children[$town_suffix][$town_id] = $town;
+					} // foreach
+				}
+				else
+				{
+					$divisions_tree[$suffix][$id] = $div;
+				}
+			} // foreach
 		}
-		if (isset($result['町']) && $result['町'])
-		{
-			$sorted['町'] = $result['町'];
-			unset($result['町']);
-		}
-		if (isset($result['村']) && $result['村'])
-		{
-			$sorted['村'] = $result['村'];
-			unset($result['村']);
-		}
-		return array_merge($sorted, $result);
-	} // function get_suffix_count()
+
+		return [
+			'count' => $count,
+			'tree' => $divisions_tree,
+		];
+	} // function get_tree()
 
 	public static function get_by_top_parent_division_id_and_date($id, $date = null)
 	{

@@ -27,143 +27,15 @@ class Controller_List extends Controller_Base
 			}
 		}
 
-		$divisions = [];
-		if ($top_division->top_parent_division_id)
-		{
-			$ids = Model_Division::get_by_parent_division_id_and_date($top_division->id, $date);
-			foreach ($ids as $id)
-			{
-				$divisions[] = Model_Division::find_by_pk($id);
-			}
-		}
-		else
-		{
-			$divisions = Model_Division::get_by_top_parent_division_id_and_date($top_division->id, $date);
-		}
-		$count = [
-			'支庁' => 0,
-			'市' => 0,
-			'区' => 0,
-			'郡' => 0,
-			'町' => 0,
-			'村' => 0,
-		];
-		// count divisions by suffix
-		$child_divisions = [];
-		foreach ($divisions as $division)
-		{
-			$child_divisions[$division->id] = $division;
-
-			if ( ! isset($count[$division->suffix]))
-			{
-				$count[$division->suffix] = 0;
-			}
-			$count[$division->suffix]++;
-		}
-
 		// create tree
-		$ids_tree = [];
-		foreach ($child_divisions as $child)
-		{
-			$parent_ids = [$child->parent_division_id, $child->belongs_division_id];
-			foreach ($parent_ids as $parent_id)
-			{
-				if ($parent_id)
-				{
-					if ( ! isset($ids_tree[$parent_id]))
-					{
-						$ids_tree[$parent_id] = [
-							'count' => [
-								'区' => 0,
-								'町' => 0,
-								'村' => 0,
-							],
-							'children' => [],
-						];
-					}
-					if ( ! isset($ids_tree[$parent_id]['count'][$child->suffix]))
-					{
-						$ids_tree[$parent_id]['count'][$child->suffix] = 0;
-					}
-					$ids_tree[$parent_id]['count'][$child->suffix]++;
-					$ids_tree[$parent_id]['children'][$child->id] = $child->id;
-				}
-			}
-		}
-		if ($ids_tree)
-		{
-			foreach ($ids_tree[$top_division->id]['children'] as $id)
-			{
-				if (isset($ids_tree[$id]))
-				{
-					$tree = $ids_tree[$id];
-					$ids_tree[$top_division->id]['children'][$id] = $tree;
-					unset($ids_tree[$id]);
-				}
-			}
-		}
-
-		$divisions_tree = [
-			'区' => [],
-			'市' => [],
-			'郡' => [],
-			'町村' => [],
-		];
-		if ($ids_tree)
-		{
-			foreach ($ids_tree[$top_division->id]['children'] as $id => $child)
-			{
-				$div = $child_divisions[$id];
-				$suffix = $div->suffix;
-				switch ($suffix)
-				{
-					case '支庁':
-					case '区':
-					case '市':
-					case '郡':
-					break;
-
-					default:
-						$suffix = '町村';
-					break;
-				} // swtich
-				if (is_array($child))
-				{
-					$div->_count = $child['count'];
-					$divisions_tree[$suffix][$id] = $div;
-					foreach ($child['children'] as $town_id)
-					{
-						$town = $child_divisions[$town_id];
-						$town_suffix = $town->suffix;
-						switch ($town_suffix)
-						{
-							case '区':
-							break;
-
-							default:
-								$town_suffix = '町村';
-							break;
-						} // swtich
-						if ( ! isset($divisions_tree[$suffix][$id]->_children[$town_suffix]))
-						{
-							$divisions_tree[$suffix][$id]->_children[$town_suffix] = [];
-						}
-						$divisions_tree[$suffix][$id]->_children[$town_suffix][$town_id] = $town;
-					} // foreach
-				}
-				else
-				{
-					$divisions_tree[$suffix][$id] = $div;
-				}
-			} // foreach
-		}
+		$result = $top_division->get_tree($date);
 
 		// create Presenter object
 		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');
 		$content->date = $date;
 		$content->division = $top_division;
-		$content->tree = $divisions_tree;
-		$content->count = $count;
+		$content->tree = $result['tree'];
+		$content->count = $result['count'];
 
 		return $content;
 	} // function action_detail()
