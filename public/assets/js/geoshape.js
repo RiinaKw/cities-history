@@ -59,8 +59,17 @@ function set_map_center(map)
 
 function load(map, shape)
 {
-	$.getJSON(
+	$.ajax(
 		shape.url,
+		{
+			type: "post",
+			data: {
+				method: "post",
+			},
+			dataType: "json",
+		}
+	)
+	.done(
 		function(data) {
 			// 区域の中心を算出
 			for (var idx in data.features[0].geometry.coordinates) {
@@ -98,7 +107,7 @@ function load(map, shape)
 				map.$loading_pane.remove();
 			}
 		}
-	); // $.getJSON
+	);
 } // function load()
 
 function create_map(id, shapes)

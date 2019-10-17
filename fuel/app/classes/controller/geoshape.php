@@ -7,7 +7,7 @@
  */
 class Controller_Geoshape extends Controller
 {
-	public function action_index()
+	public function post_index()
 	{
 		$path = Input::get('path');
 		$url = 'http://geoshape.ex.nii.ac.jp/city/geojson/'.$path;
