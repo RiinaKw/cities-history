@@ -2,7 +2,7 @@
 
 class Model_Division extends Model_Base
 {
-	const RE_SUFFIX = '/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|組|新田)(\((?<identify>.+?)\))?$/';
+	const RE_SUFFIX = '/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)(\((?<identify>.+?)\))?$/';
 
 	protected static $_table_name  = 'divisions';
 	protected static $_primary_key = 'id';
