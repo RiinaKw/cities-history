@@ -127,6 +127,16 @@ class Model_Division extends Model_Base
 					'end_date' => '9999-12-31',
 				]);
 				$division->fullname = $division->get_path(null, true);
+
+				if ($parent_id) {
+					$parent = $division;
+					while ($parent->parent_division_id !== null)
+					{
+						$parent = Model_Division::find_by_pk($parent->parent_division_id);
+					}
+					$division->top_parent_division_id = $parent->id;
+				}
+
 				$division->save();
 
 				Model_Activity::insert_log([
