@@ -65,6 +65,20 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link {{if $nav_item == 'about'}}active{{/if}}"
+							href="{{$url_about}}">
+							<i class="fa fa-question"></i>
+							About
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{if $nav_item == 'link'}}active{{/if}}"
+							href="{{$url_link}}">
+							<i class="fa fa-link"></i>
+							Link
+						</a>
+					</li>
 {{if $user}}
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'division'}}active{{/if}}"

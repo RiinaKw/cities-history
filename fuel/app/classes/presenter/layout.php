@@ -39,6 +39,8 @@ class Presenter_Layout extends Presenter_Base
 		$this->url_login = Helper_Uri::create('login', [], ['url' => Helper_Uri::current()]);
 		$this->url_logout = Helper_Uri::create('logout', [], ['url' => Helper_Uri::current()]);
 		$this->url_search = Helper_Uri::create('search');
+		$this->url_about = Helper_Uri::create('about');
+		$this->url_link = Helper_Uri::create('link');
 		$this->url_admin_divisions = Helper_Uri::create('admin.divisions.list');
 		$this->url_admin_reference = Helper_Uri::create('admin.reference.list');
 	} // function after()
