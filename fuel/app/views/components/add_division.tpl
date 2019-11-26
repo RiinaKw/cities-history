@@ -30,7 +30,7 @@
 							<label class="row">
 								<span class="col-4">自治体名かな</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="name_kana" value="" required="required" />
+									<input class="form-control" type="text" name="name_kana" value="" />
 								</div>
 							</label>
 							<label class="row">
