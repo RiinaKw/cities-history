@@ -109,6 +109,12 @@ class Model_Division extends Model_Base
 		foreach ($arr as $name)
 		{
 			preg_match(static::RE_SUFFIX, $name, $matches);
+			if ( ! $matches) {
+				$matches = [
+					'place' => $name,
+					'suffix' => '',
+				];
+			}
 			if ( ! $division = self::get_one_by_name_and_parent_id($matches, $parent_id))
 			{
 				$division = self::forge([
