@@ -13,7 +13,7 @@ class Controller_Division extends Controller_Base
 	{
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
-		if ( ! $division || $division->get_path(null, true) != $path)
+		if ( ! $division || $division->get_path(null, true) != $path || $division->deleted_at != null)
 		{
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
