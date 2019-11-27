@@ -219,7 +219,8 @@ class Model_Division extends Model_Base
 			->where('name', '=', $name['place'].$name['suffix'])
 			->where('show_suffix', '=', false)
 			->or_where_close()
-			->and_where_close();
+			->and_where_close()
+			->where('deleted_at', '=', null);
 		if (isset($name['identify']))
 		{
 			$query->where('identify', '=', $name['identify']);
