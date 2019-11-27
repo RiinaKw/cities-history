@@ -16,6 +16,9 @@
 {{/if}}
 					</h2>
 					<p>{{$path_kana}}</p>
+{{if $division->government_code}}
+					<p>全国地方公共団体コード : {{$division->government_code|escape}}</p>
+{{/if}}
 				</div>
 {{if $user}}
 				<nav class="float-right">
