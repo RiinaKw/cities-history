@@ -108,8 +108,13 @@ class Model_Division extends Model_Base
 		$divisions = [];
 		foreach ($arr as $name)
 		{
+			if ( ! $name)
+			{
+				throw new Exception('自治体名が入力されていません');
+			}
 			preg_match(static::RE_SUFFIX, $name, $matches);
-			if ( ! $matches) {
+			if ( ! $matches)
+			{
 				$matches = [
 					'place' => $name,
 					'suffix' => '',
