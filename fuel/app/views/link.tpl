@@ -16,14 +16,12 @@
 								全国の自治体区域（過去に存在したものを含む）の地図データを公開しているサイト様です。<br />
 								Cities History Project でも地図データを利用させていただいています。
 							</dd>
-							{{*
 							<dt>
 								<a href="http://mujina.sakura.ne.jp/history/index.html" target="blannk">市町村変遷パラパラ地図</a>
 							</dt>
 							<dd>
 								自治体合併をパラパラまんがのように時系列の画像で表現した、面白い切り口のサイト様です。
 							</dd>
-							*}}
 						</dl>
 					</section>
 				</div>
