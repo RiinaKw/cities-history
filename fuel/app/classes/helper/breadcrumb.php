@@ -2,7 +2,7 @@
 
 class Helper_Breadcrumb
 {
-	public static function breadcrumb_and_kana($path, $root_label = '一覧', $root_uri = 'top', $item_uri = 'division.detail')
+	public static function breadcrumb_and_kana($path, $root_label = 'Top', $root_uri = 'top', $item_uri = 'division.detail')
 	{
 		$breadcrumbs = [
 			$root_label => Helper_Uri::create($root_uri),

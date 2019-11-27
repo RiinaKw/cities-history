@@ -8,7 +8,7 @@ class Presenter_About extends Presenter_Layout
 		$this->description = 'Cities History Project について';
 		$this->og_type = 'article';
 		$this->breadcrumbs = [
-			'トップ' => Helper_Uri::create('top'),
+			'Top' => Helper_Uri::create('top'),
 			$this->title => '',
 		];
 		$this->nav_item = 'about';

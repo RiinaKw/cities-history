@@ -20,6 +20,6 @@ class Presenter_Admin_Reference_List extends Presenter_Layout
 
 		$this->title = '参照日付一覧';
 		$this->nav_item = 'reference';
-		$this->breadcrumbs = ['一覧' => ''];
+		$this->breadcrumbs = ['参照日付一覧' => ''];
 	} // function view()
 } // class Presenter_Admin_Reference_List
