@@ -439,7 +439,7 @@ class Model_Division extends Model_Base
 				->or_where('s.date', '=', null)
 				->and_where_close()
 				->and_where_open()
-				->where('e.date', '>=', $date)
+				->where('e.date', '>', $date)
 				->or_where('e.date', '=', null)
 				->and_where_close();
 		}
@@ -505,7 +505,7 @@ class Model_Division extends Model_Base
 				->or_where('s.date', '=', null)
 				->and_where_close()
 				->and_where_open()
-				->where('e.date', '>=', $date)
+				->where('e.date', '>', $date)
 				->or_where('e.date', '=', null)
 				->and_where_close();
 		}
