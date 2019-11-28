@@ -15,11 +15,11 @@ class Presenter_Layout extends Presenter_Base
 		$param = $this->_view->get();
 
 		// create title
+		$page_title = $param['title'];
 		$site_title = Config::get('common.title') . '（' . Config::get('common.title_ja') . '）';
-		$title = $param['title'];
-		if ($title)
+		if ($page_title)
 		{
-			$title .= ' - ' . $site_title;
+			$title = $page_title . ' - ' . $site_title;
 		}
 		else
 		{
@@ -31,6 +31,7 @@ class Presenter_Layout extends Presenter_Base
 		$this->user = $this->_user;
 
 		$this->title = $title;
+		$this->page_title = $page_title;
 		$this->og_type = isset($param['og_type']) ? $param['og_type'] : '';
 		$this->nav_item = isset($param['nav_item']) ? $param['nav_item'] : '';
 		$this->breadcrumbs = isset($param['breadcrumbs']) ? $param['breadcrumbs'] : [];

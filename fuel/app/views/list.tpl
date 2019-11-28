@@ -19,6 +19,17 @@
 {{/if}}
 			</header>
 
+			<div id="share" class="mb-4">
+				<a
+					href="https://twitter.com/intent/tweet?text= {{$page_title}} {{Helper_Uri::current()|escape:url}}&amp;button_hashtag=ch_jp&amp;ref_src=twsrc%5Etfw"
+					class="twitter-hashtag-button"
+					data-lang="ja"
+					data-show-count="false">Tweet #ch_jp</a>
+				<script async
+					src="https://platform.twitter.com/widgets.js"
+					charset="utf-8"></script>
+			</div><!-- #share -->
+
 			<nav class="list-nav">
 				<ol>
 					<li class="{{if ! $date}}active{{/if}}">

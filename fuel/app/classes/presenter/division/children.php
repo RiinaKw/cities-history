@@ -45,8 +45,8 @@ class Presenter_Division_Children extends Presenter_Layout
 			$description .= ' | '.$date.' '.$event_parent->type;
 		}
 
-		$this->title = $this->path;
-		$this->description = $this->path . 'の所属自治体変遷一覧';
+		$this->title = $this->path . 'の所属自治体タイムライン';
+		$this->description = $this->path . 'の所属自治体タイムライン';
 		$this->og_type = 'article';
 		$this->breadcrumbs = $breadcrumbs;
 
