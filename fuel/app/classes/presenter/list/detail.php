@@ -33,10 +33,18 @@ class Presenter_List_Detail extends Presenter_Layout
 		$dates = Model_Referencedate::get_all();
 		foreach ($dates as &$cur_date)
 		{
+			$timestamp = strtotime($cur_date->date);
+			$cur_date->year  = (int)date('Y', $timestamp);
+			$cur_date->month = (int)date('m', $timestamp);
+			$cur_date->day   = (int)date('d', $timestamp);
 			$cur_date->url = Helper_Uri::create(
 				'list.division',
 				['path' => $this->division->path],
-				['date' => $cur_date->date]
+				[
+					'year'  => $cur_date->year,
+					'month' => $cur_date->month,
+					'day'   => $cur_date->day,
+				]
 			);
 		}
 		$this->reference_dates = $dates;
@@ -66,6 +74,10 @@ class Presenter_List_Detail extends Presenter_Layout
 		$this->description = $description;
 		$this->og_type = 'article';
 		$this->breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
+
+		$this->year_list = range(1878, date('Y'));
+		$this->month_list = range(1, 12);
+		$this->day_list = range(1, 31);
 
 		$this->url_add = Helper_Uri::create('division.add');
 	} // function view()

@@ -15,8 +15,24 @@ class Controller_List extends Controller_Base
 	public function action_detail()
 	{
 		$path = $this->param('path');
-		$date = Input::get('date');
-		$date = $date ? date('Y-m-d', strtotime($date)) : null;
+
+		$year = (int)Input::get('year');
+		$month = (int)Input::get('month');
+		$day = (int)Input::get('day');
+
+		if ($year && $month && $day)
+		{
+			$date_str = $year . '-' . $month . '-' . $day;
+			$date = date('Y-m-d', strtotime($date_str));
+		}
+		else
+		{
+			$date = null;
+			$year = 0;
+			$month = 0;
+			$day = 0;
+		}
+
 		$top_division = null;
 		if ($path)
 		{
@@ -33,6 +49,9 @@ class Controller_List extends Controller_Base
 		// create Presenter object
 		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');
 		$content->date = $date;
+		$content->year = $year;
+		$content->month = $month;
+		$content->day = $day;
 		$content->division = $top_division;
 		$content->tree = $result['tree'];
 		$content->count = $result['count'];

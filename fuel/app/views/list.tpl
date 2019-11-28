@@ -27,12 +27,48 @@
 						</a>
 					</li>
 {{foreach from=$reference_dates item=cur_date}}
-					<li class="{{if $date == $cur_date.date}}active{{/if}}">
+					<li class="{{if $year == $cur_date.year && $month == $cur_date.month && $day == $cur_date.day}}active{{/if}}">
 						<a href="{{$cur_date.url|escape}}">
 							{{$cur_date.date|date_format2:'Y(Jk)-m-d'}} - {{$cur_date.description|escape}}
 						</a>
 					</li>
 {{/foreach}}
+					<li>
+						<form id="select-date" class="form-inline my-2">
+							<span class="mr-2">任意の日付 :</span>
+							<div class="input-group input-group-sm mr-2">
+								<select class="form-control" id="year" name="year">
+{{foreach from=$year_list item=cur_year}}
+									<option value="{{$cur_year}}" {{if $year == $cur_year}}selected="selected"{{/if}}>{{$cur_year}}</option>
+{{/foreach}}
+								</select>
+								<label class="input-group-append" for="year">
+									<i class="input-group-text">年</i>
+								</label>
+							</div>
+							<div class="input-group input-group-sm mr-2">
+								<select class="form-control" id="month" name="month">
+{{foreach from=$month_list item=cur_month}}
+									<option value="{{$cur_month}}" {{if $month == $cur_month}}selected="selected"{{/if}}>{{$cur_month}}</option>
+{{/foreach}}
+								</select>
+								<label class="input-group-append" for="month">
+									<i class="input-group-text">月</i>
+								</label>
+							</div>
+							<div class="input-group input-group-sm mr-2">
+								<select class="form-control" id="day" name="day">
+{{foreach from=$day_list item=cur_day}}
+									<option value="{{$cur_day}}" {{if $day == $cur_day}}selected="selected"{{/if}}>{{$cur_day}}</option>
+{{/foreach}}
+								</select>
+								<label class="input-group-append" for="day">
+									<i class="input-group-text">日</i>
+								</label>
+							</div>
+							<button class="btn btn-sm btn-success">表示</button>
+						</form>
+					</li>
 				</ol>
 			</nav>
 
