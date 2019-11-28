@@ -23,7 +23,11 @@ class Controller_List extends Controller_Base
 		if ($year && $month && $day)
 		{
 			$date_str = $year . '-' . $month . '-' . $day;
-			$date = date('Y-m-d', strtotime($date_str));
+			$timestamp = strtotime($date_str);
+			$date = date('Y-m-d', $timestamp);
+			$year = (int)date('Y', $timestamp);
+			$month = (int)date('m', $timestamp);
+			$day = (int)date('d', $timestamp);
 		}
 		else
 		{
