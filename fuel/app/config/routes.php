@@ -33,4 +33,6 @@ return array(
 	'admin/reference/(.+?)/edit'   => 'admin/reference/edit/$1',
 	'admin/reference/(.+?)/delete' => 'admin/reference/delete/$1',
 	'admin/reference'              => 'admin/reference/list',
+
+	'page/:slug' => 'page/detail',
 );

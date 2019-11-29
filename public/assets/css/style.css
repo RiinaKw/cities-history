@@ -66,6 +66,9 @@ h1 {
 .container {
 	padding-bottom: 1rem;
 }
+.breadcrumb {
+	margin-bottom: 0;
+}
 .no-breadcrumb {
 	padding-top: 1rem;
 }

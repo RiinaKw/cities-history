@@ -1,0 +1,54 @@
+<?php
+
+class Model_Page extends Model_Base
+{
+	protected static $_table_name	= 'pages';
+	protected static $_primary_key	= 'id';
+	protected static $_created_at	= 'created_at';
+	protected static $_updated_at	= 'updated_at';
+	protected static $_deleted_at	= 'deleted_at';
+	protected static $_mysql_timestamp = true;
+
+	public function validation($is_new = false, $factory = null)
+	{
+		$validation = Validation::forge($factory);
+		$validation->add_callable(new Helper_MyValidation());
+
+		$arr = explode('.', $factory);
+		$name = $arr[0];
+		$id = $arr[1];
+
+		// rules
+		$field = $validation->add('slug', 'スラッグ')
+			->add_rule('required')
+			->add_rule('max_length', 20)
+			->add_rule('unique', self::$_table_name.'.slug.'.$id);
+
+		$field = $validation->add('title', 'タイトル')
+			->add_rule('required')
+			->add_rule('max_length', 256);
+		$field = $validation->add('content', '本文')
+			;
+
+		return $validation;
+	} // function validation()
+
+	public static function get_one_by_slug($slug)
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('slug', '=', $slug)
+			->where('deleted_at', '=', null)
+			;
+
+		$result = $query->as_object(__CLASS__)->execute()->as_array();
+		if (count($result) == 1)
+		{
+			return $result[0];
+		}
+		else
+		{
+			return null;
+		}
+	} // function get_one_by_slug()
+} // class Model_Page

@@ -5,8 +5,8 @@ return array(
 	'login'   => 'login',
 	'logout'  => 'logout',
 	'search'  => 'search',
-	'about'   => 'about',
-	'link'    => 'link',
+	'about'   => 'page/about',
+	'link'    => 'page/link',
 
 	'admin' => array(
 		'divisions' => array(

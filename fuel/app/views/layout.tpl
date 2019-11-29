@@ -115,19 +115,32 @@
 		</header>
 
 		<div class="main-container">
+			<div class="clearfix">
 {{if $breadcrumbs}}
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
 {{foreach name=breadcrumbs from=$breadcrumbs key=name item=url}}
 {{if $url && ! $smarty.foreach.breadcrumbs.last}}
-					<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
+						<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
 {{else}}
-					<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
+						<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
 {{/if}}
 {{/foreach}}
-				<ol>
-			</nav>
+					</ol>
+				</nav>
+			</div>
 {{/if}}
+
+			<div id="share" class="mx-4 mb-4 {{if ! $breadcrumbs}}no-breadcrumb{{/if}}">
+				<a
+					href="https://twitter.com/intent/tweet?text= {{if $page_title}}{{$page_title}} - {{/if}}{{Config::get('common.title')}} {{Helper_Uri::current()|escape:url}}&amp;button_hashtag=ch_jp&amp;ref_src=twsrc%5Etfw"
+					class="twitter-hashtag-button"
+					data-lang="ja"
+					data-show-count="false">Tweet #ch_jp</a>
+				<script async
+					src="https://platform.twitter.com/widgets.js"
+					charset="utf-8"></script>
+			</div><!-- #share -->
 
 			<main role="main" class="container {{strip}}
 				{{if ! $breadcrumbs}}
