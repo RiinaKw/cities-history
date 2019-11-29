@@ -22,6 +22,7 @@ if (isset($_SERVER['argv']))
 {
 	if ($_SERVER['OS'] == 'Windows_NT')
 	{
+		// Development environment on Windows
 		\Fuel::$env = \Fuel::DEVELOPMENT;
 	}
 	else

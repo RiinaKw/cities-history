@@ -75,7 +75,7 @@ class Model_User extends Model_Base
 			}
 		}
 		return false;
-	}
+	} // function login()
 
 	// make remember-me unique hash
 	public static function create_remember_me_hash()
