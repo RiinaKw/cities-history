@@ -16,7 +16,7 @@ class Presenter_Top extends Presenter_Layout
 		$this->components = $components;
 
 		$this->title = '';
-		$this->description = '全国の都道府県一覧';
+		$this->description = '日本全国の市区町村合併をまとめたデータベースサイトです。';
 		$this->og_type = 'website';
 
 		$this->url_add = Helper_Uri::create('division.add');
