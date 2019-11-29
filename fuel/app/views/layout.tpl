@@ -131,12 +131,12 @@
 			</div>
 {{/if}}
 
-			<div id="share" class="mx-4 mb-4 {{if ! $breadcrumbs}}no-breadcrumb{{/if}}">
+			<div id="share" class="mx-4 my-2 {{if ! $breadcrumbs}}no-breadcrumb{{/if}}">
 				<a
-					href="https://twitter.com/intent/tweet?text= {{if $page_title}}{{$page_title}} - {{/if}}{{Config::get('common.title')}} {{Helper_Uri::current()|escape:url}}&amp;button_hashtag=ch_jp&amp;ref_src=twsrc%5Etfw"
-					class="twitter-hashtag-button"
+					href="https://twitter.com/intent/tweet?text= {{if $page_title}}{{$page_title}} - {{/if}}{{Config::get('common.title')}}&amp;button_hashtag=ch_jp&amp;ref_src=twsrc%5Etfw"
+					class="twitter-share-button"
 					data-lang="ja"
-					data-show-count="false">Tweet #ch_jp</a>
+					data-show-count="false">Tweet</a>
 				<script async
 					src="https://platform.twitter.com/widgets.js"
 					charset="utf-8"></script>
