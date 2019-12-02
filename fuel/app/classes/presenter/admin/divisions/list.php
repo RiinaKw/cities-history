@@ -20,6 +20,6 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		$this->breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 
 		$this->title = '自治体管理';
-		$this->nav_item = 'division';
+		$this->nav_item = 'admin-division';
 	} // function view()
 } // class Presenter_Admin_Divisions_List

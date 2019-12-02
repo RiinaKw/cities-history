@@ -83,14 +83,14 @@
 {{if $user}}
 				<ul id="nav-admin" class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link {{if $nav_item == 'division'}}active{{/if}}"
+						<a class="nav-link {{if $nav_item == 'admin-division'}}active{{/if}}"
 							href="{{$url_admin_divisions}}">
 							<i class="fa fa-map"></i>
 							Manage Division
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link {{if $nav_item == 'reference'}}active{{/if}}"
+						<a class="nav-link {{if $nav_item == 'admin-reference'}}active{{/if}}"
 							href="{{$url_admin_reference}}">
 							<i class="fa fa-calendar-alt"></i>
 							Manage Date Reference
