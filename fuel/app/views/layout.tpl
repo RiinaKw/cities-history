@@ -52,7 +52,7 @@
 	{{Asset::css('style.css')}}
 	{{Asset::js('geoshape.js')}}
 	</head>
-	<body>
+	<body class="{{if $user}}with-admin{{/if}}">
 		<!-- Fixed navbar -->
 		<header class="navbar fixed-top navbar-expand-md navbar-light">
 			<h1>
@@ -63,7 +63,7 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
+			<nav class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'about'}}active{{/if}}"
@@ -79,24 +79,26 @@
 							Link
 						</a>
 					</li>
+				</ul>
 {{if $user}}
+				<ul id="nav-admin" class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'division'}}active{{/if}}"
 							href="{{$url_admin_divisions}}">
 							<i class="fa fa-map"></i>
-							Division
+							Manage Division
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'reference'}}active{{/if}}"
 							href="{{$url_admin_reference}}">
 							<i class="fa fa-calendar-alt"></i>
-							Date Reference
+							Manage Date Reference
 						</a>
 					</li>
-{{/if}}
 				</ul>
-				<form class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">
+{{/if}}
+				<form id="search" class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">
 					<div class="input-group">
 						<input class="form-control" type="search" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
 						<span class="input-group-append">
@@ -111,7 +113,7 @@
 {{else}}
 				<a class="btn btn-outline-success mt-sm-2 mt-md-0" href="{{$url_login}}">Login</a>
 {{/if}}
-			</div>
+			</nav>
 		</header>
 
 		<div class="main-container">

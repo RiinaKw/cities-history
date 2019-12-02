@@ -13,15 +13,57 @@ body {
 h1 {
 	font-size: 1.5rem;
 	line-height: 1;
+	width: 250px;
+}
+
+.navbar {
+	align-items: flex-start;
 }
 
 .navbar-brand {
 	font-size: 1.5rem;
 }
 
+#navbarCollapse {
+	flex-wrap: wrap;
+}
+
+#nav-admin {
+	order: 10;
+	width: 100%;
+}
+@media screen and (min-width: 768px) {
+	#nav-admin {
+		margin-left: -250px;
+	}
+}
+
+#search {
+	width: 150px;
+}
+@media screen and (min-width: 880px) {
+	#search {
+		width: auto;
+	}
+}
+@media screen and (max-width: 767px) {
+	#search {
+		width: auto;
+	}
+	#search .input-group {
+		width: 100%;
+	}
+}
+
 .main-container {
 	/* Margin top by header height */
 	margin-top: 58px;
+}
+@media screen and (min-width: 768px) {
+	.with-admin .main-container {
+		/* Margin top by header height */
+		margin-top: 96px;
+	}
 }
 
 .grid-container {
