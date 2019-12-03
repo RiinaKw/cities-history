@@ -96,6 +96,13 @@
 							Manage Date Reference
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link {{if $nav_item == 'admin-page'}}active{{/if}}"
+							href="{{$url_admin_page}}">
+							<i class="fa fa-file-alt"></i>
+							Manage Pages
+						</a>
+					</li>
 				</ul>
 {{/if}}
 				<form id="search" class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">

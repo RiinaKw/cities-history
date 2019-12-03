@@ -34,5 +34,7 @@ return array(
 	'admin/reference/(.+?)/delete' => 'admin/reference/delete/$1',
 	'admin/reference'              => 'admin/reference/list',
 
+	'admin/page'              => 'admin/page/list',
+
 	'page/:slug' => 'page/detail',
 );

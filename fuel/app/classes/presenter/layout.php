@@ -44,5 +44,6 @@ class Presenter_Layout extends Presenter_Base
 		$this->url_link = Helper_Uri::create('link');
 		$this->url_admin_divisions = Helper_Uri::create('admin.divisions.list');
 		$this->url_admin_reference = Helper_Uri::create('admin.reference.list');
+		$this->url_admin_page = Helper_Uri::create('admin.page.list');
 	} // function after()
 } // class Presenter_Layout

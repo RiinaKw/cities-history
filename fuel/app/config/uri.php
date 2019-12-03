@@ -19,6 +19,9 @@ return array(
 			'edit'   => 'admin/reference/:id/edit',
 			'delete' => 'admin/reference/:id/delete',
 		),
+		'page' => array(
+			'list'   => 'admin/page',
+		),
 	),
 	'event' => array(
 		'add'      => 'event/add',

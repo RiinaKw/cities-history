@@ -33,6 +33,17 @@ class Model_Page extends Model_Base
 		return $validation;
 	} // function validation()
 
+	public static function get_all()
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
+			->order_by('slug', 'asc');
+
+			$result = $query->as_object(__CLASS__)->execute()->as_array();
+			return $result ?: [];
+	} // function get_all()
+
 	public static function get_one_by_slug($slug)
 	{
 		$query = DB::select()
