@@ -27,6 +27,7 @@
 					<table class="table table-hover">
 						<thead class="thead-light">
 							<tr>
+								<th scope="col">Slug</th>
 								<th scope="col">Title</th>
 								<th scope="col">Updated</th>
 							</tr>
@@ -34,6 +35,7 @@
 						<tbody>
 {{foreach from=$pages item=page}}
 							<tr>
+								<td>{{$page.slug|escape}}</td>
 								<td>{{$page.title|escape}}</td>
 								<td>{{$page.updated_at|escape}}</td>
 							</tr>
