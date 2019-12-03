@@ -14,6 +14,7 @@ class Presenter_Page extends Presenter_Layout
 			$this->title => '',
 		];
 		$this->nav_item = $this->page->slug;
+		$this->show_share = true;
 
 		$this->set_safe('content', $this->page->content);
 	} // function view()

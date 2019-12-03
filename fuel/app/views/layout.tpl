@@ -140,6 +140,7 @@
 			</div>
 {{/if}}
 
+{{if $show_share}}
 			<div id="share" class="mx-4 my-2 {{if ! $breadcrumbs}}no-breadcrumb{{/if}}">
 				<a
 					href="https://twitter.com/intent/tweet?text= {{if $page_title}}{{$page_title}} - {{/if}}{{Config::get('common.title')}}&amp;button_hashtag=ch_jp&amp;ref_src=twsrc%5Etfw"
@@ -150,6 +151,7 @@
 					src="https://platform.twitter.com/widgets.js"
 					charset="utf-8"></script>
 			</div><!-- #share -->
+{{/if}}
 
 			<main role="main" class="container {{strip}}
 				{{if ! $breadcrumbs}}

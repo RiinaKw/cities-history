@@ -7,6 +7,7 @@ class Presenter_Error extends Presenter_Layout
 		$this->title = $this->code;
 		$this->description = '';
 		$this->robots = 'noindex,nofollow';
+		$this->show_share = false;
 
 		$this->url_add = Helper_Uri::create('division.add');
 	} // function view()

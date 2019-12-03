@@ -74,6 +74,7 @@ class Presenter_List_Detail extends Presenter_Layout
 		$this->description = $description;
 		$this->og_type = 'article';
 		$this->breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
+		$this->show_share = true;
 
 		$this->year_list = range(1878, date('Y'));
 		$this->month_list = range(1, 12);

@@ -46,6 +46,7 @@ class Presenter_List_Index extends Presenter_Layout
 		$this->description = $description;
 		$this->og_type = 'article';
 		$this->breadcrumbs = [];
+		$this->show_share = true;
 
 		$this->url_add = Helper_Uri::create('division.add');
 	} // function view()

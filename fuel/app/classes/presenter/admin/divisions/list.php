@@ -21,5 +21,6 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 
 		$this->title = '自治体管理';
 		$this->nav_item = 'admin-division';
+		$this->show_share = false;
 	} // function view()
 } // class Presenter_Admin_Divisions_List

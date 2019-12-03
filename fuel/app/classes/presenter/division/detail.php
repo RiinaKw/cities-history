@@ -49,6 +49,7 @@ class Presenter_Division_Detail extends Presenter_Layout
 		$this->description = $description;
 		$this->og_type = 'article';
 		$this->breadcrumbs = $breadcrumbs;
+		$this->show_share = true;
 
 		$this->url_add = Helper_Uri::create('division.add');
 	} // function view()
