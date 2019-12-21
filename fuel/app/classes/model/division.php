@@ -631,6 +631,13 @@ class Model_Division extends Model_Base
 					$parent_division = array_pop($parent_division);
 				}
 				$this->parent_division_id = $parent_division->id;
+
+				$parent = $parent_division;
+				while ($parent->parent_division_id !== null)
+				{
+					$parent = Model_Division::find_by_pk($parent->parent_division_id);
+				}
+				$this->top_parent_division_id = $parent->id;
 			}
 			else
 			{
