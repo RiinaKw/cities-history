@@ -39,6 +39,10 @@ return array (
         30 => '031_add_order_to_event_details',
         31 => '032_update_order_in_event_details',
         32 => '033_delete_no_from_event_details',
+        33 => '034_add_new_geoshape_and_new_is_refer_to_event_details',
+        34 => '035_update_new_geoshape_and_new_is_refer_in_event_details',
+        35 => '036_delete_geoshape_and_is_refer_from_event_details',
+        36 => '037_rename_new_geoshape_and_new_is_refer_in_event_details',
       ),
     ),
     'module' => 
