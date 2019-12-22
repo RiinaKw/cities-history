@@ -14,7 +14,7 @@
 							<label class="row">
 								<span class="col-4">イベント種別</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="type" name="type" required="required" />
+									<input class="form-control" type="text" id="title" name="title" required="required" />
 								</div>
 							</label>
 							<label class="row">
@@ -156,7 +156,7 @@ $(function(){
 		$("form", $modal).attr("action", "{{$url_event_add}}");
 		$("#event-id", $modal).val("");
 		$("#path", $modal).val("");
-		$("#type", $modal).val("");
+		$("#title", $modal).val("");
 		$("#date", $modal).val("");
 		$("#comment", $modal).val("");
 		$("tbody", $modal).empty();
@@ -170,14 +170,14 @@ $(function(){
 		$(".modal-title", $modal).text("イベントを変更…");
 		var event_id = $(this).data("event-id");
 		var path = $("h2", $(this)).html();
-		var type = $("h3", $(this)).html();
+		var title = $("h3", $(this)).html();
 		var date = $("time", $(this)).attr("datetime");
 		var comment = $(".comment", $(this)).html();
 		var url = "{{$url_event_edit}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
 		$("#event-id", $modal).val(event_id);
 		$("#path", $modal).val(path);
-		$("#type", $modal).val(type);
+		$("#title", $modal).val(title);
 		$("#date", $modal).val(date);
 		$("#comment", $modal).val(comment);
 		$(".btn-danger", $modal).show();

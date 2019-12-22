@@ -68,7 +68,7 @@
 						<section class="col-sm-7">
 							<header>
 								<div class="clearfix">
-									<h3 class="float-left">{{$event.type|escape}}</h3>
+									<h3 class="float-left">{{$event.title|escape}}</h3>
 									<time class="float-right" datetime="{{$event.date|escape}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
 								</div>
 {{if $event.comment}}
