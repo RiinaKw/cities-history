@@ -46,6 +46,10 @@ return array (
         37 => '038_add_identifier_to_divisions',
         38 => '039_update_identifier_in_divisions',
         39 => '040_delete_identify_from_divisions',
+        40 => '041_add_new_fullname_and_new_fullname_kana_to_divisions',
+        41 => '042_update_new_fullname_and_new_fullname_kana_in_divisions',
+        42 => '043_delete_fullname_and_fullname_kana_divisions',
+        43 => '044_rename_new_fullname_and_new_fullname_kana_in_divisions',
       ),
     ),
     'module' => 
