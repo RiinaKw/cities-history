@@ -31,6 +31,10 @@ return array (
         22 => '023_rename_suffix_in_divisions',
         23 => '024_create_pages',
         24 => '025_rename_title_in_events',
+        25 => '026_add_newcomment_to_events',
+        26 => '027_update_newcomment_in_events',
+        27 => '028_delete_comment_from_events',
+        28 => '029_rename_comment_in_events',
       ),
     ),
     'module' => 
