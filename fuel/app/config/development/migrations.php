@@ -52,6 +52,10 @@ return array (
         43 => '044_rename_new_fullname_and_new_fullname_kana_in_divisions',
         44 => '045_add_path_and_path_kana_to_divisions',
         45 => '046_update_path_and_path_kana_in_divisions',
+        46 => '047_add_new_top_parent_division_id_to_divisions',
+        47 => '048_update_new_top_parent_division_id_in_divisions',
+        48 => '049_delete_top_parent_division_id_from_divisions',
+        49 => '050_rename_new_top_parent_division_id_in_divisions',
       ),
     ),
     'module' => 
