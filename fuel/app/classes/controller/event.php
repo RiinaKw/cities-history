@@ -30,7 +30,7 @@ class Controller_Event extends Controller_Base
 				continue;
 			}
 			$arr[] = [
-				'no'       => Input::post('no.'.$key),
+				'order'    => Input::post('order.'.$key),
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
 				'result'   => Input::post('result.'.$key),
@@ -69,7 +69,7 @@ class Controller_Event extends Controller_Base
 				}
 
 				$detail = Model_Event_Detail::forge([
-					'no' => $item['no'],
+					'order' => $item['order'],
 					'event_id' => $event->id,
 					'division_id' => $division->id,
 					'result' => $item['result'],
@@ -128,7 +128,7 @@ class Controller_Event extends Controller_Base
 				continue;
 			}
 			$arr[] = [
-				'no'       => Input::post('no.'.$key),
+				'order'    => Input::post('order.'.$key),
 				'id'       => Input::post('id.'.$key),
 				'division' => Input::post('division.'.$key),
 				'result'   => Input::post('result.'.$key),
@@ -168,7 +168,7 @@ class Controller_Event extends Controller_Base
 					if ($id == 'new')
 					{
 						$detail = Model_Event_Detail::forge([
-							'no' => $item['no'],
+							'order' => $item['order'],
 							'event_id' => $event->id,
 							'division_id' => $division->id,
 							'result' => $item['result'],
@@ -180,7 +180,7 @@ class Controller_Event extends Controller_Base
 					else
 					{
 						$detail = Model_Event_Detail::find_by_pk($id);
-						$detail->no = $item['no'];
+						$detail->order = $item['order'];
 						$detail->result = $item['result'];
 						$detail->geoshape = $item['geoshape'];
 						$detail->is_refer = $item['refer'] ? true : false;

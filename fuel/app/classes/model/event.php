@@ -40,7 +40,7 @@ class Model_Event extends Model_Base
 			->on('e.division_id', '=', 'd.id')
 			->where('e.deleted_at', '=', null)
 			->where('e.event_id', '=', $event_id)
-			->order_by('e.no', 'asc');
+			->order_by('e.order', 'asc');
 
 		$result = $query->as_object('Model_Division')->execute()->as_array();
 		foreach ($result as &$item)

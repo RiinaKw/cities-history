@@ -78,7 +78,7 @@ function add_row($tbody, idx, detail)
 		$input_id.val("new");
 	}
 	var $input_no = $('<input type="hidden" />').addClass("row-no").appendTo($tr);
-	$input_no.attr("name", "no["+idx+"]").val(idx);
+	$input_no.attr("name", "order["+idx+"]").val(idx);
 
 	var $handle = $("<td />").addClass("handle").appendTo($tr);
 	$handle.append('<i class="fa fa-bars"></i>');
