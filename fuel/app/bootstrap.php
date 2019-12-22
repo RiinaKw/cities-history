@@ -20,7 +20,7 @@ require COREPATH.'bootstrap.php';
  */
 if (isset($_SERVER['argv']))
 {
-	if ($_SERVER['OS'] == 'Windows_NT')
+	if (isset($_SERVER['OS']) && $_SERVER['OS'] == 'Windows_NT')
 	{
 		// Development environment on Windows
 		\Fuel::$env = \Fuel::DEVELOPMENT;

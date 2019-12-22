@@ -30,6 +30,7 @@ return array (
         21 => '022_update_top_parent_id_to_divisions',
         22 => '023_rename_suffix_in_divisions',
         23 => '024_create_pages',
+        24 => '025_rename_title_in_events',
       ),
     ),
     'module' => 
