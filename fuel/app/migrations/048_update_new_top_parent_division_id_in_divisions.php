@@ -11,8 +11,14 @@ class Update_new_top_parent_division_id_in_divisions
 		{
 			foreach ($divisions as $division)
 			{
-				$division->new_belongs_division_id = $division->belongs_division_id;
-				$division->new_top_parent_division_id = $division->top_parent_division_id;
+				if ( isset($division->belongs_division_id) )
+				{
+					$division->new_belongs_division_id = $division->belongs_division_id;
+				}
+				if ( isset($division->top_parent_division_id) )
+				{
+					$division->new_belongs_division_id = $division->top_parent_division_id;
+				}
 				$division->save();
 			}
 		}
