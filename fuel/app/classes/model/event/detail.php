@@ -17,7 +17,7 @@ class Model_Event_Detail extends Model_Base
 		$field = $validation->add('date', '日付')
 			->add_rule('required')
 			->add_rule('valid_date', 'Y-m-d');
-		$field = $validation->add('division_result', 'イベント結果')
+		$field = $validation->add('result', 'イベント結果')
 			->add_rule('required');
 
 		return $validation;

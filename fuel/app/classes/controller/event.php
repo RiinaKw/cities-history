@@ -72,7 +72,7 @@ class Controller_Event extends Controller_Base
 					'no' => $item['no'],
 					'event_id' => $event->id,
 					'division_id' => $division->id,
-					'division_result' => $item['result'],
+					'result' => $item['result'],
 					'geoshape' => $item['geoshape'],
 					'is_refer' => $item['refer'] ? true : false,
 				]);
@@ -171,7 +171,7 @@ class Controller_Event extends Controller_Base
 							'no' => $item['no'],
 							'event_id' => $event->id,
 							'division_id' => $division->id,
-							'division_result' => $item['result'],
+							'result' => $item['result'],
 							'geoshape' => $item['geoshape'],
 							'is_refer' => $item['refer'] ? true : false,
 						]);
@@ -181,7 +181,7 @@ class Controller_Event extends Controller_Base
 					{
 						$detail = Model_Event_Detail::find_by_pk($id);
 						$detail->no = $item['no'];
-						$detail->division_result = $item['result'];
+						$detail->result = $item['result'];
 						$detail->geoshape = $item['geoshape'];
 						$detail->is_refer = $item['refer'] ? true : false;
 						$detail->save();

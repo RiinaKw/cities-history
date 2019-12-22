@@ -34,7 +34,7 @@ class Model_Event extends Model_Base
 
 	public static function get_relative_division($event_id)
 	{
-		$query = DB::select('d.*', [DB::expr('concat(d.name, d.suffix)'), 'fullname'], ['e.id', 'event_detail_id'], 'e.division_result', 'e.geoshape', 'e.is_refer')
+		$query = DB::select('d.*', [DB::expr('concat(d.name, d.suffix)'), 'fullname'], ['e.id', 'event_detail_id'], 'e.result', 'e.geoshape', 'e.is_refer')
 			->from(['event_details', 'e'])
 			->join(['divisions', 'd'])
 			->on('e.division_id', '=', 'd.id')

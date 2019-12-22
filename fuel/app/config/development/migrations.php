@@ -35,6 +35,7 @@ return array (
         26 => '027_update_newcomment_in_events',
         27 => '028_delete_comment_from_events',
         28 => '029_rename_comment_in_events',
+        29 => '030_rename_division_result_to_result_in_eveit_details',
       ),
     ),
     'module' => 

@@ -52,7 +52,7 @@ class Controller_Division extends Controller_Base
 			{
 				$event->death = true;
 			}
-			switch ($event->division_result)
+			switch ($event->result)
 			{
 				case '存続':
 					$event->live = true;
@@ -77,7 +77,7 @@ class Controller_Division extends Controller_Base
 					{
 						$d->url_geoshape = '';
 					}
-					$d->split = ($d->division_result == '分割廃止');
+					$d->split = ($d->result == '分割廃止');
 				}
 			}
 			$event->divisions = $divisions;
@@ -133,7 +133,7 @@ class Controller_Division extends Controller_Base
 				{
 					$event->death = true;
 				}
-				switch ($event->division_result)
+				switch ($event->result)
 				{
 					case '存続':
 						$event->live = true;
@@ -157,7 +157,7 @@ class Controller_Division extends Controller_Base
 						{
 							$d->url_geoshape = '';
 						}
-						$d->split = ($d->division_result == '分割廃止');
+						$d->split = ($d->result == '分割廃止');
 					}
 				}
 				$event->divisions = $divisions;

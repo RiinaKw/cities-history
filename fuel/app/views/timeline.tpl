@@ -88,7 +88,7 @@
 {{else}}
 										{{$d->get_fullname()|escape}},
 {{/if}}
-										{{$d.division_result|escape}}
+										{{$d.result|escape}}
 									</a>
 								</li>
 {{/if}}

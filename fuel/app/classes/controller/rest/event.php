@@ -30,7 +30,7 @@ class Controller_Rest_Event extends Controller_Rest
 				'id'        => $division->event_detail_id,
 				'name'      => $division->name,
 				'path'      => $division->get_path(null, true),
-				'result'    => $division->division_result,
+				'result'    => $division->result,
 				'birth'     => ($division->start_event_id == $event->id),
 				'death'     => ($division->end_event_id == $event->id),
 				'geoshape'  => $division->geoshape,
