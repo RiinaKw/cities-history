@@ -11,14 +11,15 @@ class Update_new_top_parent_division_id_in_divisions
 		{
 			foreach ($divisions as $division)
 			{
-				if ( isset($division->belongs_division_id) )
-				{
-					$division->new_belongs_division_id = $division->belongs_division_id;
+				$division->new_belongs_division_id = $division->belongs_division_id ?: null;
+
+				$cur_division = $division;
+				$kana = '';
+				while ($cur_division->parent_division_id) {
+					$cur_division = \Model_Division::find_by_pk($cur_division->parent_division_id);
 				}
-				if ( isset($division->top_parent_division_id) )
-				{
-					$division->new_belongs_division_id = $division->top_parent_division_id;
-				}
+				$division->new_top_parent_division_id = $cur_division->id ?: null;
+
 				$division->save();
 			}
 		}
@@ -31,8 +32,8 @@ class Update_new_top_parent_division_id_in_divisions
 		{
 			foreach ($divisions as $division)
 			{
-				$division->belongs_division_id = $division->new_belongs_division_id;
-				$division->top_parent_division_id = $division->new_top_parent_division_id;
+				$division->belongs_division_id = $division->new_belongs_division_id ?: null;
+				$division->top_parent_division_id = $division->new_top_parent_division_id ?: null;
 				$division->save();
 			}
 		}
