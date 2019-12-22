@@ -50,6 +50,8 @@ return array (
         41 => '042_update_new_fullname_and_new_fullname_kana_in_divisions',
         42 => '043_delete_fullname_and_fullname_kana_divisions',
         43 => '044_rename_new_fullname_and_new_fullname_kana_in_divisions',
+        44 => '045_add_path_and_path_kana_to_divisions',
+        45 => '046_update_path_and_path_kana_in_divisions',
       ),
     ),
     'module' => 
