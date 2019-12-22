@@ -45,9 +45,9 @@ class Model_Event extends Model_Base
 		$result = $query->as_object('Model_Division')->execute()->as_array();
 		foreach ($result as &$item)
 		{
-			if ($item->identify)
+			if ($item->identifier)
 			{
-				$item->fullname .= '('.$item->identify.')';
+				$item->fullname .= '('.$item->identifier.')';
 			}
 		}
 		return $result;

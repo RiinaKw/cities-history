@@ -54,7 +54,7 @@
 							<label class="row">
 								<span class="col-4">識別名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="identify" value="" />
+									<input class="form-control" type="text" name="identifier" value="" />
 								</div>
 							</label>
 							<label class="row">

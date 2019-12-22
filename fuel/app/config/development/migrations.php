@@ -43,6 +43,9 @@ return array (
         34 => '035_update_new_geoshape_and_new_is_refer_in_event_details',
         35 => '036_delete_geoshape_and_is_refer_from_event_details',
         36 => '037_rename_new_geoshape_and_new_is_refer_in_event_details',
+        37 => '038_add_identifier_to_divisions',
+        38 => '039_update_identifier_in_divisions',
+        39 => '040_delete_identify_from_divisions',
       ),
     ),
     'module' => 

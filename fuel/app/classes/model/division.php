@@ -2,7 +2,7 @@
 
 class Model_Division extends Model_Base
 {
-	const RE_SUFFIX = '/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)(\((?<identify>.+?)\))?$/';
+	const RE_SUFFIX = '/^(?<place>.+?)(?<suffix>都|府|県|支庁|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)(\((?<identifier>.+?)\))?$/';
 
 	protected static $_table_name  = 'divisions';
 	protected static $_primary_key = 'id';
@@ -31,7 +31,7 @@ class Model_Division extends Model_Base
 		$field = $validation->add('suffix_kana', '自治体名種別かな')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('identify', '識別名')
+		$field = $validation->add('identifier', '識別名')
 			->add_rule('max_length', 50);
 		$field = $validation->add('parent_division_id', '親自治体');
 		$field = $validation->add('start_event_id',     '設置イベント');
@@ -130,7 +130,7 @@ class Model_Division extends Model_Base
 					'fullname' => '',
 					'fullname_kana' => '',
 					'show_suffix' => true,
-					'identify' => (isset($matches['identify']) ? $matches['identify'] : null),
+					'identifier' => (isset($matches['identifier']) ? $matches['identifier'] : null),
 					'parent_division_id' => $parent_id,
 					'is_unfinished' => true,
 					'is_empty_government_code' => true,
@@ -226,9 +226,9 @@ class Model_Division extends Model_Base
 			->or_where_close()
 			->and_where_close()
 			->where('deleted_at', '=', null);
-		if (isset($name['identify']))
+		if (isset($name['identifier']))
 		{
-			$query->where('identify', '=', $name['identify']);
+			$query->where('identifier', '=', $name['identifier']);
 		}
 
 		$result = $query->as_object('Model_Division')->execute()->as_array();
@@ -550,9 +550,9 @@ class Model_Division extends Model_Base
 				{
 					$name .= $division->suffix;
 				}
-				if ($division->identify)
+				if ($division->identifier)
 				{
-					$name .= '('.$division->identify.')';
+					$name .= '('.$division->identifier.')';
 				}
 				$path = ($path ? $name.'/'.$path : $name);
 				$parent_id = $division->parent_division_id;
@@ -606,9 +606,9 @@ class Model_Division extends Model_Base
 		{
 			$name .= $this->suffix;
 		}
-		if ($this->identify)
+		if ($this->identifier)
 		{
-			$name .= '('.$this->identify.')';
+			$name .= '('.$this->identifier.')';
 		}
 		return $name;
 	} // function get_fullname()
@@ -663,7 +663,7 @@ class Model_Division extends Model_Base
 			$this->suffix          = $input['suffix'];
 			$this->suffix_kana     = $input['suffix_kana'];
 			$this->show_suffix     = isset($input['show_suffix']) && $input['show_suffix'] ? true : false;
-			$this->identify        = $input['identify'] ?: null;
+			$this->identifier      = $input['identifier'] ?: null;
 			$this->government_code = $input['government_code'] ?: null;
 			$this->display_order   = $input['display_order'] ?: null;
 			$this->fullname        = '';
