@@ -70,6 +70,12 @@
 								</div>
 							</label>
 							<label class="row">
+								<span class="col-4">出典</span>
+								<div class="col-8">
+									<textarea class="form-control" name="source"></textarea>
+								</div>
+							</label>
+							<label class="row">
 								<span class="col-4">未完成</span>
 								<div class="col-8 checkbox-wrapper">
 									<input type="checkbox" name="is_unfinished" value="true" checked="checked" />
