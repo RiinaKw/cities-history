@@ -140,6 +140,16 @@ h1 {
 	margin-bottom: 2rem;
 }
 
+.government_code {
+	font-size: 60%;
+}
+.government_code:before {
+	content: "[";
+}
+.government_code:after {
+	content: "]";
+}
+
 .table .handle,
 .table .checkbox-wrapper {
 	vertical-align: middle;
