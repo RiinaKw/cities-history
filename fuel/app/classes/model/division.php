@@ -131,6 +131,7 @@ class Model_Division extends Model_Base
 					'fullname' => '',
 					'fullname_kana' => '',
 					'path' => '',
+					'path_kana' => '',
 					'show_suffix' => true,
 					'identifier' => (isset($matches['identifier']) ? $matches['identifier'] : null),
 					'parent_division_id' => $parent_id,
@@ -673,6 +674,7 @@ class Model_Division extends Model_Base
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->path            = '';
+			$this->path_kana       = '';
 			$this->is_unfinished   = isset($input['is_unfinished']) && $input['is_unfinished'] ? true : false;
 			$this->is_empty_kana   = empty($input['name_kana']);
 			$this->is_empty_government_code = empty($input['government_code']);
@@ -682,6 +684,7 @@ class Model_Division extends Model_Base
 			$this->fullname = $this->get_path(null, true);
 			$this->path = $this->get_path(null, true);
 			$this->fullname_kana = $this->name_kana.$this->suffix_kana;
+			$this->path_kana     = $this->name_kana.$this->suffix_kana;
 
 			$query = DB::select()
 				->from(self::$_table_name)
