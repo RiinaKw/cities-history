@@ -41,6 +41,7 @@ class Model_Division extends Model_Base
 			->add_rule('max_length', 7);
 		$field = $validation->add('display_order', '表示順')
 			->add_rule('valid_string', array('numeric'));
+		$field = $validation->add('source',     '出典');
 
 		return $validation;
 	} // function validation()
@@ -136,6 +137,7 @@ class Model_Division extends Model_Base
 					'is_empty_government_code' => true,
 					'is_empty_kana' => true,
 					'end_date' => '9999-12-31',
+					'source' => '',
 				]);
 				$division->fullname = $division->get_path(null, true);
 
@@ -669,8 +671,9 @@ class Model_Division extends Model_Base
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->is_unfinished   = isset($input['is_unfinished']) && $input['is_unfinished'] ? true : false;
-			$this->is_empty_kana = empty($input['name_kana']);
+			$this->is_empty_kana   = empty($input['name_kana']);
 			$this->is_empty_government_code = empty($input['government_code']);
+			$this->source          = $input['source'] ?: null;
 			$this->save();
 
 			$this->fullname = $this->get_path(null, true);

@@ -25,7 +25,7 @@ class Model_Event_Detail extends Model_Base
 
 	public static function get_by_division_id($division_id, $start_date = null, $end_date = null)
 	{
-		$query = DB::select('d.*', 'e.title', 'e.date', 'e.comment')
+		$query = DB::select('d.*', 'e.title', 'e.date', 'e.comment', 'e.source')
 			->from([self::$_table_name, 'd'])
 			->join(['events', 'e'])
 			->on('e.id', '=', 'd.event_id')

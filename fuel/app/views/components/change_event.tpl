@@ -29,6 +29,12 @@
 									<textarea class="form-control" type="text" id="comment" name="comment"></textarea>
 								</div>
 							</label>
+							<label class="row">
+								<span class="col-4">出典</span>
+								<div class="col-8">
+									<textarea class="form-control" id="source" name="source"></textarea>
+								</div>
+							</label>
 							<table class="table table-sm table-borderless">
 								<thead>
 									<tr>
@@ -159,6 +165,7 @@ $(function(){
 		$("#title", $modal).val("");
 		$("#date", $modal).val("");
 		$("#comment", $modal).val("");
+		$("#source", $modal).val("");
 		$("tbody", $modal).empty();
 		$(".btn-danger", $modal).hide();
 		var path = $("h2").html();
@@ -173,6 +180,7 @@ $(function(){
 		var title = $("h3", $(this)).html();
 		var date = $("time", $(this)).attr("datetime");
 		var comment = $(".comment", $(this)).html();
+		var source = $(".source", $(this)).html();
 		var url = "{{$url_event_edit}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
 		$("#event-id", $modal).val(event_id);
@@ -180,6 +188,7 @@ $(function(){
 		$("#title", $modal).val(title);
 		$("#date", $modal).val(date);
 		$("#comment", $modal).val(comment);
+		$("#source", $modal).val(source);
 		$(".btn-danger", $modal).show();
 
 		$.ajax({

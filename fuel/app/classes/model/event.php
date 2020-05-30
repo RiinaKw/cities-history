@@ -27,6 +27,7 @@ class Model_Event extends Model_Base
 			'date' => $param['date'],
 			'title' => $param['title'],
 			'comment' => $param['comment'],
+			'source' => $param['source'],
 		]);
 		$object->save();
 		return $object;

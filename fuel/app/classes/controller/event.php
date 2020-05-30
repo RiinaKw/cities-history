@@ -50,6 +50,7 @@ class Controller_Event extends Controller_Base
 				'date' => Input::post('date'),
 				'title' => Input::post('title'),
 				'comment' => Input::post('comment'),
+				'source' => Input::post('source'),
 			]);
 			$event->save();
 
@@ -147,6 +148,7 @@ class Controller_Event extends Controller_Base
 			$event->date = Input::post('date');
 			$event->title = Input::post('title');
 			$event->comment = Input::post('comment');
+			$event->source = Input::post('source');
 			$event->save();
 
 			foreach ($arr as $item)

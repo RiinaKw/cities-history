@@ -74,6 +74,9 @@
 {{if $event.comment}}
 								<p class="comment">{{$event.comment|escape}}</p>
 {{/if}}
+{{if $event.source}}
+								<p class="source" style="display: none;">{{$event.source|escape}}</p>
+{{/if}}
 							</header>
 							<ul>
 {{foreach from=$event.divisions item=d}}
