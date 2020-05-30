@@ -32,7 +32,12 @@ if (isset($_SERVER['argv']))
 }
 else
 {
-	\Fuel::$env = \Arr::get($_SERVER, 'FUEL_ENV', \Arr::get($_ENV, 'FUEL_ENV', \Fuel::PRODUCTION));
+	if (isset($_SERVER['WINDIR'])) {
+		// Development environment on Windows
+		\Fuel::$env = \Fuel::DEVELOPMENT;
+	} else {
+		\Fuel::$env = \Arr::get($_SERVER, 'FUEL_ENV', \Arr::get($_ENV, 'FUEL_ENV', \Fuel::PRODUCTION));
+	}
 }
 
 // Initialize the framework with the config file.

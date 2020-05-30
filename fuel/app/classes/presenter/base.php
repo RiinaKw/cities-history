@@ -13,7 +13,7 @@ abstract class Presenter_Base extends Fuel\Core\Presenter
 	/**
 	 * テンプレートエンジンはsmartyを使うので、View_Smartyを利用
 	 */
-	protected function set_view()
+	public function set_view($view = null)
 	{
 		if ($this->alt_view === true)
 		{
