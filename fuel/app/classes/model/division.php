@@ -130,6 +130,7 @@ class Model_Division extends Model_Base
 					'suffix_kana' => '',
 					'fullname' => '',
 					'fullname_kana' => '',
+					'path' => '',
 					'show_suffix' => true,
 					'identifier' => (isset($matches['identifier']) ? $matches['identifier'] : null),
 					'parent_division_id' => $parent_id,
@@ -140,6 +141,7 @@ class Model_Division extends Model_Base
 					'source' => '',
 				]);
 				$division->fullname = $division->get_path(null, true);
+				$division->path = $division->get_path(null, true);
 
 				if ($parent_id) {
 					$parent = $division;
@@ -670,6 +672,7 @@ class Model_Division extends Model_Base
 			$this->display_order   = $input['display_order'] ?: null;
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
+			$this->path            = '';
 			$this->is_unfinished   = isset($input['is_unfinished']) && $input['is_unfinished'] ? true : false;
 			$this->is_empty_kana   = empty($input['name_kana']);
 			$this->is_empty_government_code = empty($input['government_code']);
