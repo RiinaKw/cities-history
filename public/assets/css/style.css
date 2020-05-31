@@ -147,6 +147,10 @@ h1 {
 	display: none;
 }
 
+textarea[name=source] {
+	height: 8rem;
+}
+
 .government_code {
 	font-size: 60%;
 }
