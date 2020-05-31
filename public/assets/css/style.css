@@ -140,6 +140,13 @@ h1 {
 	margin-bottom: 2rem;
 }
 
+.source {
+	font-size: 85%;
+}
+.source_preformat {
+	display: none;
+}
+
 .government_code {
 	font-size: 60%;
 }

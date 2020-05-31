@@ -52,4 +52,51 @@ class Model_Event_Detail extends Model_Base
 
 		return $query->as_object('Model_Event_Detail')->execute()->as_array();
 	} // function get_by_division_id()
+
+	public function get_source()
+	{
+		$content = nl2br($this->source);
+
+		$arrSource = [
+			'[cite]',
+			'[/cite]',
+		];
+		$arrDest = [
+			'<cite>',
+			'</cite>',
+		];
+		$content = str_replace($arrSource, $arrDest, $content);
+
+		preg_match_all("/\[\[(?<expressoin>.*?)\]\]/", $content, $matches);
+        if ($matches) {
+            foreach ($matches[0] as $key => $base) {
+                $expression = $matches['expressoin'][$key];
+                $arr = explode('|', $expression);
+
+                $url = array_shift($arr);
+                $text = array_shift($arr);
+
+                $attrs = [
+                    'href' => $url,
+                ];
+                foreach ($arr as $item) {
+                    list($name, $value) = explode(':', $item, 2);
+                    $attrs[$name] = $value;
+                }
+
+                $html_attrs = [];
+                foreach ($attrs as $name => $value) {
+                    $html_attrs[] = sprintf(
+                        '%s="%s"',
+                        $name,
+                        $value
+                    );
+                }
+                $html = '<a ' . trim(implode(' ', $html_attrs)) . '>' . trim($text) . '</a>';
+
+                $content = str_replace($base, $html, $content);
+            }
+        }
+        return $content;
+	}
 } // class Model_Event_Detail

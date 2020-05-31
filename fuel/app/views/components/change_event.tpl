@@ -180,7 +180,7 @@ $(function(){
 		var title = $("h3", $(this)).html();
 		var date = $("time", $(this)).attr("datetime");
 		var comment = $(".comment", $(this)).html();
-		var source = $(".source", $(this)).html();
+		var source = $(".source_preformat", $(this)).html();
 		var url = "{{$url_event_edit}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
 		$("#event-id", $modal).val(event_id);

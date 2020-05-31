@@ -17,7 +17,10 @@
 					</h2>
 					<p>{{$path_kana}}</p>
 {{if $division->government_code}}
-					<p>全国地方公共団体コード : {{$division->government_code|escape}}</p>
+					<p >全国地方公共団体コード : {{$division->government_code|escape}}</p>
+{{/if}}
+{{if $division->source}}
+					<p class="source">出典 :<br />{{$division->get_source()}}</p>
 {{/if}}
 				</div>
 {{if $user}}
@@ -75,7 +78,8 @@
 								<p class="comment">{{$event.comment|escape}}</p>
 {{/if}}
 {{if $event.source}}
-								<p class="source" style="display: none;">{{$event.source|escape}}</p>
+								<p class="source">出典 :<br />{{$event->get_source()}}</p>
+								<p class="source_preformat">{{$event->source|escape}}</p>
 {{/if}}
 							</header>
 							<ul>
