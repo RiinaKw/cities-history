@@ -48,49 +48,7 @@ class Model_Division extends Model_Base
 
 	public function get_source()
 	{
-		$content = nl2br($this->source);
-
-		$arrSource = [
-			'[cite]',
-			'[/cite]',
-		];
-		$arrDest = [
-			'<cite>',
-			'</cite>',
-		];
-		$content = str_replace($arrSource, $arrDest, $content);
-
-		preg_match_all("/\[\[(?<expressoin>.*?)\]\]/", $content, $matches);
-        if ($matches) {
-            foreach ($matches[0] as $key => $base) {
-                $expression = $matches['expressoin'][$key];
-                $arr = explode('|', $expression);
-
-                $url = array_shift($arr);
-                $text = array_shift($arr);
-
-                $attrs = [
-                    'href' => $url,
-                ];
-                foreach ($arr as $item) {
-                    list($name, $value) = explode(':', $item, 2);
-                    $attrs[$name] = $value;
-                }
-
-                $html_attrs = [];
-                foreach ($attrs as $name => $value) {
-                    $html_attrs[] = sprintf(
-                        '%s="%s"',
-                        $name,
-                        $value
-                    );
-                }
-                $html = '<a ' . trim(implode(' ', $html_attrs)) . '>' . trim($text) . '</a>';
-
-                $content = str_replace($base, $html, $content);
-            }
-        }
-        return $content;
+		return Helper_Html::wiki($this->source);
 	}
 
 	public static function get_all()

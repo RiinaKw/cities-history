@@ -5,9 +5,10 @@ class Presenter_Page extends Presenter_Layout
 	public function view()
 	{
 		$this->title = $this->page->title;
-		$content = $this->page->content;
-		$content = preg_replace('/<script\s.*?>.*?<\/script>/', '', $content);
-		$this->description = preg_replace("/\s+/", ' ', strip_tags($content));
+
+		$html_content = Helper_Html::wiki($this->page->content);
+		$this->description = Helper_Html::excerpt($html_content, 200);
+
 		$this->og_type = 'article';
 		$this->breadcrumbs = [
 			'Top' => Helper_Uri::create('top'),
@@ -16,6 +17,6 @@ class Presenter_Page extends Presenter_Layout
 		$this->nav_item = $this->page->slug;
 		$this->show_share = true;
 
-		$this->set_safe('content', $this->page->content);
+		$this->set_safe('content', $html_content);
 	} // function view()
 } // class Presenter_Page
