@@ -376,6 +376,7 @@ class Model_Division extends Model_Base
 		}
 
 		$divisions_tree = [
+			'振興局' => [],
 			'支庁' => [],
 			'区' => [],
 			'市' => [],
@@ -390,15 +391,20 @@ class Model_Division extends Model_Base
 				$suffix = $div->suffix;
 				switch ($suffix)
 				{
+					case '支庁':
 					case '区':
 					case '市':
 					case '郡':
 					break;
 
-					case '支庁':
 					case '総合振興局':
 					case '振興局':
 						$suffix = '支庁';
+					break;
+
+					case '総合振興局':
+					case '振興局':
+						$suffix = '振興局';
 					break;
 
 					default:
