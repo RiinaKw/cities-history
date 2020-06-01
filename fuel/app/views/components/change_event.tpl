@@ -42,8 +42,8 @@
 										<th>
 											<table class="table table-sm table-borderless mb-0">
 												<tr>
-													<th scope="col" style="width: 50%;">自治体</th>
-													<th scope="col" style="">結果</th>
+													<th scope="col" style="">自治体</th>
+													<th scope="col" style="width: 20%;">結果</th>
 													<th class="text-center" scope="col" style="width: 6%;">新設</th>
 													<th class="text-center" scope="col" style="width: 6%;">廃止 /<br />存続</th>
 													<th class="text-center" scope="col" style="width: 6%;">参照</th>
@@ -109,7 +109,7 @@ function add_row($tbody, idx, detail)
 	}
 	$input_division.appendTo($td_division);
 
-	var $td_geoshape = $("<td />").css("width", "50%").appendTo($tr2);
+	var $td_geoshape = $("<td />").appendTo($tr2);
 	var $input_geoshape = $('<input type="text" />').addClass("form-control");
 	$input_geoshape.attr("name", "geoshape["+idx+"]");
 	$input_geoshape.attr("placeholder", "geoshape file name...");
@@ -122,7 +122,7 @@ function add_row($tbody, idx, detail)
 		serviceUrl: "{{$url_root}}/division/list.json"
 	});
 
-	var $td_result = $("<td />").appendTo($tr2);
+	var $td_result = $("<td />").css("width", "20%").appendTo($tr2);
 	var $input_result = $('<input type="text" />').addClass("form-control");
 	$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
 	if (detail.result) {
