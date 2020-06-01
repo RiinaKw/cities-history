@@ -313,6 +313,8 @@ class Model_Division extends Model_Base
 		// count divisions by suffix
 		$count = [
 			'支庁' => 0,
+			'総合振興局' => 0,
+			'振興局' => 0,
 			'市' => 0,
 			'区' => 0,
 			'郡' => 0,
@@ -374,6 +376,7 @@ class Model_Division extends Model_Base
 		}
 
 		$divisions_tree = [
+			'支庁' => [],
 			'区' => [],
 			'市' => [],
 			'郡' => [],
@@ -387,10 +390,15 @@ class Model_Division extends Model_Base
 				$suffix = $div->suffix;
 				switch ($suffix)
 				{
-					case '支庁':
 					case '区':
 					case '市':
 					case '郡':
+					break;
+
+					case '支庁':
+					case '総合振興局':
+					case '振興局':
+						$suffix = '支庁';
 					break;
 
 					default:
