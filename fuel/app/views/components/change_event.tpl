@@ -53,7 +53,7 @@
 										</th>
 									</tr>
 								</thead>
-								<tbody id="change-event-detail"></tbody>
+								<tbody id="change-event-sortable"></tbody>
 							</table>
 							<span class="row_add"><i class="fas fa-plus"></i> 追加</span>
 						</div><!-- /.modal-body -->
@@ -92,12 +92,12 @@ function add_row($tbody, idx, detail)
 	var $input_no = $('<input type="hidden" />').addClass("row-no").appendTo($tr);
 	$input_no.attr("name", "order["+idx+"]").val(idx);
 
-	var $handle = $("<td />").addClass("handle").appendTo($tr);
+	var $handle = $("<th />").addClass("handle").appendTo($tr);
 	$handle.append('<i class="fa fa-bars"></i>');
 
 	var $td = $("<td />").appendTo($tr);
 
-	var $table = $("<table />").css("width", "100%").appendTo($td);
+	var $table = $("<table />").appendTo($td);
 	var $tr1 = $("<tr />").appendTo($table);
 	var $tr2 = $("<tr />").appendTo($table);
 
@@ -112,7 +112,7 @@ function add_row($tbody, idx, detail)
 	var $td_geoshape = $("<td />").appendTo($tr2);
 	var $input_geoshape = $('<input type="text" />').addClass("form-control");
 	$input_geoshape.attr("name", "geoshape["+idx+"]");
-	$input_geoshape.attr("placeholder", "geoshape file name...");
+	$input_geoshape.attr("placeholder", "geoshape...");
 	if (detail.geoshape) {
 		$input_geoshape.val(detail.geoshape);
 	}
@@ -162,7 +162,10 @@ function add_row($tbody, idx, detail)
 
 $(function(){
 
-	$("#change-event-detail").sortable({
+	$("#change-event-sortable").sortable({
+		handle: "th.handle i",
+		cursor: "move",
+		opacity: 0.5,
 		stop: function(event, ui) {
 			//console.log(event);
 			$(".row-no").each(function(v){
@@ -181,7 +184,7 @@ $(function(){
 		$("#date", $modal).val("");
 		$("#comment", $modal).val("");
 		$("#source", $modal).val("");
-		$("#change-event-detail", $modal).empty();
+		$("#change-event-sortable", $modal).empty();
 		$(".btn-danger", $modal).hide();
 		var path = $("h2").html();
 		$("#path", $modal).val(path);
@@ -211,7 +214,7 @@ $(function(){
 			url: "{{$url_event_detail}}".replace(":id", event_id),
 		})
 		.done(function(data, message, xhr){
-			var $tbody = $("#change-event-detail", $modal).empty();
+			var $tbody = $("#change-event-sortable", $modal).empty();
 			for (idx in data) {
 				add_row($tbody, idx, data[idx]);
 			}
@@ -220,9 +223,9 @@ $(function(){
 
 	$(document).on("click", "#change-event .row_add", function() {
 		var $modal = $('#change-event');
-		var $tbody = $("#change-event-detail", $modal);
+		var $tbody = $("#change-event-sortable", $modal);
 
-		var idx = $("tbody tr", $modal).length;
+		var idx = $("tr", $tbody).length;
 		add_row($tbody, idx, {});
 	});
 
