@@ -38,16 +38,22 @@
 							<table class="table table-sm table-borderless">
 								<thead>
 									<tr>
-										<th class="text-center" scope="col" style="width: 3%;"></th>
-										<th scope="col" style="width: 50%;">自治体</th>
-										<th scope="col" style="width: 18%;">結果</th>
-										<th class="text-center" scope="col" style="width: 6%;">新設</th>
-										<th class="text-center" scope="col" style="width: 6%;">廃止 /<br />存続</th>
-										<th class="text-center" scope="col" style="width: 6%;">参照</th>
-										<th class="text-center" scope="col" style="width: 6%;">削除</th>
+										<th class="text-center" scope="col"></th>
+										<th>
+											<table class="table table-sm table-borderless mb-0">
+												<tr>
+													<th scope="col" style="width: 50%;">自治体</th>
+													<th scope="col" style="">結果</th>
+													<th class="text-center" scope="col" style="width: 6%;">新設</th>
+													<th class="text-center" scope="col" style="width: 6%;">廃止 /<br />存続</th>
+													<th class="text-center" scope="col" style="width: 6%;">参照</th>
+													<th class="text-center" scope="col" style="width: 6%;">削除</th>
+												</tr>
+											</table>
+										</th>
 									</tr>
 								</thead>
-								<tbody></tbody>
+								<tbody id="change-event-detail"></tbody>
 							</table>
 							<span class="row_add"><i class="fas fa-plus"></i> 追加</span>
 						</div><!-- /.modal-body -->
@@ -89,25 +95,34 @@ function add_row($tbody, idx, detail)
 	var $handle = $("<td />").addClass("handle").appendTo($tr);
 	$handle.append('<i class="fa fa-bars"></i>');
 
-	var $td_division = $("<td />").appendTo($tr);
+	var $td = $("<td />").appendTo($tr);
+
+	var $table = $("<table />").css("width", "100%").appendTo($td);
+	var $tr1 = $("<tr />").appendTo($table);
+	var $tr2 = $("<tr />").appendTo($table);
+
+	var $td_division = $("<td />").attr("colspan", 6).appendTo($tr1);
 	var $input_division = $('<input type="text" />').addClass("form-control");
 	$input_division.attr("name", "division["+idx+"]");
 	if (detail.path) {
 		$input_division.val(detail.path);
 	}
 	$input_division.appendTo($td_division);
+
+	var $td_geoshape = $("<td />").css("width", "50%").appendTo($tr2);
 	var $input_geoshape = $('<input type="text" />').addClass("form-control");
 	$input_geoshape.attr("name", "geoshape["+idx+"]");
+	$input_geoshape.attr("placeholder", "geoshape file name...");
 	if (detail.geoshape) {
 		$input_geoshape.val(detail.geoshape);
 	}
-	$input_geoshape.appendTo($td_division);
+	$input_geoshape.appendTo($td_geoshape);
 
 	$input_division.devbridgeAutocomplete({
 		serviceUrl: "{{$url_root}}/division/list.json"
 	});
 
-	var $td_result = $("<td />").appendTo($tr);
+	var $td_result = $("<td />").appendTo($tr2);
 	var $input_result = $('<input type="text" />').addClass("form-control");
 	$input_result.attr("value", detail.result).attr("name", "result["+idx+"]");
 	if (detail.result) {
@@ -115,7 +130,7 @@ function add_row($tbody, idx, detail)
 	}
 	$input_result.appendTo($td_result);
 
-	var $td_birth = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $td_birth = $("<td />").addClass("text-center").addClass("checkbox-wrapper").css("width", "6%").appendTo($tr2);
 	var $input_birth = $('<input type="checkbox" />');
 	$input_birth.attr("value", "true").attr("name", "birth["+idx+"]");
 	$input_birth.appendTo($td_birth);
@@ -123,7 +138,7 @@ function add_row($tbody, idx, detail)
 		$input_birth.prop("checked", true);
 	}
 
-	var $td_death = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $td_death = $("<td />").addClass("text-center").addClass("checkbox-wrapper").css("width", "6%").appendTo($tr2);
 	var $input_death = $('<input type="checkbox" />');
 	$input_death.attr("value", "true").attr("name", "death["+idx+"]");
 	$input_death.appendTo($td_death);
@@ -131,7 +146,7 @@ function add_row($tbody, idx, detail)
 		$input_death.prop("checked", true);
 	}
 
-	var $td_refer = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $td_refer = $("<td />").addClass("text-center").addClass("checkbox-wrapper").css("width", "6%").appendTo($tr2);
 	var $input_refer = $('<input type="checkbox" />');
 	$input_refer.attr("value", "true").attr("name", "refer["+idx+"]");
 	$input_refer.appendTo($td_refer);
@@ -139,7 +154,7 @@ function add_row($tbody, idx, detail)
 		$input_refer.prop("checked", true);
 	}
 
-	var $td_delete = $("<td />").addClass("text-center").addClass("checkbox-wrapper").appendTo($tr);
+	var $td_delete = $("<td />").addClass("text-center").addClass("checkbox-wrapper").css("width", "6%").appendTo($tr2);
 	var $input_delete = $('<input type="checkbox" />');
 	$input_delete.attr("value", "true").attr("name", "delete["+idx+"]");
 	$input_delete.appendTo($td_delete);
@@ -147,9 +162,9 @@ function add_row($tbody, idx, detail)
 
 $(function(){
 
-	$("#change-event tbody").sortable({
+	$("#change-event-detail").sortable({
 		stop: function(event, ui) {
-			console.log(event);
+			//console.log(event);
 			$(".row-no").each(function(v){
 				$(this).val(v);
 			});
@@ -166,7 +181,7 @@ $(function(){
 		$("#date", $modal).val("");
 		$("#comment", $modal).val("");
 		$("#source", $modal).val("");
-		$("tbody", $modal).empty();
+		$("#change-event-detail", $modal).empty();
 		$(".btn-danger", $modal).hide();
 		var path = $("h2").html();
 		$("#path", $modal).val(path);
@@ -196,7 +211,7 @@ $(function(){
 			url: "{{$url_event_detail}}".replace(":id", event_id),
 		})
 		.done(function(data, message, xhr){
-			var $tbody = $("tbody", $modal).empty();
+			var $tbody = $("#change-event-detail", $modal).empty();
 			for (idx in data) {
 				add_row($tbody, idx, data[idx]);
 			}
@@ -205,7 +220,7 @@ $(function(){
 
 	$(document).on("click", "#change-event .row_add", function() {
 		var $modal = $('#change-event');
-		var $tbody = $("tbody", $modal);
+		var $tbody = $("#change-event-detail", $modal);
 
 		var idx = $("tbody tr", $modal).length;
 		add_row($tbody, idx, {});
