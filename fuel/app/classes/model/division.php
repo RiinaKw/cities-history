@@ -376,7 +376,6 @@ class Model_Division extends Model_Base
 		}
 
 		$divisions_tree = [
-			'振興局' => [],
 			'支庁' => [],
 			'区' => [],
 			'市' => [],
@@ -391,20 +390,15 @@ class Model_Division extends Model_Base
 				$suffix = $div->suffix;
 				switch ($suffix)
 				{
-					case '支庁':
 					case '区':
 					case '市':
 					case '郡':
 					break;
 
+					case '支庁':
 					case '総合振興局':
 					case '振興局':
 						$suffix = '支庁';
-					break;
-
-					case '総合振興局':
-					case '振興局':
-						$suffix = '振興局';
 					break;
 
 					default:
@@ -474,7 +468,7 @@ class Model_Division extends Model_Base
 			->order_by('d.is_empty_government_code', 'asc')
 			->order_by('d.government_code', 'asc')
 			->order_by('d.is_empty_kana', 'asc')
-			->order_by('d.name_kana', 'asc')
+			->order_by('d.fullname_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
