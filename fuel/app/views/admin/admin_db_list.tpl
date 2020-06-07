@@ -6,7 +6,9 @@
 					<h2>DB Manage</h2>
 				</div>
 				<nav class="float-right">
-					<button class="btn btn-success mb-1" data-toggle="modal" data-target="#add-backup">
+					<button class="btn btn-success mb-1"
+							data-toggle="modal"
+							data-target="#add-backup">
 						<i class="fa fa-plus"></i>
 						バックアップを取得...
 					</button>
@@ -35,15 +37,17 @@
 						</thead>
 						<tbody>
 {{foreach from=$files item=file}}
-							<tr>
+							<tr data-file={{$file.name|escape}}>
 								<td>{{$file.name|escape}}</td>
 								<td>{{$file.size|escape}}</td>
 								<td>{{$file.time|date_format:'%Y-%m-%d %H:%M:%S'}}</td>
 								<td>
 									<button class="btn btn-sm btn-success">
+										<i class="fa fa-upload"></i>
 										Restore
 									</button>
 									<button class="btn btn-sm btn-danger">
+										<i class="fa fa-trash"></i>
 										Delete
 									</button>
 								</td>
@@ -62,5 +66,6 @@
 
 
 {{$components.backup}}
+{{$components.delete}}
 
 {{/block}}

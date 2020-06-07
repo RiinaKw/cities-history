@@ -6,9 +6,11 @@ class Presenter_Admin_Db_List extends Presenter_Layout
 	{
 		$this->flash = Session::get_flash($this->flash_name);
 
-		$this->url_do_backup = Helper_Uri::create('admin.db.backup');
+		$this->url_backup = Helper_Uri::create('admin.db.backup');
+		$this->url_delete = Helper_Uri::create('admin.db.delete');
 		$components = [
 			'backup' => View_Smarty::forge('admin/components/db/backup.tpl'),
+			'delete' => View_Smarty::forge('admin/components/db/delete.tpl'),
 		];
 		$this->components = $components;
 

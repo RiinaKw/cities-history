@@ -1,7 +1,7 @@
 
 			<div id="add-backup" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
-					<form class="modal-content" action="{{$url_do_backup}}" method="post">
+					<form class="modal-content" action="{{$url_backup}}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">バックアップ……</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
@@ -12,7 +12,7 @@
 							<label class="row">
 								<span class="col-4">ファイル名</span>
 								<div class="col-8">
-									<input class="form-control" type="text" name="filename" value="" />
+									<input class="form-control" type="text" name="filename" value="" placeholder="空欄は UNIX タイムスタンプ" />
 								</div>
 							</label>
 						</div><!-- /.modal-body -->

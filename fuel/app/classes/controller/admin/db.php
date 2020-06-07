@@ -47,8 +47,12 @@ class Controller_Admin_Db extends Controller_Admin_Base
 
 	public function post_backup()
 	{
+		$filename = Input::post('filename');
+		if (! $filename) {
+			$filename = date('YmdHis') . '_from_web.sql';
+		}
 		$oil_path = realpath(APPPATH . '/../../oil');
-		$output = exec("php {$oil_path} r db:backup");
+		$output = exec("php {$oil_path} r db:backup {$filename}");
 
 		Session::set_flash(
 			self::SESSION_NAME_FLASH,
@@ -59,4 +63,32 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		);
 		Helper_Uri::redirect('admin.db.list');
 	} // function post_backup()
+
+	public function post_delete($filename)
+	{
+		$backup_dir = realpath(APPPATH . Config::get('common.backup_dir'));
+		$ext_arr = ['sql', 'dump'];
+		$found = '';
+		foreach ($ext_arr as $ext) {
+			$file = $filename . '.' . $ext;
+			$path = $backup_dir . '/' . $file;
+			if ( File::exists($path) ) {
+				$found = $path;
+				break;
+			}
+		}
+
+		if ($found) {
+			unlink($found);
+		}
+
+		Session::set_flash(
+			self::SESSION_NAME_FLASH,
+			[
+				'status'  => 'success',
+				'message' => '削除に成功しました。',
+			]
+		);
+		Helper_Uri::redirect('admin.db.list');
+	}
 } // class Controller_Admin_Db

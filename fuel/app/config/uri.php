@@ -24,7 +24,8 @@ return array(
 		),
 		'db' => array(
 			'list'   => 'admin/db',
-			'backup'   => 'admin/db/backup',
+			'backup' => 'admin/db/backup',
+			'delete' => 'admin/db/delete/:file',
 		),
 	),
 	'event' => array(

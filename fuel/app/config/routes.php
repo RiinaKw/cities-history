@@ -36,8 +36,9 @@ return array(
 
 	'admin/page'              => 'admin/page/list',
 
-	'admin/db'              => 'admin/db/index',
-	'admin/db/backup'              => 'admin/db/backup',
+	'admin/db'         => 'admin/db/index',
+	'admin/db/backup'  => 'admin/db/backup',
+	'admin/db/delete'  => 'admin/db/delete',
 
 	'page/:slug' => 'page/detail',
 );
