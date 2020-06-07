@@ -48,21 +48,34 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		}
 		$oil_path = realpath(APPPATH . '/../../oil');
 		$command = "php {$oil_path} r db:backup --without=users,migration {$filename}";
-		$output = exec($command);
+		if (\Fuel::$env == 'staging') {
+			$command = 'FUEL_ENV=staging ' . $command;
+		}
+		$output = exec($command, $result);
 
-		Model_Activity::insert_log([
-			'user_id' => Session::get('user_id'),
-			'target' => 'backup db',
-			'target_id' => null,
-		]);
+		if (strpos($output, 'Error') === false) {
+			Model_Activity::insert_log([
+				'user_id' => Session::get('user_id'),
+				'target' => 'backup db',
+				'target_id' => null,
+			]);
 
-		Session::set_flash(
-			self::SESSION_NAME_FLASH,
-			[
-				'status'  => 'success',
-				'message' => 'バックアップに成功しました。',
-			]
-		);
+			Session::set_flash(
+				self::SESSION_NAME_FLASH,
+				[
+					'status'  => 'success',
+					'message' => 'バックアップに成功しました。',
+				]
+			);
+		} else {
+			Session::set_flash(
+				self::SESSION_NAME_FLASH,
+				[
+					'status'  => 'error',
+					'message' => $output,
+				]
+			);
+		}
 		Helper_Uri::redirect('admin.db.list');
 	} // function post_backup()
 
@@ -78,6 +91,9 @@ class Controller_Admin_Db extends Controller_Admin_Base
 
 		$oil_path = realpath(APPPATH . '/../../oil');
 		$command = "php {$oil_path} r db:restore --without=users,migration {$file}";
+		if (\Fuel::$env == 'staging') {
+			$command = 'FUEL_ENV=staging ' . $command;
+		}
 		$output = exec($command);
 
 		Model_Activity::insert_log([

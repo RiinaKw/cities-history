@@ -59,9 +59,13 @@ class Db
 
 		// ignore table
 		$without = explode(',', \Cli::option('without'));
-		$ignore_table = '';
-		foreach ($without as $table) {
-			$ignore_table .= "--ignore-table={$db}.{$table} ";
+		if ($without) {
+			$ignore_table = '';
+			foreach ($without as $table) {
+				if ($table) {
+					$ignore_table .= "--ignore-table={$db}.{$table} ";
+				}
+			}
 		}
 
 		echo "Backup database from {$db} to {$file}...\n";
@@ -79,13 +83,15 @@ class Db
 			. " -u{$user} {$password} -h {$host} {$db}"
 			. " {$ignore_table} {$only_data} {$complete_insert}"
 			. " > {$path}";
-		if ( \Fuel::$env == 'staging' ) {
-			$command = 'FUEL_ENV=staging ' . $command;
-		}
 
 		exec($command);
 
+		if ( ! \File::exists($path)) {
+			echo "Error : cannot create dump file.\n";
+			exit(1);
+		}
 		echo "Complete!\n";
+		exit(0);
 	}
 
 	public static function restore($file)
@@ -138,15 +144,13 @@ class Db
 		echo "restore db...\n";
 
 		$command = "mysql"
-			. " -u{$user} {$password} -h {$host} -P {$port} {$db}"
+			. " -u{$user} -p{$password} -h {$host} -P {$port} {$db}"
 			. " < {$path}";
-		if ( \Fuel::$env == 'staging' ) {
-			$command = 'FUEL_ENV=staging ' . $command;
-		}
 
 		exec($command);
 
-        echo "\nComplete!\n";
+		echo "\nComplete!\n";
+		exit(0);
 	}
 
 }

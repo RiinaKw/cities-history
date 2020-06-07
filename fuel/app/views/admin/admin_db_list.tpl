@@ -21,6 +21,11 @@
 					<strong>Success!</strong>
 					{{$flash.message}}
 				</div>
+{{elseif $flash.status == 'error'}}
+				<div class="alert alert-danger" role="alert">
+					<strong>Error!</strong>
+					{{$flash.message}}
+				</div>
 {{/if}}
 {{/if}}
 
