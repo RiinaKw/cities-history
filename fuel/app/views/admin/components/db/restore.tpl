@@ -32,16 +32,3 @@
 					</form><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
-
-			<script>
-$(function(){
-	$(".btn-sm.btn-success").on("click", function(){
-		var file = $(this).parents("tr").data("file");
-		var url = $("#restore-backup .modal-dialog").data("url").replace(":file", file);
-
-		$("#restore-backup form").attr("action", url);
-		$("#restore-backup b.file").html(file);
-		$("#restore-backup").modal();
-	});
-});
-			</script>
