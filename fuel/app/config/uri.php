@@ -23,10 +23,11 @@ return array(
 			'list'   => 'admin/page',
 		),
 		'db' => array(
-			'list'    => 'admin/db',
-			'backup'  => 'admin/db/backup',
-			'restore' => 'admin/db/restore/:file',
-			'delete'  => 'admin/db/delete/:file',
+			'list'     => 'admin/db',
+			'backup'   => 'admin/db/backup',
+			'restore'  => 'admin/db/restore/:file',
+			'delete'   => 'admin/db/delete/:file',
+			'download' => 'admin/db/download/:file',
 		),
 	),
 	'event' => array(

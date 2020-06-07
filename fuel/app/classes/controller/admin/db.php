@@ -28,25 +28,6 @@ class Controller_Admin_Db extends Controller_Admin_Base
 
 	public function action_index()
 	{
-		$backup_dir = realpath(APPPATH . Config::get('common.backup_dir'));
-		$files = File::read_dir($backup_dir);
-		foreach ($files as &$file) {
-			$name = $file;
-			$path = realpath($backup_dir . '/' . $name);
-			$size = File::get_size($path);
-			$file = [
-				'name' => $name,
-				'size' => Helper_Number::bytes_format($size),
-				'time' => File::get_time($path),
-			];
-		}
-		usort($files, function($a, $b){
-			if ($a['time'] == $b['time']) {
-				return 0;
-			}
-			return ($a['time'] > $b['time']) ? -1 : 1;
-		});
-
 		// create Presenter object
 		$content = Presenter::forge(
 			'admin/db/list',
@@ -54,7 +35,6 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			null,
 			'admin/admin_db_list.tpl'
 		);
-		$content->files = $files;
 		$content->flash_name = self::SESSION_NAME_FLASH;
 
 		return $content;
@@ -67,12 +47,12 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			$filename = date('YmdHis') . '_from_web.sql';
 		}
 		$oil_path = realpath(APPPATH . '/../../oil');
-		$command = "php {$oil_path} r db:backup {$filename}";
+		$command = "php {$oil_path} r db:backup --without=users,migration {$filename}";
 		$output = exec($command);
 
 		Model_Activity::insert_log([
 			'user_id' => Session::get('user_id'),
-			'target' => 'backup',
+			'target' => 'backup db',
 			'target_id' => null,
 		]);
 
@@ -89,17 +69,40 @@ class Controller_Admin_Db extends Controller_Admin_Base
 	public function action_restore($filename)
 	{
 		$path = $this->get_file($filename);
+		if ( ! $path)
+		{
+			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
+		}
+
 		$file = basename($path);
 
 		$oil_path = realpath(APPPATH . '/../../oil');
-		$command = "php {$oil_path} r db:restore {$file}";
-		var_dump($command);exit;
+		$command = "php {$oil_path} r db:restore --without=users,migration {$file}";
 		$output = exec($command);
+
+		Model_Activity::insert_log([
+			'user_id' => Session::get('user_id'),
+			'target' => 'restore db',
+			'target_id' => null,
+		]);
+
+		Session::set_flash(
+			self::SESSION_NAME_FLASH,
+			[
+				'status'  => 'success',
+				'message' => '復元に成功しました。',
+			]
+		);
+		Helper_Uri::redirect('admin.db.list');
 	} // function post_restore()
 
 	public function post_delete($filename)
 	{
 		$path = $this->get_file($filename);
+		if ( ! $path)
+		{
+			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
+		}
 
 		if ($path) {
 			unlink($path);
@@ -120,4 +123,15 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		);
 		Helper_Uri::redirect('admin.db.list');
 	} // function post_delete()
+
+	public function action_download($filename)
+	{
+		$path = $this->get_file($filename);
+		if ( ! $path)
+		{
+			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
+		}
+
+		File::download($path, basename($path));
+	} // function action_download()
 } // class Controller_Admin_Db

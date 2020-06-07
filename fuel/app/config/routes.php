@@ -36,10 +36,11 @@ return array(
 
 	'admin/page'              => 'admin/page/list',
 
-	'admin/db'         => 'admin/db/index',
-	'admin/db/backup'  => 'admin/db/backup',
-	'admin/db/restore' => 'admin/db/restore',
-	'admin/db/delete'  => 'admin/db/delete',
+	'admin/db'          => 'admin/db/index',
+	'admin/db/backup'   => 'admin/db/backup',
+	'admin/db/restore'  => 'admin/db/restore',
+	'admin/db/delete'   => 'admin/db/delete',
+	'admin/db/download' => 'admin/db/download',
 
 	'page/:slug' => 'page/detail',
 );
