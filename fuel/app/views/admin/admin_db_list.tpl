@@ -44,7 +44,7 @@
 {{foreachelse}}
 							<tr>
 								<td colspan="3">
-									<div class="text-center">固定ページがありません。</div>
+									<div class="text-center">バックアップがありません。</div>
 								</td>
 							</tr>
 {{/foreach}}
