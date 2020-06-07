@@ -14,7 +14,7 @@ namespace Fuel\Tasks;
 
 class Db
 {
-	public static function run($file = '')
+	public static function backup($file = '')
 	{
 		$config = \Config::load(\Fuel::$env . '/db.php');
 		$connection = $config['default']['connection'];

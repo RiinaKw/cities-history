@@ -9,7 +9,7 @@
  */
 class Controller_Admin_Db extends Controller_Admin_Base
 {
-	const SESSION_NAME_FLASH  = 'admin_data.reference';
+	const SESSION_NAME_FLASH  = 'admin_data.db';
 
 	public function action_index()
 	{
@@ -39,8 +39,18 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		return $content;
 	} // function action_list()
 
-	public function action_backup()
+	public function post_backup()
 	{
-		//
+		$oil_path = realpath(APPPATH . '/../../oil');
+		$output = exec("php {$oil_path} r db:backup");
+
+		Session::set_flash(
+			self::SESSION_NAME_FLASH,
+			[
+				'status'  => 'success',
+				'message' => 'バックアップに成功しました。',
+			]
+		);
+		Helper_Uri::redirect('admin.db.list');
 	} // action_backup()
 } // class Controller_Admin_Db

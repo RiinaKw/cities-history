@@ -60,4 +60,7 @@
 				</section>
 			</div>
 
+
+{{$components.backup}}
+
 {{/block}}
