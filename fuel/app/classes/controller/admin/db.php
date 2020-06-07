@@ -11,6 +11,21 @@ class Controller_Admin_Db extends Controller_Admin_Base
 {
 	const SESSION_NAME_FLASH  = 'admin_data.db';
 
+	protected function get_file($filename)
+	{
+		$backup_dir = realpath(APPPATH . Config::get('common.backup_dir'));
+		$ext_arr = ['sql', 'dump'];
+		$found = '';
+		foreach ($ext_arr as $ext) {
+			$file = $filename . '.' . $ext;
+			$path = $backup_dir . '/' . $file;
+			if ( File::exists($path) ) {
+				return $path;
+			}
+		}
+		return null;
+	} // function get_file()
+
 	public function action_index()
 	{
 		$backup_dir = realpath(APPPATH . Config::get('common.backup_dir'));
@@ -52,7 +67,14 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			$filename = date('YmdHis') . '_from_web.sql';
 		}
 		$oil_path = realpath(APPPATH . '/../../oil');
-		$output = exec("php {$oil_path} r db:backup {$filename}");
+		$command = "php {$oil_path} r db:backup {$filename}";
+		$output = exec($command);
+
+		Model_Activity::insert_log([
+			'user_id' => Session::get('user_id'),
+			'target' => 'backup',
+			'target_id' => null,
+		]);
 
 		Session::set_flash(
 			self::SESSION_NAME_FLASH,
@@ -64,22 +86,29 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		Helper_Uri::redirect('admin.db.list');
 	} // function post_backup()
 
+	public function action_restore($filename)
+	{
+		$path = $this->get_file($filename);
+		$file = basename($path);
+
+		$oil_path = realpath(APPPATH . '/../../oil');
+		$command = "php {$oil_path} r db:restore {$file}";
+		var_dump($command);exit;
+		$output = exec($command);
+	} // function post_restore()
+
 	public function post_delete($filename)
 	{
-		$backup_dir = realpath(APPPATH . Config::get('common.backup_dir'));
-		$ext_arr = ['sql', 'dump'];
-		$found = '';
-		foreach ($ext_arr as $ext) {
-			$file = $filename . '.' . $ext;
-			$path = $backup_dir . '/' . $file;
-			if ( File::exists($path) ) {
-				$found = $path;
-				break;
-			}
-		}
+		$path = $this->get_file($filename);
 
-		if ($found) {
-			unlink($found);
+		if ($path) {
+			unlink($path);
+
+			Model_Activity::insert_log([
+				'user_id' => Session::get('user_id'),
+				'target' => 'delete backup',
+				'target_id' => null,
+			]);
 		}
 
 		Session::set_flash(
@@ -90,5 +119,5 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			]
 		);
 		Helper_Uri::redirect('admin.db.list');
-	}
+	} // function post_delete()
 } // class Controller_Admin_Db

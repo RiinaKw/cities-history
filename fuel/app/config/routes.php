@@ -38,6 +38,7 @@ return array(
 
 	'admin/db'         => 'admin/db/index',
 	'admin/db/backup'  => 'admin/db/backup',
+	'admin/db/restore' => 'admin/db/restore',
 	'admin/db/delete'  => 'admin/db/delete',
 
 	'page/:slug' => 'page/detail',
