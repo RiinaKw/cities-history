@@ -79,6 +79,9 @@ class Db
 			. " -u{$user} {$password} -h {$host} {$db}"
 			. " {$ignore_table} {$only_data} {$complete_insert}"
 			. " > {$path}";
+		if ( \Fuel::$env == 'staging' ) {
+			$command = 'FUEL_ENV=staging ' . $command;
+		}
 
 		exec($command);
 
@@ -137,6 +140,10 @@ class Db
 		$command = "mysql"
 			. " -u{$user} {$password} -h {$host} -P {$port} {$db}"
 			. " < {$path}";
+		if ( \Fuel::$env == 'staging' ) {
+			$command = 'FUEL_ENV=staging ' . $command;
+		}
+
 		exec($command);
 
         echo "\nComplete!\n";
