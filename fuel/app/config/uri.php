@@ -22,6 +22,9 @@ return array(
 		'page' => array(
 			'list'   => 'admin/page',
 		),
+		'db' => array(
+			'list'   => 'admin/db',
+		),
 	),
 	'event' => array(
 		'add'      => 'event/add',

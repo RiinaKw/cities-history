@@ -104,6 +104,13 @@
 							Manage Pages
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link {{if $nav_item == 'admin-db'}}active{{/if}}"
+							href="{{$url_admin_db}}">
+							<i class="fa fa-fw fa-database"></i>
+							Database
+						</a>
+					</li>
 				</ul>
 {{/if}}
 				<form id="search" class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">
