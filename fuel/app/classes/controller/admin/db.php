@@ -21,10 +21,16 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			$size = File::get_size($path);
 			$file = [
 				'name' => $name,
-				'size' => $size,
+				'size' => Helper_Number::bytes_format($size),
 				'time' => File::get_time($path),
 			];
 		}
+		usort($files, function($a, $b){
+			if ($a['time'] == $b['time']) {
+				return 0;
+			}
+			return ($a['time'] > $b['time']) ? -1 : 1;
+		});
 
 		// create Presenter object
 		$content = Presenter::forge(
@@ -37,7 +43,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		$content->flash_name = self::SESSION_NAME_FLASH;
 
 		return $content;
-	} // function action_list()
+	} // function action_index()
 
 	public function post_backup()
 	{
@@ -52,5 +58,5 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			]
 		);
 		Helper_Uri::redirect('admin.db.list');
-	} // action_backup()
+	} // function post_backup()
 } // class Controller_Admin_Db
