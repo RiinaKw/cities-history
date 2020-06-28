@@ -69,13 +69,19 @@ class Helper_Uri
 	// get current uri
 	public static function current($param = true)
 	{
+		Config::load(\Fuel::$env . '/config', 'env');
+		$base_url = Config::get('env.base_url');
+		if (strpos($base_url, '/') === 0)
+		{
+			// remove last slash
+			$path = substr($base_url, 1);
+		}
+
 		$path = '/';
 		if ($param)
 		{
-			$protocol = (isset($_SERVER['HTTPS']) ? 'https' : 'http');
-			$server = $_SERVER['HTTP_HOST'];
 			$path = $_SERVER['REQUEST_URI'];
-			return $protocol.'://'.$server.$path;
+			return $base_url.$path;
 		}
 		else if (isset($_SERVER['PATH_INFO']))
 		{
