@@ -28,12 +28,6 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 			{
 				$ids[] = $d->id;
 			}
-			foreach ($top_arr as $d)
-			{
-				$parent = Model_Division::find_by_pk($d->id);
-				$temp = Model_Division::get_by_parent_division_id_and_date($d->id);
-				$ids = array_merge($ids, $temp);
-			}
 		}
 
 		$divisions = [];
