@@ -78,6 +78,19 @@ class Controller_Division extends Controller_Base
 						$d->url_geoshape = '';
 					}
 					$d->split = ($d->result == '分割廃止');
+					$d->li_class = '';
+					switch ($d->result) {
+						case '新設':
+							$d->li_class = 'birth';
+							break;
+						case '編入':
+							$d->li_class = 'transfer';
+							break;
+						case '廃止':
+						case '分割廃止':
+							$d->li_class = 'death';
+							break;
+					}
 				}
 			}
 			$event->divisions = $divisions;
@@ -158,6 +171,19 @@ class Controller_Division extends Controller_Base
 							$d->url_geoshape = '';
 						}
 						$d->split = ($d->result == '分割廃止');
+						$d->li_class = '';
+						switch ($d->result) {
+							case '新設':
+								$d->li_class = 'birth';
+								break;
+							case '編入':
+								$d->li_class = 'transfer';
+								break;
+							case '廃止':
+							case '分割廃止':
+								$d->li_class = 'death';
+								break;
+						}
 					}
 				}
 				$event->divisions = $divisions;

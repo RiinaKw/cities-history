@@ -288,9 +288,29 @@ time {
 }
 
 .badge-semilight {
-	background-color: #dddddd;
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 .belongs {
 	font-size: 60%;
+}
+
+.details {
+	list-style-type: none;
+}
+
+.details .result {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.details .birth .result {
+	background-color: rgba(0, 255, 0, 0.2);
+}
+
+.details .transfer .result {
+	background-color: rgba(0, 0, 255, 0.2);
+}
+
+.details .death .result {
+	background-color: rgba(255, 0, 0, 0.2);
 }

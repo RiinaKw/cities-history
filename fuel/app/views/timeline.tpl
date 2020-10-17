@@ -82,20 +82,20 @@
 								<p class="source_preformat">{{$event->source|escape}}</p>
 {{/if}}
 							</header>
-							<ul>
+							<ul class="details">
 {{foreach from=$event.divisions item=d}}
 {{if ! $d->is_refer}}
-								<li>
+								<li class="{{$d->li_class}}">
+									<span class="result badge font-weight-light">{{$d.result|escape}}</span>
 									<a class="{{if $d.is_unfinished}}unfinished{{/if}}"
 										href="{{$d->url_detail|escape}}"
 										data-toggle="tooltip"
 										title="{{$d->get_path(null, true)|escape}}">
 {{if $division.id == $d.id}}
-										<b>{{$d->get_fullname()|escape}}</b>,
+										<b>{{$d->get_fullname()|escape}}</b>
 {{else}}
-										{{$d->get_fullname()|escape}},
+										{{$d->get_fullname()|escape}}
 {{/if}}
-										{{$d.result|escape}}
 									</a>
 								</li>
 {{/if}}
