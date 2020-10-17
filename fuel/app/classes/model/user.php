@@ -59,6 +59,29 @@ class Model_User extends Model_Base
 		return password_hash($password, PASSWORD_DEFAULT);
 	} // function crypt_password()
 
+	public static function create($login_id, $password)
+	{
+		try
+		{
+			DB::start_transaction();
+
+			$user = static::forge([
+				'login_id' => $login_id,
+				'password_crypt' => static::crypt_password($password),
+			]);
+			$user->save();
+
+			DB::commit_transaction();
+		}
+		catch (Exception $e)
+		{
+			// internal error
+			DB::rollback_transaction();
+			throw $e;
+		}
+		return $user;
+	} // function create()
+
 	// login
 	public static function login($login_id, $password)
 	{
