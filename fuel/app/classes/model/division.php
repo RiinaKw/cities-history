@@ -617,6 +617,19 @@ class Model_Division extends Model_Base
 		}
 	} // function get_belongs_path()
 
+	public function get_belongs_name()
+	{
+		if ($this->belongs_division_id)
+		{
+			$division = self::find_by_pk($this->belongs_division_id);
+			return $division->get_fullname();
+		}
+		else
+		{
+			return null;
+		}
+	} // function get_belongs_name()
+
 	public function get_fullname()
 	{
 		$name = $this->name;

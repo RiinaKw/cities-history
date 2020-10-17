@@ -286,3 +286,11 @@ time {
 #change-event-sortable .handle i {
 	cursor: pointer;
 }
+
+.badge-semilight {
+	background-color: #dddddd;
+}
+
+.belongs {
+	font-size: 60%;
+}

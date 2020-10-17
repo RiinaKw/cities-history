@@ -147,6 +147,7 @@
 {{if Input::get('debug') && $city->government_code}}
 											<span class="government_code">{{$city->government_code}}</span>
 {{/if}}
+											<span class="belongs badge badge-semilight font-weight-light">{{$city->get_belongs_name()}}</span>
 										</h4>
 {{if isset($city->_children['区']) && $city->_children['区']}}
 										<p class="count">{{strip}}
@@ -198,6 +199,7 @@
 {{if Input::get('debug') && $town->government_code}}
 											<span class="government_code">{{$town->government_code}}</span>
 {{/if}}
+											<span class="belongs badge badge-semilight font-weight-light">{{$town->get_belongs_name()}}</span>
 										</h4>
 									</header>
 								</article>
@@ -239,6 +241,7 @@
 {{if Input::get('debug') && $town->government_code}}
 													<span class="government_code">{{$town->government_code}}</span>
 {{/if}}
+													<span class="belongs badge badge-semilight font-weight-light">{{$town->get_belongs_name()}}</span>
 												</h5>
 											</header>
 										</article>
