@@ -43,7 +43,7 @@ class Helper_Date
 	 * x : 日本語曜日(0:日-6:土)
 	 * E : 午前午後
 	 */
-	public static function date($format, $timestamp = null)
+	public static function format($format, $timestamp = null)
 	{
 		// 和暦関連のオプションがある場合は和暦取得
 		$gengo = array();
@@ -111,7 +111,7 @@ class Helper_Date
 		}
 
 		return date($format, $timestamp);
-	} // function date()
+	} // function format()
 
 	public static function normalize($exp)
 	{

@@ -41,7 +41,7 @@ class Presenter_Division_Children extends Presenter_Layout
 		foreach ($this->events as $event)
 		{
 			$event_parent = Model_Event::find_by_pk($event->event_id);
-			$date = Helper_Date::date('Y(Jk)-m-d', $event_parent->date);
+			$date = Helper_Date::format('Y(Jk)-m-d', $event_parent->date);
 			$description .= ' | '.$date.' '.$event_parent->title;
 		}
 
