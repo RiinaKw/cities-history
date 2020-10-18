@@ -216,7 +216,7 @@ time {
 	border-left: solid 2px #d4d9df;
 }
 .timeline > article.birth {
-	border-left: none;
+	border-left-color: transparent;
 }
 .timeline > article section:before {
 	content: " ";
