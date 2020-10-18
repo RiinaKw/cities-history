@@ -112,4 +112,32 @@ class Helper_Date
 
 		return date($format, $timestamp);
 	} // function date()
+
+	public static function normalize($exp)
+	{
+		if (preg_match('/^(?<year>\d{1,4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $exp, $matches)) {
+			return sprintf(
+				'%d-%02d-%02d',
+				$matches['year'],
+				$matches['month'],
+				$matches['day']
+			);
+		}
+		if (preg_match('/^(?<gengo>[A-Z])(?<year>\d{1,4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $exp, $matches))
+		{
+			$gengo = $matches['gengo'];
+			foreach (self::$gengoList as $g) {
+				if ($gengo === $g['name_short']) {
+					$base = date('Y', $g['timestamp']) - 1;
+					return sprintf(
+						'%d-%02d-%02d',
+						$base + $matches['year'],
+						$matches['month'],
+						$matches['day']
+					);
+				}
+			}
+		}
+		return '0000-00-00';
+	} // function normalize()
 } // Helper_Date
