@@ -59,7 +59,19 @@
 								全国地方公共団体コードが指定されていません。
 							</div>
 {{/if}}
-{{if $division->valid_kana && $division->valid_start_event && $division->valid_end_event && $division->valid_government_code}}
+{{if ! $division->valid_source}}
+							<div class="alert alert-warning" role="alert">
+								<strong>Warning!</strong>
+								出典が指定されていません。
+							</div>
+{{/if}}
+{{if $division->is_wikipedia}}
+							<div class="alert alert-warning" role="alert">
+								<strong>Warning!</strong>
+								出典が Wikipedia です。
+							</div>
+{{/if}}
+{{if $division->valid_kana && $division->valid_start_event && $division->valid_end_event && $division->valid_government_code && $division->valid_source && ! $division->is_wikipedia}}
 							<div class="alert alert-success" role="alert">
 								<strong>Yeah!</strong>
 								データは完璧です！

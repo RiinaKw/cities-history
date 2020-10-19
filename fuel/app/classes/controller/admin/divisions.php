@@ -59,6 +59,8 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 				||
 				$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
 			//$divisions[] = $division;
+			$division->valid_source = !! strlen($division->source);
+			$division->is_wikipedia = (stripos($division->source, 'wikipedia') !== false);
 		}
 
 		// create Presenter object

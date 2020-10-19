@@ -589,6 +589,19 @@ class Model_Division extends Model_Base
 					->or_where('d.government_code', '')
 					->and_where_close();
 			break;
+
+			case 'empty_source':
+				$query
+					->and_where_open()
+					->where('d.source', null)
+					->or_where('d.source', '')
+					->and_where_close();
+			break;
+
+			case 'is_wikipedia':
+				$query
+					->where( DB::expr('LOWER(d.source)'), 'LIKE', 'wikipedia');
+			break;
 		}
 
 		$query
