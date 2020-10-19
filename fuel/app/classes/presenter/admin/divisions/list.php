@@ -12,6 +12,7 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		}
 
 		$this->filters = [
+			'' => 'フィルタなし',
 			'empty_kana' => 'かな未入力',
 			'empty_code' => '自治体コード未入力',
 			'empty_source' => '出典未入力',

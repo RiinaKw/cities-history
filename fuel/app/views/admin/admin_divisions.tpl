@@ -9,7 +9,6 @@
 					<form class="form-inline" action="#" method="get">
 						<div class="input-group">
 							<select class="form-control" name="filter">
-								<option value="">フィルタ…</option>
 {{foreach from=$filters key=val item=label}}
 								<option value="{{$val}}"{{if $filter == $val}} selected="selected"{{/if}}>
 									{{$label}}
