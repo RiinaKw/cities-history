@@ -11,6 +11,12 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 			$division->url_belongto = Helper_Uri::create('admin.divisions.detail', ['path' => $division->path]);
 		}
 
+		$this->filters = [
+			'empty_kana' => 'かな未入力',
+			'empty_code' => '自治体コード未入力',
+		];
+		$this->filter = Input::get('filter');
+
 		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana(
 			$this->path,
 			'自治体管理',

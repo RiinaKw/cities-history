@@ -2,9 +2,26 @@
 
 {{block name=content}}
 			<header class="clearfix">
-				<div class="float-left">
+				<div class="float-left mb-2">
 					<h2>Division Manage</h2>
 				</div>
+				<nav class="float-right mb-2">
+					<form class="form-inline" action="#" method="get">
+						<div class="input-group">
+							<select class="form-control" name="filter">
+								<option value="">フィルタ…</option>
+{{foreach from=$filters key=val item=label}}
+								<option value="{{$val}}"{{if $filter == $val}} selected="selected"{{/if}}>
+									{{$label}}
+								</option>
+{{/foreach}}
+							</select>
+							<span class="input-group-append">
+								<button class="btn btn-primary">検索</button>
+							</span>
+						</div>
+					</form>
+				</nav>
 			</header>
 
 			<div>

@@ -12,6 +12,8 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 	public function action_index()
 	{
 		$path = $this->param('path');
+		$filter = Input::get('filter');
+		/*
 		if ($path)
 		{
 			$parent = Model_Division::get_by_path($path);
@@ -29,11 +31,22 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 				$ids[] = $d->id;
 			}
 		}
+		*/
 
-		$divisions = [];
-		foreach ($ids as $id)
+		$parent_id = null;
+		if ($path)
 		{
-			$division = Model_Division::find_by_pk($id);
+			$parent = Model_Division::get_by_path($path);
+			$parent_id = $parent->id;
+		}
+		$divisions = Model_Division::get_by_admin_filter(
+			$parent_id,
+			$filter
+		);
+
+		foreach ($divisions as $division)
+		{
+			//$division = Model_Division::find_by_pk($id);
 			$end_event = Model_Event::find_by_pk($division->end_event_id);
 
 			$division->valid_kana = $division->name_kana && $division->suffix_kana;
@@ -45,7 +58,7 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 				$division->government_code
 				||
 				$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
-			$divisions[] = $division;
+			//$divisions[] = $division;
 		}
 
 		// create Presenter object
@@ -60,4 +73,4 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 
 		return $content;
 	} // function action_index()
-} // class Controller_Admin
+} // class Controller_Admin_Divisions

@@ -530,7 +530,7 @@ class Model_Division extends Model_Base
 		$query
 			->order_by('d.is_empty_government_code', 'asc')
 			->order_by('d.government_code', 'asc')
-			->order_by('is_empty_kana', 'asc')
+			->order_by('d.is_empty_kana', 'asc')
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
@@ -549,7 +549,58 @@ class Model_Division extends Model_Base
 			}
 		}
 		return array_unique($d_arr);
-	} // get_by_parent_division_id_and_date
+	} // function get_by_parent_division_id_and_date()
+
+	public static function get_by_admin_filter($parent_id, $filter)
+	{
+		$query = DB::select()
+			->from([self::$_table_name, 'd'])
+			->where('d.top_parent_division_id', $parent_id)
+			->where('d.deleted_at', null);
+
+		switch ($filter)
+		{
+			case 'empty_kana':
+				$query
+				/*
+					->and_where_open()
+					->where('d.name_kana', null)
+					->or_where('d.name_kana', '')
+					->or_where('d.suffix_kana', null)
+					->or_where('d.suffix_kana', '')
+					->and_where_close();
+				*/
+					->where('d.is_empty_kana', 1);
+			break;
+
+			case 'empty_code':
+				$query
+					->join(['events', 's'], 'LEFT OUTER')
+					->on('d.start_event_id', '=', 's.id')
+
+					->where('d.suffix', '!=', '郡')
+
+					->and_where_open()
+					->where('s.date', '>=', '1970-04-01')
+					->and_where_close()
+
+					->and_where_open()
+					->where('d.government_code', null)
+					->or_where('d.government_code', '')
+					->and_where_close();
+			break;
+		}
+
+		$query
+			->order_by('d.display_order', 'asc')
+			->order_by('d.is_empty_government_code', 'asc')
+			->order_by('d.government_code', 'asc')
+			->order_by('d.is_empty_kana', 'asc')
+			->order_by('d.name_kana', 'asc')
+			->order_by('d.end_date', 'desc');
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	} // functiob get_by_admin_filter()
 
 	public function get_parent()
 	{
