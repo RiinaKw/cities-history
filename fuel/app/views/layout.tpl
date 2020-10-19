@@ -87,28 +87,36 @@
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-division'}}active{{/if}}"
-								href="{{$url_admin_divisions}}">
+									href="{{$url_admin_divisions}}"
+									data-toggle="tooltip"
+									title="Manage Division">
 								<i class="fa fa-fw fa-map"></i>
 								<span class="d-md-none d-lg-inline">Manage Division</span>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-reference'}}active{{/if}}"
-								href="{{$url_admin_reference}}">
+									href="{{$url_admin_reference}}"
+									data-toggle="tooltip"
+									title="Manage Date Reference">
 								<i class="fa fa-fw fa-calendar-alt"></i>
 								<span class="d-md-none d-lg-inline">Manage Date Reference</span>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-page'}}active{{/if}}"
-								href="{{$url_admin_page}}">
+									href="{{$url_admin_page}}"
+									data-toggle="tooltip"
+									title="Manage Pages">
 								<i class="fa fa-fw fa-file-alt"></i>
 								<span class="d-md-none d-lg-inline">Manage Pages</span>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-db'}}active{{/if}}"
-								href="{{$url_admin_db}}">
+									href="{{$url_admin_db}}"
+									data-toggle="tooltip"
+									title="Database">
 								<i class="fa fa-fw fa-database"></i>
 								<span class="d-md-none d-lg-inline">Database</span>
 							</a>
@@ -181,6 +189,12 @@
 				<div class="small text-muted">{{Config::get('common.geoshape')}}</div>
 			</div>
 		</footer>
+
+		<script>
+			$(function () {
+				$('[data-toggle="tooltip"]').tooltip();
+			});
+		</script>
 
 {{if Fuel::$env == 'production'}}
 		<!-- Global site tag (gtag.js) - Google Analytics -->

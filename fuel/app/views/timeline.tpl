@@ -135,12 +135,6 @@
 				</section>
 			</div>
 
-			<script>
-$(function () {
-	$('[data-toggle="tooltip"]').tooltip();
-});
-			</script>
-
 {{if $user}}
 
 {{$components.add_division}}

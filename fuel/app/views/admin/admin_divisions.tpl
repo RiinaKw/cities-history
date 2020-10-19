@@ -62,7 +62,7 @@
 {{if ! $division->valid_source}}
 							<div class="alert alert-warning" role="alert">
 								<strong>Warning!</strong>
-								出典が指定されていません。
+								出典が入力されていません。
 							</div>
 {{/if}}
 {{if $division->is_wikipedia}}
