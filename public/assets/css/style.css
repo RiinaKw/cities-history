@@ -31,10 +31,19 @@ h1 {
 #nav-admin {
 	order: 10;
 	width: 100%;
+	margin-left: 20px;
+}
+#nav-admin ul {
+	margin-left: 20px;
 }
 @media screen and (min-width: 768px) {
 	#nav-admin {
+		display: flex;
+		align-items: center;
 		margin-left: -250px;
+	}
+	#nav-admin ul {
+		margin-left: 0;
 	}
 }
 

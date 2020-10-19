@@ -69,49 +69,52 @@
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'about'}}active{{/if}}"
 							href="{{$url_about}}">
-							<i class="fa fa-question"></i>
-							About
+							<i class="fa fa-fw fa-question"></i>
+							<span>About</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'link'}}active{{/if}}"
 							href="{{$url_link}}">
-							<i class="fa fa-link"></i>
-							Link
+							<i class="fa fa-fw fa-link"></i>
+							<span>Link</span>
 						</a>
 					</li>
 				</ul>
 {{if $user}}
-				<ul id="nav-admin" class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link {{if $nav_item == 'admin-division'}}active{{/if}}"
-							href="{{$url_admin_divisions}}">
-							<i class="fa fa-map"></i>
-							Manage Division
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link {{if $nav_item == 'admin-reference'}}active{{/if}}"
-							href="{{$url_admin_reference}}">
-							<i class="fa fa-calendar-alt"></i>
-							Manage Date Reference
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link {{if $nav_item == 'admin-page'}}active{{/if}}"
-							href="{{$url_admin_page}}">
-							<i class="fa fa-file-alt"></i>
-							Manage Pages
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link {{if $nav_item == 'admin-db'}}active{{/if}}"
-							href="{{$url_admin_db}}">
-							<i class="fa fa-fw fa-database"></i>
-							Database
-						</a>
-					</li>
-				</ul>
+				<div id="nav-admin">
+					<div>Manage : </div>
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a class="nav-link {{if $nav_item == 'admin-division'}}active{{/if}}"
+								href="{{$url_admin_divisions}}">
+								<i class="fa fa-fw fa-map"></i>
+								<span class="d-md-none d-lg-inline">Manage Division</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {{if $nav_item == 'admin-reference'}}active{{/if}}"
+								href="{{$url_admin_reference}}">
+								<i class="fa fa-fw fa-calendar-alt"></i>
+								<span class="d-md-none d-lg-inline">Manage Date Reference</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {{if $nav_item == 'admin-page'}}active{{/if}}"
+								href="{{$url_admin_page}}">
+								<i class="fa fa-fw fa-file-alt"></i>
+								<span class="d-md-none d-lg-inline">Manage Pages</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link {{if $nav_item == 'admin-db'}}active{{/if}}"
+								href="{{$url_admin_db}}">
+								<i class="fa fa-fw fa-database"></i>
+								<span class="d-md-none d-lg-inline">Database</span>
+							</a>
+						</li>
+					</ul>
+				</div>
 {{/if}}
 				<form id="search" class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">
 					<div class="input-group">
