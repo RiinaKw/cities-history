@@ -36,42 +36,49 @@
 						<div class="card-body p-3">
 {{if ! $division->valid_kana}}
 							<div class="alert alert-warning" role="alert">
+								<i class="fa fa-fw fa-keyboard"></i>
 								<strong>Warning!</strong>
 								かなが入力されていません。
 							</div>
 {{/if}}
 {{if ! $division->valid_start_event}}
 							<div class="alert alert-warning" role="alert">
+								<i class="fa fa-fw fa-history"></i>
 								<strong>Warning!</strong>
 								開始イベントが指定されていません。
 							</div>
 {{/if}}
 {{if ! $division->valid_end_event}}
 							<div class="alert alert-warning" role="alert">
+								<i class="fa fa-fw fa-history"></i>
 								<strong>Warning!</strong>
 								終了イベントが指定されていません。
 							</div>
 {{/if}}
 {{if ! $division->valid_government_code}}
 							<div class="alert alert-warning" role="alert">
+								<i class="fa fa-fw fa-ban"></i>
 								<strong>Warning!</strong>
 								全国地方公共団体コードが指定されていません。
 							</div>
 {{/if}}
 {{if ! $division->valid_source}}
 							<div class="alert alert-warning" role="alert">
+								<i class="fa fa-fw fa-file"></i>
 								<strong>Warning!</strong>
 								出典が入力されていません。
 							</div>
 {{/if}}
 {{if $division->is_wikipedia}}
 							<div class="alert alert-warning" role="alert">
+								<i class="fa fa-fw fa-file"></i>
 								<strong>Warning!</strong>
 								出典が Wikipedia です。
 							</div>
 {{/if}}
 {{if $division->valid_kana && $division->valid_start_event && $division->valid_end_event && $division->valid_government_code && $division->valid_source && ! $division->is_wikipedia}}
 							<div class="alert alert-success" role="alert">
+								<i class="fa fa-fw fa-check"></i>
 								<strong>Yeah!</strong>
 								データは完璧です！
 							</div>
