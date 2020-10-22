@@ -26,6 +26,8 @@ class Presenter_Layout extends Presenter_Base
 			$title = $site_title;
 		}
 
+		$url_current = Helper_Uri::current(false);
+
 		// set to template
 		$this->q = $q;
 		$this->user = $this->_user;
@@ -37,8 +39,9 @@ class Presenter_Layout extends Presenter_Base
 		$this->breadcrumbs = isset($param['breadcrumbs']) ? $param['breadcrumbs'] : [];
 
 		$this->url_root = Helper_Uri::root();
-		$this->url_login = Helper_Uri::create('login', [], ['url' => Helper_Uri::current()]);
-		$this->url_logout = Helper_Uri::create('logout', [], ['url' => Helper_Uri::current()]);
+		$this->url_current = $url_current;
+		$this->url_login = Helper_Uri::create('login', [], ['url' => $url_current]);
+		$this->url_logout = Helper_Uri::create('logout', [], ['url' => $url_current]);
 		$this->url_search = Helper_Uri::create('search');
 		$this->url_about = Helper_Uri::create('about');
 		$this->url_link = Helper_Uri::create('link');

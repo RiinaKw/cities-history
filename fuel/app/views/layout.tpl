@@ -9,7 +9,7 @@
 {{if isset($robots)}}
 		<meta name="robots" content="{{$robots}}" />
 {{/if}}
-		<meta property="og:url" content="{{Helper_Uri::current()}}" />
+		<meta property="og:url" content="{{$url_current}}" />
 		<meta property="og:title" content="{{$title}}" />
 		<meta property="og:site_name" content="{{Config::get('common.title')}}" />
 		<meta property="og:description" content="{{$description}}" />

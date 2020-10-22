@@ -81,12 +81,14 @@ class Helper_Uri
 		if ($param)
 		{
 			$path = $_SERVER['REQUEST_URI'];
-			return $base_url.$path;
+			return $base_url . $path;
 		}
 		else if (isset($_SERVER['PATH_INFO']))
 		{
 			$path = $_SERVER['PATH_INFO'];
-			return self::root().$path;
+			return self::root() . $path;
+		} else {
+			return self::root();
 		}
 	} // function current()
 
