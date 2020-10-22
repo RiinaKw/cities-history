@@ -26,7 +26,7 @@ class Presenter_Layout extends Presenter_Base
 			$title = $site_title;
 		}
 
-		$url_current = Helper_Uri::current(false);
+		$url_current = Helper_Uri::current();
 
 		// set to template
 		$this->q = $q;

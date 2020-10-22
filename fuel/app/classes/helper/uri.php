@@ -67,29 +67,15 @@ class Helper_Uri
 	} // function redirect()
 
 	// get current uri
-	public static function current($param = true)
+	public static function current()
 	{
-		Config::load(\Fuel::$env . '/config', 'env');
-		$base_url = Config::get('env.base_url');
-		if (strpos($base_url, '/') === 0)
-		{
-			// remove last slash
-			$base_url = substr($base_url, 1);
+		$path = ($_SERVER['PATH_INFO'] ?? '');
+		$segments = explode('/', $path);
+		foreach ($segments as &$item) {
+			$item = urlencode($item);
 		}
-
-		$path = '/';
-		if ($param)
-		{
-			$path = $_SERVER['REQUEST_URI'];
-			return $base_url . $path;
-		}
-		else if (isset($_SERVER['PATH_INFO']))
-		{
-			$path = $_SERVER['PATH_INFO'];
-			return self::root() . $path;
-		} else {
-			return self::root();
-		}
+		$path = implode('/', $segments);
+		return self::root() . $path;
 	} // function current()
 
 	public static function is_top()
