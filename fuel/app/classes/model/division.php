@@ -46,6 +46,11 @@ class Model_Division extends Model_Base
 		return $validation;
 	} // function validation()
 
+	protected static function _get_id($obj)
+	{
+		return $obj ? $obj->id : null;
+	}
+
 	public function get_source()
 	{
 		return Helper_Html::wiki($this->source);
@@ -149,15 +154,6 @@ class Model_Division extends Model_Base
 				$division->fullname = $division->get_path(null, true);
 				$division->path = $division->get_path(null, true);
 
-				if ($parent) {
-					$cur_parent = $parent;
-					while ($cur_parent->parent_division_id !== null)
-					{
-						$cur_parent = Model_Division::find_by_pk($cur_parent->parent_division_id);
-					}
-					$division->top_parent_division_id = $cur_parent->id;
-				}
-
 				$division->save();
 
 				Model_Activity::insert_log([
@@ -235,7 +231,7 @@ class Model_Division extends Model_Base
 			->or_where_close()
 			->and_where_close()
 			->where('deleted_at', '=', null);
-		$query->where('parent_division_id', '=', ($parent ? $parent->id : null));
+		$query->where('parent_division_id', '=', self::_get_id($parent));
 		if (isset($name['identifier']))
 		{
 			$query->where('identifier', '=', $name['identifier']);
@@ -298,19 +294,7 @@ class Model_Division extends Model_Base
 */
 	public function get_tree($date)
 	{
-		$divisions = [];
-		if ($this->top_parent_division_id)
-		{
-			$ids = Model_Division::get_by_parent_division_and_date($this, $date);
-			foreach ($ids as $id)
-			{
-				$divisions[] = Model_Division::find_by_pk($id);
-			}
-		}
-		else
-		{
-			$divisions = Model_Division::get_by_top_parent_division_and_date($this, $date);
-		}
+		$divisions = Model_Division::get_by_parent_division_and_date($this, $date);
 
 		// count divisions by suffix
 		$count = [
@@ -444,67 +428,6 @@ class Model_Division extends Model_Base
 		];
 	} // function get_tree()
 
-	public static function get_by_top_parent_division_and_date($parent, $date = null)
-	{
-		$query = DB::select('d.*')
-			->from([self::$_table_name, 'd'])
-			->join(['events', 's'], 'LEFT OUTER')
-			->on('d.start_event_id', '=', 's.id')
-			->join(['events', 'e'], 'LEFT OUTER')
-			->on('d.end_event_id', '=', 'e.id');
-		if ($date)
-		{
-			$query->and_where_open()
-				->where('s.date', '<=', $date)
-				->or_where('s.date', '=', null)
-				->and_where_close()
-				->and_where_open()
-				->where('e.date', '>', $date)
-				->or_where('e.date', '=', null)
-				->and_where_close();
-		}
-		$query
-			->where('d.top_parent_division_id', '=', $parent->id)
-			->where('d.deleted_at', '=', null);
-		$query
-			->order_by('d.is_empty_government_code', 'asc')
-			->order_by('d.government_code', 'asc')
-			->order_by('d.is_empty_kana', 'asc')
-			->order_by('d.fullname_kana', 'asc')
-			->order_by('d.end_date', 'desc');
-
-		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_by_top_parent_division_and_date()
-/*
-	public static function get_by_date($date = null, $parent_id = null)
-	{
-		$query = DB::select('d.*')
-			->from([self::$_table_name, 'd'])
-			->join(['events', 's'], 'LEFT OUTER')
-			->on('d.start_event_id', '=', 's.id')
-			->join(['events', 'e'], 'LEFT OUTER')
-			->on('d.end_event_id', '=', 'e.id');
-		if ($date)
-		{
-			$query->and_where_open()
-				->where('s.date', '<=', $date)
-				->or_where('s.date', '=', null)
-				->and_where_close()
-				->and_where_open()
-				->where('e.date', '>=', $date)
-				->or_where('e.date', '=', null)
-				->and_where_close();
-		}
-		if ($parent_id)
-		{
-			$query->where('d.parent_division_id', '=', $parent_id);
-		}
-		$query->order_by('d.name_kana', 'ASC');
-
-		$divisions = $query->as_object('Model_Division')->execute()->as_array();
-		return $divisions;
-	} // function get_by_date()
-*/
 	public static function get_by_parent_division_and_date($parent, $date = null)
 	{
 		$query = DB::select('d.*')
@@ -514,7 +437,7 @@ class Model_Division extends Model_Base
 			->join(['events', 'e'], 'LEFT OUTER')
 			->on('d.end_event_id', '=', 'e.id')
 			->and_where_open()
-			->where('d.parent_division_id', '=', $parent->id)
+			->where('d.id_path', 'LIKE', DB::expr('CONCAT("' . $parent->id_path . '", "_%")'))
 			->or_where('d.belongs_division_id', '=', $parent->id)
 			->and_where_close()
 			->where('d.deleted_at', '=', null);
@@ -536,29 +459,19 @@ class Model_Division extends Model_Base
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
-		$divisions = $query->as_object('Model_Division')->execute()->as_array();
-		$d_arr = [];
-		if ($divisions)
-		{
-			foreach ($divisions as $d)
-			{
-				$d_arr[] = $d->id;
-				$child_arr = static::get_by_parent_division_and_date($d, $date);
-				if ($child_arr)
-				{
-					$d_arr = array_merge($d_arr, $child_arr);
-				}
-			}
-		}
-		return array_unique($d_arr);
+		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_by_parent_division_and_date()
 
 	public static function get_by_admin_filter($parent, $filter)
 	{
 		$query = DB::select()
 			->from([self::$_table_name, 'd'])
-			->where('d.top_parent_division_id', ($parent ? $parent->id : null))
 			->where('d.deleted_at', null);
+		if ($parent) {
+			$query->where('d.id_path', 'LIKE', DB::expr('CONCAT("' . $parent->id_path . '", "_%")'));
+		} else {
+			$query->where('id_path', '=', DB::expr('CONCAT(id, "/")'));
+		}
 
 		switch ($filter)
 		{
@@ -726,13 +639,6 @@ class Model_Division extends Model_Base
 					$parent_division = array_pop($parent_division);
 				}
 				$this->parent_division_id = $parent_division->id;
-
-				$parent = $parent_division;
-				while ($parent->parent_division_id !== null)
-				{
-					$parent = Model_Division::find_by_pk($parent->parent_division_id);
-				}
-				$this->top_parent_division_id = $parent->id;
 			}
 			else
 			{
