@@ -123,7 +123,7 @@ class Controller_Division extends Controller_Base
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 
-		$division_id_arr = Model_Division::get_by_parent_division_id_and_date($division->id);
+		$division_id_arr = Model_Division::get_by_parent_division_and_date($division);
 
 		$events_arr = [];
 		if ($division_id_arr)

@@ -17,7 +17,7 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		if ($path)
 		{
 			$parent = Model_Division::get_by_path($path);
-			$ids = Model_Division::get_by_parent_division_id_and_date($parent->id);
+			$ids = Model_Division::get_by_parent_division_and_date($parent);
 			array_unshift($ids, $parent->id);
 		}
 		else
@@ -33,16 +33,12 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		}
 		*/
 
-		$parent_id = null;
+		$parent = null;
 		if ($path)
 		{
 			$parent = Model_Division::get_by_path($path);
-			$parent_id = $parent->id;
 		}
-		$divisions = Model_Division::get_by_admin_filter(
-			$parent_id,
-			$filter
-		);
+		$divisions = Model_Division::get_by_admin_filter($parent, $filter);
 
 		foreach ($divisions as $division)
 		{
