@@ -630,6 +630,7 @@ class Model_Division extends Model_Base
 		{
 			DB::start_transaction();
 
+			$parent_division = null;
 			if ($parent)
 			{
 				$parent_division = self::get_by_path($parent);
@@ -676,6 +677,8 @@ class Model_Division extends Model_Base
 			$this->is_empty_government_code = empty($input['government_code']);
 			$this->source          = $input['source'] ?: null;
 			$this->save();
+
+			$this->id_path = ($parent_division ? $parent_division->id_path : '') . $this->id . '/';
 
 			$this->fullname = $this->get_path(null, true);
 			$this->path = $this->get_path(null, true);
