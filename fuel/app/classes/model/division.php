@@ -33,7 +33,6 @@ class Model_Division extends Model_Base
 			->add_rule('max_length', 20);
 		$field = $validation->add('identifier', '識別名')
 			->add_rule('max_length', 50);
-		$field = $validation->add('parent_division_id', '親自治体');
 		$field = $validation->add('start_event_id',     '設置イベント');
 		$field = $validation->add('end_event_id',       '廃止イベント');
 		$field = $validation->add('government_code',    '全国地方公共団体コード')
@@ -134,6 +133,7 @@ class Model_Division extends Model_Base
 			if ( ! $division = self::get_one_by_name_and_parent($matches, $parent))
 			{
 				$division = self::forge([
+					'id_path' => '',
 					'name' => $matches['place'],
 					'name_kana' => '',
 					'suffix' => $matches['suffix'],
@@ -144,13 +144,16 @@ class Model_Division extends Model_Base
 					'path_kana' => '',
 					'show_suffix' => true,
 					'identifier' => (isset($matches['identifier']) ? $matches['identifier'] : null),
-					'parent_division_id' => $parent->id,
 					'is_unfinished' => true,
 					'is_empty_government_code' => true,
 					'is_empty_kana' => true,
 					'end_date' => '9999-12-31',
 					'source' => '',
 				]);
+
+				$division->save();
+
+				$division->id_path = self::make_id_path($path, $division->id);
 				$division->fullname = $division->get_path();
 				$division->path = $division->get_path();
 
@@ -167,6 +170,29 @@ class Model_Division extends Model_Base
 		}
 		return $divisions;
 	} // function set_path()
+
+	public static function make_id_path($path, $self_id)
+	{
+		$parents = [];
+		$cur_path = $path;
+		while ($path) {
+			$parent = dirname($path);
+			$parents[] = $parent;
+			if (strpos($parent, '/') === false) {
+				break;
+			}
+			$path = $parent;
+		}
+		$parents = array_reverse($parents);
+
+		$id_arr = [];
+		foreach ($parents as $parent_path) {
+			$d = self::get_by_path($parent_path);
+			$id_arr[] = $d->id;
+		}
+		$id_arr[] = $self_id;
+		return implode('/', $id_arr) . '/';
+	}
 
 	public static function get_by_path($path)
 	{
@@ -217,6 +243,11 @@ class Model_Division extends Model_Base
 
 	public static function get_one_by_name_and_parent($name, $parent)
 	{
+		if ($parent) {
+			$id_path = 'CONCAT("' . $parent->id_path . '", id, "/")';
+		} else {
+			$id_path = 'CONCAT(id, "/")';
+		}
 		$query = DB::select()
 			->from(self::$_table_name)
 			->and_where_open()
@@ -231,7 +262,7 @@ class Model_Division extends Model_Base
 			->or_where_close()
 			->and_where_close()
 			->where('deleted_at', '=', null);
-		$query->where('parent_division_id', '=', self::_get_id($parent));
+		$query->where('id_path', '=', DB::expr($id_path));
 		if (isset($name['identifier']))
 		{
 			$query->where('identifier', '=', $name['identifier']);
@@ -290,7 +321,7 @@ class Model_Division extends Model_Base
 		$ids_tree = [];
 		foreach ($child_divisions as $child)
 		{
-			$parent_ids = [$child->parent_division_id, $child->belongs_division_id];
+			$parent_ids = [$child->get_parent_id(), $child->belongs_division_id];
 			foreach ($parent_ids as $parent_id)
 			{
 				if ($parent_id)
@@ -499,16 +530,20 @@ class Model_Division extends Model_Base
 
 	public function get_path()
 	{
-		$division = $this;
-		$path = '';
-		do {
-			$name = $division->get_fullname();
-			$path = ($path ? $name.'/'.$path : $name);
-			$parent_id = $division->parent_division_id;
-			$division = Model_Division::find_by_pk($parent_id);
-		} while ($division);
-
-		return $path;
+		if ($this->path) {
+			return $this->path;
+		} else {
+			$id_arr = explode('/', $this->id_path);
+			$name_arr = [];
+			foreach ($id_arr as $id) {
+				$id = (int)$id;
+				if ($id) {
+					$division = self::find_by_pk($id);
+					$name_arr[] = $division->get_fullname();
+				}
+			}
+			return implode('/', $name_arr);
+		}
 	} // function get_path()
 
 	public function get_kana()
@@ -521,16 +556,24 @@ class Model_Division extends Model_Base
 		return $kana;
 	} // function get_kana()
 
+	public function get_parent_id()
+	{
+		$id_arr = explode('/', $this->id_path);
+
+		// trim last empty element
+		array_pop($id_arr);
+
+		array_pop($id_arr);
+		return (int)array_pop($id_arr);
+	}
+
 	public function get_parent_path()
 	{
-		if ($this->parent_division_id)
-		{
-			$path = $this->get_path();
-			return dirname($path);
-		}
-		else
-		{
+		$path = $this->get_path();
+		if (strpos($path, '/') === false) {
 			return null;
+		} else {
+			return dirname($path);
 		}
 	} // function get_parent_path()
 
@@ -576,28 +619,15 @@ class Model_Division extends Model_Base
 
 	public function create($input)
 	{
-		$parent = $input['parent'];
 		$belongs = $input['belongs'];
+		$parent = $input['parent'];
+		$parent_division = self::get_by_path($parent);
 
 		try
 		{
 			DB::start_transaction();
 
 			$parent_division = null;
-			if ($parent)
-			{
-				$parent_division = self::get_by_path($parent);
-				if ( ! $parent_division)
-				{
-					$parent_division = self::set_path($parent);
-					$parent_division = array_pop($parent_division);
-				}
-				$this->parent_division_id = $parent_division->id;
-			}
-			else
-			{
-				$this->parent_division_id = null;
-			}
 			if ($belongs)
 			{
 				$belongs_division = self::get_by_path($belongs);
@@ -631,7 +661,8 @@ class Model_Division extends Model_Base
 			$this->source          = $input['source'] ?: null;
 			$this->save();
 
-			$this->id_path = ($parent_division ? $parent_division->id_path : '') . $this->id . '/';
+			$path = $parent . '/' . $this->get_fullname();
+			$this->id_path = self::make_id_path($path, $this->id);
 
 			$this->fullname = $this->get_path();
 			$this->path = $this->get_path();
