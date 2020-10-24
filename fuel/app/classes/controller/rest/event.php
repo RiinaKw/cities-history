@@ -29,7 +29,7 @@ class Controller_Rest_Event extends Controller_Rest
 			$response[] = [
 				'id'        => $division->event_detail_id,
 				'name'      => $division->name,
-				'path'      => $division->get_path(null, true),
+				'path'      => $division->get_path(),
 				'result'    => $division->result,
 				'birth'     => ($division->start_event_id == $event->id),
 				'death'     => ($division->end_event_id == $event->id),

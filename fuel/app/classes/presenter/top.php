@@ -6,7 +6,7 @@ class Presenter_Top extends Presenter_Layout
 	{
 		foreach ($this->divisions as &$division)
 		{
-			$division->path = $division->get_path(null, true);
+			$division->path = $division->get_path();
 			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 		}
 

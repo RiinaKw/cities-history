@@ -6,7 +6,7 @@ class Presenter_List_Index extends Presenter_Layout
 	{
 		foreach ($arr as $item)
 		{
-			$item->path = $item->get_path(null, true);
+			$item->path = $item->get_path();
 			$item->url_detail = Helper_Uri::create(
 				'division.detail',
 				['path' => $item->path]

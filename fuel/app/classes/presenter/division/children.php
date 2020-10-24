@@ -32,7 +32,7 @@ class Presenter_Division_Children extends Presenter_Layout
 		{
 			$this->belongs_division->url_detail = Helper_Uri::create(
 				'division.detail',
-				['path' => $this->belongs_division->get_path(null, true)]
+				['path' => $this->belongs_division->get_path()]
 			);
 		}
 

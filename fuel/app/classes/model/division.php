@@ -151,8 +151,8 @@ class Model_Division extends Model_Base
 					'end_date' => '9999-12-31',
 					'source' => '',
 				]);
-				$division->fullname = $division->get_path(null, true);
-				$division->path = $division->get_path(null, true);
+				$division->fullname = $division->get_path();
+				$division->path = $division->get_path();
 
 				$division->save();
 
@@ -253,45 +253,12 @@ class Model_Division extends Model_Base
 		$query = DB::select()
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null)
-		//	->where('parent_division_id', '=', null)
 			->where('id_path', '=', DB::expr('CONCAT(id, "/")'))
 			->order_by('display_order', 'asc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_top_level()
-/*
-	public static function get_by_suffix_and_date($parent_id, $suffix, $date = null)
-	{
-		$query = DB::select('d.*')
-			->from([self::$_table_name, 'd'])
-			->join(['events', 's'], 'LEFT OUTER')
-			->on('d.start_event_id', '=', 's.id')
-			->join(['events', 'e'], 'LEFT OUTER')
-			->on('d.end_event_id', '=', 'e.id')
-			->where('d.deleted_at', '=', null)
-			->where('d.suffix', '=', $suffix)
-			->where('d.parent_division_id', '=', $parent_id);
-		if ($date)
-		{
-			$query->and_where_open()
-				->where('s.date', '<=', $date)
-				->or_where('s.date', '=', null)
-				->and_where_close()
-				->and_where_open()
-				->where('e.date', '>=', $date)
-				->or_where('e.date', '=', null)
-				->and_where_close();
-		}
-		$query
-			->order_by('d.is_empty_government_code', 'asc')
-			->order_by('d.government_code', 'asc')
-			->order_by('d.is_empty_kana', 'asc')
-			->order_by('d.name_kana', 'asc')
-			->order_by('d.end_date', 'desc');
 
-		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_by_suffix_and_date()
-*/
 	public function get_tree($date)
 	{
 		$divisions = Model_Division::get_by_parent_division_and_date($this, $date);
@@ -530,26 +497,12 @@ class Model_Division extends Model_Base
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // functiob get_by_admin_filter()
 
-	public function get_parent()
-	{
-		return self::find_by_pk($this->parent_division_id);
-	} // function get_parent()
-
-	//public function get_path($current, $force_fullpath = false)
-	public function get_path($current)
+	public function get_path()
 	{
 		$division = $this;
 		$path = '';
 		do {
-			$name = $division->name;
-			if ($division->show_suffix)
-			{
-				$name .= $division->suffix;
-			}
-			if ($division->identifier)
-			{
-				$name .= '('.$division->identifier.')';
-			}
+			$name = $division->get_fullname();
 			$path = ($path ? $name.'/'.$path : $name);
 			$parent_id = $division->parent_division_id;
 			$division = Model_Division::find_by_pk($parent_id);
@@ -572,7 +525,7 @@ class Model_Division extends Model_Base
 	{
 		if ($this->parent_division_id)
 		{
-			$path = $this->get_path(null, true);
+			$path = $this->get_path();
 			return dirname($path);
 		}
 		else
@@ -586,7 +539,7 @@ class Model_Division extends Model_Base
 		if ($this->belongs_division_id)
 		{
 			$division = self::find_by_pk($this->belongs_division_id);
-			return $division->get_path(null, true);
+			return $division->get_path();
 		}
 		else
 		{
@@ -680,8 +633,8 @@ class Model_Division extends Model_Base
 
 			$this->id_path = ($parent_division ? $parent_division->id_path : '') . $this->id . '/';
 
-			$this->fullname = $this->get_path(null, true);
-			$this->path = $this->get_path(null, true);
+			$this->fullname = $this->get_path();
+			$this->path = $this->get_path();
 			$this->fullname_kana = $this->name_kana.$this->suffix_kana;
 			$this->path_kana     = $this->name_kana.$this->suffix_kana;
 

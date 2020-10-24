@@ -18,7 +18,7 @@ class Controller_Rest_Division extends Controller_Rest
 		$pathes = [];
 		foreach ($divisions as $division)
 		{
-			$path = $division->get_path(null, true);
+			$path = $division->get_path();
 			if (strpos($path, $query) !== false)
 			{
 				$pathes[] = $path;

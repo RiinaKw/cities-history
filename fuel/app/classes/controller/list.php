@@ -41,7 +41,7 @@ class Controller_List extends Controller_Base
 		if ($path)
 		{
 			$top_division = Model_Division::get_by_path($path);
-			if ( ! $top_division || $top_division->get_path(null, true) != $path)
+			if ( ! $top_division || $top_division->get_path() != $path)
 			{
 				throw new HttpNotFoundException('自治体が見つかりません。');
 			}
@@ -86,7 +86,7 @@ class Controller_List extends Controller_Base
 
 		foreach ($result as &$division)
 		{
-			$division->path = $division->get_path(null, true);
+			$division->path = $division->get_path();
 			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 		}
 

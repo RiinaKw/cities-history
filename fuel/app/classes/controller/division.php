@@ -13,7 +13,7 @@ class Controller_Division extends Controller_Base
 	{
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
-		if ( ! $division || $division->get_path(null, true) != $path || $division->deleted_at != null)
+		if ( ! $division || $division->get_path() != $path || $division->deleted_at != null)
 		{
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
@@ -67,7 +67,7 @@ class Controller_Division extends Controller_Base
 			{
 				foreach ($divisions as $d)
 				{
-					$d_path = $d->get_path(null, true);
+					$d_path = $d->get_path();
 					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
 					if ($d->geoshape)
 					{
@@ -118,7 +118,7 @@ class Controller_Division extends Controller_Base
 		$start = Input::get('start');
 		$end = Input::get('end');
 		$division = Model_Division::get_by_path($path);
-		if ( ! $division || $division->get_path(null, true) != $path)
+		if ( ! $division || $division->get_path() != $path)
 		{
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
@@ -160,7 +160,7 @@ class Controller_Division extends Controller_Base
 				{
 					foreach ($divisions as &$d)
 					{
-						$d_path = $d->get_path(null, true);
+						$d_path = $d->get_path();
 						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
 						if ($d->geoshape)
 						{
@@ -227,7 +227,7 @@ class Controller_Division extends Controller_Base
 			'target_id' => $division->id,
 		]);
 
-		$path_new = $division->get_path(null, true);
+		$path_new = $division->get_path();
 
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
 		return;
@@ -250,7 +250,7 @@ class Controller_Division extends Controller_Base
 			'target_id' => $division->id,
 		]);
 
-		$path_new = $division->get_path(null, true);
+		$path_new = $division->get_path();
 
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
 		return;

@@ -90,7 +90,7 @@
 									<a class="{{if $d.is_unfinished}}unfinished{{/if}}"
 										href="{{$d->url_detail|escape}}"
 										data-toggle="tooltip"
-										title="{{$d->get_path(null, true)|escape}}">
+										title="{{$d->get_path()|escape}}">
 {{if $division.id == $d.id}}
 										<b>{{$d->get_fullname()|escape}}</b>
 {{else}}

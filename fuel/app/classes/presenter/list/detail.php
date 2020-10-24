@@ -6,7 +6,7 @@ class Presenter_List_Detail extends Presenter_Layout
 	{
 		if (is_object($obj))
 		{
-			$obj->path = $obj->get_path(null, true);
+			$obj->path = $obj->get_path();
 			$obj->url_detail = Helper_Uri::create(
 				'division.detail',
 				['path' => $obj->path]
