@@ -99,4 +99,9 @@ class Model_Event_Detail extends Model_Base
         }
         return $content;
 	}
+
+	public static function unify_geoshape($url)
+	{
+		return preg_replace('/^https?:\/\/geoshape\.ex\.nii\.ac\.jp\/city\/geojson\/(.+)$/', '$1', $url);
+	}
 } // class Model_Event_Detail

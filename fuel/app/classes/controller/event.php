@@ -37,7 +37,7 @@ class Controller_Event extends Controller_Base
 				'birth'    => Input::post('birth.'.$key),
 				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
-				'geoshape' => Input::post('geoshape.'.$key),
+				'geoshape' => Model_Event_Detail::unify_geoshape(Input::post('geoshape.'.$key)),
 				'refer'    => Input::post('refer.'.$key),
 			];
 		}
@@ -74,7 +74,7 @@ class Controller_Event extends Controller_Base
 					'event_id' => $event->id,
 					'division_id' => $division->id,
 					'result' => $item['result'],
-					'geoshape' => $item['geoshape'],
+					'geoshape' => Model_Event_Detail::unify_geoshape($item['geoshape']),
 					'is_refer' => $item['refer'] ? true : false,
 				]);
 				$detail->save();
@@ -136,9 +136,10 @@ class Controller_Event extends Controller_Base
 				'birth'    => Input::post('birth.'.$key),
 				'death'    => Input::post('death.'.$key),
 				'delete'   => Input::post('delete.'.$key),
-				'geoshape' => Input::post('geoshape.'.$key),
+				'geoshape' => Model_Event_Detail::unify_geoshape(Input::post('geoshape.'.$key)),
 				'refer'    => Input::post('refer.'.$key),
 			];
+			$geoshape = Model_Event_Detail::unify_geoshape(Input::post('geoshape.'.$key));
 		}
 
 		try
@@ -174,7 +175,7 @@ class Controller_Event extends Controller_Base
 							'event_id' => $event->id,
 							'division_id' => $division->id,
 							'result' => $item['result'],
-							'geoshape' => $item['geoshape'],
+							'geoshape' => Model_Event_Detail::unify_geoshape($item['geoshape']),
 							'is_refer' => $item['refer'] ? true : false,
 						]);
 						$detail->save();
