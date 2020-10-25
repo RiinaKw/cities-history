@@ -290,6 +290,7 @@ class Model_Division extends Model_Base
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null);
 		$query->where(DB::expr('"' . $this->id_path . '"'), 'LIKE', DB::expr('CONCAT(id_path, "%")'));
+		$query->order_by(DB::expr('LENGTH(path)', 'ASC'));
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function get_parents_and_self()
