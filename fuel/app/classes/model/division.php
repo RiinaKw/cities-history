@@ -48,12 +48,12 @@ class Model_Division extends Model_Base
 	protected static function _get_id($obj)
 	{
 		return $obj ? $obj->id : null;
-	}
+	} // function _get_id()
 
 	public function get_source()
 	{
 		return Helper_Html::wiki($this->source);
-	}
+	} // function get_source()
 
 	public static function get_all()
 	{
@@ -192,13 +192,14 @@ class Model_Division extends Model_Base
 		}
 		$id_arr[] = $self_id;
 		return implode('/', $id_arr) . '/';
-	}
+	} // function make_id_path()
 
 	public static function get_by_path($path)
 	{
 		$arr = explode('/', $path);
 		$division = null;
 		$parent = null;
+
 		foreach ($arr as $name)
 		{
 			preg_match(static::RE_SUFFIX, $name, $matches);
@@ -277,6 +278,16 @@ class Model_Division extends Model_Base
 			return null;
 		}
 	} // function get_one_by_name_and_parent()
+
+	public function get_parents_and_self()
+	{
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null);
+		$query->where(DB::expr('"' . $this->id_path . '"'), 'LIKE', DB::expr('CONCAT(id_path, "%")'));
+
+		return $query->as_object('Model_Division')->execute()->as_array();
+	} // function get_parents_and_self()
 
 	public static function get_top_level()
 	{

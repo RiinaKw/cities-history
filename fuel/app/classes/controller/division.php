@@ -18,7 +18,7 @@ class Controller_Division extends Controller_Base
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 
-		$events = Model_Event_Detail::get_by_division_id($division->id);
+		$events = Model_Event_Detail::get_by_division($division);
 		// 終了インベントを先頭に
 		foreach ($events as $key => $event)
 		{
@@ -123,12 +123,11 @@ class Controller_Division extends Controller_Base
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 
-		$division_id_arr = Model_Division::get_by_parent_division_and_date($division);
-
+		$divisions = Model_Division::get_by_parent_division_and_date($division);
 		$events_arr = [];
-		if ($division_id_arr)
+		if ($divisions)
 		{
-			$events = Model_Event_Detail::get_by_division_id($division_id_arr, $start, $end);
+			$events = Model_Event_Detail::get_by_division($divisions, $start, $end);
 			foreach ($events as &$event)
 			{
 				if (isset($events_arr[$event->event_id]))

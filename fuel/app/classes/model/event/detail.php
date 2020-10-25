@@ -23,7 +23,7 @@ class Model_Event_Detail extends Model_Base
 		return $validation;
 	} // function validation()
 
-	public static function get_by_division_id($division_id, $start_date = null, $end_date = null)
+	public static function get_by_division($divisions, $start_date = null, $end_date = null)
 	{
 		$query = DB::select('d.*', 'e.title', 'e.date', 'e.comment', 'e.source')
 			->from([self::$_table_name, 'd'])
@@ -32,13 +32,17 @@ class Model_Event_Detail extends Model_Base
 			->where('d.is_refer', '=', false)
 			->where('e.deleted_at', '=', null)
 			->where('d.deleted_at', '=', null);
-		if (is_array($division_id))
+		if (is_array($divisions))
 		{
-			$query->where('d.division_id', 'in', $division_id);
+			$ids = [];
+			foreach ($divisions as $division) {
+				$ids[] = $division->id;
+			}
+			$query->where('d.division_id', 'in', $ids);
 		}
 		else
 		{
-			$query->where('d.division_id', '=', $division_id);
+			$query->where('d.division_id', '=', $divisions->id);
 		}
 		if ($start_date)
 		{
@@ -51,7 +55,7 @@ class Model_Event_Detail extends Model_Base
 		$query->order_by('e.date', 'desc');
 
 		return $query->as_object('Model_Event_Detail')->execute()->as_array();
-	} // function get_by_division_id()
+	} // function get_by_division()
 
 	public function get_source()
 	{
