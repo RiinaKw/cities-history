@@ -67,6 +67,7 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 			'admin/admin_divisions.tpl'
 		);
 		$content->path = $path;
+		$content->parent = $parent;
 		$content->divisions = $divisions;
 
 		return $content;
