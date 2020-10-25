@@ -13,8 +13,8 @@ class Helper_Breadcrumb
 		foreach ($divisions as $parent)
 		{
 			$fullname = $parent->get_fullname();
-			$cur_path .= ($cur_path ? '/' : '') . $parent->get_fullname();
-			$cur_kana .= ($cur_kana ? '/' : '') . $parent->get_kana();
+			$cur_path .= ($cur_path ? '/' : '') . $fullname;
+			$cur_kana .= ($cur_kana ? '/' : '') . $parent->get_fullname_kana();
 			$breadcrumbs[$fullname] = Helper_Uri::create($item_uri, ['path' => $cur_path]);
 		}
 

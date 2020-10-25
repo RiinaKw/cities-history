@@ -98,15 +98,20 @@ class Model_Division extends Model_Base
 		$q_arr = preg_split('/(\s+)|(　+)/', $q);
 		$query = DB::select()
 			->from(self::$_table_name)
-			->where('deleted_at', '=', null)
-			->order_by('name_kana', 'ASC');
+			->where('deleted_at', '=', null);
 		foreach ($q_arr as $word)
 		{
 			$query->and_where_open()
-				->where('fullname', 'LIKE', '%'.$word.'%')
-				->or_where('fullname_kana', 'LIKE', '%'.$word.'%')
+				->where('path', 'LIKE', '%'.$word.'%')
+				->or_where('path_kana', 'LIKE', '%'.$word.'%')
 				->and_where_close();
 		}
+		$query
+			->order_by('is_empty_government_code', 'asc')
+			->order_by('government_code', 'asc')
+			->order_by('is_empty_kana', 'asc')
+			->order_by('name_kana', 'asc')
+			->order_by('end_date', 'desc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
 	} // function search()
@@ -154,7 +159,7 @@ class Model_Division extends Model_Base
 				$division->save();
 
 				$division->id_path = self::make_id_path($path, $division->id);
-				$division->fullname = $division->get_path();
+				$division->fullname = $division->get_fullname();
 				$division->path = $division->get_path();
 
 				$division->save();
@@ -557,7 +562,35 @@ class Model_Division extends Model_Base
 		}
 	} // function get_path()
 
-	public function get_kana()
+	public function make_path()
+	{
+		$id_arr = explode('/', $this->id_path);
+		$name_arr = [];
+		foreach ($id_arr as $id) {
+			$id = (int)$id;
+			if ($id) {
+				$division = self::find_by_pk($id);
+				$name_arr[] = $division->get_fullname();
+			}
+		}
+		return implode('/', $name_arr);
+	} // function make_path()
+
+	public function make_path_kana()
+	{
+		$id_arr = explode('/', $this->id_path);
+		$kana_arr = [];
+		foreach ($id_arr as $id) {
+			$id = (int)$id;
+			if ($id) {
+				$division = self::find_by_pk($id);
+				$kana_arr[] = $division->get_fullname_kana();
+			}
+		}
+		return implode('/', $kana_arr);
+	} // function make_path_kana()
+
+	public function get_fullname_kana()
 	{
 		$kana = $this->name_kana;
 		if ($this->show_suffix)
@@ -565,7 +598,7 @@ class Model_Division extends Model_Base
 			$kana .= '・'.$this->suffix_kana;
 		}
 		return $kana;
-	} // function get_kana()
+	} // function get_fullname_kana()
 
 	public function get_parent_id()
 	{
@@ -675,10 +708,10 @@ class Model_Division extends Model_Base
 			$path = $parent . '/' . $this->get_fullname();
 			$this->id_path = self::make_id_path($path, $this->id);
 
-			$this->fullname = $this->get_path();
-			$this->path = $this->get_path();
-			$this->fullname_kana = $this->name_kana.$this->suffix_kana;
-			$this->path_kana     = $this->name_kana.$this->suffix_kana;
+			$this->fullname      = $this->get_fullname();
+			$this->fullname_kana = $this->get_fullname_kana();
+			$this->path          = $this->make_path();
+			$this->path_kana     = $this->make_path_kana();
 
 			$query = DB::select()
 				->from(self::$_table_name)
