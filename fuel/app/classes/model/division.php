@@ -731,15 +731,15 @@ class Model_Division extends Model_Base
 				$this->suffix_kana     = $input['suffix_kana'];
 			}
 			if (isset($input['show_suffix'])) {
-				$this->suffix_kana     = !! $input['show_suffix'];
+				$this->show_suffix     = !! $input['show_suffix'];
 			}
 			if (isset($input['government_code'])) {
-				$this->suffix_kana     = $input['government_code'];
+				$this->government_code     = $input['government_code'];
 				$this->is_empty_government_code = empty($input['government_code']);
 			}
 			$this->identifier      = $input['identifier'] ?? null;
 			$this->government_code = $input['government_code'] ?? null;
-			$this->display_order   = $input['display_order'] ?? null;
+			$this->display_order   = $input['display_order'] && ! empty($input['display_order']) ? $input['display_order'] :  null;
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->path            = '';
