@@ -722,6 +722,7 @@ class Model_Division extends Model_Base
 			}
 			if (isset($input['name_kana'])) {
 				$this->name_kana       = $input['name_kana'];
+				$this->is_empty_kana   = empty($input['name_kana']);
 			}
 			if (isset($input['suffix'])) {
 				$this->suffix          = $input['suffix'];
@@ -730,7 +731,11 @@ class Model_Division extends Model_Base
 				$this->suffix_kana     = $input['suffix_kana'];
 			}
 			if (isset($input['show_suffix'])) {
-				$this->suffix_kana     = $input['show_suffix'] ? true : false;
+				$this->suffix_kana     = !! $input['show_suffix'];
+			}
+			if (isset($input['government_code'])) {
+				$this->suffix_kana     = $input['government_code'];
+				$this->is_empty_government_code = empty($input['government_code']);
 			}
 			$this->identifier      = $input['identifier'] ?? null;
 			$this->government_code = $input['government_code'] ?? null;
@@ -740,8 +745,6 @@ class Model_Division extends Model_Base
 			$this->path            = '';
 			$this->path_kana       = '';
 			$this->is_unfinished   = isset($input['is_unfinished']) && ! $input['is_unfinished'] ? false : true;
-			$this->is_empty_kana   = empty($input['name_kana']);
-			$this->is_empty_government_code = empty($input['government_code']);
 			$this->source          = $input['source'] ?? null;
 			$this->save();
 
