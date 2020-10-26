@@ -182,6 +182,9 @@ class Model_Division extends Model_Base
 		$cur_path = $path;
 		while ($path) {
 			$parent = dirname($path);
+			if ($parent === '\\' || $parent === '/' || $parent === '.') {
+				break;
+			}
 			$parents[] = $parent;
 			if (strpos($parent, '/') === false) {
 				break;
