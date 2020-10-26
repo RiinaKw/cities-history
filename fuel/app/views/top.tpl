@@ -11,6 +11,10 @@
 						<i class="fa fa-plus"></i>
 						自治体追加
 					</button>
+					<button class="btn btn-success mb-1" data-toggle="modal" data-target="#add-divisions-csv">
+						<i class="fa fa-table"></i>
+						一括追加
+					</button>
 				</nav>
 {{/if}}
 			</header>
@@ -30,6 +34,7 @@
 {{if $user}}
 
 {{$components.add_division}}
+{{$components.add_divisions_csv}}
 
 {{/if}}
 

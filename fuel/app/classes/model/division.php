@@ -176,6 +176,30 @@ class Model_Division extends Model_Base
 		return $divisions;
 	} // function set_path()
 
+	public static function set_path_as_array($arr)
+	{
+		foreach ($arr as $item) {
+			if (trim($item['path']) === '') {
+				continue;
+			}
+			$divisions = self::set_path($item['path']);
+
+			$division = array_pop($divisions);
+			$division->name_kana = $item['name_kana'] ?: null;
+			$division->suffix_kana = $item['suffix_kana'] ?: null;
+			$division->government_code = $item['code'] ?: null;
+
+			$division->save();
+
+			$division->fullname      = $division->get_fullname();
+			$division->fullname_kana = $division->get_fullname_kana();
+			$division->path          = $division->make_path();
+			$division->path_kana     = $division->make_path_kana();
+
+			$division->save();
+		}
+	} // function set_path_as_array()
+
 	public static function make_id_path($path, $self_id)
 	{
 		$parents = [];
@@ -196,7 +220,9 @@ class Model_Division extends Model_Base
 		$id_arr = [];
 		foreach ($parents as $parent_path) {
 			$d = self::get_by_path($parent_path);
-			$id_arr[] = $d->id;
+			if ($d) {
+				$id_arr[] = $d->id;
+			}
 		}
 		$id_arr[] = $self_id;
 		return implode('/', $id_arr) . '/';
@@ -667,8 +693,8 @@ class Model_Division extends Model_Base
 
 	public function create($input)
 	{
-		$belongs = $input['belongs'];
-		$parent = $input['parent'];
+		$belongs = $input['belongs'] ?? null;
+		$parent = $input['parent'] ?? null;
 		$parent_division = self::get_by_path($parent);
 
 		try
@@ -691,22 +717,32 @@ class Model_Division extends Model_Base
 				$this->belongs_division_id = null;
 			}
 
-			$this->name            = $input['name'];
-			$this->name_kana       = $input['name_kana'];
-			$this->suffix          = $input['suffix'];
-			$this->suffix_kana     = $input['suffix_kana'];
-			$this->show_suffix     = isset($input['show_suffix']) && $input['show_suffix'] ? true : false;
-			$this->identifier      = $input['identifier'] ?: null;
-			$this->government_code = $input['government_code'] ?: null;
-			$this->display_order   = $input['display_order'] ?: null;
+			if (isset($input['name'])) {
+				$this->name            = $input['name'];
+			}
+			if (isset($input['name_kana'])) {
+				$this->name_kana       = $input['name_kana'];
+			}
+			if (isset($input['suffix'])) {
+				$this->suffix          = $input['suffix'];
+			}
+			if (isset($input['suffix_kana'])) {
+				$this->suffix_kana     = $input['suffix_kana'];
+			}
+			if (isset($input['show_suffix'])) {
+				$this->suffix_kana     = $input['show_suffix'] ? true : false;
+			}
+			$this->identifier      = $input['identifier'] ?? null;
+			$this->government_code = $input['government_code'] ?? null;
+			$this->display_order   = $input['display_order'] ?? null;
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->path            = '';
 			$this->path_kana       = '';
-			$this->is_unfinished   = isset($input['is_unfinished']) && $input['is_unfinished'] ? true : false;
+			$this->is_unfinished   = isset($input['is_unfinished']) && ! $input['is_unfinished'] ? false : true;
 			$this->is_empty_kana   = empty($input['name_kana']);
 			$this->is_empty_government_code = empty($input['government_code']);
-			$this->source          = $input['source'] ?: null;
+			$this->source          = $input['source'] ?? null;
 			$this->save();
 
 			$path = $parent . '/' . $this->get_fullname();
@@ -720,7 +756,7 @@ class Model_Division extends Model_Base
 			$query = DB::select()
 				->from(self::$_table_name)
 				->where('deleted_at', '=', null)
-				->where('fullname', '=', $this->fullname)
+				->where('path', '=', $this->path)
 				->where('id', '!=', $this->id)
 				;
 			if ($query->execute()->as_array())

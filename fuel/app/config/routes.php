@@ -19,6 +19,7 @@ return array(
 	'event/(.+?)'        => 'rest/event/detail/$1',
 
 	'division/add'            => 'division/add',
+	'division/add_csv'        => 'division/add_csv',
 	'division/edit/:path'     => 'division/edit',
 	'division/delete/:path'   => 'division/delete',
 	'division/children/:path' => 'division/children',

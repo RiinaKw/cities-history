@@ -232,6 +232,60 @@ class Controller_Division extends Controller_Base
 		return;
 	} // function action_add()
 
+	public function action_add_csv()
+	{
+		if ( ! $this->_user)
+		{
+			throw new HttpNoAccessException('permission denied');
+		}
+		if ( ! Input::post())
+		{
+			throw new HttpBadRequestException('post required');
+		}
+
+		try {
+			DB::start_transaction();
+
+			$separator = Input::post('type') === 'tsv' ? "\t" : ',';
+			$body = explode("\n", Input::post('body'));
+
+			$heads = explode($separator, array_shift($body));
+			foreach ($heads as &$item) {
+				$item = trim($item);
+				if ($item === 'code') {
+					$item = 'government_code';
+				}
+			}
+
+			foreach ($body as $line) {
+				if (! $line) {
+					continue;
+				}
+				$items = explode($separator, $line);
+				$arr = [];
+				for ($i = 0; $i < count($heads); ++$i) {
+					$arr[ $heads[$i] ] = trim($items[$i]);
+				}
+				$arr['parent'] = dirname($arr['path']);
+
+				$divisions = Model_Division::set_path($arr['path']);
+				$division = array_pop($divisions);
+				$division->create($arr);
+			}
+
+			DB::commit_transaction();
+
+			Helper_Uri::redirect('division.detail', ['path' => $division->get_path()]);
+		}
+		catch (Exception $e)
+		{
+			// internal error
+			DB::rollback_transaction();
+			Debug::dump($e);
+			throw new HttpServerErrorException($e->getMessage());
+		} // try
+	}
+
 	public function action_edit()
 	{
 		if ( ! $this->_user)

@@ -12,6 +12,7 @@ class Presenter_Top extends Presenter_Layout
 
 		$components = [
 			'add_division' => View_Smarty::forge('components/add_division.tpl'),
+			'add_divisions_csv' => View_Smarty::forge('components/add_divisions_csv.tpl'),
 		];
 		$this->components = $components;
 
@@ -21,5 +22,6 @@ class Presenter_Top extends Presenter_Layout
 		$this->show_share = true;
 
 		$this->url_add = Helper_Uri::create('division.add');
+		$this->url_add_csv = Helper_Uri::create('division.add_csv');
 	} // function view()
 } // class Presenter_Top

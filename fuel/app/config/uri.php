@@ -40,6 +40,7 @@ return array(
 		'detail'   => 'division/:path',
 		'children' => 'division/children/:path?label=:label&start=:start&end=:end',
 		'add'      => 'division/add',
+		'add_csv'  => 'division/add_csv',
 		'edit'     => 'division/edit/:path',
 		'delete'   => 'division/delete/:path',
 	),
