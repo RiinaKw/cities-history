@@ -739,7 +739,10 @@ class Model_Division extends Model_Base
 			}
 			$this->identifier      = $input['identifier'] ?? null;
 			$this->government_code = $input['government_code'] ?? null;
-			$this->display_order   = $input['display_order'] && ! empty($input['display_order']) ? $input['display_order'] :  null;
+			if (isset($input['display_order']))
+			{
+				$this->display_order = empty($input ['display_order']) ? null : $input['display_order'];
+			}
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->path            = '';
