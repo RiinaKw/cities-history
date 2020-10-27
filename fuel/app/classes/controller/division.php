@@ -291,10 +291,12 @@ class Controller_Division extends Controller_Base
 		{
 			throw new HttpNoAccessException('permission denied');
 		}
+		$input = Input::post();
+		$input['is_unfinished'] = isset($input['is_unfinished']) ? $input['is_unfinished'] : false;
 
 		$path = $this->param('path');
 		$division = Model_Division::get_by_path($path);
-		$division->create(Input::post());
+		$division->create($input);
 
 		Model_Activity::insert_log([
 			'user_id' => Session::get('user_id'),

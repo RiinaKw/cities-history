@@ -734,21 +734,29 @@ class Model_Division extends Model_Base
 				$this->show_suffix     = !! $input['show_suffix'];
 			}
 			if (isset($input['government_code'])) {
-				$this->government_code     = $input['government_code'];
+				$this->government_code = $input['government_code'] ?: null;
 				$this->is_empty_government_code = empty($input['government_code']);
 			}
-			$this->identifier      = $input['identifier'] ?? null;
-			$this->government_code = $input['government_code'] ?? null;
 			if (isset($input['display_order']))
 			{
-				$this->display_order = empty($input ['display_order']) ? null : $input['display_order'];
+				$this->display_order   = $input['display_order'] ?: null;
+			}
+			if (isset($input['is_unfinished']))
+			{
+				$this->is_unfinished   = !! $input['is_unfinished'];
+			}
+			if (isset($input['identifier']))
+			{
+				$this->identifier      = $input['identifier'] ?: null;
+			}
+			if (isset($input['source']))
+			{
+				$this->source      = $input['source'] ?: null;
 			}
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
 			$this->path            = '';
 			$this->path_kana       = '';
-			$this->is_unfinished   = isset($input['is_unfinished']) && ! $input['is_unfinished'] ? false : true;
-			$this->source          = $input['source'] ?? null;
 			$this->save();
 
 			$path = $parent . '/' . $this->get_fullname();
