@@ -44,4 +44,6 @@ return array(
 	'admin/db/download' => 'admin/db/download',
 
 	'page/:slug' => 'page/detail',
+
+	'rest/code/(.+?)' => 'rest/code/detail/$1',
 );
