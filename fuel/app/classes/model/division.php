@@ -721,14 +721,14 @@ class Model_Division extends Model_Base
 				$this->name            = $input['name'];
 			}
 			if (isset($input['name_kana'])) {
-				$this->name_kana       = $input['name_kana'];
+				$this->name_kana       = Helper_String::to_hiragana($input['name_kana']);
 				$this->is_empty_kana   = empty($input['name_kana']);
 			}
 			if (isset($input['suffix'])) {
 				$this->suffix          = $input['suffix'];
 			}
 			if (isset($input['suffix_kana'])) {
-				$this->suffix_kana     = $input['suffix_kana'];
+				$this->suffix_kana     = Helper_String::to_hiragana($input['suffix_kana']);
 			}
 			if (isset($input['show_suffix'])) {
 				$this->show_suffix     = !! $input['show_suffix'];
@@ -751,7 +751,7 @@ class Model_Division extends Model_Base
 			}
 			if (isset($input['source']))
 			{
-				$this->source      = $input['source'] ?: null;
+				$this->source          = $input['source'] ?: null;
 			}
 			$this->fullname        = '';
 			$this->fullname_kana   = '';
