@@ -734,7 +734,7 @@ class Model_Division extends Model_Base
 				$this->show_suffix     = !! $input['show_suffix'];
 			}
 			if (isset($input['government_code'])) {
-				$this->government_code = $input['government_code'] ?: null;
+				$this->government_code = Helper_Governmentcode::normalize($input['government_code']) ?: null;
 				$this->is_empty_government_code = empty($input['government_code']);
 			}
 			if (isset($input['display_order']))
