@@ -28,6 +28,9 @@ class Presenter_Division_Children extends Presenter_Layout
 		$path_kana = $breadcrumbs_arr['path_kana'];
 		$this->path_kana = $path_kana;
 
+		$this->search_path = $this->division->make_search_path();
+		$this->search_path_kana = $this->division->make_search_path_kana();
+
 		if ($this->belongs_division)
 		{
 			$this->belongs_division->url_detail = Helper_Uri::create(
@@ -46,7 +49,7 @@ class Presenter_Division_Children extends Presenter_Layout
 		}
 
 		$this->title = $this->path . 'の所属自治体タイムライン';
-		$this->description = $this->path . 'の所属自治体タイムライン';
+		$this->description = $this->path . 'の所属自治体タイムライン ' . $this->search_path . ' ' . $this->search_path_kana;
 		$this->og_type = 'article';
 		$this->breadcrumbs = $breadcrumbs;
 		$this->show_share = true;

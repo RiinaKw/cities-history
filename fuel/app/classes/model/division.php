@@ -102,8 +102,8 @@ class Model_Division extends Model_Base
 		foreach ($q_arr as $word)
 		{
 			$query->and_where_open()
-				->where('path', 'LIKE', '%'.$word.'%')
-				->or_where('path_kana', 'LIKE', '%'.$word.'%')
+				->where('search_path', 'LIKE', '%'.$word.'%')
+				->or_where('search_path_kana', 'LIKE', '%'.$word.'%')
 				->and_where_close();
 		}
 		$query
@@ -144,9 +144,7 @@ class Model_Division extends Model_Base
 					'suffix' => $matches['suffix'],
 					'suffix_kana' => '',
 					'fullname' => '',
-					'fullname_kana' => '',
 					'path' => '',
-					'path_kana' => '',
 					'show_suffix' => true,
 					'identifier' => (isset($matches['identifier']) ? $matches['identifier'] : null),
 					'is_unfinished' => true,
@@ -189,12 +187,8 @@ class Model_Division extends Model_Base
 			$division->suffix_kana = $item['suffix_kana'] ?: null;
 			$division->government_code = $item['code'] ?: null;
 
-			$division->save();
-
 			$division->fullname      = $division->get_fullname();
-			$division->fullname_kana = $division->get_fullname_kana();
 			$division->path          = $division->make_path();
-			$division->path_kana     = $division->make_path_kana();
 
 			$division->save();
 		}
@@ -630,6 +624,54 @@ class Model_Division extends Model_Base
 		return $kana;
 	} // function get_fullname_kana()
 
+	public function get_search_fullname()
+	{
+		$name = $this->name;
+		if ($this->show_suffix)
+		{
+			$name .= $this->suffix;
+		}
+		return $name;
+	} // function get_search_fullname()
+
+	public function get_search_fullname_kana()
+	{
+		$kana = $this->name_kana;
+		if ($this->show_suffix)
+		{
+			$kana .= $this->suffix_kana;
+		}
+		return $kana;
+	} // function get_search_fullname_kana()
+
+	public function make_search_path()
+	{
+		$id_arr = explode('/', $this->id_path);
+		$name_arr = [];
+		foreach ($id_arr as $id) {
+			$id = (int)$id;
+			if ($id) {
+				$division = self::find_by_pk($id);
+				$name_arr[] = $division->get_search_fullname();
+			}
+		}
+		return implode('', $name_arr);
+	} // function make_path()
+
+	public function make_search_path_kana()
+	{
+		$id_arr = explode('/', $this->id_path);
+		$kana_arr = [];
+		foreach ($id_arr as $id) {
+			$id = (int)$id;
+			if ($id) {
+				$division = self::find_by_pk($id);
+				$kana_arr[] = $division->get_search_fullname_kana();
+			}
+		}
+		return implode('', $kana_arr);
+	} // function make_path_kana()
+
 	public function get_parent_id()
 	{
 		$id_arr = explode('/', $this->id_path);
@@ -639,7 +681,7 @@ class Model_Division extends Model_Base
 
 		array_pop($id_arr);
 		return (int)array_pop($id_arr);
-	}
+	} // function get_parent_id()
 
 	public function get_parent_path()
 	{
@@ -753,19 +795,16 @@ class Model_Division extends Model_Base
 			{
 				$this->source          = $input['source'] ?: null;
 			}
-			$this->fullname        = '';
-			$this->fullname_kana   = '';
-			$this->path            = '';
-			$this->path_kana       = '';
 			$this->save();
 
 			$path = $parent . '/' . $this->get_fullname();
 			$this->id_path = self::make_id_path($path, $this->id);
 
-			$this->fullname      = $this->get_fullname();
-			$this->fullname_kana = $this->get_fullname_kana();
-			$this->path          = $this->make_path();
-			$this->path_kana     = $this->make_path_kana();
+			$this->fullname         = $this->get_fullname();
+			$this->path             = $this->make_path();
+
+			$this->search_path      = $this->make_search_path();
+			$this->search_path_kana = $this->make_search_path_kana();
 
 			$query = DB::select()
 				->from(self::$_table_name)

@@ -258,6 +258,7 @@ class Controller_Division extends Controller_Base
 			}
 
 			foreach ($body as $line) {
+				$line = trim($line);
 				if (! $line) {
 					continue;
 				}
@@ -281,6 +282,7 @@ class Controller_Division extends Controller_Base
 		{
 			// internal error
 			DB::rollback_transaction();
+			//Debug::dump($e);
 			throw new HttpServerErrorException($e->getMessage());
 		} // try
 	}

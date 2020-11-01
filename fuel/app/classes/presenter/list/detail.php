@@ -59,8 +59,11 @@ class Presenter_List_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
+		$this->search_path = $this->division->make_search_path();
+		$this->search_path_kana = $this->division->make_search_path_kana();
+
 		$title = $this->division->path.'の自治体一覧';
-		$description = $this->division->path.'の自治体一覧';
+		$description = $this->division->path.'の自治体一覧 ' . $this->search_path . ' ' . $this->search_path_kana;;
 
 		if ($this->date)
 		{
