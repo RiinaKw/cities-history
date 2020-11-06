@@ -801,14 +801,15 @@ class Model_Division extends Model_Base
 			{
 				$this->source          = $input['source'] ?: null;
 			}
-			$this->search_path = '';
+			$this->path             = '';
+			$this->id_path          = '';
+			$this->search_path      = '';
 			$this->search_path_kana = '';
+			$this->fullname         = $this->get_fullname();
 			$this->save();
 
 			$path = $parent . '/' . $this->get_fullname();
-			$this->id_path = self::make_id_path($path, $this->id);
-
-			$this->fullname         = $this->get_fullname();
+			$this->id_path          = self::make_id_path($path, $this->id);
 			$this->path             = $this->make_path();
 
 			$this->search_path      = $this->make_search_path();
@@ -842,4 +843,4 @@ class Model_Division extends Model_Base
 			throw new HttpServerErrorException($e->getMessage());
 		}
 	} // function create()
-} // class Model_Division
+} //
