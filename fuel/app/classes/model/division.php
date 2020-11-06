@@ -150,6 +150,8 @@ class Model_Division extends Model_Base
 					'is_unfinished' => true,
 					'is_empty_government_code' => true,
 					'is_empty_kana' => true,
+					'search_path' => '',
+					'search_path_kana' => '',
 					'end_date' => '9999-12-31',
 					'source' => '',
 				]);
@@ -157,8 +159,12 @@ class Model_Division extends Model_Base
 				$division->save();
 
 				$division->id_path = self::make_id_path($path, $division->id);
-				$division->fullname = $division->get_fullname();
-				$division->path = $division->get_path();
+
+				$division->fullname         = $this->get_fullname();
+				$division->path             = $this->make_path();
+
+				$division->search_path      = $this->make_search_path();
+				$division->search_path_kana = $this->make_search_path_kana();
 
 				$division->save();
 
