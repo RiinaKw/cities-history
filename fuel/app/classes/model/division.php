@@ -795,6 +795,8 @@ class Model_Division extends Model_Base
 			{
 				$this->source          = $input['source'] ?: null;
 			}
+			$this->search_path = '';
+			$this->search_path_kana = '';
 			$this->save();
 
 			$path = $parent . '/' . $this->get_fullname();
