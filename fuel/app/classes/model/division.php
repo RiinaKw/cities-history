@@ -160,11 +160,11 @@ class Model_Division extends Model_Base
 
 				$division->id_path = self::make_id_path($path, $division->id);
 
-				$division->fullname         = $this->get_fullname();
-				$division->path             = $this->make_path();
+				$division->fullname         = $division->get_fullname();
+				$division->path             = $division->make_path();
 
-				$division->search_path      = $this->make_search_path();
-				$division->search_path_kana = $this->make_search_path_kana();
+				$division->search_path      = $division->make_search_path();
+				$division->search_path_kana = $division->make_search_path_kana();
 
 				$division->save();
 
