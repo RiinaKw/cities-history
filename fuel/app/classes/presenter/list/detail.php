@@ -24,12 +24,6 @@ class Presenter_List_Detail extends Presenter_Layout
 
 	public function view()
 	{
-		$this->_get_path($this->division);
-		foreach ($this->tree as $child)
-		{
-			$this->_get_path($child);
-		}
-
 		$dates = Model_Referencedate::get_all();
 		foreach ($dates as &$cur_date)
 		{
@@ -85,4 +79,4 @@ class Presenter_List_Detail extends Presenter_Layout
 
 		$this->url_add = Helper_Uri::create('division.add');
 	} // function view()
-} // class Presenter_List_Index
+} // class Presenter_List_Detail

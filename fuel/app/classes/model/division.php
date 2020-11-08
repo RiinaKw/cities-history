@@ -55,6 +55,12 @@ class Model_Division extends Model_Base
 		return Helper_Html::wiki($this->source);
 	} // function get_source()
 
+	public static function get_suffix($name)
+	{
+		$result = preg_match(static::RE_SUFFIX, $name, $matches);
+		return $result ? $matches['suffix'] : '';
+	}
+
 	public static function get_all()
 	{
 		$query = DB::select()
@@ -334,143 +340,14 @@ class Model_Division extends Model_Base
 			->order_by('display_order', 'asc');
 
 		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_top_level()
+	} // function get_top_level
 
 	public function get_tree($date)
 	{
 		$divisions = Model_Division::get_by_parent_division_and_date($this, $date);
-
-		// count divisions by suffix
-		$count = [
-			'支庁' => 0,
-			'総合振興局' => 0,
-			'振興局' => 0,
-			'市' => 0,
-			'区' => 0,
-			'郡' => 0,
-			'町' => 0,
-			'村' => 0,
-		];
-		$child_divisions = [];
-		foreach ($divisions as $division)
-		{
-			$child_divisions[$division->id] = $division;
-
-			if ( ! isset($count[$division->suffix]))
-			{
-				$count[$division->suffix] = 0;
-			}
-			$count[$division->suffix]++;
-		}
-
-		// create tree
-		$ids_tree = [];
-		foreach ($child_divisions as $child)
-		{
-			$parent_ids = [$child->get_parent_id(), $child->belongs_division_id];
-			foreach ($parent_ids as $parent_id)
-			{
-				if ($parent_id)
-				{
-					if ( ! isset($ids_tree[$parent_id]))
-					{
-						$ids_tree[$parent_id] = [
-							'count' => [
-								'区' => 0,
-								'町' => 0,
-								'村' => 0,
-							],
-							'children' => [],
-						];
-					}
-					if ( ! isset($ids_tree[$parent_id]['count'][$child->suffix]))
-					{
-						$ids_tree[$parent_id]['count'][$child->suffix] = 0;
-					}
-					$ids_tree[$parent_id]['count'][$child->suffix]++;
-					$ids_tree[$parent_id]['children'][$child->id] = $child->id;
-				}
-			}
-		}
-		if ($ids_tree)
-		{
-			foreach ($ids_tree[$this->id]['children'] as $id)
-			{
-				if (isset($ids_tree[$id]))
-				{
-					$tree = $ids_tree[$id];
-					$ids_tree[$this->id]['children'][$id] = $tree;
-					unset($ids_tree[$id]);
-				}
-			}
-		}
-
-		$divisions_tree = [
-			'支庁' => [],
-			'区' => [],
-			'市' => [],
-			'郡' => [],
-			'町村' => [],
-		];
-		if ($ids_tree)
-		{
-			foreach ($ids_tree[$this->id]['children'] as $id => $child)
-			{
-				$div = $child_divisions[$id];
-				$suffix = $div->suffix;
-				switch ($suffix)
-				{
-					case '区':
-					case '市':
-					case '郡':
-					break;
-
-					case '支庁':
-					case '総合振興局':
-					case '振興局':
-						$suffix = '支庁';
-					break;
-
-					default:
-						$suffix = '町村';
-					break;
-				} // swtich
-				if (is_array($child))
-				{
-					$div->_count = $child['count'];
-					$divisions_tree[$suffix][$id] = $div;
-					foreach ($child['children'] as $town_id)
-					{
-						$town = $child_divisions[$town_id];
-						$town_suffix = $town->suffix;
-						switch ($town_suffix)
-						{
-							case '区':
-							break;
-
-							default:
-								$town_suffix = '町村';
-							break;
-						} // swtich
-						if ( ! isset($divisions_tree[$suffix][$id]->_children[$town_suffix]))
-						{
-							$divisions_tree[$suffix][$id]->_children[$town_suffix] = [];
-						}
-						$divisions_tree[$suffix][$id]->_children[$town_suffix][$town_id] = $town;
-					} // foreach
-				}
-				else
-				{
-					$divisions_tree[$suffix][$id] = $div;
-				}
-			} // foreach
-		}
-
-		return [
-			'count' => $count,
-			'tree' => $divisions_tree,
-		];
-	} // function get_tree()
+		$tree = new Model_Division_Tree($this);
+		return $tree->make_tree($divisions);
+	}
 
 	public static function get_by_parent_division_and_date($parent, $date = null)
 	{
@@ -497,13 +374,14 @@ class Model_Division extends Model_Base
 				->and_where_close();
 		}
 		$query
+			->order_by(DB::expr('LENGTH(d.id_path)'), 'asc')
 			->order_by('d.is_empty_government_code', 'asc')
 			->order_by('d.government_code', 'asc')
 			->order_by('d.is_empty_kana', 'asc')
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
-		return $query->as_object('Model_Division')->execute()->as_array();
+		return $query->as_object('Model_Division')->execute();
 	} // function get_by_parent_division_and_date()
 
 	public static function get_by_admin_filter($parent, $filter)

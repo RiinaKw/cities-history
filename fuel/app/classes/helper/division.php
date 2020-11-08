@@ -11,4 +11,12 @@ class Helper_Division
 			'明治' => Helper_Uri::create('division.children', ['label' => '明治', 'path' => $path, 'start' => '1878-01-01', 'end' => '1911-12-31']),
 		];
 	} // function get_children_url()
+
+	public static function url($division)
+	{
+		return Helper_Uri::create(
+			'division.detail',
+			['path' => $division->path]
+		);
+	}
 } // class Helper_Division

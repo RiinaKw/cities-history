@@ -72,9 +72,10 @@
 				</ol>
 			</nav>
 
+{{assign var=url value=\Helper_Division::url($division)}}
 			<section>
 				<h3>
-					<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division.url_detail}}">
+					<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$url}}">
 						{{$division->get_fullname()}}
 					</a>
 {{if Input::get('debug') && Input::get('debug') && $division->government_code}}
@@ -82,26 +83,30 @@
 {{/if}}
 				</h3>
 				<p class="count">{{strip}}
-					{{foreach from=$count key=suffix item=cur_count}}
+					{{foreach from=$tree->suffix_count() key=suffix item=cur_count}}
 						{{if $cur_count}}
 							{{$cur_count}}{{$suffix}}
 						{{/if}}
 					{{/foreach}}
 				{{/strip}}</p>
+
 				<div class="grid-container">
-{{if isset($tree['支庁']) && $tree['支庁']}}
+
+{{if $tree->get_by_suffix('支庁') }}
 					<section class="grid departs">
 						<ul class="divisions">
-{{foreach from=$tree['支庁'] item=depart}}
+{{foreach from=$tree->get_by_suffix('支庁') item=subtree}}
+{{assign var=division value=$subtree->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $depart.is_unfinished}}unfinished{{/if}}" href="{{$depart.url_detail}}">
-												{{$depart->get_fullname()}}
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+												{{$division->get_fullname()}}
 											</a>
-{{if Input::get('debug') && $depart->government_code}}
-											<span class="government_code">{{$depart->government_code}}</span>
+{{if Input::get('debug') && $division->government_code}}
+											<span class="government_code">{{$division->government_code}}</span>
 {{/if}}
 										</h4>
 									</header>
@@ -111,20 +116,24 @@
 						</ul>
 					</section><!-- .grid.departs -->
 {{/if}}
-{{if isset($tree['区']) && $tree['区']}}
-					<section class="{{if $division->suffix != '市'}}grid{{/if}} wards">
+
+{{if $tree->get_by_suffix('区') }}
+					<section class="grid wards">
 						<ul class="divisions">
-{{foreach from=$tree['区'] item=ward}}
+{{foreach from=$tree->get_by_suffix('区') item=subtree}}
+{{assign var=division value=$subtree->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $ward.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
-												{{$ward->get_fullname()}}
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+												{{$division->get_fullname()}}
 											</a>
-{{if Input::get('debug') && $ward->government_code}}
-											<span class="government_code">{{$ward->government_code}}</span>
+{{if Input::get('debug') && $division->government_code}}
+											<span class="government_code">{{$division->government_code}}</span>
 {{/if}}
+											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 										</h4>
 									</header>
 								</article>
@@ -133,49 +142,61 @@
 						</ul>
 					</section><!-- .grid.wards -->
 {{/if}}
-{{if isset($tree['市']) && $tree['市']}}
-					<section class="grid cities">
+
+{{if $tree->get_by_suffix('市') }}
+					<section class="grid city">
 						<ul class="divisions">
-{{foreach name=city from=$tree['市'] item=city}}
+{{foreach name=city from=$tree->get_by_suffix('市') item=subtree}}
+{{assign var=division value=$subtree->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $city.is_unfinished}}unfinished{{/if}}" href="{{$city.url_detail}}">
-												{{$city->get_fullname()}}
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+												{{$division->get_fullname()}}
 											</a>
-{{if Input::get('debug') && $city->government_code}}
-											<span class="government_code">{{$city->government_code}}</span>
+{{if Input::get('debug') && $division->government_code}}
+											<span class="government_code">{{$division->government_code}}</span>
 {{/if}}
-											<span class="belongs badge badge-semilight font-weight-light">{{$city->get_belongs_name()}}</span>
+											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 										</h4>
-{{if isset($city->_children['区']) && $city->_children['区']}}
+{{if $subtree->suffix_count('区')}}
 										<p class="count">{{strip}}
-											{{$city->_count['区']}}区
+											{{foreach from=$subtree->suffix_count() key=suffix item=cur_count}}
+												{{if $cur_count}}
+													{{$cur_count}}{{$suffix}}
+												{{/if}}
+											{{/foreach}}
 										{{/strip}}</p>
-										<ul class="divisions">
-{{foreach from=$city->_children['区'] item=ward}}
-											<li>
-												<article>
-													<header>
-														<h4>
-															<a class="{{if $ward.is_unfinished}}unfinished{{/if}}" href="{{$ward.url_detail}}">
-																{{$ward->get_fullname()}}
-															</a>
-{{if Input::get('debug') && $ward->government_code}}
-															<span class="government_code">{{$ward->government_code}}</span>
-{{/if}}
-														</h4>
-													</header>
-												</article>
-											</li>
-{{/foreach}}
-										</ul>
 {{/if}}
 									</header>
+{{if $subtree->get_by_suffix('区')}}
+									<ul class="divisions">
+{{foreach from=$subtree->get_by_suffix('区') item=wards}}
+{{assign var=division value=$wards->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
+										<li>
+											<article>
+												<header>
+													<h4>
+														<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+															{{$division->get_fullname()}}
+														</a>
+{{if Input::get('debug') && $division->government_code}}
+														<span class="government_code">{{$division->government_code}}</span>
+{{/if}}
+														<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+													</h4>
+												</header>
+											</article>
+										</li>
+{{/foreach}}
+									</ul>
+{{/if}}
 								</article>
 							</li>
-{{if ! $smarty.foreach.city.last && isset($city->_children['区']) && $city->_children['区']}}
+{{if ! $smarty.foreach.city.last && $subtree->get_by_suffix('区')}}
 						</ul>
 					</section><!-- .grid.cities -->
 					<section class="grid cities">
@@ -185,21 +206,24 @@
 						</ul>
 					</section><!-- .grid.cities -->
 {{/if}}
-{{if isset($tree['町村']) && $tree['町村']}}
-					<section class="{{if $division->suffix != '郡' && $division->suffix != '支庁'}}grid{{/if}} towns">
+
+{{if $tree->get_by_suffix('町村') }}
+					<section class="grid towns">
 						<ul class="divisions">
-{{foreach from=$tree['町村'] item=town}}
+{{foreach from=$tree->get_by_suffix('町村') item=subtree}}
+{{assign var=division value=$subtree->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $town.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
-												{{$town->get_fullname()}}
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+												{{$division->get_fullname()}}
 											</a>
-{{if Input::get('debug') && $town->government_code}}
-											<span class="government_code">{{$town->government_code}}</span>
+{{if Input::get('debug') && $division->government_code}}
+											<span class="government_code">{{$division->government_code}}</span>
 {{/if}}
-											<span class="belongs badge badge-semilight font-weight-light">{{$town->get_belongs_name()}}</span>
+											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 										</h4>
 									</header>
 								</article>
@@ -208,52 +232,61 @@
 						</ul>
 					</section><!-- .grid.towns -->
 {{/if}}
-{{if isset($tree['郡']) && $tree['郡']}}
-{{foreach from=$tree['郡'] item=country}}
+
+{{if $tree->get_by_suffix('郡') }}
+{{foreach name=city from=$tree->get_by_suffix('郡') item=subtree}}
+{{assign var=division value=$subtree->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
 					<section class="grid countries">
 						<article>
 							<header>
 								<h4>
-									<a class="{{if $country.is_unfinished}}unfinished{{/if}}" href="{{$country.url_detail}}">
-										{{$country->get_fullname()}}
+									<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+										{{$division->get_fullname()}}
 									</a>
-{{if Input::get('debug') && $country->government_code}}
-									<span class="government_code">{{$country->government_code}}</span>
+{{if Input::get('debug') && $division->government_code}}
+									<span class="government_code">{{$division->government_code}}</span>
 {{/if}}
+									<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 								</h4>
+{{assign var=division value=$subtree->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
 								<p class="count">{{strip}}
-									{{foreach from=$country->_count key=suffix item=count}}
-										{{if $count}}
-											{{$count}}{{$suffix}}
+									{{foreach from=$subtree->suffix_count() key=suffix item=cur_count}}
+										{{if $cur_count}}
+											{{$cur_count}}{{$suffix}}
 										{{/if}}
 									{{/foreach}}
 								{{/strip}}</p>
-								<ul class="divisions">
-{{if isset($country->_children['町村']) && $country->_children['町村']}}
-{{foreach from=$country->_children['町村'] item=town}}
-									<li>
-										<article>
-											<header>
-												<h5>
-													<a class="{{if $town.is_unfinished}}unfinished{{/if}}" href="{{$town.url_detail}}">
-														{{$town->get_fullname()}}
-													</a>
-{{if Input::get('debug') && $town->government_code}}
-													<span class="government_code">{{$town->government_code}}</span>
-{{/if}}
-													<span class="belongs badge badge-semilight font-weight-light">{{$town->get_belongs_name()}}</span>
-												</h5>
-											</header>
-										</article>
-									</li>
-{{/foreach}}
-{{/if}}
-								</ul>
 							</header>
+{{if $subtree->get_by_suffix('町村')}}
+							<ul class="divisions">
+{{foreach from=$subtree->get_by_suffix('町村') item=wards}}
+{{assign var=division value=$wards->self()}}
+{{assign var=url value=\Helper_Division::url($division)}}
+								<li>
+									<article>
+										<header>
+											<h5>
+												<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+													{{$division->get_fullname()}}
+												</a>
+{{if Input::get('debug') && $division->government_code}}
+												<span class="government_code">{{$division->government_code}}</span>
+{{/if}}
+												<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+											</h5>
+										</header>
+									</article>
+								</li>
+{{/foreach}}
+							</ul>
+{{/if}}
 						</article>
 					</section><!-- .grid.countries -->
 {{/foreach}}
 {{/if}}
+
 				</div><!-- .grid-container -->
 			</section>
 

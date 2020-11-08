@@ -47,8 +47,7 @@ class Controller_List extends Controller_Base
 			}
 		}
 
-		// create tree
-		$result = $top_division->get_tree($date);
+		$tree = $top_division->get_tree($date);
 
 		// create Presenter object
 		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');
@@ -57,8 +56,7 @@ class Controller_List extends Controller_Base
 		$content->month = $month;
 		$content->day = $day;
 		$content->division = $top_division;
-		$content->tree = $result['tree'];
-		$content->count = $result['count'];
+		$content->tree = $tree;
 
 		return $content;
 	} // function action_detail()
