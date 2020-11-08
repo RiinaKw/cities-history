@@ -59,17 +59,7 @@ class Model_Division extends Model_Base
 	{
 		$result = preg_match(static::RE_SUFFIX, $name, $matches);
 		return $result ? $matches['suffix'] : '';
-	}
-
-	public static function get_all()
-	{
-		$query = DB::select()
-			->from(self::$_table_name)
-			->where('deleted_at', '=', null)
-			->order_by('name_kana', 'ASC');
-
-		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_all()
+	} // function get_suffix()
 
 	public static function get_all_id()
 	{
@@ -78,7 +68,7 @@ class Model_Division extends Model_Base
 			->where('deleted_at', '=', null)
 			->order_by('name_kana', 'ASC');
 
-		$result = $query->execute()->as_array();
+		$result = $query->execute();
 		$arr = [];
 		foreach ($result as $item)
 		{
@@ -95,7 +85,7 @@ class Model_Division extends Model_Base
 			//->where(DB::expr('MATCH(fullname)'), 'AGAINST', DB::expr('(\'+'.$q.'\' IN BOOLEAN MODE)'));
 			->where('fullname', 'LIKE', '%'.$q.'%');
 
-		return $query->as_object('Model_Division')->execute()->as_array();
+		return $query->as_object('Model_Division')->execute();
 	} // function query()
 
 	public static function search($q)
@@ -119,7 +109,7 @@ class Model_Division extends Model_Base
 			->order_by('name_kana', 'asc')
 			->order_by('end_date', 'desc');
 
-		return $query->as_object('Model_Division')->execute()->as_array();
+		return $query->as_object('Model_Division')->execute();
 	} // function search()
 
 	public static function set_path($path)
@@ -309,8 +299,8 @@ class Model_Division extends Model_Base
 			$query->where('identifier', '=', $name['identifier']);
 		}
 
-		$result = $query->as_object('Model_Division')->execute()->as_array();
-		if ($result)
+		$result = $query->as_object('Model_Division')->execute();
+		if ($result->count())
 		{
 			return $result[0];
 		}
@@ -318,17 +308,6 @@ class Model_Division extends Model_Base
 			return null;
 		}
 	} // function get_one_by_name_and_parent()
-
-	public function get_parents_and_self()
-	{
-		$query = DB::select()
-			->from(self::$_table_name)
-			->where('deleted_at', '=', null);
-		$query->where(DB::expr('"' . $this->id_path . '"'), 'LIKE', DB::expr('CONCAT(id_path, "%")'));
-		$query->order_by(DB::expr('LENGTH(path)', 'ASC'));
-
-		return $query->as_object('Model_Division')->execute()->as_array();
-	} // function get_parents_and_self()
 
 	public static function get_top_level()
 	{
@@ -339,7 +318,7 @@ class Model_Division extends Model_Base
 			->where('id_path', '=', DB::expr('CONCAT(id, "/")'))
 			->order_by('display_order', 'asc');
 
-		return $query->as_object('Model_Division')->execute()->as_array();
+		return $query->as_object('Model_Division')->execute();
 	} // function get_top_level
 
 	public function get_tree($date)
@@ -449,7 +428,7 @@ class Model_Division extends Model_Base
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
-		return $query->as_object('Model_Division')->execute()->as_array();
+		return $query->as_object('Model_Division')->execute();
 	} // functiob get_by_admin_filter()
 
 	public function get_path()
@@ -698,7 +677,7 @@ class Model_Division extends Model_Base
 				->where('path', '=', $this->path)
 				->where('id', '!=', $this->id)
 				;
-			if ($query->execute()->as_array())
+			if ($query->execute()->count())
 			{
 				throw new HttpBadRequestException('重複しています。');
 			}

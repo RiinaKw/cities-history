@@ -33,7 +33,7 @@ class Model_Referencedate extends Model_Base
 			->where('deleted_at', '=', null)
 			->order_by('date', 'desc');
 
-			$result = $query->as_object('Model_Referencedate')->execute()->as_array();
-			return $result ?: [];
+			$result = $query->as_object('Model_Referencedate')->execute();
+			return $result->count() ? $result->as_array() : [];
 	} // function get_all()
 } // class Model_Referencedate

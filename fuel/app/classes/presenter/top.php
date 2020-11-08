@@ -4,12 +4,6 @@ class Presenter_Top extends Presenter_Layout
 {
 	public function view()
 	{
-		foreach ($this->divisions as &$division)
-		{
-			$division->path = $division->get_path();
-			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
-		}
-
 		$components = [
 			'add_division' => View_Smarty::forge('components/add_division.tpl'),
 			'add_divisions_csv' => View_Smarty::forge('components/add_divisions_csv.tpl'),

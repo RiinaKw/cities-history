@@ -106,7 +106,7 @@ class Model_User extends Model_Base
 		$query = DB::select('id', 'remember_me_hash')
 			->from(self::$_table_name)
 			->where('remember_me_hash', '!=', null);
-		$result = $query->execute()->as_array();
+		$result = $query->execute();
 
 		$table = array();
 		foreach ($result as $item)

@@ -82,12 +82,6 @@ class Controller_List extends Controller_Base
 			return Response::forge($view, $code);
 		}
 
-		foreach ($result as &$division)
-		{
-			$division->path = $division->get_path();
-			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
-		}
-
 		// create Presenter object
 		$content = Presenter::forge('list/search', 'view', null, 'search.tpl');
 		$content->divisions = $result;

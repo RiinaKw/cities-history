@@ -21,7 +21,7 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		$this->filter = Input::get('filter');
 
 		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana(
-			$this->parent ? $this->parent->get_parents_and_self() : null,
+			$this->parent ?: null,
 			'自治体管理',
 			'admin.divisions.list',
 			'admin.divisions.detail'

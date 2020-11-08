@@ -118,7 +118,7 @@ class Db
 
 		// truncate tables
 		$truncate_tables = [];
-		$tables = \DB::query('SHOW TABLES')->execute()->as_array();
+		$tables = \DB::query('SHOW TABLES')->execute();
 		$column = 'Tables_in_' . $db;
 		foreach ($tables as $table) {
 			$table_name = $table[$column];

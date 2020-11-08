@@ -40,8 +40,8 @@ class Model_Page extends Model_Base
 			->where('deleted_at', '=', null)
 			->order_by('slug', 'asc');
 
-			$result = $query->as_object(__CLASS__)->execute()->as_array();
-			return $result ?: [];
+		$result = $query->as_object(static::class)->execute();
+		return $result->count() ? $result : [];
 	} // function get_all()
 
 	public static function get_one_by_slug($slug)
@@ -52,8 +52,8 @@ class Model_Page extends Model_Base
 			->where('deleted_at', '=', null)
 			;
 
-		$result = $query->as_object(__CLASS__)->execute()->as_array();
-		if (count($result) == 1)
+		$result = $query->as_object(static::class)->execute();
+		if ($result->count() == 1)
 		{
 			return $result[0];
 		}

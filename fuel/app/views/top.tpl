@@ -22,8 +22,9 @@
 			<section class="toplevel-list">
 				<ol class="row">
 {{foreach from=$divisions item=division}}
+{{assign var=url value=\Helper_Division::url($division)}}
 					<li class="col-6 col-sm-4 col-md-3 col-lg-2">
-						<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division.url_detail}}">
+						<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$url}}">
 							{{$division->get_fullname()}}
 						</a>
 					</li>

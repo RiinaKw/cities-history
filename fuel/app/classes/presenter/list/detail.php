@@ -64,7 +64,7 @@ class Presenter_List_Detail extends Presenter_Layout
 			$description .= Helper_Date::format(' Y(Jk)-m-d', $this->date);
 		}
 
-		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->division->get_parents_and_self());
+		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->division);
 		$this->path_kana = $breadcrumbs_arr['path_kana'];
 
 		$this->title = $title;

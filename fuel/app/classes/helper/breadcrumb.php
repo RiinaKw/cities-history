@@ -2,7 +2,7 @@
 
 class Helper_Breadcrumb
 {
-	public static function breadcrumb_and_kana($divisions, $root_label = 'Top', $root_uri = 'top', $item_uri = 'division.detail')
+	public static function breadcrumb_and_kana($division, $root_label = 'Top', $root_uri = 'top', $item_uri = 'division.detail')
 	{
 		$breadcrumbs = [
 			$root_label => Helper_Uri::create($root_uri),
@@ -10,10 +10,12 @@ class Helper_Breadcrumb
 
 		$cur_path = '';
 		$cur_kana = '';
-		if ($divisions)
+		if ($division)
 		{
-			foreach ($divisions as $parent)
+			$ids = explode('/', substr($division->id_path, 0, -1));
+			foreach ($ids as $id)
 			{
+				$parent = Model_Division::find_by_pk($id);
 				$fullname = $parent->get_fullname();
 				$cur_path .= ($cur_path ? '/' : '') . $fullname;
 				$cur_kana .= ($cur_kana ? '/' : '') . $parent->get_fullname_kana();

@@ -43,14 +43,7 @@ class Model_Event extends Model_Base
 			->where('e.event_id', '=', $event_id)
 			->order_by('e.order', 'asc');
 
-		$result = $query->as_object('Model_Division')->execute()->as_array();
-		foreach ($result as &$item)
-		{
-			if ($item->identifier)
-			{
-				$item->fullname .= '('.$item->identifier.')';
-			}
-		}
+		$result = $query->as_object('Model_Division')->execute();
 		return $result;
 	} // function get_relative_division()
 

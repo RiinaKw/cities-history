@@ -23,7 +23,7 @@ class Presenter_Division_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->division->get_parents_and_self());
+		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->division);
 		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
 		$path_kana = $breadcrumbs_arr['path_kana'];
 		$this->path_kana = $path_kana;
