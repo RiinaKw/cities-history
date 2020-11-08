@@ -22,6 +22,7 @@ class Db
 		preg_match('/^.+?:host=(?<host>.+?);dbname=(?<db>.+?)$/', $connection['dsn'], $matches);
 
 		return [
+			'dsn' => $connection['dsn'],
 			'host' => $matches['host'],
 			'port' => 3306,
 			'db' => $matches['db'],
@@ -110,10 +111,10 @@ class Db
 		$path = APPPATH . $config['backup_dir'] . '/' . $file;
 		$realpath = realpath($path);
 		if (! $realpath) {
-			echo "Not found : {$file}\n";
+			echo "Not found : {$file}", PHP_EOL;
 			return;
 		}
-		$path = escapeshellcmd($path);
+		//$path = escapeshellcmd($path);
 
 		// truncate tables
 		$truncate_tables = [];
@@ -131,7 +132,9 @@ class Db
 			unset($truncate_tables[$table]);
 		}
 
-		echo "Restore database from {$file} into {$db}...\n";
+		echo "Restore database from {$file} into {$db}...", PHP_EOL;
+
+		\DB::query("SET GLOBAL max_allowed_packet=16777216;")->execute();
 
 		// do truncate
 		\DB::query('SET FOREIGN_KEY_CHECKS=0;')->execute();
@@ -141,16 +144,64 @@ class Db
 		}
 		\DB::query('SET FOREIGN_KEY_CHECKS=1;')->execute();
 
-		echo "restore db...\n";
+		echo PHP_EOL, 'prepare sql...', PHP_EOL;
 
-		$command = "mysql"
-			. " -u{$user} -p{$password} -h {$host} -P {$port} {$db}"
-			. " < {$path}";
+		$filesize = filesize($path);
 
-		exec($command);
+		$restore_table = 'restore';
 
-		echo "\nComplete!\n";
-		exit(0);
+		\DBUtil::truncate_table($restore_table);
+		$fp = fopen($path, 'r');
+		while ($sql = stream_get_line($fp, 500000, ";")) {
+
+			$expected_last = ['/' => 0, ')' => 0, "\n" => 0];
+			$expedted_last6 = ['TABLES' => 0, ' WRITE' => 0];
+			while (
+					! array_key_exists(substr($sql, -1), $expected_last)
+					&& ! array_key_exists(substr($sql, -6), $expedted_last6)
+			) {
+				$sql .= stream_get_line($fp, 500000, ";");
+				$last = substr($sql, -1);
+			}
+			echo sprintf('sql of %d bytes loaded', strlen($sql)), PHP_EOL;
+			$sql = trim($sql);
+
+			\DB::insert($restore_table)
+				->set(['sql' => $sql])
+				->execute();
+		}
+		fclose($fp);
+
+		echo PHP_EOL, 'restore db...', PHP_EOL;
+
+		$query = \DB::select()->from($restore_table)->execute();
+		$row = \DB::select([\DB::expr('COUNT(*)'), 'row_count'])->from($restore_table)->execute()->as_array();
+		$count = (int)$row[0]['row_count'];
+
+		$fail = 0;
+		$i = 1;
+		foreach ($query as $row) {
+			$sql = $row['sql'] . ';';
+
+			//echo sprintf('[%d] ', $row['id']);
+			echo sprintf('%d / %d', $i, $count), PHP_EOL;
+			$sql_first = substr($sql, 0, 100);
+			if (! \DB::query($sql)->execute()) {
+				echo 'sql : ', $sql_first, PHP_EOL, 'failed', PHP_EOL, PHP_EOL;
+				++$fail;
+			} else {
+				//echo 'sql : ', $sql_first, PHP_EOL, 'success', PHP_EOL, PHP_EOL;
+			}
+			++$i;
+		}
+
+		if ($fail === 0) {
+			echo PHP_EOL, 'Complete!', PHP_EOL;
+			exit(0);
+		} else {
+			echo PHP_EOL, 'Some failed', PHP_EOL;
+			exit(1);
+		}
 	}
 
 }
