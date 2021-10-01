@@ -13,9 +13,7 @@
 {{foreach from=$divisions item=division}}
 					<li>
 						<h5>
-							<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-								{{$division->path}}
-							</a>
+							{{$division->pmodel()->htmlAnchor($division->path)}}
 						</h5>
 					</li>
 {{/foreach}}

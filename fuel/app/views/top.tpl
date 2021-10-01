@@ -23,9 +23,7 @@
 				<ol class="row">
 {{foreach from=$divisions item=division}}
 					<li class="col-6 col-sm-4 col-md-3 col-lg-2">
-						<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-							{{$division->get_fullname()}}
-						</a>
+						{{$division->pmodel()->htmlAnchor()}}
 					</li>
 {{/foreach}}
 				</ol>

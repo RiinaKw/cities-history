@@ -74,12 +74,8 @@
 
 			<section>
 				<h3>
-					<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-						{{$division->get_fullname()}}
-					</a>
-{{if Input::get('debug') && Input::get('debug') && $division->government_code}}
-					<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+					{{$division->pmodel()->htmlAnchor()}}
+					{{$division->pmodel()->htmlDebugCode()}}
 				</h3>
 				<p class="count">{{strip}}
 					{{foreach from=$tree->suffix_count() key=suffix item=cur_count}}
@@ -100,12 +96,8 @@
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-												{{$division->get_fullname()}}
-											</a>
-{{if Input::get('debug') && $division->government_code}}
-											<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+											{{$division->pmodel()->htmlAnchor()}}
+											{{$division->pmodel()->htmlDebugCode()}}
 										</h4>
 									</header>
 								</article>
@@ -124,12 +116,8 @@
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-												{{$division->get_fullname()}}
-											</a>
-{{if Input::get('debug') && $division->government_code}}
-											<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+											{{$division->pmodel()->htmlAnchor()}}
+											{{$division->pmodel()->htmlDebugCode()}}
 											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 										</h4>
 									</header>
@@ -149,12 +137,8 @@
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-												{{$division->get_fullname()}}
-											</a>
-{{if Input::get('debug') && $division->government_code}}
-											<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+											{{$division->pmodel()->htmlAnchor()}}
+											{{$division->pmodel()->htmlDebugCode()}}
 											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 										</h4>
 {{if $subtree->suffix_count('区')}}
@@ -175,12 +159,8 @@
 											<article>
 												<header>
 													<h4>
-														<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-															{{$division->get_fullname()}}
-														</a>
-{{if Input::get('debug') && $division->government_code}}
-														<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+														{{$division->pmodel()->htmlAnchor()}}
+														{{$division->pmodel()->htmlDebugCode()}}
 														<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 													</h4>
 												</header>
@@ -211,12 +191,8 @@
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-												{{$division->get_fullname()}}
-											</a>
-{{if Input::get('debug') && $division->government_code}}
-											<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+											{{$division->pmodel()->htmlAnchor()}}
+											{{$division->pmodel()->htmlDebugCode()}}
 											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 										</h4>
 									</header>
@@ -234,12 +210,8 @@
 						<article>
 							<header>
 								<h4>
-									<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-										{{$division->get_fullname()}}
-									</a>
-{{if Input::get('debug') && $division->government_code}}
-									<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+									{{$division->pmodel()->htmlAnchor()}}
+									{{$division->pmodel()->htmlDebugCode()}}
 									<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 								</h4>
 								<p class="count">{{strip}}
@@ -258,12 +230,8 @@
 									<article>
 										<header>
 											<h5>
-												<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
-													{{$division->get_fullname()}}
-												</a>
-{{if Input::get('debug') && $division->government_code}}
-												<span class="government_code">{{$division->government_code}}</span>
-{{/if}}
+												{{$division->pmodel()->htmlAnchor()}}
+												{{$division->pmodel()->htmlDebugCode()}}
 												<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 											</h5>
 										</header>
