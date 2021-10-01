@@ -91,13 +91,13 @@
 					<section class="grid departs">
 						<ul class="divisions">
 {{foreach from=$tree->get_by_suffix('支庁') item=subtree}}
-{{assign var=division value=$subtree->self()}}
+{{assign var=pmodel value=$subtree->self()->pmodel()}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											{{$division->pmodel()->htmlAnchor()}}
-											{{$division->pmodel()->htmlDebugCode()}}
+											{{$pmodel->htmlAnchor()}}
+											{{$pmodel->htmlDebugCode()}}
 										</h4>
 									</header>
 								</article>
@@ -111,14 +111,14 @@
 					<section class="grid wards">
 						<ul class="divisions">
 {{foreach from=$tree->get_by_suffix('区') item=subtree}}
-{{assign var=division value=$subtree->self()}}
+{{assign var=division value=$subtree->self()->pmodel()}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											{{$division->pmodel()->htmlAnchor()}}
-											{{$division->pmodel()->htmlDebugCode()}}
-											{{$division->pmodel()->htmlBelongs()}}
+											{{$division->htmlAnchor()}}
+											{{$division->htmlDebugCode()}}
+											{{$division->htmlBelongs()}}
 										</h4>
 									</header>
 								</article>
@@ -132,14 +132,14 @@
 					<section class="grid city">
 						<ul class="divisions">
 {{foreach name=city from=$tree->get_by_suffix('市') item=subtree}}
-{{assign var=division value=$subtree->self()}}
+{{assign var=pmodel value=$subtree->self()->pmodel()}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											{{$division->pmodel()->htmlAnchor()}}
-											{{$division->pmodel()->htmlDebugCode()}}
-											{{$division->pmodel()->htmlBelongs()}}
+											{{$pmodel->htmlAnchor()}}
+											{{$pmodel->htmlDebugCode()}}
+											{{$pmodel->htmlBelongs()}}
 										</h4>
 {{if $subtree->suffix_count('区')}}
 										<p class="count">{{strip}}
@@ -154,14 +154,14 @@
 {{if $subtree->get_by_suffix('区')}}
 									<ul class="divisions">
 {{foreach from=$subtree->get_by_suffix('区') item=wards}}
-{{assign var=division value=$wards->self()}}
+{{assign var=pmodel value=$wards->self()->pmodel()}}
 										<li>
 											<article>
 												<header>
 													<h4>
-														{{$division->pmodel()->htmlAnchor()}}
-														{{$division->pmodel()->htmlDebugCode()}}
-														{{$division->pmodel()->htmlBelongs()}}
+														{{$pmodel->htmlAnchor()}}
+														{{$pmodel->htmlDebugCode()}}
+														{{$pmodel->htmlBelongs()}}
 													</h4>
 												</header>
 											</article>
@@ -186,14 +186,14 @@
 					<section class="grid towns">
 						<ul class="divisions">
 {{foreach from=$tree->get_by_suffix('町村') item=subtree}}
-{{assign var=division value=$subtree->self()}}
+{{assign var=pmodel value=$subtree->self()->pmodel()}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											{{$division->pmodel()->htmlAnchor()}}
-											{{$division->pmodel()->htmlDebugCode()}}
-											{{$division->pmodel()->htmlBelongs()}}
+											{{$pmodel->htmlAnchor()}}
+											{{$pmodel->htmlDebugCode()}}
+											{{$pmodel->htmlBelongs()}}
 										</h4>
 									</header>
 								</article>
@@ -205,14 +205,14 @@
 
 {{if $tree->get_by_suffix('郡') }}
 {{foreach name=city from=$tree->get_by_suffix('郡') item=subtree}}
-{{assign var=division value=$subtree->self()}}
+{{assign var=pmodel value=$subtree->self()->pmodel()}}
 					<section class="grid countries">
 						<article>
 							<header>
 								<h4>
-									{{$division->pmodel()->htmlAnchor()}}
-									{{$division->pmodel()->htmlDebugCode()}}
-									{{$division->pmodel()->htmlBelongs()}}
+									{{$pmodel->htmlAnchor()}}
+									{{$pmodel->htmlDebugCode()}}
+									{{$pmodel->htmlBelongs()}}
 								</h4>
 								<p class="count">{{strip}}
 									{{foreach from=$subtree->suffix_count() key=suffix item=cur_count}}
@@ -225,14 +225,14 @@
 {{if $subtree->get_by_suffix('町村')}}
 							<ul class="divisions">
 {{foreach from=$subtree->get_by_suffix('町村') item=wards}}
-{{assign var=division value=$wards->self()}}
+{{assign var=pmodel value=$wards->self()->pmodel()}}
 								<li>
 									<article>
 										<header>
 											<h5>
-												{{$division->pmodel()->htmlAnchor()}}
-												{{$division->pmodel()->htmlDebugCode()}}
-												{{$division->pmodel()->htmlBelongs()}}
+												{{$pmodel->htmlAnchor()}}
+												{{$pmodel->htmlDebugCode()}}
+												{{$pmodel->htmlBelongs()}}
 											</h5>
 										</header>
 									</article>
