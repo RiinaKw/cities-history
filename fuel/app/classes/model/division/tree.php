@@ -52,7 +52,7 @@ class Model_Division_Tree
 		return $this->ref[$parent_id_path] ?? null;
 	}
 
-	protected function create_subtree($division)
+	protected function create_subtree(Model_Division $division)
 	{
 		$name = basename($division->path);
 		$suffix = $division->suffix_classification();
@@ -65,7 +65,7 @@ class Model_Division_Tree
 		return $tree;
 	}
 
-	protected function add($division, $name = '')
+	protected function add(Model_Division $division, string $name = '')
 	{
 		if ($name === '') {
 			$name = $division->path;
@@ -113,15 +113,11 @@ class Model_Division_Tree
 		$this->ref[$division->id_path] = $tree;
 	}
 
-	public static function dump_division($division, $nest = 0)
+	public function dump(int $depth = 2): void
 	{
-		$indent = str_repeat(' ', $nest);
-		echo $indent, $division->id_path, ' ', $division->path, PHP_EOL;
-	}
+		$indent = str_repeat(' ', $depth);
+		echo $indent, $this->self->dump(), PHP_EOL;
 
-	public function dump($depth = 2)
-	{
-		static::dump_division($this->self, $depth);
 		$indent = str_repeat(' ', $depth + 2);
 		foreach ($this->children as $suffix => $children) {
 			echo $indent, $suffix, PHP_EOL;

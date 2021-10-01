@@ -343,4 +343,9 @@ class Model_Division extends Model_Base
 			throw new HttpServerErrorException($e->getMessage());
 		}
 	} // function create()
+
+	public function dump(): void
+	{
+		echo $this->id_path, ' ', $this->path;
+	}
 } // class Model_Division
