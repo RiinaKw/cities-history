@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor
+        configVersion="3"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://www.phpdoc.org"
+        xsi:noNamespaceSchemaLocation="data/xsd/phpdoc.xsd"
+>
+    <title>phpDocumentor</title>
+    <paths>
+        <output>fuel/app/docs</output>
+    </paths>
+    <version number="3.0.0">
+        <folder>latest</folder>
+        <api>
+            <source dsn=".">
+                <path>fuel/app</path>
+            </source>
+            <ignore hidden="true" symlinks="true">
+                <path>fuel/app/cache</path>
+                <path>fuel/app/logs</path>
+                <path>fuel/app/tmp</path>
+                <path>fuel/app/vendor</path>
+            </ignore>
+            <extensions>
+                <extension>php</extension>
+            </extensions>
+            <ignore-tags>
+                <ignore-tag>extends</ignore-tag>
+            </ignore-tags>
+            <default-package-name>phpDocumentor</default-package-name>
+        </api>
+    </version>
+    <template name="default"/>
+</phpdocumentor>

@@ -35,4 +35,4 @@ desktop.ini
 /fuel/app/config/crypt.php
 
 .htdigest
-.editorconfig
+.phpdoc
