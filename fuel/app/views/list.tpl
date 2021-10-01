@@ -72,10 +72,9 @@
 				</ol>
 			</nav>
 
-{{assign var=url value=\Helper_Division::url($division)}}
 			<section>
 				<h3>
-					<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+					<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 						{{$division->get_fullname()}}
 					</a>
 {{if Input::get('debug') && Input::get('debug') && $division->government_code}}
@@ -97,12 +96,11 @@
 						<ul class="divisions">
 {{foreach from=$tree->get_by_suffix('支庁') item=subtree}}
 {{assign var=division value=$subtree->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 												{{$division->get_fullname()}}
 											</a>
 {{if Input::get('debug') && $division->government_code}}
@@ -122,12 +120,11 @@
 						<ul class="divisions">
 {{foreach from=$tree->get_by_suffix('区') item=subtree}}
 {{assign var=division value=$subtree->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 												{{$division->get_fullname()}}
 											</a>
 {{if Input::get('debug') && $division->government_code}}
@@ -148,12 +145,11 @@
 						<ul class="divisions">
 {{foreach name=city from=$tree->get_by_suffix('市') item=subtree}}
 {{assign var=division value=$subtree->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 												{{$division->get_fullname()}}
 											</a>
 {{if Input::get('debug') && $division->government_code}}
@@ -175,12 +171,11 @@
 									<ul class="divisions">
 {{foreach from=$subtree->get_by_suffix('区') item=wards}}
 {{assign var=division value=$wards->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 										<li>
 											<article>
 												<header>
 													<h4>
-														<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+														<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 															{{$division->get_fullname()}}
 														</a>
 {{if Input::get('debug') && $division->government_code}}
@@ -212,12 +207,11 @@
 						<ul class="divisions">
 {{foreach from=$tree->get_by_suffix('町村') item=subtree}}
 {{assign var=division value=$subtree->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 							<li>
 								<article>
 									<header>
 										<h4>
-											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+											<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 												{{$division->get_fullname()}}
 											</a>
 {{if Input::get('debug') && $division->government_code}}
@@ -236,12 +230,11 @@
 {{if $tree->get_by_suffix('郡') }}
 {{foreach name=city from=$tree->get_by_suffix('郡') item=subtree}}
 {{assign var=division value=$subtree->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 					<section class="grid countries">
 						<article>
 							<header>
 								<h4>
-									<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+									<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 										{{$division->get_fullname()}}
 									</a>
 {{if Input::get('debug') && $division->government_code}}
@@ -249,8 +242,6 @@
 {{/if}}
 									<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
 								</h4>
-{{assign var=division value=$subtree->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 								<p class="count">{{strip}}
 									{{foreach from=$subtree->suffix_count() key=suffix item=cur_count}}
 										{{if $cur_count}}
@@ -263,12 +254,11 @@
 							<ul class="divisions">
 {{foreach from=$subtree->get_by_suffix('町村') item=wards}}
 {{assign var=division value=$wards->self()}}
-{{assign var=url value=\Helper_Division::url($division)}}
 								<li>
 									<article>
 										<header>
 											<h5>
-												<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+												<a class="{{if $division->is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 													{{$division->get_fullname()}}
 												</a>
 {{if Input::get('debug') && $division->government_code}}

@@ -11,10 +11,9 @@
 {{if $divisions}}
 				<ul class="search-result">
 {{foreach from=$divisions item=division}}
-{{assign var=url value=\Helper_Division::url($division)}}
 					<li>
 						<h5>
-							<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$url}}">
+							<a class="{{if $division.is_unfinished}}unfinished{{/if}}" href="{{$division->pmodel()->url()}}">
 								{{$division->path}}
 							</a>
 						</h5>
