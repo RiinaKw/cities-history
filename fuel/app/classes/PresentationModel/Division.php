@@ -35,4 +35,14 @@ class PresentationModel_Division
 			return '';
 		}
 	}
+
+	public function htmlBelongs(): string
+	{
+		$belongs = $this->model->get_belongs_name();
+		if ($belongs) {
+			return "<span class=\"belongs badge badge-semilight font-weight-light\">{$belongs}</span>";
+		} else {
+			return '';
+		}
+	}
 }

@@ -118,7 +118,7 @@
 										<h4>
 											{{$division->pmodel()->htmlAnchor()}}
 											{{$division->pmodel()->htmlDebugCode()}}
-											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+											{{$division->pmodel()->htmlBelongs()}}
 										</h4>
 									</header>
 								</article>
@@ -139,7 +139,7 @@
 										<h4>
 											{{$division->pmodel()->htmlAnchor()}}
 											{{$division->pmodel()->htmlDebugCode()}}
-											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+											{{$division->pmodel()->htmlBelongs()}}
 										</h4>
 {{if $subtree->suffix_count('区')}}
 										<p class="count">{{strip}}
@@ -161,7 +161,7 @@
 													<h4>
 														{{$division->pmodel()->htmlAnchor()}}
 														{{$division->pmodel()->htmlDebugCode()}}
-														<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+														{{$division->pmodel()->htmlBelongs()}}
 													</h4>
 												</header>
 											</article>
@@ -193,7 +193,7 @@
 										<h4>
 											{{$division->pmodel()->htmlAnchor()}}
 											{{$division->pmodel()->htmlDebugCode()}}
-											<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+											{{$division->pmodel()->htmlBelongs()}}
 										</h4>
 									</header>
 								</article>
@@ -212,7 +212,7 @@
 								<h4>
 									{{$division->pmodel()->htmlAnchor()}}
 									{{$division->pmodel()->htmlDebugCode()}}
-									<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+									{{$division->pmodel()->htmlBelongs()}}
 								</h4>
 								<p class="count">{{strip}}
 									{{foreach from=$subtree->suffix_count() key=suffix item=cur_count}}
@@ -232,7 +232,7 @@
 											<h5>
 												{{$division->pmodel()->htmlAnchor()}}
 												{{$division->pmodel()->htmlDebugCode()}}
-												<span class="belongs badge badge-semilight font-weight-light">{{$division->get_belongs_name()}}</span>
+												{{$division->pmodel()->htmlBelongs()}}
 											</h5>
 										</header>
 									</article>
