@@ -11,9 +11,6 @@ class Model_Division extends Model_Base
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	public $_children = [];
-	public $_count = [];
-
 	public function validation($is_new = false, $factory = null)
 	{
 		$validation = Validation::forge($factory);
@@ -54,12 +51,6 @@ class Model_Division extends Model_Base
 	{
 		return Helper_Html::wiki($this->source);
 	} // function get_source()
-
-	public static function get_suffix($name)
-	{
-		$result = preg_match(static::RE_SUFFIX, $name, $matches);
-		return $result ? $matches['suffix'] : '';
-	} // function get_suffix()
 
 	public static function get_all_id()
 	{
@@ -595,6 +586,24 @@ class Model_Division extends Model_Base
 		}
 		return $name;
 	} // function get_fullname()
+
+	public function suffix_classification()
+	{
+		switch ($this->suffix)
+		{
+			default:
+				return $this->suffix;
+
+			case '町':
+			case '村':
+				return = '町村';
+
+			case '支庁':
+			case '振興局':
+			case '総合振興局':
+				return '支庁';
+		}
+	}
 
 	public function create($input)
 	{

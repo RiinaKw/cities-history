@@ -157,7 +157,7 @@ class Controller_Division extends Controller_Base
 				$divisions = Model_Event::get_relative_division($event->event_id);
 				if ($divisions)
 				{
-					foreach ($divisions as &$d)
+					foreach ($divisions as $d)
 					{
 						$d_path = $d->get_path();
 						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);

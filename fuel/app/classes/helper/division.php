@@ -12,7 +12,7 @@ class Helper_Division
 		];
 	} // function get_children_url()
 
-	public static function url($division)
+	public static function url(Model_Division $division): string
 	{
 		return Helper_Uri::create(
 			'division.detail',

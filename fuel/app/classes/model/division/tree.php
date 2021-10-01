@@ -7,7 +7,7 @@ class Model_Division_Tree
 	protected $children = [];
 	protected $ref = [];
 
-	public function __construct($division)
+	public function __construct(Model_Division $division)
 	{
 		$this->self = $division;
 		$this->suffix_arr = [
@@ -54,21 +54,15 @@ class Model_Division_Tree
 
 	protected function create_subtree($division)
 	{
-		$name = $division->path;
-		$names = explode('/', $name);
-		array_shift($names);
-		array_pop($names);
+		$name = basename($division->path);
+		$suffix = $division->suffix_classification();
 
-		foreach ($names as $name) {
-			$suffix = Model_Division::get_suffix($name);
-			$tree = new self($name, $name);
-			if (! isset($this->children[$suffix])) {
-				$this->children[$suffix] = new \Helper_Iterator;
-			}
-			$this->children[$suffix]->push($tree, $name);
-			return $tree;
+		$tree = new self($division);
+		if (! isset($this->children[$suffix])) {
+			$this->children[$suffix] = new \Helper_Iterator;
 		}
-		return null;
+		$this->children[$suffix]->push($tree, $name);
+		return $tree;
 	}
 
 	protected function add($division, $name = '')
@@ -93,22 +87,11 @@ class Model_Division_Tree
 			$child_path = '';
 		}
 
-		switch ($suffix)
-		{
-			case '町':
-			case '村':
-				$suffix = '町村';
-			break;
-
-			case '支庁':
-			case '振興局':
-			case '総合振興局':
-				$suffix = '支庁';
-			break;
-		}
+		$suffix = $division->suffix_classification();
 
 		if (strpos($parent_path, '/') === false) {
 			//$names = explode('/', $name);
+
 			$parent_id_path = dirname($division->id_path) . '/';
 			if ($tree = $this->get_subtree_by_division($division)) {
 				$tree->self = $division;
@@ -124,11 +107,10 @@ class Model_Division_Tree
 			$tree = $this->get_subtree_by_division($division);
 			if ( $tree === null ) {
 				$tree = $this->create_subtree($division);
-				$tree->add($division, $division->fullname);
 			}
 			$tree->add($division, $division->fullname);
 		}
-		$this->ref[$division->id_path] = &$tree;
+		$this->ref[$division->id_path] = $tree;
 	}
 
 	public static function dump_division($division, $nest = 0)
@@ -139,10 +121,11 @@ class Model_Division_Tree
 
 	public function dump($depth = 2)
 	{
-		//var_dump($this->suffix_arr);
 		static::dump_division($this->self, $depth);
+		$indent = str_repeat(' ', $depth + 2);
 		foreach ($this->children as $suffix => $children) {
-			$children->dump($depth + 2);
+			echo $indent, $suffix, PHP_EOL;
+			$children->dump($depth + 4);
 		}
 	}
 } // class Model_Division_Tree

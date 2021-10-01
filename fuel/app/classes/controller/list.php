@@ -57,7 +57,6 @@ class Controller_List extends Controller_Base
 		$content->day = $day;
 		$content->division = $top_division;
 		$content->tree = $tree;
-
 		return $content;
 	} // function action_detail()
 
