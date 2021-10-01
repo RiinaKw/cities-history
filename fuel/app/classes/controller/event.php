@@ -61,7 +61,7 @@ class Controller_Event extends Controller_Base
 				{
 					continue;
 				}
-				$divisions = Model_Division::set_path($item['division']);
+				$divisions = Table_Division::set_path($item['division']);
 				$division = array_pop($divisions);
 
 				if ($item['delete'])
@@ -155,7 +155,7 @@ class Controller_Event extends Controller_Base
 			foreach ($arr as $item)
 			{
 				$id = $item['id'];
-				$divisions = Model_Division::set_path($item['division']);
+				$divisions = Table_Division::set_path($item['division']);
 				$division = array_pop($divisions);
 
 				if ($item['delete'])

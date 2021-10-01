@@ -40,7 +40,7 @@ class Controller_List extends Controller_Base
 		$top_division = null;
 		if ($path)
 		{
-			$top_division = Model_Division::get_by_path($path);
+			$top_division = Table_Division::get_by_path($path);
 			if ( ! $top_division || $top_division->get_path() != $path)
 			{
 				throw new HttpNotFoundException('自治体が見つかりません。');
@@ -63,7 +63,7 @@ class Controller_List extends Controller_Base
 	public function action_search()
 	{
 		$q = Helper_String::to_hiragana(Input::get('q'));
-		$result = Model_Division::search($q);
+		$result = Table_Division::search($q);
 
 		if (strpos(strtolower($q), 'coffee') !== false) {
 			$code = 418;

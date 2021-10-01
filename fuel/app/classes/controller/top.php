@@ -11,7 +11,7 @@ class Controller_Top extends Controller_Base
 	{
 		// create Presenter object
 		$content = Presenter::forge('top', 'view', null, 'top.tpl');
-		$content->divisions = Model_Division::get_top_level();
+		$content->divisions = Table_Division::get_top_level();
 
 		return $content;
 	} // function action_index()

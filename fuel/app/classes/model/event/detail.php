@@ -32,7 +32,7 @@ class Model_Event_Detail extends Model_Base
 			->where('d.is_refer', '=', false)
 			->where('e.deleted_at', '=', null)
 			->where('d.deleted_at', '=', null);
-		if (is_array($divisions))
+		if (is_array($divisions) || $divisions instanceof Fuel\Core\Database_Result_Cached)
 		{
 			$ids = [];
 			foreach ($divisions as $division) {
