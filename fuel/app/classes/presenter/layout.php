@@ -2,13 +2,8 @@
 
 class Presenter_Layout extends Presenter_Base
 {
-	protected $_layout;
-	protected $_user;
-
 	public function after()
 	{
-		$user_id = Session::get('user_id');
-		$this->_user = Model_User::find_by_pk($user_id);
 		$q = Input::get('q');
 
 		// get view parameters
@@ -30,7 +25,9 @@ class Presenter_Layout extends Presenter_Base
 
 		// set to template
 		$this->q = $q;
-		$this->user = $this->_user;
+
+		$user_id = Session::get('user_id');
+		$this->user = Model_User::find_by_pk($user_id);
 
 		$this->title = $title;
 		$this->page_title = $page_title;

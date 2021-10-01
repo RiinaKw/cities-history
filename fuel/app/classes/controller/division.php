@@ -208,7 +208,7 @@ class Controller_Division extends Controller_Base
 
 	public function action_add()
 	{
-		if ( ! $this->_user)
+		if ( ! $this->user())
 		{
 			throw new HttpNoAccessException('permission denied');
 		}
@@ -234,7 +234,7 @@ class Controller_Division extends Controller_Base
 
 	public function action_add_csv()
 	{
-		if ( ! $this->_user)
+		if ( ! $this->user())
 		{
 			throw new HttpNoAccessException('permission denied');
 		}
@@ -289,7 +289,7 @@ class Controller_Division extends Controller_Base
 
 	public function action_edit()
 	{
-		if ( ! $this->_user)
+		if ( ! $this->user())
 		{
 			throw new HttpNoAccessException('permission denied');
 		}
@@ -314,7 +314,7 @@ class Controller_Division extends Controller_Base
 
 	public function action_delete()
 	{
-		if ( ! $this->_user)
+		if ( ! $this->user())
 		{
 			throw new HttpNoAccessException('permission denied');
 		}

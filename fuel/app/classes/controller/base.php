@@ -11,15 +11,17 @@ abstract class Controller_Base extends Controller
 {
 	protected $_user = null;
 
+	public function user(): ?Model_User
+	{
+		return Helper_Session::user();
+	}
+
 	public function before()
 	{
 		parent::before();
 
 		Config::load('uri', true);
 		Config::load('common', true);
-
-		$user_id = Session::get('user_id');
-		$this->_user = Model_User::find_by_pk($user_id);
 	} // function before()
 
 	public function after($response)

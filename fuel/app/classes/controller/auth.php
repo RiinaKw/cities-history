@@ -21,7 +21,7 @@ class Controller_Auth extends Controller_Base
 	 */
 	public function action_index()
 	{
-		if ($this->_user)
+		if ($this->user())
 		{
 			// already logined
 			Helper_Uri::redirect('top');
@@ -70,7 +70,7 @@ class Controller_Auth extends Controller_Base
 	public function action_login()
 	{
 		$redirect = Input::get('url');
-		if ($this->_user)
+		if ($this->user())
 		{
 			// already logined
 			if ($redirect)
@@ -139,10 +139,10 @@ class Controller_Auth extends Controller_Base
 	public function action_logout()
 	{
 		$redirect = Input::get('url');
-		if ($this->_user)
+		if ($this->user())
 		{
 			// forget remember-me
-			$user = Model_User::find_by_pk($this->_user->id);
+			$user = $this->user();
 			$user->remember_me_hash = null;
 			$user->save();
 		}

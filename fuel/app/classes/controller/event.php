@@ -13,7 +13,7 @@ class Controller_Event extends Controller_Base
 	{
 		parent::before();
 
-		if ( ! $this->_user)
+		if ( ! $this->user())
 		{
 			throw new HttpNoAccessException('permission denied');
 		}
