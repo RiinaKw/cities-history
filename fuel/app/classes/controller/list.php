@@ -63,23 +63,29 @@ class Controller_List extends Controller_Base
 	public function action_search()
 	{
 		$q = Helper_String::to_hiragana(Input::get('q'));
+
+		$egg_q = strtolower($q);
+		$eggs = [
+			'coffee' => [
+				'code' => 418,
+				'message' => '418 I\'m a teapot : おれはやかんだ (Easter Egg)',
+			],
+			'game' => [
+				'code' => 402,
+				'message' => '402 Payment Required : いくら溶かした？ (Easter Egg)',
+			],
+		];
+		foreach ($eggs as $key => $config) {
+			if (strpos($egg_q, $key) !== false) {
+				$code = $config['code'];
+				$view = Presenter::forge('presenter/error', 'view', null, 'error.tpl');
+				$view->code = $code;
+				$view->message = $config['message'];
+				return Response::forge($view, $code);
+			}
+		}
+
 		$result = Table_Division::search($q);
-
-		if (strpos(strtolower($q), 'coffee') !== false) {
-			$code = 418;
-			$view = Presenter::forge('presenter/error', 'view', null, 'error.tpl');
-			$view->code = $code;
-			$view->message = '418 I\'m a teapot : おれはやかんだ (Easter Egg)';
-			return Response::forge($view, $code);
-		}
-
-		if (strpos(strtolower($q), 'game') !== false) {
-			$code = 402;
-			$view = Presenter::forge('presenter/error', 'view', null, 'error.tpl');
-			$view->code = $code;
-			$view->message = '402 Payment Required : いくら溶かした？ (Easter Egg)';
-			return Response::forge($view, $code);
-		}
 
 		// create Presenter object
 		$content = Presenter::forge('list/search', 'view', null, 'search.tpl');
