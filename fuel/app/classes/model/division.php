@@ -161,17 +161,6 @@ class Model_Division extends Model_Base
 		return implode('', $kana_arr);
 	} // function make_path_kana()
 
-	public function get_parent_id(): int
-	{
-		$id_arr = explode('/', $this->id_path);
-
-		// trim last empty element
-		array_pop($id_arr);
-
-		array_pop($id_arr);
-		return (int)array_pop($id_arr);
-	} // function get_parent_id()
-
 	public function get_parent_path(): string
 	{
 		$path = $this->get_path();

@@ -54,7 +54,7 @@ class Model_Division_Tree
 
 	protected function create_subtree(Model_Division $division)
 	{
-		$name = basename($division->path);
+		$name = $division->get_fullname();
 		$suffix = $division->suffix_classification();
 
 		$tree = new self($division);
@@ -90,8 +90,6 @@ class Model_Division_Tree
 		$suffix = $division->suffix_classification();
 
 		if (strpos($parent_path, '/') === false) {
-			//$names = explode('/', $name);
-
 			$parent_id_path = dirname($division->id_path) . '/';
 			if ($tree = $this->get_subtree_by_division($division)) {
 				$tree->self = $division;
