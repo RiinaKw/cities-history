@@ -14,13 +14,6 @@ abstract class Controller_Base extends Controller
 {
 	protected $session_user = null;
 
-	public function __construct()
-	{
-		parent::__construct();
-
-		$this->session_user = new SessionItem('user_id');
-	}
-
 	protected function user(): ?Model_User
 	{
 		$user_id = $this->session_user->get();
@@ -56,6 +49,8 @@ abstract class Controller_Base extends Controller
 
 		Config::load('uri', true);
 		Config::load('common', true);
+
+		$this->session_user = new SessionItem('user_id');
 	}
 	// function before()
 
