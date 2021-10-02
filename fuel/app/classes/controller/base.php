@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Helper\Session\Item as SessionItem;
+
 /**
  * The Base Controller.
  *
@@ -10,11 +12,19 @@
  */
 abstract class Controller_Base extends Controller
 {
-	protected $user = null;
+	protected $session_user = null;
+
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->session_user = new SessionItem('user_id');
+	}
 
 	protected function user(): ?Model_User
 	{
-		return Helper_Session::user();
+		$user_id = $this->session_user->get();
+		return $user_id ? Model_User::find_by_pk($user_id) : null;
 	}
 
 	protected function requireUser(): void

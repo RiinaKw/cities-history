@@ -182,9 +182,9 @@ class Controller_Event extends Controller_Base
 			$this->session_url->redirect();
 		} catch (Exception $e) {
 			// internal error
-			Debug::dump($e);exit;
+			//Debug::dump($e);exit;
 			DB::rollback_transaction();
-			throw new HttpServerErrorException($e->getMessage());
+			throw $e;
 		}
 		// try
 
@@ -192,9 +192,6 @@ class Controller_Event extends Controller_Base
 	}
 	// function action_edit()
 
-	/**
-	 * @SuppressWarnings(PHPMD.ExitExpression)
-	 */
 	public function action_delete($event_id)
 	{
 		$event = $this->requireEvent($event_id);
@@ -204,7 +201,7 @@ class Controller_Event extends Controller_Base
 		$this->activity('delete event', $event->id);
 
 		Debug::dump($event_id, Input::post());
-		exit;
+		//exit;
 	}
 	// function action_delete()
 }

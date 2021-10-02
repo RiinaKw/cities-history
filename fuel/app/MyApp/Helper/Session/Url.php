@@ -1,14 +1,15 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper\Session;
 
 use Response;
 use Helper_Uri;
 
+/**
+ * URL の保存に特化したセッション
+ *
+ * @package  App\Helper\Session
+ */
 class Url extends Item
 {
 	/**
@@ -17,7 +18,8 @@ class Url extends Item
 	public function set_url()
 	{
 		$this->set(Helper_Uri::current());
-	} // function set()
+	}
+	// function set()
 
 	/**
 	 * 登録された URL へリダイレクト
@@ -29,5 +31,6 @@ class Url extends Item
 		$url = $this->get();
 		$this->delete();
 		Response::redirect($url, 'location', $code);
-	} // function redirect()
+	}
+	// function redirect()
 }

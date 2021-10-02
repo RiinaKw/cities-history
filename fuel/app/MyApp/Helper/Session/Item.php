@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper\Session;
 
 use Session;
@@ -13,7 +9,7 @@ use Session;
  *
  * FuelPHP の Session と違うところは、キーを後から変更できないという点
  *
- * @package  app\Helper\Session
+ * @package  App\Helper\Session
  */
 class Item
 {
