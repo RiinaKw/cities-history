@@ -37,7 +37,7 @@ class Model_Event extends Model_Base
 		return $object;
 	}
 	// function create()
-
+/*
 	public static function get_relative_division($event_id): Fuel\Core\Database_Result_Cached
 	{
 		$query = DB::select(
@@ -59,7 +59,7 @@ class Model_Event extends Model_Base
 		return $query->as_object('Model_Division')->execute();
 	}
 	// function get_relative_division()
-
+*/
 	public function delete()
 	{
 		$detail = Model_Event_Detail::find_by_event_id($this->id);

@@ -1,6 +1,7 @@
 <?php
 
 use MyApp\Table\Division as DivisionTable;
+use MyApp\Model\Division\Tree;
 
 /**
  * The List Controller.
@@ -46,7 +47,7 @@ class Controller_List extends Controller_Base
 			}
 		}
 
-		$tree = $top_division->get_tree($date);
+		$tree = Tree::create($top_division, $date);
 
 		// create Presenter object
 		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');

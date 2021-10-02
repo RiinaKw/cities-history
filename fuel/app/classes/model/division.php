@@ -53,13 +53,6 @@ class Model_Division extends Model_Base
 	}
 	// function validation()
 
-	public function get_tree($date): Tree
-	{
-		$divisions = DivisionTable::get_by_parent_division_and_date($this, $date);
-		$tree = new Tree($this);
-		return $tree->make_tree($divisions);
-	}
-
 	/**
 	 * パス形式の ID を分割し、各 ID ごとにコールバックを実行
 	 * @param callable $callback  コールバック関数
@@ -96,7 +89,7 @@ class Model_Division extends Model_Base
 	{
 		$name_arr = [];
 		$this->id_chain(function ($d) use (&$name_arr) {
-			$name_arr[] = $d->get_fullname();
+			$name_arr[] = $d->fullname;
 		});
 		return implode('/', $name_arr);
 	}
@@ -154,83 +147,69 @@ class Model_Division extends Model_Base
 	// function make_path_kana()
 
 	/**
-	 * @todo DB に「fullname」って必要なくない？ マジックメソッド配下にしたいんだけど
+	 * @todo DB に「fullname」って必要なくない？
 	 */
 	public function __get($key)
 	{
-		switch ($key) {
-			default:
-				return parent::__get($key);
-
-			case 'fullname_kana':
+		$arr = [
+			'fullname' => function () {
+				// 下仁田町(1955-)
+				return $this->name
+					. ($this->show_suffix ? $this->suffix : '')
+					. ($this->identifier ? "({$this->identifier})" : '');
+			},
+			'fullname_kana' => function () {
+				// しもにた・まち
 				return $this->name_kana . ($this->show_suffix ? '・' . $this->suffix_kana : '');
-
-			case 'search_fullname':
+			},
+			'search_fullname' => function () {
+				// 下仁田町
 				return $this->name . ($this->show_suffix ? $this->suffix : '');
-
-			case 'search_fullname_kana':
+			},
+			'search_fullname_kana' => function () {
+				// しもにたまち
 				return $this->name_kana . ($this->show_suffix ? $this->suffix_kana : '');
+			},
+		];
+		return isset($arr[$key]) ? $arr[$key]() : parent::__get($key);
+	}
 
-			case 'parent_path':
-				$path = $this->get_path();
-				if (strpos($path, '/') !== false) {
-					return dirname($path);
-				}
-				return null;
+	public function get_parent_path(): ?string
+	{
+		$path = $this->get_path();
+		if (strpos($path, '/') !== false) {
+			return dirname($path);
 		}
+		return null;
 	}
 
 	public function get_belongs_path(): ?string
 	{
-		if ($this->belongs_division_id) {
-			$division = self::find_by_pk($this->belongs_division_id);
+		$division = $this->belongs();
+		if ($division) {
 			return $division->get_path();
-		} else {
-			return null;
 		}
+		return null;
 	}
 	// function get_belongs_path()
 
 	public function get_belongs_name(): ?string
 	{
-		if ($this->belongs_division_id) {
-			$division = self::find_by_pk($this->belongs_division_id);
-			return $division->get_fullname();
-		} else {
-			return null;
+		$division = $this->belongs();
+		if ($division) {
+			return $division->fullname;
 		}
+		return null;
 	}
 	// function get_belongs_name()
 
-	public function suffix_classification(): string
+	public function belongs(): ?self
 	{
-		switch ($this->suffix) {
-			default:
-				return $this->suffix;
-
-			case '町':
-			case '村':
-				return '町村';
-
-			case '支庁':
-			case '振興局':
-			case '総合振興局':
-				return '支庁';
+		if ($this->belongs_division_id) {
+			return self::find_by_pk($this->belongs_division_id);
 		}
+		return null;
 	}
-
-	public function get_fullname(): string
-	{
-		$name = $this->name;
-		if ($this->show_suffix) {
-			$name .= $this->suffix;
-		}
-		if ($this->identifier) {
-			$name .= "({$this->identifier})";
-		}
-		return $name;
-	}
-	// function get_fullname()
 
 	/**
 	 * 必要なパラメータが設定されている場合のみコールバックを実行
@@ -290,10 +269,10 @@ class Model_Division extends Model_Base
 		$this->search_path_kana = '';
 		$this->save();
 
-		$path = $parent . '/' . $this->get_fullname();
+		$path = $parent . '/' . $this->fullname;
 		$this->id_path = self::make_id_path($path, $this->id);
 
-		$this->fullname         = $this->get_fullname();
+		$this->fullname         = $this->fullname;
 		$this->path             = $this->make_path();
 
 		$this->search_path      = $this->make_search_path();

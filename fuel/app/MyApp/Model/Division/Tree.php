@@ -86,10 +86,17 @@ class Tree
 		return $this->ref[$parent_id_path] ?? null;
 	}
 
+	public static function create(Model_Division $division, string $date): self
+	{
+		$divisions = DivisionTable::get_by_parent_division_and_date($division, $date);
+		$tree = new static($division);
+		return $tree->make_tree($divisions);
+	}
+
 	protected function create_subtree(Model_Division $division): self
 	{
 		$name = $division->get_fullname();
-		$suffix = $division->suffix_classification();
+		$suffix = $division->pmodel()->suffix_classification();
 
 		$tree = new self($division);
 		if (! isset($this->children[$suffix])) {
@@ -112,7 +119,7 @@ class Tree
 		++$this->suffix_arr[$suffix];
 
 		$parent_path = dirname($name);
-		$suffix = $division->suffix_classification();
+		$suffix = $division->pmodel()->suffix_classification();
 
 		if (strpos($parent_path, '/') === false) {
 			if ($tree = $this->get_subtree_by_division($division)) {

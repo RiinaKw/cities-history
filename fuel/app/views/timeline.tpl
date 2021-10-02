@@ -92,9 +92,9 @@
 										data-toggle="tooltip"
 										title="{{$d->get_path()|escape}}">
 {{if $division.id == $d.id}}
-										<b>{{$d->get_fullname()|escape}}</b>
+										<b>{{$d->fullname|escape}}</b>
 {{else}}
-										{{$d->get_fullname()|escape}}
+										{{$d->fullname|escape}}
 {{/if}}
 									</a>
 								</li>

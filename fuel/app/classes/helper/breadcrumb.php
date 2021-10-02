@@ -17,7 +17,7 @@ class Helper_Breadcrumb
 			$ids = explode('/', substr($division->id_path, 0, -1));
 			foreach ($ids as $id) {
 				$parent = Model_Division::find_by_pk($id);
-				$fullname = $parent->get_fullname();
+				$fullname = $parent->fullname;
 				$cur_path .= ($cur_path ? '/' : '') . $fullname;
 				$breadcrumbs[$fullname] = Helper_Uri::create($item_uri, ['path' => $cur_path]);
 			}

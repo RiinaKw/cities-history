@@ -1,21 +1,16 @@
 <?php
 
 use MyApp\Table\Division as DivisionTable;
+use MyApp\Table\Event as EventTable;
 
 /**
  * The Division Controller.
  *
  * @package  App\Controller
  * @extends  Controller_Base
- *
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @todo PHPMD をなんとかしろ
  */
 class Controller_Division extends Controller_Base
 {
-	protected const SESSION_LIST = 'division';
-
 	protected function requirePath(): Model_Division
 	{
 		$path = $this->param('path');
@@ -28,7 +23,7 @@ class Controller_Division extends Controller_Base
 
 	protected function events(Model_Division $division): array
 	{
-		$events = Model_Event_Detail::get_by_division($division);
+		$events = EventTable::get_by_division($division);
 		// 終了インベントを先頭に
 		foreach ($events as $key => $event) {
 			if ($event->event_id === $division->end_event_id) {
@@ -71,7 +66,7 @@ class Controller_Division extends Controller_Base
 					$event->death = true;
 					break;
 			}
-			$divisions = Model_Event::get_relative_division($event->event_id);
+			$divisions = EventTable::get_relative_division($event->event_id);
 			foreach ($divisions as $d) {
 				$d->split = ($d->result == '分割廃止');
 				$d->li_class = $d->pmodel()->htmlClass();
@@ -80,16 +75,12 @@ class Controller_Division extends Controller_Base
 		}
 		// foreach ($events as &$event)
 
-		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
-
-		Session::set(self::SESSION_LIST, Helper_Uri::current());
-
 		// create Presenter object
 		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
 		$content->current = 'detail';
 		$content->path = $division->get_path();
 		$content->division = $division;
-		$content->belongs_division = $belongs_division;
+		$content->belongs_division = $division->belongs();
 		$content->events = $events;
 
 		return $content;
@@ -106,7 +97,7 @@ class Controller_Division extends Controller_Base
 		$divisions = DivisionTable::get_by_parent_division_and_date($division);
 		$events_arr = [];
 		if (count($divisions)) {
-			$events = Model_Event_Detail::get_by_division($divisions, $start, $end);
+			$events = EventTable::get_by_division($divisions, $start, $end);
 			foreach ($events as $event) {
 				if (isset($events_arr[$event->event_id])) {
 					continue;
@@ -129,7 +120,7 @@ class Controller_Division extends Controller_Base
 						break;
 				}
 
-				$divisions = Model_Event::get_relative_division($event->event_id);
+				$divisions = EventTable::get_relative_division($event->event_id);
 				foreach ($divisions as $d) {
 					$d->split = ($d->result == '分割廃止');
 					$d->li_class = $d->pmodel()->htmlClass();
@@ -140,14 +131,12 @@ class Controller_Division extends Controller_Base
 		}
 		// if ($division_id_arr)
 
-		Session::set(self::SESSION_LIST, Helper_Uri::current());
-
 		// create Presenter object
 		$content = Presenter::forge('division/children', 'view', null, 'timeline.tpl');
 		$content->current = $label;
 		$content->path = $division->get_path();
 		$content->division = $division;
-		$content->belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
+		$content->belongs_division = $division->belongs();
 		$content->events = $events_arr;
 
 		return $content;
@@ -156,9 +145,7 @@ class Controller_Division extends Controller_Base
 
 	public function post_add()
 	{
-		if (! $this->user()) {
-			throw new HttpNoAccessException('permission denied');
-		}
+		$this->requireUser();
 
 		try {
 			DB::start_transaction();
@@ -166,11 +153,7 @@ class Controller_Division extends Controller_Base
 			$division = Model_Division::forge();
 			$division->create(Input::post());
 
-			Model_Activity::insert_log([
-				'user_id' => Session::get('user_id'),
-				'target' => 'add division',
-				'target_id' => $division->id,
-			]);
+			$this->activity('add division', $division->id);
 
 			$path_new = $division->get_path();
 			DB::commit_transaction();
@@ -186,16 +169,14 @@ class Controller_Division extends Controller_Base
 			throw new HttpServerErrorException($e->getMessage());
 		}
 
-		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
+		$this->redirect('division.detail', ['path' => $path_new]);
 		return;
 	}
 	// function action_add()
 
 	public function post_add_csv()
 	{
-		if (! $this->user()) {
-			throw new HttpNoAccessException('permission denied');
-		}
+		$this->requireUser();
 
 		try {
 			DB::start_transaction();
@@ -231,7 +212,7 @@ class Controller_Division extends Controller_Base
 
 			DB::commit_transaction();
 
-			Helper_Uri::redirect('division.detail', ['path' => $division->get_path()]);
+			$this->redirect('division.detail', ['path' => $division->get_path()]);
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
@@ -243,9 +224,8 @@ class Controller_Division extends Controller_Base
 
 	public function action_edit()
 	{
-		if (! $this->user()) {
-			throw new HttpNoAccessException('permission denied');
-		}
+		$this->requireUser();
+
 		$input = Input::post();
 		$input['is_unfinished'] = isset($input['is_unfinished']) ? $input['is_unfinished'] : false;
 
@@ -256,17 +236,13 @@ class Controller_Division extends Controller_Base
 			$division = DivisionTable::get_by_path($path);
 			$division->create($input);
 
-			Model_Activity::insert_log([
-				'user_id' => Session::get('user_id'),
-				'target' => 'edit division',
-				'target_id' => $division->id,
-			]);
+			$this->activity('edit division', $division->id);
 
 			DB::commit_transaction();
 
 			$path_new = $division->get_path();
 
-			Helper_Uri::redirect('division.detail', ['path' => $path_new]);
+			$this->redirect('division.detail', ['path' => $path_new]);
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
@@ -279,24 +255,18 @@ class Controller_Division extends Controller_Base
 
 	public function action_delete()
 	{
-		if (! $this->user()) {
-			throw new HttpNoAccessException('permission denied');
-		}
+		$this->requireUser();
 
 		$path = $this->param('path');
 		$division = DivisionTable::get_by_path($path);
 		$division->soft_delete();
 
-		Model_Activity::insert_log([
-			'user_id' => Session::get('user_id'),
-			'target' => 'delete division',
-			'target_id' => $division->id,
-		]);
+		$this->activity('delete division', $division->id);
 
-		if ($division->parent_path) {
-			Helper_Uri::redirect('division.detail', ['path' => $division->parent_path]);
+		if ($division->get_parent_path()) {
+			$this->redirect('division.detail', ['path' => $division->get_parent_path()]);
 		} else {
-			Helper_Uri::redirect('top');
+			$this->redirect('top');
 		}
 	}
 	// function action_delete()

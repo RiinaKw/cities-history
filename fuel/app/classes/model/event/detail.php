@@ -26,7 +26,7 @@ class Model_Event_Detail extends Model_Base
 		return $validation;
 	}
 	// function validation()
-
+/*
 	public static function get_by_division($divisions, $start_date = null, $end_date = null)
 	{
 		$query = DB::select('d.*', 'e.title', 'e.date', 'e.comment', 'e.source')
@@ -58,7 +58,7 @@ class Model_Event_Detail extends Model_Base
 		return $query->as_object('Model_Event_Detail')->execute()->as_array();
 	}
 	// function get_by_division()
-
+*/
 	public function get_source()
 	{
 		$content = nl2br($this->source);

@@ -17,6 +17,23 @@ class Division
 		$this->model = $model;
 	}
 
+	public function suffix_classification(): string
+	{
+		switch ($this->suffix) {
+			default:
+				return $this->suffix;
+
+			case '町':
+			case '村':
+				return '町村';
+
+			case '支庁':
+			case '振興局':
+			case '総合振興局':
+				return '支庁';
+		}
+	}
+
 	public function kana()
 	{
 		$ids = explode('/', substr($this->model->id_path, 0, -1));
@@ -56,7 +73,7 @@ class Division
 	public function htmlAnchor(string $label = ''): string
 	{
 		if (! $label) {
-			$label = $this->model->get_fullname();
+			$label = $this->model->fullname;
 		}
 		$url = $this->url();
 		$class = $this->model->is_unfinished ? 'unfinished' : '';
