@@ -18,15 +18,12 @@ class Controller_Event extends Controller_Base
 		parent::before();
 
 		$this->session_url = new SessionUrl('division');
-		$this->session_url->set();
 
-		if (! $this->user()) {
-			throw new HttpNoAccessException('permission denied');
-		}
+		$this->requireUser();
 	}
 	// function before()
 
-	protected function requireEvent($event_id): Model_Division
+	protected function requireEvent($event_id): Model_Event
 	{
 		$event = Model_Event::find_by_pk($event_id);
 		if (! $event) {
@@ -114,7 +111,7 @@ class Controller_Event extends Controller_Base
 				$division = array_pop($divisions);
 
 				$item['id'] = 'new';
-				$this->submitDetails($item, $event->id, $divisions->id);
+				$this->submitDetails($item, $event->id, $division->id);
 
 				if ($item['birth']) {
 					$division->start_event_id = $event->id;
@@ -142,7 +139,7 @@ class Controller_Event extends Controller_Base
 	}
 	// function post_add()
 
-	public function action_edit($event_id)
+	public function post_edit($event_id)
 	{
 		$event = $this->requireEvent($event_id);
 
@@ -161,7 +158,7 @@ class Controller_Event extends Controller_Base
 				$divisions = DivisionTable::set_path($item['division']);
 				$division = array_pop($divisions);
 
-				$this->submitDetails($item, $event->id, $divisions->id);
+				$this->submitDetails($item, $event->id, $division->id);
 
 				if ($item['birth']) {
 					$division->start_event_id = $event->id;
@@ -181,14 +178,16 @@ class Controller_Event extends Controller_Base
 			$this->activity('edit event', $event->id);
 
 			DB::commit_transaction();
+
+			$this->session_url->redirect();
 		} catch (Exception $e) {
 			// internal error
+			Debug::dump($e);exit;
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		}
 		// try
 
-		$this->session_url->redirect();
 		return;
 	}
 	// function action_edit()

@@ -6,14 +6,17 @@
 
 namespace MyApp\Helper\Session;
 
+use Response;
+use Helper_Uri;
+
 class Url extends Item
 {
 	/**
 	 * 現在の URL を登録
 	 */
-	public function set()
+	public function set_url()
 	{
-		parent::set(Helper_Uri::current());
+		$this->set(Helper_Uri::current());
 	} // function set()
 
 	/**

@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Table\Division as DivisionTable;
+
 /**
  * The Rest Division Controller.
  *
@@ -14,7 +16,7 @@ class Controller_Rest_Division extends Controller_Rest
 
 		$query = Input::get('query');
 
-		$divisions = Model_Division::query($query);
+		$divisions = DivisionTable::query($query);
 		$sql = DB::last_query();
 		$pathes = [];
 		foreach ($divisions as $division) {

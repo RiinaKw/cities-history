@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Table\Event as EventTable;
+
 /**
  * The Rest Event Controller.
  *
@@ -23,7 +25,7 @@ class Controller_Rest_Event extends Controller_Rest
 		}
 		// if ( ! $event)
 
-		$divisions = Model_Event::get_relative_division($event_id);
+		$divisions = EventTable::get_relative_division($event_id);
 		$response = [];
 		foreach ($divisions as $division) {
 			$response[] = [

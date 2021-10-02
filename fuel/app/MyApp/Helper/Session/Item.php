@@ -6,6 +6,8 @@
 
 namespace MyApp\Helper\Session;
 
+use Session;
+
 /**
  * 特定のセッションを管理するヘルパークラス
  *

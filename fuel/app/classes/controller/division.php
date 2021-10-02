@@ -2,6 +2,7 @@
 
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Table\Event as EventTable;
+use MyApp\Helper\Session\Url as SessionUrl;
 
 /**
  * The Division Controller.
@@ -11,6 +12,17 @@ use MyApp\Table\Event as EventTable;
  */
 class Controller_Division extends Controller_Base
 {
+	protected $session_url = null;
+
+	public function before()
+	{
+		parent::before();
+
+		$this->session_url = new SessionUrl('division');
+		$this->session_url->set_url();
+	}
+	// function before()
+
 	protected function requirePath(): Model_Division
 	{
 		$path = $this->param('path');
