@@ -2166,40 +2166,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_htmlBelongs"
         },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AvalidKana\u0028\u0029",
-            "name": "validKana",
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AisValid\u0028\u0029",
+            "name": "isValid",
             "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_validKana"
-        },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AvalidStart\u0028\u0029",
-            "name": "validStart",
-            "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_validStart"
-        },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AvalidEnd\u0028\u0029",
-            "name": "validEnd",
-            "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_validEnd"
-        },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AvalidCode\u0028\u0029",
-            "name": "validCode",
-            "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_validCode"
-        },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AvalidSource\u0028\u0029",
-            "name": "validSource",
-            "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_validSource"
+            "url": "classes/MyApp-PresentationModel-Division.html#method_isValid"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AisWikipedia\u0028\u0029",
             "name": "isWikipedia",
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_isWikipedia"
         },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AvalidAll\u0028\u0029",
-            "name": "validAll",
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AisValidAll\u0028\u0029",
+            "name": "isValidAll",
             "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_validAll"
+            "url": "classes/MyApp-PresentationModel-Division.html#method_isValidAll"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003A\u0024model",
             "name": "model",

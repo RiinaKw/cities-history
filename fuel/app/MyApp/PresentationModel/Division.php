@@ -52,35 +52,32 @@ class Division
 		}
 	}
 
-	public function validKana(): bool
+	public function isValid(string $type): bool
 	{
-		return $this->model->name_kana && $this->model->suffix_kana;
-	}
-
-	public function validStart(): bool
-	{
-		return (bool)$this->model->start_event_id;
-	}
-
-	public function validEnd(): bool
-	{
-		return (bool)$this->model->end_event_id;
-	}
-
-	public function validCode(): bool
-	{
-		$end_event = \Model_Event::find_by_pk($this->model->end_event_id);
-		return
-			($this->model->suffix == '郡')
-			||
-			$this->model->government_code
-			||
-			$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
-	}
-
-	public function validSource(): bool
-	{
-		return (bool)strlen($this->model->source);
+		$def = [
+			'kana' => function ($d) {
+				return $d->name_kana && $d->suffix_kana;
+			},
+			'start' => function ($d) {
+				return (bool)$d->start_event_id;
+			},
+			'end' => function ($d) {
+				return (bool)$d->end_event_id;
+			},
+			'source' => function ($d) {
+				return (bool)strlen($this->model->source);
+			},
+			'code' => function ($d) {
+				$end_event = \Model_Event::find_by_pk($d->end_event_id);
+				return
+					($d->suffix == '郡')
+					||
+					$d->government_code
+					||
+					$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
+			},
+		];
+		return $def[$type] ? $def[$type]($this->model) : false;
 	}
 
 	public function isWikipedia(): bool
@@ -88,14 +85,14 @@ class Division
 		return stripos($this->model->source, 'wikipedia');
 	}
 
-	public function validAll(): bool
+	public function isValidAll(): bool
 	{
 		return
-			$this->validKana()
-			&& $this->validStart()
-			&& $this->validEnd()
-			&& $this->validCode()
-			&& $this->validSource()
+			$this->isValid('kana')
+			&& $this->isValid('start')
+			&& $this->isValid('end')
+			&& $this->isValid('code')
+			&& $this->isValid('source')
 			&& ! $this->isWikipedia();
 	}
 }

@@ -35,35 +35,35 @@
 							<a class="float-left ml-4" href="{{$division.url_belongto}}">所属自治体</a>
 						</header>
 						<div class="card-body p-3">
-{{if ! $pmodel->validKana()}}
+{{if ! $pmodel->isValid('kana')}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-keyboard"></i>
 								<strong>Warning!</strong>
 								かなが入力されていません。
 							</div>
 {{/if}}
-{{if ! $pmodel->validStart()}}
+{{if ! $pmodel->isValid('start')}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-history"></i>
 								<strong>Warning!</strong>
 								開始イベントが指定されていません。
 							</div>
 {{/if}}
-{{if ! $pmodel->validEnd()}}
+{{if ! $pmodel->isValid('end')}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-history"></i>
 								<strong>Warning!</strong>
 								終了イベントが指定されていません。
 							</div>
 {{/if}}
-{{if ! $pmodel->validCode()}}
+{{if ! $pmodel->isValid('code')}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-ban"></i>
 								<strong>Warning!</strong>
 								全国地方公共団体コードが指定されていません。
 							</div>
 {{/if}}
-{{if ! $pmodel->validSource()}}
+{{if ! $pmodel->isValid('source')}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-file"></i>
 								<strong>Warning!</strong>
@@ -77,7 +77,7 @@
 								出典が Wikipedia です。
 							</div>
 {{/if}}
-{{if $pmodel->validAll()}}
+{{if $pmodel->isValidAll()}}
 							<div class="alert alert-success" role="alert">
 								<i class="fa fa-fw fa-check"></i>
 								<strong>Yeah!</strong>
