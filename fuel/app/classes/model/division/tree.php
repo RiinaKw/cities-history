@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Helper\Iterator;
+
 /**
  * @package  App\Model
  */
@@ -23,7 +25,7 @@ class Model_Division_Tree
 			'町' => 0,
 			'村' => 0,
 		];
-		$this->unknown = new \Helper_Iterator();
+		$this->unknown = new Iterator();
 	}
 
 	public function self()
@@ -62,7 +64,7 @@ class Model_Division_Tree
 
 		$tree = new self($division);
 		if (! isset($this->children[$suffix])) {
-			$this->children[$suffix] = new \Helper_Iterator();
+			$this->children[$suffix] = new Iterator();
 		}
 		$this->children[$suffix]->push($tree, $name);
 		return $tree;
@@ -89,7 +91,7 @@ class Model_Division_Tree
 			} else {
 				$tree = new self($division, $division->fullname);
 				if (! isset($this->children[$suffix])) {
-					$this->children[$suffix] = new \Helper_Iterator();
+					$this->children[$suffix] = new Iterator();
 				}
 				$this->children[$suffix]->push($tree, $division->fullname);
 			}

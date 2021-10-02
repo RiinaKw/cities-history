@@ -1,8 +1,13 @@
 <?php
 
-class Helper_Iterator implements \iterator
+/**
+ * @package  App\Helper
+ */
+
+namespace MyApp\Helper;
+
+class Iterator implements \Iterator
 {
-	protected $position = 0;
 	protected $array = [];
 
 	public function __construct()
@@ -37,7 +42,7 @@ class Helper_Iterator implements \iterator
 
 	public function get($key)
 	{
-		return $this->array[$key] ?: null;
+		return $this->array[$key] ?? null;
 	}
 
 	public function push($item, $key = null)
