@@ -14,11 +14,11 @@ class Date
 	 * @var array<int, array<string, int|string>>
 	 */
 	private static $gengoList = [
-		['name' => '令和', 'name_short' => 'R', 'timestamp' =>  1556636400], // 2019-05-01,
-		['name' => '平成', 'name_short' => 'H', 'timestamp' =>  600188400],  // 1989-01-08,
-		['name' => '昭和', 'name_short' => 'S', 'timestamp' => -1357635600], // 1926-12-25'
-		['name' => '大正', 'name_short' => 'T', 'timestamp' => -1812186000], // 1912-07-30
-		['name' => '明治', 'name_short' => 'M', 'timestamp' => -3216790800], // 1868-01-25
+		['name' => '令和', 'name_short' => 'R',  'timestamp' =>  1556636400], // 2019-05-01,
+		['name' => '平成', 'name_short' => 'H',  'timestamp' =>   600188400], // 1989-01-08,
+		['name' => '昭和', 'name_short' => 'S',  'timestamp' => -1357635600], // 1926-12-25'
+		['name' => '大正', 'name_short' => 'T',  'timestamp' => -1812186000], // 1912-07-30
+		['name' => '明治', 'name_short' => 'M',  'timestamp' => -3216790800], // 1868-01-25
 		['name' => '西暦', 'name_short' => 'AD', 'timestamp' => 0]
 	];
 
