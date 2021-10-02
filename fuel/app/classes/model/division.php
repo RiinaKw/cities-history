@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\PresentationModel\Division as PModel;
+
 /**
  * @package  App\Model
  *
@@ -15,9 +17,9 @@ class Model_Division extends Model_Base
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	public function pmodel(): PresentationModel_Division
+	public function pmodel(): PModel
 	{
-		return new PresentationModel_Division($this);
+		return new PModel($this);
 	}
 
 	public function validation()

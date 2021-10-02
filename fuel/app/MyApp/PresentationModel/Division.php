@@ -1,20 +1,23 @@
 <?php
 
 /**
- * @package  App\PresentationModel
+ * @package  App\Helper
  */
-class PresentationModel_Division
+
+namespace MyApp\PresentationModel;
+
+class Division
 {
 	protected $model = null;
 
-	public function __construct(Model_Division $model)
+	public function __construct(\Model_Division $model)
 	{
 		$this->model = $model;
 	}
 
 	public function url()
 	{
-		return Helper_Uri::create(
+		return \Helper_Uri::create(
 			'division.detail',
 			['path' => $this->model->path]
 		);
@@ -32,7 +35,7 @@ class PresentationModel_Division
 
 	public function htmlDebugCode(): string
 	{
-		if (Input::get('debug') && $this->model->government_code) {
+		if (\Input::get('debug') && $this->model->government_code) {
 			return '<span class="government_code">' . $this->model->government_code . '</span>';
 		} else {
 			return '';
@@ -66,7 +69,7 @@ class PresentationModel_Division
 
 	public function validCode(): bool
 	{
-		$end_event = Model_Event::find_by_pk($this->model->end_event_id);
+		$end_event = \Model_Event::find_by_pk($this->model->end_event_id);
 		return
 			($this->model->suffix == '郡')
 			||
