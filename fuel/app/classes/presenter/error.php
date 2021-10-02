@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Presenter
+ */
 class Presenter_Error extends Presenter_Layout
 {
 	public function view()

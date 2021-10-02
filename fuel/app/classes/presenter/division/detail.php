@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Presenter
+ */
 class Presenter_Division_Detail extends Presenter_Layout
 {
 	public function view()

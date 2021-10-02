@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Presenter
+ */
 class Presenter_Admin_Db_List extends Presenter_Layout
 {
 	public function view()

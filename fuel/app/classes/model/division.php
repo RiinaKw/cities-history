@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @package  App\Model
+ *
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  * @todo PHPMD をなんとかしろ
  */

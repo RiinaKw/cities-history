@@ -5,7 +5,7 @@
  *
  * Base of admin controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Base
  */
 abstract class Controller_Admin_Base extends Controller_Base

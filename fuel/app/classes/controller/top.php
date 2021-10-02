@@ -3,7 +3,7 @@
 /**
  * The Top Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Base
  */
 class Controller_Top extends Controller_Base

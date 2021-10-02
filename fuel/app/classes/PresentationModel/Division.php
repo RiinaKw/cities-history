@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\PresentationModel
+ */
 class PresentationModel_Division
 {
 	protected $model = null;

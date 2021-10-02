@@ -3,7 +3,7 @@
 /**
  * The Rest Event Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Rest
  */
 class Controller_Rest_Event extends Controller_Rest

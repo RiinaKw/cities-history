@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Table
+ */
 class Table_Division
 {
 	public const RE_SUFFIX =

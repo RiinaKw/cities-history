@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Presenter
+ */
 class Presenter_List_Detail extends Presenter_Layout
 {
 	protected function _get_path($obj)

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Model
+ */
 class Model_Division_Tree
 {
 	protected $self = null;

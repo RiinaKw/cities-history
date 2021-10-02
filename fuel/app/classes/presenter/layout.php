@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Presenter
+ */
 class Presenter_Layout extends Presenter_Base
 {
 	public function after()

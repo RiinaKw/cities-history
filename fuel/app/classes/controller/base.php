@@ -5,7 +5,7 @@
  *
  * Base class for controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller
  */
 abstract class Controller_Base extends Controller

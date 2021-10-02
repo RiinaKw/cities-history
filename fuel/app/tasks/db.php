@@ -13,6 +13,9 @@
 
 namespace Fuel\Tasks;
 
+/**
+ * @package  App\Task
+ */
 class Db
 {
 	protected static function connection()

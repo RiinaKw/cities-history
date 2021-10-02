@@ -3,7 +3,7 @@
 /**
  * The Division Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Base
  *
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)

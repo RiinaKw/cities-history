@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Model
+ */
 class Model_Activity extends Model_Base
 {
 	protected static $_table_name	= 'activities';

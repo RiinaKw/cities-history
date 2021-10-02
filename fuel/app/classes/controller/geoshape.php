@@ -3,7 +3,7 @@
 /**
  * The Geoshape Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller
  */
 class Controller_Geoshape extends Controller

@@ -5,7 +5,7 @@
  *
  * Admin controller for edit divisions.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Admin_Base
  */
 class Controller_Admin_Divisions extends Controller_Admin_Base

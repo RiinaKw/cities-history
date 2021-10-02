@@ -5,7 +5,7 @@
  *
  * Admin controller for edit date references.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Admin_Base
  */
 class Controller_Admin_Reference extends Controller_Admin_Base

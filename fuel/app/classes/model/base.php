@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Model
+ */
 abstract class Model_Base extends Model_Crud
 {
 	protected static $_deleted_at = 'deleted_at';

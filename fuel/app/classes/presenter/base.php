@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Presenter
+ */
 abstract class Presenter_Base extends Fuel\Core\Presenter
 {
 	/**

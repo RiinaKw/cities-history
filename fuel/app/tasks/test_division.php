@@ -14,17 +14,8 @@
 namespace Fuel\Tasks;
 
 /**
- * Robot example task
- *
- * Ruthlessly stolen from the beareded Canadian sexy symbol:
- *
- *		Derek Allard: http://derekallard.com/
- *
- * @package		Fuel
- * @version		1.0
- * @author		Phil Sturgeon
+ * @package  App\Task
  */
-
 function dump($division, $nest = 0)
 {
 	$indent = str_repeat(' ', $nest);

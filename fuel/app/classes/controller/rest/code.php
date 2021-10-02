@@ -3,7 +3,7 @@
 /**
  * The Rest Code Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Rest
  */
 class Controller_Rest_Code extends Controller_Rest

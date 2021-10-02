@@ -3,7 +3,7 @@
 /**
  * The Page Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Base
  */
 class Controller_Page extends Controller_Base

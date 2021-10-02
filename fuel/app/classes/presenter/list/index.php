@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Presenter
+ */
 class Presenter_List_Index extends Presenter_Layout
 {
 	protected function _get_path($arr)

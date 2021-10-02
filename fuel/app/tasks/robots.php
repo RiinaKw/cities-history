@@ -23,7 +23,6 @@ namespace Fuel\Tasks;
  * @version		1.0
  * @author		Phil Sturgeon
  */
-
 class Robots
 {
 	/**

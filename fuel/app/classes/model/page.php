@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Model
+ */
 class Model_Page extends Model_Base
 {
 	protected static $_table_name	= 'pages';

@@ -3,7 +3,7 @@
 /**
  * The Error Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Base
  */
 class Controller_Error extends Controller_Base

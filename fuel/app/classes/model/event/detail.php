@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Model
+ */
 class Model_Event_Detail extends Model_Base
 {
 	protected static $_table_name  = 'event_details';

@@ -3,7 +3,7 @@
 /**
  * The List Controller.
  *
- * @package  app
+ * @package  App\Controller
  * @extends  Controller_Base
  */
 class Controller_List extends Controller_Base
