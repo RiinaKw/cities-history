@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit colors="true"
+         verbose="true"
+         bootstrap="./fuel/vendor/autoload.php">
+    <testsuites>
+        <testsuite name="App">
+            <directory>fuel/app/tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

@@ -36,3 +36,4 @@ desktop.ini
 
 .htdigest
 .phpdoc
+.phpunit.result.cache
