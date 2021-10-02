@@ -304,7 +304,7 @@ class Table_Division
 		if ($parent) {
 			$query->where('d.id_path', 'LIKE', DB::expr('CONCAT("' . $parent->id_path . '", "_%")'));
 		} else {
-			$query->where('id_path', '=', DB::expr('CONCAT(id, "/")'));
+			$query->where('id_path', '=', DB::expr('CONCAT(d.id, "/")'));
 		}
 
 		switch ($filter) {
@@ -347,7 +347,7 @@ class Table_Division
 				break;
 
 			case 'is_wikipedia':
-				$query->where(DB::expr('LOWER(d.source)'), 'LIKE', 'wikipedia');
+				$query->where(DB::expr('LOWER(d.source)'), 'LIKE', '%wikipedia%');
 				break;
 		}
 
