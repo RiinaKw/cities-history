@@ -1,23 +1,24 @@
 <?php
 
 use MyApp\Table\Division as DivisionTable;
+use MyApp\Helper\Session\Url as SessionUrl;
 
 /**
  * The Event Controller.
  *
  * @package  App\Controller
  * @extends  Controller_Base
- *
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- * @todo PHPMD をなんとかしろ
  */
 class Controller_Event extends Controller_Base
 {
-	protected const SESSION_DIVISION_LIST = 'division';
+	protected $session_url = null;
 
 	public function before()
 	{
 		parent::before();
+
+		$this->session_url = new SessionUrl('division');
+		$this->session_url->set();
 
 		if (! $this->user()) {
 			throw new HttpNoAccessException('permission denied');
@@ -25,15 +26,19 @@ class Controller_Event extends Controller_Base
 	}
 	// function before()
 
-	/**
-	* @SuppressWarnings(PHPMD.CyclomaticComplexity)
-	* @todo PHPMD をなんとかしろ
-	 */
-	public function post_add()
+	protected function requireEvent($event_id): Model_Division
 	{
-		// unify post data
+		$event = Model_Event::find_by_pk($event_id);
+		if (! $event) {
+			throw new HttpNotFoundException('イベントが見つかりません。');
+		}
+		return $event;
+	}
+
+	protected function unifyPost(): array
+	{
 		$arr = [];
-		foreach (Input::post('id') as $key => $id) {
+		foreach (array_keys(Input::post('id')) as $key) {
 			if (! Input::post('division.' . $key)) {
 				continue;
 			}
@@ -49,6 +54,45 @@ class Controller_Event extends Controller_Base
 				'refer'    => Input::post('refer.' . $key),
 			];
 		}
+		return $arr;
+	}
+
+	protected function submitDetails(array $item, int $event_id, int $division_id)
+	{
+		$id = $item['id'];
+		$is_new = ($id === 'new');
+		if ($item['delete']) {
+			if (! $is_new) {
+				$detail = Model_Event_Detail::find_by_pk($id);
+				$detail->soft_delete();
+			}
+		} else {
+			if ($is_new) {
+				$detail = Model_Event_Detail::forge([
+					'order' => $item['order'],
+					'event_id' => $event_id,
+					'division_id' => $division_id,
+					'result' => $item['result'],
+					'geoshape' => Model_Event_Detail::unify_geoshape($item['geoshape']),
+					'is_refer' => (bool)$item['refer'],
+				]);
+				$detail->save();
+			} else {
+				$detail = Model_Event_Detail::find_by_pk($id);
+				$detail->order = $item['order'];
+				$detail->result = $item['result'];
+				$detail->geoshape = $item['geoshape'];
+				$detail->is_refer = (bool)$item['refer'];
+				$detail->save();
+			}
+			// if ($id == 'new')
+		}
+		// if ($item['delete'])
+	}
+
+	public function post_add()
+	{
+		$post = $this->unifyPost();
 
 		try {
 			DB::start_transaction();
@@ -61,7 +105,7 @@ class Controller_Event extends Controller_Base
 			]);
 			$event->save();
 
-			foreach ($arr as $item) {
+			foreach ($post as $item) {
 				$id = $item['id'];
 				if (! $id) {
 					continue;
@@ -69,19 +113,8 @@ class Controller_Event extends Controller_Base
 				$divisions = DivisionTable::set_path($item['division']);
 				$division = array_pop($divisions);
 
-				if ($item['delete']) {
-					continue;
-				}
-
-				$detail = Model_Event_Detail::forge([
-					'order' => $item['order'],
-					'event_id' => $event->id,
-					'division_id' => $division->id,
-					'result' => $item['result'],
-					'geoshape' => Model_Event_Detail::unify_geoshape($item['geoshape']),
-					'is_refer' => $item['refer'] ? true : false,
-				]);
-				$detail->save();
+				$item['id'] = 'new';
+				$this->submitDetails($item, $event->id, $divisions->id);
 
 				if ($item['birth']) {
 					$division->start_event_id = $event->id;
@@ -92,13 +125,9 @@ class Controller_Event extends Controller_Base
 					$division->save();
 				}
 			}
-			// foreach ($arr as $item)
+			// foreach ($post as $item)
 
-			Model_Activity::insert_log([
-				'user_id' => Session::get('user_id'),
-				'target' => 'add event',
-				'target_id' => $event->id,
-			]);
+			$this->activity('add event', $event->id);
 
 			DB::commit_transaction();
 		} catch (Exception $e) {
@@ -108,43 +137,16 @@ class Controller_Event extends Controller_Base
 		}
 		// try
 
-		$url = Session::get(self::SESSION_DIVISION_LIST);
-		Response::redirect($url);
+		$this->session_url->redirect();
 		return;
 	}
 	// function post_add()
 
-	/**
-	 * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
- 	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-	 * @todo PHPMD をなんとかしろ
-	 */
 	public function action_edit($event_id)
 	{
-		$event = Model_Event::find_by_pk($event_id);
-		if (! $event) {
-			throw new HttpNotFoundException('イベントが見つかりません。');
-		}
-		// if (! $event)
+		$event = $this->requireEvent($event_id);
 
-		// POST データを整形
-		$arr = [];
-		foreach (Input::post('id') as $key => $id) {
-			if (! Input::post('division.' . $key)) {
-				continue;
-			}
-			$arr[] = [
-				'order'    => Input::post('order.' . $key),
-				'id'       => Input::post('id.' . $key),
-				'division' => Input::post('division.' . $key),
-				'result'   => Input::post('result.' . $key),
-				'birth'    => Input::post('birth.' . $key),
-				'death'    => Input::post('death.' . $key),
-				'delete'   => Input::post('delete.' . $key),
-				'geoshape' => Model_Event_Detail::unify_geoshape(Input::post('geoshape.' . $key)),
-				'refer'    => Input::post('refer.' . $key),
-			];
-		}
+		$post = $this->unifyPost();
 
 		try {
 			DB::start_transaction();
@@ -155,38 +157,11 @@ class Controller_Event extends Controller_Base
 			$event->source = Input::post('source');
 			$event->save();
 
-			foreach ($arr as $item) {
-				$id = $item['id'];
+			foreach ($post as $item) {
 				$divisions = DivisionTable::set_path($item['division']);
 				$division = array_pop($divisions);
 
-				if ($item['delete']) {
-					if ($id != 'new') {
-						$detail = Model_Event_Detail::find_by_pk($id);
-						$detail->soft_delete();
-					}
-				} else {
-					if ($id == 'new') {
-						$detail = Model_Event_Detail::forge([
-							'order' => $item['order'],
-							'event_id' => $event->id,
-							'division_id' => $division->id,
-							'result' => $item['result'],
-							'geoshape' => Model_Event_Detail::unify_geoshape($item['geoshape']),
-							'is_refer' => $item['refer'] ? true : false,
-						]);
-						$detail->save();
-					} else {
-						$detail = Model_Event_Detail::find_by_pk($id);
-						$detail->order = $item['order'];
-						$detail->result = $item['result'];
-						$detail->geoshape = $item['geoshape'];
-						$detail->is_refer = $item['refer'] ? true : false;
-						$detail->save();
-					}
-					// if ($id == 'new')
-				}
-				// if ($item['delete'])
+				$this->submitDetails($item, $event->id, $divisions->id);
 
 				if ($item['birth']) {
 					$division->start_event_id = $event->id;
@@ -201,13 +176,9 @@ class Controller_Event extends Controller_Base
 					$division->save();
 				}
 			}
-			// foreach ($arr as $item)
+			// foreach ($post as $item)
 
-			Model_Activity::insert_log([
-				'user_id' => Session::get('user_id'),
-				'target' => 'edit event',
-				'target_id' => $event->id,
-			]);
+			$this->activity('edit event', $event->id);
 
 			DB::commit_transaction();
 		} catch (Exception $e) {
@@ -217,31 +188,21 @@ class Controller_Event extends Controller_Base
 		}
 		// try
 
-		$url = Session::get(self::SESSION_DIVISION_LIST);
-		Response::redirect($url);
+		$this->session_url->redirect();
 		return;
 	}
 	// function action_edit()
 
 	/**
 	 * @SuppressWarnings(PHPMD.ExitExpression)
-	 * @todo PHPMD をなんとかしろ
 	 */
 	public function action_delete($event_id)
 	{
-		$event = Model_Event::find_by_pk($event_id);
-		if (! $event) {
-			throw new HttpNotFoundException('イベントが見つかりません。');
-		}
-		// if (! $event)
+		$event = $this->requireEvent($event_id);
 
 		$event->delete();
 
-		Model_Activity::insert_log([
-			'user_id' => Session::get('user_id'),
-			'target' => 'delete event',
-			'target_id' => $event->id,
-		]);
+		$this->activity('delete event', $event->id);
 
 		Debug::dump($event_id, Input::post());
 		exit;
