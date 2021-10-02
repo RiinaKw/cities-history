@@ -956,11 +956,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Page.html"
         },                {
-            "fqsen": "\\Model_Page\u003A\u003Avalidation\u0028\u0029",
-            "name": "validation",
-            "summary": "",
-            "url": "classes/Model-Page.html#method_validation"
-        },                {
             "fqsen": "\\Model_Page\u003A\u003Aget_all\u0028\u0029",
             "name": "get_all",
             "summary": "",

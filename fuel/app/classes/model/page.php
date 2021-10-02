@@ -12,10 +12,7 @@ class Model_Page extends Model_Base
 	protected static $_deleted_at	= 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	/**
-	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-	 * @todo PHPMD をなんとかしろ
-	 */
+	/*
 	public function validation($is_new = false, $factory = null)
 	{
 		$validation = Validation::forge($factory);
@@ -39,6 +36,7 @@ class Model_Page extends Model_Base
 		return $validation;
 	}
 	// function validation()
+	*/
 
 	public static function get_all()
 	{
