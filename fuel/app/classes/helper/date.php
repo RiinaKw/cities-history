@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  App\Helper
+ */
 class Helper_Date
 {
 	/** 元号用設定
