@@ -26,9 +26,8 @@ class Presenter_Division_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->division);
-		$breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
-		$path_kana = $breadcrumbs_arr['path_kana'];
+		$breadcrumbs = Helper_Breadcrumb::breadcrumb($this->division);
+		$path_kana = $this->division->pmodel()->kana();
 		$this->path_kana = $path_kana;
 
 		$this->search_path = $this->division->make_search_path();

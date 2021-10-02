@@ -6,13 +6,26 @@
 
 namespace MyApp\PresentationModel;
 
+use Model_Division;
+
 class Division
 {
 	protected $model = null;
 
-	public function __construct(\Model_Division $model)
+	public function __construct(Model_Division $model)
 	{
 		$this->model = $model;
+	}
+
+	public function kana()
+	{
+		$ids = explode('/', substr($this->model->id_path, 0, -1));
+		$kana = '';
+		foreach ($ids as $id) {
+			$parent = Model_Division::find_by_pk($id);
+			$kana .= ($kana ? '/' : '') . $parent->get_fullname_kana();
+		}
+		return $kana;
 	}
 
 	public function url()

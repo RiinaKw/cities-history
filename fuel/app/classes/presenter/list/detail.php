@@ -62,13 +62,12 @@ class Presenter_List_Detail extends Presenter_Layout
 			$description .= MyApp\Helper\Date::format(' Y(Jk)-m-d', $this->date);
 		}
 
-		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->division);
-		$this->path_kana = $breadcrumbs_arr['path_kana'];
+		$this->path_kana = $this->division->pmodel()->kana();
 
 		$this->title = $title;
 		$this->description = $description;
 		$this->og_type = 'article';
-		$this->breadcrumbs = $breadcrumbs_arr['breadcrumbs'];
+		$this->breadcrumbs = Helper_Breadcrumb::breadcrumb($this->division);
 		$this->show_share = true;
 
 		$this->year_list = range(1878, date('Y'));
