@@ -161,10 +161,25 @@ Search.appendIndex(
             "summary": "The\u0020Base\u0020Controller.",
             "url": "classes/Controller-Base.html"
         },                {
-            "fqsen": "\\Controller_Base\u003A\u003Auser\u0028\u0029",
+            "fqsen": "\\Controller_Base\u003A\u003A\u0024user",
             "name": "user",
             "summary": "",
-            "url": "classes/Controller-Base.html#method_user"
+            "url": "classes/Controller-Base.html#property_user"
+        },                {
+            "fqsen": "\\Controller_Base\u003A\u003ArequireUser\u0028\u0029",
+            "name": "requireUser",
+            "summary": "",
+            "url": "classes/Controller-Base.html#method_requireUser"
+        },                {
+            "fqsen": "\\Controller_Base\u003A\u003Aactivity\u0028\u0029",
+            "name": "activity",
+            "summary": "",
+            "url": "classes/Controller-Base.html#method_activity"
+        },                {
+            "fqsen": "\\Controller_Base\u003A\u003Aredirect\u0028\u0029",
+            "name": "redirect",
+            "summary": "",
+            "url": "classes/Controller-Base.html#method_redirect"
         },                {
             "fqsen": "\\Controller_Base\u003A\u003Abefore\u0028\u0029",
             "name": "before",
@@ -176,15 +191,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Base.html#method_after"
         },                {
-            "fqsen": "\\Controller_Base\u003A\u003A\u0024_user",
-            "name": "_user",
-            "summary": "",
-            "url": "classes/Controller-Base.html#property__user"
-        },                {
             "fqsen": "\\Controller_Division",
             "name": "Controller_Division",
             "summary": "The\u0020Division\u0020Controller.",
             "url": "classes/Controller-Division.html"
+        },                {
+            "fqsen": "\\Controller_Division\u003A\u003ArequirePath\u0028\u0029",
+            "name": "requirePath",
+            "summary": "",
+            "url": "classes/Controller-Division.html#method_requirePath"
+        },                {
+            "fqsen": "\\Controller_Division\u003A\u003Aevents\u0028\u0029",
+            "name": "events",
+            "summary": "",
+            "url": "classes/Controller-Division.html#method_events"
         },                {
             "fqsen": "\\Controller_Division\u003A\u003Aaction_detail\u0028\u0029",
             "name": "action_detail",
@@ -215,11 +235,6 @@ Search.appendIndex(
             "name": "action_delete",
             "summary": "",
             "url": "classes/Controller-Division.html#method_action_delete"
-        },                {
-            "fqsen": "\\Controller_Division\u003A\u003ASESSION_LIST",
-            "name": "SESSION_LIST",
-            "summary": "",
-            "url": "classes/Controller-Division.html#constant_SESSION_LIST"
         },                {
             "fqsen": "\\Controller_Error",
             "name": "Controller_Error",
@@ -596,11 +611,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#method_validation"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_tree\u0028\u0029",
-            "name": "get_tree",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_tree"
-        },                {
             "fqsen": "\\Model_Division\u003A\u003Aid_chain\u0028\u0029",
             "name": "id_chain",
             "summary": "\u30D1\u30B9\u5F62\u5F0F\u306E\u0020ID\u0020\u3092\u5206\u5272\u3057\u3001\u5404\u0020ID\u0020\u3054\u3068\u306B\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3092\u5B9F\u884C",
@@ -636,6 +646,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#method___get"
         },                {
+            "fqsen": "\\Model_Division\u003A\u003Aget_parent_path\u0028\u0029",
+            "name": "get_parent_path",
+            "summary": "",
+            "url": "classes/Model-Division.html#method_get_parent_path"
+        },                {
             "fqsen": "\\Model_Division\u003A\u003Aget_belongs_path\u0028\u0029",
             "name": "get_belongs_path",
             "summary": "",
@@ -646,15 +661,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#method_get_belongs_name"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Asuffix_classification\u0028\u0029",
-            "name": "suffix_classification",
+            "fqsen": "\\Model_Division\u003A\u003Abelongs\u0028\u0029",
+            "name": "belongs",
             "summary": "",
-            "url": "classes/Model-Division.html#method_suffix_classification"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_fullname\u0028\u0029",
-            "name": "get_fullname",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_fullname"
+            "url": "classes/Model-Division.html#method_belongs"
         },                {
             "fqsen": "\\Model_Division\u003A\u003AcallIfNotEmpty\u0028\u0029",
             "name": "callIfNotEmpty",
@@ -711,11 +721,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Event-Detail.html#method_validation"
         },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003Aget_by_division\u0028\u0029",
-            "name": "get_by_division",
-            "summary": "",
-            "url": "classes/Model-Event-Detail.html#method_get_by_division"
-        },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003Aget_source\u0028\u0029",
             "name": "get_source",
             "summary": "",
@@ -770,11 +775,6 @@ Search.appendIndex(
             "name": "create",
             "summary": "",
             "url": "classes/Model-Event.html#method_create"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003Aget_relative_division\u0028\u0029",
-            "name": "get_relative_division",
-            "summary": "",
-            "url": "classes/Model-Event.html#method_get_relative_division"
         },                {
             "fqsen": "\\Model_Event\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
@@ -1136,666 +1136,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Presenter-Top.html#method_view"
         },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_divisions",
-            "name": "Create_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_events",
-            "name": "Create_events",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-events.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_events\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-events.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_events\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-events.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_event_details",
-            "name": "Create_event_details",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-event-details.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_event_details\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-event-details.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_event_details\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-event-details.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_users",
-            "name": "Create_users",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-users.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_users\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-users.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_users\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-users.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_activities",
-            "name": "Create_activities",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-activities.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_activities\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-activities.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_activities\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-activities.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_government_code_to_divisions",
-            "name": "Add_government_code_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-government-code-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_government_code_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-government-code-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_government_code_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-government-code-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_reference_dates",
-            "name": "Create_reference_dates",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-reference-dates.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_reference_dates\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-reference-dates.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_reference_dates\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-reference-dates.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_no_to_event_details",
-            "name": "Add_no_to_event_details",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-no-to-event-details.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_no_to_event_details\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-no-to-event-details.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_no_to_event_details\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-no-to-event-details.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_fullname_to_divisions",
-            "name": "Add_fullname_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-fullname-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_fullname_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-fullname-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_fullname_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-fullname-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_fullname_in_divisions",
-            "name": "Update_fullname_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-fullname-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_fullname_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-fullname-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_fullname_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-fullname-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_geoshape_to_event_details",
-            "name": "Add_geoshape_to_event_details",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-geoshape-to-event-details.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_geoshape_to_event_details\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-geoshape-to-event-details.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_geoshape_to_event_details\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-geoshape-to-event-details.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_is_refer_to_event_details",
-            "name": "Add_is_refer_to_event_details",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-is-refer-to-event-details.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_is_refer_to_event_details\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-is-refer-to-event-details.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_is_refer_to_event_details\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-is-refer-to-event-details.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_belongs_to_divisions",
-            "name": "Add_belongs_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-belongs-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_belongs_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-belongs-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_belongs_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-belongs-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_show_postfix_to_divisions",
-            "name": "Add_show_postfix_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-show-postfix-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_show_postfix_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-show-postfix-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_show_postfix_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-show-postfix-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_display_order_to_divisions",
-            "name": "Add_display_order_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-display-order-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_display_order_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-display-order-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_display_order_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-display-order-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_is_unfinished_to_divisions",
-            "name": "Add_is_unfinished_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-is-unfinished-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_is_unfinished_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-is-unfinished-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_is_unfinished_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-is-unfinished-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_comment_to_events",
-            "name": "Add_comment_to_events",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-comment-to-events.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_comment_to_events\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-comment-to-events.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_comment_to_events\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-comment-to-events.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_sort_columns_to_divisions",
-            "name": "Add_sort_columns_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-sort-columns-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_sort_columns_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-sort-columns-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_sort_columns_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-sort-columns-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_sort_columns_in_divisions",
-            "name": "Update_sort_columns_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-sort-columns-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_sort_columns_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-sort-columns-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_sort_columns_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-sort-columns-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Modify_belongs_in_divisions",
-            "name": "Modify_belongs_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Modify-belongs-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Modify_belongs_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Modify-belongs-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Modify_belongs_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Modify-belongs-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_top_parent_division_id_to_divisions",
-            "name": "Add_top_parent_division_id_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-top-parent-division-id-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_top_parent_division_id_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-top-parent-division-id-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_top_parent_division_id_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-top-parent-division-id-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_top_parent_id_to_divisions",
-            "name": "Update_top_parent_id_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-top-parent-id-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_top_parent_id_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-top-parent-id-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_top_parent_id_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-top-parent-id-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_suffix_in_divisions",
-            "name": "Rename_suffix_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-suffix-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_suffix_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-suffix-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_suffix_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-suffix-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_pages",
-            "name": "Create_pages",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-pages.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_pages\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-pages.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_pages\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-pages.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_type_to_title_in_events",
-            "name": "Rename_type_to_title_in_events",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-type-to-title-in-events.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_type_to_title_in_events\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-type-to-title-in-events.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_type_to_title_in_events\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-type-to-title-in-events.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_identify_to_identifier_in_divisions",
-            "name": "Rename_identify_to_identifier_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-identify-to-identifier-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_identify_to_identifier_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-identify-to-identifier-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_identify_to_identifier_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-identify-to-identifier-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_division_result_to_result_in_event_details",
-            "name": "Rename_division_result_to_result_in_event_details",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-division-result-to-result-in-event-details.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_division_result_to_result_in_event_details\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-division-result-to-result-in-event-details.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_division_result_to_result_in_event_details\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-division-result-to-result-in-event-details.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_no_to_order_in_event_details",
-            "name": "Rename_no_to_order_in_event_details",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-no-to-order-in-event-details.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_no_to_order_in_event_details\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-no-to-order-in-event-details.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Rename_no_to_order_in_event_details\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Rename-no-to-order-in-event-details.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_path_and_path_kana_to_divisions",
-            "name": "Add_path_and_path_kana_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-path-and-path-kana-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_path_and_path_kana_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-path-and-path-kana-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_path_and_path_kana_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-path-and-path-kana-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_path_and_path_kana_in_divisions",
-            "name": "Update_path_and_path_kana_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-path-and-path-kana-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_path_and_path_kana_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-path-and-path-kana-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_path_and_path_kana_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-path-and-path-kana-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_source_to_divisions",
-            "name": "Add_source_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-source-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_source_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-source-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_source_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-source-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_source_to_events",
-            "name": "Add_source_to_events",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-source-to-events.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_source_to_events\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-source-to-events.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_source_to_events\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-source-to-events.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_source_in_divisions",
-            "name": "Update_source_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-source-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_source_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-source-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_source_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-source-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_source_in_events",
-            "name": "Update_source_in_events",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-source-in-events.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_source_in_events\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-source-in-events.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_source_in_events\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-source-in-events.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_id_path_to_divisions",
-            "name": "Add_id_path_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-id-path-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_id_path_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-id-path-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_id_path_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-id-path-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_id_path_in_divisions",
-            "name": "Update_id_path_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-id-path-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_id_path_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-id-path-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_id_path_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-id-path-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_top_parent_division_id_from_divisions",
-            "name": "Delete_top_parent_division_id_from_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-top-parent-division-id-from-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_top_parent_division_id_from_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-top-parent-division-id-from-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_top_parent_division_id_from_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-top-parent-division-id-from-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_parent_division_id_from_divisions",
-            "name": "Delete_parent_division_id_from_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-parent-division-id-from-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_parent_division_id_from_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-parent-division-id-from-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_parent_division_id_from_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-parent-division-id-from-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_path_kana_in_divisions",
-            "name": "Update_path_kana_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-path-kana-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_path_kana_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-path-kana-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_path_kana_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-path-kana-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_parent_division_id_from_divisions_2",
-            "name": "Delete_parent_division_id_from_divisions_2",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-parent-division-id-from-divisions-2.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_parent_division_id_from_divisions_2\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-parent-division-id-from-divisions-2.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_parent_division_id_from_divisions_2\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-parent-division-id-from-divisions-2.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_search_path_to_divisions",
-            "name": "Add_search_path_to_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-search-path-to-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_search_path_to_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-search-path-to-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Add_search_path_to_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Add-search-path-to-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_search_path_in_divisions",
-            "name": "Update_search_path_in_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-search-path-in-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_search_path_in_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-search-path-in-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Update_search_path_in_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Update-search-path-in-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_kana_columns_from_divisions",
-            "name": "Delete_kana_columns_from_divisions",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-kana-columns-from-divisions.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_kana_columns_from_divisions\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-kana-columns-from-divisions.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Delete_kana_columns_from_divisions\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Delete-kana-columns-from-divisions.html#method_down"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_restore",
-            "name": "Create_restore",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-restore.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_restore\u003A\u003Aup\u0028\u0029",
-            "name": "up",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-restore.html#method_up"
-        },                {
-            "fqsen": "\\Fuel\\Migrations\\Create_restore\u003A\u003Adown\u0028\u0029",
-            "name": "down",
-            "summary": "",
-            "url": "classes/Fuel-Migrations-Create-restore.html#method_down"
-        },                {
             "fqsen": "\\smarty_modifier_date_format2\u0028\u0029",
             "name": "smarty_modifier_date_format2",
             "summary": "",
@@ -1936,6 +1276,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method___construct"
         },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Asuffix_classification\u0028\u0029",
+            "name": "suffix_classification",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_suffix_classification"
+        },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Akana\u0028\u0029",
             "name": "kana",
             "summary": "",
@@ -1951,6 +1296,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_url"
         },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Ageoshape\u0028\u0029",
+            "name": "geoshape",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_geoshape"
+        },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AhtmlAnchor\u0028\u0029",
             "name": "htmlAnchor",
             "summary": "",
@@ -1965,6 +1315,11 @@ Search.appendIndex(
             "name": "htmlBelongs",
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_htmlBelongs"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AhtmlClass\u0028\u0029",
+            "name": "htmlClass",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_htmlClass"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AisValid\u0028\u0029",
             "name": "isValid",
@@ -2151,6 +1506,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Model-Division-Tree.html#method_get_subtree_by_division"
         },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_create"
+        },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Acreate_subtree\u0028\u0029",
             "name": "create_subtree",
             "summary": "",
@@ -2201,20 +1561,50 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division-Tree.html#property_model"
         },                {
+            "fqsen": "\\MyApp\\Table\\Event",
+            "name": "Event",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003Aget_by_division\u0028\u0029",
+            "name": "get_by_division",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#method_get_by_division"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003Aget_relative_division\u0028\u0029",
+            "name": "get_relative_division",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#method_get_relative_division"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024table_name_division",
+            "name": "table_name_division",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#property_table_name_division"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024table_name_event",
+            "name": "table_name_event",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#property_table_name_event"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024table_name_detail",
+            "name": "table_name_detail",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#property_table_name_detail"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_division",
+            "name": "model_name_division",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#property_model_name_division"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_detail",
+            "name": "model_name_detail",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#property_model_name_detail"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
-        },                {
-            "fqsen": "\\Fuel\\Migrations",
-            "name": "Migrations",
-            "summary": "",
-            "url": "namespaces/fuel-migrations.html"
-        },                {
-            "fqsen": "\\Fuel",
-            "name": "Fuel",
-            "summary": "",
-            "url": "namespaces/fuel.html"
         },                {
             "fqsen": "\\MyApp\\Helper",
             "name": "Helper",
@@ -2255,5 +1645,10 @@ Search.appendIndex(
             "name": "Tasks",
             "summary": "",
             "url": "namespaces/fuel-tasks.html"
+        },                {
+            "fqsen": "\\Fuel",
+            "name": "Fuel",
+            "summary": "",
+            "url": "namespaces/fuel.html"
         }            ]
 );

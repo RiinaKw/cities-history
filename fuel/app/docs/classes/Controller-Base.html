@@ -52,17 +52,16 @@
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
-                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h4>
-                <ul class="phpdocumentor-list">
-                                            <li><a href="namespaces/fuel-migrations.html"><abbr title="\Fuel\Migrations">Migrations</abbr></a></li>
-                                            <li><a href="namespaces/fuel-tasks.html"><abbr title="\Fuel\Tasks">Tasks</abbr></a></li>
-                                    </ul>
-                            <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
                                             <li><a href="namespaces/myapp-table.html"><abbr title="\MyApp\Table">Table</abbr></a></li>
+                                    </ul>
+                            <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/fuel-tasks.html"><abbr title="\Fuel\Tasks">Tasks</abbr></a></li>
                                     </ul>
                         </section>
 
@@ -143,7 +142,7 @@
 
 <dl class="phpdocumentor-table-of-contents">
                 <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Controller-Base.html#property__user">$_user</a>
+    <a href="classes/Controller-Base.html#property_user">$user</a>
     <span>
                 &nbsp;: mixed            </span>
 </dt>
@@ -163,7 +162,28 @@
 </dt>
 <dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Controller-Base.html#method_activity">activity()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Controller-Base.html#method_redirect">redirect()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Controller-Base.html#method_requireUser">requireUser()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Controller-Base.html#method_user">user()</a>
     <span>
                         &nbsp;: <a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a>|null    </span>
@@ -189,9 +209,9 @@
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property__user">
-        $_user
-        <a href="classes/Controller-Base.html#property__user" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_user">
+        $user
+        <a href="classes/Controller-Base.html#property_user" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -205,7 +225,7 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$_user</span>
+    <span class="phpdocumentor-signature__name">$user</span>
      = <span class="phpdocumentor-signature__default-value">
 ull</span></code>
 
@@ -233,7 +253,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">52</span>
 </aside>
 
     
@@ -275,7 +295,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 </aside>
 
     
@@ -297,7 +317,137 @@ ull</span></code>
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_activity">
+        activity()
+        <a href="classes/Controller-Base.html#method_activity" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">29</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">activity</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$target</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$target</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_redirect">
+        redirect()
+        <a href="classes/Controller-Base.html#method_redirect" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">38</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">redirect</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$config</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$config</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$params</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_requireUser">
+        requireUser()
+        <a href="classes/Controller-Base.html#method_requireUser" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">requireUser</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_user">
@@ -312,7 +462,7 @@ ull</span></code>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__visibility">protected</span>
                 <span class="phpdocumentor-signature__name">user</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a>|null</span></code>
 
     

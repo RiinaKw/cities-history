@@ -20,6 +20,7 @@
                 <path>fuel/app/logs</path>
                 <path>fuel/app/tmp</path>
                 <path>fuel/app/vendor</path>
+                <path>fuel/app/migrations</path>
             </ignore>
             <extensions>
                 <extension>php</extension>
