@@ -41,7 +41,9 @@ class Model_Event_Detail extends Model_Base
 			foreach ($divisions as $division) {
 				$ids[] = $division->id;
 			}
-			$query->where('d.division_id', 'in', $ids);
+			if ($ids) {
+				$query->where('d.division_id', 'in', $ids);
+			}
 		} else {
 			$query->where('d.division_id', '=', $divisions->id);
 		}

@@ -12,7 +12,7 @@ class Model_Event extends Model_Base
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	public function validation()
+	public function validation(): Validation
 	{
 		$validation = Validation::forge(mt_rand());
 
@@ -25,7 +25,7 @@ class Model_Event extends Model_Base
 	}
 	// function validation()
 
-	public static function create($param)
+	public static function create($param): self
 	{
 		$object = self::forge([
 			'date' => $param['date'],
@@ -38,7 +38,7 @@ class Model_Event extends Model_Base
 	}
 	// function create()
 
-	public static function get_relative_division($event_id)
+	public static function get_relative_division($event_id): Fuel\Core\Database_Result_Cached
 	{
 		$query = DB::select(
 			'd.*',
@@ -48,16 +48,15 @@ class Model_Event extends Model_Base
 			'e.geoshape',
 			'e.is_refer'
 		)
-
 			->from(['event_details', 'e'])
 			->join(['divisions', 'd'])
 			->on('e.division_id', '=', 'd.id')
+
 			->where('e.deleted_at', '=', null)
 			->where('e.event_id', '=', $event_id)
 			->order_by('e.order', 'asc');
 
-		$result = $query->as_object('Model_Division')->execute();
-		return $result;
+		return $query->as_object('Model_Division')->execute();
 	}
 	// function get_relative_division()
 

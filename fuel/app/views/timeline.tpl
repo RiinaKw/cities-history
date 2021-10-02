@@ -111,9 +111,9 @@
 							$(function(){
 								var shapes = [];
 {{foreach from=$event.divisions item=d}}
-{{if $d && $d.url_geoshape}}
+{{if $d && $d->pmodel()->geoshape()}}
 								shapes.push({
-									url: "{{$d.url_geoshape}}",
+									url: "{{$d->pmodel()->geoshape()}}",
 									split: "{{if isset($d.split)}}{{$d.split}}{{/if}}"
 								});
 {{/if}}

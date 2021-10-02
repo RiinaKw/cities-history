@@ -34,12 +34,23 @@ class Division
 	}
 	// function source()
 
-	public function url()
+	public function url(): string
 	{
 		return \Helper_Uri::create(
 			'division.detail',
 			['path' => $this->model->path]
 		);
+	}
+
+	public function geoshape(): ?string
+	{
+		if ($this->model->geoshape) {
+			return \Helper_Uri::create(
+				'geoshape',
+				['path' => $this->model->geoshape]
+			);
+		}
+		return null;
 	}
 
 	public function htmlAnchor(string $label = ''): string
@@ -69,6 +80,20 @@ class Division
 		} else {
 			return '';
 		}
+	}
+
+	public function htmlClass(): string
+	{
+		switch ($this->model->result) {
+			case '新設':
+				return 'birth';
+			case '編入':
+				return 'transfer';
+			case '廃止':
+			case '分割廃止':
+				return 'death';
+		}
+		return '';
 	}
 
 	public function isValid(string $type): bool

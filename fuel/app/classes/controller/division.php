@@ -16,6 +16,16 @@ class Controller_Division extends Controller_Base
 {
 	protected const SESSION_LIST = 'division';
 
+	protected function requirePath(): Model_Division
+	{
+		$path = $this->param('path');
+		$division = DivisionTable::get_by_path($path);
+		if (! $division || $division->get_path() !== $path || $division->deleted_at !== null) {
+			throw new HttpNotFoundException('自治体が見つかりません。');
+		}
+		return $division;
+	}
+
 	/**
 	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
 	 * @SuppressWarnings(PHPMD.NPathComplexity)
@@ -28,6 +38,7 @@ class Controller_Division extends Controller_Base
 		if (! $division || $division->get_path() != $path || $division->deleted_at != null) {
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
+		$division = $this->requirePath();
 
 		$events = Model_Event_Detail::get_by_division($division);
 		// 終了インベントを先頭に
@@ -65,30 +76,9 @@ class Controller_Division extends Controller_Base
 					break;
 			}
 			$divisions = Model_Event::get_relative_division($event->event_id);
-			if ($divisions) {
-				foreach ($divisions as $d) {
-					$d_path = $d->get_path();
-					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
-					if ($d->geoshape) {
-						$d->url_geoshape = Helper_Uri::create('geoshape', ['path' => $d->geoshape]);
-					} else {
-						$d->url_geoshape = '';
-					}
-					$d->split = ($d->result == '分割廃止');
-					$d->li_class = '';
-					switch ($d->result) {
-						case '新設':
-							$d->li_class = 'birth';
-							break;
-						case '編入':
-							$d->li_class = 'transfer';
-							break;
-						case '廃止':
-						case '分割廃止':
-							$d->li_class = 'death';
-							break;
-					}
-				}
+			foreach ($divisions as $d) {
+				$d->split = ($d->result == '分割廃止');
+				$d->li_class = $d->pmodel()->htmlClass();
 			}
 			$event->divisions = $divisions;
 		}
@@ -101,7 +91,7 @@ class Controller_Division extends Controller_Base
 		// create Presenter object
 		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
 		$content->current = 'detail';
-		$content->path = $path;
+		$content->path = $division->get_path();
 		$content->division = $division;
 		$content->belongs_division = $belongs_division;
 		$content->events = $events;
@@ -111,29 +101,24 @@ class Controller_Division extends Controller_Base
 	// function action_detail()
 
 	/**
-	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-	 * @SuppressWarnings(PHPMD.NPathComplexity)
  	 * @todo PHPMD をなんとかしろ
 	 */
 	public function action_children()
 	{
-		$path = $this->param('path');
+		$division = $this->requirePath();
 		$label = Input::get('label');
 		$start = Input::get('start');
 		$end = Input::get('end');
-		$division = DivisionTable::get_by_path($path);
-		if (! $division || $division->get_path() != $path) {
-			throw new HttpNotFoundException('自治体が見つかりません。');
-		}
 
 		$divisions = DivisionTable::get_by_parent_division_and_date($division);
 		$events_arr = [];
-		if ($divisions) {
+		if (count($divisions)) {
 			$events = Model_Event_Detail::get_by_division($divisions, $start, $end);
-			foreach ($events as &$event) {
+			foreach ($events as $event) {
 				if (isset($events_arr[$event->event_id])) {
 					continue;
 				}
+
 				$event->birth = false;
 				$event->live = false;
 				$event->death = false;
@@ -150,31 +135,11 @@ class Controller_Division extends Controller_Base
 						$event->death = true;
 						break;
 				}
+
 				$divisions = Model_Event::get_relative_division($event->event_id);
-				if ($divisions) {
-					foreach ($divisions as $d) {
-						$d_path = $d->get_path();
-						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
-						if ($d->geoshape) {
-							$d->url_geoshape = Helper_Uri::create('geoshape', ['path' => $d->geoshape]);
-						} else {
-							$d->url_geoshape = '';
-						}
-						$d->split = ($d->result == '分割廃止');
-						$d->li_class = '';
-						switch ($d->result) {
-							case '新設':
-								$d->li_class = 'birth';
-								break;
-							case '編入':
-								$d->li_class = 'transfer';
-								break;
-							case '廃止':
-							case '分割廃止':
-								$d->li_class = 'death';
-								break;
-						}
-					}
+				foreach ($divisions as $d) {
+					$d->split = ($d->result == '分割廃止');
+					$d->li_class = $d->pmodel()->htmlClass();
 				}
 				$event->divisions = $divisions;
 				$events_arr[$event->event_id] = $event;
@@ -182,17 +147,14 @@ class Controller_Division extends Controller_Base
 		}
 		// if ($division_id_arr)
 
-		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
-
-
 		Session::set(self::SESSION_LIST, Helper_Uri::current());
 
 		// create Presenter object
 		$content = Presenter::forge('division/children', 'view', null, 'timeline.tpl');
 		$content->current = $label;
-		$content->path = $path;
+		$content->path = $division->get_path();
 		$content->division = $division;
-		$content->belongs_division = $belongs_division;
+		$content->belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
 		$content->events = $events_arr;
 
 		return $content;
