@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Table\Division as DivisionTable;
+
 /**
  * The Event Controller.
  *
@@ -64,7 +66,7 @@ class Controller_Event extends Controller_Base
 				if (! $id) {
 					continue;
 				}
-				$divisions = Table_Division::set_path($item['division']);
+				$divisions = DivisionTable::set_path($item['division']);
 				$division = array_pop($divisions);
 
 				if ($item['delete']) {
@@ -155,7 +157,7 @@ class Controller_Event extends Controller_Base
 
 			foreach ($arr as $item) {
 				$id = $item['id'];
-				$divisions = Table_Division::set_path($item['division']);
+				$divisions = DivisionTable::set_path($item['division']);
 				$division = array_pop($divisions);
 
 				if ($item['delete']) {

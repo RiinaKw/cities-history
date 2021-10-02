@@ -1276,76 +1276,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Presenter-Top.html#method_view"
         },                {
-            "fqsen": "\\Table_Division",
-            "name": "Table_Division",
-            "summary": "",
-            "url": "classes/Table-Division.html"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aget_all_id\u0028\u0029",
-            "name": "get_all_id",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_get_all_id"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aquery\u0028\u0029",
-            "name": "query",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_query"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Asearch\u0028\u0029",
-            "name": "search",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_search"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aset_path\u0028\u0029",
-            "name": "set_path",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_set_path"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aset_path_as_array\u0028\u0029",
-            "name": "set_path_as_array",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_set_path_as_array"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Amake_id_path\u0028\u0029",
-            "name": "make_id_path",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_make_id_path"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aget_by_path\u0028\u0029",
-            "name": "get_by_path",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_get_by_path"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aget_one_by_name_and_parent\u0028\u0029",
-            "name": "get_one_by_name_and_parent",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_get_one_by_name_and_parent"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aget_top_level\u0028\u0029",
-            "name": "get_top_level",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_get_top_level"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aget_by_parent_division_and_date\u0028\u0029",
-            "name": "get_by_parent_division_and_date",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_get_by_parent_division_and_date"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003Aget_by_admin_filter\u0028\u0029",
-            "name": "get_by_admin_filter",
-            "summary": "",
-            "url": "classes/Table-Division.html#method_get_by_admin_filter"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003ARE_SUFFIX",
-            "name": "RE_SUFFIX",
-            "summary": "",
-            "url": "classes/Table-Division.html#constant_RE_SUFFIX"
-        },                {
-            "fqsen": "\\Table_Division\u003A\u003A\u0024_table_name",
-            "name": "_table_name",
-            "summary": "",
-            "url": "classes/Table-Division.html#property__table_name"
-        },                {
             "fqsen": "\\Fuel\\Migrations\\Create_divisions",
             "name": "Create_divisions",
             "summary": "",
@@ -2186,6 +2116,76 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#property_model"
         },                {
+            "fqsen": "\\MyApp\\Table\\Division",
+            "name": "Division",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_all_id\u0028\u0029",
+            "name": "get_all_id",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_get_all_id"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aquery\u0028\u0029",
+            "name": "query",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_query"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Asearch\u0028\u0029",
+            "name": "search",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_search"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aset_path\u0028\u0029",
+            "name": "set_path",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_set_path"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aset_path_as_array\u0028\u0029",
+            "name": "set_path_as_array",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_set_path_as_array"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Amake_id_path\u0028\u0029",
+            "name": "make_id_path",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_make_id_path"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_by_path\u0028\u0029",
+            "name": "get_by_path",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_get_by_path"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_one_by_name_and_parent\u0028\u0029",
+            "name": "get_one_by_name_and_parent",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_get_one_by_name_and_parent"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_top_level\u0028\u0029",
+            "name": "get_top_level",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_get_top_level"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_by_parent_division_and_date\u0028\u0029",
+            "name": "get_by_parent_division_and_date",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_get_by_parent_division_and_date"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_by_admin_filter\u0028\u0029",
+            "name": "get_by_admin_filter",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#method_get_by_admin_filter"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003ARE_SUFFIX",
+            "name": "RE_SUFFIX",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#constant_RE_SUFFIX"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003A\u0024_table_name",
+            "name": "_table_name",
+            "summary": "",
+            "url": "classes/MyApp-Table-Division.html#property__table_name"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -2215,6 +2215,11 @@ Search.appendIndex(
             "name": "PresentationModel",
             "summary": "",
             "url": "namespaces/myapp-presentationmodel.html"
+        },                {
+            "fqsen": "\\MyApp\\Table",
+            "name": "Table",
+            "summary": "",
+            "url": "namespaces/myapp-table.html"
         },                {
             "fqsen": "\\Fuel\\Tasks",
             "name": "Tasks",

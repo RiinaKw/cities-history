@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package  App\Helper
+ * @package  App\PresentationModel
  */
 
 namespace MyApp\PresentationModel;

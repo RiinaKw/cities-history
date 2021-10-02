@@ -3,7 +3,12 @@
 /**
  * @package  App\Table
  */
-class Table_Division
+
+namespace MyApp\Table;
+
+use DB;
+
+class Division
 {
 	public const RE_SUFFIX =
 		'/^(?<place>.+?)'
@@ -71,7 +76,7 @@ class Table_Division
 		$divisions = [];
 		foreach ($arr as $name) {
 			if (! $name) {
-				throw new Exception('自治体名が入力されていません');
+				throw new \Exception('自治体名が入力されていません');
 			}
 			preg_match(static::RE_SUFFIX, $name, $matches);
 			if (! $matches) {

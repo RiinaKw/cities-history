@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Table\Division as DivisionTable;
+
 /**
  * The List Controller.
  *
@@ -38,7 +40,7 @@ class Controller_List extends Controller_Base
 
 		$top_division = null;
 		if ($path) {
-			$top_division = Table_Division::get_by_path($path);
+			$top_division = DivisionTable::get_by_path($path);
 			if (! $top_division || $top_division->get_path() != $path) {
 				throw new HttpNotFoundException('自治体が見つかりません。');
 			}
@@ -83,7 +85,7 @@ class Controller_List extends Controller_Base
 			}
 		}
 
-		$result = Table_Division::search($q);
+		$result = DivisionTable::search($q);
 
 		// create Presenter object
 		$content = Presenter::forge('list/search', 'view', null, 'search.tpl');

@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Table\Division as DivisionTable;
+
 /**
  * The Top Controller.
  *
@@ -12,7 +14,7 @@ class Controller_Top extends Controller_Base
 	{
 		// create Presenter object
 		$content = Presenter::forge('top', 'view', null, 'top.tpl');
-		$content->divisions = Table_Division::get_top_level();
+		$content->divisions = DivisionTable::get_top_level();
 
 		return $content;
 	}

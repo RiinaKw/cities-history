@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Table\Division as DivisionTable;
+
 /**
  * The Division Controller.
  *
@@ -22,7 +24,7 @@ class Controller_Division extends Controller_Base
 	public function action_detail()
 	{
 		$path = $this->param('path');
-		$division = Table_Division::get_by_path($path);
+		$division = DivisionTable::get_by_path($path);
 		if (! $division || $division->get_path() != $path || $division->deleted_at != null) {
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
@@ -119,12 +121,12 @@ class Controller_Division extends Controller_Base
 		$label = Input::get('label');
 		$start = Input::get('start');
 		$end = Input::get('end');
-		$division = Table_Division::get_by_path($path);
+		$division = DivisionTable::get_by_path($path);
 		if (! $division || $division->get_path() != $path) {
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 
-		$divisions = Table_Division::get_by_parent_division_and_date($division);
+		$divisions = DivisionTable::get_by_parent_division_and_date($division);
 		$events_arr = [];
 		if ($divisions) {
 			$events = Model_Event_Detail::get_by_division($divisions, $start, $end);
@@ -252,7 +254,7 @@ class Controller_Division extends Controller_Base
 				}
 				$arr['parent'] = dirname($arr['path']);
 
-				$divisions = Table_Division::set_path($arr['path']);
+				$divisions = DivisionTable::set_path($arr['path']);
 				$division = array_pop($divisions);
 				$division->create($arr);
 			}
@@ -278,7 +280,7 @@ class Controller_Division extends Controller_Base
 		$input['is_unfinished'] = isset($input['is_unfinished']) ? $input['is_unfinished'] : false;
 
 		$path = $this->param('path');
-		$division = Table_Division::get_by_path($path);
+		$division = DivisionTable::get_by_path($path);
 		$division->create($input);
 
 		Model_Activity::insert_log([
@@ -301,7 +303,7 @@ class Controller_Division extends Controller_Base
 		}
 
 		$path = $this->param('path');
-		$division = Table_Division::get_by_path($path);
+		$division = DivisionTable::get_by_path($path);
 		$path = $division->get_parent_path();
 		$division->soft_delete();
 

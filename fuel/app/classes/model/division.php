@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Table\Division as DivisionTable;
 use MyApp\PresentationModel\Division as PModel;
 
 /**
@@ -62,7 +63,7 @@ class Model_Division extends Model_Base
 
 	public function get_tree($date): Model_Division_Tree
 	{
-		$divisions = Table_Division::get_by_parent_division_and_date($this, $date);
+		$divisions = DivisionTable::get_by_parent_division_and_date($this, $date);
 		$tree = new Model_Division_Tree($this);
 		return $tree->make_tree($divisions);
 	}
@@ -266,9 +267,9 @@ class Model_Division extends Model_Base
 			DB::start_transaction();
 
 			if ($belongs) {
-				$belongs_division = Table_Division::get_by_path($belongs);
+				$belongs_division = DivisionTable::get_by_path($belongs);
 				if (! $belongs_division) {
-					$belongs_division = Table_Division::set_path($belongs);
+					$belongs_division = DivisionTable::set_path($belongs);
 					$belongs_division = array_pop($belongs_division);
 				}
 				$this->belongs_division_id = $belongs_division->id;
