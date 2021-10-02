@@ -98,10 +98,42 @@ class Db
 		return 0;
 	}
 
+	protected static function loadSQL(string $path, string $restore_table): void
+	{
+		$fp = fopen($path, 'r');
+
+		while ($sql = stream_get_line($fp, 500000, ";")) {
+			$expected_last = ['/' => 0, ')' => 0, "\n" => 0];
+			$expedted_last6 = ['TABLES' => 0, ' WRITE' => 0];
+			while (
+					! array_key_exists(substr($sql, -1), $expected_last)
+					&& ! array_key_exists(substr($sql, -6), $expedted_last6)
+			) {
+				$sql .= stream_get_line($fp, 500000, ";");
+			}
+			echo sprintf('sql of %d bytes loaded', strlen($sql)), PHP_EOL;
+			$sql = trim($sql);
+
+			\DB::insert($restore_table)
+				->set(['sql' => $sql])
+				->execute();
+		}
+		fclose($fp);
+	}
+
+	protected static function path(): string
+	{
+		$config = \Config::load('common.php');
+		$path = APPPATH . $config['backup_dir'] . '/' . $file;
+		$realpath = realpath($path);
+		if (! $realpath) {
+			echo "Not found : {$file}", PHP_EOL;
+			return 1;
+		}
+		return $realpath;
+	}
+
 	/**
-	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
- 	 * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
- 	 * @SuppressWarnings(PHPMD.NPathComplexity)
  	 * @todo PHPMD をなんとかしろ
 	 */
 	public static function restore($file)
@@ -117,13 +149,7 @@ class Db
 		*/
 
 		// target path
-		$config = \Config::load('common.php');
-		$path = APPPATH . $config['backup_dir'] . '/' . $file;
-		$realpath = realpath($path);
-		if (! $realpath) {
-			echo "Not found : {$file}", PHP_EOL;
-			return 1;
-		}
+		$path = static::path();
 		//$path = escapeshellcmd($path);
 
 		// truncate tables
@@ -158,25 +184,8 @@ class Db
 		$restore_table = 'restore';
 
 		\DBUtil::truncate_table($restore_table);
-		$fp = fopen($path, 'r');
 
-		while ($sql = stream_get_line($fp, 500000, ";")) {
-			$expected_last = ['/' => 0, ')' => 0, "\n" => 0];
-			$expedted_last6 = ['TABLES' => 0, ' WRITE' => 0];
-			while (
-					! array_key_exists(substr($sql, -1), $expected_last)
-					&& ! array_key_exists(substr($sql, -6), $expedted_last6)
-			) {
-				$sql .= stream_get_line($fp, 500000, ";");
-			}
-			echo sprintf('sql of %d bytes loaded', strlen($sql)), PHP_EOL;
-			$sql = trim($sql);
-
-			\DB::insert($restore_table)
-				->set(['sql' => $sql])
-				->execute();
-		}
-		fclose($fp);
+		static::loadSQL($path, $restore_table);
 
 		echo PHP_EOL, 'restore db...', PHP_EOL;
 
