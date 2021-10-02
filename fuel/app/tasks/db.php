@@ -142,9 +142,6 @@ class Db
 		return $realpath;
 	}
 
-	/**
- 	 * @todo PHPMD をなんとかしろ
-	 */
 	public static function restore($file)
 	{
 		// db connection data

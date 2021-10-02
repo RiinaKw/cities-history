@@ -1181,6 +1181,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fuel-Tasks-Db.html#method_backup"
         },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AloadSQL\u0028\u0029",
+            "name": "loadSQL",
+            "summary": "",
+            "url": "classes/Fuel-Tasks-Db.html#method_loadSQL"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Apath\u0028\u0029",
+            "name": "path",
+            "summary": "",
+            "url": "classes/Fuel-Tasks-Db.html#method_path"
+        },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Arestore\u0028\u0029",
             "name": "restore",
             "summary": "",
