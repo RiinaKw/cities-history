@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Page Controller.
  *
@@ -10,15 +11,15 @@ class Controller_Page extends Controller_Base
 	public function action_index()
 	{
 		Helper_Uri::redirect('top');
-	} // function action_index()
+	}
+	// function action_index()
 
 	public function action_detail()
 	{
 		$slug = $this->param('slug');
 
 		$page = Model_Page::get_one_by_slug($slug);
-		if ( ! $page)
-		{
+		if (! $page) {
 			throw new HttpNotFoundException('ページが見つかりません。');
 		}
 
@@ -27,5 +28,7 @@ class Controller_Page extends Controller_Base
 		$content->page = $page;
 
 		return $content;
-	} // function action_detail()
-} // class Controller_Page
+	}
+	// function action_detail()
+}
+// class Controller_Page

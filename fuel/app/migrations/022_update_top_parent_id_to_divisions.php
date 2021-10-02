@@ -7,15 +7,11 @@ class Update_top_parent_id_to_divisions
 	public function up()
 	{
 		$divisions = \Model_Division::find_all();
-		if ($divisions)
-		{
-			foreach ($divisions as $division)
-			{
-				if ($division->parent_division_id)
-				{
+		if ($divisions) {
+			foreach ($divisions as $division) {
+				if ($division->parent_division_id) {
 					$parent = $division;
-					while ($parent->parent_division_id !== null)
-					{
+					while ($parent->parent_division_id !== null) {
 						$parent = \Model_Division::find_by_pk($parent->parent_division_id);
 					}
 					$division->top_parent_division_id = $parent->id;

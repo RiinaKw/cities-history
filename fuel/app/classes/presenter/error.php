@@ -10,5 +10,7 @@ class Presenter_Error extends Presenter_Layout
 		$this->show_share = false;
 
 		$this->url_add = Helper_Uri::create('division.add');
-	} // function view()
-} // class Presenter_Error
+	}
+	// function view()
+}
+// class Presenter_Error

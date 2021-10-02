@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Auth Controller.
  *
@@ -8,10 +9,10 @@
 class Controller_Auth extends Controller_Base
 {
 	// cookie name for remember-me
-	const COOKIE_REMEMBER_ME = 'user_hash';
+	protected const COOKIE_REMEMBER_ME = 'user_hash';
 
 	// expire of remember-me (30 days)
-	const COOKIE_REMEMBER_ME_EXPIRE = 60 * 60 * 24 * 30;
+	protected const COOKIE_REMEMBER_ME_EXPIRE = 60 * 60 * 24 * 30;
 
 	/**
 	 * Index
@@ -21,21 +22,16 @@ class Controller_Auth extends Controller_Base
 	 */
 	public function action_index()
 	{
-		if ($this->user())
-		{
+		if ($this->user()) {
 			// already logined
 			Helper_Uri::redirect('top');
-		}
-		else
-		{
+		} else {
 			// check remember-me cookie
 			$remember_me_hash = Cookie::get(self::COOKIE_REMEMBER_ME);
-			if ($remember_me_hash)
-			{
+			if ($remember_me_hash) {
 				// restore user from remember-me cookie hash
 				$user = Model_User::find_one_by_remember_me_hash($remember_me_hash);
-				if ($user && ! $user->deleted_at)
-				{
+				if ($user && ! $user->deleted_at) {
 					$this->_remember_me($user);
 
 					// login success
@@ -45,7 +41,8 @@ class Controller_Auth extends Controller_Base
 		}
 		// if is not logined, redirect to login form
 		Helper_Uri::redirect('login');
-	} // function action_index()
+	}
+	// function action_index()
 
 	/**
 	 * set remember-me cookie
@@ -59,7 +56,8 @@ class Controller_Auth extends Controller_Base
 		Cookie::set(self::COOKIE_REMEMBER_ME, $hash, self::COOKIE_REMEMBER_ME_EXPIRE);
 		$user->remember_me_hash = $hash;
 		$user->save();
-	} // function _remember_me()
+	}
+	// function _remember_me()
 
 	/**
 	 * Log in
@@ -70,34 +68,26 @@ class Controller_Auth extends Controller_Base
 	public function action_login()
 	{
 		$redirect = Input::get('url');
-		if ($this->user())
-		{
+		if ($this->user()) {
 			// already logined
-			if ($redirect)
-			{
+			if ($redirect) {
 				// redirect to previous page
 				Response::redirect($redirect);
-			}
-			else
-			{
+			} else {
 				Helper_Uri::redirect('top');
 			}
 		}
 
 		$error_string = '';
-		if(Input::post())
-		{
+		if (Input::post()) {
 			// get form input
 			$login_id = Input::post('login_id');
 			$password = Input::post('password');
-			if ($login_id !== '' && $password !== '')
-			{
+			if ($login_id !== '' && $password !== '') {
 				// validate for login
 				$user = Model_User::login($login_id, $password);
-				if ($user)
-				{
-					if (Input::post('remember-me'))
-					{
+				if ($user) {
+					if (Input::post('remember-me')) {
 						// set remember-me
 						$this->_remember_me($user);
 					}
@@ -109,15 +99,11 @@ class Controller_Auth extends Controller_Base
 					]);
 					Session::set('user_id', $user->id);
 					Response::redirect($redirect);
-				}
-				else
-				{
+				} else {
 					// wrong input
 					$error_string = 'ユーザ名またはパスワードが違います。';
 				}
-			}
-			else
-			{
+			} else {
 				// empty input
 				$error_string = 'ユーザ名とパスワードを入力してください。';
 			}
@@ -128,7 +114,8 @@ class Controller_Auth extends Controller_Base
 		$content->error_string = $error_string;
 
 		return $content;
-	} // function action_login()
+	}
+	// function action_login()
 
 	/**
 	 * Lot out
@@ -139,8 +126,7 @@ class Controller_Auth extends Controller_Base
 	public function action_logout()
 	{
 		$redirect = Input::get('url');
-		if ($this->user())
-		{
+		if ($this->user()) {
 			// forget remember-me
 			$user = $this->user();
 			$user->remember_me_hash = null;
@@ -156,5 +142,7 @@ class Controller_Auth extends Controller_Base
 
 		// redirect to previous page
 		Response::redirect($redirect);
-	} // function action_logout()
-} // class Controller_Auth
+	}
+	// function action_logout()
+}
+// class Controller_Auth

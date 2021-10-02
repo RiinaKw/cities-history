@@ -57,7 +57,7 @@ class Helper_Date
 			}
 			// 元号が取得できない場合はException
 			if (empty($gengo)) {
-				throw new Exception('Can not be converted to a timestamp : '.$timestamp);
+				throw new Exception('Can not be converted to a timestamp : ' . $timestamp);
 			}
 		}
 
@@ -111,7 +111,8 @@ class Helper_Date
 		}
 
 		return date($format, $timestamp);
-	} // function format()
+	}
+	// function format()
 
 	public static function normalize($exp)
 	{
@@ -123,8 +124,13 @@ class Helper_Date
 				$matches['day']
 			);
 		}
-		if (preg_match('/^(?<gengo>[A-Z])(?<year>\d{1,4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $exp, $matches))
-		{
+		if (
+			preg_match(
+				'/^(?<gengo>[A-Z])(?<year>\d{1,4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/',
+				$exp,
+				$matches
+			)
+		) {
 			$gengo = $matches['gengo'];
 			foreach (self::$gengoList as $g) {
 				if ($gengo === $g['name_short']) {
@@ -139,5 +145,7 @@ class Helper_Date
 			}
 		}
 		return '0000-00-00';
-	} // function normalize()
-} // Helper_Date
+	}
+	// function normalize()
+}
+// Helper_Date

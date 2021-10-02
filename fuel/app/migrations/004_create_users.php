@@ -7,7 +7,13 @@ class Create_users
 	public function up()
 	{
 		\DBUtil::create_table('users', array(
-			'id'                        => array('type' => 'int', 'unsigned' => true, 'null' => false, 'auto_increment' => true, 'constraint' => 11),
+			'id' => array(
+				'type' => 'int',
+				'unsigned' => true,
+				'null' => false,
+				'auto_increment' => true,
+				'constraint' => 11
+			),
 			'login_id'                  => array('constraint' => 100, 'null' => false, 'type' => 'varchar'),
 			'password_crypt'            => array('constraint' => 256, 'null' => false, 'type' => 'varchar'),
 			'remember_me_hash'          => array('constraint' => 256, 'null' => true, 'type' => 'varchar'),

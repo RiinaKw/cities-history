@@ -6,8 +6,7 @@ class Delete_parent_division_id_from_divisions_2
 {
 	public function up()
 	{
-		if (\DBUtil::field_exists('divisions', array('parent_division_id')))
-		{
+		if (\DBUtil::field_exists('divisions', array('parent_division_id'))) {
 			\DBUtil::drop_fields('divisions', array(
 				'parent_division_id',
 			));
@@ -16,8 +15,7 @@ class Delete_parent_division_id_from_divisions_2
 
 	public function down()
 	{
-		if ( ! \DBUtil::field_exists('divisions', array('parent_division_id')))
-		{
+		if (! \DBUtil::field_exists('divisions', array('parent_division_id'))) {
 			\DBUtil::add_fields('divisions', array(
 				'parent_division_id' => array('constraint' => 11,  'null' => true, 'type' => 'int'),
 			));

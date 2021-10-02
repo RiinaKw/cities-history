@@ -6,5 +6,7 @@ class Helper_Session
 	{
 		$user_id = Session::get('user_id');
 		return $user_id ? Model_User::find_by_pk($user_id) : null;
-	} // function user()
-} // class Helper_Session
+	}
+	// function user()
+}
+// class Helper_Session

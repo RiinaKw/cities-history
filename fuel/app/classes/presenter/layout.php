@@ -12,12 +12,9 @@ class Presenter_Layout extends Presenter_Base
 		// create title
 		$page_title = $param['title'];
 		$site_title = Config::get('common.title') . '（' . Config::get('common.title_ja') . '）';
-		if ($page_title)
-		{
+		if ($page_title) {
 			$title = $page_title . ' - ' . $site_title;
-		}
-		else
-		{
+		} else {
 			$title = $site_title;
 		}
 
@@ -46,5 +43,7 @@ class Presenter_Layout extends Presenter_Base
 		$this->url_admin_reference = Helper_Uri::create('admin.reference.list');
 		$this->url_admin_page = Helper_Uri::create('admin.page.list');
 		$this->url_admin_db = Helper_Uri::create('admin.db.list');
-	} // function after()
-} // class Presenter_Layout
+	}
+	// function after()
+}
+// class Presenter_Layout

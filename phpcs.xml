@@ -1,20 +1,32 @@
 <?xml version="1.0"?>
 <ruleset name="FrontierLinkWorks">
-  <description>PSR12 compliant rules and settings for FrontierLink Works</description>
+	<description>PSR12 compliant rules and settings for FrontierLink Works</description>
 
-  <arg name="extensions" value="php" />
+	<arg name="extensions" value="php" />
 
-  <!-- 適用コーディング規約の指定 -->
-  <rule ref="PSR12" />
+	<!-- 適用コーディング規約の指定 -->
+	<rule ref="PSR12">
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent" />
+		<exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace" />
+		<exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
+		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore" />
+		<exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
+		<exclude name="Squiz.Classes.ValidClassName" />
+	</rule>
 
-  <!-- 出力に色を適用 -->
-  <arg name="colors" />
+	<!-- 出力に色を適用 -->
+	<arg name="colors" />
 
-  <!-- オプション p:進捗表示  s:エラー表示時にルールを表示 -->
-  <arg value="ps" />
+	<!-- オプション p:進捗表示  s:エラー表示時にルールを表示 -->
+	<arg value="ps" />
 
-  <!-- 除外ディレクトリ -->
-  <exclude-pattern>/vendor/</exclude-pattern>
-  <exclude-pattern>/cache/</exclude-pattern>
-  <exclude-pattern>/tmp/</exclude-pattern>
+
+	<!-- 除外ディレクトリ -->
+	<exclude-pattern>/bootstrap.php</exclude-pattern>
+	<exclude-pattern>/tasks/robots.php</exclude-pattern>
+	<exclude-pattern>/vendor/</exclude-pattern>
+	<exclude-pattern>/config/</exclude-pattern>
+	<exclude-pattern>/cache/</exclude-pattern>
+	<exclude-pattern>/tmp/</exclude-pattern>
+	<exclude-pattern>/logs/</exclude-pattern>
 </ruleset>

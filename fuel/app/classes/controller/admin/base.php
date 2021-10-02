@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Admin Base Controller.
  *
@@ -14,12 +15,12 @@ abstract class Controller_Admin_Base extends Controller_Base
 		parent::before();
 
 		// is admin user?
-		if ( ! $this->user())
-		{
+		if (! $this->user()) {
 			// redirect to login form
 			Helper_Uri::redirect('login');
 		}
-	} // function before()
+	}
+	// function before()
 
 	public function after($response)
 	{
@@ -28,5 +29,7 @@ abstract class Controller_Admin_Base extends Controller_Base
 		$response->og_type = 'article';
 
 		return parent::after($response);
-	} // function after()
-} // class Controller_Admin_Base
+	}
+	// function after()
+}
+// class Controller_Admin_Base

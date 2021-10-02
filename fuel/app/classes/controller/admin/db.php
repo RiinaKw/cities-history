@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Admin Controller.
  *
@@ -9,7 +10,7 @@
  */
 class Controller_Admin_Db extends Controller_Admin_Base
 {
-	const SESSION_NAME_FLASH  = 'admin_data.db';
+	protected const SESSION_NAME_FLASH  = 'admin_data.db';
 
 	protected function get_file($filename)
 	{
@@ -19,12 +20,13 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		foreach ($ext_arr as $ext) {
 			$file = $filename . '.' . $ext;
 			$path = $backup_dir . '/' . $file;
-			if ( File::exists($path) ) {
+			if (File::exists($path)) {
 				return $path;
 			}
 		}
 		return null;
-	} // function get_file()
+	}
+	// function get_file()
 
 	public function action_index()
 	{
@@ -38,7 +40,8 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		$content->flash_name = self::SESSION_NAME_FLASH;
 
 		return $content;
-	} // function action_index()
+	}
+	// function action_index()
 
 	public function post_backup()
 	{
@@ -77,13 +80,13 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			);
 		}
 		Helper_Uri::redirect('admin.db.list');
-	} // function post_backup()
+	}
+	// function post_backup()
 
 	public function action_restore($filename)
 	{
 		$path = $this->get_file($filename);
-		if ( ! $path)
-		{
+		if (! $path) {
 			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
 		}
 
@@ -110,13 +113,13 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			]
 		);
 		Helper_Uri::redirect('admin.db.list');
-	} // function post_restore()
+	}
+	// function post_restore()
 
 	public function post_delete($filename)
 	{
 		$path = $this->get_file($filename);
-		if ( ! $path)
-		{
+		if (! $path) {
 			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
 		}
 
@@ -138,16 +141,18 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			]
 		);
 		Helper_Uri::redirect('admin.db.list');
-	} // function post_delete()
+	}
+	// function post_delete()
 
 	public function action_download($filename)
 	{
 		$path = $this->get_file($filename);
-		if ( ! $path)
-		{
+		if (! $path) {
 			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
 		}
 
 		File::download($path, basename($path));
-	} // function action_download()
-} // class Controller_Admin_Db
+	}
+	// function action_download()
+}
+// class Controller_Admin_Db

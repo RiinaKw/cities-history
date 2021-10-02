@@ -10,11 +10,11 @@ class Helper_Governmentcode
 			// is valid
 			$body = $matches['body'];
 			$check = $matches['check'];
-		} else if (preg_match('/^(?<body>\d{5})(?<check>\d)$/', $code, $matches)) {
+		} elseif (preg_match('/^(?<body>\d{5})(?<check>\d)$/', $code, $matches)) {
 			// missing hyphen
 			$body = $matches['body'];
 			$check = $matches['check'];
-		} else if (preg_match('/^\d{5}$/', $code, $matches)) {
+		} elseif (preg_match('/^\d{5}$/', $code, $matches)) {
 			$body = $code;
 		} else {
 			throw new Exception('Invalid format');
@@ -39,5 +39,7 @@ class Helper_Governmentcode
 		}
 
 		return sprintf('%05d-%01d', (int)$body, (int)$check);
-	} // function normalize()
-} // class Helper_Government_Code
+	}
+	// function normalize()
+}
+// class Helper_Government_Code

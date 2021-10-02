@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Rest Division Controller.
  *
@@ -16,15 +17,13 @@ class Controller_Rest_Division extends Controller_Rest
 		$divisions = Model_Division::query($query);
 		$sql = DB::last_query();
 		$pathes = [];
-		foreach ($divisions as $division)
-		{
+		foreach ($divisions as $division) {
 			$path = $division->get_path();
-			if (strpos($path, $query) !== false)
-			{
+			if (strpos($path, $query) !== false) {
 				$pathes[] = $path;
 			}
 		}
-		usort($pathes, function($a, $b){
+		usort($pathes, function ($a, $b) {
 			return mb_strlen($a) < mb_strlen($b) ? -1 : (mb_strlen($a) > mb_strlen($b) ? 1 : 0);
 		});
 
@@ -37,5 +36,7 @@ class Controller_Rest_Division extends Controller_Rest
 			'suggestions' => $pathes,
 		];
 		return $this->response($response);
-	} // function get_list()
-} // class Controller_Rest_Division
+	}
+	// function get_list()
+}
+// class Controller_Rest_Division

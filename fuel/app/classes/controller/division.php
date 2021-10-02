@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Division Controller.
  *
@@ -7,74 +8,59 @@
  */
 class Controller_Division extends Controller_Base
 {
-	const SESSION_LIST = 'division';
+	protected const SESSION_LIST = 'division';
 
 	public function action_detail()
 	{
 		$path = $this->param('path');
 		$division = Table_Division::get_by_path($path);
-		if ( ! $division || $division->get_path() != $path || $division->deleted_at != null)
-		{
+		if (! $division || $division->get_path() != $path || $division->deleted_at != null) {
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 
 		$events = Model_Event_Detail::get_by_division($division);
 		// 終了インベントを先頭に
-		foreach ($events as $key => $event)
-		{
-			if ($event->event_id == $division->end_event_id)
-			{
+		foreach ($events as $key => $event) {
+			if ($event->event_id == $division->end_event_id) {
 				unset($events[$key]);
 				array_unshift($events, $event);
 				break;
 			}
 		}
 		// 開始イベントを末尾に
-		foreach ($events as $key => $event)
-		{
-			if ($event->event_id == $division->start_event_id)
-			{
+		foreach ($events as $key => $event) {
+			if ($event->event_id == $division->start_event_id) {
 				unset($events[$key]);
 				array_push($events, $event);
 				break;
 			}
 		}
-		foreach ($events as $event)
-		{
+		foreach ($events as $event) {
 			$event->birth = false;
 			$event->live = false;
 			$event->death = false;
-			if ($division->start_event_id == $event->event_id)
-			{
+			if ($division->start_event_id == $event->event_id) {
 				$event->birth = true;
-			}
-			else if ($division->end_event_id == $event->event_id)
-			{
+			} elseif ($division->end_event_id == $event->event_id) {
 				$event->death = true;
 			}
-			switch ($event->result)
-			{
+			switch ($event->result) {
 				case '存続':
 					$event->live = true;
-				break;
+					break;
 				case '廃止':
 				case '分割廃止':
 					$event->death = true;
-				break;
+					break;
 			}
 			$divisions = Model_Event::get_relative_division($event->event_id);
-			if ($divisions)
-			{
-				foreach ($divisions as $d)
-				{
+			if ($divisions) {
+				foreach ($divisions as $d) {
 					$d_path = $d->get_path();
 					$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
-					if ($d->geoshape)
-					{
+					if ($d->geoshape) {
 						$d->url_geoshape = Helper_Uri::create('geoshape', ['path' => $d->geoshape]);
-					}
-					else
-					{
+					} else {
 						$d->url_geoshape = '';
 					}
 					$d->split = ($d->result == '分割廃止');
@@ -94,7 +80,8 @@ class Controller_Division extends Controller_Base
 				}
 			}
 			$event->divisions = $divisions;
-		} // foreach ($events as &$event)
+		}
+		// foreach ($events as &$event)
 
 		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
 
@@ -109,7 +96,8 @@ class Controller_Division extends Controller_Base
 		$content->events = $events;
 
 		return $content;
-	} // function action_detail()
+	}
+	// function action_detail()
 
 	public function action_children()
 	{
@@ -118,55 +106,42 @@ class Controller_Division extends Controller_Base
 		$start = Input::get('start');
 		$end = Input::get('end');
 		$division = Table_Division::get_by_path($path);
-		if ( ! $division || $division->get_path() != $path)
-		{
+		if (! $division || $division->get_path() != $path) {
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 
 		$divisions = Table_Division::get_by_parent_division_and_date($division);
 		$events_arr = [];
-		if ($divisions)
-		{
+		if ($divisions) {
 			$events = Model_Event_Detail::get_by_division($divisions, $start, $end);
-			foreach ($events as &$event)
-			{
-				if (isset($events_arr[$event->event_id]))
-				{
+			foreach ($events as &$event) {
+				if (isset($events_arr[$event->event_id])) {
 					continue;
 				}
 				$event->birth = false;
 				$event->live = false;
 				$event->death = false;
-				if ($division->start_event_id == $event->event_id)
-				{
+				if ($division->start_event_id == $event->event_id) {
 					$event->birth = true;
-				}
-				else if ($division->end_event_id == $event->event_id)
-				{
+				} elseif ($division->end_event_id == $event->event_id) {
 					$event->death = true;
 				}
-				switch ($event->result)
-				{
+				switch ($event->result) {
 					case '存続':
 						$event->live = true;
-					break;
+						break;
 					case '廃止':
 						$event->death = true;
-					break;
+						break;
 				}
 				$divisions = Model_Event::get_relative_division($event->event_id);
-				if ($divisions)
-				{
-					foreach ($divisions as $d)
-					{
+				if ($divisions) {
+					foreach ($divisions as $d) {
 						$d_path = $d->get_path();
 						$d->url_detail = Helper_Uri::create('division.detail', ['path' => $d_path]);
-						if ($d->geoshape)
-						{
+						if ($d->geoshape) {
 							$d->url_geoshape = Helper_Uri::create('geoshape', ['path' => $d->geoshape]);
-						}
-						else
-						{
+						} else {
 							$d->url_geoshape = '';
 						}
 						$d->split = ($d->result == '分割廃止');
@@ -188,7 +163,8 @@ class Controller_Division extends Controller_Base
 				$event->divisions = $divisions;
 				$events_arr[$event->event_id] = $event;
 			}
-		} // if ($division_id_arr)
+		}
+		// if ($division_id_arr)
 
 		$belongs_division = Model_Division::find_by_pk($division->belongs_division_id);
 
@@ -204,17 +180,13 @@ class Controller_Division extends Controller_Base
 		$content->events = $events_arr;
 
 		return $content;
-	} // function action_children()
+	}
+	// function action_children()
 
-	public function action_add()
+	public function post_add()
 	{
-		if ( ! $this->user())
-		{
+		if (! $this->user()) {
 			throw new HttpNoAccessException('permission denied');
-		}
-		if ( ! Input::post())
-		{
-			throw new HttpBadRequestException('post required');
 		}
 
 		$division = Model_Division::forge();
@@ -230,17 +202,13 @@ class Controller_Division extends Controller_Base
 
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
 		return;
-	} // function action_add()
+	}
+	// function action_add()
 
-	public function action_add_csv()
+	public function post_add_csv()
 	{
-		if ( ! $this->user())
-		{
+		if (! $this->user()) {
 			throw new HttpNoAccessException('permission denied');
-		}
-		if ( ! Input::post())
-		{
-			throw new HttpBadRequestException('post required');
 		}
 
 		try {
@@ -277,20 +245,18 @@ class Controller_Division extends Controller_Base
 			DB::commit_transaction();
 
 			Helper_Uri::redirect('division.detail', ['path' => $division->get_path()]);
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
 			//Debug::dump($e);
 			throw new HttpServerErrorException($e->getMessage());
-		} // try
+		}
+		// try
 	}
 
 	public function action_edit()
 	{
-		if ( ! $this->user())
-		{
+		if (! $this->user()) {
 			throw new HttpNoAccessException('permission denied');
 		}
 		$input = Input::post();
@@ -310,12 +276,12 @@ class Controller_Division extends Controller_Base
 
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
 		return;
-	} // function action_edit()
+	}
+	// function action_edit()
 
 	public function action_delete()
 	{
-		if ( ! $this->user())
-		{
+		if (! $this->user()) {
 			throw new HttpNoAccessException('permission denied');
 		}
 
@@ -330,13 +296,12 @@ class Controller_Division extends Controller_Base
 			'target_id' => $division->id,
 		]);
 
-		if ($path)
-		{
+		if ($path) {
 			Helper_Uri::redirect('division.detail', ['path' => $path]);
-		}
-		else
-		{
+		} else {
 			Helper_Uri::redirect('top');
 		}
-	} // function action_delete()
-} // class Controller_Division
+	}
+	// function action_delete()
+}
+// class Controller_Division

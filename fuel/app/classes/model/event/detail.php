@@ -21,7 +21,8 @@ class Model_Event_Detail extends Model_Base
 			->add_rule('required');
 
 		return $validation;
-	} // function validation()
+	}
+	// function validation()
 
 	public static function get_by_division($divisions, $start_date = null, $end_date = null)
 	{
@@ -32,30 +33,26 @@ class Model_Event_Detail extends Model_Base
 			->where('d.is_refer', '=', false)
 			->where('e.deleted_at', '=', null)
 			->where('d.deleted_at', '=', null);
-		if (is_array($divisions) || $divisions instanceof Fuel\Core\Database_Result_Cached)
-		{
+		if (is_array($divisions) || $divisions instanceof Fuel\Core\Database_Result_Cached) {
 			$ids = [];
 			foreach ($divisions as $division) {
 				$ids[] = $division->id;
 			}
 			$query->where('d.division_id', 'in', $ids);
-		}
-		else
-		{
+		} else {
 			$query->where('d.division_id', '=', $divisions->id);
 		}
-		if ($start_date)
-		{
+		if ($start_date) {
 			$query->where('e.date', '>=', $start_date);
 		}
-		if ($end_date)
-		{
+		if ($end_date) {
 			$query->where('e.date', '<=', $end_date);
 		}
 		$query->order_by('e.date', 'desc');
 
 		return $query->as_object('Model_Event_Detail')->execute()->as_array();
-	} // function get_by_division()
+	}
+	// function get_by_division()
 
 	public function get_source()
 	{
@@ -72,40 +69,41 @@ class Model_Event_Detail extends Model_Base
 		$content = str_replace($arrSource, $arrDest, $content);
 
 		preg_match_all("/\[\[(?<expressoin>.*?)\]\]/", $content, $matches);
-        if ($matches) {
-            foreach ($matches[0] as $key => $base) {
-                $expression = $matches['expressoin'][$key];
-                $arr = explode('|', $expression);
+		if ($matches) {
+			foreach ($matches[0] as $key => $base) {
+				$expression = $matches['expressoin'][$key];
+				$arr = explode('|', $expression);
 
-                $url = array_shift($arr);
-                $text = array_shift($arr);
+				$url = array_shift($arr);
+				$text = array_shift($arr);
 
-                $attrs = [
-                    'href' => $url,
-                ];
-                foreach ($arr as $item) {
-                    list($name, $value) = explode(':', $item, 2);
-                    $attrs[$name] = $value;
-                }
+				$attrs = [
+					'href' => $url,
+				];
+				foreach ($arr as $item) {
+					list($name, $value) = explode(':', $item, 2);
+					$attrs[$name] = $value;
+				}
 
-                $html_attrs = [];
-                foreach ($attrs as $name => $value) {
-                    $html_attrs[] = sprintf(
-                        '%s="%s"',
-                        $name,
-                        $value
-                    );
-                }
-                $html = '<a ' . trim(implode(' ', $html_attrs)) . '>' . trim($text) . '</a>';
+				$html_attrs = [];
+				foreach ($attrs as $name => $value) {
+					$html_attrs[] = sprintf(
+						'%s="%s"',
+						$name,
+						$value
+					);
+				}
+				$html = '<a ' . trim(implode(' ', $html_attrs)) . '>' . trim($text) . '</a>';
 
-                $content = str_replace($base, $html, $content);
-            }
-        }
-        return $content;
+				$content = str_replace($base, $html, $content);
+			}
+		}
+		return $content;
 	}
 
 	public static function unify_geoshape($url)
 	{
 		return preg_replace('/^https?:\/\/geoshape\.ex\.nii\.ac\.jp\/city\/geojson\/(.+)$/', '$1', $url);
 	}
-} // class Model_Event_Detail
+}
+// class Model_Event_Detail

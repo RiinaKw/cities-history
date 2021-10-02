@@ -4,8 +4,7 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 {
 	public function view()
 	{
-		foreach ($this->divisions as $division)
-		{
+		foreach ($this->divisions as $division) {
 			$division->path = $division->get_path();
 			$division->url_detail = Helper_Uri::create('division.detail', ['path' => $division->path]);
 			$division->url_belongto = Helper_Uri::create('admin.divisions.detail', ['path' => $division->path]);
@@ -31,5 +30,7 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		$this->title = '自治体管理';
 		$this->nav_item = 'admin-division';
 		$this->show_share = false;
-	} // function view()
-} // class Presenter_Admin_Divisions_List
+	}
+	// function view()
+}
+// class Presenter_Admin_Divisions_List

@@ -22,7 +22,7 @@ class Model_Page extends Model_Base
 		$field = $validation->add('slug', 'スラッグ')
 			->add_rule('required')
 			->add_rule('max_length', 20)
-			->add_rule('unique', self::$_table_name.'.slug.'.$id);
+			->add_rule('unique', self::$_table_name . '.slug.' . $id);
 
 		$field = $validation->add('title', 'タイトル')
 			->add_rule('required')
@@ -31,7 +31,8 @@ class Model_Page extends Model_Base
 			;
 
 		return $validation;
-	} // function validation()
+	}
+	// function validation()
 
 	public static function get_all()
 	{
@@ -42,7 +43,8 @@ class Model_Page extends Model_Base
 
 		$result = $query->as_object(static::class)->execute();
 		return $result->count() ? $result : [];
-	} // function get_all()
+	}
+	// function get_all()
 
 	public static function get_one_by_slug($slug)
 	{
@@ -53,13 +55,12 @@ class Model_Page extends Model_Base
 			;
 
 		$result = $query->as_object(static::class)->execute();
-		if ($result->count() == 1)
-		{
+		if ($result->count() == 1) {
 			return $result[0];
-		}
-		else
-		{
+		} else {
 			return null;
 		}
-	} // function get_one_by_slug()
-} // class Model_Page
+	}
+	// function get_one_by_slug()
+}
+// class Model_Page

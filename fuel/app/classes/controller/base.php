@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Base Controller.
  *
@@ -22,11 +23,14 @@ abstract class Controller_Base extends Controller
 
 		Config::load('uri', true);
 		Config::load('common', true);
-	} // function before()
+	}
+	// function before()
 
 	public function after($response)
 	{
 		$response = parent::after($response);
 		return $response;
-	} // function after()
-} // class Controller_Base
+	}
+	// function after()
+}
+// class Controller_Base

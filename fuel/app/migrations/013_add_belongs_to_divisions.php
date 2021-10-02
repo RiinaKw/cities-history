@@ -6,8 +6,7 @@ class Add_belongs_to_divisions
 {
 	public function up()
 	{
-		if ( ! \DBUtil::field_exists('divisions', array('belongs_division_id')))
-		{
+		if (! \DBUtil::field_exists('divisions', array('belongs_division_id'))) {
 			\DBUtil::add_fields('divisions', array(
 				'belongs_division_id' => array('constraint' => 50,  'null' => true, 'type' => 'varchar'),
 			));
@@ -17,8 +16,7 @@ class Add_belongs_to_divisions
 
 	public function down()
 	{
-		if (\DBUtil::field_exists('divisions', array('belongs_division_id')))
-		{
+		if (\DBUtil::field_exists('divisions', array('belongs_division_id'))) {
 			\DBUtil::drop_fields('divisions', array(
 				'belongs_division_id',
 			));

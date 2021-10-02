@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The List Controller.
  *
@@ -10,7 +11,8 @@ class Controller_List extends Controller_Base
 	public function action_index()
 	{
 		Helper_Uri::redirect('top');
-	} // function action_index()
+	}
+	// function action_index()
 
 	public function action_detail()
 	{
@@ -20,17 +22,14 @@ class Controller_List extends Controller_Base
 		$month = (int)Input::get('month');
 		$day = (int)Input::get('day');
 
-		if ($year && $month && $day)
-		{
+		if ($year && $month && $day) {
 			$date_str = $year . '-' . $month . '-' . $day;
 			$timestamp = strtotime($date_str);
 			$date = date('Y-m-d', $timestamp);
 			$year = (int)date('Y', $timestamp);
 			$month = (int)date('m', $timestamp);
 			$day = (int)date('d', $timestamp);
-		}
-		else
-		{
+		} else {
 			$date = null;
 			$year = 0;
 			$month = 0;
@@ -38,11 +37,9 @@ class Controller_List extends Controller_Base
 		}
 
 		$top_division = null;
-		if ($path)
-		{
+		if ($path) {
 			$top_division = Table_Division::get_by_path($path);
-			if ( ! $top_division || $top_division->get_path() != $path)
-			{
+			if (! $top_division || $top_division->get_path() != $path) {
 				throw new HttpNotFoundException('自治体が見つかりません。');
 			}
 		}
@@ -58,7 +55,8 @@ class Controller_List extends Controller_Base
 		$content->division = $top_division;
 		$content->tree = $tree;
 		return $content;
-	} // function action_detail()
+	}
+	// function action_detail()
 
 	public function action_search()
 	{
@@ -93,5 +91,7 @@ class Controller_List extends Controller_Base
 		$content->q = $q;
 
 		return $content;
-	} // function action_search()
-} // class Controller_List
+	}
+	// function action_search()
+}
+// class Controller_List

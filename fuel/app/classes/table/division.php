@@ -2,7 +2,10 @@
 
 class Table_Division
 {
-	const RE_SUFFIX = '/^(?<place>.+?)(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)(\((?<identifier>.+?)\))?$/';
+	public const RE_SUFFIX =
+		'/^(?<place>.+?)'
+		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
+		. '(\((?<identifier>.+?)\))?$/';
 
 	protected static $_table_name  = 'divisions';
 
@@ -15,12 +18,12 @@ class Table_Division
 
 		$result = $query->execute();
 		$arr = [];
-		foreach ($result as $item)
-		{
+		foreach ($result as $item) {
 			$arr[] = $item['id'];
 		}
 		return $arr;
-	} // function get_all_id()
+	}
+	// function get_all_id()
 
 	public static function query($q)
 	{
@@ -28,10 +31,11 @@ class Table_Division
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null)
 			//->where(DB::expr('MATCH(fullname)'), 'AGAINST', DB::expr('(\'+'.$q.'\' IN BOOLEAN MODE)'));
-			->where('fullname', 'LIKE', '%'.$q.'%');
+			->where('fullname', 'LIKE', '%' . $q . '%');
 
 		return $query->as_object('Model_Division')->execute();
-	} // function query()
+	}
+	// function query()
 
 	public static function search($q)
 	{
@@ -40,11 +44,10 @@ class Table_Division
 		$query = DB::select()
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null);
-		foreach ($q_arr as $word)
-		{
+		foreach ($q_arr as $word) {
 			$query->and_where_open()
-				->where('search_path', 'LIKE', '%'.$word.'%')
-				->or_where('search_path_kana', 'LIKE', '%'.$word.'%')
+				->where('search_path', 'LIKE', '%' . $word . '%')
+				->or_where('search_path_kana', 'LIKE', '%' . $word . '%')
 				->and_where_close();
 		}
 		$query
@@ -55,29 +58,26 @@ class Table_Division
 			->order_by('end_date', 'desc');
 
 		return $query->as_object('Model_Division')->execute();
-	} // function search()
+	}
+	// function search()
 
 	public static function set_path($path)
 	{
 		$arr = explode('/', $path);
 		$parent = null;
 		$divisions = [];
-		foreach ($arr as $name)
-		{
-			if ( ! $name)
-			{
+		foreach ($arr as $name) {
+			if (! $name) {
 				throw new Exception('自治体名が入力されていません');
 			}
 			preg_match(static::RE_SUFFIX, $name, $matches);
-			if ( ! $matches)
-			{
+			if (! $matches) {
 				$matches = [
 					'place' => $name,
 					'suffix' => '',
 				];
 			}
-			if ( ! $division = self::get_one_by_name_and_parent($matches, $parent))
-			{
+			if (! $division = self::get_one_by_name_and_parent($matches, $parent)) {
 				$division = Model_Division::forge([
 					'id_path' => '',
 					'name' => $matches['place'],
@@ -119,7 +119,8 @@ class Table_Division
 			$parent = $division;
 		}
 		return $divisions;
-	} // function set_path()
+	}
+	// function set_path()
 
 	public static function set_path_as_array($arr)
 	{
@@ -139,7 +140,8 @@ class Table_Division
 
 			$division->save();
 		}
-	} // function set_path_as_array()
+	}
+	// function set_path_as_array()
 
 	public static function make_id_path($path, $self_id)
 	{
@@ -167,7 +169,8 @@ class Table_Division
 		}
 		$id_arr[] = $self_id;
 		return implode('/', $id_arr) . '/';
-	} // function make_id_path()
+	}
+	// function make_id_path()
 
 	public static function get_by_path($path)
 	{
@@ -175,39 +178,29 @@ class Table_Division
 		$division = null;
 		$parent = null;
 
-		foreach ($arr as $name)
-		{
+		foreach ($arr as $name) {
 			preg_match(static::RE_SUFFIX, $name, $matches);
 
-			if ($matches)
-			{
+			if ($matches) {
 				$result = self::get_one_by_name_and_parent($matches, $parent);
-				if ($result)
-				{
+				if ($result) {
 					$division = $result;
 					$parent = $division;
-				}
-				else
-				{
+				} else {
 					$division = null;
 					$parent = null;
 					break;
 				}
-			}
-			else
-			{
+			} else {
 				$matches = array(
 					'place' => $name,
 					'suffix' => '',
 				);
 				$result = self::get_one_by_name_and_parent($matches, $parent);
-				if ($result)
-				{
+				if ($result) {
 					$division = $result;
 					$parent = $division;
-				}
-				else
-				{
+				} else {
 					$division = null;
 					$parent = null;
 					break;
@@ -215,7 +208,8 @@ class Table_Division
 			}
 		}
 		return $division;
-	} // function get_by_path()
+	}
+	// function get_by_path()
 
 	public static function get_one_by_name_and_parent($name, $parent)
 	{
@@ -233,30 +227,27 @@ class Table_Division
 			->where('show_suffix', '=', true)
 			->and_where_close()
 			->or_where_open()
-			->where('name', '=', $name['place'].$name['suffix'])
+			->where('name', '=', $name['place'] . $name['suffix'])
 			->where('show_suffix', '=', false)
 			->or_where_close()
 			->and_where_close()
 			->where('deleted_at', '=', null);
 		$query->where('id_path', '=', DB::expr($id_path));
-		if (isset($name['identifier']))
-		{
+		if (isset($name['identifier'])) {
 			$query->where('identifier', '=', $name['identifier']);
 		}
 
 		$result = $query->as_object('Model_Division')->execute();
-		if ($result->count())
-		{
+		if ($result->count()) {
 			return $result[0];
-		}
-		else {
+		} else {
 			return null;
 		}
-	} // function get_one_by_name_and_parent()
+	}
+	// function get_one_by_name_and_parent()
 
 	public static function get_top_level()
 	{
-
 		$query = DB::select()
 			->from(self::$_table_name)
 			->where('deleted_at', '=', null)
@@ -264,7 +255,8 @@ class Table_Division
 			->order_by('display_order', 'asc');
 
 		return $query->as_object('Model_Division')->execute();
-	} // function get_top_level()
+	}
+	// function get_top_level()
 
 	public static function get_by_parent_division_and_date($parent, $date = null)
 	{
@@ -279,8 +271,7 @@ class Table_Division
 			->or_where('d.belongs_division_id', '=', $parent->id)
 			->and_where_close()
 			->where('d.deleted_at', '=', null);
-		if ($date)
-		{
+		if ($date) {
 			$query->and_where_open()
 				->where('s.date', '<=', $date)
 				->or_where('s.date', '=', null)
@@ -299,7 +290,8 @@ class Table_Division
 			->order_by('d.end_date', 'desc');
 
 		return $query->as_object('Model_Division')->execute();
-	} // function get_by_parent_division_and_date()
+	}
+	// function get_by_parent_division_and_date()
 
 	public static function get_by_admin_filter($parent, $filter)
 	{
@@ -312,8 +304,7 @@ class Table_Division
 			$query->where('id_path', '=', DB::expr('CONCAT(id, "/")'));
 		}
 
-		switch ($filter)
-		{
+		switch ($filter) {
 			case 'empty_kana':
 				$query
 				/*
@@ -325,7 +316,7 @@ class Table_Division
 					->and_where_close();
 				*/
 					->where('d.is_empty_kana', 1);
-			break;
+				break;
 
 			case 'empty_code':
 				$query
@@ -342,7 +333,7 @@ class Table_Division
 					->where('d.government_code', null)
 					->or_where('d.government_code', '')
 					->and_where_close();
-			break;
+				break;
 
 			case 'empty_source':
 				$query
@@ -350,12 +341,11 @@ class Table_Division
 					->where('d.source', null)
 					->or_where('d.source', '')
 					->and_where_close();
-			break;
+				break;
 
 			case 'is_wikipedia':
-				$query
-					->where( DB::expr('LOWER(d.source)'), 'LIKE', 'wikipedia');
-			break;
+				$query->where(DB::expr('LOWER(d.source)'), 'LIKE', 'wikipedia');
+				break;
 		}
 
 		$query
@@ -367,5 +357,6 @@ class Table_Division
 			->order_by('d.end_date', 'desc');
 
 		return $query->as_object('Model_Division')->execute();
-	} // functiob get_by_admin_filter()
+	}
+	// functiob get_by_admin_filter()
 }

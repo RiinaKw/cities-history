@@ -4,23 +4,22 @@ class Presenter_List_Search extends Presenter_Layout
 {
 	protected function _get_path($arr)
 	{
-		foreach ($arr as $item)
-		{
+		foreach ($arr as $item) {
 			$item->path = $item->get_path();
 			$item->url_detail = Helper_Uri::create(
 				'division.detail',
 				['path' => $item->path]
 			);
 		}
-	} // function _get_path()
+	}
+	// function _get_path()
 
 	public function view()
 	{
 		$this->_get_path($this->divisions);
 
 		$dates = Model_Referencedate::get_all();
-		foreach ($dates as &$cur_date)
-		{
+		foreach ($dates as &$cur_date) {
 			$cur_date->url = Helper_Uri::create(
 				'list.division',
 				['path' => ''],
@@ -49,5 +48,7 @@ class Presenter_List_Search extends Presenter_Layout
 		$this->show_share = true;
 
 		$this->url_add = Helper_Uri::create('division.add');
-	} // function view()
-} // class Presenter_List_Index
+	}
+	// function view()
+}
+// class Presenter_List_Index

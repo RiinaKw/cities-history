@@ -6,8 +6,7 @@ class Add_fullname_to_divisions
 {
 	public function up()
 	{
-		if ( ! \DBUtil::field_exists('divisions', array('fullname')))
-		{
+		if (! \DBUtil::field_exists('divisions', array('fullname'))) {
 			\DBUtil::add_fields('divisions', array(
 				'fullname'      => array('constraint' => 50,  'null' => false, 'type' => 'varchar'),
 				'fullname_kana' => array('constraint' => 50,  'null' => false, 'type' => 'varchar'),
@@ -19,8 +18,7 @@ class Add_fullname_to_divisions
 
 	public function down()
 	{
-		if (\DBUtil::field_exists('divisions', array('fullname')))
-		{
+		if (\DBUtil::field_exists('divisions', array('fullname'))) {
 			\DBUtil::drop_fields('divisions', array(
 				'fullname',
 				'fullname_kana',

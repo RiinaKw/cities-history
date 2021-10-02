@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Rest Event Controller.
  *
@@ -11,8 +12,7 @@ class Controller_Rest_Event extends Controller_Rest
 	{
 		$event = Model_Event::find_by_pk($event_id);
 
-		if ( ! $event)
-		{
+		if (! $event) {
 			$response = array(
 				'message' => 'イベントが見つかりません。',
 			);
@@ -20,12 +20,12 @@ class Controller_Rest_Event extends Controller_Rest
 				$response,
 				404
 			);
-		} // if ( ! $event)
+		}
+		// if ( ! $event)
 
 		$divisions = Model_Event::get_relative_division($event_id);
 		$response = [];
-		foreach ($divisions as $division)
-		{
+		foreach ($divisions as $division) {
 			$response[] = [
 				'id'        => $division->event_detail_id,
 				'name'      => $division->name,
@@ -38,5 +38,7 @@ class Controller_Rest_Event extends Controller_Rest
 			];
 		}
 		return $this->response($response);
-	} // function get_detail()
-} // class Controller_Rest_Event
+	}
+	// function get_detail()
+}
+// class Controller_Rest_Event

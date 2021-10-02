@@ -7,7 +7,13 @@ class Create_reference_dates
 	public function up()
 	{
 		\DBUtil::create_table('reference_dates', array(
-			'id'          => array('type' => 'int', 'unsigned' => true, 'null' => false, 'auto_increment' => true, 'constraint' => 11),
+			'id' => array(
+				'type' => 'int',
+				'unsigned' => true,
+				'null' => false,
+				'auto_increment' => true,
+				'constraint' => 11
+			),
 			'date'        => array( 'type' => 'date', 'null' => false),
 			'description' => array('constraint' => 200, 'null' => false, 'type' => 'varchar'),
 			'created_at'  => array( 'type' => 'timestamp', 'null' => true),

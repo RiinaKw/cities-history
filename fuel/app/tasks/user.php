@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Fuel is a fast, lightweight, community driven PHP5 framework.
  *
@@ -28,18 +29,14 @@ class User
 {
 	public static function create($name, $password)
 	{
-		try
-		{
+		try {
 			$user = \Model_User::create($name, $password);
 			echo "User created\n";
-		}
-		catch (\Exception $e)
-		{
+		} catch (\Exception $e) {
 			echo $e->getMessage();
-			exit;
+			return;
 		}
-	} // function create()
-
+	}
+	// function create()
 }
-
 /* End of file tasks/robots.php */

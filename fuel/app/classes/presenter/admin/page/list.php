@@ -16,5 +16,7 @@ class Presenter_Admin_Page_List extends Presenter_Layout
 		$this->nav_item = 'admin-page';
 		$this->breadcrumbs = ['固定ページ' => ''];
 		$this->show_share = false;
-	} // function view()
-} // class Presenter_Admin_Reference_List
+	}
+	// function view()
+}
+// class Presenter_Admin_Reference_List

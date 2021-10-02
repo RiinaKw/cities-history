@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Top Controller.
  *
@@ -14,5 +15,7 @@ class Controller_Top extends Controller_Base
 		$content->divisions = Table_Division::get_top_level();
 
 		return $content;
-	} // function action_index()
-} // class Controller_Top
+	}
+	// function action_index()
+}
+// class Controller_Top

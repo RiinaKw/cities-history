@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Admin Controller.
  *
@@ -34,14 +35,12 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		*/
 
 		$parent = null;
-		if ($path)
-		{
+		if ($path) {
 			$parent = Table_Division::get_by_path($path);
 		}
 		$divisions = Table_Division::get_by_admin_filter($parent, $filter);
 
-		foreach ($divisions as $division)
-		{
+		foreach ($divisions as $division) {
 			//$division = Model_Division::find_by_pk($id);
 			$end_event = Model_Event::find_by_pk($division->end_event_id);
 
@@ -71,5 +70,7 @@ class Controller_Admin_Divisions extends Controller_Admin_Base
 		$content->divisions = $divisions;
 
 		return $content;
-	} // function action_index()
-} // class Controller_Admin_Divisions
+	}
+	// function action_index()
+}
+// class Controller_Admin_Divisions

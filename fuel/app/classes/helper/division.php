@@ -42,5 +42,7 @@ class Helper_Division
 				]
 			),
 		];
-	} // function get_children_url()
-} // class Helper_Division
+	}
+	// function get_children_url()
+}
+// class Helper_Division

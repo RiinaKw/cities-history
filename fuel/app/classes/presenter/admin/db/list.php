@@ -17,7 +17,7 @@ class Presenter_Admin_Db_List extends Presenter_Layout
 				'url_download' => Helper_Uri::create('admin.db.download', ['file' => $name]),
 			];
 		}
-		usort($files, function($a, $b){
+		usort($files, function ($a, $b) {
 			if ($a['time'] == $b['time']) {
 				return 0;
 			}
@@ -43,5 +43,7 @@ class Presenter_Admin_Db_List extends Presenter_Layout
 		$this->nav_item = 'admin-db';
 		$this->breadcrumbs = ['バックアップ' => ''];
 		$this->show_share = false;
-	} // function view()
-} // class Presenter_Admin_Db_Backup
+	}
+	// function view()
+}
+// class Presenter_Admin_Db_Backup

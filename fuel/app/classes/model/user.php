@@ -24,23 +24,20 @@ class Model_User extends Model_Base
 		$field = $validation->add('login_id', 'ログインID')
 			->add_rule('required')
 			->add_rule('max_length', 100)
-			->add_rule('unique', self::$_table_name.'.login_id.'.$id);
+			->add_rule('unique', self::$_table_name . '.login_id.' . $id);
 
 		$field = $validation->add('password', 'パスワード')
 			->add_rule('max_length', 256);
-		if ($is_new)
-		{
+		if ($is_new) {
 			$field->add_rule('required');
 		}
 		$field = $validation->add('password_confirm', 'パスワード（確認）')
 			->add_rule('max_length', 256);
-		if ($is_new)
-		{
+		if ($is_new) {
 			$field->add_rule('required');
 		}
 		$field->add_rule([
-				'password_confirm' => function($password_confirm) use ($password)
-				{
+				'password_confirm' => function ($password_confirm) use ($password) {
 					if ($password === $password_confirm) {
 						return true;
 					} else {
@@ -51,18 +48,19 @@ class Model_User extends Model_Base
 			]);
 
 		return $validation;
-	} // function validation()
+	}
+	// function validation()
 
 	// make password hash using Blowfish
-	static function crypt_password($password)
+	protected static function crypt_password($password)
 	{
 		return password_hash($password, PASSWORD_DEFAULT);
-	} // function crypt_password()
+	}
+	// function crypt_password()
 
 	public static function create($login_id, $password)
 	{
-		try
-		{
+		try {
 			DB::start_transaction();
 
 			$user = static::forge([
@@ -72,33 +70,31 @@ class Model_User extends Model_Base
 			$user->save();
 
 			DB::commit_transaction();
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
 			throw $e;
 		}
 		return $user;
-	} // function create()
+	}
+	// function create()
 
 	// login
 	public static function login($login_id, $password)
 	{
 		// get record matching $login_id
 		$admin = self::find_one_by_login_id($login_id);
-		if ($admin)
-		{
+		if ($admin) {
 			// is password matches?
 			$password_match = password_verify($password, $admin->password_crypt);
-			if ($password_match)
-			{
+			if ($password_match) {
 				// success
 				return $admin;
 			}
 		}
 		return false;
-	} // function login()
+	}
+	// function login()
 
 	// make remember-me unique hash
 	public static function create_remember_me_hash()
@@ -109,10 +105,11 @@ class Model_User extends Model_Base
 		$result = $query->execute();
 
 		$table = array();
-		foreach ($result as $item)
-		{
+		foreach ($result as $item) {
 			$table[] = $item['remember_me_hash'];
 		}
 		return Helper_Random::forge($table);
-	} // functino create_remember_me_hash()
-} // class Model_User
+	}
+	// functino create_remember_me_hash()
+}
+// class Model_User

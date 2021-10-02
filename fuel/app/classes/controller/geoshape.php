@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Geoshape Controller.
  *
@@ -10,7 +11,7 @@ class Controller_Geoshape extends Controller
 	public function post_index()
 	{
 		$path = Input::get('path');
-		$url = 'https://geoshape.ex.nii.ac.jp/city/geojson/'.$path;
+		$url = 'https://geoshape.ex.nii.ac.jp/city/geojson/' . $path;
 
 		$option = [
 			CURLOPT_RETURNTRANSFER => true, //文字列として返す
@@ -41,5 +42,7 @@ class Controller_Geoshape extends Controller
 
 		echo $json;
 		return;
-	} // function action_index()
-} // class Controller_Geoshape
+	}
+	// function action_index()
+}
+// class Controller_Geoshape

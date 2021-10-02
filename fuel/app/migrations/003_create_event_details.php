@@ -7,7 +7,13 @@ class Create_event_details
 	public function up()
 	{
 		\DBUtil::create_table('event_details', array(
-			'id'                 => array('type' => 'int', 'unsigned' => true, 'null' => false, 'auto_increment' => true, 'constraint' => 11),
+			'id' => array(
+				'type' => 'int',
+				'unsigned' => true,
+				'null' => false,
+				'auto_increment' => true,
+				'constraint' => 11
+			),
 			'event_id'           => array('constraint' => 11,  'null' => false, 'type' => 'int'),
 			'division_id'        => array('constraint' => 11,  'null' => false, 'type' => 'int'),
 			'division_result'    => array('constraint' => 20,  'null' => false, 'type' => 'varchar'),

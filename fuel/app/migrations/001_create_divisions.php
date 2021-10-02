@@ -7,7 +7,13 @@ class Create_divisions
 	public function up()
 	{
 		\DBUtil::create_table('divisions', array(
-			'id'                 => array('type' => 'int', 'unsigned' => true, 'null' => false, 'auto_increment' => true, 'constraint' => 11),
+			'id' => array(
+				'type' => 'int',
+				'unsigned' => true,
+				'null' => false,
+				'auto_increment' => true,
+				'constraint' => 11
+			),
 			'name'               => array('constraint' => 20, 'null' => false, 'type' => 'varchar'),
 			'name_kana'          => array('constraint' => 20, 'null' => false, 'type' => 'varchar'),
 			'postfix'            => array('constraint' => 20,  'null' => false, 'type' => 'varchar'),

@@ -13,5 +13,7 @@ class Helper_Number
 		}
 		$bytes = round($bytes, 2);
 		return $bytes . ' ' . $unit[$idx];
-	} // function bytes_format()
-} // class Helper_Number
+	}
+	// function bytes_format()
+}
+// class Helper_Number

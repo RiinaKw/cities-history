@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Admin Controller.
  *
@@ -9,7 +10,7 @@
  */
 class Controller_Admin_Reference extends Controller_Admin_Base
 {
-	const SESSION_NAME_FLASH  = 'admin_data.reference';
+	protected const SESSION_NAME_FLASH  = 'admin_data.reference';
 
 	public function action_list()
 	{
@@ -23,13 +24,13 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 		$content->flash_name = self::SESSION_NAME_FLASH;
 
 		return $content;
-	} // function action_list()
+	}
+	// function action_list()
 
 	public function action_add()
 	{
-		Debug::dump( Input::post() );
-		try
-		{
+		Debug::dump(Input::post());
+		try {
 			DB::start_transaction();
 
 			$reference = Model_Referencedate::forge([
@@ -48,20 +49,19 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 				]
 			);
 			Helper_Uri::redirect('admin.reference.list');
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
-		} // try
-	} // function action_add()
+		}
+		// try
+	}
+	// function action_add()
 
 	public function action_edit($id)
 	{
 		$reference = static::_get_model($id);
-		try
-		{
+		try {
 			DB::start_transaction();
 
 			$reference->date = Input::post('date');
@@ -78,20 +78,19 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 			DB::commit_transaction();
 
 			Helper_Uri::redirect('admin.reference.list');
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
-		} // try
-	} // function action_edit()
+		}
+		// try
+	}
+	// function action_edit()
 
 	public function action_delete($id)
 	{
 		$reference = static::_get_model($id);
-		try
-		{
+		try {
 			DB::start_transaction();
 
 			$reference->soft_delete();
@@ -106,30 +105,28 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 				]
 			);
 			Helper_Uri::redirect('admin.reference.list');
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
-		} // try
-	} // function action_delete()
+		}
+		// try
+	}
+	// function action_delete()
 
 	protected static function _get_model($id, $force = false)
 	{
-		if ( ! $id || ! is_numeric($id))
-		{
+		if (! $id || ! is_numeric($id)) {
 			throw new HttpBadRequestException('不正なIDです。');
 		}
 		$record = Model_Referencedate::find_by_pk($id);
-		if ( ! $record)
-		{
+		if (! $record) {
 			throw new HttpNotFoundException('参照が見つかりません。');
 		}
-		if ( ! $force && $record->deleted_at)
-		{
+		if (! $force && $record->deleted_at) {
 			throw new HttpNotFoundException('削除済みです。');
 		}
 		return $record;
 	}
-} // class Controller_Admin
+}
+// class Controller_Admin

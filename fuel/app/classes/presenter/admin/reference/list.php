@@ -22,5 +22,7 @@ class Presenter_Admin_Reference_List extends Presenter_Layout
 		$this->nav_item = 'admin-reference';
 		$this->breadcrumbs = ['参照日付一覧' => ''];
 		$this->show_share = false;
-	} // function view()
-} // class Presenter_Admin_Reference_List
+	}
+	// function view()
+}
+// class Presenter_Admin_Reference_List

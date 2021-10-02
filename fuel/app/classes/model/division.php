@@ -33,22 +33,24 @@ class Model_Division extends Model_Base
 			->add_rule('max_length', 20);
 		$field = $validation->add('identifier', '識別名')
 			->add_rule('max_length', 50);
-		$field = $validation->add('start_event_id',     '設置イベント');
-		$field = $validation->add('end_event_id',       '廃止イベント');
-		$field = $validation->add('government_code',    '全国地方公共団体コード')
+		$field = $validation->add('start_event_id', '設置イベント');
+		$field = $validation->add('end_event_id', '廃止イベント');
+		$field = $validation->add('government_code', '全国地方公共団体コード')
 			->add_rule('min_length', 6)
 			->add_rule('max_length', 7);
 		$field = $validation->add('display_order', '表示順')
 			->add_rule('valid_string', array('numeric'));
-		$field = $validation->add('source',     '出典');
+		$field = $validation->add('source', '出典');
 
 		return $validation;
-	} // function validation()
+	}
+	// function validation()
 
 	public function get_source()
 	{
 		return Helper_Html::wiki($this->source);
-	} // function get_source()
+	}
+	// function get_source()
 
 	public function get_tree($date)
 	{
@@ -73,7 +75,8 @@ class Model_Division extends Model_Base
 			}
 			return implode('/', $name_arr);
 		}
-	} // function get_path()
+	}
+	// function get_path()
 
 	public function make_path(): string
 	{
@@ -87,7 +90,8 @@ class Model_Division extends Model_Base
 			}
 		}
 		return implode('/', $name_arr);
-	} // function make_path()
+	}
+	// function make_path()
 
 	public function make_path_kana(): string
 	{
@@ -101,37 +105,38 @@ class Model_Division extends Model_Base
 			}
 		}
 		return implode('/', $kana_arr);
-	} // function make_path_kana()
+	}
+	// function make_path_kana()
 
 	public function get_fullname_kana(): string
 	{
 		$kana = $this->name_kana;
-		if ($this->show_suffix)
-		{
-			$kana .= '・'.$this->suffix_kana;
+		if ($this->show_suffix) {
+			$kana .= '・' . $this->suffix_kana;
 		}
 		return $kana;
-	} // function get_fullname_kana()
+	}
+	// function get_fullname_kana()
 
 	public function get_search_fullname(): string
 	{
 		$name = $this->name;
-		if ($this->show_suffix)
-		{
+		if ($this->show_suffix) {
 			$name .= $this->suffix;
 		}
 		return $name;
-	} // function get_search_fullname()
+	}
+	// function get_search_fullname()
 
 	public function get_search_fullname_kana(): string
 	{
 		$kana = $this->name_kana;
-		if ($this->show_suffix)
-		{
+		if ($this->show_suffix) {
 			$kana .= $this->suffix_kana;
 		}
 		return $kana;
-	} // function get_search_fullname_kana()
+	}
+	// function get_search_fullname_kana()
 
 	public function make_search_path(): string
 	{
@@ -145,7 +150,8 @@ class Model_Division extends Model_Base
 			}
 		}
 		return implode('', $name_arr);
-	} // function make_path()
+	}
+	// function make_path()
 
 	public function make_search_path_kana(): string
 	{
@@ -159,7 +165,8 @@ class Model_Division extends Model_Base
 			}
 		}
 		return implode('', $kana_arr);
-	} // function make_path_kana()
+	}
+	// function make_path_kana()
 
 	public function get_parent_path(): string
 	{
@@ -169,52 +176,47 @@ class Model_Division extends Model_Base
 		} else {
 			return dirname($path);
 		}
-	} // function get_parent_path()
+	}
+	// function get_parent_path()
 
 	public function get_belongs_path()
 	{
-		if ($this->belongs_division_id)
-		{
+		if ($this->belongs_division_id) {
 			$division = self::find_by_pk($this->belongs_division_id);
 			return $division->get_path();
-		}
-		else
-		{
+		} else {
 			return null;
 		}
-	} // function get_belongs_path()
+	}
+	// function get_belongs_path()
 
 	public function get_belongs_name()
 	{
-		if ($this->belongs_division_id)
-		{
+		if ($this->belongs_division_id) {
 			$division = self::find_by_pk($this->belongs_division_id);
 			return $division->get_fullname();
-		}
-		else
-		{
+		} else {
 			return null;
 		}
-	} // function get_belongs_name()
+	}
+	// function get_belongs_name()
 
 	public function get_fullname(): string
 	{
 		$name = $this->name;
-		if ($this->show_suffix)
-		{
+		if ($this->show_suffix) {
 			$name .= $this->suffix;
 		}
-		if ($this->identifier)
-		{
-			$name .= '('.$this->identifier.')';
+		if ($this->identifier) {
+			$name .= "({$this->identifier})";
 		}
 		return $name;
-	} // function get_fullname()
+	}
+	// function get_fullname()
 
 	public function suffix_classification(): string
 	{
-		switch ($this->suffix)
-		{
+		switch ($this->suffix) {
 			default:
 				return $this->suffix;
 
@@ -235,23 +237,18 @@ class Model_Division extends Model_Base
 		$parent = $input['parent'] ?? null;
 		$parent_division = self::get_by_path($parent);
 
-		try
-		{
+		try {
 			DB::start_transaction();
 
 			$parent_division = null;
-			if ($belongs)
-			{
+			if ($belongs) {
 				$belongs_division = self::get_by_path($belongs);
-				if ( ! $belongs_division)
-				{
+				if (! $belongs_division) {
 					$belongs_division = self::set_path($belongs);
 					$belongs_division = array_pop($belongs_division);
 				}
 				$this->belongs_division_id = $belongs_division->id;
-			}
-			else
-			{
+			} else {
 				$this->belongs_division_id = null;
 			}
 
@@ -275,20 +272,16 @@ class Model_Division extends Model_Base
 				$this->government_code = Helper_Governmentcode::normalize($input['government_code']) ?: null;
 				$this->is_empty_government_code = empty($input['government_code']);
 			}
-			if (isset($input['display_order']))
-			{
+			if (isset($input['display_order'])) {
 				$this->display_order   = $input['display_order'] ?: null;
 			}
-			if (isset($input['is_unfinished']))
-			{
+			if (isset($input['is_unfinished'])) {
 				$this->is_unfinished   = !! $input['is_unfinished'];
 			}
-			if (isset($input['identifier']))
-			{
+			if (isset($input['identifier'])) {
 				$this->identifier      = $input['identifier'] ?: null;
 			}
-			if (isset($input['source']))
-			{
+			if (isset($input['source'])) {
 				$this->source          = $input['source'] ?: null;
 			}
 			$this->search_path = '';
@@ -310,31 +303,29 @@ class Model_Division extends Model_Base
 				->where('path', '=', $this->path)
 				->where('id', '!=', $this->id)
 				;
-			if ($query->execute()->count())
-			{
+			if ($query->execute()->count()) {
 				throw new HttpBadRequestException('重複しています。');
 			}
 			$this->save();
 
 			DB::commit_transaction();
-		}
-		catch (HttpBadRequestException $e)
-		{
+		} catch (HttpBadRequestException $e) {
 			// internal error
 			DB::rollback_transaction();
 			throw new HttpBadRequestException($e->getMessage());
-		}
-		catch (Exception $e)
-		{
-			Debug::dump($e, $e->getTraceAsString());exit;
+		} catch (Exception $e) {
+			Debug::dump($e, $e->getTraceAsString());
+			exit;
 			// internal error
 			DB::rollback_transaction();
 			throw new HttpServerErrorException($e->getMessage());
 		}
-	} // function create()
+	}
+	// function create()
 
 	public function dump(): void
 	{
 		echo $this->id_path, ' ', $this->path;
 	}
-} // class Model_Division
+}
+// class Model_Division

@@ -15,7 +15,8 @@ class Helper_Html
 		} else {
 			return $source;
 		}
-	} // function excerpt()
+	}
+	// function excerpt()
 
 	public static function wiki($source)
 	{
@@ -68,5 +69,7 @@ class Helper_Html
 			}
 		}
 		return $content;
-	} // function wiki()
-} // class Helper_Html
+	}
+	// function wiki()
+}
+// class Helper_Html

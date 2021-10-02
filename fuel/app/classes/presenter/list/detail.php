@@ -4,29 +4,25 @@ class Presenter_List_Detail extends Presenter_Layout
 {
 	protected function _get_path($obj)
 	{
-		if (is_object($obj))
-		{
+		if (is_object($obj)) {
 			$obj->path = $obj->get_path();
 			$obj->url_detail = Helper_Uri::create(
 				'division.detail',
 				['path' => $obj->path]
 			);
 			$this->_get_path($obj->_children);
-		}
-		else
-		{
-			foreach ($obj as $item)
-			{
+		} else {
+			foreach ($obj as $item) {
 				$this->_get_path($item);
 			}
 		}
-	} // function _get_path()
+	}
+	// function _get_path()
 
 	public function view()
 	{
 		$dates = Model_Referencedate::get_all();
-		foreach ($dates as &$cur_date)
-		{
+		foreach ($dates as &$cur_date) {
 			$timestamp = strtotime($cur_date->date);
 			$cur_date->year  = (int)date('Y', $timestamp);
 			$cur_date->month = (int)date('m', $timestamp);
@@ -56,11 +52,10 @@ class Presenter_List_Detail extends Presenter_Layout
 		$this->search_path = $this->division->make_search_path();
 		$this->search_path_kana = $this->division->make_search_path_kana();
 
-		$title = $this->division->path.'の自治体一覧';
-		$description = $this->division->path.'の自治体一覧 ' . $this->search_path . ' ' . $this->search_path_kana;;
+		$title = $this->division->path . 'の自治体一覧';
+		$description = $this->division->path . 'の自治体一覧 ' . $this->search_path . ' ' . $this->search_path_kana;
 
-		if ($this->date)
-		{
+		if ($this->date) {
 			$description .= Helper_Date::format(' Y(Jk)-m-d', $this->date);
 		}
 
@@ -78,5 +73,7 @@ class Presenter_List_Detail extends Presenter_Layout
 		$this->day_list = range(1, 31);
 
 		$this->url_add = Helper_Uri::create('division.add');
-	} // function view()
-} // class Presenter_List_Detail
+	}
+	// function view()
+}
+// class Presenter_List_Detail

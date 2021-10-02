@@ -18,5 +18,7 @@ class Presenter_Page extends Presenter_Layout
 		$this->show_share = true;
 
 		$this->set_safe('content', $html_content);
-	} // function view()
-} // class Presenter_Page
+	}
+	// function view()
+}
+// class Presenter_Page

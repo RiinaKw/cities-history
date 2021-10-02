@@ -20,7 +20,7 @@ class Model_Division_Tree
 			'町' => 0,
 			'村' => 0,
 		];
-		$this->unknown = new \Helper_Iterator;
+		$this->unknown = new \Helper_Iterator();
 	}
 
 	public function self()
@@ -59,7 +59,7 @@ class Model_Division_Tree
 
 		$tree = new self($division);
 		if (! isset($this->children[$suffix])) {
-			$this->children[$suffix] = new \Helper_Iterator;
+			$this->children[$suffix] = new \Helper_Iterator();
 		}
 		$this->children[$suffix]->push($tree, $name);
 		return $tree;
@@ -96,14 +96,14 @@ class Model_Division_Tree
 			} else {
 				$tree = new self($division, $division->fullname);
 				if (! isset($this->children[$suffix])) {
-					$this->children[$suffix] = new \Helper_Iterator;
+					$this->children[$suffix] = new \Helper_Iterator();
 				}
 				$this->children[$suffix]->push($tree, $division->fullname);
 			}
 		} else {
 			$parent_name = dirname($child_path);
 			$tree = $this->get_subtree_by_division($division);
-			if ( $tree === null ) {
+			if ($tree === null) {
 				$tree = $this->create_subtree($division);
 			}
 			$tree->add($division, $division->fullname);
@@ -122,4 +122,5 @@ class Model_Division_Tree
 			$children->dump($depth + 4);
 		}
 	}
-} // class Model_Division_Tree
+}
+// class Model_Division_Tree

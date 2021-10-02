@@ -17,5 +17,7 @@ class Presenter_Top extends Presenter_Layout
 
 		$this->url_add = Helper_Uri::create('division.add');
 		$this->url_add_csv = Helper_Uri::create('division.add_csv');
-	} // function view()
-} // class Presenter_Top
+	}
+	// function view()
+}
+// class Presenter_Top

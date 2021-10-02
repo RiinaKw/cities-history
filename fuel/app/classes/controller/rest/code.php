@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Rest Code Controller.
  *
@@ -9,12 +10,9 @@ class Controller_Rest_Code extends Controller_Rest
 {
 	public function get_detail($code)
 	{
-		try
-		{
+		try {
 			$normalized = Helper_Governmentcode::normalize($code);
-		}
-		catch (Exception $e)
-		{
+		} catch (Exception $e) {
 			$response = [
 				'error' => $e->getMessage(),
 			];
@@ -24,24 +22,20 @@ class Controller_Rest_Code extends Controller_Rest
 		$divisions = Model_Division::find_by_government_code($normalized);
 
 		$arr = [];
-		if ($divisions)
-		{
-			foreach ($divisions as $division)
-			{
+		if ($divisions) {
+			foreach ($divisions as $division) {
 				$arr[] = static::division_to_array($division);
 			}
 		}
 
 		$status = 300;
-		switch (count($arr))
-		{
+		switch (count($arr)) {
 			case 0:
 				$status = 404;
-			break;
-
+				break;
 			case 1:
 				$status = 200;
-			break;
+				break;
 		}
 		$response = [
 			'code' => $normalized,
@@ -57,12 +51,10 @@ class Controller_Rest_Code extends Controller_Rest
 
 		$birth_date = null;
 		$death_date = null;
-		if ($birth_event)
-		{
+		if ($birth_event) {
 			$birth_date = $birth_event->date;
 		}
-		if ($death_event)
-		{
+		if ($death_event) {
 			$death_date = $death_event->date;
 		}
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Fuel is a fast, lightweight, community driven PHP5 framework.
  *
@@ -87,7 +88,7 @@ class Db
 
 		exec($command);
 
-		if ( ! \File::exists($path)) {
+		if (! \File::exists($path)) {
 			echo "Error : cannot create dump file.\n";
 			exit(1);
 		}
@@ -152,8 +153,8 @@ class Db
 
 		\DBUtil::truncate_table($restore_table);
 		$fp = fopen($path, 'r');
-		while ($sql = stream_get_line($fp, 500000, ";")) {
 
+		while ($sql = stream_get_line($fp, 500000, ";")) {
 			$expected_last = ['/' => 0, ')' => 0, "\n" => 0];
 			$expedted_last6 = ['TABLES' => 0, ' WRITE' => 0];
 			while (
@@ -203,5 +204,4 @@ class Db
 			exit(1);
 		}
 	}
-
 }

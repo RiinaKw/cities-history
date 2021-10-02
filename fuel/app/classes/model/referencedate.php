@@ -24,7 +24,8 @@ class Model_Referencedate extends Model_Base
 			->add_rule('max_length', 256);
 
 		return $validation;
-	} // function validation()
+	}
+	// function validation()
 
 	public static function get_all()
 	{
@@ -35,5 +36,7 @@ class Model_Referencedate extends Model_Base
 
 			$result = $query->as_object('Model_Referencedate')->execute();
 			return $result->count() ? $result->as_array() : [];
-	} // function get_all()
-} // class Model_Referencedate
+	}
+	// function get_all()
+}
+// class Model_Referencedate

@@ -21,7 +21,8 @@ class Model_Activity extends Model_Base
 			'user_agent' => Input::user_agent(),
 		]);
 		$activity->save();
-	} // function insert_log()
+	}
+	// function insert_log()
 
 	public static function get_log($param)
 	{
@@ -36,8 +37,7 @@ class Model_Activity extends Model_Base
 		// query
 		$query = DB::select()->from(self::$_table_name);
 		$query->where('user_id', '=', $param['user_id']);
-		if ( ! $param['is_deleted'])
-		{
+		if (! $param['is_deleted']) {
 			// only that not been deleted
 			$query->where('deleted_at', '=', null);
 		}
@@ -69,5 +69,7 @@ class Model_Activity extends Model_Base
 			'last'       => $last,
 			'pagination' => $pagination,
 		);
-	} // function get_log()
-} // class Model_Activity
+	}
+	// function get_log()
+}
+// class Model_Activity

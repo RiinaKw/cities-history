@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Admin Controller.
  *
@@ -9,7 +10,7 @@
  */
 class Controller_Admin_Page extends Controller_Admin_Base
 {
-	const SESSION_NAME_FLASH  = 'admin_data.reference';
+	protected const SESSION_NAME_FLASH  = 'admin_data.reference';
 
 	public function action_list()
 	{
@@ -23,23 +24,22 @@ class Controller_Admin_Page extends Controller_Admin_Base
 		$content->flash_name = self::SESSION_NAME_FLASH;
 
 		return $content;
-	} // function action_list()
+	}
+	// function action_list()
 
 	protected static function _get_model($id, $force = false)
 	{
-		if ( ! $id || ! is_numeric($id))
-		{
+		if (! $id || ! is_numeric($id)) {
 			throw new HttpBadRequestException('不正なIDです。');
 		}
 		$record = Model_Page::find_by_pk($id);
-		if ( ! $record)
-		{
+		if (! $record) {
 			throw new HttpNotFoundException('参照が見つかりません。');
 		}
-		if ( ! $force && $record->deleted_at)
-		{
+		if (! $force && $record->deleted_at) {
 			throw new HttpNotFoundException('削除済みです。');
 		}
 		return $record;
 	}
-} // class Controller_Admin
+}
+// class Controller_Admin

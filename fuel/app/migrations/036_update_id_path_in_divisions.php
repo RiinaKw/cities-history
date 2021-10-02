@@ -7,10 +7,8 @@ class Update_id_path_in_divisions
 	public function up()
 	{
 		$divisions = \Model_Division::find_all();
-		if ($divisions)
-		{
-			foreach ($divisions as $division)
-			{
+		if ($divisions) {
+			foreach ($divisions as $division) {
 				if ($division->parent_division_id === null) {
 					$division->id_path = $division->id . '/';
 					$division->save();
