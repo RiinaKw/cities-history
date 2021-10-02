@@ -79,12 +79,14 @@ return array(
 	 */
 	'language'           => 'ja', // Default language
 	'language_fallback'  => 'en', // Fallback language when file isn't available for default language
-	'locale'             => 'ja_JP', // PHP set_locale() setting, null to not set
+
+	// For Windows, "ja-JP", NOT underscore
+	'locale' => DIRECTORY_SEPARATOR === '\\' ? 'ja-JP' : 'ja_JP', // PHP set_locale() setting, null to not set
 
 	/**
 	 * Internal string encoding charset
 	 */
-	// 'encoding'  => 'UTF-8',
+	'encoding'  => 'UTF-8',
 
 	/**
 	 * DateTime settings
