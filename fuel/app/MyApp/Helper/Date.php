@@ -3,6 +3,7 @@
 /**
  * @package  App\Helper
  */
+
 namespace MyApp\Helper;
 
 class Date

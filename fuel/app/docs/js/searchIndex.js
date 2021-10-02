@@ -381,36 +381,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Helper-Breadcrumb.html#method_breadcrumb_and_kana"
         },                {
-            "fqsen": "\\Helper_Date",
-            "name": "Helper_Date",
-            "summary": "",
-            "url": "classes/Helper-Date.html"
-        },                {
-            "fqsen": "\\Helper_Date\u003A\u003Aformat\u0028\u0029",
-            "name": "format",
-            "summary": "\u548C\u66A6\u306A\u3069\u3092\u8FFD\u52A0\u3057\u305Fdate\u95A2\u6570",
-            "url": "classes/Helper-Date.html#method_format"
-        },                {
-            "fqsen": "\\Helper_Date\u003A\u003Anormalize\u0028\u0029",
-            "name": "normalize",
-            "summary": "",
-            "url": "classes/Helper-Date.html#method_normalize"
-        },                {
-            "fqsen": "\\Helper_Date\u003A\u003A\u0024gengoList",
-            "name": "gengoList",
-            "summary": "\u5143\u53F7\u7528\u8A2D\u5B9A\n\u65E5\u4ED8\u306F\u30A6\u30A3\u30AD\u30DA\u30C7\u30A3\u30A2\u3092\u53C2\u7167\u3057\u307E\u3057\u305F\nhttp\u003A\/\/ja.wikipedia.org\/wiki\/\u0025E5\u002585\u002583\u0025E5\u00258F\u0025B7\u0025E4\u0025B8\u002580\u0025E8\u0025A6\u0025A7_\u002528\u0025E6\u002597\u0025A5\u0025E6\u00259C\u0025AC\u002529",
-            "url": "classes/Helper-Date.html#property_gengoList"
-        },                {
-            "fqsen": "\\Helper_Date\u003A\u003A\u0024weekJp",
-            "name": "weekJp",
-            "summary": "\u65E5\u672C\u8A9E\u66DC\u65E5\u8A2D\u5B9A",
-            "url": "classes/Helper-Date.html#property_weekJp"
-        },                {
-            "fqsen": "\\Helper_Date\u003A\u003A\u0024ampm",
-            "name": "ampm",
-            "summary": "\u5348\u524D\u5348\u5F8C",
-            "url": "classes/Helper-Date.html#property_ampm"
-        },                {
             "fqsen": "\\Helper_Division",
             "name": "Helper_Division",
             "summary": "",
@@ -2191,20 +2161,20 @@ Search.appendIndex(
             "summary": "\u5348\u524D\u5348\u5F8C",
             "url": "classes/MyApp-Helper-Date.html#property_ampm"
         },                {
-            "fqsen": "\\Test_Helper_Date",
-            "name": "Test_Helper_Date",
+            "fqsen": "\\DateTest",
+            "name": "DateTest",
             "summary": "",
-            "url": "classes/Test-Helper-Date.html"
+            "url": "classes/DateTest.html"
         },                {
-            "fqsen": "\\Test_Helper_Date\u003A\u003Atest_usual\u0028\u0029",
+            "fqsen": "\\DateTest\u003A\u003Atest_usual\u0028\u0029",
             "name": "test_usual",
             "summary": "",
-            "url": "classes/Test-Helper-Date.html#method_test_usual"
+            "url": "classes/DateTest.html#method_test_usual"
         },                {
-            "fqsen": "\\Test_Helper_Date\u003A\u003Atest_ja\u0028\u0029",
+            "fqsen": "\\DateTest\u003A\u003Atest_ja\u0028\u0029",
             "name": "test_ja",
             "summary": "",
-            "url": "classes/Test-Helper-Date.html#method_test_ja"
+            "url": "classes/DateTest.html#method_test_ja"
         },                {
             "fqsen": "\\",
             "name": "\\",

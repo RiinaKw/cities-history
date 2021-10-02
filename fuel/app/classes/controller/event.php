@@ -52,7 +52,7 @@ class Controller_Event extends Controller_Base
 			DB::start_transaction();
 
 			$event = Model_Event::forge([
-				'date' => Helper_Date::normalize(Input::post('date')),
+				'date' => MyApp\Helper\Date::normalize(Input::post('date')),
 				'title' => Input::post('title'),
 				'comment' => Input::post('comment'),
 				'source' => Input::post('source'),

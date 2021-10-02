@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use MyApp\Helper\Date;
 
-class Test_Helper_Date extends TestCase
+class DateTest extends TestCase
 {
 	public function test_usual()
 	{

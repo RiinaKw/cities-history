@@ -59,7 +59,7 @@ class Presenter_List_Detail extends Presenter_Layout
 		$description = $this->division->path . 'の自治体一覧 ' . $this->search_path . ' ' . $this->search_path_kana;
 
 		if ($this->date) {
-			$description .= Helper_Date::format(' Y(Jk)-m-d', $this->date);
+			$description .= MyApp\Helper\Date::format(' Y(Jk)-m-d', $this->date);
 		}
 
 		$breadcrumbs_arr = Helper_Breadcrumb::breadcrumb_and_kana($this->division);
