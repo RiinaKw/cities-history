@@ -2,6 +2,7 @@
 
 use MyApp\Table\Division as DivisionTable;
 use MyApp\PresentationModel\Division as PModel;
+use MyApp\Model\Division\Tree;
 
 /**
  * @package  App\Model
@@ -61,10 +62,10 @@ class Model_Division extends Model_Base
 	}
 	// function get_source()
 
-	public function get_tree($date): Model_Division_Tree
+	public function get_tree($date): Tree
 	{
 		$divisions = DivisionTable::get_by_parent_division_and_date($this, $date);
-		$tree = new Model_Division_Tree($this);
+		$tree = new Tree($this);
 		return $tree->make_tree($divisions);
 	}
 

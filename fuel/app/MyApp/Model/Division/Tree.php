@@ -1,11 +1,15 @@
 <?php
 
-use MyApp\Helper\Iterator;
-
 /**
  * @package  App\Model
  */
-class Model_Division_Tree
+
+namespace MyApp\Model\Division;
+
+use MyApp\Helper\Iterator;
+use Model_Division;
+
+class Tree
 {
 	protected $self = null;
 	protected $suffix_arr = [];

@@ -182,7 +182,7 @@ return array(
 			'Fuel\\Core\\View',
 			'Fuel\\Core\\ViewModel',
 			'Closure',
-			'Model_Division_Tree',
+			MyApp\Model\Division\Tree::class,
 		),
 	),
 
