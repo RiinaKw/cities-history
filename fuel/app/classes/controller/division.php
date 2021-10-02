@@ -26,24 +26,12 @@ class Controller_Division extends Controller_Base
 		return $division;
 	}
 
-	/**
-	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-	 * @SuppressWarnings(PHPMD.NPathComplexity)
- 	 * @todo PHPMD をなんとかしろ
-	 */
-	public function action_detail()
+	protected function events(Model_Division $division): array
 	{
-		$path = $this->param('path');
-		$division = DivisionTable::get_by_path($path);
-		if (! $division || $division->get_path() != $path || $division->deleted_at != null) {
-			throw new HttpNotFoundException('自治体が見つかりません。');
-		}
-		$division = $this->requirePath();
-
 		$events = Model_Event_Detail::get_by_division($division);
 		// 終了インベントを先頭に
 		foreach ($events as $key => $event) {
-			if ($event->event_id == $division->end_event_id) {
+			if ($event->event_id === $division->end_event_id) {
 				unset($events[$key]);
 				array_unshift($events, $event);
 				break;
@@ -51,12 +39,20 @@ class Controller_Division extends Controller_Base
 		}
 		// 開始イベントを末尾に
 		foreach ($events as $key => $event) {
-			if ($event->event_id == $division->start_event_id) {
+			if ($event->event_id === $division->start_event_id) {
 				unset($events[$key]);
 				array_push($events, $event);
 				break;
 			}
 		}
+		return $events;
+	}
+
+	public function action_detail()
+	{
+		$division = $this->requirePath();
+		$events = $this->events($division);
+
 		foreach ($events as $event) {
 			$event->birth = false;
 			$event->live = false;
@@ -100,9 +96,6 @@ class Controller_Division extends Controller_Base
 	}
 	// function action_detail()
 
-	/**
- 	 * @todo PHPMD をなんとかしろ
-	 */
 	public function action_children()
 	{
 		$division = $this->requirePath();
