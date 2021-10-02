@@ -48,4 +48,51 @@ class PresentationModel_Division
 			return '';
 		}
 	}
+
+	public function validKana(): bool
+	{
+		return $this->model->name_kana && $this->model->suffix_kana;
+	}
+
+	public function validStart(): bool
+	{
+		return (bool)$this->model->start_event_id;
+	}
+
+	public function validEnd(): bool
+	{
+		return (bool)$this->model->end_event_id;
+	}
+
+	public function validCode(): bool
+	{
+		$end_event = Model_Event::find_by_pk($this->model->end_event_id);
+		return
+			($this->model->suffix == '郡')
+			||
+			$this->model->government_code
+			||
+			$end_event && strtotime($end_event->date) < strtotime('1970-04-01');
+	}
+
+	public function validSource(): bool
+	{
+		return (bool)strlen($this->model->source);
+	}
+
+	public function isWikipedia(): bool
+	{
+		return stripos($this->model->source, 'wikipedia');
+	}
+
+	public function validAll(): bool
+	{
+		return
+			$this->validKana()
+			&& $this->validStart()
+			&& $this->validEnd()
+			&& $this->validCode()
+			&& $this->validSource()
+			&& ! $this->isWikipedia();
+	}
 }

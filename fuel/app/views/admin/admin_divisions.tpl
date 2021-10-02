@@ -26,57 +26,58 @@
 			<div>
 				<section>
 {{foreach from=$divisions item=division}}
+{{assign var=pmodel value=$division->pmodel()}}
 					<article class="card mb-4">
 						<header class="card-header px-3 pb-1">
 							<h3 class="h5 float-left">
-								<a href="{{$division.url_detail}}">{{$division->path}}</a>
+								<a href="{{$pmodel->url()}}">{{$division->get_path()}}</a>
 							</h3>
 							<a class="float-left ml-4" href="{{$division.url_belongto}}">所属自治体</a>
 						</header>
 						<div class="card-body p-3">
-{{if ! $division->valid_kana}}
+{{if ! $pmodel->validKana()}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-keyboard"></i>
 								<strong>Warning!</strong>
 								かなが入力されていません。
 							</div>
 {{/if}}
-{{if ! $division->valid_start_event}}
+{{if ! $pmodel->validStart()}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-history"></i>
 								<strong>Warning!</strong>
 								開始イベントが指定されていません。
 							</div>
 {{/if}}
-{{if ! $division->valid_end_event}}
+{{if ! $pmodel->validEnd()}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-history"></i>
 								<strong>Warning!</strong>
 								終了イベントが指定されていません。
 							</div>
 {{/if}}
-{{if ! $division->valid_government_code}}
+{{if ! $pmodel->validCode()}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-ban"></i>
 								<strong>Warning!</strong>
 								全国地方公共団体コードが指定されていません。
 							</div>
 {{/if}}
-{{if ! $division->valid_source}}
+{{if ! $pmodel->validSource()}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-file"></i>
 								<strong>Warning!</strong>
 								出典が入力されていません。
 							</div>
 {{/if}}
-{{if $division->is_wikipedia}}
+{{if $pmodel->isWikipedia()}}
 							<div class="alert alert-warning" role="alert">
 								<i class="fa fa-fw fa-file"></i>
 								<strong>Warning!</strong>
 								出典が Wikipedia です。
 							</div>
 {{/if}}
-{{if $division->valid_kana && $division->valid_start_event && $division->valid_end_event && $division->valid_government_code && $division->valid_source && ! $division->is_wikipedia}}
+{{if $pmodel->validAll()}}
 							<div class="alert alert-success" role="alert">
 								<i class="fa fa-fw fa-check"></i>
 								<strong>Yeah!</strong>

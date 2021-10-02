@@ -8,7 +8,7 @@
 {{if $belongs_division}}
 						{{strip}}
 							（
-							<a href="{{$belongs_division->url_detail}}">
+							<a href="{{$belongs_division->pmodel()->url()}}">
 								{{$belongs_division->fullname|escape}}
 							</a>
 							）
@@ -88,7 +88,7 @@
 								<li class="{{$d->li_class}}">
 									<span class="result badge font-weight-light">{{$d.result|escape}}</span>
 									<a class="{{if $d.is_unfinished}}unfinished{{/if}}"
-										href="{{$d->url_detail|escape}}"
+										href="{{$d->pmodel()->url()|escape}}"
 										data-toggle="tooltip"
 										title="{{$d->get_path()|escape}}">
 {{if $division.id == $d.id}}

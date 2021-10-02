@@ -34,12 +34,7 @@ class Presenter_Division_Detail extends Presenter_Layout
 		$this->search_path = $this->division->make_search_path();
 		$this->search_path_kana = $this->division->make_search_path_kana();
 
-		if ($this->belongs_division) {
-			$this->belongs_division->url_detail = Helper_Uri::create(
-				'division.detail',
-				['path' => $this->belongs_division->get_path()]
-			);
-		}
+		$this->belongs_division = Model_Division::find_by_pk($this->division->belongs_division_id);
 
 		// meta description
 		$description = "{$this->path} ({$path_kana})) {$this->search_path} {$this->search_path_kana}";
