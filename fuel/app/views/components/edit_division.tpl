@@ -12,7 +12,7 @@
 							<label class="row">
 								<span class="col-4">所属自治体</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="edit-parent-division" name="parent" value="{{$division->get_parent_path()}}" />
+									<input class="form-control" type="text" id="edit-parent-division" name="parent" value="{{$division->parent_path}}" />
 								</div>
 							</label>
 							<label class="row">

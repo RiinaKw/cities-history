@@ -6,9 +6,6 @@ use MyApp\Model\Division\Tree;
 
 /**
  * @package  App\Model
- *
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
- * @todo PHPMD をなんとかしろ
  */
 class Model_Division extends Model_Base
 {
@@ -56,12 +53,6 @@ class Model_Division extends Model_Base
 	}
 	// function validation()
 
-	public function get_source(): string
-	{
-		return Helper_Html::wiki($this->source);
-	}
-	// function get_source()
-
 	public function get_tree($date): Tree
 	{
 		$divisions = DivisionTable::get_by_parent_division_and_date($this, $date);
@@ -69,125 +60,125 @@ class Model_Division extends Model_Base
 		return $tree->make_tree($divisions);
 	}
 
+	/**
+	 * パス形式の ID を分割し、各 ID ごとにコールバックを実行
+	 * @param callable $callback  コールバック関数
+	 */
+	protected function id_chain(callable $callback): void
+	{
+		$id_arr = explode('/', $this->id_path);
+		foreach ($id_arr as $id) {
+			$id = (int)$id;
+			if ($id) {
+				$callback(self::find_by_pk($id));
+			}
+		}
+	}
+
 	public function get_path(): string
 	{
 		if ($this->path) {
 			return $this->path;
 		} else {
-			$id_arr = explode('/', $this->id_path);
-			$name_arr = [];
-			foreach ($id_arr as $id) {
-				$id = (int)$id;
-				if ($id) {
-					$division = self::find_by_pk($id);
-					$name_arr[] = $division->get_fullname();
-				}
-			}
-			return implode('/', $name_arr);
+			return $this->make_path();
 		}
 	}
 	// function get_path()
 
+	/**
+	 * パスを生成
+	 *
+	 * 例 : 群馬県/甘楽郡(1950-)/下仁田町(1955-)
+	 *
+	 * @return string
+	 */
 	public function make_path(): string
 	{
-		$id_arr = explode('/', $this->id_path);
 		$name_arr = [];
-		foreach ($id_arr as $id) {
-			$id = (int)$id;
-			if ($id) {
-				$division = self::find_by_pk($id);
-				$name_arr[] = $division->get_fullname();
-			}
-		}
+		$this->id_chain(function ($d) use (&$name_arr) {
+			$name_arr[] = $d->get_fullname();
+		});
 		return implode('/', $name_arr);
 	}
 	// function make_path()
 
+	/**
+	 * よみがなのパスを生成
+	 *
+	 * 例 : ぐんま・けん/かんら・ぐん/しもにた・まち
+	 *
+	 * @return string
+	 */
 	public function make_path_kana(): string
 	{
-		$id_arr = explode('/', $this->id_path);
 		$kana_arr = [];
-		foreach ($id_arr as $id) {
-			$id = (int)$id;
-			if ($id) {
-				$division = self::find_by_pk($id);
-				$kana_arr[] = $division->get_fullname_kana();
-			}
-		}
+		$this->id_chain(function ($d) use (&$kana_arr) {
+			$kana_arr[] = $d->fullname_kana;
+		});
 		return implode('/', $kana_arr);
 	}
 	// function make_path_kana()
 
-	public function get_fullname_kana(): string
-	{
-		$kana = $this->name_kana;
-		if ($this->show_suffix) {
-			$kana .= '・' . $this->suffix_kana;
-		}
-		return $kana;
-	}
-	// function get_fullname_kana()
-
-	public function get_search_fullname(): string
-	{
-		$name = $this->name;
-		if ($this->show_suffix) {
-			$name .= $this->suffix;
-		}
-		return $name;
-	}
-	// function get_search_fullname()
-
-	public function get_search_fullname_kana(): string
-	{
-		$kana = $this->name_kana;
-		if ($this->show_suffix) {
-			$kana .= $this->suffix_kana;
-		}
-		return $kana;
-	}
-	// function get_search_fullname_kana()
-
+	/**
+	 * 検索用のパスを生成
+	 *
+	 * 例 : 群馬県甘楽郡下仁田町
+	 *
+	 * @return string
+	 */
 	public function make_search_path(): string
 	{
-		$id_arr = explode('/', $this->id_path);
 		$name_arr = [];
-		foreach ($id_arr as $id) {
-			$id = (int)$id;
-			if ($id) {
-				$division = self::find_by_pk($id);
-				$name_arr[] = $division->get_search_fullname();
-			}
-		}
+		$this->id_chain(function ($d) use (&$name_arr) {
+			$name_arr[] = $d->search_fullname;
+		});
 		return implode('', $name_arr);
 	}
 	// function make_path()
 
+	/**
+	 * 検索用のよみがなのパスを生成
+	 *
+	 * 例 : ぐんまけんかんらぐんしもにたまち
+	 *
+	 * @return string
+	 */
 	public function make_search_path_kana(): string
 	{
-		$id_arr = explode('/', $this->id_path);
 		$kana_arr = [];
-		foreach ($id_arr as $id) {
-			$id = (int)$id;
-			if ($id) {
-				$division = self::find_by_pk($id);
-				$kana_arr[] = $division->get_search_fullname_kana();
-			}
-		}
+		$this->id_chain(function ($d) use (&$kana_arr) {
+			$kana_arr[] = $d->search_fullname_kana;
+		});
 		return implode('', $kana_arr);
 	}
 	// function make_path_kana()
 
-	public function get_parent_path(): ?string
+	/**
+	 * @todo DB に「fullname」って必要なくない？ マジックメソッド配下にしたいんだけど
+	 */
+	public function __get($key)
 	{
-		$path = $this->get_path();
-		if (strpos($path, '/') === false) {
-			return null;
-		} else {
-			return dirname($path);
+		switch ($key) {
+			default:
+				return parent::__get($key);
+
+			case 'fullname_kana':
+				return $this->name_kana . ($this->show_suffix ? '・' . $this->suffix_kana : '');
+
+			case 'search_fullname':
+				return $this->name . ($this->show_suffix ? $this->suffix : '');
+
+			case 'search_fullname_kana':
+				return $this->name_kana . ($this->show_suffix ? $this->suffix_kana : '');
+
+			case 'parent_path':
+				$path = $this->get_path();
+				if (strpos($path, '/') !== false) {
+					return dirname($path);
+				}
+				return null;
 		}
 	}
-	// function get_parent_path()
 
 	public function get_belongs_path(): ?string
 	{
@@ -211,19 +202,6 @@ class Model_Division extends Model_Base
 	}
 	// function get_belongs_name()
 
-	public function get_fullname(): string
-	{
-		$name = $this->name;
-		if ($this->show_suffix) {
-			$name .= $this->suffix;
-		}
-		if ($this->identifier) {
-			$name .= "({$this->identifier})";
-		}
-		return $name;
-	}
-	// function get_fullname()
-
 	public function suffix_classification(): string
 	{
 		switch ($this->suffix) {
@@ -241,6 +219,19 @@ class Model_Division extends Model_Base
 		}
 	}
 
+	public function get_fullname(): string
+	{
+		$name = $this->name;
+		if ($this->show_suffix) {
+			$name .= $this->suffix;
+		}
+		if ($this->identifier) {
+			$name .= "({$this->identifier})";
+		}
+		return $name;
+	}
+	// function get_fullname()
+
 	/**
 	 * 必要なパラメータが設定されている場合のみコールバックを実行
 	 *
@@ -257,84 +248,67 @@ class Model_Division extends Model_Base
 
 	/**
  	 * @SuppressWarnings(PHPMD.ExitExpression)
- 	 * @todo PHPMD をなんとかしろ
 	 */
 	public function create($input)
 	{
 		$belongs = $input['belongs'] ?? null;
 		$parent = $input['parent'] ?? null;
 
-		try {
-			DB::start_transaction();
-
-			if ($belongs) {
-				$belongs_division = DivisionTable::get_by_path($belongs);
-				if (! $belongs_division) {
-					$belongs_division = DivisionTable::set_path($belongs);
-					$belongs_division = array_pop($belongs_division);
-				}
-				$this->belongs_division_id = $belongs_division->id;
-			} else {
-				$this->belongs_division_id = null;
+		if ($belongs) {
+			$belongs_division = DivisionTable::get_by_path($belongs);
+			if (! $belongs_division) {
+				$belongs_division = DivisionTable::set_path($belongs);
+				$belongs_division = array_pop($belongs_division);
 			}
-
-			$this->name = $input['name'] ?? null;
-
-			$this->callIfNotEmpty($input, 'name_kana', function ($obj, $value) {
-				$obj->name_kana       = Helper_String::to_hiragana($value);
-				$obj->is_empty_kana   = empty($value);
-			});
-
-			$this->suffix = $input['suffix'] ?? null;
-			$this->suffix_kana = $input['suffix_kana'] ? Helper_String::to_hiragana($input['suffix_kana']) : null;
-			$this->show_suffix = $input['show_suffix'] ? (bool)$input['show_suffix'] : false;
-
-			$this->callIfNotEmpty($input, 'government_code', function ($obj, $value) {
-				$obj->government_code = Helper_Governmentcode::normalize($value);
-				$obj->is_empty_government_code = empty($value);
-			});
-
-			$this->display_order = $input['display_order'] ?? null;
-			$this->is_unfinished = $input['is_unfinished'] ? (bool)$input['is_unfinished'] : false;
-			$this->identifier = $input['identifier'] ?? null;
-			$this->source = $input['source'] ?? null;
-
-			$this->search_path = '';
-			$this->search_path_kana = '';
-			$this->save();
-
-			$path = $parent . '/' . $this->get_fullname();
-			$this->id_path = self::make_id_path($path, $this->id);
-
-			$this->fullname         = $this->get_fullname();
-			$this->path             = $this->make_path();
-
-			$this->search_path      = $this->make_search_path();
-			$this->search_path_kana = $this->make_search_path_kana();
-
-			$query = DB::select()
-				->from(self::$_table_name)
-				->where('deleted_at', '=', null)
-				->where('path', '=', $this->path)
-				->where('id', '!=', $this->id)
-				;
-			if ($query->execute()->count()) {
-				throw new HttpBadRequestException('重複しています。');
-			}
-			$this->save();
-
-			DB::commit_transaction();
-		} catch (HttpBadRequestException $e) {
-			// internal error
-			DB::rollback_transaction();
-			throw new HttpBadRequestException($e->getMessage());
-		} catch (Exception $e) {
-			Debug::dump($e, $e->getTraceAsString());
-			exit;
-			// internal error
-			DB::rollback_transaction();
-			throw new HttpServerErrorException($e->getMessage());
+			$this->belongs_division_id = $belongs_division->id;
+		} else {
+			$this->belongs_division_id = null;
 		}
+
+		$this->name = $input['name'] ?? null;
+
+		$this->callIfNotEmpty($input, 'name_kana', function ($obj, $value) {
+			$obj->name_kana       = Helper_String::to_hiragana($value);
+			$obj->is_empty_kana   = empty($value);
+		});
+
+		$this->suffix = $input['suffix'] ?? null;
+		$this->suffix_kana = $input['suffix_kana'] ? Helper_String::to_hiragana($input['suffix_kana']) : null;
+		$this->show_suffix = $input['show_suffix'] ? (bool)$input['show_suffix'] : false;
+
+		$this->callIfNotEmpty($input, 'government_code', function ($obj, $value) {
+			$obj->government_code = Helper_Governmentcode::normalize($value);
+			$obj->is_empty_government_code = empty($value);
+		});
+
+		$this->display_order = $input['display_order'] ?? null;
+		$this->is_unfinished = $input['is_unfinished'] ? (bool)$input['is_unfinished'] : false;
+		$this->identifier = $input['identifier'] ?? null;
+		$this->source = $input['source'] ?? null;
+
+		$this->search_path = '';
+		$this->search_path_kana = '';
+		$this->save();
+
+		$path = $parent . '/' . $this->get_fullname();
+		$this->id_path = self::make_id_path($path, $this->id);
+
+		$this->fullname         = $this->get_fullname();
+		$this->path             = $this->make_path();
+
+		$this->search_path      = $this->make_search_path();
+		$this->search_path_kana = $this->make_search_path_kana();
+
+		$query = DB::select()
+			->from(self::$_table_name)
+			->where('deleted_at', '=', null)
+			->where('path', '=', $this->path)
+			->where('id', '!=', $this->id)
+			;
+		if ($query->execute()->count()) {
+			throw new HttpBadRequestException('重複しています。');
+		}
+		$this->save();
 	}
 	// function create()
 

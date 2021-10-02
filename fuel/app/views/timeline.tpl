@@ -20,7 +20,7 @@
 					<p >全国地方公共団体コード : {{$division->government_code|escape}}</p>
 {{/if}}
 {{if $division->source}}
-					<p class="source">出典 :<br />{{$division->get_source()}}</p>
+					<p class="source">出典 :<br />{{$division->pmodel()->source()}}</p>
 {{/if}}
 				</div>
 {{if $user}}

@@ -23,10 +23,16 @@ class Division
 		$kana = '';
 		foreach ($ids as $id) {
 			$parent = Model_Division::find_by_pk($id);
-			$kana .= ($kana ? '/' : '') . $parent->get_fullname_kana();
+			$kana .= ($kana ? '/' : '') . $parent->fullname_kana;
 		}
 		return $kana;
 	}
+
+	public function source(): string
+	{
+		return \Helper_Html::wiki($this->model->source);
+	}
+	// function source()
 
 	public function url()
 	{

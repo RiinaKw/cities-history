@@ -205,16 +205,31 @@ class Controller_Division extends Controller_Base
 			throw new HttpNoAccessException('permission denied');
 		}
 
-		$division = Model_Division::forge();
-		$division->create(Input::post());
+		try {
+			DB::start_transaction();
 
-		Model_Activity::insert_log([
-			'user_id' => Session::get('user_id'),
-			'target' => 'add division',
-			'target_id' => $division->id,
-		]);
+			$division = Model_Division::forge();
+			$division->create(Input::post());
 
-		$path_new = $division->get_path();
+			Model_Activity::insert_log([
+				'user_id' => Session::get('user_id'),
+				'target' => 'add division',
+				'target_id' => $division->id,
+			]);
+
+			$path_new = $division->get_path();
+			DB::commit_transaction();
+		} catch (HttpBadRequestException $e) {
+			// internal error
+			DB::rollback_transaction();
+			throw $e;
+		} catch (Exception $e) {
+			Debug::dump($e, $e->getTraceAsString());
+			//exit;
+			// internal error
+			DB::rollback_transaction();
+			throw new HttpServerErrorException($e->getMessage());
+		}
 
 		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
 		return;
@@ -279,20 +294,31 @@ class Controller_Division extends Controller_Base
 		$input = Input::post();
 		$input['is_unfinished'] = isset($input['is_unfinished']) ? $input['is_unfinished'] : false;
 
-		$path = $this->param('path');
-		$division = DivisionTable::get_by_path($path);
-		$division->create($input);
+		try {
+			DB::start_transaction();
 
-		Model_Activity::insert_log([
-			'user_id' => Session::get('user_id'),
-			'target' => 'edit division',
-			'target_id' => $division->id,
-		]);
+			$path = $this->param('path');
+			$division = DivisionTable::get_by_path($path);
+			$division->create($input);
 
-		$path_new = $division->get_path();
+			Model_Activity::insert_log([
+				'user_id' => Session::get('user_id'),
+				'target' => 'edit division',
+				'target_id' => $division->id,
+			]);
 
-		Helper_Uri::redirect('division.detail', ['path' => $path_new]);
-		return;
+			DB::commit_transaction();
+
+			$path_new = $division->get_path();
+
+			Helper_Uri::redirect('division.detail', ['path' => $path_new]);
+		} catch (Exception $e) {
+			// internal error
+			DB::rollback_transaction();
+			//Debug::dump($e);
+			throw new HttpServerErrorException($e->getMessage());
+		}
+		// try
 	}
 	// function action_edit()
 
@@ -304,7 +330,6 @@ class Controller_Division extends Controller_Base
 
 		$path = $this->param('path');
 		$division = DivisionTable::get_by_path($path);
-		$path = $division->get_parent_path();
 		$division->soft_delete();
 
 		Model_Activity::insert_log([
@@ -313,8 +338,8 @@ class Controller_Division extends Controller_Base
 			'target_id' => $division->id,
 		]);
 
-		if ($path) {
-			Helper_Uri::redirect('division.detail', ['path' => $path]);
+		if ($division->parent_path) {
+			Helper_Uri::redirect('division.detail', ['path' => $division->parent_path]);
 		} else {
 			Helper_Uri::redirect('top');
 		}

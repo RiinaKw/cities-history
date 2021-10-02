@@ -596,15 +596,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#method_validation"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_source\u0028\u0029",
-            "name": "get_source",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_source"
-        },                {
             "fqsen": "\\Model_Division\u003A\u003Aget_tree\u0028\u0029",
             "name": "get_tree",
             "summary": "",
             "url": "classes/Model-Division.html#method_get_tree"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003Aid_chain\u0028\u0029",
+            "name": "id_chain",
+            "summary": "\u30D1\u30B9\u5F62\u5F0F\u306E\u0020ID\u0020\u3092\u5206\u5272\u3057\u3001\u5404\u0020ID\u0020\u3054\u3068\u306B\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3092\u5B9F\u884C",
+            "url": "classes/Model-Division.html#method_id_chain"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Aget_path\u0028\u0029",
             "name": "get_path",
@@ -613,43 +613,28 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Division\u003A\u003Amake_path\u0028\u0029",
             "name": "make_path",
-            "summary": "",
+            "summary": "\u30D1\u30B9\u3092\u751F\u6210",
             "url": "classes/Model-Division.html#method_make_path"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Amake_path_kana\u0028\u0029",
             "name": "make_path_kana",
-            "summary": "",
+            "summary": "\u3088\u307F\u304C\u306A\u306E\u30D1\u30B9\u3092\u751F\u6210",
             "url": "classes/Model-Division.html#method_make_path_kana"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_fullname_kana\u0028\u0029",
-            "name": "get_fullname_kana",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_fullname_kana"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_search_fullname\u0028\u0029",
-            "name": "get_search_fullname",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_search_fullname"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_search_fullname_kana\u0028\u0029",
-            "name": "get_search_fullname_kana",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_search_fullname_kana"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Amake_search_path\u0028\u0029",
             "name": "make_search_path",
-            "summary": "",
+            "summary": "\u691C\u7D22\u7528\u306E\u30D1\u30B9\u3092\u751F\u6210",
             "url": "classes/Model-Division.html#method_make_search_path"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Amake_search_path_kana\u0028\u0029",
             "name": "make_search_path_kana",
-            "summary": "",
+            "summary": "\u691C\u7D22\u7528\u306E\u3088\u307F\u304C\u306A\u306E\u30D1\u30B9\u3092\u751F\u6210",
             "url": "classes/Model-Division.html#method_make_search_path_kana"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_parent_path\u0028\u0029",
-            "name": "get_parent_path",
+            "fqsen": "\\Model_Division\u003A\u003A__get\u0028\u0029",
+            "name": "__get",
             "summary": "",
-            "url": "classes/Model-Division.html#method_get_parent_path"
+            "url": "classes/Model-Division.html#method___get"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Aget_belongs_path\u0028\u0029",
             "name": "get_belongs_path",
@@ -661,15 +646,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#method_get_belongs_name"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_fullname\u0028\u0029",
-            "name": "get_fullname",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_fullname"
-        },                {
             "fqsen": "\\Model_Division\u003A\u003Asuffix_classification\u0028\u0029",
             "name": "suffix_classification",
             "summary": "",
             "url": "classes/Model-Division.html#method_suffix_classification"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003Aget_fullname\u0028\u0029",
+            "name": "get_fullname",
+            "summary": "",
+            "url": "classes/Model-Division.html#method_get_fullname"
         },                {
             "fqsen": "\\Model_Division\u003A\u003AcallIfNotEmpty\u0028\u0029",
             "name": "callIfNotEmpty",
@@ -1955,6 +1940,11 @@ Search.appendIndex(
             "name": "kana",
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_kana"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Asource\u0028\u0029",
+            "name": "source",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_source"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Aurl\u0028\u0029",
             "name": "url",
