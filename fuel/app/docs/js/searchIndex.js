@@ -2131,20 +2131,25 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Model-Division-Tree.html#method___construct"
         },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Asuffixes\u0028\u0029",
+            "name": "suffixes",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_suffixes"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Apmodel\u0028\u0029",
+            "name": "pmodel",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_pmodel"
+        },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024self",
             "name": "self",
-            "summary": "",
+            "summary": "\u81EA\u5206\u81EA\u8EAB\u306E\u81EA\u6CBB\u4F53\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8",
             "url": "classes/MyApp-Model-Division-Tree.html#property_self"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Amake_tree\u0028\u0029",
             "name": "make_tree",
             "summary": "",
             "url": "classes/MyApp-Model-Division-Tree.html#method_make_tree"
-        },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Asuffix_count\u0028\u0029",
-            "name": "suffix_count",
-            "summary": "",
-            "url": "classes/MyApp-Model-Division-Tree.html#method_suffix_count"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Aget_by_suffix\u0028\u0029",
             "name": "get_by_suffix",
@@ -2173,18 +2178,38 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024suffix_arr",
             "name": "suffix_arr",
-            "summary": "",
+            "summary": "\u914D\u4E0B\u306B\u3042\u308B\u7A2E\u5225\u3054\u3068\u306E\u81EA\u6CBB\u4F53\u6570",
             "url": "classes/MyApp-Model-Division-Tree.html#property_suffix_arr"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024children",
             "name": "children",
-            "summary": "",
+            "summary": "\u914D\u4E0B\u306E\u81EA\u6CBB\u4F53",
             "url": "classes/MyApp-Model-Division-Tree.html#property_children"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024ref",
             "name": "ref",
-            "summary": "",
+            "summary": "\u53C2\u7167\uFF1F\uFF1F",
             "url": "classes/MyApp-Model-Division-Tree.html#property_ref"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\\Tree",
+            "name": "Tree",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division-Tree.html"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\\Tree\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division-Tree.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\\Tree\u003A\u003Asuffiexes\u0028\u0029",
+            "name": "suffiexes",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division-Tree.html#method_suffiexes"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\\Tree\u003A\u003A\u0024model",
+            "name": "model",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division-Tree.html#property_model"
         },                {
             "fqsen": "\\",
             "name": "\\",
@@ -2220,6 +2245,11 @@ Search.appendIndex(
             "name": "Model",
             "summary": "",
             "url": "namespaces/myapp-model.html"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division",
+            "name": "Division",
+            "summary": "",
+            "url": "namespaces/myapp-presentationmodel-division.html"
         },                {
             "fqsen": "\\MyApp\\PresentationModel",
             "name": "PresentationModel",

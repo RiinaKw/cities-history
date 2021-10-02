@@ -8,12 +8,32 @@ namespace MyApp\Model\Division;
 
 use MyApp\Helper\Iterator;
 use Model_Division;
+use MyApp\PresentationModel\Division\Tree as PModel;
 
 class Tree
 {
+	/**
+	 * 自分自身の自治体オブジェクト
+	 * @var Model_Division
+	 */
 	protected $self = null;
+
+	/**
+	 * 配下にある種別ごとの自治体数
+	 * @var array<string, int>
+	 */
 	protected $suffix_arr = [];
+
+	/**
+	 * 配下の自治体
+	 * @var array<string, Iterator>
+	 */
 	protected $children = [];
+
+	/**
+	 * 参照？？
+	 * @var array<string, Tree>
+	 */
 	protected $ref = [];
 
 	public function __construct(Model_Division $division)
@@ -32,6 +52,16 @@ class Tree
 		$this->unknown = new Iterator();
 	}
 
+	public function suffixes(): array
+	{
+		return $this->suffix_arr;
+	}
+
+	public function pmodel(): PModel
+	{
+		return new PModel($this);
+	}
+
 	public function self(): Model_Division
 	{
 		return $this->self;
@@ -45,17 +75,12 @@ class Tree
 		return $this;
 	}
 
-	public function suffix_count(string $suffix = null)
+	public function get_by_suffix(string $suffix): ?Iterator
 	{
-		return $suffix ? ($this->suffix_arr[$suffix] ?? null) : $this->suffix_arr;
+		return $this->children[$suffix] ?? null;
 	}
 
-	public function get_by_suffix(string $suffix)
-	{
-		return $this->children[$suffix] ?? [];
-	}
-
-	protected function get_subtree_by_division($division)
+	protected function get_subtree_by_division($division): ?self
 	{
 		$parent_id_path = dirname($division->id_path) . '/';
 		return $this->ref[$parent_id_path] ?? null;

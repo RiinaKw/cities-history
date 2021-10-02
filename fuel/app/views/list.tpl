@@ -77,13 +77,7 @@
 					{{$division->pmodel()->htmlAnchor()}}
 					{{$division->pmodel()->htmlDebugCode()}}
 				</h3>
-				<p class="count">{{strip}}
-					{{foreach from=$tree->suffix_count() key=suffix item=cur_count}}
-						{{if $cur_count}}
-							{{$cur_count}}{{$suffix}}
-						{{/if}}
-					{{/foreach}}
-				{{/strip}}</p>
+				<p class="count">{{$tree->pmodel()->suffiexes()}}</p>
 
 				<div class="grid-container">
 
@@ -141,16 +135,12 @@
 											{{$pmodel->htmlDebugCode()}}
 											{{$pmodel->htmlBelongs()}}
 										</h4>
-{{if $subtree->suffix_count('区')}}
-										<p class="count">{{strip}}
-											{{foreach from=$subtree->suffix_count() key=suffix item=cur_count}}
-												{{if $cur_count}}
-													{{$cur_count}}{{$suffix}}
-												{{/if}}
-											{{/foreach}}
-										{{/strip}}</p>
+{{* 政令指定都市の場合 *}}
+{{if $subtree->get_by_suffix('区')}}
+										<p class="count">{{$subtree->pmodel()->suffiexes()}}</p>
 {{/if}}
 									</header>
+{{* 政令指定都市の場合 *}}
 {{if $subtree->get_by_suffix('区')}}
 									<ul class="divisions">
 {{foreach from=$subtree->get_by_suffix('区') item=wards}}
@@ -214,13 +204,7 @@
 									{{$pmodel->htmlDebugCode()}}
 									{{$pmodel->htmlBelongs()}}
 								</h4>
-								<p class="count">{{strip}}
-									{{foreach from=$subtree->suffix_count() key=suffix item=cur_count}}
-										{{if $cur_count}}
-											{{$cur_count}}{{$suffix}}
-										{{/if}}
-									{{/foreach}}
-								{{/strip}}</p>
+								<p class="count">{{$subtree->pmodel()->suffiexes()}}</p>
 							</header>
 {{if $subtree->get_by_suffix('町村')}}
 							<ul class="divisions">
