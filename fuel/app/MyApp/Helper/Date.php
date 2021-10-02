@@ -1,15 +1,20 @@
 <?php
 
+/**
+ * @package  App\Helper
+ */
 namespace MyApp\Helper;
 
 class Date
 {
-	/** 元号用設定
-	 * 日付はウィキペディアを参照しました
-	 * http://ja.wikipedia.org/wiki/%E5%85%83%E5%8F%B7%E4%B8%80%E8%A6%A7_%28%E6%97%A5%E6%9C%AC%29
+	/**
+	 * 元号用設定
+	 *
+	 * 参考 : http://ja.wikipedia.org/wiki/%E5%85%83%E5%8F%B7%E4%B8%80%E8%A6%A7_%28%E6%97%A5%E6%9C%AC%29
+	 * @var array<int, array<string, int|string>>
 	 */
 	private static $gengoList = [
-		['name' => '令和', 'name_short' => 'R', 'timestamp' =>  1556636400],  // 2019-05-01,
+		['name' => '令和', 'name_short' => 'R', 'timestamp' =>  1556636400], // 2019-05-01,
 		['name' => '平成', 'name_short' => 'H', 'timestamp' =>  600188400],  // 1989-01-08,
 		['name' => '昭和', 'name_short' => 'S', 'timestamp' => -1357635600], // 1926-12-25'
 		['name' => '大正', 'name_short' => 'T', 'timestamp' => -1812186000], // 1912-07-30
@@ -17,7 +22,10 @@ class Date
 		['name' => '西暦', 'name_short' => 'AD', 'timestamp' => 0]
 	];
 
-	/** 日本語曜日設定 */
+	/**
+	 * 日本語曜日設定
+	 * @var array<int, string>
+	 */
 	private static $weekJp = [
 		0 => '日',
 		1 => '月',
@@ -28,11 +36,59 @@ class Date
 		6 => '土',
 	];
 
-	/** 午前午後 */
+	/**
+	 * 午前午後
+	 * @var array<string, string>
+	 */
 	private static $ampm = [
 		'am' => '午前',
 		'pm' => '午後',
 	];
+
+	/**
+	 * フォーマット内の文字を置換する
+	 *
+	 * @param  string    $format    フォーマット文字列
+	 * @param  string    $char      置換対象の文字
+	 * @param  callable  $callback  置換すべき値
+	 * @return string  変換後のフォーマット文字列
+	 */
+	private static function replace(string $format, string $char, callable $callback): string
+	{
+		if (strpos($format, $char) !== false) {
+			$re = '/' . $char . '/';
+			$format = preg_replace($re, $callback(), $format);
+		}
+		return $format;
+	}
+
+	private static function getGengo(int $timestamp)
+	{
+		foreach (static::$gengoList as $g) {
+			if ($g['timestamp'] <= $timestamp) {
+				return $g;
+			}
+		}
+		// 元号が取得できない場合はException
+		throw new Exception('Cannot be converted to gengo : ' . $timestamp);
+	}
+
+	/**
+	 * タイムスタンプを取得
+	 *
+	 * @param  int|string|null  $timestamp  タイムスタンプもしくは日時を示す文字列、null の場合は現在時刻
+	 * @return int  正規化されたタイムスタンプ
+	 */
+	private static function getTimestamp($timestamp = null): int
+	{
+		if (is_null($timestamp)) {
+			return time();
+		}
+		if (is_string($timestamp)) {
+			return strtotime($timestamp);
+		}
+		return $timestamp;
+	}
 
 	/**
 	 * 和暦などを追加したdate関数
@@ -45,76 +101,63 @@ class Date
 	 * x : 日本語曜日(0:日-6:土)
 	 * E : 午前午後
 	 *
-	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-	 * @SuppressWarnings(PHPMD.NPathComplexity)
-	 * @todo PHPMD をなんとかしろ
+	 * @param  string           $format     フォーマット文字列
+	 * @param  int|string|null  $timestamp  タイムスタンプもしくは日時を示す文字列、null の場合は現在時刻
+	 * @return string  フォーマット済みの日時文字列
 	 */
-	public static function format($format, $timestamp = null)
+	public static function format(string $format, $timestamp = null): string
 	{
 		// 和暦関連のオプションがある場合は和暦取得
-		$gengo = array();
-		$timestamp = is_null($timestamp) ? time() : (is_string($timestamp) ? strtotime($timestamp) : $timestamp);
+		$gengo = [];
+		$timestamp = static::getTimestamp($timestamp);
 		if (preg_match('/[J|b|K|k]/', $format)) {
-			foreach (self::$gengoList as $g) {
-				if ($g['timestamp'] <= $timestamp) {
-					$gengo = $g;
-					break;
-				}
-			}
-			// 元号が取得できない場合はException
-			if (empty($gengo)) {
-				throw new Exception('Can not be converted to a timestamp : ' . $timestamp);
-			}
+			$gengo = static::getGengo($timestamp);
 		}
 
 		// J : 元号
-		if (strpos($format, 'J') !== false) {
-			$format = preg_replace('/J/', $gengo['name'], $format);
-		}
+		$format = static::replace($format, 'J', function () use ($gengo) {
+			return $gengo['name'];
+		});
 
 		// b : 元号略称
-		if (strpos($format, 'b') !== false) {
-			$format = preg_replace('/b/', '\\' . $gengo['name_short'], $format);
-		}
+		$format = static::replace($format, 'b', function () use ($gengo) {
+			'\\' . $gengo['name_short'];
+		});
 
 		// K : 和暦用年(元年表示)
-		if (strpos($format, 'K') !== false) {
+		$format = static::replace($format, 'K', function () use ($gengo, $timestamp) {
 			$year = date('Y', $timestamp) - date('Y', $gengo['timestamp']) + 1;
-			$year = $year == 1 ? '元' : $year;
-			$format = preg_replace('/K/', $year, $format);
-		}
+			return $year == 1 ? '元' : $year;
+		});
 
 		// k : 和暦用年
-		if (strpos($format, 'k') !== false) {
-			$year = (int)date('Y', $timestamp) - (int)date('Y', (int)$gengo['timestamp']) + 1;
-			$format = preg_replace('/k/', $year, $format);
-		}
+		$format = static::replace($format, 'k', function () use ($gengo, $timestamp) {
+			return (int)date('Y', $timestamp) - (int)date('Y', (int)$gengo['timestamp']) + 1;
+		});
 
 		// x : 日本語曜日
-		if (strpos($format, 'x') !== false) {
+		$format = static::replace($format, 'x', function () use ($timestamp) {
 			$w = date('w', $timestamp);
-			$format = preg_replace('/x/', self::$weekJp[$w], $format);
-		}
+			return static::$weekJp[$w];
+		});
 
-		// 午前午後
-		if (strpos($format, 'E') !== false) {
+		// E : 午前午後
+		$format = static::replace($format, 'E', function () use ($timestamp) {
 			$a = date('a', $timestamp);
-			$format = preg_replace('/E/', self::$ampm[$a], $format);
-		}
+			return static::$ampm[$a];
+		});
 
-		// 時。12時間単位。先頭にゼロを付けない。(0-11)
-		if (strpos($format, 'p') !== false) {
+		// p : 時。12時間単位。先頭にゼロを付けない。(0-11)
+		$format = static::replace($format, 'p', function () use ($timestamp) {
 			$hour = date('g', $timestamp);
-			$hour = $hour == 12 ? 0 : $hour;
-			$format = preg_replace('/p/', $hour, $format);
-		}
+			return $hour == 12 ? 0 : $hour;
+		});
 
-		// 時。数字。12 時間単位。(00-11)
-		if (strpos($format, 'q') !== false) {
+		// q : 時。数字。12 時間単位。(00-11)
+		$format = static::replace($format, 'q', function () use ($timestamp) {
 			$hour = date('h', $timestamp);
-			$hour = str_pad($hour == 12 ? 0 : $hour, 2, '0');
-			$format = preg_replace('/q/', $hour, $format);
-		}
+			return str_pad($hour == 12 ? 0 : $hour, 2, '0');
+		});
 
 		return date($format, $timestamp);
 	}
@@ -138,7 +181,7 @@ class Date
 			)
 		) {
 			$gengo = $matches['gengo'];
-			foreach (self::$gengoList as $g) {
+			foreach (static::$gengoList as $g) {
 				if ($gengo === $g['name_short']) {
 					$base = date('Y', $g['timestamp']) - 1;
 					return sprintf(

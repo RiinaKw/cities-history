@@ -2146,6 +2146,66 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fuel-Tasks-User.html#method_create"
         },                {
+            "fqsen": "\\MyApp\\Helper\\Date",
+            "name": "Date",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Date.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003Areplace\u0028\u0029",
+            "name": "replace",
+            "summary": "\u30D5\u30A9\u30FC\u30DE\u30C3\u30C8\u5185\u306E\u6587\u5B57\u3092\u7F6E\u63DB\u3059\u308B",
+            "url": "classes/MyApp-Helper-Date.html#method_replace"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003AgetGengo\u0028\u0029",
+            "name": "getGengo",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Date.html#method_getGengo"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003AgetTimestamp\u0028\u0029",
+            "name": "getTimestamp",
+            "summary": "\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u3092\u53D6\u5F97",
+            "url": "classes/MyApp-Helper-Date.html#method_getTimestamp"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "\u548C\u66A6\u306A\u3069\u3092\u8FFD\u52A0\u3057\u305Fdate\u95A2\u6570",
+            "url": "classes/MyApp-Helper-Date.html#method_format"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003Anormalize\u0028\u0029",
+            "name": "normalize",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Date.html#method_normalize"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003A\u0024gengoList",
+            "name": "gengoList",
+            "summary": "\u5143\u53F7\u7528\u8A2D\u5B9A",
+            "url": "classes/MyApp-Helper-Date.html#property_gengoList"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003A\u0024weekJp",
+            "name": "weekJp",
+            "summary": "\u65E5\u672C\u8A9E\u66DC\u65E5\u8A2D\u5B9A",
+            "url": "classes/MyApp-Helper-Date.html#property_weekJp"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003A\u0024ampm",
+            "name": "ampm",
+            "summary": "\u5348\u524D\u5348\u5F8C",
+            "url": "classes/MyApp-Helper-Date.html#property_ampm"
+        },                {
+            "fqsen": "\\Test_Helper_Date",
+            "name": "Test_Helper_Date",
+            "summary": "",
+            "url": "classes/Test-Helper-Date.html"
+        },                {
+            "fqsen": "\\Test_Helper_Date\u003A\u003Atest_usual\u0028\u0029",
+            "name": "test_usual",
+            "summary": "",
+            "url": "classes/Test-Helper-Date.html#method_test_usual"
+        },                {
+            "fqsen": "\\Test_Helper_Date\u003A\u003Atest_ja\u0028\u0029",
+            "name": "test_ja",
+            "summary": "",
+            "url": "classes/Test-Helper-Date.html#method_test_ja"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -2160,6 +2220,16 @@ Search.appendIndex(
             "name": "Fuel",
             "summary": "",
             "url": "namespaces/fuel.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper",
+            "name": "Helper",
+            "summary": "",
+            "url": "namespaces/myapp-helper.html"
+        },                {
+            "fqsen": "\\MyApp",
+            "name": "MyApp",
+            "summary": "",
+            "url": "namespaces/myapp.html"
         },                {
             "fqsen": "\\Fuel\\Tasks",
             "name": "Tasks",
