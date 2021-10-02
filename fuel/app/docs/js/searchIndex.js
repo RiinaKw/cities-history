@@ -376,10 +376,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Helper-Breadcrumb.html"
         },                {
-            "fqsen": "\\Helper_Breadcrumb\u003A\u003Abreadcrumb_and_kana\u0028\u0029",
-            "name": "breadcrumb_and_kana",
+            "fqsen": "\\Helper_Breadcrumb\u003A\u003Abreadcrumb\u0028\u0029",
+            "name": "breadcrumb",
             "summary": "",
-            "url": "classes/Helper-Breadcrumb.html#method_breadcrumb_and_kana"
+            "url": "classes/Helper-Breadcrumb.html#method_breadcrumb"
         },                {
             "fqsen": "\\Helper_Division",
             "name": "Helper_Division",
@@ -425,66 +425,6 @@ Search.appendIndex(
             "name": "ip",
             "summary": "",
             "url": "classes/Helper-Input.html#method_ip"
-        },                {
-            "fqsen": "\\Helper_Iterator",
-            "name": "Helper_Iterator",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method___construct"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Acurrent\u0028\u0029",
-            "name": "current",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_current"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Anext\u0028\u0029",
-            "name": "next",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_next"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Akey\u0028\u0029",
-            "name": "key",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_key"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Avalid\u0028\u0029",
-            "name": "valid",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_valid"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Arewind\u0028\u0029",
-            "name": "rewind",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_rewind"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Aget\u0028\u0029",
-            "name": "get",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_get"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Apush\u0028\u0029",
-            "name": "push",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_push"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003Adump\u0028\u0029",
-            "name": "dump",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#method_dump"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003A\u0024position",
-            "name": "position",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#property_position"
-        },                {
-            "fqsen": "\\Helper_Iterator\u003A\u003A\u0024array",
-            "name": "array",
-            "summary": "",
-            "url": "classes/Helper-Iterator.html#property_array"
         },                {
             "fqsen": "\\Helper_Number",
             "name": "Helper_Number",
@@ -640,71 +580,6 @@ Search.appendIndex(
             "name": "_deleted_at",
             "summary": "",
             "url": "classes/Model-Base.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_Division_Tree",
-            "name": "Model_Division_Tree",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method___construct"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003A\u0024self",
-            "name": "self",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#property_self"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003Amake_tree\u0028\u0029",
-            "name": "make_tree",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method_make_tree"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003Asuffix_count\u0028\u0029",
-            "name": "suffix_count",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method_suffix_count"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003Aget_by_suffix\u0028\u0029",
-            "name": "get_by_suffix",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method_get_by_suffix"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003Aget_subtree_by_division\u0028\u0029",
-            "name": "get_subtree_by_division",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method_get_subtree_by_division"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003Acreate_subtree\u0028\u0029",
-            "name": "create_subtree",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method_create_subtree"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003Aadd\u0028\u0029",
-            "name": "add",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method_add"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003Adump\u0028\u0029",
-            "name": "dump",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#method_dump"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003A\u0024suffix_arr",
-            "name": "suffix_arr",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#property_suffix_arr"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003A\u0024children",
-            "name": "children",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#property_children"
-        },                {
-            "fqsen": "\\Model_Division_Tree\u003A\u003A\u0024ref",
-            "name": "ref",
-            "summary": "",
-            "url": "classes/Model-Division-Tree.html#property_ref"
         },                {
             "fqsen": "\\Model_Division",
             "name": "Model_Division",
@@ -2076,6 +1951,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method___construct"
         },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Akana\u0028\u0029",
+            "name": "kana",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_kana"
+        },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Aurl\u0028\u0029",
             "name": "url",
             "summary": "",
@@ -2186,6 +2066,126 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Table-Division.html#property__table_name"
         },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator",
+            "name": "Iterator",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Acurrent\u0028\u0029",
+            "name": "current",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_current"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Anext\u0028\u0029",
+            "name": "next",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_next"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Akey\u0028\u0029",
+            "name": "key",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_key"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Avalid\u0028\u0029",
+            "name": "valid",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_valid"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Arewind\u0028\u0029",
+            "name": "rewind",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_rewind"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_get"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Apush\u0028\u0029",
+            "name": "push",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_push"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Adump\u0028\u0029",
+            "name": "dump",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#method_dump"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003A\u0024array",
+            "name": "array",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Iterator.html#property_array"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree",
+            "name": "Tree",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024self",
+            "name": "self",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#property_self"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Amake_tree\u0028\u0029",
+            "name": "make_tree",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_make_tree"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Asuffix_count\u0028\u0029",
+            "name": "suffix_count",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_suffix_count"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Aget_by_suffix\u0028\u0029",
+            "name": "get_by_suffix",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_get_by_suffix"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Aget_subtree_by_division\u0028\u0029",
+            "name": "get_subtree_by_division",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_get_subtree_by_division"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Acreate_subtree\u0028\u0029",
+            "name": "create_subtree",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_create_subtree"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_add"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Adump\u0028\u0029",
+            "name": "dump",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_dump"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024suffix_arr",
+            "name": "suffix_arr",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#property_suffix_arr"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024children",
+            "name": "children",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#property_children"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024ref",
+            "name": "ref",
+            "summary": "",
+            "url": "classes/MyApp-Model-Division-Tree.html#property_ref"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -2210,6 +2210,16 @@ Search.appendIndex(
             "name": "MyApp",
             "summary": "",
             "url": "namespaces/myapp.html"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division",
+            "name": "Division",
+            "summary": "",
+            "url": "namespaces/myapp-model-division.html"
+        },                {
+            "fqsen": "\\MyApp\\Model",
+            "name": "Model",
+            "summary": "",
+            "url": "namespaces/myapp-model.html"
         },                {
             "fqsen": "\\MyApp\\PresentationModel",
             "name": "PresentationModel",

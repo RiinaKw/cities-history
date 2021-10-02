@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package  App\Model
+ * @package  App\Model\Division
  */
 
 namespace MyApp\Model\Division;
@@ -32,12 +32,12 @@ class Tree
 		$this->unknown = new Iterator();
 	}
 
-	public function self()
+	public function self(): Model_Division
 	{
 		return $this->self;
 	}
 
-	public function make_tree($divisions)
+	public function make_tree($divisions): self
 	{
 		foreach ($divisions as $division) {
 			$this->add($division);
@@ -45,12 +45,12 @@ class Tree
 		return $this;
 	}
 
-	public function suffix_count($suffix = null)
+	public function suffix_count(string $suffix = null)
 	{
 		return $suffix ? ($this->suffix_arr[$suffix] ?? null) : $this->suffix_arr;
 	}
 
-	public function get_by_suffix($suffix)
+	public function get_by_suffix(string $suffix)
 	{
 		return $this->children[$suffix] ?? [];
 	}
@@ -61,7 +61,7 @@ class Tree
 		return $this->ref[$parent_id_path] ?? null;
 	}
 
-	protected function create_subtree(Model_Division $division)
+	protected function create_subtree(Model_Division $division): self
 	{
 		$name = $division->get_fullname();
 		$suffix = $division->suffix_classification();
@@ -74,7 +74,7 @@ class Tree
 		return $tree;
 	}
 
-	protected function add(Model_Division $division, string $name = '')
+	protected function add(Model_Division $division, string $name = ''): void
 	{
 		if ($name === '') {
 			$name = $division->path;
