@@ -52,13 +52,13 @@ class Model_Division extends Model_Base
 	}
 	// function validation()
 
-	public function get_source()
+	public function get_source(): string
 	{
 		return Helper_Html::wiki($this->source);
 	}
 	// function get_source()
 
-	public function get_tree($date)
+	public function get_tree($date): Model_Division_Tree
 	{
 		$divisions = Table_Division::get_by_parent_division_and_date($this, $date);
 		$tree = new Model_Division_Tree($this);
@@ -185,7 +185,7 @@ class Model_Division extends Model_Base
 	}
 	// function get_parent_path()
 
-	public function get_belongs_path()
+	public function get_belongs_path(): ?string
 	{
 		if ($this->belongs_division_id) {
 			$division = self::find_by_pk($this->belongs_division_id);
@@ -196,7 +196,7 @@ class Model_Division extends Model_Base
 	}
 	// function get_belongs_path()
 
-	public function get_belongs_name()
+	public function get_belongs_name(): ?string
 	{
 		if ($this->belongs_division_id) {
 			$division = self::find_by_pk($this->belongs_division_id);
@@ -238,8 +238,20 @@ class Model_Division extends Model_Base
 	}
 
 	/**
-	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
- 	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 * 必要なパラメータが設定されている場合のみコールバックを実行
+	 *
+	 * @param array&<string, mixed>   $array     対象の配列
+	 * @param string                  $key       対象のキー
+	 * @param callable                $callback  実行するコールバック
+	 */
+	protected function callIfNotEmpty(array &$array, string $key, callable $callback): void
+	{
+		if (isset($array[$key])) {
+			$callback($this, $array[$key]);
+		}
+	}
+
+	/**
  	 * @SuppressWarnings(PHPMD.ExitExpression)
  	 * @todo PHPMD をなんとかしろ
 	 */
@@ -252,9 +264,9 @@ class Model_Division extends Model_Base
 			DB::start_transaction();
 
 			if ($belongs) {
-				$belongs_division = self::get_by_path($belongs);
+				$belongs_division = Table_Division::get_by_path($belongs);
 				if (! $belongs_division) {
-					$belongs_division = self::set_path($belongs);
+					$belongs_division = Table_Division::set_path($belongs);
 					$belongs_division = array_pop($belongs_division);
 				}
 				$this->belongs_division_id = $belongs_division->id;
@@ -262,38 +274,27 @@ class Model_Division extends Model_Base
 				$this->belongs_division_id = null;
 			}
 
-			if (isset($input['name'])) {
-				$this->name            = $input['name'];
-			}
-			if (isset($input['name_kana'])) {
-				$this->name_kana       = Helper_String::to_hiragana($input['name_kana']);
-				$this->is_empty_kana   = empty($input['name_kana']);
-			}
-			if (isset($input['suffix'])) {
-				$this->suffix          = $input['suffix'];
-			}
-			if (isset($input['suffix_kana'])) {
-				$this->suffix_kana     = Helper_String::to_hiragana($input['suffix_kana']);
-			}
-			if (isset($input['show_suffix'])) {
-				$this->show_suffix     = !! $input['show_suffix'];
-			}
-			if (isset($input['government_code'])) {
-				$this->government_code = Helper_Governmentcode::normalize($input['government_code']) ?: null;
-				$this->is_empty_government_code = empty($input['government_code']);
-			}
-			if (isset($input['display_order'])) {
-				$this->display_order   = $input['display_order'] ?: null;
-			}
-			if (isset($input['is_unfinished'])) {
-				$this->is_unfinished   = !! $input['is_unfinished'];
-			}
-			if (isset($input['identifier'])) {
-				$this->identifier      = $input['identifier'] ?: null;
-			}
-			if (isset($input['source'])) {
-				$this->source          = $input['source'] ?: null;
-			}
+			$this->name = $input['name'] ?? null;
+
+			$this->callIfNotEmpty($input, 'name_kana', function ($obj, $value) {
+				$obj->name_kana       = Helper_String::to_hiragana($value);
+				$obj->is_empty_kana   = empty($value);
+			});
+
+			$this->suffix = $input['suffix'] ?? null;
+			$this->suffix_kana = $input['suffix_kana'] ? Helper_String::to_hiragana($input['suffix_kana']) : null;
+			$this->show_suffix = $input['show_suffix'] ? (bool)$input['show_suffix'] : false;
+
+			$this->callIfNotEmpty($input, 'government_code', function ($obj, $value) {
+				$obj->government_code = Helper_Governmentcode::normalize($value);
+				$obj->is_empty_government_code = empty($value);
+			});
+
+			$this->display_order = $input['display_order'] ?? null;
+			$this->is_unfinished = $input['is_unfinished'] ? (bool)$input['is_unfinished'] : false;
+			$this->identifier = $input['identifier'] ?? null;
+			$this->source = $input['source'] ?? null;
+
 			$this->search_path = '';
 			$this->search_path_kana = '';
 			$this->save();
