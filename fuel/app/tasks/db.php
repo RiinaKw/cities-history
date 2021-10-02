@@ -37,6 +37,13 @@ class Db
 
 	public static function backup($file = '')
 	{
+		$connection = static::connection();
+		$host = escapeshellcmd($connection['host']);
+		$port = escapeshellcmd($connection['port']);
+		$db = escapeshellcmd($connection['db']);
+		$user = escapeshellcmd($connection['user']);
+		$password = escapeshellcmd($connection['password']);
+
 		// file name
 		if ($file) {
 			// check that the file name is correct
@@ -51,10 +58,11 @@ class Db
 		// target path
 		$config = \Config::load('common.php');
 		$path = APPPATH . $config['backup_dir'] . '/' . $file;
-		$path = escapeshellcmd($path);
 
 		// ignore table
 		$without = explode(',', \Cli::option('without'));
+		$without[] = 'restore';
+		$without[] = 'migration';
 		if ($without) {
 			$ignore_table = '';
 			foreach ($without as $table) {
@@ -83,10 +91,11 @@ class Db
 		$user = escapeshellcmd($connection['user']);
 		$password = escapeshellcmd($connection['password']);
 
+		$path_escaped = escapeshellcmd($path);
 		$command = 'mysqldump'
 			. " -u{$user} {$password} -h {$host} -P {$port} {$db}"
 			. " {$ignore_table} {$only_data} {$complete_insert}"
-			. " > {$path}";
+			. " > {$path_escaped}";
 
 		exec($command);
 
@@ -102,14 +111,14 @@ class Db
 	{
 		$fp = fopen($path, 'r');
 
-		while ($sql = stream_get_line($fp, 500000, ";")) {
+		while ($sql = stream_get_line($fp, 16777216, ";")) {
 			$expected_last = ['/' => 0, ')' => 0, "\n" => 0];
 			$expedted_last6 = ['TABLES' => 0, ' WRITE' => 0];
 			while (
 					! array_key_exists(substr($sql, -1), $expected_last)
 					&& ! array_key_exists(substr($sql, -6), $expedted_last6)
 			) {
-				$sql .= stream_get_line($fp, 500000, ";");
+				$sql .= stream_get_line($fp, 16777216, ";");
 			}
 			echo sprintf('sql of %d bytes loaded', strlen($sql)), PHP_EOL;
 			$sql = trim($sql);
@@ -121,7 +130,7 @@ class Db
 		fclose($fp);
 	}
 
-	protected static function path(): string
+	protected static function path(string $file): string
 	{
 		$config = \Config::load('common.php');
 		$path = APPPATH . $config['backup_dir'] . '/' . $file;
@@ -139,17 +148,15 @@ class Db
 	public static function restore($file)
 	{
 		// db connection data
-		/*
 		$connection = static::connection();
-		$host = escapeshellcmd($connection['host']);
-		$port = escapeshellcmd($connection['port']);
+		//$host = escapeshellcmd($connection['host']);
+		//$port = escapeshellcmd($connection['port']);
 		$db = escapeshellcmd($connection['db']);
-		$user = escapeshellcmd($connection['user']);
-		$password = escapeshellcmd($connection['password']);
-		*/
+		//$user = escapeshellcmd($connection['user']);
+		//$password = escapeshellcmd($connection['password']);
 
 		// target path
-		$path = static::path();
+		$path = static::path($file);
 		//$path = escapeshellcmd($path);
 
 		// truncate tables
@@ -163,6 +170,7 @@ class Db
 
 		// ignore tables
 		$without = explode(',', \Cli::option('without'));
+		$without[] = 'migration';
 		foreach ($without as $table) {
 			unset($truncate_tables[$table]);
 		}
@@ -205,7 +213,7 @@ class Db
 				echo 'sql : ', $sql_first, PHP_EOL, 'failed', PHP_EOL, PHP_EOL;
 				++$fail;
 			} else {
-				//echo 'sql : ', $sql_first, PHP_EOL, 'success', PHP_EOL, PHP_EOL;
+				echo 'sql : ', $sql_first, PHP_EOL, 'success', PHP_EOL, PHP_EOL;
 			}
 			++$i;
 		}
