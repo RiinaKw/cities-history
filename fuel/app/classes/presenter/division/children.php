@@ -39,12 +39,14 @@ class Presenter_Division_Children extends Presenter_Layout
 		}
 
 		// meta description
-		$description = "{$this->path} ({$path_kana})";
+		//$description = "{$this->path} ({$path_kana})";
+		/*
 		foreach ($this->events as $event) {
 			$event_parent = Model_Event::find_by_pk($event->event_id);
 			$date = Helper_Date::format('Y(Jk)-m-d', $event_parent->date);
 			$description .= " | {$date} {$event_parent->title}";
 		}
+		*/
 
 		$this->title = $this->path . 'の所属自治体タイムライン';
 		$this->description = "{$this->path}の所属自治体タイムライン {$this->search_path} $this->search_path_kana";

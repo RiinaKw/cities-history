@@ -5,11 +5,20 @@
  *
  * @package  app
  * @extends  Controller_Base
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @todo PHPMD をなんとかしろ
  */
 class Controller_Division extends Controller_Base
 {
 	protected const SESSION_LIST = 'division';
 
+	/**
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+ 	 * @todo PHPMD をなんとかしろ
+	 */
 	public function action_detail()
 	{
 		$path = $this->param('path');
@@ -99,6 +108,11 @@ class Controller_Division extends Controller_Base
 	}
 	// function action_detail()
 
+	/**
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+ 	 * @todo PHPMD をなんとかしろ
+	 */
 	public function action_children()
 	{
 		$path = $this->param('path');
@@ -232,7 +246,8 @@ class Controller_Division extends Controller_Base
 				}
 				$items = explode($separator, $line);
 				$arr = [];
-				for ($i = 0; $i < count($heads); ++$i) {
+				$count = count($heads);
+				for ($i = 0; $i < $count; ++$i) {
 					$arr[ $heads[$i] ] = trim($items[$i]);
 				}
 				$arr['parent'] = dirname($arr['path']);

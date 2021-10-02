@@ -78,19 +78,9 @@ class Model_Division_Tree
 		++$this->suffix_arr[$suffix];
 
 		$parent_path = dirname($name);
-		$pos = strpos($name, '/');
-		if ($pos !== false) {
-			$top_parent_path = substr($name, 0, $pos);
-			$child_path = substr($name, $pos + 1);
-		} else {
-			$top_parent_path = $name;
-			$child_path = '';
-		}
-
 		$suffix = $division->suffix_classification();
 
 		if (strpos($parent_path, '/') === false) {
-			$parent_id_path = dirname($division->id_path) . '/';
 			if ($tree = $this->get_subtree_by_division($division)) {
 				$tree->self = $division;
 			} else {
@@ -101,7 +91,6 @@ class Model_Division_Tree
 				$this->children[$suffix]->push($tree, $division->fullname);
 			}
 		} else {
-			$parent_name = dirname($child_path);
 			$tree = $this->get_subtree_by_division($division);
 			if ($tree === null) {
 				$tree = $this->create_subtree($division);

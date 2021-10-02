@@ -5,6 +5,9 @@
  *
  * @package  app
  * @extends  Controller_Base
+ *
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @todo PHPMD をなんとかしろ
  */
 class Controller_Event extends Controller_Base
 {
@@ -20,6 +23,10 @@ class Controller_Event extends Controller_Base
 	}
 	// function before()
 
+	/**
+	* @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	* @todo PHPMD をなんとかしろ
+	 */
 	public function post_add()
 	{
 		// unify post data
@@ -105,6 +112,11 @@ class Controller_Event extends Controller_Base
 	}
 	// function post_add()
 
+	/**
+	 * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ 	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	 * @todo PHPMD をなんとかしろ
+	 */
 	public function action_edit($event_id)
 	{
 		$event = Model_Event::find_by_pk($event_id);
@@ -130,7 +142,6 @@ class Controller_Event extends Controller_Base
 				'geoshape' => Model_Event_Detail::unify_geoshape(Input::post('geoshape.' . $key)),
 				'refer'    => Input::post('refer.' . $key),
 			];
-			$geoshape = Model_Event_Detail::unify_geoshape(Input::post('geoshape.' . $key));
 		}
 
 		try {
@@ -210,6 +221,10 @@ class Controller_Event extends Controller_Base
 	}
 	// function action_edit()
 
+	/**
+	 * @SuppressWarnings(PHPMD.ExitExpression)
+	 * @todo PHPMD をなんとかしろ
+	 */
 	public function action_delete($event_id)
 	{
 		$event = Model_Event::find_by_pk($event_id);

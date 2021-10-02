@@ -9,17 +9,17 @@ class Model_Referencedate extends Model_Base
 	protected static $_deleted_at	= 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	public function validation($is_new = false, $factory = null)
+	public function validation()
 	{
-		$validation = Validation::forge($factory);
+		$validation = Validation::forge(mt_rand());
 		$validation->add_callable(new Helper_MyValidation());
 
 		// rules
-		$field = $validation->add('date', '日付')
+		$validation->add('date', '日付')
 			->add_rule('required')
 			->add_rule('valid_date');
 
-		$field = $validation->add('description', '説明')
+		$validation->add('description', '説明')
 			->add_rule('required')
 			->add_rule('max_length', 256);
 

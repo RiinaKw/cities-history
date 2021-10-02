@@ -9,12 +9,12 @@ class Model_Event extends Model_Base
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
-	public function validation($is_new = false, $factory = null)
+	public function validation()
 	{
-		$validation = Validation::forge($factory);
+		$validation = Validation::forge(mt_rand());
 
 		// rules
-		$field = $validation->add('date', '日付')
+		$validation->add('date', '日付')
 			->add_rule('required')
 			->add_rule('valid_date', 'Y-m-d');
 

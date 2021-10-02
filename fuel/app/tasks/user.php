@@ -30,7 +30,7 @@ class User
 	public static function create($name, $password)
 	{
 		try {
-			$user = \Model_User::create($name, $password);
+			\Model_User::create($name, $password);
 			echo "User created\n";
 		} catch (\Exception $e) {
 			echo $e->getMessage();

@@ -147,8 +147,8 @@ class Table_Division
 	{
 		$parents = [];
 		$cur_path = $path;
-		while ($path) {
-			$parent = dirname($path);
+		while ($cur_path) {
+			$parent = dirname($cur_path);
 			if ($parent === '\\' || $parent === '/' || $parent === '.') {
 				break;
 			}
@@ -156,7 +156,7 @@ class Table_Division
 			if (strpos($parent, '/') === false) {
 				break;
 			}
-			$path = $parent;
+			$cur_path = $parent;
 		}
 		$parents = array_reverse($parents);
 

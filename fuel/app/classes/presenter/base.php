@@ -12,6 +12,8 @@ abstract class Presenter_Base extends Fuel\Core\Presenter
 
 	/**
 	 * テンプレートエンジンはsmartyを使うので、View_Smartyを利用
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
 	 */
 	public function set_view($view = null)
 	{

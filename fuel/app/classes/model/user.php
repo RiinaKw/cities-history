@@ -15,13 +15,12 @@ class Model_User extends Model_Base
 		$validation->add_callable(new Helper_MyValidation());
 
 		$arr = explode('.', $factory);
-		$name = $arr[0];
 		$id = $arr[1];
 
 		$password = Input::post('password');
 
 		// rules
-		$field = $validation->add('login_id', 'ログインID')
+		$validation->add('login_id', 'ログインID')
 			->add_rule('required')
 			->add_rule('max_length', 100)
 			->add_rule('unique', self::$_table_name . '.login_id.' . $id);
@@ -31,7 +30,7 @@ class Model_User extends Model_Base
 		if ($is_new) {
 			$field->add_rule('required');
 		}
-		$field = $validation->add('password_confirm', 'パスワード（確認）')
+		$validation->add('password_confirm', 'パスワード（確認）')
 			->add_rule('max_length', 256);
 		if ($is_new) {
 			$field->add_rule('required');

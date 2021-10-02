@@ -34,21 +34,12 @@ class Db
 
 	public static function backup($file = '')
 	{
-		$connection = static::connection();
-
-		// db connection data
-		$host = escapeshellcmd($connection['host']);
-		$port = escapeshellcmd($connection['port']);
-		$db = escapeshellcmd($connection['db']);
-		$user = escapeshellcmd($connection['user']);
-		$password = escapeshellcmd($connection['password']);
-
 		// file name
 		if ($file) {
 			// check that the file name is correct
 			if (! preg_match('/[A-Za-z0-9\-_]+?\.(sql|dump)/', $file)) {
 				echo "Invalid file name\n";
-				exit;
+				return 1;
 			}
 		} else {
 			$file = date('YmdHis') . '_' . $db . '.sql';
@@ -81,8 +72,16 @@ class Db
 		$only_data = '-t';
 		$complete_insert = '--complete-insert';
 
+		// db connection data
+		$connection = static::connection();
+		$host = escapeshellcmd($connection['host']);
+		$port = escapeshellcmd($connection['port']);
+		$db = escapeshellcmd($connection['db']);
+		$user = escapeshellcmd($connection['user']);
+		$password = escapeshellcmd($connection['password']);
+
 		$command = 'mysqldump'
-			. " -u{$user} {$password} -h {$host} {$db}"
+			. " -u{$user} {$password} -h {$host} -P {$port} {$db}"
 			. " {$ignore_table} {$only_data} {$complete_insert}"
 			. " > {$path}";
 
@@ -90,22 +89,29 @@ class Db
 
 		if (! \File::exists($path)) {
 			echo "Error : cannot create dump file.\n";
-			exit(1);
+			return 1;
 		}
 		echo "Complete!\n";
-		exit(0);
+		return 0;
 	}
 
+	/**
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+ 	 * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ 	 * @SuppressWarnings(PHPMD.NPathComplexity)
+ 	 * @todo PHPMD をなんとかしろ
+	 */
 	public static function restore($file)
 	{
-		$connection = static::connection();
-
 		// db connection data
+		/*
+		$connection = static::connection();
 		$host = escapeshellcmd($connection['host']);
 		$port = escapeshellcmd($connection['port']);
 		$db = escapeshellcmd($connection['db']);
 		$user = escapeshellcmd($connection['user']);
 		$password = escapeshellcmd($connection['password']);
+		*/
 
 		// target path
 		$config = \Config::load('common.php');
@@ -113,7 +119,7 @@ class Db
 		$realpath = realpath($path);
 		if (! $realpath) {
 			echo "Not found : {$file}", PHP_EOL;
-			return;
+			return 1;
 		}
 		//$path = escapeshellcmd($path);
 
@@ -128,7 +134,6 @@ class Db
 
 		// ignore tables
 		$without = explode(',', \Cli::option('without'));
-		$ignore_table = [];
 		foreach ($without as $table) {
 			unset($truncate_tables[$table]);
 		}
@@ -139,15 +144,13 @@ class Db
 
 		// do truncate
 		\DB::query('SET FOREIGN_KEY_CHECKS=0;')->execute();
-		foreach ($truncate_tables as $table => $dummy) {
+		foreach (array_keys($truncate_tables) as $table) {
 			echo "truncate table {$table}...\n";
 			\DBUtil::truncate_table($table);
 		}
 		\DB::query('SET FOREIGN_KEY_CHECKS=1;')->execute();
 
 		echo PHP_EOL, 'prepare sql...', PHP_EOL;
-
-		$filesize = filesize($path);
 
 		$restore_table = 'restore';
 
@@ -162,7 +165,6 @@ class Db
 					&& ! array_key_exists(substr($sql, -6), $expedted_last6)
 			) {
 				$sql .= stream_get_line($fp, 500000, ";");
-				$last = substr($sql, -1);
 			}
 			echo sprintf('sql of %d bytes loaded', strlen($sql)), PHP_EOL;
 			$sql = trim($sql);
@@ -198,10 +200,10 @@ class Db
 
 		if ($fail === 0) {
 			echo PHP_EOL, 'Complete!', PHP_EOL;
-			exit(0);
+			return 0;
 		} else {
 			echo PHP_EOL, 'Some failed', PHP_EOL;
-			exit(1);
+			return 1;
 		}
 	}
 }

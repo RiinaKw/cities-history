@@ -42,6 +42,10 @@ class Helper_Date
 	 * k : 和暦年
 	 * x : 日本語曜日(0:日-6:土)
 	 * E : 午前午後
+	 *
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 * @todo PHPMD をなんとかしろ
 	 */
 	public static function format($format, $timestamp = null)
 	{

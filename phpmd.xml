@@ -15,6 +15,10 @@
         <exclude name="CamelCaseVariableName" />
         <exclude name="CamelCaseParameterName" />
         <exclude name="CamelCasePropertyName" />
+        <exclude name="CamelCaseMethodName" />
+
+		<!-- Fuel 特有の「クラス名がスネークケース」を無視する -->
+        <exclude name="CamelCaseClassName" />
     </rule>
 
     <rule ref="rulesets/design.xml" />
@@ -24,6 +28,10 @@
     <rule ref="rulesets/naming.xml">
         <exclude name="ShortVariable" />
         <exclude name="ShortMethodName" />
+        <exclude name="ShortClassName" />
+
+		<!-- マイグレーションにありがちな長いクラス名を無視する -->
+        <exclude name="LongClassName" />
     </rule>
     <rule ref="rulesets/naming.xml/ShortVariable">
         <properties>
@@ -35,6 +43,18 @@
         <properties>
             <!-- 2文字のメソッド名を許容する -->
             <property name="minimum" value="2" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/ShortClassName">
+        <properties>
+            <!-- 2文字のクラス名を許容する -->
+            <property name="minimum" value="2" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/LongClassName">
+        <properties>
+            <!-- 50文字のクラス名を許容する -->
+            <property name="maximum" value="50" />
         </properties>
     </rule>
 

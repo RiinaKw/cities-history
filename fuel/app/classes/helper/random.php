@@ -19,7 +19,7 @@ class Helper_Random
 			$sess = array();
 		}
 		$arr = array();
-		foreach ($sess as $key => $item) {
+		foreach (array_keys($sess) as $key) {
 			$arr[] = $key;
 		}
 		return self::forge($arr);

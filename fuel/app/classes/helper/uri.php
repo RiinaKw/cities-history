@@ -2,6 +2,9 @@
 
 class Helper_Uri
 {
+	/**
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
 	public static function root()
 	{
 		// get server information
@@ -64,6 +67,9 @@ class Helper_Uri
 	// function redirect()
 
 	// get current uri
+	/**
+	 * @SuppressWarnings(PHPMD.Superglobals)
+	 */
 	public static function current()
 	{
 		$path = ($_SERVER['PATH_INFO'] ?? '');

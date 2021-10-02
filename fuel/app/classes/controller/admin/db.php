@@ -16,7 +16,6 @@ class Controller_Admin_Db extends Controller_Admin_Base
 	{
 		$backup_dir = realpath(APPPATH . Config::get('common.backup_dir'));
 		$ext_arr = ['sql', 'dump'];
-		$found = '';
 		foreach ($ext_arr as $ext) {
 			$file = $filename . '.' . $ext;
 			$path = $backup_dir . '/' . $file;
@@ -54,7 +53,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		if (\Fuel::$env == 'staging') {
 			$command = 'FUEL_ENV=staging ' . $command;
 		}
-		$output = exec($command, $result);
+		$output = exec($command);
 
 		if (strpos($output, 'Error') === false) {
 			Model_Activity::insert_log([
@@ -97,7 +96,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		if (\Fuel::$env == 'staging') {
 			$command = 'FUEL_ENV=staging ' . $command;
 		}
-		$output = exec($command);
+		exec($command);
 
 		Model_Activity::insert_log([
 			'user_id' => Session::get('user_id'),

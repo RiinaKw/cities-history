@@ -38,7 +38,7 @@ class Controller_Geoshape extends Controller
 		}
 
 		// 文字列から変換
-		$jsonArray = json_decode($json, true);
+		//$jsonArray = json_decode($json, true);
 
 		echo $json;
 		return;

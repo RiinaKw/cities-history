@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @todo PHPMD をなんとかしろ
+ */
 class Model_Division extends Model_Base
 {
 	protected static $_table_name  = 'divisions';
@@ -14,33 +18,33 @@ class Model_Division extends Model_Base
 		return new PresentationModel_Division($this);
 	}
 
-	public function validation(bool $is_new = false)
+	public function validation()
 	{
 		$validation = Validation::forge(mt_rand());
 
 		// rules
-		$field = $validation->add('name', '自治体名')
+		$validation->add('name', '自治体名')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('name_kana', '自治体名かな')
+		$validation->add('name_kana', '自治体名かな')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('suffix', '自治体名種別')
+		$validation->add('suffix', '自治体名種別')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('suffix_kana', '自治体名種別かな')
+		$validation->add('suffix_kana', '自治体名種別かな')
 			->add_rule('required')
 			->add_rule('max_length', 20);
-		$field = $validation->add('identifier', '識別名')
+		$validation->add('identifier', '識別名')
 			->add_rule('max_length', 50);
-		$field = $validation->add('start_event_id', '設置イベント');
-		$field = $validation->add('end_event_id', '廃止イベント');
-		$field = $validation->add('government_code', '全国地方公共団体コード')
+		$validation->add('start_event_id', '設置イベント');
+		$validation->add('end_event_id', '廃止イベント');
+		$validation->add('government_code', '全国地方公共団体コード')
 			->add_rule('min_length', 6)
 			->add_rule('max_length', 7);
-		$field = $validation->add('display_order', '表示順')
+		$validation->add('display_order', '表示順')
 			->add_rule('valid_string', array('numeric'));
-		$field = $validation->add('source', '出典');
+		$validation->add('source', '出典');
 
 		return $validation;
 	}
@@ -231,16 +235,20 @@ class Model_Division extends Model_Base
 		}
 	}
 
+	/**
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+ 	 * @SuppressWarnings(PHPMD.NPathComplexity)
+ 	 * @SuppressWarnings(PHPMD.ExitExpression)
+ 	 * @todo PHPMD をなんとかしろ
+	 */
 	public function create($input)
 	{
 		$belongs = $input['belongs'] ?? null;
 		$parent = $input['parent'] ?? null;
-		$parent_division = self::get_by_path($parent);
 
 		try {
 			DB::start_transaction();
 
-			$parent_division = null;
 			if ($belongs) {
 				$belongs_division = self::get_by_path($belongs);
 				if (! $belongs_division) {

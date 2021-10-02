@@ -9,25 +9,28 @@ class Model_Page extends Model_Base
 	protected static $_deleted_at	= 'deleted_at';
 	protected static $_mysql_timestamp = true;
 
+	/**
+	 * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+	 * @todo PHPMD をなんとかしろ
+	 */
 	public function validation($is_new = false, $factory = null)
 	{
 		$validation = Validation::forge($factory);
 		$validation->add_callable(new Helper_MyValidation());
 
 		$arr = explode('.', $factory);
-		$name = $arr[0];
 		$id = $arr[1];
 
 		// rules
-		$field = $validation->add('slug', 'スラッグ')
+		$validation->add('slug', 'スラッグ')
 			->add_rule('required')
 			->add_rule('max_length', 20)
 			->add_rule('unique', self::$_table_name . '.slug.' . $id);
 
-		$field = $validation->add('title', 'タイトル')
+		$validation->add('title', 'タイトル')
 			->add_rule('required')
 			->add_rule('max_length', 256);
-		$field = $validation->add('content', '本文')
+		$validation->add('content', '本文')
 			;
 
 		return $validation;
