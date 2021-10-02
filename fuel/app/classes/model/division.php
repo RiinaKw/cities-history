@@ -174,7 +174,7 @@ class Model_Division extends Model_Base
 	}
 	// function make_path_kana()
 
-	public function get_parent_path(): string
+	public function get_parent_path(): ?string
 	{
 		$path = $this->get_path();
 		if (strpos($path, '/') === false) {
