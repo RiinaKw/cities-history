@@ -6,9 +6,25 @@
 
 namespace Fuel\Tasks;
 
+use MyApp\Helper\CLI\Color;
+
 class Db
 {
-	protected static function connection()
+	private const DELAY = 10000;
+
+	/**
+	 * 進捗が分かりやすいよう、実行を敢えて遅らせる
+	 */
+	private static function delay(): void
+	{
+		usleep(static::DELAY);
+	}
+
+	/**
+	 * データベース接続情報を取得
+	 * @return array  接続情報
+	 */
+	private static function connection(): array
 	{
 		$config = \Config::load(\Fuel::$env . '/db.php');
 		$connection = $config['default']['connection'];
@@ -25,7 +41,12 @@ class Db
 		];
 	}
 
-	public static function backup($file = '')
+	/**
+	 * データベースのバックアップを実行
+	 * @param  string $file  出力するファイル名、指定がない場合はタイムスタンプを使用
+	 * @return int           エラーがなければ 0
+	 */
+	public static function backup(string $file = ''): int
 	{
 		$connection = static::connection();
 		$host = escapeshellcmd($connection['host']);
@@ -62,7 +83,9 @@ class Db
 			}
 		}
 
-		echo "Backup database from {$db} to {$file}...\n";
+		$db_str = Color::color($db, 'purple');
+		$file_str = Color::color($file, 'light_green');
+		echo "Backup database from {$db_str} to file {$file_str}...\n";
 
 		if ($password) {
 			$password = '-p' . $password;
@@ -90,18 +113,110 @@ class Db
 		exec($command);
 
 		if (! \File::exists($path)) {
-			echo "Error : cannot create dump file.\n";
+			echo Color::color("Error : cannot create dump file.\n", 'red');
 			return 1;
 		}
-		echo "Complete!\n";
+		echo Color::color("Complete!\n", 'green');
 		return 0;
 	}
 
-	protected static function loadSQL(string $path, string $restore_table): void
+	/**
+	 * 読み込むファイルを決定
+	 * @param  string $file  ファイル名、空の場合は選択肢を提示
+	 * @return string        ファイルパス
+	 */
+	private static function path(string $file): string
+	{
+		$config = \Config::load('common.php');
+		$dir = APPPATH . $config['backup_dir'];
+
+		if (! $file) {
+			$files = [];
+			$dh = opendir($dir);
+			while (($file = readdir($dh)) !== false) {
+				$ext = pathinfo($file)['extension'];
+				if ($ext === 'sql') {
+					$files[] = $file;
+				}
+			}
+			closedir($dh);
+			$files = array_reverse($files);
+			foreach ($files as $key => $file) {
+				++$key;
+				echo Color::color("  [{$key}]", 'green'), ' : ', Color::color($file, 'cyan'), PHP_EOL;
+			}
+
+			$choice = 0;
+			do {
+				echo "enter file number > ";
+
+				$stdin = fopen('php://stdin', 'r');
+				$choice = trim(fgets($stdin, 64));
+
+				if (is_numeric($choice) && array_key_exists($choice - 1, $files)) {
+					break;
+				} else {
+					echo Color::color("invalid choise '{$choice}'", 'red'), PHP_EOL;
+				}
+			} while (1);
+
+			echo Color::color("good choise '{$choice}'", 'green'), PHP_EOL;
+			$file = $files[$choice - 1];
+		}
+
+		$realpath = realpath($dir . '/' . $file);
+		if (! $realpath) {
+			echo Color::color("Not found : {$file}", 'red');
+			return 1;
+		}
+		return $realpath;
+	}
+
+	/**
+	 * テーブル一覧を取得
+	 * @param  string $db           データベース名
+	 * @return array<string, bool>  テーブル名をキーとした配列
+	 */
+	private static function tables(string $db): array
+	{
+		$tables = [];
+		$column = 'Tables_in_' . $db;
+		foreach (\DB::query('SHOW TABLES')->execute() as $table) {
+			$table_name = $table[$column];
+			$tables[$table_name] = true;
+		}
+		return $tables;
+	}
+
+	/**
+	 * 配列で指定されたテーブルを空にする
+	 * @param array<string, bool> $tables  テーブル一覧
+	 */
+	private static function truncate(array $tables): void
+	{
+		\DB::query('SET FOREIGN_KEY_CHECKS=0;')->execute();
+		foreach (array_keys($tables) as $table) {
+			static::delay();
+			echo
+				'truncate table ',
+				Color::color("'{$table}'", 'light_yellow'),
+				PHP_EOL;
+			\DBUtil::truncate_table($table);
+		}
+		\DB::query('SET FOREIGN_KEY_CHECKS=1;')->execute();
+	}
+
+	/**
+	 * ファイルから SQL を読み込む
+	 * @param string $path           ファイル名
+	 * @param string $restore_table  SQL を格納するテーブル名
+	 */
+	private static function loadSQL(string $path, string $restore_table): void
 	{
 		$fp = fopen($path, 'r');
 
 		while ($sql = stream_get_line($fp, 16777216, ";")) {
+			static::delay();
 			$expected_last = ['/' => 0, ')' => 0, "\n" => 0];
 			$expedted_last6 = ['TABLES' => 0, ' WRITE' => 0];
 			while (
@@ -110,7 +225,11 @@ class Db
 			) {
 				$sql .= stream_get_line($fp, 16777216, ";");
 			}
-			echo sprintf('sql of %d bytes loaded', strlen($sql)), PHP_EOL;
+			echo
+				'loaded ',
+				Color::color(strlen($sql) . ' bytes', 'green'),
+				' of sql',
+				PHP_EOL;
 			$sql = trim($sql);
 
 			\DB::insert($restore_table)
@@ -120,64 +239,59 @@ class Db
 		fclose($fp);
 	}
 
-	protected static function path(string $file): string
-	{
-		$config = \Config::load('common.php');
-		$path = APPPATH . $config['backup_dir'] . '/' . $file;
-		$realpath = realpath($path);
-		if (! $realpath) {
-			echo "Not found : {$file}", PHP_EOL;
-			return 1;
-		}
-		return $realpath;
-	}
-
-	public static function restore($file)
+	/**
+	 * データベースのリストアを実行
+	 * @param  string $file  ファイル名、空の場合は選択肢を提示
+	 * @return int           エラーがなければ 0
+	 */
+	public static function restore(string $file = ''): int
 	{
 		// db connection data
-		$connection = static::connection();
-		//$host = escapeshellcmd($connection['host']);
-		//$port = escapeshellcmd($connection['port']);
-		$db = escapeshellcmd($connection['db']);
-		//$user = escapeshellcmd($connection['user']);
-		//$password = escapeshellcmd($connection['password']);
+		$db = static::connection()['db'];
 
 		// target path
 		$path = static::path($file);
-		//$path = escapeshellcmd($path);
 
-		// truncate tables
-		$truncate_tables = [];
-		$tables = \DB::query('SHOW TABLES')->execute();
-		$column = 'Tables_in_' . $db;
-		foreach ($tables as $table) {
-			$table_name = $table[$column];
-			$truncate_tables[$table_name] = true;
+		// do you really do?
+		$file = basename($path);
+		echo
+			'restore from ',
+			Color::color("'{$file}'", 'cyan'),
+			', press ',
+			Color::color("'y'", 'green'),
+			' to continue > ';
+		$stdin = fopen('php://stdin', 'r');
+		$choice = trim(fgets($stdin, 64));
+		if (strtolower($choice) !== 'y') {
+			echo Color::color("aborted", 'red'), PHP_EOL;
+			return 1;
 		}
 
-		// ignore tables
+		echo
+			'Restore database from ',
+			Color::color("'{$file}'", 'cyan'),
+			' into database ',
+			Color::color("'{$db}'", 'purple'),
+			'...',
+			PHP_EOL;
+
+		// find truncate tables
+		$truncate_tables = static::tables($db);
+
+		// without ignore tables
 		$without = explode(',', \Cli::option('without'));
 		$without[] = 'migration';
 		foreach ($without as $table) {
 			unset($truncate_tables[$table]);
 		}
 
-		echo "Restore database from {$file} into {$db}...", PHP_EOL;
-
-		\DB::query("SET GLOBAL max_allowed_packet=16777216;")->execute();
-
 		// do truncate
-		\DB::query('SET FOREIGN_KEY_CHECKS=0;')->execute();
-		foreach (array_keys($truncate_tables) as $table) {
-			echo "truncate table {$table}...\n";
-			\DBUtil::truncate_table($table);
-		}
-		\DB::query('SET FOREIGN_KEY_CHECKS=1;')->execute();
+		static::truncate($truncate_tables);
 
 		echo PHP_EOL, 'prepare sql...', PHP_EOL;
 
+		// setup restore table
 		$restore_table = 'restore';
-
 		\DBUtil::truncate_table($restore_table);
 
 		static::loadSQL($path, $restore_table);
@@ -188,28 +302,29 @@ class Db
 		$row = \DB::select([\DB::expr('COUNT(*)'), 'row_count'])->from($restore_table)->execute()->as_array();
 		$count = (int)$row[0]['row_count'];
 
+		\DB::query("SET GLOBAL max_allowed_packet=16777216;")->execute();
 		$fail = 0;
-		$i = 1;
-		foreach ($query as $row) {
+		foreach ($query as $key => $row) {
+			static::delay();
+			echo sprintf('%d/%d ', $key + 1, $count);
 			$sql = $row['sql'] . ';';
 
-			//echo sprintf('[%d] ', $row['id']);
-			echo sprintf('%d / %d', $i, $count), PHP_EOL;
-			$sql_first = substr($sql, 0, 100);
-			if (! \DB::query($sql)->execute()) {
-				echo 'sql : ', $sql_first, PHP_EOL, 'failed', PHP_EOL, PHP_EOL;
-				++$fail;
+			$sql_first = str_replace("\n", ' ', substr($sql, 0, 100));
+			echo Color::color($sql_first, 'cyan'), PHP_EOL;
+			echo '  -> ';
+			if (\DB::query($sql)->execute()) {
+				echo Color::color("success", 'green'), PHP_EOL, PHP_EOL;
 			} else {
-				echo 'sql : ', $sql_first, PHP_EOL, 'success', PHP_EOL, PHP_EOL;
+				echo Color::color("failed", 'green'), PHP_EOL, PHP_EOL;
+				++$fail;
 			}
-			++$i;
 		}
 
 		if ($fail === 0) {
-			echo PHP_EOL, 'Complete!', PHP_EOL;
+			echo Color::color("Complete!", 'green'), PHP_EOL;
 			return 0;
 		} else {
-			echo PHP_EOL, 'Some failed', PHP_EOL;
+			echo Color::color("Some failed", 'red'), PHP_EOL;
 			return 1;
 		}
 	}
