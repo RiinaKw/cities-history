@@ -11,6 +11,7 @@ use MyApp\Helper\CLI\Color;
 class Db
 {
 	private const DELAY = 10000;
+	private const RESTORE_TABLE = 'restore';
 
 	/**
 	 * 進捗が分かりやすいよう、実行を敢えて遅らせる
@@ -72,7 +73,7 @@ class Db
 
 		// ignore table
 		$without = explode(',', \Cli::option('without'));
-		$without[] = 'restore';
+		$without[] = static::RESTORE_TABLE;
 		$without[] = 'migration';
 		if ($without) {
 			$ignore_table = '';
@@ -188,6 +189,14 @@ class Db
 	}
 
 	/**
+	 * リストア用のテーブルを初期化
+	 */
+	private static function truncateRestore(): void
+	{
+		\DBUtil::truncate_table(static::RESTORE_TABLE);
+	}
+
+	/**
 	 * 配列で指定されたテーブルを空にする
 	 * @param array<string, bool> $tables  テーブル一覧
 	 */
@@ -289,17 +298,18 @@ class Db
 
 		echo PHP_EOL, 'prepare sql...', PHP_EOL;
 
-		// setup restore table
-		$restore_table = 'restore';
-		\DBUtil::truncate_table($restore_table);
+		// truncate restore table
+		static::truncateRestore();
 
-		static::loadSQL($path, $restore_table);
+		static::loadSQL($path, static::RESTORE_TABLE);
 
 		echo PHP_EOL, 'restore db...', PHP_EOL;
 
-		$query = \DB::select()->from($restore_table)->execute();
-		$row = \DB::select([\DB::expr('COUNT(*)'), 'row_count'])->from($restore_table)->execute()->as_array();
-		$count = (int)$row[0]['row_count'];
+		$query = \DB::select()->from(static::RESTORE_TABLE)->execute();
+		$rows = \DB::select([\DB::expr('COUNT(*)'), 'row_count'])
+			->from(static::RESTORE_TABLE)
+			->execute()->as_array();
+		$count = (int)$rows[0]['row_count'];
 
 		try {
 			\DB::query("SET GLOBAL max_allowed_packet=16777216;")->execute();
@@ -324,6 +334,7 @@ class Db
 			return 1;
 		}
 
+		static::truncateRestore();
 		echo Color::success('Complete!'), PHP_EOL;
 		return 0;
 	}
