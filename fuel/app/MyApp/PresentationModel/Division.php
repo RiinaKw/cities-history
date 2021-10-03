@@ -19,9 +19,9 @@ class Division
 
 	public function suffix_classification(): string
 	{
-		switch ($this->suffix) {
+		switch ($this->model->suffix) {
 			default:
-				return $this->suffix;
+				return $this->model->suffix;
 
 			case '町':
 			case '村':

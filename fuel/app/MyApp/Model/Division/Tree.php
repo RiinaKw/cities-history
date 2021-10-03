@@ -8,6 +8,7 @@ namespace MyApp\Model\Division;
 
 use MyApp\Helper\Iterator;
 use Model_Division;
+use MyApp\Table\Division as DivisionTable;
 use MyApp\PresentationModel\Division\Tree as PModel;
 
 class Tree
@@ -86,7 +87,7 @@ class Tree
 		return $this->ref[$parent_id_path] ?? null;
 	}
 
-	public static function create(Model_Division $division, string $date): self
+	public static function create(Model_Division $division, ?string $date): self
 	{
 		$divisions = DivisionTable::get_by_parent_division_and_date($division, $date);
 		$tree = new static($division);
