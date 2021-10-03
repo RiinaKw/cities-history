@@ -144,7 +144,15 @@ class Db
 			$files = array_reverse($files);
 			foreach ($files as $key => $file) {
 				++$key;
-				echo Color::color("  [{$key}]", 'green'), ' : ', Color::color($file, 'cyan'), PHP_EOL;
+				$path = $dir . '/' . $file;
+				echo
+					'  ',
+					Color::color("[{$key}]", 'green'),
+					' : ',
+					Color::color($file, 'cyan'),
+					', modified on ',
+					Color::color(date('Y-m-d H:i:s', filemtime($path)), 'yellow'),
+					PHP_EOL;
 			}
 
 			$choice = 0;
@@ -275,6 +283,7 @@ class Db
 		}
 
 		echo
+			PHP_EOL,
 			'Restore database from ',
 			Color::color("'{$file}'", 'cyan'),
 			' into database ',
