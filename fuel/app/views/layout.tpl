@@ -159,46 +159,44 @@
 			</nav>
 		</header>
 
-		<div class="main-container">
-			<div class="clearfix">
+		<main role="main" class="container {{strip}}
+			{{if ! $breadcrumbs}}
+				no-breadcrumb
+			{{/if}}
+		{{/strip}}">
+
+			<div class="main-container">
+				<div class="clearfix">
 {{if $breadcrumbs}}
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
 {{foreach name=breadcrumbs from=$breadcrumbs key=name item=url}}
 {{if $url && ! $smarty.foreach.breadcrumbs.last}}
-						<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
+							<li class="breadcrumb-item"><a href="{{$url}}">{{$name}}</a></li>
 {{else}}
-						<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
+							<li class="breadcrumb-item active" aria-current="page"><b>{{$name}}</b></li>
 {{/if}}
 {{/foreach}}
-					</ol>
-				</nav>
-			</div>
+						</ol>
+					</nav>
+				</div>
 {{/if}}
 
 {{if $show_share}}
-			<div id="share" class="mx-4 my-2 {{if ! $breadcrumbs}}no-breadcrumb{{/if}}">
-				<a
-					href="https://twitter.com/intent/tweet?text= {{if $page_title}}{{$page_title}} - {{/if}}{{Config::get('common.title')}}&amp;button_hashtag=ch_jp&amp;ref_src=twsrc%5Etfw"
-					class="twitter-share-button"
-					data-lang="ja"
-					data-show-count="false">Tweet</a>
-				<script async
-					src="https://platform.twitter.com/widgets.js"
-					charset="utf-8"></script>
-			</div><!-- #share -->
+				<div id="share" class="mx-4 my-2 {{if ! $breadcrumbs}}no-breadcrumb{{/if}}">
+					<a
+						href="https://twitter.com/intent/tweet?text= {{if $page_title}}{{$page_title}} - {{/if}}{{Config::get('common.title')}}&amp;button_hashtag=ch_jp&amp;ref_src=twsrc%5Etfw"
+						class="twitter-share-button"
+						data-lang="ja"
+						data-show-count="false">Tweet</a>
+					<script async src="https://platform.twitter.com/widgets.js"></script>
+				</div><!-- #share -->
 {{/if}}
-
-			<main role="main" class="container {{strip}}
-				{{if ! $breadcrumbs}}
-					no-breadcrumb
-				{{/if}}
-			{{/strip}}">
 
 {{block name=content}}{{/block}}
 
-			</main>
-		</div><!-- .main-container -->
+			</div><!-- .main-container -->
+		</main>
 
 		<footer class="footer text-center mt-auto py-3">
 			<div class="container">
