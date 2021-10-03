@@ -10,6 +10,7 @@ use MyApp\Helper\CLI\Color;
 
 class Db
 {
+	private const STDIN = 'php://stdin';
 	private const DELAY = 10000;
 	private const RESTORE_TABLE = 'restore';
 
@@ -44,7 +45,7 @@ class Db
 
 	private static function prompt(): string
 	{
-		$stdin = fopen('php://stdin', 'r');
+		$stdin = fopen(static::STDIN, 'r');
 		return trim(fgets($stdin, 64));
 	}
 
@@ -128,6 +129,49 @@ class Db
 	}
 
 	/**
+	 * ディレクトリ内の sql ファイル一覧を取得
+	 * @param  string $dir  対象ディレクトリ
+	 * @return array        ファイル一覧
+	 */
+	private static function files(string $dir): array
+	{
+		$files = [];
+		$dh = opendir($dir);
+		while (($file = readdir($dh)) !== false) {
+			$path = $dir . '/' . $file;
+			$ext = pathinfo($file, PATHINFO_EXTENSION);
+			if ($ext === 'sql') {
+				$files[] = [
+					'name' => $file,
+					'modified' => filemtime($path),
+				];
+			}
+		}
+		closedir($dh);
+		return array_reverse($files);
+	}
+
+	/**
+	 * ファイル一覧を整形して表示
+	 * @param array $files  ファイル一覧
+	 */
+	private static function showFiles(array $files): void
+	{
+		foreach ($files as $key => $file) {
+			++$key;
+			$date = date('Y-m-d H:i:s', $file['modified']);
+			echo
+				'  ',
+				Color::color("[{$key}]", 'green'),
+				' : ',
+				Color::color($file['name'], 'cyan'),
+				', modified on ',
+				Color::color($date, 'yellow'),
+				PHP_EOL;
+		}
+	}
+
+	/**
 	 * 読み込むファイルを決定
 	 * @param  string $file  ファイル名、空の場合は選択肢を提示
 	 * @return string        ファイルパス
@@ -138,28 +182,8 @@ class Db
 		$dir = APPPATH . $config['backup_dir'];
 
 		if (! $file) {
-			$files = [];
-			$dh = opendir($dir);
-			while (($file = readdir($dh)) !== false) {
-				$ext = pathinfo($file)['extension'];
-				if ($ext === 'sql') {
-					$files[] = $file;
-				}
-			}
-			closedir($dh);
-			$files = array_reverse($files);
-			foreach ($files as $key => $file) {
-				++$key;
-				$path = $dir . '/' . $file;
-				echo
-					'  ',
-					Color::color("[{$key}]", 'green'),
-					' : ',
-					Color::color($file, 'cyan'),
-					', modified on ',
-					Color::color(date('Y-m-d H:i:s', filemtime($path)), 'yellow'),
-					PHP_EOL;
-			}
+			$files = static::files($dir);
+			static::showFiles($files);
 
 			$choice = 0;
 			echo PHP_EOL;
@@ -176,7 +200,7 @@ class Db
 				}
 			} while (1);
 
-			$file = $files[$choice - 1];
+			$file = $files[$choice - 1]['name'];
 		}
 
 		$realpath = realpath($dir . '/' . $file);
