@@ -301,30 +301,30 @@ class Db
 		$row = \DB::select([\DB::expr('COUNT(*)'), 'row_count'])->from($restore_table)->execute()->as_array();
 		$count = (int)$row[0]['row_count'];
 
-		\DB::query("SET GLOBAL max_allowed_packet=16777216;")->execute();
-		$fail = 0;
-		foreach ($query as $key => $row) {
-			static::delay();
-			echo sprintf('%d/%d ', $key + 1, $count);
-			$sql = $row['sql'] . ';';
+		try {
+			\DB::query("SET GLOBAL max_allowed_packet=16777216;")->execute();
+			foreach ($query as $key => $row) {
+				static::delay();
+				echo sprintf('%d/%d ', $key + 1, $count);
+				$sql = $row['sql'] . ';';
 
-			$sql_first = str_replace("\n", ' ', substr($sql, 0, 100));
-			echo Color::color($sql_first, 'cyan'), PHP_EOL;
-			echo '  -> ';
-			if (\DB::query($sql)->execute()) {
-				echo Color::color("success", 'green'), PHP_EOL, PHP_EOL;
-			} else {
-				echo Color::color("failed", 'green'), PHP_EOL, PHP_EOL;
-				++$fail;
+				$sql_first = str_replace("\n", ' ', substr($sql, 0, 100));
+				echo Color::color($sql_first, 'cyan'), PHP_EOL;
+				echo '  -> ';
+				if (\DB::query($sql)->execute()) {
+					echo Color::color("success", 'green'), PHP_EOL, PHP_EOL;
+				} else {
+					echo Color::color("failed", 'green'), PHP_EOL, PHP_EOL;
+				}
 			}
-		}
-
-		if ($fail === 0) {
-			echo Color::color("Complete!", 'green'), PHP_EOL;
-			return 0;
-		} else {
-			echo Color::color("Some failed", 'red'), PHP_EOL;
+		} catch (\Exception $e) {
+			$message = substr($e->getMessage(), 0, 300);
+			echo Color::failure($message), PHP_EOL, PHP_EOL;
+			echo Color::failure('Some failed'), PHP_EOL;
 			return 1;
 		}
+
+		echo Color::success('Complete!'), PHP_EOL;
+		return 0;
 	}
 }
