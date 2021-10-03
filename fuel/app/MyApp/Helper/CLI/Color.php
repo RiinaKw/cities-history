@@ -1,17 +1,19 @@
 <?php
 
 /**
- * @package  App\Helper
+ * @package  App\Helper\CLI
  */
 
 namespace MyApp\Helper\CLI;
+
+use Exception;
 
 class Color
 {
 
 	/**
-	 * Text colors for CLI
-	 * @var string[]
+	 * CLI の文字色
+	 * @var array<string, string>
 	 */
 	private const TEXT_COLORS = array(
 		'black'        => '0;30',
@@ -34,8 +36,8 @@ class Color
 	);
 
 	/**
-	 * Background colors for CLI
-	 * @var string[]
+	 * CLI の背景色
+	 * @var array<string, string>
 	 */
 	private const BACKGROUND_COLORS = array(
 		'black'      => '40',
@@ -49,12 +51,12 @@ class Color
 	);
 
 	/**
-	 * Color the text
+	 * テキストに色を付ける
 	 *
-	 * @param string $text              Source text
-	 * @param string $text_color        Text color
-	 * @param string $background_color  Background color
-	 * @return string                   Colored text
+	 * @param string $text              テキスト
+	 * @param string $text_color        文字色
+	 * @param string $background_color  背景色
+	 * @return string                   色付けされたテキスト
 	 */
 	public static function color(
 		string $text,
@@ -65,10 +67,10 @@ class Color
 		$right = '';
 
 		if ($text_color && ! isset(self::TEXT_COLORS[$text_color])) {
-			throw new \Exception("unknown color : '{$text_color}'");
+			throw new Exception("unknown color : '{$text_color}'");
 		}
 		if ($background_color && ! isset(self::BACKGROUND_COLORS[$background_color])) {
-			throw new \Exception("unknown background color : '{$background_color}'");
+			throw new Exception("unknown background color : '{$background_color}'");
 		}
 
 		$left = "\033[" . self::TEXT_COLORS[$text_color] . "m";
@@ -80,12 +82,22 @@ class Color
 	}
 	// function color()
 
-	public static function success(string $text)
+	/**
+	 * テキストに「成功」を示す色をつける
+	 * @param  string $text  テキスト
+	 * @return string        色付けされたテキスト
+	 */
+	public static function success(string $text): string
 	{
 		return static::color($text, 'green');
 	}
 
-	public static function failure(string $text)
+	/**
+	 * テキストに「失敗」を示す色をつける
+	 * @param  string $text  テキスト
+	 * @return string        色付けされたテキスト
+	 */
+	public static function failure(string $text): string
 	{
 		return static::color($text, 'red');
 	}

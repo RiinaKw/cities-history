@@ -1166,30 +1166,70 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fuel-Tasks-Db.html"
         },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Adelay\u0028\u0029",
+            "name": "delay",
+            "summary": "\u9032\u6357\u304C\u5206\u304B\u308A\u3084\u3059\u3044\u3088\u3046\u3001\u5B9F\u884C\u3092\u6562\u3048\u3066\u9045\u3089\u305B\u308B",
+            "url": "classes/Fuel-Tasks-Db.html#method_delay"
+        },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Aconnection\u0028\u0029",
             "name": "connection",
-            "summary": "",
+            "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u63A5\u7D9A\u60C5\u5831\u3092\u53D6\u5F97",
             "url": "classes/Fuel-Tasks-Db.html#method_connection"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Abackup\u0028\u0029",
             "name": "backup",
-            "summary": "",
+            "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u306E\u30D0\u30C3\u30AF\u30A2\u30C3\u30D7\u3092\u5B9F\u884C",
             "url": "classes/Fuel-Tasks-Db.html#method_backup"
         },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AloadSQL\u0028\u0029",
-            "name": "loadSQL",
-            "summary": "",
-            "url": "classes/Fuel-Tasks-Db.html#method_loadSQL"
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Afiles\u0028\u0029",
+            "name": "files",
+            "summary": "\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA\u5185\u306E\u0020sql\u0020\u30D5\u30A1\u30A4\u30EB\u4E00\u89A7\u3092\u53D6\u5F97",
+            "url": "classes/Fuel-Tasks-Db.html#method_files"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AshowFiles\u0028\u0029",
+            "name": "showFiles",
+            "summary": "\u30D5\u30A1\u30A4\u30EB\u4E00\u89A7\u3092\u6574\u5F62\u3057\u3066\u8868\u793A",
+            "url": "classes/Fuel-Tasks-Db.html#method_showFiles"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Apath\u0028\u0029",
             "name": "path",
-            "summary": "",
+            "summary": "\u8AAD\u307F\u8FBC\u3080\u30D5\u30A1\u30A4\u30EB\u3092\u6C7A\u5B9A",
             "url": "classes/Fuel-Tasks-Db.html#method_path"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Atables\u0028\u0029",
+            "name": "tables",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u4E00\u89A7\u3092\u53D6\u5F97",
+            "url": "classes/Fuel-Tasks-Db.html#method_tables"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AtruncateRestore\u0028\u0029",
+            "name": "truncateRestore",
+            "summary": "\u30EA\u30B9\u30C8\u30A2\u7528\u306E\u30C6\u30FC\u30D6\u30EB\u3092\u521D\u671F\u5316",
+            "url": "classes/Fuel-Tasks-Db.html#method_truncateRestore"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Atruncate\u0028\u0029",
+            "name": "truncate",
+            "summary": "\u914D\u5217\u3067\u6307\u5B9A\u3055\u308C\u305F\u30C6\u30FC\u30D6\u30EB\u3092\u7A7A\u306B\u3059\u308B",
+            "url": "classes/Fuel-Tasks-Db.html#method_truncate"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AloadSQL\u0028\u0029",
+            "name": "loadSQL",
+            "summary": "\u30D5\u30A1\u30A4\u30EB\u304B\u3089\u0020SQL\u0020\u3092\u8AAD\u307F\u8FBC\u3080",
+            "url": "classes/Fuel-Tasks-Db.html#method_loadSQL"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Arestore\u0028\u0029",
             "name": "restore",
-            "summary": "",
+            "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u306E\u30EA\u30B9\u30C8\u30A2\u3092\u5B9F\u884C",
             "url": "classes/Fuel-Tasks-Db.html#method_restore"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003ADELAY",
+            "name": "DELAY",
+            "summary": "",
+            "url": "classes/Fuel-Tasks-Db.html#constant_DELAY"
+        },                {
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003ARESTORE_TABLE",
+            "name": "RESTORE_TABLE",
+            "summary": "",
+            "url": "classes/Fuel-Tasks-Db.html#constant_RESTORE_TABLE"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Robots",
             "name": "Robots",
@@ -1686,10 +1726,60 @@ Search.appendIndex(
             "summary": "\u81EA\u6CBB\u4F53\u30C4\u30EA\u30FC\u306E\u30D8\u30C3\u30C0\u3092\u51FA\u529B",
             "url": "namespaces/default.html#function_smarty_modifier_tree_header"
         },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\\Color",
+            "name": "Color",
+            "summary": "",
+            "url": "classes/MyApp-Helper-CLI-Color.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\\Color\u003A\u003Acolor\u0028\u0029",
+            "name": "color",
+            "summary": "\u30C6\u30AD\u30B9\u30C8\u306B\u8272\u3092\u4ED8\u3051\u308B",
+            "url": "classes/MyApp-Helper-CLI-Color.html#method_color"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\\Color\u003A\u003Asuccess\u0028\u0029",
+            "name": "success",
+            "summary": "\u30C6\u30AD\u30B9\u30C8\u306B\u300C\u6210\u529F\u300D\u3092\u793A\u3059\u8272\u3092\u3064\u3051\u308B",
+            "url": "classes/MyApp-Helper-CLI-Color.html#method_success"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\\Color\u003A\u003Afailure\u0028\u0029",
+            "name": "failure",
+            "summary": "\u30C6\u30AD\u30B9\u30C8\u306B\u300C\u5931\u6557\u300D\u3092\u793A\u3059\u8272\u3092\u3064\u3051\u308B",
+            "url": "classes/MyApp-Helper-CLI-Color.html#method_failure"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\\Color\u003A\u003ATEXT_COLORS",
+            "name": "TEXT_COLORS",
+            "summary": "CLI\u0020\u306E\u6587\u5B57\u8272",
+            "url": "classes/MyApp-Helper-CLI-Color.html#constant_TEXT_COLORS"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\\Color\u003A\u003ABACKGROUND_COLORS",
+            "name": "BACKGROUND_COLORS",
+            "summary": "CLI\u0020\u306E\u80CC\u666F\u8272",
+            "url": "classes/MyApp-Helper-CLI-Color.html#constant_BACKGROUND_COLORS"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI",
+            "name": "CLI",
+            "summary": "",
+            "url": "classes/MyApp-Helper-CLI.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\u003A\u003Aprompt\u0028\u0029",
+            "name": "prompt",
+            "summary": "\u30E6\u30FC\u30B6\u304B\u3089\u306E\u5165\u529B\u3092\u5F85\u3064",
+            "url": "classes/MyApp-Helper-CLI.html#method_prompt"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI\u003A\u003ASTDIN",
+            "name": "STDIN",
+            "summary": "\u6A19\u6E96\u5165\u529B",
+            "url": "classes/MyApp-Helper-CLI.html#constant_STDIN"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CLI",
+            "name": "CLI",
+            "summary": "",
+            "url": "namespaces/myapp-helper-cli.html"
         },                {
             "fqsen": "\\MyApp\\Helper",
             "name": "Helper",

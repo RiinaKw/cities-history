@@ -6,11 +6,11 @@
 
 namespace Fuel\Tasks;
 
+use MyApp\Helper\CLI as MyCLI;
 use MyApp\Helper\CLI\Color;
 
 class Db
 {
-	private const STDIN = 'php://stdin';
 	private const DELAY = 10000;
 	private const RESTORE_TABLE = 'restore';
 
@@ -41,12 +41,6 @@ class Db
 			'user' => $connection['username'],
 			'password' => $connection['password'],
 		];
-	}
-
-	private static function prompt(): string
-	{
-		$stdin = fopen(static::STDIN, 'r');
-		return trim(fgets($stdin, 64));
 	}
 
 	/**
@@ -189,7 +183,7 @@ class Db
 			echo PHP_EOL;
 			do {
 				echo 'enter file number > ';
-				$choice = static::prompt();
+				$choice = MyCLI::prompt();
 
 				if ($choice === '') {
 					continue;
@@ -309,7 +303,7 @@ class Db
 				'press ',
 				Color::color("'y'", 'green'),
 				' to continue, press any other key to exit > ';
-			$choice = strtolower(static::prompt());
+			$choice = strtolower(MyCLI::prompt());
 
 			if ($choice === '') {
 				continue;
