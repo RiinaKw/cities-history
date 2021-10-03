@@ -159,7 +159,7 @@
 			</nav>
 		</header>
 
-		<main role="main" class="container {{strip}}
+		<main class="container {{strip}}
 			{{if ! $breadcrumbs}}
 				no-breadcrumb
 			{{/if}}
