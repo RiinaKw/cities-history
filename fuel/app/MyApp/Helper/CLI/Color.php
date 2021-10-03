@@ -79,4 +79,14 @@ class Color
 		return $left . $text . $right;
 	}
 	// function color()
+
+	public static function success(string $text)
+	{
+		return static::color($text, 'green');
+	}
+
+	public static function failure(string $text)
+	{
+		return static::color($text, 'red');
+	}
 }

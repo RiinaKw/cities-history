@@ -113,10 +113,10 @@ class Db
 		exec($command);
 
 		if (! \File::exists($path)) {
-			echo Color::color("Error : cannot create dump file.\n", 'red');
+			echo Color::failure('Error : cannot create dump file'), PHP_EOL;
 			return 1;
 		}
-		echo Color::color("Complete!\n", 'green');
+		echo Color::success('Complete!'), PHP_EOL;
 		return 0;
 	}
 
@@ -148,7 +148,7 @@ class Db
 
 			$choice = 0;
 			do {
-				echo "enter file number > ";
+				echo PHP_EOL, 'enter file number > ';
 
 				$stdin = fopen('php://stdin', 'r');
 				$choice = trim(fgets($stdin, 64));
@@ -156,17 +156,16 @@ class Db
 				if (is_numeric($choice) && array_key_exists($choice - 1, $files)) {
 					break;
 				} else {
-					echo Color::color("invalid choise '{$choice}'", 'red'), PHP_EOL;
+					echo Color::failure("invalid choise '{$choice}'"), PHP_EOL;
 				}
 			} while (1);
 
-			echo Color::color("good choise '{$choice}'", 'green'), PHP_EOL;
 			$file = $files[$choice - 1];
 		}
 
 		$realpath = realpath($dir . '/' . $file);
 		if (! $realpath) {
-			echo Color::color("Not found : {$file}", 'red');
+			echo Color::failure("Not found : '{$file}'");
 			return 1;
 		}
 		return $realpath;
