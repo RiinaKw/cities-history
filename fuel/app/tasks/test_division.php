@@ -1,26 +1,10 @@
 <?php
 
 /**
- * Fuel is a fast, lightweight, community driven PHP5 framework.
- *
- * @package    Fuel
- * @version    1.8
- * @author     Fuel Development Team
- * @license    MIT License
- * @copyright  2010 - 2016 Fuel Development Team
- * @link       http://fuelphp.com
+ * @package  App\Task
  */
 
 namespace Fuel\Tasks;
-
-/**
- * @package  App\Task
- */
-function dump($division, $nest = 0)
-{
-	$indent = str_repeat(' ', $nest);
-	echo $indent, $division->id_path, ' ', $division->path, PHP_EOL;
-}
 
 class Test_Division
 {

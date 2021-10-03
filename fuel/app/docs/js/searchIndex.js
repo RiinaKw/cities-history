@@ -161,11 +161,6 @@ Search.appendIndex(
             "summary": "The\u0020Base\u0020Controller.",
             "url": "classes/Controller-Base.html"
         },                {
-            "fqsen": "\\Controller_Base\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Controller-Base.html#method___construct"
-        },                {
             "fqsen": "\\Controller_Base\u003A\u003Auser\u0028\u0029",
             "name": "user",
             "summary": "",
@@ -1163,7 +1158,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\smarty_modifier_date_format2\u0028\u0029",
             "name": "smarty_modifier_date_format2",
-            "summary": "",
+            "summary": "\u65E5\u672C\u8A9E\u306B\u5BFE\u5FDC\u3057\u305F\u0020date_format",
             "url": "namespaces/default.html#function_smarty_modifier_date_format2"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Db",
@@ -1210,11 +1205,6 @@ Search.appendIndex(
             "name": "protect",
             "summary": "An\u0020example\u0020method\u0020that\u0020is\u0020here\u0020just\u0020to\u0020show\u0020the\u0020various\u0020uses\u0020of\u0020tasks.",
             "url": "classes/Fuel-Tasks-Robots.html#method_protect"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\dump\u0028\u0029",
-            "name": "dump",
-            "summary": "",
-            "url": "namespaces/fuel-tasks.html#function_dump"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Test_Division",
             "name": "Test_Division",
@@ -1680,6 +1670,21 @@ Search.appendIndex(
             "name": "redirect",
             "summary": "\u767B\u9332\u3055\u308C\u305F\u0020URL\u0020\u3078\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
             "url": "classes/MyApp-Helper-Session-Url.html#method_redirect"
+        },                {
+            "fqsen": "\\smarty_modifier_division_h4\u0028\u0029",
+            "name": "smarty_modifier_division_h4",
+            "summary": "\u81EA\u6CBB\u4F53\u306E\u30D8\u30C3\u30C0\u30FC\uFF08h4\uFF09\u30BF\u30B0\u3092\u51FA\u529B",
+            "url": "namespaces/default.html#function_smarty_modifier_division_h4"
+        },                {
+            "fqsen": "\\smarty_modifier_tree_body\u0028\u0029",
+            "name": "smarty_modifier_tree_body",
+            "summary": "\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u51FA\u529B",
+            "url": "namespaces/default.html#function_smarty_modifier_tree_body"
+        },                {
+            "fqsen": "\\smarty_modifier_tree_header\u0028\u0029",
+            "name": "smarty_modifier_tree_header",
+            "summary": "\u81EA\u6CBB\u4F53\u30C4\u30EA\u30FC\u306E\u30D8\u30C3\u30C0\u3092\u51FA\u529B",
+            "url": "namespaces/default.html#function_smarty_modifier_tree_header"
         },                {
             "fqsen": "\\",
             "name": "\\",

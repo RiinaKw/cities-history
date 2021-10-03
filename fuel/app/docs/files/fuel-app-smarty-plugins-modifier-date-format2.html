@@ -73,6 +73,7 @@
                                     <li><a href="packages/App-Controller.html"><abbr title="\App\Controller">Controller</abbr></a></li>
                                     <li><a href="packages/App-Model.html"><abbr title="\App\Model">Model</abbr></a></li>
                                     <li><a href="packages/App-Presenter.html"><abbr title="\App\Presenter">Presenter</abbr></a></li>
+                                    <li><a href="packages/App-Smarty.html"><abbr title="\App\Smarty">Smarty</abbr></a></li>
                                     <li><a href="packages/App-Task.html"><abbr title="\App\Task">Task</abbr></a></li>
                                     <li><a href="packages/App-Helper.html"><abbr title="\App\Helper">Helper</abbr></a></li>
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
@@ -114,9 +115,9 @@
                         <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_smarty_modifier_date_format2">smarty_modifier_date_format2()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>日本語に対応した date_format</dd>
 
     </dl>
 
@@ -136,30 +137,36 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/smarty/plugins/modifier.date_format2.php"><a href="files/fuel-app-smarty-plugins-modifier-date-format2.html"><abbr title="fuel/app/smarty/plugins/modifier.date_format2.php">modifier.date_format2.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">日本語に対応した date_format</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                <span class="phpdocumentor-signature__name">smarty_modifier_date_format2</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$format</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">smarty_modifier_date_format2</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$format</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$input</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>日時の文字列あるいはタイムスタンプ</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$format</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>フォーマット形式</p>
+</section>
+
             </dd>
             </dl>
 

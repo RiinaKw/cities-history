@@ -1,9 +1,24 @@
 <?php
 
+/**
+ * @package  App\Smarty
+ */
+
 use MyApp\Model\Division\Tree;
 
-function smarty_modifier_tree_header(Tree $tree, int $indentWidth = 0, string $indentType = 'tab'): string
-{
+/**
+ * 自治体ツリーのヘッダを出力
+ *
+ * @param  MyApp\Model\Division\Tree $tree         自治体ツリー
+ * @param  integer                   $indentWidth  インデント幅
+ * @param  string                    $indentType   インデントタイプ( sp or tab)
+ * @return string  出力 HTML
+ */
+function smarty_modifier_tree_header(
+	Tree $tree,
+	int $indentWidth = 0,
+	string $indentType = 'tab'
+): string {
 	$char = '';
 	$width = 1;
 	switch ($indentType) {

@@ -1,7 +1,21 @@
 <?php
 
-function smarty_modifier_division_h4(Model_Division $division, int $indentWidth = 0, string $indentType = 'tab'): string
-{
+/**
+ * @package  App\Smarty
+ */
+
+/**
+ * 自治体のヘッダー（h4）タグを出力
+ * @param  Model_Division $division     自治体オブジェクト
+ * @param  integer        $indentWidth  インデント幅
+ * @param  string         $indentType   インデントタイプ( sp or tab)
+ * @return string                       出力 HTML
+ */
+function smarty_modifier_division_h4(
+	Model_Division $division,
+	int $indentWidth = 0,
+	string $indentType = 'tab'
+): string {
 	$char = '';
 	$width = 1;
 	switch ($indentType) {
