@@ -162,11 +162,14 @@ class Db
 			}
 
 			$choice = 0;
+			echo PHP_EOL;
 			do {
-				echo PHP_EOL, 'enter file number > ';
+				echo 'enter file number > ';
 				$choice = static::prompt();
 
-				if (is_numeric($choice) && array_key_exists($choice - 1, $files)) {
+				if ($choice === '') {
+					continue;
+				} elseif (is_numeric($choice) && array_key_exists($choice - 1, $files)) {
 					break;
 				} else {
 					echo Color::failure("invalid choise '{$choice}'"), PHP_EOL;
@@ -276,15 +279,21 @@ class Db
 		echo
 			'restore from ',
 			Color::color("'{$file}'", 'cyan'),
-			', press ',
-			Color::color("'y'", 'green'),
-			' to continue > ';
-		$choice = static::prompt();
+			PHP_EOL;
+		do {
+			echo
+				'press ',
+				Color::color("'y'", 'green'),
+				' to continue, press any other key to exit > ';
+			$choice = strtolower(static::prompt());
 
-		if (strtolower($choice) !== 'y') {
-			echo Color::color("aborted", 'red'), PHP_EOL;
-			return 1;
-		}
+			if ($choice === '') {
+				continue;
+			} elseif ($choice !== 'y') {
+				echo Color::color("aborted", 'red'), PHP_EOL;
+				return 1;
+			}
+		} while ($choice !== 'y');
 
 		echo
 			PHP_EOL,
@@ -341,7 +350,8 @@ class Db
 			}
 		} catch (\Exception $e) {
 			$message = substr($e->getMessage(), 0, 300);
-			echo Color::failure($message), PHP_EOL, PHP_EOL;
+			echo Color::failure('ERROR!'), PHP_EOL;
+			echo Color::color($message, 'white', 'red'), PHP_EOL, PHP_EOL;
 			echo Color::failure('Some failed'), PHP_EOL;
 			return 1;
 		}
