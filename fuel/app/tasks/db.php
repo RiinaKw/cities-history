@@ -42,6 +42,12 @@ class Db
 		];
 	}
 
+	private static function prompt(): string
+	{
+		$stdin = fopen('php://stdin', 'r');
+		return trim(fgets($stdin, 64));
+	}
+
 	/**
 	 * データベースのバックアップを実行
 	 * @param  string $file  出力するファイル名、指定がない場合はタイムスタンプを使用
@@ -158,9 +164,7 @@ class Db
 			$choice = 0;
 			do {
 				echo PHP_EOL, 'enter file number > ';
-
-				$stdin = fopen('php://stdin', 'r');
-				$choice = trim(fgets($stdin, 64));
+				$choice = static::prompt();
 
 				if (is_numeric($choice) && array_key_exists($choice - 1, $files)) {
 					break;
@@ -275,8 +279,8 @@ class Db
 			', press ',
 			Color::color("'y'", 'green'),
 			' to continue > ';
-		$stdin = fopen('php://stdin', 'r');
-		$choice = trim(fgets($stdin, 64));
+		$choice = static::prompt();
+
 		if (strtolower($choice) !== 'y') {
 			echo Color::color("aborted", 'red'), PHP_EOL;
 			return 1;
