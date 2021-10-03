@@ -66,35 +66,42 @@
 				<section class="timeline">
 {{foreach name=events from=$events item=event}}
 					<article
-						class="row editable {{if $event->birth}}birth{{/if}} {{if $event->live}}live{{/if}} {{if $event->death}}death{{/if}}"
+						class="row editable {{strip}}
+							{{if $event->birth}}birth{{/if}}
+							{{if $event->live}}live{{/if}}
+							{{if $event->death}}death{{/if}}
+						{{/strip}}"
 						data-event-id="{{$event.event_id}}">
 						<section class="col-sm-7">
 							<header>
 								<div class="clearfix">
-									<h3 class="float-left">{{$event.title|escape}}</h3>
-									<time class="float-right" datetime="{{$event.date|escape}}">{{$event.date|date_format2:'Y(Jk)-m-d'}}</time>
+									<h3 class="float-left">{{$event->title|escape}}</h3>
+									<time class="float-right" datetime="{{$event->date|escape}}">
+										{{$event.date|date_format2:'Y(Jk)-m-d'}}
+									</time>
 								</div>
-{{if $event.comment}}
-								<p class="comment">{{$event.comment|escape}}</p>
+{{if $event->comment}}
+								<p class="comment">{{$event->comment|escape}}</p>
 {{/if}}
-{{if $event.source}}
-								<p class="source">出典 :<br />{{$event->get_source()}}</p>
+{{if $event->source}}
+								<p class="source">出典 :<br />{{$event->pmodel()->source()}}</p>
 								<p class="source_preformat">{{$event->source|escape}}</p>
 {{/if}}
 							</header>
 							<ul class="details">
-{{foreach from=$event.divisions item=d}}
-{{if ! $d->is_refer}}
-								<li class="{{$d->li_class}}">
-									<span class="result badge font-weight-light">{{$d.result|escape}}</span>
-									<a class="{{if $d.is_unfinished}}unfinished{{/if}}"
-										href="{{$d->pmodel()->url()|escape}}"
+{{foreach from=$event->event_details item=detail}}
+{{assign var=div value=$detail->division}}
+{{if ! $detail->is_refer}}
+								<li class="{{$detail->pmodel()->htmlClass()}}">
+									<span class="result badge font-weight-light">{{$detail->result|escape}}</span>
+									<a class="{{if $detail->division->is_unfinished}}unfinished{{/if}}"
+										href="{{$div->pmodel()->url()|escape}}"
 										data-toggle="tooltip"
-										title="{{$d->get_path()|escape}}">
-{{if $division.id == $d.id}}
-										<b>{{$d->fullname|escape}}</b>
+										title="{{$div->get_path()|escape}}">
+{{if $division->id === $div->id}}
+										<b>{{$div->fullname|escape}}</b>
 {{else}}
-										{{$d->fullname|escape}}
+										{{$div->fullname|escape}}
 {{/if}}
 									</a>
 								</li>
@@ -102,7 +109,7 @@
 {{/foreach}}
 							</ul>
 						</section>
-						<div class="map col-sm-5 mb-4" id="map-{{$event.event_id}}">
+						<div class="map col-sm-5 mb-4" id="map-{{$event->id}}">
 							<div class="loading">
 								<i class="fa-3x fas fa-spinner fa-spin"></i>
 							</div>
@@ -110,16 +117,17 @@
 						<script>
 							$(function(){
 								var shapes = [];
-{{foreach from=$event.divisions item=d}}
-{{if $d && $d->pmodel()->geoshape()}}
+{{foreach from=$event->event_details item=detail}}
+{{if $detail->pmodel()->geoshape()}}
 								shapes.push({
-									url: "{{$d->pmodel()->geoshape()}}",
-									split: "{{if isset($d.split)}}{{$d.split}}{{/if}}"
+									name: "{{$detail->division->fullname}}",
+									url: "{{$detail->pmodel()->geoshape()}}",
+									split: {{if $detail->pmodel()->isSplit()}}true{{else}}false{{/if}}
 								});
 {{/if}}
 {{/foreach}}
 								if (shapes.length) {
-									var id = "map-{{$event.event_id}}"
+									var id = "map-{{$event->id}}"
 									$("#" + id).show();
 									create_map(id, shapes);
 								}

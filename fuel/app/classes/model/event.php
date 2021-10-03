@@ -3,14 +3,24 @@
 /**
  * @package  App\Model
  */
+
+use MyApp\PresentationModel\Event as PModel;
+
 class Model_Event extends Model_Base
 {
 	protected static $_table_name  = 'events';
-	protected static $_primary_key = 'id';
+	protected static $_primary_key = ['id'];
 	protected static $_created_at  = 'created_at';
 	protected static $_updated_at  = 'updated_at';
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
+
+	protected static $_has_many = ['event_details'];
+
+	public function pmodel(): PModel
+	{
+		return new PModel($this);
+	}
 
 	public function validation(): Validation
 	{
@@ -25,7 +35,7 @@ class Model_Event extends Model_Base
 	}
 	// function validation()
 
-	public static function create($param): self
+	public static function createEvent($param): self
 	{
 		$object = self::forge([
 			'date' => $param['date'],
@@ -60,7 +70,7 @@ class Model_Event extends Model_Base
 	}
 	// function get_relative_division()
 */
-	public function delete()
+	public function deleteEvent()
 	{
 		$detail = Model_Event_Detail::find_by_event_id($this->id);
 		foreach ($detail as $d) {

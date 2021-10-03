@@ -8,6 +8,7 @@ namespace MyApp\Table;
 
 use DB;
 use Model_Division;
+use Model_Event;
 use Model_Event_Detail;
 
 class Event
@@ -17,6 +18,7 @@ class Event
 	protected static $table_name_detail = 'event_details';
 
 	protected static $model_name_division = Model_Division::class;
+	protected static $model_name_event = Model_Event::class;
 	protected static $model_name_detail = Model_Event_Detail::class;
 
 	public static function get_by_division($divisions, $start_date = null, $end_date = null)
@@ -73,4 +75,32 @@ class Event
 		return $query->as_object(static::$model_name_division)->execute();
 	}
 	// function get_relative_division()
+
+	public static function get_by_parent_division_and_date(
+		Model_Division $parent,
+		string $start_date = null,
+		string $end_date = null
+	) {
+		$query = DB::select('ev.*')
+			->distinct(true)
+			->from([static::$table_name_detail, 'dt'])
+			->join([static::$table_name_event, 'ev'])
+			->on('ev.id', '=', 'dt.event_id')
+			->join([static::$table_name_division, 'dv'])
+			->on('dv.id', '=', 'dt.division_id')
+			->where('dt.is_refer', '=', false)
+			->where('ev.deleted_at', '=', null)
+			->where('dt.deleted_at', '=', null)
+			->where('dv.id_path', 'LIKE', DB::expr('CONCAT("' . $parent->id_path . '", "_%")'));
+
+		if ($start_date) {
+			$query->where('ev.date', '>=', $start_date);
+		}
+		if ($end_date) {
+			$query->where('ev.date', '<=', $end_date);
+		}
+		$query->order_by('ev.date', 'desc');
+
+		return $query->as_object(static::$model_name_event)->execute()->as_array();
+	}
 }

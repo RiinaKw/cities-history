@@ -3,14 +3,27 @@
 /**
  * @package  App\Model
  */
+
+use MyApp\PresentationModel\Event\Detail as PModel;
+
 class Model_Event_Detail extends Model_Base
 {
 	protected static $_table_name  = 'event_details';
-	protected static $_primary_key = 'id';
+	protected static $_primary_key = ['id'];
 	protected static $_created_at  = 'created_at';
 	protected static $_updated_at  = 'updated_at';
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
+
+	protected static $_belongs_to = [
+		'event',
+		'division',
+	];
+
+	public function pmodel(): PModel
+	{
+		return new PModel($this);
+	}
 
 	public function validation()
 	{
@@ -26,39 +39,7 @@ class Model_Event_Detail extends Model_Base
 		return $validation;
 	}
 	// function validation()
-/*
-	public static function get_by_division($divisions, $start_date = null, $end_date = null)
-	{
-		$query = DB::select('d.*', 'e.title', 'e.date', 'e.comment', 'e.source')
-			->from([self::$_table_name, 'd'])
-			->join(['events', 'e'])
-			->on('e.id', '=', 'd.event_id')
-			->where('d.is_refer', '=', false)
-			->where('e.deleted_at', '=', null)
-			->where('d.deleted_at', '=', null);
-		if (is_array($divisions) || $divisions instanceof Fuel\Core\Database_Result_Cached) {
-			$ids = [];
-			foreach ($divisions as $division) {
-				$ids[] = $division->id;
-			}
-			if ($ids) {
-				$query->where('d.division_id', 'in', $ids);
-			}
-		} else {
-			$query->where('d.division_id', '=', $divisions->id);
-		}
-		if ($start_date) {
-			$query->where('e.date', '>=', $start_date);
-		}
-		if ($end_date) {
-			$query->where('e.date', '<=', $end_date);
-		}
-		$query->order_by('e.date', 'desc');
 
-		return $query->as_object('Model_Event_Detail')->execute()->as_array();
-	}
-	// function get_by_division()
-*/
 	public function get_source()
 	{
 		$content = nl2br($this->source);

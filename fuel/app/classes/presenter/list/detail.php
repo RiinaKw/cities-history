@@ -67,7 +67,7 @@ class Presenter_List_Detail extends Presenter_Layout
 		$this->title = $title;
 		$this->description = $description;
 		$this->og_type = 'article';
-		$this->breadcrumbs = Helper_Breadcrumb::breadcrumb($this->division);
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::division($this->division);
 		$this->show_share = true;
 
 		$this->year_list = range(1878, date('Y'));

@@ -27,7 +27,7 @@ class Presenter_Layout extends Presenter_Base
 		$this->q = $q;
 
 		$user_id = Session::get('user_id');
-		$this->user = Model_User::find_by_pk($user_id);
+		$this->user = Model_User::find($user_id);
 
 		$this->title = $title;
 		$this->page_title = $page_title;

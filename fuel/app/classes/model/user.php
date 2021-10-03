@@ -6,7 +6,7 @@
 class Model_User extends Model_Base
 {
 	protected static $_table_name	= 'users';
-	protected static $_primary_key	= 'id';
+	protected static $_primary_key	= ['id'];
 	protected static $_created_at	= 'created_at';
 	protected static $_updated_at	= 'updated_at';
 	protected static $_deleted_at	= 'deleted_at';
@@ -60,7 +60,7 @@ class Model_User extends Model_Base
 	}
 	// function crypt_password()
 
-	public static function create($login_id, $password)
+	public static function createUser($login_id, $password)
 	{
 		try {
 			DB::start_transaction();

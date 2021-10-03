@@ -6,7 +6,7 @@
 class Model_Activity extends Model_Base
 {
 	protected static $_table_name	= 'activities';
-	protected static $_primary_key	= 'id';
+	protected static $_primary_key	= ['id'];
 	protected static $_created_at	= 'created_at';
 	protected static $_updated_at	= 'updated_at';
 	protected static $_deleted_at	= 'deleted_at';

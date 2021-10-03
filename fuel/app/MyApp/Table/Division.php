@@ -7,6 +7,7 @@
 namespace MyApp\Table;
 
 use DB;
+use Model_Division;
 
 class Division
 {
@@ -41,7 +42,7 @@ class Division
 			//->where(DB::expr('MATCH(fullname)'), 'AGAINST', DB::expr('(\'+'.$q.'\' IN BOOLEAN MODE)'));
 			->where('fullname', 'LIKE', '%' . $q . '%');
 
-		return $query->as_object('Model_Division')->execute();
+		return $query->as_object(Model_Division::class)->execute();
 	}
 	// function query()
 
@@ -65,7 +66,7 @@ class Division
 			->order_by('name_kana', 'asc')
 			->order_by('end_date', 'desc');
 
-		return $query->as_object('Model_Division')->execute();
+		return $query->as_object(Model_Division::class)->execute();
 	}
 	// function search()
 
@@ -180,42 +181,10 @@ class Division
 	}
 	// function make_id_path()
 
-	public static function get_by_path($path)
+	public static function get_by_path($path): ?Model_Division
 	{
-		$arr = explode('/', $path);
-		$division = null;
-		$parent = null;
-
-		foreach ($arr as $name) {
-			preg_match(static::RE_SUFFIX, $name, $matches);
-
-			if ($matches) {
-				$result = self::get_one_by_name_and_parent($matches, $parent);
-				if ($result) {
-					$division = $result;
-					$parent = $division;
-				} else {
-					$division = null;
-					$parent = null;
-					break;
-				}
-			} else {
-				$matches = array(
-					'place' => $name,
-					'suffix' => '',
-				);
-				$result = self::get_one_by_name_and_parent($matches, $parent);
-				if ($result) {
-					$division = $result;
-					$parent = $division;
-				} else {
-					$division = null;
-					$parent = null;
-					break;
-				}
-			}
-		}
-		return $division;
+		$result = Model_Division::query()->where('path', $path)->get();
+		return count($result) ? array_pop($result) : null;
 	}
 	// function get_by_path()
 
@@ -245,7 +214,7 @@ class Division
 			$query->where('identifier', '=', $name['identifier']);
 		}
 
-		$result = $query->as_object('Model_Division')->execute();
+		$result = $query->as_object(Model_Division::class)->execute();
 		if ($result->count()) {
 			return $result[0];
 		} else {
@@ -262,7 +231,7 @@ class Division
 			->where('id_path', '=', DB::expr('CONCAT(id, "/")'))
 			->order_by('display_order', 'asc');
 
-		return $query->as_object('Model_Division')->execute();
+		return $query->as_object(Model_Division::class)->execute();
 	}
 	// function get_top_level()
 
@@ -297,7 +266,7 @@ class Division
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
-		return $query->as_object('Model_Division')->execute();
+		return $query->as_object(Model_Division::class)->execute();
 	}
 	// function get_by_parent_division_and_date()
 
@@ -314,16 +283,7 @@ class Division
 
 		switch ($filter) {
 			case 'empty_kana':
-				$query
-				/*
-					->and_where_open()
-					->where('d.name_kana', null)
-					->or_where('d.name_kana', '')
-					->or_where('d.suffix_kana', null)
-					->or_where('d.suffix_kana', '')
-					->and_where_close();
-				*/
-					->where('d.is_empty_kana', 1);
+				$query->where('d.is_empty_kana', 1);
 				break;
 
 			case 'empty_code':
@@ -364,7 +324,7 @@ class Division
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
-		return $query->as_object('Model_Division')->execute();
+		return $query->as_object(Model_Division::class)->execute();
 	}
 	// functiob get_by_admin_filter()
 }

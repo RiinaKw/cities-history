@@ -3,7 +3,11 @@
 /**
  * @package  App\Model
  */
-abstract class Model_Base extends Model_Crud
+
+use Orm\Model as Orm;
+
+//abstract class Model_Base extends Model_Crud
+abstract class Model_Base extends Orm
 {
 	protected static $_deleted_at = 'deleted_at';
 

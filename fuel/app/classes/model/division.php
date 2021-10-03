@@ -1,20 +1,23 @@
 <?php
 
+/**
+ * @package  App\Model
+ */
+
 use MyApp\Table\Division as DivisionTable;
 use MyApp\PresentationModel\Division as PModel;
 use MyApp\Model\Division\Tree;
 
-/**
- * @package  App\Model
- */
 class Model_Division extends Model_Base
 {
 	protected static $_table_name  = 'divisions';
-	protected static $_primary_key = 'id';
+	protected static $_primary_key = ['id'];
 	protected static $_created_at  = 'created_at';
 	protected static $_updated_at  = 'updated_at';
 	protected static $_deleted_at  = 'deleted_at';
 	protected static $_mysql_timestamp = true;
+
+	protected static $_has_many = ['event_details'];
 
 	public function pmodel(): PModel
 	{
@@ -63,7 +66,7 @@ class Model_Division extends Model_Base
 		foreach ($id_arr as $id) {
 			$id = (int)$id;
 			if ($id) {
-				$callback(self::find_by_pk($id));
+				$callback(static::find($id));
 			}
 		}
 	}
@@ -149,7 +152,7 @@ class Model_Division extends Model_Base
 	/**
 	 * @todo DB に「fullname」って必要なくない？
 	 */
-	public function __get($key)
+	public function & __get($key)
 	{
 		$arr = [
 			'fullname' => function () {
@@ -171,7 +174,8 @@ class Model_Division extends Model_Base
 				return $this->name_kana . ($this->show_suffix ? $this->suffix_kana : '');
 			},
 		];
-		return isset($arr[$key]) ? $arr[$key]() : parent::__get($key);
+		$result = isset($arr[$key]) ? $arr[$key]() : parent::__get($key);
+		return $result;
 	}
 
 	public function get_parent_path(): ?string
@@ -206,7 +210,7 @@ class Model_Division extends Model_Base
 	public function belongs(): ?self
 	{
 		if ($this->belongs_division_id) {
-			return self::find_by_pk($this->belongs_division_id);
+			return static::find($this->belongs_division_id);
 		}
 		return null;
 	}
@@ -228,7 +232,7 @@ class Model_Division extends Model_Base
 	/**
  	 * @SuppressWarnings(PHPMD.ExitExpression)
 	 */
-	public function create($input)
+	public function createDivision($input)
 	{
 		$belongs = $input['belongs'] ?? null;
 		$parent = $input['parent'] ?? null;

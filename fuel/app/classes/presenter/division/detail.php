@@ -26,28 +26,54 @@ class Presenter_Division_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$breadcrumbs = Helper_Breadcrumb::breadcrumb($this->division);
 		$path_kana = $this->division->pmodel()->kana();
 		$this->path_kana = $path_kana;
 
 		$this->search_path = $this->division->make_search_path();
 		$this->search_path_kana = $this->division->make_search_path_kana();
 
-		$this->belongs_division = Model_Division::find_by_pk($this->division->belongs_division_id);
+		$this->belongs_division = Model_Division::find($this->division->belongs_division_id);
 
 		// meta description
 		$description = "{$this->path} ({$path_kana})) {$this->search_path} {$this->search_path_kana}";
 
 		foreach ($this->events as $event) {
-			$event_parent = Model_Event::find_by_pk($event->event_id);
-			$date = MyApp\Helper\Date::format('Y(Jk)-m-d', $event_parent->date);
-			$description .= " | {$date} {$event_parent->title}";
+			$date = MyApp\Helper\Date::format('Y(Jk)-m-d', $event->date);
+			$description .= " | {$date} {$event->title}";
+
+			$event->birth = false;
+			$event->live = false;
+			$event->death = false;
+			if ($this->division->start_event_id === $event->id) {
+				$event->birth = true;
+			} elseif ($this->division->end_event_id === $event->id) {
+				$event->death = true;
+			}
+
+			$result = Model_Event_Detail::query()
+				->where('event_id', $event->id)
+				->where('division_id', $this->division->id)
+				->get();
+			$detail = array_pop($result);
+
+			if ($detail) {
+				switch ($detail->result) {
+					case '存続':
+						$event->live = true;
+						break;
+					case '廃止':
+					case '分割廃止':
+						$detail->death = true;
+						break;
+				}
+			}
 		}
+		// foreach ($events as $event)
 
 		$this->title = $this->path;
 		$this->description = $description;
 		$this->og_type = 'article';
-		$this->breadcrumbs = $breadcrumbs;
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::division($this->division);
 		$this->show_share = true;
 
 		$this->url_add = Helper_Uri::create('division.add');

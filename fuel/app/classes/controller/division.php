@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Model\Division as Model;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Table\Event as EventTable;
 use MyApp\Helper\Session\Url as SessionUrl;
@@ -27,31 +28,36 @@ class Controller_Division extends Controller_Base
 	{
 		$path = $this->param('path');
 		$division = DivisionTable::get_by_path($path);
-		if (! $division || $division->get_path() !== $path || $division->deleted_at !== null) {
+		if (! $division || $division->deleted_at !== null) {
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
 		return $division;
 	}
 
+	/**
+	 * 自治体に紐づくイベント一覧を取得
+	 * @param  Model_Division $division  対象の自治体オブジェクト
+	 * @return array<int, Model_Event>   イベントオブジェクトの配列
+	 */
 	protected function events(Model_Division $division): array
 	{
-		$events = EventTable::get_by_division($division);
-		// 終了インベントを先頭に
-		foreach ($events as $key => $event) {
-			if ($event->event_id === $division->end_event_id) {
-				unset($events[$key]);
-				array_unshift($events, $event);
-				break;
+		$details = $division->event_details;
+
+		$events = [];
+		foreach ($details as $detail) {
+			if ($detail->deleted_at) {
+				continue;
 			}
-		}
-		// 開始イベントを末尾に
-		foreach ($events as $key => $event) {
-			if ($event->event_id === $division->start_event_id) {
-				unset($events[$key]);
-				array_push($events, $event);
-				break;
+			$event = $detail->event;
+			if (! $event) {
+				continue;
 			}
+			$events[$event->id] = $event;
 		}
+
+		uasort($events, function ($a, $b) {
+			return ($a->date < $b->date);
+		});
 		return $events;
 	}
 
@@ -59,33 +65,6 @@ class Controller_Division extends Controller_Base
 	{
 		$division = $this->requirePath();
 		$events = $this->events($division);
-
-		foreach ($events as $event) {
-			$event->birth = false;
-			$event->live = false;
-			$event->death = false;
-			if ($division->start_event_id == $event->event_id) {
-				$event->birth = true;
-			} elseif ($division->end_event_id == $event->event_id) {
-				$event->death = true;
-			}
-			switch ($event->result) {
-				case '存続':
-					$event->live = true;
-					break;
-				case '廃止':
-				case '分割廃止':
-					$event->death = true;
-					break;
-			}
-			$divisions = EventTable::get_relative_division($event->event_id);
-			foreach ($divisions as $d) {
-				$d->split = ($d->result == '分割廃止');
-				$d->li_class = $d->pmodel()->htmlClass();
-			}
-			$event->divisions = $divisions;
-		}
-		// foreach ($events as &$event)
 
 		// create Presenter object
 		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
@@ -106,50 +85,16 @@ class Controller_Division extends Controller_Base
 		$start = Input::get('start');
 		$end = Input::get('end');
 
-		$divisions = DivisionTable::get_by_parent_division_and_date($division);
-		$events_arr = [];
-		if (count($divisions)) {
-			$events = EventTable::get_by_division($divisions, $start, $end);
-			foreach ($events as $event) {
-				if (isset($events_arr[$event->event_id])) {
-					continue;
-				}
-
-				$event->birth = false;
-				$event->live = false;
-				$event->death = false;
-				if ($division->start_event_id == $event->event_id) {
-					$event->birth = true;
-				} elseif ($division->end_event_id == $event->event_id) {
-					$event->death = true;
-				}
-				switch ($event->result) {
-					case '存続':
-						$event->live = true;
-						break;
-					case '廃止':
-						$event->death = true;
-						break;
-				}
-
-				$divisions = EventTable::get_relative_division($event->event_id);
-				foreach ($divisions as $d) {
-					$d->split = ($d->result == '分割廃止');
-					$d->li_class = $d->pmodel()->htmlClass();
-				}
-				$event->divisions = $divisions;
-				$events_arr[$event->event_id] = $event;
-			}
-		}
-		// if ($division_id_arr)
+		$events = EventTable::get_by_parent_division_and_date($division, $start, $end);
 
 		// create Presenter object
-		$content = Presenter::forge('division/children', 'view', null, 'timeline.tpl');
+		//$content = Presenter::forge('division/children', 'view', null, 'timeline.tpl');
+		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
 		$content->current = $label;
 		$content->path = $division->get_path();
 		$content->division = $division;
 		$content->belongs_division = $division->belongs();
-		$content->events = $events_arr;
+		$content->events = $events;
 
 		return $content;
 	}

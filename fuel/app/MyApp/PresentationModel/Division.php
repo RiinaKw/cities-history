@@ -39,7 +39,7 @@ class Division
 		$ids = explode('/', substr($this->model->id_path, 0, -1));
 		$kana = '';
 		foreach ($ids as $id) {
-			$parent = Model_Division::find_by_pk($id);
+			$parent = Model_Division::find($id);
 			$kana .= ($kana ? '/' : '') . $parent->fullname_kana;
 		}
 		return $kana;
@@ -57,17 +57,6 @@ class Division
 			'division.detail',
 			['path' => $this->model->path]
 		);
-	}
-
-	public function geoshape(): ?string
-	{
-		if ($this->model->geoshape) {
-			return \Helper_Uri::create(
-				'geoshape',
-				['path' => $this->model->geoshape]
-			);
-		}
-		return null;
 	}
 
 	public function htmlAnchor(string $label = ''): string
@@ -99,20 +88,6 @@ class Division
 		}
 	}
 
-	public function htmlClass(): string
-	{
-		switch ($this->model->result) {
-			case '新設':
-				return 'birth';
-			case '編入':
-				return 'transfer';
-			case '廃止':
-			case '分割廃止':
-				return 'death';
-		}
-		return '';
-	}
-
 	public function isValid(string $type): bool
 	{
 		$def = [
@@ -129,7 +104,7 @@ class Division
 				return (bool)strlen($this->model->source);
 			},
 			'code' => function ($d) {
-				$end_event = \Model_Event::find_by_pk($d->end_event_id);
+				$end_event = \Model_Event::find($d->end_event_id);
 				return
 					($d->suffix == '郡')
 					||
