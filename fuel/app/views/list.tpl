@@ -83,42 +83,13 @@
 
 {{if $tree->get_by_suffix('支庁') }}
 					<section class="grid departs">
-						<ul class="divisions">
-{{foreach from=$tree->get_by_suffix('支庁') item=subtree}}
-{{assign var=pmodel value=$subtree->self()->pmodel()}}
-							<li>
-								<article>
-									<header>
-										<h4>
-											{{$pmodel->htmlAnchor()}}
-											{{$pmodel->htmlDebugCode()}}
-										</h4>
-									</header>
-								</article>
-							</li>
-{{/foreach}}
-						</ul>
+						{{$tree->get_by_suffix('支庁')|tree_body:6:tab}}
 					</section><!-- .grid.departs -->
 {{/if}}
 
 {{if $tree->get_by_suffix('区') }}
 					<section class="grid wards">
-						<ul class="divisions">
-{{foreach from=$tree->get_by_suffix('区') item=subtree}}
-{{assign var=division value=$subtree->self()->pmodel()}}
-							<li>
-								<article>
-									<header>
-										<h4>
-											{{$division->htmlAnchor()}}
-											{{$division->htmlDebugCode()}}
-											{{$division->htmlBelongs()}}
-										</h4>
-									</header>
-								</article>
-							</li>
-{{/foreach}}
-						</ul>
+						{{$tree->get_by_suffix('区')|tree_body:6:tab}}
 					</section><!-- .grid.wards -->
 {{/if}}
 
@@ -126,42 +97,23 @@
 					<section class="grid city">
 						<ul class="divisions">
 {{foreach name=city from=$tree->get_by_suffix('市') item=subtree}}
-{{assign var=pmodel value=$subtree->self()->pmodel()}}
+{{assign var=isSuper value=(bool)$subtree->get_by_suffix('区')}}
+
+{{if $isSuper}}{{* 政令指定都市の場合 *}}
 							<li>
 								<article>
-									<header>
-										<h4>
-											{{$pmodel->htmlAnchor()}}
-											{{$pmodel->htmlDebugCode()}}
-											{{$pmodel->htmlBelongs()}}
-										</h4>
-{{* 政令指定都市の場合 *}}
-{{if $subtree->get_by_suffix('区')}}
-										<p class="count">{{$subtree->pmodel()->suffiexes()}}</p>
-{{/if}}
-									</header>
-{{* 政令指定都市の場合 *}}
-{{if $subtree->get_by_suffix('区')}}
-									<ul class="divisions">
-{{foreach from=$subtree->get_by_suffix('区') item=wards}}
-{{assign var=pmodel value=$wards->self()->pmodel()}}
-										<li>
-											<article>
-												<header>
-													<h4>
-														{{$pmodel->htmlAnchor()}}
-														{{$pmodel->htmlDebugCode()}}
-														{{$pmodel->htmlBelongs()}}
-													</h4>
-												</header>
-											</article>
-										</li>
-{{/foreach}}
-									</ul>
-{{/if}}
+									{{$subtree|tree_header:9:tab}}
+									{{$subtree->get_by_suffix('区')|tree_body:9:tab}}
 								</article>
 							</li>
-{{if ! $smarty.foreach.city.last && $subtree->get_by_suffix('区')}}
+{{else}}
+							<li>
+								<article>
+									{{$subtree|tree_header:9:tab}}
+								</article>
+							</li>
+{{/if}}
+{{if ! $smarty.foreach.city.last && $isSuper}}
 						</ul>
 					</section><!-- .grid.cities -->
 					<section class="grid cities">
@@ -174,56 +126,16 @@
 
 {{if $tree->get_by_suffix('町村') }}
 					<section class="grid towns">
-						<ul class="divisions">
-{{foreach from=$tree->get_by_suffix('町村') item=subtree}}
-{{assign var=pmodel value=$subtree->self()->pmodel()}}
-							<li>
-								<article>
-									<header>
-										<h4>
-											{{$pmodel->htmlAnchor()}}
-											{{$pmodel->htmlDebugCode()}}
-											{{$pmodel->htmlBelongs()}}
-										</h4>
-									</header>
-								</article>
-							</li>
-{{/foreach}}
-						</ul>
+						{{$tree->get_by_suffix('町村')|tree_body:6:tab}}
 					</section><!-- .grid.towns -->
 {{/if}}
 
 {{if $tree->get_by_suffix('郡') }}
 {{foreach name=city from=$tree->get_by_suffix('郡') item=subtree}}
-{{assign var=pmodel value=$subtree->self()->pmodel()}}
 					<section class="grid countries">
 						<article>
-							<header>
-								<h4>
-									{{$pmodel->htmlAnchor()}}
-									{{$pmodel->htmlDebugCode()}}
-									{{$pmodel->htmlBelongs()}}
-								</h4>
-								<p class="count">{{$subtree->pmodel()->suffiexes()}}</p>
-							</header>
-{{if $subtree->get_by_suffix('町村')}}
-							<ul class="divisions">
-{{foreach from=$subtree->get_by_suffix('町村') item=wards}}
-{{assign var=pmodel value=$wards->self()->pmodel()}}
-								<li>
-									<article>
-										<header>
-											<h5>
-												{{$pmodel->htmlAnchor()}}
-												{{$pmodel->htmlDebugCode()}}
-												{{$pmodel->htmlBelongs()}}
-											</h5>
-										</header>
-									</article>
-								</li>
-{{/foreach}}
-							</ul>
-{{/if}}
+							{{$subtree|tree_header:7:tab}}
+							{{$subtree->get_by_suffix('町村')|tree_body:7:tab}}
 						</article>
 					</section><!-- .grid.countries -->
 {{/foreach}}
