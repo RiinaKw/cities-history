@@ -217,9 +217,8 @@ class Db
 	/**
 	 * ファイルから SQL を読み込む
 	 * @param string $path           ファイル名
-	 * @param string $restore_table  SQL を格納するテーブル名
 	 */
-	private static function loadSQL(string $path, string $restore_table): void
+	private static function loadSQL(string $path): void
 	{
 		$fp = fopen($path, 'r');
 
@@ -240,7 +239,7 @@ class Db
 				PHP_EOL;
 			$sql = trim($sql);
 
-			\DB::insert($restore_table)
+			\DB::insert(static::RESTORE_TABLE)
 				->set(['sql' => $sql])
 				->execute();
 		}
@@ -301,7 +300,7 @@ class Db
 		// truncate restore table
 		static::truncateRestore();
 
-		static::loadSQL($path, static::RESTORE_TABLE);
+		static::loadSQL($path);
 
 		echo PHP_EOL, 'restore db...', PHP_EOL;
 
