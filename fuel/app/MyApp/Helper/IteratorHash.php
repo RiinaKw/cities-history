@@ -16,7 +16,8 @@ class IteratorHash implements \IteratorAggregate
 	 */
 	protected $source = [];
 
-	public function getIterator() {
+	public function getIterator()
+	{
 		return new \ArrayIterator($this->source);
 	}
 

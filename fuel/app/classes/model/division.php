@@ -6,6 +6,7 @@
 
 use MyApp\Table\Division as DivisionTable;
 use MyApp\PresentationModel\Division as PModel;
+use MyApp\Getter\Division as Getter;
 use MyApp\Model\Division\Tree;
 
 class Model_Division extends Model_Base
@@ -22,6 +23,11 @@ class Model_Division extends Model_Base
 	public function pmodel(): PModel
 	{
 		return new PModel($this);
+	}
+
+	public function getter(): Getter
+	{
+		return new Getter($this);
 	}
 
 	public function validation()
@@ -88,103 +94,6 @@ class Model_Division extends Model_Base
 	}
 	// function get_path()
 
-	/**
-	 * パスを生成
-	 *
-	 * 例 : 群馬県/甘楽郡(1950-)/下仁田町(1955-)
-	 *
-	 * @return string
-	 */
-	public function make_path(): string
-	{
-		$name_arr = [];
-		$this->id_chain(function ($d) use (&$name_arr) {
-			$name_arr[] = $d->fullname;
-		});
-		return implode('/', $name_arr);
-	}
-	// function make_path()
-
-	/**
-	 * よみがなのパスを生成
-	 *
-	 * 例 : ぐんま・けん/かんら・ぐん/しもにた・まち
-	 *
-	 * @return string
-	 */
-	public function make_path_kana(): string
-	{
-		$kana_arr = [];
-		$this->id_chain(function ($d) use (&$kana_arr) {
-			$kana_arr[] = $d->fullname_kana;
-		});
-		return implode('/', $kana_arr);
-	}
-	// function make_path_kana()
-
-	/**
-	 * 検索用のパスを生成
-	 *
-	 * 例 : 群馬県甘楽郡下仁田町
-	 *
-	 * @return string
-	 */
-	public function make_search_path(): string
-	{
-		$name_arr = [];
-		$this->id_chain(function ($d) use (&$name_arr) {
-			$name_arr[] = $d->search_fullname;
-		});
-		return implode('', $name_arr);
-	}
-	// function make_path()
-
-	/**
-	 * 検索用のよみがなのパスを生成
-	 *
-	 * 例 : ぐんまけんかんらぐんしもにたまち
-	 *
-	 * @return string
-	 */
-	public function make_search_path_kana(): string
-	{
-		$kana_arr = [];
-		$this->id_chain(function ($d) use (&$kana_arr) {
-			$kana_arr[] = $d->search_fullname_kana;
-		});
-		return implode('', $kana_arr);
-	}
-	// function make_path_kana()
-
-	/**
-	 * @todo DB に「fullname」って必要なくない？
-	 */
-	public function & __get($key)
-	{
-		$arr = [
-			'fullname' => function () {
-				// 下仁田町(1955-)
-				return $this->name
-					. ($this->show_suffix ? $this->suffix : '')
-					. ($this->identifier ? "({$this->identifier})" : '');
-			},
-			'fullname_kana' => function () {
-				// しもにた・まち
-				return $this->name_kana . ($this->show_suffix ? '・' . $this->suffix_kana : '');
-			},
-			'search_fullname' => function () {
-				// 下仁田町
-				return $this->name . ($this->show_suffix ? $this->suffix : '');
-			},
-			'search_fullname_kana' => function () {
-				// しもにたまち
-				return $this->name_kana . ($this->show_suffix ? $this->suffix_kana : '');
-			},
-		];
-		$result = isset($arr[$key]) ? $arr[$key]() : parent::__get($key);
-		return $result;
-	}
-
 	public function get_parent_path(): ?string
 	{
 		$path = $this->get_path();
@@ -193,26 +102,6 @@ class Model_Division extends Model_Base
 		}
 		return null;
 	}
-
-	public function get_belongs_path(): ?string
-	{
-		$division = $this->belongs();
-		if ($division) {
-			return $division->get_path();
-		}
-		return null;
-	}
-	// function get_belongs_path()
-
-	public function get_belongs_name(): ?string
-	{
-		$division = $this->belongs();
-		if ($division) {
-			return $division->fullname;
-		}
-		return null;
-	}
-	// function get_belongs_name()
 
 	public function belongs(): ?self
 	{

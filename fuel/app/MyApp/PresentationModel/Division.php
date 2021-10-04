@@ -19,26 +19,27 @@ class Division
 
 	public function suffix_classification(): string
 	{
-		switch ($this->model->suffix) {
-			default:
-				return '町村';
+		$arr = [
+			'支庁'       => '支庁',
+			'振興局'     => '支庁',
+			'総合振興局' => '支庁',
+			'都'         => true,
+			'道'         => true,
+			'府'         => true,
+			'県'         => true,
+			'市'         => true,
+			'区'         => true,
+			'郡'         => true,
+		];
 
-			case '都':
-			case '道':
-			case '府':
-			case '県':
-			case '市':
-			case '区':
-			case '郡':
-				return $this->model->suffix;
-
-			case '支庁':
-			case '振興局':
-			case '総合振興局':
-				return '支庁';
+		$suffix = $this->model->suffix;
+		if (! isset($arr[$suffix])) {
+			return '町村';
 		}
+		$type = $arr[$suffix];
+		return is_string($type) ? $type : $suffix;
 	}
-
+/*
 	public function kana()
 	{
 		$ids = explode('/', substr($this->model->id_path, 0, -1));
@@ -49,7 +50,7 @@ class Division
 		}
 		return $kana;
 	}
-
+*/
 	public function source(): string
 	{
 		return \Helper_Html::wiki($this->model->source);
@@ -85,7 +86,7 @@ class Division
 
 	public function htmlBelongs(): string
 	{
-		$belongs = $this->model->get_belongs_name();
+		$belongs = $this->model->getter()->belongs_name;
 		if ($belongs) {
 			return "<span class=\"belongs badge badge-semilight font-weight-light\">{$belongs}</span>";
 		} else {

@@ -1,6 +1,5 @@
 <?php
 
-use MyApp\Model\Division as Model;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Table\Event as EventTable;
 use MyApp\Helper\Session\Url as SessionUrl;

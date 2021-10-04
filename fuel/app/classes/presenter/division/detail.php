@@ -26,16 +26,18 @@ class Presenter_Division_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$path_kana = $this->division->pmodel()->kana();
+		$getter = $this->division->getter();
+
+		$path_kana = $getter->path_kana;
 		$this->path_kana = $path_kana;
 
-		$this->search_path = $this->division->make_search_path();
-		$this->search_path_kana = $this->division->make_search_path_kana();
+		$this->search_path = $getter->search_path;
+		$this->search_path_kana = $getter->search_path_kana;
 
 		$this->belongs_division = Model_Division::find($this->division->belongs_division_id);
 
 		// meta description
-		$description = "{$this->path} ({$path_kana})) {$this->search_path} {$this->search_path_kana}";
+		$description = "{$this->path} ({$path_kana})) {$getter->search_path} {$getter->search_path_kana}";
 
 		foreach ($this->events as $event) {
 			$date = MyApp\Helper\Date::format('Y(Jk)-m-d', $event->date);

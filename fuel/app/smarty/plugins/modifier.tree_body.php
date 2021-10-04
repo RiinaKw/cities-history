@@ -15,10 +15,13 @@ use  MyApp\Helper\Iterator;
  */
 
 function smarty_modifier_tree_body(
-	Iterator $iterator,
+	?Iterator $iterator,
 	int $indentWidth = 0,
 	string $indentType = 'tab'
 ): string {
+	if (! $iterator) {
+		return '';
+	}
 	$char = '';
 	switch ($indentType) {
 		case 'tab':

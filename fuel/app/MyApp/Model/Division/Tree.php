@@ -51,6 +51,17 @@ class Tree
 		static::$ref[$division->id_path] = $this;
 	}
 
+	public function pmodel(): PModel
+	{
+		return new PModel($this);
+	}
+
+	/**
+	 * その日付に存在する自治体のツリーを生成する
+	 * @param  Model_Division $division  ツリーの親となる自治体オブジェクト
+	 * @param  ?string        $date      日付、指定がなければ過去に存在したすべての自治体をツリーに含める
+	 * @return self                      生成されたツリー
+	 */
 	public static function create(Model_Division $division, ?string $date): self
 	{
 		$tree = new static($division);
@@ -62,26 +73,38 @@ class Tree
 		return $tree;
 	}
 
+	/**
+	 * 自治体の種別（市町村など）を追加
+	 * @param string $type  自治体種別
+	 */
 	protected function addSuffix(string $type): void
 	{
 		$this->suffixes->increment($type);
 	}
 
+	/**
+	 * 自治体種別の一覧を取得
+	 * @return array  種別一覧
+	 */
 	public function suffixes(): array
 	{
 		return $this->suffixes->array();
 	}
 
-	public function pmodel(): PModel
-	{
-		return new PModel($this);
-	}
-
+	/**
+	 * 自分自身の自治体オブジェクトを取得
+	 * @return Model_Division  自治体オブジェクト
+	 */
 	public function self(): Model_Division
 	{
 		return $this->self;
 	}
 
+	/**
+	 * 自治体種別からツリー内の自治体一覧を取得
+	 * @param  string  $suffix                 自治体種別
+	 * @return MyApp\Helper\IteratorHash|null  自治体の一覧
+	 */
 	public function get_by_suffix(string $suffix): ?Iterator
 	{
 		return $this->children->get($suffix) ?? null;
@@ -92,6 +115,11 @@ class Tree
 		$this->children->push($suffix, $subtree);
 	}
 
+	/**
+	 * ツリーを作成し、参照に追加
+	 * @param  Model_Division $division  ツリーの元となる自治体オブジェクト
+	 * @return self                      生成されたツリー
+	 */
 	protected function ref(Model_Division $division): self
 	{
 		$id_path = $division->id_path;
@@ -101,6 +129,10 @@ class Tree
 		return static::$ref[$id_path];
 	}
 
+	/**
+	 * ツリーに自治体を追加する
+	 * @param Model_Division $division  追加する自治体オブジェクト
+	 */
 	protected function add(Model_Division $division): void
 	{
 
@@ -122,7 +154,6 @@ Tree::ref もハッシュにするか
 				//var_dump("    current division, **no op**");
 				return;
 			}
-			$root = $root_tree->self();
 
 			if ($root_tree->self()->parent() === $division) {
 				//var_dump("    '{$division->fullname}' is not under '{$root_tree->self()->fullname}', **no op**");
@@ -152,6 +183,10 @@ Tree::ref もハッシュにするか
 	}
 	// function add()
 
+	/**
+	 * ダンプ出力
+	 * @param integer $depth  インデントの深さ
+	 */
 	public function dump(int $depth = 2): void
 	{
 		$indent = str_repeat(' ', $depth);
@@ -166,11 +201,12 @@ Tree::ref もハッシュにするか
 				$subtree->dump($depth + 4);
 			}
 		}
-return;
+		/*
 		echo $indent, 'ref', PHP_EOL;
 		foreach ($this->ref as $id => $ref) {
 			echo $indent_sub, $id, ' : ', $ref->self()->fullname, PHP_EOL;
 		}
+		*/
 	}
 }
 // class Model_Division_Tree
