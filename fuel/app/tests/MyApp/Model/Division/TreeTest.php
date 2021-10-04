@@ -8,20 +8,22 @@ class TreeTest extends TestCase
 	protected function setUp(): void
 	{
 		// Fuel のコアを読み込む
-		define('DOCROOT',  __DIR__);
-		define('FUELPATH', __DIR__  . '/../../../../..');
-		define('APPPATH',  FUELPATH . '/app/');
-		define('PKGPATH',  FUELPATH . '/packages/');
-		define('COREPATH', FUELPATH . '/core/');
-		require COREPATH . 'classes/autoloader.php';
+		if (! defined('DOCROOT')) {
+			define('DOCROOT',  __DIR__);
+			define('FUELPATH', __DIR__  . '/../../../../..');
+			define('APPPATH',  FUELPATH . '/app/');
+			define('PKGPATH',  FUELPATH . '/packages/');
+			define('COREPATH', FUELPATH . '/core/');
+			require COREPATH . 'classes/autoloader.php';
 
-		class_alias('Fuel\\Core\\Autoloader', 'Autoloader');
-		require APPPATH . '/bootstrap.php';
+			class_alias('Fuel\\Core\\Autoloader', 'Autoloader');
+			require APPPATH . '/bootstrap.php';
+
+			restore_error_handler();
+		}
 
 		// 環境をテストに切り替え
 		Fuel::$env = Fuel::TEST;
-
-		restore_error_handler();
 
 		// テスト環境でマイグレーションを実行
 		Package::load('oil');
@@ -115,27 +117,6 @@ class TreeTest extends TestCase
 			],
 			$sawa
 		);
-
-		$this->assertSame('群馬県', $gunma->fullname);
-		$this->assertSame('群馬県', $gunma->path);
-
-		$this->assertSame('伊勢崎市', $isesaki->fullname);
-		$this->assertSame('群馬県/伊勢崎市', $isesaki->path);
-
-		$this->assertSame('佐波郡', $sawa->fullname);
-		$this->assertSame('群馬県/佐波郡', $sawa->path);
-
-		$this->assertSame('赤堀町', $akabori->fullname);
-		$this->assertSame('群馬県/佐波郡/赤堀町', $akabori->path);
-
-		$this->assertSame('境町', $sakai->fullname);
-		$this->assertSame('群馬県/佐波郡/境町', $sakai->path);
-
-		$this->assertSame('東村', $azuma->fullname);
-		$this->assertSame('群馬県/佐波郡/東村', $azuma->path);
-
-		$this->assertSame('玉村町', $tamamura->fullname);
-		$this->assertSame('群馬県/佐波郡/玉村町', $tamamura->path);
 
 		$tree = Tree::create($gunma);
 		$this->assertSame($gunma, $tree->self());

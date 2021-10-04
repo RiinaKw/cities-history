@@ -20,6 +20,11 @@ class Model_Division extends Model_Base
 
 	protected static $_has_many = ['event_details'];
 
+	public const RE_SUFFIX =
+		'/^(?<place>.+?)'
+		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
+		. '(\((?<identifier>.+?)\))?$/';
+
 	public function pmodel(): PModel
 	{
 		return new PModel($this);
@@ -123,6 +128,44 @@ class Model_Division extends Model_Base
 		if (isset($array[$key])) {
 			$callback($this, $array[$key]);
 		}
+	}
+
+	public static function create2(array $params, Model_Division $parent = null): self
+	{
+		$name = $params['fullname'];
+		preg_match(static::RE_SUFFIX, $name, $matches);
+		if (! $matches) {
+			$matches = [
+				'place' => $name,
+				'suffix' => '',
+			];
+		}
+
+		$params = array_merge(
+			[
+				'id_path' => '',
+				'name' => $matches['place'],
+				'name_kana' => '',
+				'suffix' => $matches['suffix'],
+				'suffix_kana' => '',
+				'search_path' => '',
+				'search_path_kana' => '',
+				'fullname' => '',
+				'path' => '',
+			],
+			$params
+		);
+
+
+		$division = Model_Division::forge($params);
+		$division->path = $division->fullname;
+		$division->save();
+
+		$division->id_path = ($parent ? $parent->id_path : '') . $division->id . '/';
+		$division->path = (($parent ? $parent->path . '/' : '') . $division->fullname);
+		$division->save();
+
+		return $division;
 	}
 
 	/**
