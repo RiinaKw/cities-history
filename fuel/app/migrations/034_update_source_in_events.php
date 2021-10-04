@@ -6,7 +6,7 @@ class Update_source_in_events
 {
 	public function up()
 	{
-		$events = \Model_Event::find_all();
+		$events = \Model_Event::find('all');
 		if ($events) {
 			foreach ($events as $event) {
 				$event->source = 'Wikipedia';

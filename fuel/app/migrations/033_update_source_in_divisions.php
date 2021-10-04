@@ -6,7 +6,7 @@ class Update_source_in_divisions
 {
 	public function up()
 	{
-		$divisions = \Model_Division::find_all();
+		$divisions = \Model_Division::find('all');
 		if ($divisions) {
 			foreach ($divisions as $division) {
 				$division->source = 'Wikipedia';

@@ -6,11 +6,12 @@ class Update_search_path_in_divisions
 {
 	public function up()
 	{
-		$divisions = \Model_Division::find_all();
+		$divisions = \Model_Division::find('all');
 		if ($divisions) {
 			foreach ($divisions as $division) {
-				$division->search_path = $division->make_search_path();
-				$division->search_path_kana = $division->make_search_path_kana();
+				$getter = $division->getter();
+				$division->search_path = $getter->search_path;
+				$division->search_path_kana = $getter->search_path_kana;
 				$division->save();
 			}
 		}

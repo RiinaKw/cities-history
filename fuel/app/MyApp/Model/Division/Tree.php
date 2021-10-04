@@ -59,10 +59,10 @@ class Tree
 	/**
 	 * その日付に存在する自治体のツリーを生成する
 	 * @param  Model_Division $division  ツリーの親となる自治体オブジェクト
-	 * @param  ?string        $date      日付、指定がなければ過去に存在したすべての自治体をツリーに含める
+	 * @param  string|null    $date      日付、指定がなければ過去に存在したすべての自治体をツリーに含める
 	 * @return self                      生成されたツリー
 	 */
-	public static function create(Model_Division $division, ?string $date): self
+	public static function create(Model_Division $division, string $date = null): self
 	{
 		$tree = new static($division);
 
@@ -201,9 +201,10 @@ Tree::ref もハッシュにするか
 				$subtree->dump($depth + 4);
 			}
 		}
+
 		/*
 		echo $indent, 'ref', PHP_EOL;
-		foreach ($this->ref as $id => $ref) {
+		foreach (static::$ref as $id => $ref) {
 			echo $indent_sub, $id, ' : ', $ref->self()->fullname, PHP_EOL;
 		}
 		*/
