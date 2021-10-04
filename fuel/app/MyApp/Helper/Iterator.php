@@ -6,7 +6,10 @@
 
 namespace MyApp\Helper;
 
-class Iterator implements \IteratorAggregate
+/**
+ * 配列のラッパークラス
+ */
+class Iterator implements \IteratorAggregate, \Countable
 {
 	protected $source = [];
 
