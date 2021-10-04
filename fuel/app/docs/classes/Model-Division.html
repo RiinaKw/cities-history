@@ -54,6 +54,7 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
@@ -78,6 +79,7 @@
                                     <li><a href="packages/App-Helper.html"><abbr title="\App\Helper">Helper</abbr></a></li>
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
+                                    <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -121,11 +123,10 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 </aside>
 
         
-    <section class="phpdocumentor-description"></section>
 
 
 
@@ -140,6 +141,13 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/Model-Division.html#constant_RE_SUFFIX">RE_SUFFIX</a>
+    <span>
+        &nbsp;= &#039;/^(?&lt;place&gt;.+?)&#039; . &#039;(?&lt;suffix&gt;都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)&#039; . &#039;(\((?&lt;identifier&gt;.+?)\))?$/&#039;                    </span>
+</dt>
+<dd></dd>
+
                 <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Division.html#property__created_at">$_created_at</a>
     <span>
@@ -149,6 +157,13 @@
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Division.html#property__deleted_at">$_deleted_at</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Model-Division.html#property__has_many">$_has_many</a>
     <span>
                 &nbsp;: mixed            </span>
 </dt>
@@ -183,13 +198,6 @@
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method___get">__get()</a>
-    <span>
-                        &nbsp;: mixed    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Model-Division.html#method_belongs">belongs()</a>
     <span>
                         &nbsp;: self|null    </span>
@@ -197,7 +205,14 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method_create">create()</a>
+    <a href="classes/Model-Division.html#method_create2">create2()</a>
+    <span>
+                        &nbsp;: self    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Model-Division.html#method_createDivision">createDivision()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -207,20 +222,6 @@
     <a href="classes/Model-Division.html#method_dump">dump()</a>
     <span>
                         &nbsp;: void    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method_get_belongs_name">get_belongs_name()</a>
-    <span>
-                        &nbsp;: string|null    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method_get_belongs_path">get_belongs_path()</a>
-    <span>
-                        &nbsp;: string|null    </span>
 </dt>
 <dd></dd>
 
@@ -239,6 +240,20 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Model-Division.html#method_getter">getter()</a>
+    <span>
+                        &nbsp;: <a href="classes/MyApp-Getter-Division.html"><abbr title="\MyApp\Getter\Division">Division</abbr></a>    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Model-Division.html#method_id_chain">id_chain()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>パス形式の ID を分割し、各 ID ごとにコールバックを実行</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Model-Base.html#method_is_deleted">is_deleted()</a>
     <span>
                         &nbsp;: mixed    </span>
@@ -246,32 +261,11 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method_make_path">make_path()</a>
+    <a href="classes/Model-Division.html#method_parent">parent()</a>
     <span>
-                        &nbsp;: string    </span>
+                        &nbsp;: self|null    </span>
 </dt>
-<dd>パスを生成</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method_make_path_kana">make_path_kana()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>よみがなのパスを生成</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method_make_search_path">make_search_path()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>検索用のパスを生成</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Division.html#method_make_search_path_kana">make_search_path_kana()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>検索用のよみがなのパスを生成</dd>
+<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Model-Division.html#method_pmodel">pmodel()</a>
@@ -301,18 +295,42 @@
 </dt>
 <dd>必要なパラメータが設定されている場合のみコールバックを実行</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Model-Division.html#method_id_chain">id_chain()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>パス形式の ID を分割し、各 ID ごとにコールバックを実行</dd>
-
         </dl>
 
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/Model-Division.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_RE_SUFFIX">
+        RE_SUFFIX
+        <a href="classes/Model-Division.html#constant_RE_SUFFIX" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">23</span>
+</aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">RE_SUFFIX</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;/^(?&lt;place&gt;.+?)&#039; . &#039;(?&lt;suffix&gt;都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)&#039; . &#039;(\((?&lt;identifier&gt;.+?)\))?$/&#039;</span>
+</code>
+
+
+    
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
@@ -336,7 +354,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 </aside>
 
     
@@ -366,7 +384,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 </aside>
 
     
@@ -375,6 +393,36 @@
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$_deleted_at</span>
      = <span class="phpdocumentor-signature__default-value">&#039;deleted_at&#039;</span></code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property__has_many">
+        $_has_many
+        <a href="classes/Model-Division.html#property__has_many" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">21</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$_has_many</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;event_details&#039;]</span></code>
 
     
     
@@ -396,7 +444,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
 </aside>
 
     
@@ -426,7 +474,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
     
@@ -434,7 +482,7 @@
     <span class="phpdocumentor-signature__visibility">protected</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$_primary_key</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;id&#039;</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;id&#039;]</span></code>
 
     
     
@@ -456,7 +504,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 </aside>
 
     
@@ -486,7 +534,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 </aside>
 
     
@@ -513,64 +561,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method___get">
-        __get()
-        <a href="classes/Model-Division.html#method___get" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">152</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">__get</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$key</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">todo</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>DB に「fullname」って必要なくない？</p>
-</section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_belongs">
         belongs()
         <a href="classes/Model-Division.html#method_belongs" class="headerlink"><i class="fas fa-link"></i></a>
@@ -578,7 +568,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">206</span>
+    <span class="phpdocumentor-element-found-in__line">110</span>
 </aside>
 
     
@@ -601,22 +591,71 @@
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+                                    -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_create">
-        create()
-        <a href="classes/Model-Division.html#method_create" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_create2">
+        create2()
+        <a href="classes/Model-Division.html#method_create2" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">231</span>
+    <span class="phpdocumentor-element-found-in__line">132</span>
 </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">create</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">create2</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parent</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$params</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$parent</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_createDivision">
+        createDivision()
+        <a href="classes/Model-Division.html#method_createDivision" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">173</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">createDivision</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -668,7 +707,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">294</span>
+    <span class="phpdocumentor-element-found-in__line">236</span>
 </aside>
 
     
@@ -693,70 +732,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_get_belongs_name">
-        get_belongs_name()
-        <a href="classes/Model-Division.html#method_get_belongs_name" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">196</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">get_belongs_name</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string|null</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_belongs_path">
-        get_belongs_path()
-        <a href="classes/Model-Division.html#method_get_belongs_path" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">186</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">get_belongs_path</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string|null</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_get_parent_path">
         get_parent_path()
         <a href="classes/Model-Division.html#method_get_parent_path" class="headerlink"><i class="fas fa-link"></i></a>
@@ -764,7 +739,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">101</span>
 </aside>
 
     
@@ -796,7 +771,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">91</span>
 </aside>
 
     
@@ -821,6 +796,84 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getter">
+        getter()
+        <a href="classes/Model-Division.html#method_getter" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">33</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getter</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Getter-Division.html"><abbr title="\MyApp\Getter\Division">Division</abbr></a></span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Getter-Division.html"><abbr title="\MyApp\Getter\Division">Division</abbr></a></span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_id_chain">
+        id_chain()
+        <a href="classes/Model-Division.html#method_id_chain" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+</aside>
+
+        <p class="phpdocumentor-summary">パス形式の ID を分割し、各 ID ごとにコールバックを実行</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">id_chain</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$callback</span>
+                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>コールバック関数</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_is_deleted">
         is_deleted()
         <a href="classes/Model-Base.html#method_is_deleted" class="headerlink"><i class="fas fa-link"></i></a>
@@ -828,7 +881,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/base.php"><a href="files/fuel-app-classes-model-base.html"><abbr title="fuel/app/classes/model/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 </aside>
 
     
@@ -853,135 +906,27 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_make_path">
-        make_path()
-        <a href="classes/Model-Division.html#method_make_path" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_parent">
+        parent()
+        <a href="classes/Model-Division.html#method_parent" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">88</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 </aside>
 
-        <p class="phpdocumentor-summary">パスを生成</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">make_path</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                <span class="phpdocumentor-signature__name">parent</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self|null</span></code>
 
-        <section class="phpdocumentor-description"><p>例 : 群馬県/甘楽郡(1950-)/下仁田町(1955-)</p>
-</section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_make_path_kana">
-        make_path_kana()
-        <a href="classes/Model-Division.html#method_make_path_kana" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">105</span>
-</aside>
-
-        <p class="phpdocumentor-summary">よみがなのパスを生成</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">make_path_kana</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"><p>例 : ぐんま・けん/かんら・ぐん/しもにた・まち</p>
-</section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_make_search_path">
-        make_search_path()
-        <a href="classes/Model-Division.html#method_make_search_path" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">122</span>
-</aside>
-
-        <p class="phpdocumentor-summary">検索用のパスを生成</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">make_search_path</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"><p>例 : 群馬県甘楽郡下仁田町</p>
-</section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_make_search_path_kana">
-        make_search_path_kana()
-        <a href="classes/Model-Division.html#method_make_search_path_kana" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">139</span>
-</aside>
-
-        <p class="phpdocumentor-summary">検索用のよみがなのパスを生成</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">make_search_path_kana</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"><p>例 : ぐんまけんかんらぐんしもにたまち</p>
-</section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
+    <span class="phpdocumentor-signature__response_type">self|null</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -1000,7 +945,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 </aside>
 
     
@@ -1032,7 +977,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/base.php"><a href="files/fuel-app-classes-model-base.html"><abbr title="fuel/app/classes/model/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 </aside>
 
     
@@ -1064,7 +1009,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 </aside>
 
     
@@ -1096,7 +1041,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">221</span>
+    <span class="phpdocumentor-element-found-in__line">125</span>
 </aside>
 
         <p class="phpdocumentor-summary">必要なパラメータが設定されている場合のみコールバックを実行</p>
@@ -1133,52 +1078,6 @@
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>実行するコールバック</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_id_chain">
-        id_chain()
-        <a href="classes/Model-Division.html#method_id_chain" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">60</span>
-</aside>
-
-        <p class="phpdocumentor-summary">パス形式の ID を分割し、各 ID ごとにコールバックを実行</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">id_chain</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">callable&nbsp;</span><span class="phpdocumentor-signature__argument__name">$callback</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$callback</span>
-                : <span class="phpdocumentor-signature__argument__return-type">callable</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>コールバック関数</p>
 </section>
 
             </dd>

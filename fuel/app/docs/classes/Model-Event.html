@@ -54,6 +54,7 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
@@ -78,6 +79,7 @@
                                     <li><a href="packages/App-Helper.html"><abbr title="\App\Helper">Helper</abbr></a></li>
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
+                                    <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -121,11 +123,10 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">6</span>
+    <span class="phpdocumentor-element-found-in__line">9</span>
 </aside>
 
         
-    <section class="phpdocumentor-description"></section>
 
 
 
@@ -149,6 +150,13 @@
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Event.html#property__deleted_at">$_deleted_at</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Model-Event.html#property__has_many">$_has_many</a>
     <span>
                 &nbsp;: mixed            </span>
 </dt>
@@ -183,14 +191,14 @@
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Event.html#method_create">create()</a>
+    <a href="classes/Model-Event.html#method_createEvent">createEvent()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Event.html#method_delete">delete()</a>
+    <a href="classes/Model-Event.html#method_deleteEvent">deleteEvent()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -200,6 +208,13 @@
     <a href="classes/Model-Base.html#method_is_deleted">is_deleted()</a>
     <span>
                         &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Model-Event.html#method_pmodel">pmodel()</a>
+    <span>
+                        &nbsp;: <a href="classes/MyApp-PresentationModel-Event.html"><abbr title="\MyApp\PresentationModel\Event">Event</abbr></a>    </span>
 </dt>
 <dd></dd>
 
@@ -245,7 +260,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">13</span>
 </aside>
 
     
@@ -275,7 +290,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
     
@@ -284,6 +299,36 @@
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$_deleted_at</span>
      = <span class="phpdocumentor-signature__default-value">&#039;deleted_at&#039;</span></code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property__has_many">
+        $_has_many
+        <a href="classes/Model-Event.html#property__has_many" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">18</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$_has_many</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;event_details&#039;]</span></code>
 
     
     
@@ -305,7 +350,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 </aside>
 
     
@@ -335,7 +380,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">9</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 </aside>
 
     
@@ -343,7 +388,7 @@
     <span class="phpdocumentor-signature__visibility">protected</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$_primary_key</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;id&#039;</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;id&#039;]</span></code>
 
     
     
@@ -365,7 +410,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">8</span>
+    <span class="phpdocumentor-element-found-in__line">11</span>
 </aside>
 
     
@@ -395,7 +440,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 </aside>
 
     
@@ -422,20 +467,20 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_create">
-        create()
-        <a href="classes/Model-Event.html#method_create" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_createEvent">
+        createEvent()
+        <a href="classes/Model-Event.html#method_createEvent" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">create</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$param</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">createEvent</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$param</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -464,20 +509,20 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_delete">
-        delete()
-        <a href="classes/Model-Event.html#method_delete" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_deleteEvent">
+        deleteEvent()
+        <a href="classes/Model-Event.html#method_deleteEvent" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">delete</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">deleteEvent</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
     
@@ -503,7 +548,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/base.php"><a href="files/fuel-app-classes-model-base.html"><abbr title="fuel/app/classes/model/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 </aside>
 
     
@@ -528,6 +573,38 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_pmodel">
+        pmodel()
+        <a href="classes/Model-Event.html#method_pmodel" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">pmodel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-PresentationModel-Event.html"><abbr title="\MyApp\PresentationModel\Event">Event</abbr></a></span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-PresentationModel-Event.html"><abbr title="\MyApp\PresentationModel\Event">Event</abbr></a></span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_soft_delete">
         soft_delete()
         <a href="classes/Model-Base.html#method_soft_delete" class="headerlink"><i class="fas fa-link"></i></a>
@@ -535,7 +612,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/base.php"><a href="files/fuel-app-classes-model-base.html"><abbr title="fuel/app/classes/model/base.php">base.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 </aside>
 
     
@@ -567,7 +644,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/event.php"><a href="files/fuel-app-classes-model-event.html"><abbr title="fuel/app/classes/model/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 </aside>
 
     

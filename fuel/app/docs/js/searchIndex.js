@@ -213,7 +213,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller_Division\u003A\u003Aevents\u0028\u0029",
             "name": "events",
-            "summary": "",
+            "summary": "\u81EA\u6CBB\u4F53\u306B\u7D10\u3065\u304F\u30A4\u30D9\u30F3\u30C8\u4E00\u89A7\u3092\u53D6\u5F97",
             "url": "classes/Controller-Division.html#method_events"
         },                {
             "fqsen": "\\Controller_Division\u003A\u003Aaction_detail\u0028\u0029",
@@ -626,10 +626,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#method_pmodel"
         },                {
+            "fqsen": "\\Model_Division\u003A\u003Agetter\u0028\u0029",
+            "name": "getter",
+            "summary": "",
+            "url": "classes/Model-Division.html#method_getter"
+        },                {
             "fqsen": "\\Model_Division\u003A\u003Avalidation\u0028\u0029",
             "name": "validation",
             "summary": "",
             "url": "classes/Model-Division.html#method_validation"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003Aparent\u0028\u0029",
+            "name": "parent",
+            "summary": "",
+            "url": "classes/Model-Division.html#method_parent"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Aid_chain\u0028\u0029",
             "name": "id_chain",
@@ -641,45 +651,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#method_get_path"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Amake_path\u0028\u0029",
-            "name": "make_path",
-            "summary": "\u30D1\u30B9\u3092\u751F\u6210",
-            "url": "classes/Model-Division.html#method_make_path"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Amake_path_kana\u0028\u0029",
-            "name": "make_path_kana",
-            "summary": "\u3088\u307F\u304C\u306A\u306E\u30D1\u30B9\u3092\u751F\u6210",
-            "url": "classes/Model-Division.html#method_make_path_kana"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Amake_search_path\u0028\u0029",
-            "name": "make_search_path",
-            "summary": "\u691C\u7D22\u7528\u306E\u30D1\u30B9\u3092\u751F\u6210",
-            "url": "classes/Model-Division.html#method_make_search_path"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Amake_search_path_kana\u0028\u0029",
-            "name": "make_search_path_kana",
-            "summary": "\u691C\u7D22\u7528\u306E\u3088\u307F\u304C\u306A\u306E\u30D1\u30B9\u3092\u751F\u6210",
-            "url": "classes/Model-Division.html#method_make_search_path_kana"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003A__get\u0028\u0029",
-            "name": "__get",
-            "summary": "",
-            "url": "classes/Model-Division.html#method___get"
-        },                {
             "fqsen": "\\Model_Division\u003A\u003Aget_parent_path\u0028\u0029",
             "name": "get_parent_path",
             "summary": "",
             "url": "classes/Model-Division.html#method_get_parent_path"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_belongs_path\u0028\u0029",
-            "name": "get_belongs_path",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_belongs_path"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_belongs_name\u0028\u0029",
-            "name": "get_belongs_name",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_belongs_name"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Abelongs\u0028\u0029",
             "name": "belongs",
@@ -691,15 +666,25 @@ Search.appendIndex(
             "summary": "\u5FC5\u8981\u306A\u30D1\u30E9\u30E1\u30FC\u30BF\u304C\u8A2D\u5B9A\u3055\u308C\u3066\u3044\u308B\u5834\u5408\u306E\u307F\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3092\u5B9F\u884C",
             "url": "classes/Model-Division.html#method_callIfNotEmpty"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
+            "fqsen": "\\Model_Division\u003A\u003Acreate2\u0028\u0029",
+            "name": "create2",
             "summary": "",
-            "url": "classes/Model-Division.html#method_create"
+            "url": "classes/Model-Division.html#method_create2"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003AcreateDivision\u0028\u0029",
+            "name": "createDivision",
+            "summary": "",
+            "url": "classes/Model-Division.html#method_createDivision"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Adump\u0028\u0029",
             "name": "dump",
             "summary": "",
             "url": "classes/Model-Division.html#method_dump"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003ARE_SUFFIX",
+            "name": "RE_SUFFIX",
+            "summary": "",
+            "url": "classes/Model-Division.html#constant_RE_SUFFIX"
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024_table_name",
             "name": "_table_name",
@@ -731,10 +716,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Division.html#property__mysql_timestamp"
         },                {
+            "fqsen": "\\Model_Division\u003A\u003A\u0024_has_many",
+            "name": "_has_many",
+            "summary": "",
+            "url": "classes/Model-Division.html#property__has_many"
+        },                {
             "fqsen": "\\Model_Event_Detail",
             "name": "Model_Event_Detail",
             "summary": "",
             "url": "classes/Model-Event-Detail.html"
+        },                {
+            "fqsen": "\\Model_Event_Detail\u003A\u003Apmodel\u0028\u0029",
+            "name": "pmodel",
+            "summary": "",
+            "url": "classes/Model-Event-Detail.html#method_pmodel"
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003Avalidation\u0028\u0029",
             "name": "validation",
@@ -781,25 +776,35 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Event-Detail.html#property__mysql_timestamp"
         },                {
+            "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_belongs_to",
+            "name": "_belongs_to",
+            "summary": "",
+            "url": "classes/Model-Event-Detail.html#property__belongs_to"
+        },                {
             "fqsen": "\\Model_Event",
             "name": "Model_Event",
             "summary": "",
             "url": "classes/Model-Event.html"
+        },                {
+            "fqsen": "\\Model_Event\u003A\u003Apmodel\u0028\u0029",
+            "name": "pmodel",
+            "summary": "",
+            "url": "classes/Model-Event.html#method_pmodel"
         },                {
             "fqsen": "\\Model_Event\u003A\u003Avalidation\u0028\u0029",
             "name": "validation",
             "summary": "",
             "url": "classes/Model-Event.html#method_validation"
         },                {
-            "fqsen": "\\Model_Event\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
+            "fqsen": "\\Model_Event\u003A\u003AcreateEvent\u0028\u0029",
+            "name": "createEvent",
             "summary": "",
-            "url": "classes/Model-Event.html#method_create"
+            "url": "classes/Model-Event.html#method_createEvent"
         },                {
-            "fqsen": "\\Model_Event\u003A\u003Adelete\u0028\u0029",
-            "name": "delete",
+            "fqsen": "\\Model_Event\u003A\u003AdeleteEvent\u0028\u0029",
+            "name": "deleteEvent",
             "summary": "",
-            "url": "classes/Model-Event.html#method_delete"
+            "url": "classes/Model-Event.html#method_deleteEvent"
         },                {
             "fqsen": "\\Model_Event\u003A\u003A\u0024_table_name",
             "name": "_table_name",
@@ -830,6 +835,11 @@ Search.appendIndex(
             "name": "_mysql_timestamp",
             "summary": "",
             "url": "classes/Model-Event.html#property__mysql_timestamp"
+        },                {
+            "fqsen": "\\Model_Event\u003A\u003A\u0024_has_many",
+            "name": "_has_many",
+            "summary": "",
+            "url": "classes/Model-Event.html#property__has_many"
         },                {
             "fqsen": "\\Model_Page",
             "name": "Model_Page",
@@ -936,10 +946,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-User.html#method_crypt_password"
         },                {
-            "fqsen": "\\Model_User\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
+            "fqsen": "\\Model_User\u003A\u003AcreateUser\u0028\u0029",
+            "name": "createUser",
             "summary": "",
-            "url": "classes/Model-User.html#method_create"
+            "url": "classes/Model-User.html#method_createUser"
         },                {
             "fqsen": "\\Model_User\u003A\u003Alogin\u0028\u0029",
             "name": "login",
@@ -1316,21 +1326,6 @@ Search.appendIndex(
             "summary": "\u5348\u524D\u5348\u5F8C",
             "url": "classes/MyApp-Helper-Date.html#property_ampm"
         },                {
-            "fqsen": "\\DateTest",
-            "name": "DateTest",
-            "summary": "",
-            "url": "classes/DateTest.html"
-        },                {
-            "fqsen": "\\DateTest\u003A\u003Atest_usual\u0028\u0029",
-            "name": "test_usual",
-            "summary": "",
-            "url": "classes/DateTest.html#method_test_usual"
-        },                {
-            "fqsen": "\\DateTest\u003A\u003Atest_ja\u0028\u0029",
-            "name": "test_ja",
-            "summary": "",
-            "url": "classes/DateTest.html#method_test_ja"
-        },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division",
             "name": "Division",
             "summary": "",
@@ -1346,11 +1341,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_suffix_classification"
         },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Akana\u0028\u0029",
-            "name": "kana",
-            "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_kana"
-        },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Asource\u0028\u0029",
             "name": "source",
             "summary": "",
@@ -1360,11 +1350,6 @@ Search.appendIndex(
             "name": "url",
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_url"
-        },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Ageoshape\u0028\u0029",
-            "name": "geoshape",
-            "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_geoshape"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AhtmlAnchor\u0028\u0029",
             "name": "htmlAnchor",
@@ -1380,11 +1365,6 @@ Search.appendIndex(
             "name": "htmlBelongs",
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_htmlBelongs"
-        },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AhtmlClass\u0028\u0029",
-            "name": "htmlClass",
-            "summary": "",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_htmlClass"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AisValid\u0028\u0029",
             "name": "isValid",
@@ -1478,38 +1458,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\Iterator",
             "name": "Iterator",
-            "summary": "",
+            "summary": "\u914D\u5217\u306E\u30E9\u30C3\u30D1\u30FC\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-Iterator.html"
         },                {
-            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003AgetIterator\u0028\u0029",
+            "name": "getIterator",
             "summary": "",
-            "url": "classes/MyApp-Helper-Iterator.html#method___construct"
+            "url": "classes/MyApp-Helper-Iterator.html#method_getIterator"
         },                {
-            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Acurrent\u0028\u0029",
-            "name": "current",
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Aarray\u0028\u0029",
+            "name": "array",
             "summary": "",
-            "url": "classes/MyApp-Helper-Iterator.html#method_current"
+            "url": "classes/MyApp-Helper-Iterator.html#method_array"
         },                {
-            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Anext\u0028\u0029",
-            "name": "next",
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Acount\u0028\u0029",
+            "name": "count",
             "summary": "",
-            "url": "classes/MyApp-Helper-Iterator.html#method_next"
-        },                {
-            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Akey\u0028\u0029",
-            "name": "key",
-            "summary": "",
-            "url": "classes/MyApp-Helper-Iterator.html#method_key"
-        },                {
-            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Avalid\u0028\u0029",
-            "name": "valid",
-            "summary": "",
-            "url": "classes/MyApp-Helper-Iterator.html#method_valid"
-        },                {
-            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Arewind\u0028\u0029",
-            "name": "rewind",
-            "summary": "",
-            "url": "classes/MyApp-Helper-Iterator.html#method_rewind"
+            "url": "classes/MyApp-Helper-Iterator.html#method_count"
         },                {
             "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003Aget\u0028\u0029",
             "name": "get",
@@ -1526,10 +1491,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Helper-Iterator.html#method_dump"
         },                {
-            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003A\u0024array",
-            "name": "array",
+            "fqsen": "\\MyApp\\Helper\\Iterator\u003A\u003A\u0024source",
+            "name": "source",
             "summary": "",
-            "url": "classes/MyApp-Helper-Iterator.html#property_array"
+            "url": "classes/MyApp-Helper-Iterator.html#property_source"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree",
             "name": "Tree",
@@ -1541,70 +1506,60 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Model-Division-Tree.html#method___construct"
         },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Asuffixes\u0028\u0029",
-            "name": "suffixes",
-            "summary": "",
-            "url": "classes/MyApp-Model-Division-Tree.html#method_suffixes"
-        },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Apmodel\u0028\u0029",
             "name": "pmodel",
             "summary": "",
             "url": "classes/MyApp-Model-Division-Tree.html#method_pmodel"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "\u305D\u306E\u65E5\u4ED8\u306B\u5B58\u5728\u3059\u308B\u81EA\u6CBB\u4F53\u306E\u30C4\u30EA\u30FC\u3092\u751F\u6210\u3059\u308B",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_create"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003AaddSuffix\u0028\u0029",
+            "name": "addSuffix",
+            "summary": "\u81EA\u6CBB\u4F53\u306E\u7A2E\u5225\uFF08\u5E02\u753A\u6751\u306A\u3069\uFF09\u3092\u8FFD\u52A0",
+            "url": "classes/MyApp-Model-Division-Tree.html#method_addSuffix"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024suffixes",
+            "name": "suffixes",
+            "summary": "\u914D\u4E0B\u306B\u3042\u308B\u7A2E\u5225\u3054\u3068\u306E\u81EA\u6CBB\u4F53\u6570",
+            "url": "classes/MyApp-Model-Division-Tree.html#property_suffixes"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024self",
             "name": "self",
             "summary": "\u81EA\u5206\u81EA\u8EAB\u306E\u81EA\u6CBB\u4F53\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8",
             "url": "classes/MyApp-Model-Division-Tree.html#property_self"
         },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Amake_tree\u0028\u0029",
-            "name": "make_tree",
-            "summary": "",
-            "url": "classes/MyApp-Model-Division-Tree.html#method_make_tree"
-        },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Aget_by_suffix\u0028\u0029",
             "name": "get_by_suffix",
-            "summary": "",
+            "summary": "\u81EA\u6CBB\u4F53\u7A2E\u5225\u304B\u3089\u30C4\u30EA\u30FC\u5185\u306E\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Model-Division-Tree.html#method_get_by_suffix"
         },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Aget_subtree_by_division\u0028\u0029",
-            "name": "get_subtree_by_division",
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Apush\u0028\u0029",
+            "name": "push",
             "summary": "",
-            "url": "classes/MyApp-Model-Division-Tree.html#method_get_subtree_by_division"
+            "url": "classes/MyApp-Model-Division-Tree.html#method_push"
         },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Acreate\u0028\u0029",
-            "name": "create",
-            "summary": "",
-            "url": "classes/MyApp-Model-Division-Tree.html#method_create"
-        },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Acreate_subtree\u0028\u0029",
-            "name": "create_subtree",
-            "summary": "",
-            "url": "classes/MyApp-Model-Division-Tree.html#method_create_subtree"
+            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024ref",
+            "name": "ref",
+            "summary": "id_path\u0020\u306B\u8A72\u5F53\u3059\u308B\u30C4\u30EA\u30FC\u306E\u53C2\u7167",
+            "url": "classes/MyApp-Model-Division-Tree.html#property_ref"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Aadd\u0028\u0029",
             "name": "add",
-            "summary": "",
+            "summary": "\u30C4\u30EA\u30FC\u306B\u81EA\u6CBB\u4F53\u3092\u8FFD\u52A0\u3059\u308B",
             "url": "classes/MyApp-Model-Division-Tree.html#method_add"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003Adump\u0028\u0029",
             "name": "dump",
-            "summary": "",
+            "summary": "\u30C0\u30F3\u30D7\u51FA\u529B",
             "url": "classes/MyApp-Model-Division-Tree.html#method_dump"
-        },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024suffix_arr",
-            "name": "suffix_arr",
-            "summary": "\u914D\u4E0B\u306B\u3042\u308B\u7A2E\u5225\u3054\u3068\u306E\u81EA\u6CBB\u4F53\u6570",
-            "url": "classes/MyApp-Model-Division-Tree.html#property_suffix_arr"
         },                {
             "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024children",
             "name": "children",
             "summary": "\u914D\u4E0B\u306E\u81EA\u6CBB\u4F53",
             "url": "classes/MyApp-Model-Division-Tree.html#property_children"
-        },                {
-            "fqsen": "\\MyApp\\Model\\Division\\Tree\u003A\u003A\u0024ref",
-            "name": "ref",
-            "summary": "\u53C2\u7167\uFF1F\uFF1F",
-            "url": "classes/MyApp-Model-Division-Tree.html#property_ref"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\\Tree",
             "name": "Tree",
@@ -1641,6 +1596,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Table-Event.html#method_get_relative_division"
         },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003Aget_by_parent_division_and_date\u0028\u0029",
+            "name": "get_by_parent_division_and_date",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#method_get_by_parent_division_and_date"
+        },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024table_name_division",
             "name": "table_name_division",
             "summary": "",
@@ -1660,6 +1620,11 @@ Search.appendIndex(
             "name": "model_name_division",
             "summary": "",
             "url": "classes/MyApp-Table-Event.html#property_model_name_division"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_event",
+            "name": "model_name_event",
+            "summary": "",
+            "url": "classes/MyApp-Table-Event.html#property_model_name_event"
         },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_detail",
             "name": "model_name_detail",
@@ -1766,30 +1731,315 @@ Search.appendIndex(
             "summary": "\u30E6\u30FC\u30B6\u304B\u3089\u306E\u5165\u529B\u3092\u5F85\u3064",
             "url": "classes/MyApp-Helper-CLI.html#method_prompt"
         },                {
-            "fqsen": "\\MyApp\\Helper\\CLI\u003A\u003ASTDIN",
-            "name": "STDIN",
-            "summary": "\u6A19\u6E96\u5165\u529B",
-            "url": "classes/MyApp-Helper-CLI.html#constant_STDIN"
+            "fqsen": "\\MyApp\\Helper\\CLI\u003A\u003ApromptHidden\u0028\u0029",
+            "name": "promptHidden",
+            "summary": "\u30DD\u30B9\u30EF\u30FC\u30C9\u306A\u3069\u753B\u9762\u306B\u8868\u793A\u3057\u306A\u3044\u30D7\u30ED\u30F3\u30D7\u30C8",
+            "url": "classes/MyApp-Helper-CLI.html#method_promptHidden"
+        },                {
+            "fqsen": "\\MyApp\\Getter\\Division",
+            "name": "Division",
+            "summary": "\u81EA\u6CBB\u4F53\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306E\u5024\u3092\u53D6\u5F97\u30FB\u52A0\u5DE5\u3059\u308B\u3053\u3068\u306B\u7279\u5316\u3057\u305F\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Getter-Division.html"
+        },                {
+            "fqsen": "\\MyApp\\Getter\\Division\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-Getter-Division.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\Getter\\Division\u003A\u003A__get\u0028\u0029",
+            "name": "__get",
+            "summary": "",
+            "url": "classes/MyApp-Getter-Division.html#method___get"
+        },                {
+            "fqsen": "\\MyApp\\Getter\\Division\u003A\u003Asuffix\u0028\u0029",
+            "name": "suffix",
+            "summary": "",
+            "url": "classes/MyApp-Getter-Division.html#method_suffix"
+        },                {
+            "fqsen": "\\MyApp\\Getter\\Division\u003A\u003Abelongs\u0028\u0029",
+            "name": "belongs",
+            "summary": "",
+            "url": "classes/MyApp-Getter-Division.html#method_belongs"
+        },                {
+            "fqsen": "\\MyApp\\Getter\\Division\u003A\u003A\u0024model",
+            "name": "model",
+            "summary": "",
+            "url": "classes/MyApp-Getter-Division.html#property_model"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb",
+            "name": "Breadcrumb",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Breadcrumb.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003Adivision\u0028\u0029",
+            "name": "division",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Breadcrumb.html#method_division"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CountHash",
+            "name": "CountHash",
+            "summary": "\u547C\u3073\u51FA\u3055\u308C\u305F\u30AD\u30FC\u306E\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B\u30CF\u30C3\u30B7\u30E5",
+            "url": "classes/MyApp-Helper-CountHash.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CountHash\u003A\u003AgetIterator\u0028\u0029",
+            "name": "getIterator",
+            "summary": "",
+            "url": "classes/MyApp-Helper-CountHash.html#method_getIterator"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CountHash\u003A\u003Aarray\u0028\u0029",
+            "name": "array",
+            "summary": "",
+            "url": "classes/MyApp-Helper-CountHash.html#method_array"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CountHash\u003A\u003Acount\u0028\u0029",
+            "name": "count",
+            "summary": "",
+            "url": "classes/MyApp-Helper-CountHash.html#method_count"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CountHash\u003A\u003Aincrement\u0028\u0029",
+            "name": "increment",
+            "summary": "",
+            "url": "classes/MyApp-Helper-CountHash.html#method_increment"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CountHash\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "\u30B2\u30C3\u30BF\u30FC",
+            "url": "classes/MyApp-Helper-CountHash.html#method_get"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\CountHash\u003A\u003A\u0024source",
+            "name": "source",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30CF\u30C3\u30B7\u30E5",
+            "url": "classes/MyApp-Helper-CountHash.html#property_source"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\IteratorHash",
+            "name": "IteratorHash",
+            "summary": "Iterator\u0020\u3092\u914D\u4E0B\u306B\u6301\u3064\u30CF\u30C3\u30B7\u30E5",
+            "url": "classes/MyApp-Helper-IteratorHash.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\IteratorHash\u003A\u003AgetIterator\u0028\u0029",
+            "name": "getIterator",
+            "summary": "",
+            "url": "classes/MyApp-Helper-IteratorHash.html#method_getIterator"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\IteratorHash\u003A\u003Aarray\u0028\u0029",
+            "name": "array",
+            "summary": "",
+            "url": "classes/MyApp-Helper-IteratorHash.html#method_array"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\IteratorHash\u003A\u003Acount\u0028\u0029",
+            "name": "count",
+            "summary": "",
+            "url": "classes/MyApp-Helper-IteratorHash.html#method_count"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\IteratorHash\u003A\u003Apush\u0028\u0029",
+            "name": "push",
+            "summary": "",
+            "url": "classes/MyApp-Helper-IteratorHash.html#method_push"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\IteratorHash\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "\u30B2\u30C3\u30BF\u30FC",
+            "url": "classes/MyApp-Helper-IteratorHash.html#method_get"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\IteratorHash\u003A\u003A\u0024source",
+            "name": "source",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30CF\u30C3\u30B7\u30E5",
+            "url": "classes/MyApp-Helper-IteratorHash.html#property_source"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail",
+            "name": "Detail",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event-Detail.html"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event-Detail.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail\u003A\u003Ageoshape\u0028\u0029",
+            "name": "geoshape",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event-Detail.html#method_geoshape"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail\u003A\u003AhtmlClass\u0028\u0029",
+            "name": "htmlClass",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event-Detail.html#method_htmlClass"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail\u003A\u003AisSplit\u0028\u0029",
+            "name": "isSplit",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event-Detail.html#method_isSplit"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail\u003A\u003A\u0024model",
+            "name": "model",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event-Detail.html#property_model"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event",
+            "name": "Event",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event.html"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\u003A\u003Asource\u0028\u0029",
+            "name": "source",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event.html#method_source"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event\u003A\u003A\u0024model",
+            "name": "model",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Event.html#property_model"
+        },                {
+            "fqsen": "\\DivisionTest",
+            "name": "DivisionTest",
+            "summary": "",
+            "url": "classes/DivisionTest.html"
+        },                {
+            "fqsen": "\\DivisionTest\u003A\u003AsetUp\u0028\u0029",
+            "name": "setUp",
+            "summary": "",
+            "url": "classes/DivisionTest.html#method_setUp"
+        },                {
+            "fqsen": "\\DivisionTest\u003A\u003Atest_create\u0028\u0029",
+            "name": "test_create",
+            "summary": "",
+            "url": "classes/DivisionTest.html#method_test_create"
+        },                {
+            "fqsen": "\\CountHashTest",
+            "name": "CountHashTest",
+            "summary": "",
+            "url": "classes/CountHashTest.html"
+        },                {
+            "fqsen": "\\CountHashTest\u003A\u003Atest_init\u0028\u0029",
+            "name": "test_init",
+            "summary": "",
+            "url": "classes/CountHashTest.html#method_test_init"
+        },                {
+            "fqsen": "\\CountHashTest\u003A\u003Atest_set\u0028\u0029",
+            "name": "test_set",
+            "summary": "",
+            "url": "classes/CountHashTest.html#method_test_set"
+        },                {
+            "fqsen": "\\CountHashTest\u003A\u003Atest_get\u0028\u0029",
+            "name": "test_get",
+            "summary": "",
+            "url": "classes/CountHashTest.html#method_test_get"
+        },                {
+            "fqsen": "\\CountHashTest\u003A\u003Atest_count\u0028\u0029",
+            "name": "test_count",
+            "summary": "",
+            "url": "classes/CountHashTest.html#method_test_count"
+        },                {
+            "fqsen": "\\DateTest",
+            "name": "DateTest",
+            "summary": "",
+            "url": "classes/DateTest.html"
+        },                {
+            "fqsen": "\\DateTest\u003A\u003Atest_usual\u0028\u0029",
+            "name": "test_usual",
+            "summary": "",
+            "url": "classes/DateTest.html#method_test_usual"
+        },                {
+            "fqsen": "\\DateTest\u003A\u003Atest_ja\u0028\u0029",
+            "name": "test_ja",
+            "summary": "",
+            "url": "classes/DateTest.html#method_test_ja"
+        },                {
+            "fqsen": "\\IteratorHashTest",
+            "name": "IteratorHashTest",
+            "summary": "",
+            "url": "classes/IteratorHashTest.html"
+        },                {
+            "fqsen": "\\IteratorHashTest\u003A\u003Atest_init\u0028\u0029",
+            "name": "test_init",
+            "summary": "",
+            "url": "classes/IteratorHashTest.html#method_test_init"
+        },                {
+            "fqsen": "\\IteratorHashTest\u003A\u003Atest_set\u0028\u0029",
+            "name": "test_set",
+            "summary": "",
+            "url": "classes/IteratorHashTest.html#method_test_set"
+        },                {
+            "fqsen": "\\IteratorHashTest\u003A\u003Atest_count\u0028\u0029",
+            "name": "test_count",
+            "summary": "",
+            "url": "classes/IteratorHashTest.html#method_test_count"
+        },                {
+            "fqsen": "\\IteratorTest",
+            "name": "IteratorTest",
+            "summary": "",
+            "url": "classes/IteratorTest.html"
+        },                {
+            "fqsen": "\\IteratorTest\u003A\u003Atest_init\u0028\u0029",
+            "name": "test_init",
+            "summary": "",
+            "url": "classes/IteratorTest.html#method_test_init"
+        },                {
+            "fqsen": "\\IteratorTest\u003A\u003Atest_push\u0028\u0029",
+            "name": "test_push",
+            "summary": "",
+            "url": "classes/IteratorTest.html#method_test_push"
+        },                {
+            "fqsen": "\\IteratorTest\u003A\u003Atest_get\u0028\u0029",
+            "name": "test_get",
+            "summary": "",
+            "url": "classes/IteratorTest.html#method_test_get"
+        },                {
+            "fqsen": "\\IteratorTest\u003A\u003Atest_count\u0028\u0029",
+            "name": "test_count",
+            "summary": "",
+            "url": "classes/IteratorTest.html#method_test_count"
+        },                {
+            "fqsen": "\\TreeTest",
+            "name": "TreeTest",
+            "summary": "",
+            "url": "classes/TreeTest.html"
+        },                {
+            "fqsen": "\\TreeTest\u003A\u003AsetUp\u0028\u0029",
+            "name": "setUp",
+            "summary": "",
+            "url": "classes/TreeTest.html#method_setUp"
+        },                {
+            "fqsen": "\\TreeTest\u003A\u003Ainsert\u0028\u0029",
+            "name": "insert",
+            "summary": "",
+            "url": "classes/TreeTest.html#method_insert"
+        },                {
+            "fqsen": "\\TreeTest\u003A\u003Atest_create\u0028\u0029",
+            "name": "test_create",
+            "summary": "",
+            "url": "classes/TreeTest.html#method_test_create"
         },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\MyApp\\Helper\\CLI",
-            "name": "CLI",
+            "fqsen": "\\MyApp\\Getter",
+            "name": "Getter",
             "summary": "",
-            "url": "namespaces/myapp-helper-cli.html"
+            "url": "namespaces/myapp-getter.html"
+        },                {
+            "fqsen": "\\MyApp",
+            "name": "MyApp",
+            "summary": "",
+            "url": "namespaces/myapp.html"
         },                {
             "fqsen": "\\MyApp\\Helper",
             "name": "Helper",
             "summary": "",
             "url": "namespaces/myapp-helper.html"
         },                {
-            "fqsen": "\\MyApp",
-            "name": "MyApp",
+            "fqsen": "\\MyApp\\Helper\\CLI",
+            "name": "CLI",
             "summary": "",
-            "url": "namespaces/myapp.html"
+            "url": "namespaces/myapp-helper-cli.html"
         },                {
             "fqsen": "\\MyApp\\Helper\\Session",
             "name": "Session",
@@ -1815,6 +2065,11 @@ Search.appendIndex(
             "name": "PresentationModel",
             "summary": "",
             "url": "namespaces/myapp-presentationmodel.html"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Event",
+            "name": "Event",
+            "summary": "",
+            "url": "namespaces/myapp-presentationmodel-event.html"
         },                {
             "fqsen": "\\MyApp\\Table",
             "name": "Table",

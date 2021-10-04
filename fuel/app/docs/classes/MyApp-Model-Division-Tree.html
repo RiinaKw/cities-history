@@ -54,6 +54,7 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
@@ -78,6 +79,7 @@
                                     <li><a href="packages/App-Helper.html"><abbr title="\App\Helper">Helper</abbr></a></li>
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
+                                    <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -122,7 +124,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 </aside>
 
         
@@ -140,10 +142,10 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+                <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/MyApp-Model-Division-Tree.html#property_children">$children</a>
     <span>
-                &nbsp;: array&lt;string, <a href="classes/MyApp-Helper-Iterator.html"><abbr title="\MyApp\Helper\Iterator">Iterator</abbr></a>&gt;            </span>
+                &nbsp;: <a href="classes/MyApp-Helper-IteratorHash.html"><abbr title="\MyApp\Helper\IteratorHash">IteratorHash</abbr></a>            </span>
 </dt>
 <dd>配下の自治体</dd>
 
@@ -152,7 +154,7 @@
     <span>
                 &nbsp;: array&lt;string, <a href="classes/MyApp-Model-Division-Tree.html"><abbr title="\MyApp\Model\Division\Tree">Tree</abbr></a>&gt;            </span>
 </dt>
-<dd>参照？？</dd>
+<dd>id_path に該当するツリーの参照</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Model-Division-Tree.html#property_self">$self</a>
@@ -162,9 +164,9 @@
 <dd>自分自身の自治体オブジェクト</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/MyApp-Model-Division-Tree.html#property_suffix_arr">$suffix_arr</a>
+    <a href="classes/MyApp-Model-Division-Tree.html#property_suffixes">$suffixes</a>
     <span>
-                &nbsp;: array&lt;string, int&gt;            </span>
+                &nbsp;: <a href="classes/MyApp-Helper-CountHash.html"><abbr title="\MyApp\Helper\CountHash">CountHash</abbr></a>            </span>
 </dt>
 <dd>配下にある種別ごとの自治体数</dd>
 
@@ -180,28 +182,21 @@
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd></dd>
+<dd>その日付に存在する自治体のツリーを生成する</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Model-Division-Tree.html#method_dump">dump()</a>
     <span>
                         &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>ダンプ出力</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Model-Division-Tree.html#method_get_by_suffix">get_by_suffix()</a>
     <span>
-                        &nbsp;: <a href="classes/MyApp-Helper-Iterator.html"><abbr title="\MyApp\Helper\Iterator">Iterator</abbr></a>|null    </span>
+                        &nbsp;: <abbr title="\MyApp\Model\Division\MyApp\Helper\IteratorHash">IteratorHash</abbr>|null    </span>
 </dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Model-Division-Tree.html#method_make_tree">make_tree()</a>
-    <span>
-                        &nbsp;: self    </span>
-</dt>
-<dd></dd>
+<dd>自治体種別からツリー内の自治体一覧を取得</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Model-Division-Tree.html#method_pmodel">pmodel()</a>
@@ -215,35 +210,42 @@
     <span>
                         &nbsp;: <a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>自分自身の自治体オブジェクトを取得</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Model-Division-Tree.html#method_suffixes">suffixes()</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>自治体種別の一覧を取得</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/MyApp-Model-Division-Tree.html#method_add">add()</a>
     <span>
                         &nbsp;: void    </span>
 </dt>
+<dd>ツリーに自治体を追加する</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MyApp-Model-Division-Tree.html#method_addSuffix">addSuffix()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>自治体の種別（市町村など）を追加</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MyApp-Model-Division-Tree.html#method_push">push()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MyApp-Model-Division-Tree.html#method_create_subtree">create_subtree()</a>
+    <a href="classes/MyApp-Model-Division-Tree.html#method_ref">ref()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MyApp-Model-Division-Tree.html#method_get_subtree_by_division">get_subtree_by_division()</a>
-    <span>
-                        &nbsp;: self|null    </span>
-</dt>
-<dd></dd>
+<dd>ツリーを作成し、参照に追加</dd>
 
         </dl>
 
@@ -261,7 +263,7 @@
         class="
             phpdocumentor-element
             -property
-            -protected
+            -public
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_children">
@@ -273,16 +275,16 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 </aside>
 
         <p class="phpdocumentor-summary">配下の自治体</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string, <a href="classes/MyApp-Helper-Iterator.html"><abbr title="\MyApp\Helper\Iterator">Iterator</abbr></a>&gt;</span>
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/MyApp-Helper-IteratorHash.html"><abbr title="\MyApp\Helper\IteratorHash">IteratorHash</abbr></a></span>
     <span class="phpdocumentor-signature__name">$children</span>
-     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -294,7 +296,7 @@
             phpdocumentor-element
             -property
             -protected
-                                                        "
+            -static                                            "
 >
     <h4 class="phpdocumentor-element__name" id="property_ref">
         $ref
@@ -305,14 +307,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 </aside>
 
-        <p class="phpdocumentor-summary">参照？？</p>
+        <p class="phpdocumentor-summary">id_path に該当するツリーの参照</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string, <a href="classes/MyApp-Model-Division-Tree.html"><abbr title="\MyApp\Model\Division\Tree">Tree</abbr></a>&gt;</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string, <a href="classes/MyApp-Model-Division-Tree.html"><abbr title="\MyApp\Model\Division\Tree">Tree</abbr></a>&gt;</span>
     <span class="phpdocumentor-signature__name">$ref</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
@@ -337,7 +339,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 </aside>
 
         <p class="phpdocumentor-summary">自分自身の自治体オブジェクト</p>
@@ -360,25 +362,25 @@
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_suffix_arr">
-        $suffix_arr
-        <a href="classes/MyApp-Model-Division-Tree.html#property_suffix_arr" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_suffixes">
+        $suffixes
+        <a href="classes/MyApp-Model-Division-Tree.html#property_suffixes" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 </aside>
 
         <p class="phpdocumentor-summary">配下にある種別ごとの自治体数</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string, int&gt;</span>
-    <span class="phpdocumentor-signature__name">$suffix_arr</span>
-     = <span class="phpdocumentor-signature__default-value">[]</span></code>
+        <span class="phpdocumentor-signature__type"><a href="classes/MyApp-Helper-CountHash.html"><abbr title="\MyApp\Helper\CountHash">CountHash</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$suffixes</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -405,7 +407,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 </aside>
 
     
@@ -447,15 +449,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">その日付に存在する自治体のツリーを生成する</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">create</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$date</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">create</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$date</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -463,14 +467,18 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>ツリーの親となる自治体オブジェクト</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$date</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                            </dt>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>日付、指定がなければ過去に存在したすべての自治体をツリーに含める</p>
+</section>
+
             </dd>
             </dl>
 
@@ -479,7 +487,8 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">self</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>生成されたツリー</p>
+</section>
 
     
 </article>
@@ -496,15 +505,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">145</span>
+    <span class="phpdocumentor-element-found-in__line">190</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ダンプ出力</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">dump</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$depth</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">2</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -512,7 +523,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">2</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>インデントの深さ</p>
+</section>
+
             </dd>
             </dl>
 
@@ -538,15 +551,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">108</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">自治体種別からツリー内の自治体一覧を取得</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">get_by_suffix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Helper-Iterator.html"><abbr title="\MyApp\Helper\Iterator">Iterator</abbr></a>|null</span></code>
+                <span class="phpdocumentor-signature__name">get_by_suffix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\MyApp\Model\Division\MyApp\Helper\IteratorHash">IteratorHash</abbr>|null</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -554,58 +569,19 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>自治体種別</p>
+</section>
+
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Helper-Iterator.html"><abbr title="\MyApp\Helper\Iterator">Iterator</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\MyApp\Model\Division\MyApp\Helper\IteratorHash">IteratorHash</abbr>|null</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_make_tree">
-        make_tree()
-        <a href="classes/MyApp-Model-Division-Tree.html#method_make_tree" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">71</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">make_tree</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$divisions</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$divisions</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>自治体の一覧</p>
+</section>
 
     
 </article>
@@ -622,7 +598,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 </aside>
 
     
@@ -654,22 +630,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">98</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">自分自身の自治体オブジェクトを取得</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">self</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>自治体オブジェクト</p>
+</section>
 
     
 </article>
@@ -686,22 +665,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">56</span>
+    <span class="phpdocumentor-element-found-in__line">89</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">自治体種別の一覧を取得</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">suffixes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>種別一覧</p>
+</section>
 
     
 </article>
@@ -718,15 +700,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">136</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ツリーに自治体を追加する</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">add</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                <span class="phpdocumentor-signature__name">add</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -734,12 +718,102 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>追加する自治体オブジェクト</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addSuffix">
+        addSuffix()
+        <a href="classes/MyApp-Model-Division-Tree.html#method_addSuffix" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+</aside>
+
+        <p class="phpdocumentor-summary">自治体の種別（市町村など）を追加</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">addSuffix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$type</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>自治体種別</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_push">
+        push()
+        <a href="classes/MyApp-Model-Division-Tree.html#method_push" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">113</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">push</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffix</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">self&nbsp;</span><span class="phpdocumentor-signature__argument__name">$subtree</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$suffix</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$name</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$subtree</span>
+                : <span class="phpdocumentor-signature__argument__return-type">self</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -760,22 +834,24 @@
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_create_subtree">
-        create_subtree()
-        <a href="classes/MyApp-Model-Division-Tree.html#method_create_subtree" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_ref">
+        ref()
+        <a href="classes/MyApp-Model-Division-Tree.html#method_ref" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">97</span>
+    <span class="phpdocumentor-element-found-in__line">123</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ツリーを作成し、参照に追加</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">create_subtree</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">ref</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -783,7 +859,9 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>ツリーの元となる自治体オブジェクト</p>
+</section>
+
             </dd>
             </dl>
 
@@ -792,49 +870,8 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">self</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_subtree_by_division">
-        get_subtree_by_division()
-        <a href="classes/MyApp-Model-Division-Tree.html#method_get_subtree_by_division" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Model/Division/Tree.php"><a href="files/fuel-app-myapp-model-division-tree.html"><abbr title="fuel/app/MyApp/Model/Division/Tree.php">Tree.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">84</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">get_subtree_by_division</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self|null</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$division</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self|null</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>生成されたツリー</p>
+</section>
 
     
 </article>
