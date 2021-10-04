@@ -5,6 +5,8 @@ use MyApp\Model\Division\Tree;
 
 class TreeTest extends TestCase
 {
+	// phpcs:disable PSR2.Methods.FunctionCallSignature.SpaceAfterOpenBracket
+	// phpcs:disable Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma
 	protected function setUp(): void
 	{
 		// Fuel のコアを読み込む
@@ -61,59 +63,45 @@ class TreeTest extends TestCase
 
 	public function test_create()
 	{
-		$gunma = $this->insert(
+		$gunma = Model_Division::create2(
 			[
 				'fullname' => '群馬県',
-				'name' => '群馬',
-				'suffix' => '県',
 			],
 			null
 		);
-		$isesaki = $this->insert(
+		$isesaki = Model_Division::create2(
 			[
 				'fullname' => '伊勢崎市',
-				'name' => '伊勢崎',
-				'suffix' => '市',
 			],
 			$gunma
 		);
-		$sawa = $this->insert(
+		$sawa = Model_Division::create2(
 			[
 				'fullname' => '佐波郡',
-				'name' => '佐波',
-				'suffix' => '郡',
 			],
 			$gunma
 		);
-		$akabori = $this->insert(
+		Model_Division::create2(
 			[
 				'fullname' => '赤堀町',
-				'name' => '赤堀',
-				'suffix' => '町',
 			],
 			$sawa
 		);
-		$sakai = $this->insert(
+		Model_Division::create2(
 			[
 				'fullname' => '境町',
-				'name' => '境',
-				'suffix' => '町',
 			],
 			$sawa
 		);
-		$azuma = $this->insert(
+		Model_Division::create2(
 			[
 				'fullname' => '東村',
-				'name' => '東',
-				'suffix' => '村',
 			],
 			$sawa
 		);
-		$tamamura = $this->insert(
+		Model_Division::create2(
 			[
 				'fullname' => '玉村町',
-				'name' => '玉村',
-				'suffix' => '町',
 			],
 			$sawa
 		);

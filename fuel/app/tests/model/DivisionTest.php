@@ -4,6 +4,8 @@ use PHPUnit\Framework\TestCase;
 
 class DivisionTest extends TestCase
 {
+	// phpcs:disable PSR2.Methods.FunctionCallSignature.SpaceAfterOpenBracket
+	// phpcs:disable Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma
 	protected function setUp(): void
 	{
 		// Fuel のコアを読み込む
