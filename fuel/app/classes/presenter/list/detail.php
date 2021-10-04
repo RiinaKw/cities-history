@@ -52,7 +52,7 @@ class Presenter_List_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$getter = $getter;
+		$getter = $this->division->getter();
 
 		$this->search_path = $getter->search_path;
 		$this->search_path_kana = $getter->search_path_kana;

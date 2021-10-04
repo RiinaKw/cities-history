@@ -6,7 +6,7 @@
 
 namespace MyApp\Helper;
 
-class SuffixHash implements \IteratorAggregate
+class CountHash implements \IteratorAggregate
 {
 	/**
 	 * 管理するハッシュ

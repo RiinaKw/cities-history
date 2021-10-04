@@ -7,7 +7,7 @@
 namespace MyApp\Model\Division;
 
 use MyApp\Helper\Iterator;
-use MyApp\Helper\SuffixHash;
+use MyApp\Helper\CountHash;
 use MyApp\Helper\IteratorHash;
 use Model_Division;
 use MyApp\Table\Division as DivisionTable;
@@ -23,7 +23,7 @@ class Tree
 
 	/**
 	 * 配下にある種別ごとの自治体数
-	 * @var SuffixHash
+	 * @var CountHash
 	 */
 	protected $suffixes = null;
 
@@ -45,7 +45,7 @@ class Tree
 
 		$this->self = $division;
 		$this->children = new IteratorHash();
-		$this->suffixes = new SuffixHash();
+		$this->suffixes = new CountHash();
 		$this->unknown = new Iterator();
 
 		static::$ref[$division->id_path] = $this;
