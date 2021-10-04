@@ -8,7 +8,10 @@ namespace MyApp\Helper;
 
 use MyApp\Helper\Iterator;
 
-class IteratorHash implements \IteratorAggregate
+/**
+ * Iterator を配下に持つハッシュ
+ */
+class IteratorHash implements \IteratorAggregate, \Countable
 {
 	/**
 	 * 管理するハッシュ
@@ -24,6 +27,11 @@ class IteratorHash implements \IteratorAggregate
 	public function array()
 	{
 		return $this->source;
+	}
+
+	public function count(): int
+	{
+		return count($this->source);
 	}
 
 	public function push(string $key, $obj)
