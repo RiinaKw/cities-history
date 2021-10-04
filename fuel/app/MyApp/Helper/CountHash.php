@@ -6,7 +6,10 @@
 
 namespace MyApp\Helper;
 
-class CountHash implements \IteratorAggregate
+/**
+ * 呼び出されたキーの回数をカウントするハッシュ
+ */
+class CountHash implements \IteratorAggregate, \Countable
 {
 	/**
 	 * 管理するハッシュ
@@ -17,6 +20,16 @@ class CountHash implements \IteratorAggregate
 	public function getIterator()
 	{
 		return new \ArrayIterator($this->source);
+	}
+
+	public function array(): array
+	{
+		return $this->source;
+	}
+
+	public function count(): int
+	{
+		return count($this->source);
 	}
 
 	public function increment(string $key)
@@ -35,10 +48,5 @@ class CountHash implements \IteratorAggregate
 	public function get(string $key): int
 	{
 		return $this->source[$key] ?? 0;
-	}
-
-	public function array(): array
-	{
-		return $this->source;
 	}
 }
