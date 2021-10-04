@@ -6,57 +6,41 @@
 
 namespace MyApp\Helper;
 
-class Iterator implements \Iterator
+class Iterator implements \IteratorAggregate
 {
-	protected $array = [];
+	protected $source = [];
 
-	public function __construct()
-	{
-		reset($this->array);
+	public function getIterator() {
+		return new \ArrayIterator($this->source);
 	}
 
-	public function current()
+	public function array(): array
 	{
-		return current($this->array);
+		return $this->source;
 	}
 
-	public function next()
+	public function count(): int
 	{
-		next($this->array);
-	}
-
-	public function key()
-	{
-		return key($this->array);
-	}
-
-	public function valid()
-	{
-		return $this->key() !== null;
-	}
-
-	public function rewind()
-	{
-		reset($this->array);
+		return count($this->source);
 	}
 
 	public function get($key)
 	{
-		return $this->array[$key] ?? null;
+		return $this->source[$key] ?? null;
 	}
 
 	public function push($item, $key = null)
 	{
 		if ($key === null) {
-			$this->array[] = $item;
+			$this->source[] = $item;
 		} else {
-			$this->array[$key] = $item;
+			$this->source[$key] = $item;
 		}
 	}
 
 	public function dump($depth = 2)
 	{
-		foreach ($this->array as $item) {
+		foreach ($this->source as $item) {
 			$item->dump($depth);
 		}
 	}

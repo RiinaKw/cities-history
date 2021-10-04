@@ -21,11 +21,16 @@ class Division
 	{
 		switch ($this->model->suffix) {
 			default:
-				return $this->model->suffix;
-
-			case '町':
-			case '村':
 				return '町村';
+
+			case '都':
+			case '道':
+			case '府':
+			case '県':
+			case '市':
+			case '区':
+			case '郡':
+				return $this->model->suffix;
 
 			case '支庁':
 			case '振興局':

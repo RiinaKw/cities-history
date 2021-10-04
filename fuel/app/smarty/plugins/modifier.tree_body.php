@@ -13,6 +13,7 @@ use  MyApp\Helper\Iterator;
  * @param  string                $indentType   インデントタイプ( sp or tab)
  * @return string  出力 HTML
  */
+
 function smarty_modifier_tree_body(
 	Iterator $iterator,
 	int $indentWidth = 0,
@@ -31,7 +32,7 @@ function smarty_modifier_tree_body(
 	$indent = str_repeat($char, $indentWidth);
 
 	$smarty = View_Smarty::forge('components/smarty_plugins/tree_body.tpl');
-	$smarty->iterator = $iterator;
+	$smarty->iterator = $iterator->array();
 	$smarty->indentType = $indentType;
 	$html = rtrim((string)$smarty);
 	return str_replace("\n", "\n" . $indent, $html);

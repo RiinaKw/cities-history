@@ -48,6 +48,9 @@ class Controller_List extends Controller_Base
 		}
 
 		$tree = Tree::create($top_division, $date);
+		//$tree->dump();
+		//var_dump($tree);
+		//exit;
 
 		// create Presenter object
 		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');

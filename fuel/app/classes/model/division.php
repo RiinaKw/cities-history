@@ -56,11 +56,18 @@ class Model_Division extends Model_Base
 	}
 	// function validation()
 
+	public function parent(): ?self
+	{
+		$path = dirname($this->id_path) . '/';
+		$result = static::query()->where('id_path', $path)->get();
+		return count($result) ? array_pop($result) : null;
+	}
+
 	/**
 	 * パス形式の ID を分割し、各 ID ごとにコールバックを実行
 	 * @param callable $callback  コールバック関数
 	 */
-	protected function id_chain(callable $callback): void
+	public function id_chain(callable $callback): void
 	{
 		$id_arr = explode('/', $this->id_path);
 		foreach ($id_arr as $id) {

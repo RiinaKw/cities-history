@@ -28,7 +28,7 @@
 					</li>
 {{foreach from=$reference_dates item=cur_date}}
 					<li class="{{if $year == $cur_date.year && $month == $cur_date.month && $day == $cur_date.day}}active{{/if}}">
-						<a href="{{$cur_date.url|escape}}">
+						<a href="{{$cur_date.url}}">
 							{{$cur_date.date|date_format2:'Y(Jk)-m-d'}} - {{$cur_date.description|escape}}
 						</a>
 					</li>
