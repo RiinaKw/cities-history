@@ -85,7 +85,7 @@ class Model_User extends Model_Base
 	public static function login($login_id, $password)
 	{
 		// get record matching $login_id
-		$admin = self::find_one_by_login_id($login_id);
+		$admin = static::query()->where('login_id', $login_id)->get_one();
 		if ($admin) {
 			// is password matches?
 			$password_match = password_verify($password, $admin->password_crypt);
