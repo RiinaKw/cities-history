@@ -87,6 +87,12 @@ class Division
 						return $division->suffix_kana;
 					});
 			},
+			'parent_path' => function () {
+				$path = $this->path;
+				if (strpos($path, '/') !== false) {
+					return dirname($path);
+				}
+			},
 			'belongs_path' => function () {
 				$division = $this->belongs(function ($division) {
 					return $division->get_path();

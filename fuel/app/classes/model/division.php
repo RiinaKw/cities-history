@@ -70,8 +70,7 @@ class Model_Division extends Model_Base
 	public function parent(): ?self
 	{
 		$path = dirname($this->id_path) . '/';
-		$result = static::query()->where('id_path', $path)->get();
-		return count($result) ? array_pop($result) : null;
+		return static::query()->where('id_path', $path)->get_one();
 	}
 
 	/**
