@@ -97,7 +97,7 @@ class Controller_Auth extends Controller_Base
 						'target' => 'login',
 						'target_id' => null,
 					]);
-					Session::set('user_id', $user->id);
+					$this->session_user->set($user);
 					Response::redirect($redirect);
 				} else {
 					// wrong input
@@ -126,6 +126,9 @@ class Controller_Auth extends Controller_Base
 	public function action_logout()
 	{
 		$redirect = Input::get('url');
+		if (! $redirect) {
+			$redirect = Helper_Uri::create('top');
+		}
 		if ($this->user()) {
 			// forget remember-me
 			$user = $this->user();
@@ -136,9 +139,8 @@ class Controller_Auth extends Controller_Base
 		// delete remember-me cookie
 		Cookie::delete(self::COOKIE_REMEMBER_ME);
 
-		// delete all sessions
-		Session::delete('user_id');
-		Session::delete('user_data');
+		// delete sessions
+		$this->session_user->set(null);
 
 		// redirect to previous page
 		Response::redirect($redirect);

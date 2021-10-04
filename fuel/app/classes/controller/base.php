@@ -16,8 +16,7 @@ abstract class Controller_Base extends Controller
 
 	protected function user(): ?Model_User
 	{
-		$user_id = $this->session_user->get();
-		return $user_id ? Model_User::find_by_pk($user_id) : null;
+		return $this->session_user->get();
 	}
 
 	protected function requireUser(): void
@@ -50,7 +49,7 @@ abstract class Controller_Base extends Controller
 		Config::load('uri', true);
 		Config::load('common', true);
 
-		$this->session_user = new SessionItem('user_id');
+		$this->session_user = new SessionItem('user');
 	}
 	// function before()
 
