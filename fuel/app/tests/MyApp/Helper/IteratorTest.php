@@ -34,6 +34,8 @@ class IteratorTest extends TestCase
 	public function test_count()
 	{
 		$iterator = new Iterator();
+		$this->assertSame(0, count($iterator));
+
 		$iterator->push(1);
 		$iterator->push(2, 'foo');
 
