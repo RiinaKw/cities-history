@@ -33,8 +33,6 @@ class Presenter_Division_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$this->belongs_division = $this->division->belongs();
-
 		// meta description
 		$description = "{$this->path} ({$this->path_kana}) {$getter->search_path} {$this->search_path_kana}";
 

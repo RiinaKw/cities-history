@@ -5,11 +5,12 @@
 				<div class="float-left">
 					<h2>
 						{{$path|escape}}
-{{if $belongs_division}}
+{{if $division->belongs}}
+{{assign var=div value=$division->belongs}}
 						{{strip}}
 							（
-							<a href="{{$belongs_division->pmodel()->url()}}">
-								{{$belongs_division->fullname|escape}}
+							<a href="{{$div->pmodel()->url()}}">
+								{{$div->getter()->fullname|escape}}
 							</a>
 							）
 						{{/strip}}

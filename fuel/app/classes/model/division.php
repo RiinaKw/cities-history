@@ -20,6 +20,16 @@ class Model_Division extends Model_Base
 
 	protected static $_has_many = ['event_details'];
 
+	protected static $_belongs_to = [
+		'belongs' => [
+			'key_from' => 'belongs_division_id',
+			'model_to' => 'Model_Division',
+			'key_to' => 'id',
+			'cascade_save' => false,
+			'cascade_delete' => false,
+		]
+	];
+
 	public const RE_SUFFIX =
 		'/^(?<place>.+?)'
 		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
@@ -87,7 +97,7 @@ class Model_Division extends Model_Base
 			}
 		}
 	}
-
+/*
 	public function belongs(): ?self
 	{
 		if ($this->belongs_division_id) {
@@ -95,7 +105,7 @@ class Model_Division extends Model_Base
 		}
 		return null;
 	}
-
+*/
 	/**
 	 * 必要なパラメータが設定されている場合のみコールバックを実行
 	 *
