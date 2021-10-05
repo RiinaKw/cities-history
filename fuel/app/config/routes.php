@@ -7,6 +7,8 @@ return array(
 	'_404_'   => 'error/404',    // The main 404 route
 	'_500_'   => 'error/500',    // The main 500 route
 
+	'session_clear'  => 'top/session_clear',
+
 	'login'    => 'auth/login',
 	'logout'   => 'auth/logout',
 

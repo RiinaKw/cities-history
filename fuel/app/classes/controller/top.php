@@ -19,5 +19,14 @@ class Controller_Top extends Controller_Base
 		return $content;
 	}
 	// function action_index()
+
+	public function action_session_clear()
+	{
+		$division = Session::get('division');
+		Session::destroy();
+		Session::set('division', $division);
+
+		Response::redirect($division);
+	}
 }
 // class Controller_Top
