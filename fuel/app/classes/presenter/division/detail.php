@@ -7,6 +7,13 @@ class Presenter_Division_Detail extends Presenter_Layout
 {
 	public function view()
 	{
+		$getter = $this->division->getter();
+
+		$this->path = $getter->path;
+		$this->path_kana = $getter->path_kana;
+		$this->search_path = $getter->search_path;
+		$this->search_path_kana = $getter->search_path_kana;
+
 		$this->url_detail = Helper_Uri::create('list.division', ['path' => $this->path]);
 		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $this->path]);
 		$this->url_children_timeline = Helper_Division::get_children_url($this->path);
@@ -26,18 +33,10 @@ class Presenter_Division_Detail extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$getter = $this->division->getter();
-
-		$path_kana = $getter->path_kana;
-		$this->path_kana = $path_kana;
-
-		$this->search_path = $getter->search_path;
-		$this->search_path_kana = $getter->search_path_kana;
-
-		$this->belongs_division = Model_Division::find($this->division->belongs_division_id);
+		$this->belongs_division = $this->division->belongs();
 
 		// meta description
-		$description = "{$this->path} ({$path_kana})) {$getter->search_path} {$getter->search_path_kana}";
+		$description = "{$this->path} ({$this->path_kana}) {$getter->search_path} {$this->search_path_kana}";
 
 		foreach ($this->events as $event) {
 			$date = MyApp\Helper\Date::format('Y(Jk)-m-d', $event->date);
@@ -72,7 +71,6 @@ class Presenter_Division_Detail extends Presenter_Layout
 		}
 		// foreach ($events as $event)
 
-		$this->title = $this->path;
 		$this->description = $description;
 		$this->og_type = 'article';
 		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::division($this->division);

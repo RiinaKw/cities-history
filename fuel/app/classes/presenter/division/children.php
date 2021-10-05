@@ -7,6 +7,13 @@ class Presenter_Division_Children extends Presenter_Layout
 {
 	public function view()
 	{
+		$getter = $this->division->getter();
+
+		$this->path = $getter->path;
+		$this->path_kana = $getter->path_kana;
+		$this->search_path = $getter->search_path;
+		$this->search_path_kana = $getter->search_path_kana;
+
 		$this->url_detail = Helper_Uri::create('list.division', ['path' => $this->path]);
 		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $this->path]);
 		$this->url_children_timeline = Helper_Division::get_children_url($this->path);
@@ -26,18 +33,7 @@ class Presenter_Division_Children extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$breadcrumbs = Helper_Breadcrumb::breadcrumb($this->division);
-		$this->path_kana = $this->division->pmodel()->kana();
-
-		$this->search_path = $this->division->make_search_path();
-		$this->search_path_kana = $this->division->make_search_path_kana();
-
-		if ($this->belongs_division) {
-			$this->belongs_division->url_detail = Helper_Uri::create(
-				'division.detail',
-				['path' => $this->belongs_division->get_path()]
-			);
-		}
+		$this->belongs_division = $this->division->belongs();
 
 		// meta description
 		//$description = "{$this->path} ({$path_kana})";
@@ -49,10 +45,12 @@ class Presenter_Division_Children extends Presenter_Layout
 		}
 		*/
 
-		$this->title = $this->path . 'の所属自治体タイムライン';
-		$this->description = "{$this->path}の所属自治体タイムライン {$this->search_path} $this->search_path_kana";
+		$title = $this->path . 'の所属自治体タイムライン';
+
+		$this->title = $title;
+		$this->description = "{$title} {$this->search_path} {$this->search_path_kana}";
 		$this->og_type = 'article';
-		$this->breadcrumbs = $breadcrumbs;
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::division($this->division);
 		$this->show_share = true;
 
 		$this->url_add = Helper_Uri::create('division.add');

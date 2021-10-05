@@ -39,18 +39,7 @@ class Division
 		$type = $arr[$suffix];
 		return is_string($type) ? $type : $suffix;
 	}
-/*
-	public function kana()
-	{
-		$ids = explode('/', substr($this->model->id_path, 0, -1));
-		$kana = '';
-		foreach ($ids as $id) {
-			$parent = Model_Division::find($id);
-			$kana .= ($kana ? '/' : '') . $parent->fullname_kana;
-		}
-		return $kana;
-	}
-*/
+
 	public function source(): string
 	{
 		return \Helper_Html::wiki($this->model->source);

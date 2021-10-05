@@ -68,9 +68,8 @@ class Controller_Division extends Controller_Base
 		// create Presenter object
 		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
 		$content->current = 'detail';
-		$content->path = $division->get_path();
+		$content->title = $division->getter()->path;
 		$content->division = $division;
-		$content->belongs_division = $division->belongs();
 		$content->events = $events;
 
 		return $content;
@@ -90,9 +89,8 @@ class Controller_Division extends Controller_Base
 		//$content = Presenter::forge('division/children', 'view', null, 'timeline.tpl');
 		$content = Presenter::forge('division/detail', 'view', null, 'timeline.tpl');
 		$content->current = $label;
-		$content->path = $division->get_path();
+		$content->title = $division->getter()->path . "の所属自治体タイムライン ({$label})";
 		$content->division = $division;
-		$content->belongs_division = $division->belongs();
 		$content->events = $events;
 
 		return $content;

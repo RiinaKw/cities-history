@@ -88,25 +88,6 @@ class Model_Division extends Model_Base
 		}
 	}
 
-	public function get_path(): string
-	{
-		if ($this->path) {
-			return $this->path;
-		} else {
-			return $this->make_path();
-		}
-	}
-	// function get_path()
-
-	public function get_parent_path(): ?string
-	{
-		$path = $this->get_path();
-		if (strpos($path, '/') !== false) {
-			return dirname($path);
-		}
-		return null;
-	}
-
 	public function belongs(): ?self
 	{
 		if ($this->belongs_division_id) {
@@ -131,8 +112,8 @@ class Model_Division extends Model_Base
 
 	public static function create2(array $params, Model_Division $parent = null): self
 	{
-		$name = $params['fullname'];
-		preg_match(static::RE_SUFFIX, $name, $matches);
+		$fullname = $params['fullname'];
+		preg_match(static::RE_SUFFIX, $fullname, $matches);
 		if (! $matches) {
 			$matches = [
 				'place' => $name,
@@ -149,7 +130,7 @@ class Model_Division extends Model_Base
 				'suffix_kana' => '',
 				'search_path' => '',
 				'search_path_kana' => '',
-				'fullname' => '',
+				'fullname' => $fullname,
 				'path' => '',
 			],
 			$params
@@ -157,7 +138,6 @@ class Model_Division extends Model_Base
 
 
 		$division = Model_Division::forge($params);
-		$division->path = $division->fullname;
 		$division->save();
 
 		$division->id_path = ($parent ? $parent->id_path : '') . $division->id . '/';

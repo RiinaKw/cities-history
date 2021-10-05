@@ -43,7 +43,7 @@
 
 			<nav class="timeline-nav">
 				<ul>
-					<li class="{{if $current == 'detail'}}active{{/if}}">
+					<li class="{{if $current === 'detail'}}active{{/if}}">
 						<a href="{{$url_detail_timeline}}">自治体タイムライン</a>
 					</li>
 					<li class="">
