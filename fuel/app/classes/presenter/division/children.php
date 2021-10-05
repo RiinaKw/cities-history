@@ -8,18 +8,14 @@ class Presenter_Division_Children extends Presenter_Layout
 	public function view()
 	{
 		$getter = $this->division->getter();
+		$path = $getter->path;
 
-		$this->path = $getter->path;
-		$this->path_kana = $getter->path_kana;
-		$this->search_path = $getter->search_path;
-		$this->search_path_kana = $getter->search_path_kana;
-
-		$this->url_detail = Helper_Uri::create('list.division', ['path' => $this->path]);
-		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $this->path]);
-		$this->url_children_timeline = Helper_Division::get_children_url($this->path);
+		$this->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
+		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
+		$this->url_children_timeline = Helper_Division::get_children_url($path);
 		$this->url_add = Helper_Uri::create('division.add');
-		$this->url_edit = Helper_Uri::create('division.edit', ['path' => $this->path]);
-		$this->url_delete = Helper_Uri::create('division.delete', ['path' => $this->path]);
+		$this->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
+		$this->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
 		$this->url_event_detail = Helper_Uri::create('event.detail');
 		$this->url_event_add = Helper_Uri::create('event.add');
 		$this->url_event_edit = Helper_Uri::create('event.edit');
@@ -34,7 +30,7 @@ class Presenter_Division_Children extends Presenter_Layout
 		$this->components = $components;
 
 		// meta description
-		//$description = "{$this->path} ({$path_kana})";
+		//$description = "{$path} ({$path_kana})";
 		/*
 		foreach ($this->events as $event) {
 			$event_parent = Model_Event::find_by_pk($event->event_id);
@@ -43,10 +39,10 @@ class Presenter_Division_Children extends Presenter_Layout
 		}
 		*/
 
-		$title = $this->path . 'の所属自治体タイムライン';
+		$title = $path . 'の所属自治体タイムライン';
 
 		$this->title = $title;
-		$this->description = "{$title} {$this->search_path} {$this->search_path_kana}";
+		$this->description = "{$title} {$getter->search_path} {$getter->search_path_kana}";
 		$this->og_type = 'article';
 		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::division($this->division);
 		$this->show_share = true;

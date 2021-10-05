@@ -1,27 +1,26 @@
 {{extends file='layout.tpl'}}
 
 {{block name=content}}
+{{assign var=pmodel value=$division->pmodel()}}
+{{assign var=getter value=$division->getter()}}
 			<header class="clearfix">
 				<div class="float-left">
 					<h2>
-						{{$path|escape}}
+						{{$getter->path|escape}}
 {{if $division->belongs}}
-{{assign var=div value=$division->belongs}}
 						{{strip}}
 							（
-							<a href="{{$div->pmodel()->url()}}">
-								{{$div->getter()->fullname|escape}}
-							</a>
+								{{$division->belongs->pmodel()->htmlAnchor()}}
 							）
 						{{/strip}}
 {{/if}}
 					</h2>
-					<p>{{$path_kana}}</p>
+					<p>{{$getter->path_kana}}</p>
 {{if $division->government_code}}
 					<p >全国地方公共団体コード : {{$division->government_code|escape}}</p>
 {{/if}}
 {{if $division->source}}
-					<p class="source">出典 :<br />{{$division->pmodel()->source()}}</p>
+					<p class="source">出典 :<br />{{$pmodel->source()}}</p>
 {{/if}}
 				</div>
 {{if $user}}
@@ -95,16 +94,11 @@
 {{if ! $detail->is_refer}}
 								<li class="{{$detail->pmodel()->htmlClass()}}">
 									<span class="result badge font-weight-light">{{$detail->result|escape}}</span>
-									<a class="{{if $detail->division->is_unfinished}}unfinished{{/if}}"
-										href="{{$div->pmodel()->url()|escape}}"
-										data-toggle="tooltip"
-										title="{{$div->get_path()|escape}}">
 {{if $division->id === $div->id}}
-										<b>{{$div->fullname|escape}}</b>
+									<b>{{$div->pmodel()->htmlAnchor()}}</b>
 {{else}}
-										{{$div->fullname|escape}}
+									{{$div->pmodel()->htmlAnchor()}}
 {{/if}}
-									</a>
 								</li>
 {{/if}}
 {{/foreach}}

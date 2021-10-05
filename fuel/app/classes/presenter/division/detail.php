@@ -8,18 +8,14 @@ class Presenter_Division_Detail extends Presenter_Layout
 	public function view()
 	{
 		$getter = $this->division->getter();
+		$path = $getter->path;
 
-		$this->path = $getter->path;
-		$this->path_kana = $getter->path_kana;
-		$this->search_path = $getter->search_path;
-		$this->search_path_kana = $getter->search_path_kana;
-
-		$this->url_detail = Helper_Uri::create('list.division', ['path' => $this->path]);
-		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $this->path]);
-		$this->url_children_timeline = Helper_Division::get_children_url($this->path);
+		$this->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
+		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
+		$this->url_children_timeline = Helper_Division::get_children_url($path);
 		$this->url_add = Helper_Uri::create('division.add');
-		$this->url_edit = Helper_Uri::create('division.edit', ['path' => $this->path]);
-		$this->url_delete = Helper_Uri::create('division.delete', ['path' => $this->path]);
+		$this->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
+		$this->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
 		$this->url_event_detail = Helper_Uri::create('event.detail');
 		$this->url_event_add = Helper_Uri::create('event.add');
 		$this->url_event_edit = Helper_Uri::create('event.edit');
@@ -34,7 +30,7 @@ class Presenter_Division_Detail extends Presenter_Layout
 		$this->components = $components;
 
 		// meta description
-		$description = "{$this->path} ({$this->path_kana}) {$getter->search_path} {$this->search_path_kana}";
+		$description = "{$path} ({$getter->path_kana}) {$getter->search_path} {$getter->search_path_kana}";
 
 		foreach ($this->events as $event) {
 			$date = MyApp\Helper\Date::format('Y(Jk)-m-d', $event->date);

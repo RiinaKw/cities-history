@@ -59,9 +59,18 @@ class Division
 		if (! $label) {
 			$label = $this->model->fullname;
 		}
-		$url = $this->url();
-		$class = $this->model->is_unfinished ? 'unfinished' : '';
-		return "<a class=\"{$class}\" href=\"{$url}\">{$label}</a>";
+		$attributes = [
+			'class' => $this->model->is_unfinished ? 'unfinished' : '',
+			'href' => $this->url(),
+			'data-toggle' => 'tooltip',
+			'title' => $this->model->path,
+		];
+		$attr_array = [];
+		array_walk($attributes, function($item, $key) use (&$attr_array) {
+			$attr_array[] = "{$key}=\"{$item}\"";
+		});
+		$attr_html = implode(' ', $attr_array);
+		return "<a {$attr_html}>{$label}</a>";
 	}
 
 	public function htmlDebugCode(): string

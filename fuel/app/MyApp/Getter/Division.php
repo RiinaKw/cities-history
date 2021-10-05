@@ -115,7 +115,7 @@ class Division
 
 	protected function belongs(callable $callback)
 	{
-		$division = $this->model->belongs();
+		$division = $this->model->belongs;
 		return $division ? $callback($division) : null;
 	}
 }
