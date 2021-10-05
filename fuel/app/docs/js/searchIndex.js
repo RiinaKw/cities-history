@@ -2016,6 +2016,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/TreeTest.html#method_test_create"
         },                {
+            "fqsen": "\\MyApp\\MyFuel",
+            "name": "MyFuel",
+            "summary": "FuelPHP\u0020\u672C\u4F53\u306E\u8A2D\u5B9A\u3092\u5909\u66F4\u3067\u304D\u308B\u3084\u3064\u3001\u4E3B\u306B\u0020phpunit\u0020\u3067\u4F7F\u3046",
+            "url": "classes/MyApp-MyFuel.html"
+        },                {
+            "fqsen": "\\MyApp\\MyFuel\u003A\u003Aload\u0028\u0029",
+            "name": "load",
+            "summary": "Fuel\u0020\u3092\u8AAD\u307F\u8FBC\u307F",
+            "url": "classes/MyApp-MyFuel.html#method_load"
+        },                {
+            "fqsen": "\\MyApp\\MyFuel\u003A\u003Aenv\u0028\u0029",
+            "name": "env",
+            "summary": "\u74B0\u5883\u3092\u5909\u66F4",
+            "url": "classes/MyApp-MyFuel.html#method_env"
+        },                {
+            "fqsen": "\\MyApp\\MyFuel\u003A\u003Aoil\u0028\u0029",
+            "name": "oil",
+            "summary": "oil\u0020\u30B3\u30DE\u30F3\u30C9\u3092\u5B9F\u884C",
+            "url": "classes/MyApp-MyFuel.html#method_oil"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -2025,11 +2045,6 @@ Search.appendIndex(
             "name": "Getter",
             "summary": "",
             "url": "namespaces/myapp-getter.html"
-        },                {
-            "fqsen": "\\MyApp",
-            "name": "MyApp",
-            "summary": "",
-            "url": "namespaces/myapp.html"
         },                {
             "fqsen": "\\MyApp\\Helper",
             "name": "Helper",
@@ -2055,6 +2070,11 @@ Search.appendIndex(
             "name": "Model",
             "summary": "",
             "url": "namespaces/myapp-model.html"
+        },                {
+            "fqsen": "\\MyApp",
+            "name": "MyApp",
+            "summary": "",
+            "url": "namespaces/myapp.html"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division",
             "name": "Division",

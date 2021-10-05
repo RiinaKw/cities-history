@@ -2,34 +2,16 @@
 
 use PHPUnit\Framework\TestCase;
 use MyApp\Model\Division\Tree;
+use MyApp\MyFuel;
 
 class TreeTest extends TestCase
 {
-	// phpcs:disable PSR2.Methods.FunctionCallSignature.SpaceAfterOpenBracket
-	// phpcs:disable Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma
 	protected function setUp(): void
 	{
-		// Fuel のコアを読み込む
-		if (! defined('DOCROOT')) {
-			define('DOCROOT',  __DIR__);
-			define('FUELPATH', __DIR__  . '/../../../../..');
-			define('APPPATH',  FUELPATH . '/app/');
-			define('PKGPATH',  FUELPATH . '/packages/');
-			define('COREPATH', FUELPATH . '/core/');
-			require COREPATH . 'classes/autoloader.php';
-
-			class_alias('Fuel\\Core\\Autoloader', 'Autoloader');
-			require APPPATH . '/bootstrap.php';
-
-			restore_error_handler();
-		}
-
-		// 環境をテストに切り替え
-		Fuel::$env = Fuel::TEST;
-
 		// テスト環境でマイグレーションを実行
-		Package::load('oil');
-		Oil\Refine::run('migrate');
+		MyFuel::env('test');
+		MyFuel::oil('migrate');
+
 		DBUtil::truncate_table('divisions');
 	}
 
