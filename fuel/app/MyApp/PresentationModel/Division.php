@@ -84,9 +84,9 @@ class Division
 
 	public function htmlBelongs(): string
 	{
-		$belongs = $this->model->getter()->belongs_name;
+		$belongs = $this->model->belongs;
 		if ($belongs) {
-			return "<span class=\"belongs badge badge-semilight font-weight-light\">{$belongs}</span>";
+			return "<span class=\"belongs badge badge-semilight font-weight-light\">{$belongs->getter()->fullname}</span>";
 		} else {
 			return '';
 		}
