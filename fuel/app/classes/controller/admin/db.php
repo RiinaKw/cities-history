@@ -95,7 +95,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		$file = basename($path);
 
 		$oil_path = realpath(APPPATH . '/../../oil');
-		$command = "php {$oil_path} r db:restore --without=users,migration {$file}";
+		$command = "php {$oil_path} r db:restore --without=users,migration {$file} -y";
 		if (\Fuel::$env == 'staging') {
 			$command = 'FUEL_ENV=staging ' . $command;
 		}

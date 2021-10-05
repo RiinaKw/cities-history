@@ -112,7 +112,6 @@ class Db
 			. " -u{$user} {$password} -h {$host} -P {$port} {$db}"
 			. " {$ignore_table} {$only_data} {$complete_insert}"
 			. " > {$path_escaped}";
-
 		exec($command);
 
 		if (! \File::exists($path)) {
@@ -286,7 +285,10 @@ class Db
 	 * @return int           エラーがなければ 0
 	 */
 	public static function restore(string $file = ''): int
+	//public static function restore(string $argv): int
 	{
+		$force_yes = \Cli::option('y');
+
 		// db connection data
 		$db = static::connection()['db'];
 
@@ -299,59 +301,79 @@ class Db
 			'restore from ',
 			Color::color("'{$file}'", 'cyan'),
 			PHP_EOL;
-		do {
-			echo
-				'press ',
-				Color::color("'y'", 'green'),
-				' to continue, press any other key to exit > ';
-			$choice = strtolower(MyCLI::prompt());
+		if (! $force_yes) {
+			do {
+				echo
+					'press ',
+					Color::color("'y'", 'green'),
+					' to continue, press any other key to exit > ';
+				$choice = strtolower(MyCLI::prompt());
 
-			if ($choice === '') {
-				continue;
-			} elseif ($choice !== 'y') {
-				echo Color::color("aborted", 'red'), PHP_EOL;
-				return 1;
-			}
-		} while ($choice !== 'y');
-
-		echo
-			PHP_EOL,
-			'Restore database from ',
-			Color::color("'{$file}'", 'cyan'),
-			' into database ',
-			Color::color("'{$db}'", 'purple'),
-			'...',
-			PHP_EOL;
-
-		// find truncate tables
-		$truncate_tables = static::tables($db);
-
-		// without ignore tables
-		$without = explode(',', \Cli::option('without'));
-		$without[] = 'migration';
-		foreach ($without as $table) {
-			unset($truncate_tables[$table]);
+				if ($choice === '') {
+					continue;
+				} elseif ($choice !== 'y') {
+					echo Color::color("aborted", 'red'), PHP_EOL;
+					return 1;
+				}
+			} while ($choice !== 'y');
 		}
 
-		// do truncate
-		static::truncate($truncate_tables);
-
-		echo PHP_EOL, 'prepare sql...', PHP_EOL;
-
-		// truncate restore table
-		static::truncateRestore();
-
-		static::loadSQL($path);
-
-		echo PHP_EOL, 'restore db...', PHP_EOL;
-
-		$query = \DB::select()->from(static::RESTORE_TABLE)->execute();
-		$rows = \DB::select([\DB::expr('COUNT(*)'), 'row_count'])
-			->from(static::RESTORE_TABLE)
-			->execute()->as_array();
-		$count = (int)$rows[0]['row_count'];
-
 		try {
+			echo
+				PHP_EOL,
+				'Restore database from ',
+				Color::color("'{$file}'", 'cyan'),
+				' into database ',
+				Color::color("'{$db}'", 'purple'),
+				'...',
+				PHP_EOL;
+
+			// find truncate tables
+			$truncate_tables = static::tables($db);
+
+			// without ignore tables
+			$without = explode(',', \Cli::option('without'));
+			$without[] = 'migration';
+			$without[] = 'users';
+			foreach ($without as $table) {
+				unset($truncate_tables[$table]);
+			}
+
+			// do truncate
+			static::truncate($truncate_tables);
+/*
+			echo PHP_EOL, 'prepare sql...', PHP_EOL;
+
+			// truncate restore table
+			static::truncateRestore();
+
+			static::loadSQL($path);
+*/
+			echo PHP_EOL, 'restore db...', PHP_EOL;
+
+
+			// db connection data
+			$connection = static::connection();
+			$host = escapeshellcmd($connection['host']);
+			$port = escapeshellcmd($connection['port']);
+			$db = escapeshellcmd($connection['db']);
+			$user = escapeshellcmd($connection['user']);
+			$password = escapeshellcmd($connection['password']);
+
+			$path_escaped = escapeshellcmd($path);
+			$command = 'mysql'
+				. " -u {$user} -p{$password} -h {$host} -P {$port} -D {$db}"
+				. " < {$path_escaped}";
+			exec($command);
+			echo Color::success('Complete!'), PHP_EOL;
+			return 0;
+/*
+			$query = \DB::select()->from(static::RESTORE_TABLE)->execute();
+			$rows = \DB::select([\DB::expr('COUNT(*)'), 'row_count'])
+				->from(static::RESTORE_TABLE)
+				->execute()->as_array();
+			$count = (int)$rows[0]['row_count'];
+
 			\DB::query("SET GLOBAL max_allowed_packet=16777216;")->execute();
 			foreach ($query as $key => $row) {
 				static::delay();
@@ -367,6 +389,7 @@ class Db
 					echo Color::color("failed", 'green'), PHP_EOL, PHP_EOL;
 				}
 			}
+			*/
 		} catch (\Exception $e) {
 			$message = substr($e->getMessage(), 0, 300);
 			echo Color::failure('ERROR!'), PHP_EOL;
