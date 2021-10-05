@@ -76,6 +76,7 @@ class Db
 		$without = explode(',', \Cli::option('without'));
 		$without[] = static::RESTORE_TABLE;
 		$without[] = 'migration';
+		$without[] = 'users';
 		if ($without) {
 			$ignore_table = '';
 			foreach ($without as $table) {

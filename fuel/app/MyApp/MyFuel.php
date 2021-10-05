@@ -54,7 +54,13 @@ class MyFuel
 	 */
 	public static function oil(string $command)
 	{
+		$prev_flag = \Fuel::$is_cli;
+		\Fuel::$is_cli = true;
+
 		\Package::load('oil');
-		return \Oil\Refine::run($command);
+		$result = \Oil\Refine::run($command);
+
+		\Fuel::$is_cli = $prev_flag;
+		return $result;
 	}
 }

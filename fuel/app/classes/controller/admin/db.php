@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\MyFuel;
+
 /**
  * The Admin Controller.
  *
@@ -54,10 +56,11 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			$command = 'FUEL_ENV=staging ' . $command;
 		}
 		$output = exec($command);
+		//MyFuel::oil("db:backup --without=users,migration {$filename}");
 
 		if (strpos($output, 'Error') === false) {
 			Model_Activity::insert_log([
-				'user_id' => Session::get('user_id'),
+				'user_id' => Session::get('user')->id,
 				'target' => 'backup db',
 				'target_id' => null,
 			]);
@@ -97,9 +100,10 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			$command = 'FUEL_ENV=staging ' . $command;
 		}
 		exec($command);
+		//MyFuel::oil("db:restore --without=users,migration {$file}");
 
 		Model_Activity::insert_log([
-			'user_id' => Session::get('user_id'),
+			'user_id' => Session::get('user')->id,
 			'target' => 'restore db',
 			'target_id' => null,
 		]);
