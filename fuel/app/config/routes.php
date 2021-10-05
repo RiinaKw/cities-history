@@ -39,6 +39,9 @@ return array(
 	'admin/reference'              => 'admin/reference/list',
 
 	'admin/page'              => 'admin/page/list',
+	'admin/page/add'          => 'admin/page/add',
+	'admin/page/(.+?)/edit'   => 'admin/page/edit/$1',
+	'admin/page/(.+?)/delete' => 'admin/page/delete/$1',
 
 	'admin/db'          => 'admin/db/index',
 	'admin/db/backup'   => 'admin/db/backup',

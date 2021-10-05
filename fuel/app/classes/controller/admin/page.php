@@ -32,9 +32,9 @@ class Controller_Admin_Page extends Controller_Admin_Base
 		if (! $id || ! is_numeric($id)) {
 			throw new HttpBadRequestException('不正なIDです。');
 		}
-		$record = Model_Page::find_by_pk($id);
+		$record = Model_Page::find($id);
 		if (! $record) {
-			throw new HttpNotFoundException('参照が見つかりません。');
+			throw new HttpNotFoundException('ページが見つかりません。');
 		}
 		if (! $force && $record->deleted_at) {
 			throw new HttpNotFoundException('削除済みです。');

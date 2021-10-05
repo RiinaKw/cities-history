@@ -21,6 +21,9 @@ return array(
 		),
 		'page' => array(
 			'list'   => 'admin/page',
+			'add'    => 'admin/page/add',
+			'edit'   => 'admin/page/:id/edit',
+			'delete' => 'admin/page/:id/delete',
 		),
 		'db' => array(
 			'list'     => 'admin/db',
