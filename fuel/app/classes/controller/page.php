@@ -18,7 +18,7 @@ class Controller_Page extends Controller_Base
 	{
 		$slug = $this->param('slug');
 
-		$page = Model_Page::get_one_by_slug($slug);
+		$page = Model_Page::query()->where('slug', $slug)->get_one();
 		if (! $page) {
 			throw new HttpNotFoundException('ページが見つかりません。');
 		}

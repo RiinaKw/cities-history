@@ -38,6 +38,7 @@ class Model_Page extends Model_Base
 	// function validation()
 	*/
 
+/*
 	public static function get_all()
 	{
 		$query = DB::select()
@@ -66,5 +67,6 @@ class Model_Page extends Model_Base
 		}
 	}
 	// function get_one_by_slug()
+	*/
 }
 // class Model_Page
