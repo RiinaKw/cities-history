@@ -20,11 +20,10 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		];
 		$this->filter = Input::get('filter');
 
-		$this->breadcrumbs = Helper_Breadcrumb::breadcrumb(
-			$this->parent ?: null,
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::division(
+			$this->parent,
 			'自治体管理',
 			'admin.divisions.list',
-			'admin.divisions.detail'
 		);
 
 		$this->title = '自治体管理';

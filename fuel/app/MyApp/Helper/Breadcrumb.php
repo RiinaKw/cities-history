@@ -12,27 +12,30 @@ use Helper_Uri;
 class Breadcrumb
 {
 	public static function division(
-		Model_Division $division,
-		$root_label = 'Top',
-		$root_uri = 'top',
-		$item_uri = 'division.detail'
-	) {
+		Model_Division $division = null,
+		string $secondary_label = null,
+		string $secondary_uri = null
+	): array {
 		$breadcrumbs = [
-			$root_label => Helper_Uri::create($root_uri),
+			'Top' => Helper_Uri::create('top'),
 		];
+		if ($secondary_label) {
+			$breadcrumbs[$secondary_label] = Helper_Uri::create($secondary_uri);
+		}
 
 		$cur_path = '';
 		if ($division) {
 			$ids = explode('/', substr($division->id_path, 0, -1));
 			foreach ($ids as $id) {
 				$parent = Model_Division::find($id);
-				$fullname = $parent->fullname;
-				$cur_path .= ($cur_path ? '/' : '') . $fullname;
-				$breadcrumbs[$fullname] = Helper_Uri::create($item_uri, ['path' => $cur_path]);
+				if (! $parent) {
+					break;
+				}
+				$breadcrumbs[$parent->fullname] = $parent->pmodel()->url();
 			}
 		}
 
 		return $breadcrumbs;
 	}
-	// function breadcrumb()
+	// function division()
 }
