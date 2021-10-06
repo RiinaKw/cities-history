@@ -3,6 +3,7 @@
 use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Helper\Session\Url as SessionUrl;
+use MyApp\Helper\GeoShape;
 
 /**
  * The Event Controller.
@@ -48,7 +49,7 @@ class Controller_Event extends Controller
 				'birth'    => Input::post('birth.' . $key),
 				'death'    => Input::post('death.' . $key),
 				'delete'   => Input::post('delete.' . $key),
-				'geoshape' => Model_Event_Detail::unify_geoshape(Input::post('geoshape.' . $key)),
+				'geoshape' => GeoShape::unify(Input::post('geoshape.' . $key)),
 				'refer'    => Input::post('refer.' . $key),
 			];
 		}
@@ -71,7 +72,7 @@ class Controller_Event extends Controller
 					'event_id' => $event_id,
 					'division_id' => $division_id,
 					'result' => $item['result'],
-					'geoshape' => Model_Event_Detail::unify_geoshape($item['geoshape']),
+					'geoshape' => GeoShape::unify($item['geoshape']),
 					'is_refer' => (bool)$item['refer'],
 				]);
 				$detail->save();

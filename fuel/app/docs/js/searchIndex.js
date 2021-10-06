@@ -601,25 +601,10 @@ Search.appendIndex(
             "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-Event-Detail.html"
         },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003Apmodel\u0028\u0029",
-            "name": "pmodel",
-            "summary": "",
-            "url": "classes/Model-Event-Detail.html#method_pmodel"
-        },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003Avalidation\u0028\u0029",
             "name": "validation",
             "summary": "",
             "url": "classes/Model-Event-Detail.html#method_validation"
-        },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003Aget_source\u0028\u0029",
-            "name": "get_source",
-            "summary": "",
-            "url": "classes/Model-Event-Detail.html#method_get_source"
-        },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003Aunify_geoshape\u0028\u0029",
-            "name": "unify_geoshape",
-            "summary": "",
-            "url": "classes/Model-Event-Detail.html#method_unify_geoshape"
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_table_name",
             "name": "_table_name",
@@ -1573,7 +1558,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail",
             "name": "Detail",
-            "summary": "",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-PresentationModel-Event-Detail.html"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Event\\Detail\u003A\u003A__construct\u0028\u0029",
@@ -2175,6 +2160,21 @@ Search.appendIndex(
             "name": "test_any_unit",
             "summary": "",
             "url": "classes/NumberTest.html#method_test_any_unit"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\GeoShape",
+            "name": "GeoShape",
+            "summary": "GeoShape\u0020\u306B\u95A2\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Helper-GeoShape.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\GeoShape\u003A\u003Aunify\u0028\u0029",
+            "name": "unify",
+            "summary": "GeoShape\u0020\u306E\u0020URL\u0020\u3092\u6B63\u898F\u5316\u3059\u308B",
+            "url": "classes/MyApp-Helper-GeoShape.html#method_unify"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\GeoShape\u003A\u003A\u0024re",
+            "name": "re",
+            "summary": "URL\u0020\u89E3\u6790\u306B\u5229\u7528\u3059\u308B\u6B63\u898F\u8868\u73FE",
+            "url": "classes/MyApp-Helper-GeoShape.html#property_re"
         },                {
             "fqsen": "\\",
             "name": "\\",
