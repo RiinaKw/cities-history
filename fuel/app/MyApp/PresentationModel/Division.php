@@ -66,7 +66,7 @@ class Division
 			'title' => $this->model->path,
 		];
 		$attr_array = [];
-		array_walk($attributes, function($item, $key) use (&$attr_array) {
+		array_walk($attributes, function ($item, $key) use (&$attr_array) {
 			$attr_array[] = "{$key}=\"{$item}\"";
 		});
 		$attr_html = implode(' ', $attr_array);
@@ -86,7 +86,9 @@ class Division
 	{
 		$belongs = $this->model->belongs;
 		if ($belongs) {
-			return "<span class=\"belongs badge badge-semilight font-weight-light\">{$belongs->getter()->fullname}</span>";
+			return '<span class="belongs badge badge-semilight font-weight-light">'
+				. $belongs->getter()->fullname
+				. '</span>';
 		} else {
 			return '';
 		}

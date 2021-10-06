@@ -23,7 +23,6 @@ class Breadcrumb
 			$breadcrumbs[$secondary_label] = Helper_Uri::create($secondary_uri);
 		}
 
-		$cur_path = '';
 		if ($division) {
 			$ids = explode('/', substr($division->id_path, 0, -1));
 			foreach ($ids as $id) {

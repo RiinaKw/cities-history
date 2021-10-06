@@ -126,7 +126,7 @@ class Model_Division extends Model_Base
 		preg_match(static::RE_SUFFIX, $fullname, $matches);
 		if (! $matches) {
 			$matches = [
-				'place' => $name,
+				'place' => $fullname,
 				'suffix' => '',
 			];
 		}
