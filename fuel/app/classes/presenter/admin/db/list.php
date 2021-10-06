@@ -11,10 +11,6 @@ class Presenter_Admin_Db_List extends Presenter_Layout
 	public function view()
 	{
 		$this->files = Backup::files();
-		foreach ($this->files as $file) {
-			$file->size_formatted = Helper_Number::bytes_format($file->size);
-			$file->url_download = Helper_Uri::create('admin.db.download', ['file' => $file->name]);
-		}
 
 		$this->url_backup = Helper_Uri::create('admin.db.backup');
 		$this->url_download = Helper_Uri::create('admin.db.download');

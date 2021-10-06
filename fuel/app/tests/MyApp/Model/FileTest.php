@@ -82,19 +82,19 @@ class FileTest extends TestCase
 		new File($path);
 	}
 
-	public function test_size()
+	public function test_bytes()
 	{
 		$path = $this->tmp_dir . '/file_test.txt';
 		touch($path);
 		$file = new File($path);
-		$this->assertSame(0, $file->size);
+		$this->assertSame(0, $file->bytes);
 
 		$fp = fopen($path, 'wb');
 		$string = '1234567890';
 		fwrite($fp, $string);
 		fclose($fp);
 
-		$this->assertSame(10, $file->refresh()->size);
+		$this->assertSame(10, $file->refresh()->bytes);
 		$this->unlinkIfExists($path);
 	}
 

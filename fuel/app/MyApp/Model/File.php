@@ -6,6 +6,9 @@
 
 namespace MyApp\Model;
 
+use MyApp\PresentationModel\File as PModel;
+use MyApp\Helper\Number;
+
 class File
 {
 	protected $fullpath = '';
@@ -18,6 +21,11 @@ class File
 		}
 		$this->fullpath = realpath($path);
 		$this->refresh();
+	}
+
+	public function pmodel(): PModel
+	{
+		return new PModel($this);
 	}
 
 	public static function create($path)
@@ -44,7 +52,7 @@ class File
 			'dir'         => $info['dirname'] ?? '',
 			'filename'    => $info['filename'] ?? '',
 			'ext'         => $info['extension'] ?? '',
-			'size'        => filesize($this->fullpath),
+			'bytes'        => filesize($this->fullpath),
 			'created_at'  => filectime($this->fullpath),
 			'modified_at' => filemtime($this->fullpath),
 		];
