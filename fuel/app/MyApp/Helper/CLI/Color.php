@@ -1,13 +1,14 @@
 <?php
 
-/**
- * @package  App\Helper\CLI
- */
-
 namespace MyApp\Helper\CLI;
 
 use Exception;
 
+/**
+ * CLI の文字色・背景色を管理するクラス
+ *
+ * @package  App\Helper\CLI
+ */
 class Color
 {
 

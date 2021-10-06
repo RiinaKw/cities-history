@@ -1,15 +1,12 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper;
 
 use MyApp\Helper\Iterator;
 
 /**
  * Iterator を配下に持つハッシュ
+ * @package  App\Helper
  */
 class IteratorHash implements \IteratorAggregate, \Countable
 {
@@ -44,8 +41,9 @@ class IteratorHash implements \IteratorAggregate, \Countable
 
 	/**
 	 * ゲッター
-	 * @param  string $key  ハッシュのキー
-	 * @return mixed        ハッシュの値
+	 *
+	 * @param  string $key                  ハッシュのキー
+	 * @return \MyApp\Helper\Iterator|null  ハッシュの値
 	 */
 	public function get(string $key): ?Iterator
 	{

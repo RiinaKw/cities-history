@@ -1,11 +1,12 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper;
 
+/**
+ * 数値を文字列に変換するヘルパークラス
+ *
+ * @package  App\Helper
+ */
 class Number
 {
 	public static function format($number, $increment, array $units = [], int $digits = 2)

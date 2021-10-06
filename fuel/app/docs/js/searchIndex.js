@@ -993,7 +993,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\Date",
             "name": "Date",
-            "summary": "",
+            "summary": "\u548C\u66A6\u306B\u5BFE\u5FDC\u3057\u305F\u65E5\u6642\u30D5\u30A9\u30FC\u30DE\u30C3\u30C8\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-Date.html"
         },                {
             "fqsen": "\\MyApp\\Helper\\Date\u003A\u003Areplace\u0028\u0029",
@@ -1403,7 +1403,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\CLI\\Color",
             "name": "Color",
-            "summary": "",
+            "summary": "CLI\u0020\u306E\u6587\u5B57\u8272\u30FB\u80CC\u666F\u8272\u3092\u7BA1\u7406\u3059\u308B\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-CLI-Color.html"
         },                {
             "fqsen": "\\MyApp\\Helper\\CLI\\Color\u003A\u003Acolor\u0028\u0029",
@@ -1433,7 +1433,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\CLI",
             "name": "CLI",
-            "summary": "",
+            "summary": "CLI\u0020\u95A2\u9023\u306E\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-CLI.html"
         },                {
             "fqsen": "\\MyApp\\Helper\\CLI\u003A\u003Aprompt\u0028\u0029",
@@ -1443,7 +1443,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\CLI\u003A\u003ApromptHidden\u0028\u0029",
             "name": "promptHidden",
-            "summary": "\u30DD\u30B9\u30EF\u30FC\u30C9\u306A\u3069\u753B\u9762\u306B\u8868\u793A\u3057\u306A\u3044\u30D7\u30ED\u30F3\u30D7\u30C8",
+            "summary": "\u30D1\u30B9\u30EF\u30FC\u30C9\u306A\u3069\u753B\u9762\u306B\u8868\u793A\u3057\u306A\u3044\u30D7\u30ED\u30F3\u30D7\u30C8",
             "url": "classes/MyApp-Helper-CLI.html#method_promptHidden"
         },                {
             "fqsen": "\\MyApp\\Getter\\Division",
@@ -1478,7 +1478,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\Breadcrumb",
             "name": "Breadcrumb",
-            "summary": "",
+            "summary": "\u30D1\u30F3\u304F\u305A\u30EA\u30B9\u30C8\u3092\u751F\u6210\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-Breadcrumb.html"
         },                {
             "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003Adivision\u0028\u0029",
@@ -2053,7 +2053,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\Number",
             "name": "Number",
-            "summary": "",
+            "summary": "\u6570\u5024\u3092\u6587\u5B57\u5217\u306B\u5909\u63DB\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-Number.html"
         },                {
             "fqsen": "\\MyApp\\Helper\\Number\u003A\u003Aformat\u0028\u0029",
@@ -2063,7 +2063,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\Session\\Flash",
             "name": "Flash",
-            "summary": "\u7279\u5B9A\u306E\u30BB\u30C3\u30B7\u30E7\u30F3\u3092\u7BA1\u7406\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
+            "summary": "\u30D5\u30E9\u30C3\u30B7\u30E5\u30BB\u30C3\u30B7\u30E7\u30F3\u3092\u7BA1\u7406\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-Session-Flash.html"
         },                {
             "fqsen": "\\MyApp\\Helper\\Session\\Flash\u003A\u003A__construct\u0028\u0029",

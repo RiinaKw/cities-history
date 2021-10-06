@@ -1,11 +1,11 @@
 <?php
 
-/**
- * @package  App\Helper\CLI
- */
-
 namespace MyApp\Helper;
 
+/**
+ * CLI 関連のヘルパークラス
+ * @package  App\Helper\CLI
+ */
 class CLI
 {
 	/**
@@ -19,8 +19,10 @@ class CLI
 	}
 
 	/**
-	 * ポスワードなど画面に表示しないプロンプト
+	 * パスワードなど画面に表示しないプロンプト
 	 * @return string  入力された値
+	 *
+	 * @todo 入力値が見えちゃうんだけど、なんで？？？
 	 */
 	public static function promptHidden(): string
 	{

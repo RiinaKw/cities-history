@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @package  App\Helper
  */
 
 namespace MyApp\Helper;
@@ -9,6 +8,7 @@ namespace MyApp\Helper;
 /**
  * GeoShape に関するヘルパークラス
  *
+ * @package  App\Helper
  * @todo  Controller_Geoshape に書いてる curl 関連もこっちに持ってこよう
  */
 class GeoShape

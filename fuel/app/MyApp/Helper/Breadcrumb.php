@@ -1,14 +1,15 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper;
 
 use Model_Division;
 use Helper_Uri;
 
+/**
+ * パンくずリストを生成するヘルパークラス
+ *
+ * @package  App\Helper
+ */
 class Breadcrumb
 {
 	public static function division(

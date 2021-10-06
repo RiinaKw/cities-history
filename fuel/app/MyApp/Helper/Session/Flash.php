@@ -5,9 +5,7 @@ namespace MyApp\Helper\Session;
 use Session;
 
 /**
- * 特定のセッションを管理するヘルパークラス
- *
- * FuelPHP の Session と違うところは、キーを後から変更できないという点
+ * フラッシュセッションを管理するヘルパークラス
  *
  * @package  App\Helper\Session
  */

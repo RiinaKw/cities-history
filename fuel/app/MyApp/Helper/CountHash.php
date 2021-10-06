@@ -1,13 +1,11 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper;
 
 /**
  * 呼び出されたキーの回数をカウントするハッシュ
+ *
+ * @package  App\Helper
  */
 class CountHash implements \IteratorAggregate, \Countable
 {

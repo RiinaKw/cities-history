@@ -1,11 +1,11 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper;
 
+/**
+ * 和暦に対応した日時フォーマットクラス
+ * @package  App\Helper
+ */
 class Date
 {
 	/**

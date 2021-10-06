@@ -1,13 +1,10 @@
 <?php
 
-/**
- * @package  App\Helper
- */
-
 namespace MyApp\Helper;
 
 /**
  * 配列のラッパークラス
+ * @package  App\Helper
  */
 class Iterator implements \IteratorAggregate, \Countable
 {
