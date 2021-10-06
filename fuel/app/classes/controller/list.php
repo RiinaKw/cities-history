@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Model\Division\Tree;
 
@@ -9,7 +10,7 @@ use MyApp\Model\Division\Tree;
  * @package  App\Controller
  * @extends  Controller_Base
  */
-class Controller_List extends Controller_Base
+class Controller_List extends Controller
 {
 	public function action_index()
 	{

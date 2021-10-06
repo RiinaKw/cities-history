@@ -1,12 +1,14 @@
 <?php
 
+use MyApp\Abstracts\Controller;
+
 /**
  * The Page Controller.
  *
  * @package  App\Controller
  * @extends  Controller_Base
  */
-class Controller_Page extends Controller_Base
+class Controller_Page extends Controller
 {
 	public function action_index()
 	{

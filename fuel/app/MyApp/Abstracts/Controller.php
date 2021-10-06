@@ -1,20 +1,18 @@
 <?php
 
+/**
+ * @package  App\Abstracts
+ */
+
+namespace MyApp\Abstracts;
+
 use MyApp\Helper\Session\Item as SessionItem;
 
-/**
- * The Base Controller.
- *
- * Base class for controller.
- *
- * @package  App\Controller
- * @extends  Controller
- */
-abstract class Controller_Base extends Controller
+abstract class Controller extends \Controller
 {
 	protected $session_user = null;
 
-	protected function user(): ?Model_User
+	protected function user(): ?\Model_User
 	{
 		return $this->session_user->get();
 	}
@@ -23,14 +21,14 @@ abstract class Controller_Base extends Controller
 	{
 		$user = $this->user();
 		if (! $user) {
-			throw new HttpNoAccessException('permission denied');
+			throw new \HttpNoAccessException('permission denied');
 		}
 		$this->user = $user;
 	}
 
 	protected function activity(string $target, int $id): void
 	{
-		Model_Activity::insert_log([
+		\Model_Activity::insert_log([
 			'user_id' => $this->user->id,
 			'target' => $target,
 			'target_id' => $id,
@@ -39,15 +37,15 @@ abstract class Controller_Base extends Controller
 
 	protected function redirect(string $config, array $params = [])
 	{
-		Helper_Uri::redirect($config, $params);
+		\Helper_Uri::redirect($config, $params);
 	}
 
 	public function before()
 	{
 		parent::before();
 
-		Config::load('uri', true);
-		Config::load('common', true);
+		\Config::load('uri', true);
+		\Config::load('common', true);
 
 		$this->session_user = new SessionItem('user');
 	}

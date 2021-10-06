@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Abstracts\AdminController;
 use MyApp\MyFuel;
 use MyApp\Model\Backup;
 use MyApp\Model\File;
@@ -13,7 +14,7 @@ use MyApp\Helper\Session\Flash as FlashSession;
  * @package  App\Controller
  * @extends  Controller_Admin_Base
  */
-class Controller_Admin_Db extends Controller_Admin_Base
+class Controller_Admin_Db extends AdminController
 {
 	/**
 	 * フラッシュセッション

@@ -1,14 +1,12 @@
 <?php
 
 /**
- * The Admin Base Controller.
- *
- * Base of admin controller.
- *
- * @package  App\Controller
- * @extends  Controller_Base
+ * @package  App\Abstracts
  */
-abstract class Controller_Admin_Base extends Controller_Base
+
+namespace MyApp\Abstracts;
+
+abstract class AdminController extends Controller
 {
 	public function before()
 	{
@@ -16,9 +14,9 @@ abstract class Controller_Admin_Base extends Controller_Base
 
 		try {
 			$this->requireUser();
-		} catch (HttpNoAccessException $e) {
+		} catch (\HttpNoAccessException $e) {
 			// redirect to login form
-			Helper_Uri::redirect('login');
+			\Helper_Uri::redirect('login');
 		}
 	}
 	// function before()

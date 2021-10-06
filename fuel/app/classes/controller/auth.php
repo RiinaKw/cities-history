@@ -1,12 +1,15 @@
 <?php
 
+use MyApp\Abstracts\Controller;
+
 /**
  * The Auth Controller.
  *
  * @package  App\Controller
  * @extends  Controller_Base
  */
-class Controller_Auth extends Controller_Base
+
+class Controller_Auth extends Controller
 {
 	// cookie name for remember-me
 	protected const COOKIE_REMEMBER_ME = 'user_hash';

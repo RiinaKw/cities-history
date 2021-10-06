@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Abstracts\AdminController;
 use MyApp\Traits\Controller\ModelRelated;
 use MyApp\Helper\Session\Flash as FlashSession;
 
@@ -11,7 +12,7 @@ use MyApp\Helper\Session\Flash as FlashSession;
  * @package  App\Controller
  * @extends  Controller_Admin_Base
  */
-class Controller_Admin_Page extends Controller_Admin_Base
+class Controller_Admin_Page extends AdminController
 {
 	use ModelRelated;
 

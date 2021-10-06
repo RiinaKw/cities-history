@@ -6,7 +6,10 @@
  * @package  App\Controller
  * @extends  Controller_Base
  */
-class Controller_Error extends Controller_Base
+
+use MyApp\Abstracts\Controller;
+
+class Controller_Error extends Controller
 {
 	protected function render($e, $code)
 	{

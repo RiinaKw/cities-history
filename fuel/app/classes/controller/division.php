@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Table\Event as EventTable;
 use MyApp\Helper\Session\Url as SessionUrl;
@@ -10,7 +11,7 @@ use MyApp\Helper\Session\Url as SessionUrl;
  * @package  App\Controller
  * @extends  Controller_Base
  */
-class Controller_Division extends Controller_Base
+class Controller_Division extends Controller
 {
 	protected $session_url = null;
 

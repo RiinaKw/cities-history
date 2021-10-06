@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Abstracts\AdminController;
 use MyApp\Table\Division as DivisionTable;
 
 /**
@@ -10,7 +11,7 @@ use MyApp\Table\Division as DivisionTable;
  * @package  App\Controller
  * @extends  Controller_Admin_Base
  */
-class Controller_Admin_Divisions extends Controller_Admin_Base
+class Controller_Admin_Divisions extends AdminController
 {
 	public function action_index()
 	{

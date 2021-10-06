@@ -1,5 +1,7 @@
 <?php
 
+use MyApp\Abstracts\Controller;
+
 /**
  * The Geoshape Controller.
  *

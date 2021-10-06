@@ -10,7 +10,7 @@ use MyApp\Helper\Number;
 
 class File
 {
-	use MyApp\Traits\Model\Presentable;
+	use \MyApp\Traits\Model\Presentable;
 
 	protected $fullpath = '';
 	protected $props = [];
