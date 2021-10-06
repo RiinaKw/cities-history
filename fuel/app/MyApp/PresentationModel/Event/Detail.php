@@ -6,9 +6,11 @@
 
 namespace MyApp\PresentationModel\Event;
 
+use MyApp\Abstracts\PresentationModel;
+
 use Model_Event_Detail;
 
-class Detail
+class Detail extends PresentationModel
 {
 	protected $model = null;
 

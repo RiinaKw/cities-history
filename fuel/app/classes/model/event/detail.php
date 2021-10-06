@@ -18,11 +18,6 @@ class Model_Event_Detail extends \MyApp\Abstracts\ActiveRecord
 
 	protected static $pmodel_class = \MyApp\PresentationModel\Event\Detail::class;
 
-	public function pmodel(): PModel
-	{
-		return new PModel($this);
-	}
-
 	public function validation()
 	{
 		$validation = Validation::forge(mt_rand());
