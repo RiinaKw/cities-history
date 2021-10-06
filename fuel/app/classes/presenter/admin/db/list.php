@@ -13,6 +13,7 @@ class Presenter_Admin_Db_List extends Presenter_Layout
 			$name = $file;
 			$path = realpath($backup_dir . '/' . $name);
 			$size = File::get_size($path);
+			//ここを別クラスに追い出して oil と共用したい
 			$file = [
 				'name' => $name,
 				'size' => Helper_Number::bytes_format($size),
