@@ -6,12 +6,13 @@
 
 namespace MyApp\Getter;
 
+use MyApp\Abstracts\Getter;
 use Model_Division;
 
 /**
  * 自治体オブジェクトの値を取得・加工することに特化したクラス
  */
-class Division
+class Division extends Getter
 {
 	protected $model = null;
 

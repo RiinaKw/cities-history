@@ -6,9 +6,10 @@
 
 namespace MyApp\PresentationModel;
 
+use MyApp\Abstracts\PresentationModel;
 use Model_Division;
 
-class Division
+class Division extends PresentationModel
 {
 	protected $model = null;
 

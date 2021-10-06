@@ -6,10 +6,11 @@
 
 namespace MyApp\PresentationModel;
 
+use MyApp\Abstracts\PresentationModel;
 use MyApp\Model\File as Model;
 use MyApp\Helper\Number;
 
-class File
+class File extends PresentationModel
 {
 	protected $model = null;
 

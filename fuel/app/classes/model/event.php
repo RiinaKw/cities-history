@@ -4,10 +4,10 @@
  * @package  App\Model
  */
 
-use MyApp\PresentationModel\Event as PModel;
-
 class Model_Event extends Model_Base
 {
+	use MyApp\Traits\Model\Presentable;
+
 	protected static $_table_name  = 'events';
 	protected static $_primary_key = ['id'];
 	protected static $_created_at  = 'created_at';
@@ -17,10 +17,7 @@ class Model_Event extends Model_Base
 
 	protected static $_has_many = ['event_details'];
 
-	public function pmodel(): PModel
-	{
-		return new PModel($this);
-	}
+	protected static $pmodel_class = \MyApp\PresentationModel\Event::class;
 
 	public function validation(): Validation
 	{

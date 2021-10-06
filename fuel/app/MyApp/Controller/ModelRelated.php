@@ -5,11 +5,9 @@ namespace MyApp\Controller;
 use Model_Base;
 
 /**
- * 特定のセッションを管理するヘルパークラス
+ * モデルと関連付けるコントローラのトレイト
  *
- * FuelPHP の Session と違うところは、キーを後から変更できないという点
- *
- * @package  App\Helper\Session
+ * @package  App\Controller\Trait
  */
 trait ModelRelated
 {

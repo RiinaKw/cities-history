@@ -6,9 +6,10 @@
 
 namespace MyApp\PresentationModel\Division;
 
+use MyApp\Abstracts\PresentationModel;
 use MyApp\Model\Division\Tree as Model;
 
-class Tree
+class Tree extends PresentationModel
 {
 	protected $model = null;
 

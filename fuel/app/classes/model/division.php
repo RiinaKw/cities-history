@@ -5,12 +5,13 @@
  */
 
 use MyApp\Table\Division as DivisionTable;
-use MyApp\PresentationModel\Division as PModel;
-use MyApp\Getter\Division as Getter;
 use MyApp\Model\Division\Tree;
 
 class Model_Division extends Model_Base
 {
+	use MyApp\Traits\Model\Presentable;
+	use MyApp\Traits\Model\Gettable;
+
 	protected static $_table_name  = 'divisions';
 	protected static $_primary_key = ['id'];
 	protected static $_created_at  = 'created_at';
@@ -35,15 +36,8 @@ class Model_Division extends Model_Base
 		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
 		. '(\((?<identifier>.+?)\))?$/';
 
-	public function pmodel(): PModel
-	{
-		return new PModel($this);
-	}
-
-	public function getter(): Getter
-	{
-		return new Getter($this);
-	}
+	protected static $pmodel_class = \MyApp\PresentationModel\Division::class;
+	protected static $getter_class = \MyApp\Getter\Division::class;
 
 	public function validation()
 	{

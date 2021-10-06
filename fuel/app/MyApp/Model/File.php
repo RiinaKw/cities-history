@@ -6,13 +6,16 @@
 
 namespace MyApp\Model;
 
-use MyApp\PresentationModel\File as PModel;
 use MyApp\Helper\Number;
 
 class File
 {
+	use MyApp\Traits\Model\Presentable;
+
 	protected $fullpath = '';
 	protected $props = [];
+
+	protected static $pmodel_class = \MyApp\PresentationModel\File::class;
 
 	public function __construct($path)
 	{
@@ -21,11 +24,6 @@ class File
 		}
 		$this->fullpath = realpath($path);
 		$this->refresh();
-	}
-
-	public function pmodel(): PModel
-	{
-		return new PModel($this);
 	}
 
 	public static function create($path)
