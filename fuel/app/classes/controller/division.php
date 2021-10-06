@@ -214,7 +214,7 @@ class Controller_Division extends Controller
 
 		$path = $this->param('path');
 		$division = DivisionTable::get_by_path($path);
-		$division->soft_delete();
+		$division->delete();
 
 		$this->activity('delete division', $division->id);
 

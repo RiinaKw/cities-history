@@ -62,7 +62,7 @@ class Controller_Event extends Controller
 		if ($item['delete']) {
 			if (! $is_new) {
 				$detail = Model_Event_Detail::find_by_pk($id);
-				$detail->soft_delete();
+				$detail->delete();
 			}
 		} else {
 			if ($is_new) {

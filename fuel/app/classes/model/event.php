@@ -71,9 +71,9 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 	{
 		$detail = Model_Event_Detail::find_by_event_id($this->id);
 		foreach ($detail as $d) {
-			$d->soft_delete();
+			$d->delete();
 		}
-		$this->soft_delete();
+		$this->delete();
 
 		Helper_Uri::redirect('top');
 	}

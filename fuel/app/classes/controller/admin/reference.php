@@ -107,11 +107,12 @@ class Controller_Admin_Reference extends AdminController
 		try {
 			DB::start_transaction();
 
-			$reference->soft_delete();
+			$id = $reference->id;
+			$reference->delete();
 
 			DB::commit_transaction();
 
-			$this->activity('delete reference date', $reference->id);
+			$this->activity('delete reference date', $id);
 			$this->session_flash->set([
 				'status'  => 'success',
 				'message' => '削除に成功しました。',
