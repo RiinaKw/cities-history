@@ -3,7 +3,7 @@
 /**
  * @package  App\Model
  */
-class Model_Activity extends Model_Base
+class Model_Activity extends \MyApp\Abstracts\ActiveRecord
 {
 	protected static $_table_name	= 'activities';
 	protected static $_primary_key	= ['id'];

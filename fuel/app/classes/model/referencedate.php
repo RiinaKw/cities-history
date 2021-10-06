@@ -3,7 +3,7 @@
 /**
  * @package  App\Model
  */
-class Model_Referencedate extends Model_Base
+class Model_Referencedate extends \MyApp\Abstracts\ActiveRecord
 {
 	protected static $_table_name	= 'reference_dates';
 	protected static $_primary_key	= ['id'];

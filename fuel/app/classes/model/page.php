@@ -3,7 +3,7 @@
 /**
  * @package  App\Model
  */
-class Model_Page extends Model_Base
+class Model_Page extends \MyApp\Abstracts\ActiveRecord
 {
 	protected static $_table_name	= 'pages';
 	protected static $_primary_key	= ['id'];

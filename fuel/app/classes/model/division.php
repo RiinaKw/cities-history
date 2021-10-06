@@ -7,7 +7,7 @@
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Model\Division\Tree;
 
-class Model_Division extends Model_Base
+class Model_Division extends \MyApp\Abstracts\ActiveRecord
 {
 	use MyApp\Traits\Model\Presentable;
 	use MyApp\Traits\Model\Gettable;

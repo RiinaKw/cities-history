@@ -1,5 +1,8 @@
 <?php
 
+use MyApp\Traits\Controller\ModelRelated;
+use MyApp\Helper\Session\Flash as FlashSession;
+
 /**
  * The Admin Controller.
  *

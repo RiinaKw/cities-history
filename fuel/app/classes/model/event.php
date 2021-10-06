@@ -4,7 +4,7 @@
  * @package  App\Model
  */
 
-class Model_Event extends Model_Base
+class Model_Event extends \MyApp\Abstracts\ActiveRecord
 {
 	use MyApp\Traits\Model\Presentable;
 

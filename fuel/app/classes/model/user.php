@@ -3,7 +3,7 @@
 /**
  * @package  App\Model
  */
-class Model_User extends Model_Base
+class Model_User extends \MyApp\Abstracts\ActiveRecord
 {
 	protected static $_table_name	= 'users';
 	protected static $_primary_key	= ['id'];

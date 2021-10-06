@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Controller;
+namespace MyApp\Traits\Controller;
 
 use Model_Base;
 

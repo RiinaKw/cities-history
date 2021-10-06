@@ -1,6 +1,6 @@
 <?php
 
-use MyApp\Controller\ModelRelated;
+use MyApp\Traits\Controller\ModelRelated;
 use MyApp\Helper\Session\Flash as FlashSession;
 
 /**
