@@ -638,7 +638,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Event_Detail",
             "name": "Model_Event_Detail",
-            "summary": "",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-Event-Detail.html"
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003Apmodel\u0028\u0029",
@@ -683,7 +683,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Event-Detail.html#property__deleted_at"
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_mysql_timestamp",
@@ -695,6 +695,11 @@ Search.appendIndex(
             "name": "_belongs_to",
             "summary": "",
             "url": "classes/Model-Event-Detail.html#property__belongs_to"
+        },                {
+            "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024pmodel_class",
+            "name": "pmodel_class",
+            "summary": "",
+            "url": "classes/Model-Event-Detail.html#property_pmodel_class"
         },                {
             "fqsen": "\\Model_Event",
             "name": "Model_Event",
@@ -2168,7 +2173,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Abstracts\\Getter",
             "name": "Getter",
-            "summary": "\u30B2\u30C3\u30BF\u30FC\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "summary": "\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306E\u5024\u3092\u53D6\u5F97\u30FB\u52A0\u5DE5\u3059\u308B\u3053\u3068\u306B\u7279\u5316\u3057\u305F\u30B2\u30C3\u30BF\u30FC\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Abstracts-Getter.html"
         },                {
             "fqsen": "\\MyApp\\Abstracts\\PresentationModel",
@@ -2258,7 +2263,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Traits\\Model\\Gettable\u003A\u003Agetter\u0028\u0029",
             "name": "getter",
-            "summary": "",
+            "summary": "\u30B2\u30C3\u30BF\u30FC\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Traits-Model-Gettable.html#method_getter"
         },                {
             "fqsen": "\\MyApp\\Traits\\Model\\Presentable",
@@ -2268,7 +2273,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Traits\\Model\\Presentable\u003A\u003Apmodel\u0028\u0029",
             "name": "pmodel",
-            "summary": "",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Traits-Model-Presentable.html#method_pmodel"
         },                {
             "fqsen": "\\NumberTest",

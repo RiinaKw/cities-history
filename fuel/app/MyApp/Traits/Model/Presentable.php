@@ -14,6 +14,10 @@ trait Presentable
 	// Property to implement in the model
 	// protected static $pmodel_class = '';
 
+	/**
+	 * プレゼンテーションモデルを取得
+	 * @return \MyApp\Abstracts\PresentationModel  プレゼンテーションモデル
+	 */
 	public function pmodel(): PresentationModel
 	{
 		$class = static::$pmodel_class;

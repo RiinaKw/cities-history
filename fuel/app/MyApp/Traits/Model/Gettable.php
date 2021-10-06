@@ -14,6 +14,10 @@ trait Gettable
 	// Property to implement in the model
 	// protected static $getter_class = Getter::class;
 
+	/**
+	 * ゲッターを取得
+	 * @return \MyApp\Abstracts\Getter  ゲッター
+	 */
 	public function getter(): Getter
 	{
 		$class = static::$getter_class;

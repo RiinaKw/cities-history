@@ -4,10 +4,10 @@
  * @package  App\Model
  */
 
-use MyApp\PresentationModel\Event\Detail as PModel;
-
-class Model_Event_Detail extends Model_Base
+class Model_Event_Detail extends \MyApp\Abstracts\ActiveRecord
 {
+	use MyApp\Traits\Model\Presentable;
+
 	protected static $_table_name  = 'event_details';
 	protected static $_primary_key = ['id'];
 	protected static $_created_at  = 'created_at';
@@ -19,6 +19,8 @@ class Model_Event_Detail extends Model_Base
 		'event',
 		'division',
 	];
+
+	protected static $pmodel_class = \MyApp\PresentationModel\Event\Detail::class;
 
 	public function pmodel(): PModel
 	{

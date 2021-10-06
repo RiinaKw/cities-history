@@ -7,7 +7,7 @@
 namespace MyApp\Abstracts;
 
 /**
- * ゲッターの基底クラス
+ * オブジェクトの値を取得・加工することに特化したゲッターの基底クラス
  */
 abstract class Getter
 {
