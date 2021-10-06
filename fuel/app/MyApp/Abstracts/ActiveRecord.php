@@ -14,13 +14,43 @@ use Orm\Model_Soft as Orm;
 abstract class ActiveRecord extends Orm
 {
 	/**
-	 * 削除フラグのカラム名
+	 * テーブル名
+	 * @var string
+	 */
+	protected static $_table_name	= '';
+
+	/**
+	 * 主キーのカラム名
+	 * @var array<int, string>
+	 */
+	protected static $_primary_key	= ['id'];
+
+	/**
+	 * 作成日時のカラム名
+	 * @var string
+	 */
+	protected static $_created_at  = 'created_at';
+
+	/**
+	 * 更新日時のカラム名
+	 * @var string
+	 */
+	protected static $_updated_at  = 'updated_at';
+
+	/**
+	 * 削除日時のカラム名
 	 * @var string
 	 */
 	protected static $_deleted_at = 'deleted_at';
 
 	/**
-	 * 削除フラグをタイムスタンプにする
+	 * 作成・更新日時をタイムスタンプにする
+	 * @var bool
+	 */
+	protected static $_mysql_timestamp = true;
+
+	/**
+	 * 削除日時をタイムスタンプにする
 	 * @var bool
 	 */
 	protected static $_default_mysql_timestamp = true;
@@ -40,7 +70,12 @@ abstract class ActiveRecord extends Orm
 		),
 	);
 
-	public function is_deleted()
+	/**
+	 * 削除済みかどうか
+	 * @return boolean  削除されていれば true
+	 * @todo これ Orm の機能にない？
+	 */
+	public function is_deleted(): bool
 	{
 		$property = static::$_deleted_at;
 		return (bool)$this->$property;

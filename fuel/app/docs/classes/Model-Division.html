@@ -165,25 +165,25 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Model-Division.html#property__created_at">$_created_at</a>
+    <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__created_at">$_created_at</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>作成日時のカラム名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__default_mysql_timestamp">$_default_mysql_timestamp</a>
     <span>
                 &nbsp;: bool            </span>
 </dt>
-<dd>削除フラグをタイムスタンプにする</dd>
+<dd>削除日時をタイムスタンプにする</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Model-Division.html#property__deleted_at">$_deleted_at</a>
+    <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__deleted_at">$_deleted_at</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
-<dd>削除フラグのカラム名</dd>
+<dd>削除日時のカラム名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Division.html#property__has_many">$_has_many</a>
@@ -193,11 +193,11 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Model-Division.html#property__mysql_timestamp">$_mysql_timestamp</a>
+    <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__mysql_timestamp">$_mysql_timestamp</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: bool            </span>
 </dt>
-<dd></dd>
+<dd>作成・更新日時をタイムスタンプにする</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__observers">$_observers</a>
@@ -209,23 +209,23 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Division.html#property__primary_key">$_primary_key</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: array&lt;int, string&gt;            </span>
 </dt>
-<dd></dd>
+<dd>主キーのカラム名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Division.html#property__table_name">$_table_name</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>テーブル名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Model-Division.html#property__updated_at">$_updated_at</a>
+    <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__updated_at">$_updated_at</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>更新日時のカラム名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Division.html#property_getter_class">$getter_class</a>
@@ -279,9 +279,9 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Abstracts-ActiveRecord.html#method_is_deleted">is_deleted()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: bool    </span>
 </dt>
-<dd></dd>
+<dd>削除済みかどうか</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Model-Division.html#method_parent">parent()</a>
@@ -330,7 +330,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 </aside>
 
     
@@ -370,7 +370,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 </aside>
 
     
@@ -393,24 +393,26 @@
 >
     <h4 class="phpdocumentor-element__name" id="property__created_at">
         $_created_at
-        <a href="classes/Model-Division.html#property__created_at" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__created_at" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">作成日時のカラム名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$_created_at</span>
      = <span class="phpdocumentor-signature__default-value">&#039;created_at&#039;</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -430,10 +432,10 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 </aside>
 
-        <p class="phpdocumentor-summary">削除フラグをタイムスタンプにする</p>
+        <p class="phpdocumentor-summary">削除日時をタイムスタンプにする</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -455,17 +457,17 @@
 >
     <h4 class="phpdocumentor-element__name" id="property__deleted_at">
         $_deleted_at
-        <a href="classes/Model-Division.html#property__deleted_at" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__deleted_at" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 </aside>
 
-        <p class="phpdocumentor-summary">削除フラグのカラム名</p>
+        <p class="phpdocumentor-summary">削除日時のカラム名</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -494,7 +496,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 </aside>
 
     
@@ -517,24 +519,26 @@
 >
     <h4 class="phpdocumentor-element__name" id="property__mysql_timestamp">
         $_mysql_timestamp
-        <a href="classes/Model-Division.html#property__mysql_timestamp" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__mysql_timestamp" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">作成・更新日時をタイムスタンプにする</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
     <span class="phpdocumentor-signature__name">$_mysql_timestamp</span>
-     = <span class="phpdocumentor-signature__default-value">	rue</span></code>
+     = <span class="phpdocumentor-signature__default-value">true</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -554,7 +558,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">62</span>
 </aside>
 
         <p class="phpdocumentor-summary">作成・更新時にタイムスタンプを追加</p>
@@ -589,14 +593,16 @@
     <span class="phpdocumentor-element-found-in__line">16</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">主キーのカラム名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;int, string&gt;</span>
     <span class="phpdocumentor-signature__name">$_primary_key</span>
      = <span class="phpdocumentor-signature__default-value">[&#039;id&#039;]</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -619,14 +625,16 @@
     <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">テーブル名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$_table_name</span>
      = <span class="phpdocumentor-signature__default-value">&#039;divisions&#039;</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -639,24 +647,26 @@
 >
     <h4 class="phpdocumentor-element__name" id="property__updated_at">
         $_updated_at
-        <a href="classes/Model-Division.html#property__updated_at" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__updated_at" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">更新日時のカラム名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$_updated_at</span>
      = <span class="phpdocumentor-signature__default-value">&#039;updated_at&#039;</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -676,7 +686,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 </aside>
 
     
@@ -706,7 +716,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 </aside>
 
     
@@ -740,7 +750,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 </aside>
 
     
@@ -789,7 +799,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">157</span>
+    <span class="phpdocumentor-element-found-in__line">153</span>
 </aside>
 
     
@@ -847,7 +857,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">220</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 </aside>
 
     
@@ -914,7 +924,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">80</span>
 </aside>
 
         <p class="phpdocumentor-summary">パス形式の ID を分割し、各 ID ごとにコールバックを実行</p>
@@ -960,22 +970,40 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">削除済みかどうか</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">is_deleted</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">is_deleted</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"></section>
 
     
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>これ Orm の機能にない？</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>削除されていれば true</p>
+</section>
 
     
 </article>
@@ -992,7 +1020,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 </aside>
 
     
@@ -1059,7 +1087,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 </aside>
 
     
@@ -1091,7 +1119,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/division.php"><a href="files/fuel-app-classes-model-division.html"><abbr title="fuel/app/classes/model/division.php">division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">106</span>
 </aside>
 
         <p class="phpdocumentor-summary">必要なパラメータが設定されている場合のみコールバックを実行</p>

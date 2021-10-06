@@ -7,10 +7,6 @@ class Model_Referencedate extends \MyApp\Abstracts\ActiveRecord
 {
 	protected static $_table_name	= 'reference_dates';
 	protected static $_primary_key	= ['id'];
-	protected static $_created_at	= 'created_at';
-	protected static $_updated_at	= 'updated_at';
-	protected static $_deleted_at	= 'deleted_at';
-	protected static $_mysql_timestamp = true;
 
 	public function validation()
 	{

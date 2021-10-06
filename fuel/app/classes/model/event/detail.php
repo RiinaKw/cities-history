@@ -10,10 +10,6 @@ class Model_Event_Detail extends \MyApp\Abstracts\ActiveRecord
 
 	protected static $_table_name  = 'event_details';
 	protected static $_primary_key = ['id'];
-	protected static $_created_at  = 'created_at';
-	protected static $_updated_at  = 'updated_at';
-	protected static $_deleted_at  = 'deleted_at';
-	protected static $_mysql_timestamp = true;
 
 	protected static $_belongs_to = [
 		'event',

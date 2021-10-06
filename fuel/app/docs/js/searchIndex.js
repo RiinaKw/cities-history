@@ -513,33 +513,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Activity\u003A\u003A\u0024_table_name",
             "name": "_table_name",
-            "summary": "",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
             "url": "classes/Model-Activity.html#property__table_name"
         },                {
             "fqsen": "\\Model_Activity\u003A\u003A\u0024_primary_key",
             "name": "_primary_key",
-            "summary": "",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Activity.html#property__primary_key"
-        },                {
-            "fqsen": "\\Model_Activity\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "",
-            "url": "classes/Model-Activity.html#property__created_at"
-        },                {
-            "fqsen": "\\Model_Activity\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "",
-            "url": "classes/Model-Activity.html#property__updated_at"
-        },                {
-            "fqsen": "\\Model_Activity\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/Model-Activity.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_Activity\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "",
-            "url": "classes/Model-Activity.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\Model_Division",
             "name": "Model_Division",
@@ -588,33 +568,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024_table_name",
             "name": "_table_name",
-            "summary": "",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
             "url": "classes/Model-Division.html#property__table_name"
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024_primary_key",
             "name": "_primary_key",
-            "summary": "",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Division.html#property__primary_key"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "",
-            "url": "classes/Model-Division.html#property__created_at"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "",
-            "url": "classes/Model-Division.html#property__updated_at"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/Model-Division.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "",
-            "url": "classes/Model-Division.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024_has_many",
             "name": "_has_many",
@@ -663,33 +623,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_table_name",
             "name": "_table_name",
-            "summary": "",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
             "url": "classes/Model-Event-Detail.html#property__table_name"
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_primary_key",
             "name": "_primary_key",
-            "summary": "",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Event-Detail.html#property__primary_key"
-        },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "",
-            "url": "classes/Model-Event-Detail.html#property__created_at"
-        },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "",
-            "url": "classes/Model-Event-Detail.html#property__updated_at"
-        },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/Model-Event-Detail.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "",
-            "url": "classes/Model-Event-Detail.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\Model_Event_Detail\u003A\u003A\u0024_belongs_to",
             "name": "_belongs_to",
@@ -723,33 +663,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Event\u003A\u003A\u0024_table_name",
             "name": "_table_name",
-            "summary": "",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
             "url": "classes/Model-Event.html#property__table_name"
         },                {
             "fqsen": "\\Model_Event\u003A\u003A\u0024_primary_key",
             "name": "_primary_key",
-            "summary": "",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Event.html#property__primary_key"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "",
-            "url": "classes/Model-Event.html#property__created_at"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "",
-            "url": "classes/Model-Event.html#property__updated_at"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/Model-Event.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "",
-            "url": "classes/Model-Event.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\Model_Event\u003A\u003A\u0024_has_many",
             "name": "_has_many",
@@ -768,33 +688,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Page\u003A\u003A\u0024_table_name",
             "name": "_table_name",
-            "summary": "",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
             "url": "classes/Model-Page.html#property__table_name"
         },                {
             "fqsen": "\\Model_Page\u003A\u003A\u0024_primary_key",
             "name": "_primary_key",
-            "summary": "",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Page.html#property__primary_key"
-        },                {
-            "fqsen": "\\Model_Page\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "",
-            "url": "classes/Model-Page.html#property__created_at"
-        },                {
-            "fqsen": "\\Model_Page\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "",
-            "url": "classes/Model-Page.html#property__updated_at"
-        },                {
-            "fqsen": "\\Model_Page\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/Model-Page.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_Page\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "",
-            "url": "classes/Model-Page.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\Model_Referencedate",
             "name": "Model_Referencedate",
@@ -813,33 +713,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_table_name",
             "name": "_table_name",
-            "summary": "",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
             "url": "classes/Model-Referencedate.html#property__table_name"
         },                {
             "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_primary_key",
             "name": "_primary_key",
-            "summary": "",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Referencedate.html#property__primary_key"
-        },                {
-            "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "",
-            "url": "classes/Model-Referencedate.html#property__created_at"
-        },                {
-            "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "",
-            "url": "classes/Model-Referencedate.html#property__updated_at"
-        },                {
-            "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/Model-Referencedate.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "",
-            "url": "classes/Model-Referencedate.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\Model_User",
             "name": "Model_User",
@@ -873,33 +753,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_User\u003A\u003A\u0024_table_name",
             "name": "_table_name",
-            "summary": "",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
             "url": "classes/Model-User.html#property__table_name"
         },                {
             "fqsen": "\\Model_User\u003A\u003A\u0024_primary_key",
             "name": "_primary_key",
-            "summary": "",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-User.html#property__primary_key"
-        },                {
-            "fqsen": "\\Model_User\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "",
-            "url": "classes/Model-User.html#property__created_at"
-        },                {
-            "fqsen": "\\Model_User\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "",
-            "url": "classes/Model-User.html#property__updated_at"
-        },                {
-            "fqsen": "\\Model_User\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/Model-User.html#property__deleted_at"
-        },                {
-            "fqsen": "\\Model_User\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "",
-            "url": "classes/Model-User.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\Presenter_Admin_Db_List",
             "name": "Presenter_Admin_Db_List",
@@ -2098,17 +1958,42 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003Ais_deleted\u0028\u0029",
             "name": "is_deleted",
-            "summary": "",
+            "summary": "\u524A\u9664\u6E08\u307F\u304B\u3069\u3046\u304B",
             "url": "classes/MyApp-Abstracts-ActiveRecord.html#method_is_deleted"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_table_name",
+            "name": "_table_name",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__table_name"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_primary_key",
+            "name": "_primary_key",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__primary_key"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_created_at",
+            "name": "_created_at",
+            "summary": "\u4F5C\u6210\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__created_at"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_updated_at",
+            "name": "_updated_at",
+            "summary": "\u66F4\u65B0\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__updated_at"
         },                {
             "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
+            "summary": "\u524A\u9664\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__deleted_at"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_mysql_timestamp",
+            "name": "_mysql_timestamp",
+            "summary": "\u4F5C\u6210\u30FB\u66F4\u65B0\u65E5\u6642\u3092\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u306B\u3059\u308B",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__mysql_timestamp"
         },                {
             "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_default_mysql_timestamp",
             "name": "_default_mysql_timestamp",
-            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u3092\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u306B\u3059\u308B",
+            "summary": "\u524A\u9664\u65E5\u6642\u3092\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u306B\u3059\u308B",
             "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__default_mysql_timestamp"
         },                {
             "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_observers",
