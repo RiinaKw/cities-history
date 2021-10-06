@@ -41,10 +41,10 @@
 						</thead>
 						<tbody>
 {{foreach from=$files item=file}}
-							<tr data-file={{$file.name|escape}}>
-								<td>{{$file.name|escape}}</td>
-								<td>{{$file.size|escape}}</td>
-								<td>{{$file.time|date_format:'%Y-%m-%d %H:%M:%S'}}</td>
+							<tr data-file={{$file->name|escape}}>
+								<td>{{$file->name|escape}}</td>
+								<td>{{$file->size_formatted|escape}}</td>
+								<td>{{$file->created_at|date_format:'%Y-%m-%d %H:%M:%S'}}</td>
 							</tr>
 {{foreachelse}}
 							<tr>

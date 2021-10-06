@@ -185,6 +185,7 @@ return array(
 			'Fuel\\Core\\ViewModel',
 			'Closure',
 			MyApp\Model\Division\Tree::class,
+			MyApp\Model\File::class,
 		),
 	),
 

@@ -190,7 +190,6 @@ class Backup
 		} else {
 			$filename = date('YmdHis') . '_' . static::db() . '.sql';
 		}
-
 		static::initDir();
 		return static::$dir . DIRECTORY_SEPARATOR . $filename;
 	}

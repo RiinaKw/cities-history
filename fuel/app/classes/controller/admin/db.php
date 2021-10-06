@@ -1,6 +1,9 @@
 <?php
 
 use MyApp\MyFuel;
+use MyApp\Model\Backup;
+use MyApp\Model\File;
+use MyApp\Helper\Session\Flash as FlashSession;
 
 /**
  * The Admin Controller.
@@ -12,20 +15,32 @@ use MyApp\MyFuel;
  */
 class Controller_Admin_Db extends Controller_Admin_Base
 {
-	protected const SESSION_NAME_FLASH  = 'admin_data.db';
+	/**
+	 * フラッシュセッション
+	 * @var \MyApp\Helper\Session\Flash
+	 */
+	protected $session_flash = null;
 
-	protected function get_file($filename)
+	public function before()
 	{
-		$backup_dir = realpath(APPPATH . Config::get('common.backup_dir'));
-		$ext_arr = ['sql', 'dump'];
-		foreach ($ext_arr as $ext) {
-			$file = $filename . '.' . $ext;
-			$path = $backup_dir . '/' . $file;
-			if (File::exists($path)) {
-				return $path;
-			}
+		parent::before();
+
+		$this->session_flash = new FlashSession('admin_data.db');
+	}
+
+	/**
+	 * ファイル名からファイルオブジェクトを取得
+	 * @param  string $filename   ファイル名
+	 * @return \MyApp\Model\File  ファイルオブジェクト
+	 */
+	protected function get_file(string $filename): File
+	{
+		try {
+			$path = Backup::correctPath($filename . '.sql');
+			return new File($path);
+		} catch (\Exception $e) {
+			throw new HttpNotFoundException('バックアップファイルが見つかりません。 : ' . $e->getMessage());
 		}
-		return null;
 	}
 	// function get_file()
 
@@ -38,7 +53,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			null,
 			'admin/admin_db_list.tpl'
 		);
-		$content->flash_name = self::SESSION_NAME_FLASH;
+		$content->flash = $this->session_flash->get();
 
 		return $content;
 	}
@@ -46,115 +61,82 @@ class Controller_Admin_Db extends Controller_Admin_Base
 
 	public function post_backup()
 	{
-		$filename = Input::post('filename');
-		if (! $filename) {
-			$filename = date('YmdHis') . '_from_web.sql';
-		}
-		$oil_path = realpath(APPPATH . '/../../oil');
-		$command = "php {$oil_path} r db:backup --without=users,migration {$filename}";
-		if (\Fuel::$env == 'staging') {
-			$command = 'FUEL_ENV=staging ' . $command;
-		}
-		$output = exec($command);
-		//MyFuel::oil("db:backup --without=users,migration {$filename}");
+		try {
+			$filename = Input::post('filename');
+			$path = Backup::correctPath($filename);
+			Backup::export($path);
 
-		if (strpos($output, 'Error') === false) {
 			Model_Activity::insert_log([
 				'user_id' => Session::get('user')->id,
 				'target' => 'backup db',
 				'target_id' => null,
 			]);
 
-			Session::set_flash(
-				self::SESSION_NAME_FLASH,
-				[
-					'status'  => 'success',
-					'message' => 'バックアップに成功しました。',
-				]
-			);
-		} else {
-			Session::set_flash(
-				self::SESSION_NAME_FLASH,
-				[
-					'status'  => 'error',
-					'message' => $output,
-				]
-			);
+			$this->session_flash->set([
+				'status'  => 'success',
+				'message' => 'バックアップに成功しました。',
+			]);
+			Helper_Uri::redirect('admin.db.list');
+		} catch (\Exception $e) {
+			$this->session_flash->set([
+				'status'  => 'error',
+				'message' => $e->getMessage(),
+			]);
 		}
-		Helper_Uri::redirect('admin.db.list');
 	}
 	// function post_backup()
 
 	public function action_restore($filename)
 	{
-		$path = $this->get_file($filename);
-		if (! $path) {
-			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
-		}
+		try {
+			$file = $this->get_file($filename);
 
-		$file = basename($path);
+			Backup::truncate();
+			Backup::import($file->path);
 
-		$oil_path = realpath(APPPATH . '/../../oil');
-		$command = "php {$oil_path} r db:restore --without=users,migration {$file} -y";
-		if (\Fuel::$env == 'staging') {
-			$command = 'FUEL_ENV=staging ' . $command;
-		}
-		exec($command);
-		//MyFuel::oil("db:restore --without=users,migration {$file}");
+			Model_Activity::insert_log([
+				'user_id' => Session::get('user')->id,
+				'target' => 'restore db',
+				'target_id' => null,
+			]);
 
-		Model_Activity::insert_log([
-			'user_id' => Session::get('user')->id,
-			'target' => 'restore db',
-			'target_id' => null,
-		]);
-
-		Session::set_flash(
-			self::SESSION_NAME_FLASH,
-			[
+			$this->session_flash->set([
 				'status'  => 'success',
 				'message' => '復元に成功しました。',
-			]
-		);
-		Helper_Uri::redirect('admin.db.list');
+			]);
+			Helper_Uri::redirect('admin.db.list');
+		} catch (\Exception $e) {
+			$this->session_flash->set([
+				'status'  => 'error',
+				'message' => $e->getMessage(),
+			]);
+		}
 	}
 	// function post_restore()
 
 	public function post_delete($filename)
 	{
-		$path = $this->get_file($filename);
-		if (! $path) {
-			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
-		}
+		$file = $this->get_file($filename);
+		$file->delete();
 
-		if ($path) {
-			unlink($path);
+		Model_Activity::insert_log([
+			'user_id' => Session::get('user')->id,
+			'target' => 'delete backup',
+			'target_id' => null,
+		]);
 
-			Model_Activity::insert_log([
-				'user_id' => Session::get('user_id'),
-				'target' => 'delete backup',
-				'target_id' => null,
-			]);
-		}
-
-		Session::set_flash(
-			self::SESSION_NAME_FLASH,
-			[
-				'status'  => 'success',
-				'message' => '削除に成功しました。',
-			]
-		);
+		$this->session_flash->set([
+			'status'  => 'success',
+			'message' => '削除に成功しました。',
+		]);
 		Helper_Uri::redirect('admin.db.list');
 	}
 	// function post_delete()
 
 	public function action_download($filename)
 	{
-		$path = $this->get_file($filename);
-		if (! $path) {
-			throw new HttpNotFoundException('バックアップファイルが見つかりません。');
-		}
-
-		File::download($path, basename($path));
+		$file = $this->get_file($filename);
+		\File::download($file->path, $file->name);
 	}
 	// function action_download()
 }

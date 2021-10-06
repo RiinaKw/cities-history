@@ -98,6 +98,17 @@ class FileTest extends TestCase
 		$this->unlinkIfExists($path);
 	}
 
+	public function test_exists()
+	{
+		$path = $this->tmp_dir . '/file_test.txt';
+		touch($path);
+
+		$this->assertTrue(File::exists($path));
+
+		$this->unlinkIfExists($path);
+		$this->assertFalse(File::exists($path));
+	}
+
 	public function test_create()
 	{
 		$path = $this->tmp_dir . '/file_test.txt';
@@ -118,5 +129,15 @@ class FileTest extends TestCase
 		touch($path);
 
 		File::create($path);
+	}
+
+	public function test_delete()
+	{
+		$path = $this->tmp_dir . '/file_test.txt';
+		touch($path);
+		$file = new File($path);
+
+		$file->delete();
+		$this->assertFalse(file_exists($path));
 	}
 }

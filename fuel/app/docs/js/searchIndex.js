@@ -23,7 +23,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller_Admin_Db\u003A\u003Aget_file\u0028\u0029",
             "name": "get_file",
-            "summary": "",
+            "summary": "\u30D5\u30A1\u30A4\u30EB\u540D\u304B\u3089\u30D5\u30A1\u30A4\u30EB\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u53D6\u5F97",
             "url": "classes/Controller-Admin-Db.html#method_get_file"
         },                {
             "fqsen": "\\Controller_Admin_Db\u003A\u003Aaction_index\u0028\u0029",
@@ -2061,6 +2061,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Model-File.html#method_create"
         },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003Aexists\u0028\u0029",
+            "name": "exists",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#method_exists"
+        },                {
             "fqsen": "\\MyApp\\Model\\File\u003A\u003Arefresh\u0028\u0029",
             "name": "refresh",
             "summary": "",
@@ -2125,6 +2130,11 @@ Search.appendIndex(
             "name": "test_size",
             "summary": "",
             "url": "classes/FileTest.html#method_test_size"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_exists\u0028\u0029",
+            "name": "test_exists",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_exists"
         },                {
             "fqsen": "\\FileTest\u003A\u003Atest_create\u0028\u0029",
             "name": "test_create",

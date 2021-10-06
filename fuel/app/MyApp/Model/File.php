@@ -13,7 +13,7 @@ class File
 
 	public function __construct($path)
 	{
-		if (! realpath($path)) {
+		if (! static::exists($path)) {
 			throw new \Exception("File '{$path}' not found");
 		}
 		$this->fullpath = realpath($path);
@@ -22,11 +22,16 @@ class File
 
 	public static function create($path)
 	{
-		if (realpath($path)) {
+		if (static::exists($path)) {
 			throw new \Exception("File '{$path}' already exists");
 		}
 		touch($path);
 		return new static($path);
+	}
+
+	public static function exists(string $path)
+	{
+		return file_exists($path);
 	}
 
 	public function refresh(): self
@@ -49,5 +54,10 @@ class File
 	public function __get(string $key)
 	{
 		return $this->props[$key] ?? null;
+	}
+
+	public function delete()
+	{
+		unlink($this->path);
 	}
 }
