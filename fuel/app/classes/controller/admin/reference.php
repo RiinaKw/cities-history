@@ -1,5 +1,8 @@
 <?php
 
+use MyApp\Controller\ModelRelated;
+use MyApp\Helper\Session\Flash as FlashSession;
+
 /**
  * The Admin Controller.
  *
@@ -10,7 +13,21 @@
  */
 class Controller_Admin_Reference extends Controller_Admin_Base
 {
-	protected const SESSION_NAME_FLASH  = 'admin_data.reference';
+	use ModelRelated;
+
+	protected $session_flash = null;
+
+	protected static function getModelClass(): string
+	{
+		return Model_Referencedate::class;
+	}
+
+	public function before()
+	{
+		parent::before();
+
+		$this->session_flash = new FlashSession('admin_data.reference');
+	}
 
 	public function action_list()
 	{
@@ -21,7 +38,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 			null,
 			'admin/admin_reference.tpl'
 		);
-		$content->flash_name = self::SESSION_NAME_FLASH;
+		$content->flash = $this->session_flash->get();
 
 		return $content;
 	}
@@ -41,13 +58,11 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 			DB::commit_transaction();
 
-			Session::set_flash(
-				self::SESSION_NAME_FLASH,
-				[
-					'status'  => 'success',
-					'message' => '追加に成功しました。',
-				]
-			);
+			$this->activity('add reference date', $reference->id);
+			$this->session_flash->set([
+				'status'  => 'success',
+				'message' => '追加に成功しました。',
+			]);
 			Helper_Uri::redirect('admin.reference.list');
 		} catch (Exception $e) {
 			// internal error
@@ -60,7 +75,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 	public function action_edit($id)
 	{
-		$reference = static::_get_model($id);
+		$reference = static::getModel($id);
 		try {
 			DB::start_transaction();
 
@@ -68,13 +83,11 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 			$reference->description = Input::post('description');
 			$reference->save();
 
-			Session::set_flash(
-				self::SESSION_NAME_FLASH,
-				[
-					'status'  => 'success',
-					'message' => '更新に成功しました。',
-				]
-			);
+			$this->activity('edit reference date', $reference->id);
+			$this->session_flash->set([
+				'status'  => 'success',
+				'message' => '更新に成功しました。',
+			]);
 			DB::commit_transaction();
 
 			Helper_Uri::redirect('admin.reference.list');
@@ -89,7 +102,7 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 	public function action_delete($id)
 	{
-		$reference = static::_get_model($id);
+		$reference = static::getModel($id);
 		try {
 			DB::start_transaction();
 
@@ -97,13 +110,11 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 
 			DB::commit_transaction();
 
-			Session::set_flash(
-				self::SESSION_NAME_FLASH,
-				[
-					'status'  => 'success',
-					'message' => '削除に成功しました。',
-				]
-			);
+			$this->activity('delete reference date', $reference->id);
+			$this->session_flash->set([
+				'status'  => 'success',
+				'message' => '削除に成功しました。',
+			]);
 			Helper_Uri::redirect('admin.reference.list');
 		} catch (Exception $e) {
 			// internal error
@@ -113,20 +124,5 @@ class Controller_Admin_Reference extends Controller_Admin_Base
 		// try
 	}
 	// function action_delete()
-
-	protected static function _get_model($id, $force = false)
-	{
-		if (! $id || ! is_numeric($id)) {
-			throw new HttpBadRequestException('不正なIDです。');
-		}
-		$record = Model_Referencedate::find_by_pk($id);
-		if (! $record) {
-			throw new HttpNotFoundException('参照が見つかりません。');
-		}
-		if (! $force && $record->deleted_at) {
-			throw new HttpNotFoundException('削除済みです。');
-		}
-		return $record;
-	}
 }
 // class Controller_Admin

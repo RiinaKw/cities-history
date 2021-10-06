@@ -19,8 +19,6 @@ class Presenter_Admin_Reference_List extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$this->flash = Session::get_flash($this->flash_name);
-
 		$this->title = '参照日付一覧';
 		$this->nav_item = 'admin-reference';
 		$this->breadcrumbs = ['参照日付一覧' => ''];

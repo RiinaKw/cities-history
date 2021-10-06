@@ -14,8 +14,9 @@ abstract class Controller_Admin_Base extends Controller_Base
 	{
 		parent::before();
 
-		// is admin user?
-		if (! $this->user()) {
+		try {
+			$this->requireUser();
+		} catch (HttpNoAccessException $e) {
 			// redirect to login form
 			Helper_Uri::redirect('login');
 		}

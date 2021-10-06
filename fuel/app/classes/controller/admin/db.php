@@ -66,11 +66,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			$path = Backup::correctPath($filename);
 			Backup::export($path);
 
-			Model_Activity::insert_log([
-				'user_id' => Session::get('user')->id,
-				'target' => 'backup db',
-				'target_id' => null,
-			]);
+			$this->activity('backup db', null);
 
 			$this->session_flash->set([
 				'status'  => 'success',
@@ -94,11 +90,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 			Backup::truncate();
 			Backup::import($file->path);
 
-			Model_Activity::insert_log([
-				'user_id' => Session::get('user')->id,
-				'target' => 'restore db',
-				'target_id' => null,
-			]);
+			$this->activity('restore db', null);
 
 			$this->session_flash->set([
 				'status'  => 'success',
@@ -119,11 +111,7 @@ class Controller_Admin_Db extends Controller_Admin_Base
 		$file = $this->get_file($filename);
 		$file->delete();
 
-		Model_Activity::insert_log([
-			'user_id' => Session::get('user')->id,
-			'target' => 'delete backup',
-			'target_id' => null,
-		]);
+		$this->activity('delete db', null);
 
 		$this->session_flash->set([
 			'status'  => 'success',
