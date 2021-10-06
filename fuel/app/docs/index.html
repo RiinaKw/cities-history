@@ -54,11 +54,13 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-abstracts.html"><abbr title="\MyApp\Abstracts">Abstracts</abbr></a></li>
                                             <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
                                             <li><a href="namespaces/myapp-table.html"><abbr title="\MyApp\Table">Table</abbr></a></li>
+                                            <li><a href="namespaces/myapp-traits.html"><abbr title="\MyApp\Traits">Traits</abbr></a></li>
                                     </ul>
                             <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h4>
                 <ul class="phpdocumentor-list">
@@ -80,6 +82,8 @@
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
                                     <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
+                                    <li><a href="packages/App-Abstracts.html"><abbr title="\App\Abstracts">Abstracts</abbr></a></li>
+                                    <li><a href="packages/App-Traits.html"><abbr title="\App\Traits">Traits</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -129,8 +133,6 @@
 
 <dl class="phpdocumentor-table-of-contents">
     
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Admin-Base.html"><abbr title="\Controller_Admin_Base">Controller_Admin_Base</abbr></a></dt>
-        <dd>The Admin Base Controller.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Admin-Db.html"><abbr title="\Controller_Admin_Db">Controller_Admin_Db</abbr></a></dt>
         <dd>The Admin Controller.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Admin-Divisions.html"><abbr title="\Controller_Admin_Divisions">Controller_Admin_Divisions</abbr></a></dt>
@@ -141,12 +143,10 @@
         <dd>The Admin Controller.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Auth.html"><abbr title="\Controller_Auth">Controller_Auth</abbr></a></dt>
         <dd>The Auth Controller.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Base.html"><abbr title="\Controller_Base">Controller_Base</abbr></a></dt>
-        <dd>The Base Controller.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Division.html"><abbr title="\Controller_Division">Controller_Division</abbr></a></dt>
         <dd>The Division Controller.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Error.html"><abbr title="\Controller_Error">Controller_Error</abbr></a></dt>
-        <dd>The Error Controller.</dd>
+        <dd>コントローラの基底クラス</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Event.html"><abbr title="\Controller_Event">Controller_Event</abbr></a></dt>
         <dd>The Event Controller.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Geoshape.html"><abbr title="\Controller_Geoshape">Controller_Geoshape</abbr></a></dt>
@@ -163,8 +163,6 @@
         <dd>The Rest Event Controller.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Controller-Top.html"><abbr title="\Controller_Top">Controller_Top</abbr></a></dt>
         <dd>The Top Controller.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-Breadcrumb.html"><abbr title="\Helper_Breadcrumb">Helper_Breadcrumb</abbr></a></dt>
-        <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-Division.html"><abbr title="\Helper_Division">Helper_Division</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-Governmentcode.html"><abbr title="\Helper_Governmentcode">Helper_Governmentcode</abbr></a></dt>
@@ -173,8 +171,6 @@
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-Input.html"><abbr title="\Helper_Input">Helper_Input</abbr></a></dt>
         <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-Number.html"><abbr title="\Helper_Number">Helper_Number</abbr></a></dt>
-        <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-Random.html"><abbr title="\Helper_Random">Helper_Random</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-String.html"><abbr title="\Helper_String">Helper_String</abbr></a></dt>
@@ -182,21 +178,19 @@
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper-Uri.html"><abbr title="\Helper_Uri">Helper_Uri</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-Activity.html"><abbr title="\Model_Activity">Model_Activity</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-Base.html"><abbr title="\Model_Base">Model_Base</abbr></a></dt>
-        <dd></dd>
+        <dd>Orm を継承したアクティブレコードの基底クラス</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></dt>
-        <dd></dd>
+        <dd>Orm を継承したアクティブレコードの基底クラス</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-Event-Detail.html"><abbr title="\Model_Event_Detail">Model_Event_Detail</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-Event.html"><abbr title="\Model_Event">Model_Event</abbr></a></dt>
-        <dd></dd>
+        <dd>Orm を継承したアクティブレコードの基底クラス</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-Page.html"><abbr title="\Model_Page">Model_Page</abbr></a></dt>
-        <dd></dd>
+        <dd>Orm を継承したアクティブレコードの基底クラス</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-Referencedate.html"><abbr title="\Model_Referencedate">Model_Referencedate</abbr></a></dt>
-        <dd></dd>
+        <dd>Orm を継承したアクティブレコードの基底クラス</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a></dt>
-        <dd></dd>
+        <dd>Orm を継承したアクティブレコードの基底クラス</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Presenter-Admin-Db-List.html"><abbr title="\Presenter_Admin_Db_List">Presenter_Admin_Db_List</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Presenter-Admin-Divisions-List.html"><abbr title="\Presenter_Admin_Divisions_List">Presenter_Admin_Divisions_List</abbr></a></dt>
@@ -240,6 +234,8 @@
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/TreeTest.html"><abbr title="\TreeTest">TreeTest</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/FileTest.html"><abbr title="\FileTest">FileTest</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/NumberTest.html"><abbr title="\NumberTest">NumberTest</abbr></a></dt>
         <dd></dd>
     
     </dl>

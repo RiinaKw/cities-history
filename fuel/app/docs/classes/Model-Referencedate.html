@@ -54,11 +54,13 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-abstracts.html"><abbr title="\MyApp\Abstracts">Abstracts</abbr></a></li>
                                             <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
                                             <li><a href="namespaces/myapp-table.html"><abbr title="\MyApp\Table">Table</abbr></a></li>
+                                            <li><a href="namespaces/myapp-traits.html"><abbr title="\MyApp\Traits">Traits</abbr></a></li>
                                     </ul>
                             <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h4>
                 <ul class="phpdocumentor-list">
@@ -80,6 +82,8 @@
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
                                     <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
+                                    <li><a href="packages/App-Abstracts.html"><abbr title="\App\Abstracts">Abstracts</abbr></a></li>
+                                    <li><a href="packages/App-Traits.html"><abbr title="\App\Traits">Traits</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -106,7 +110,7 @@
     Model_Referencedate
 
         <span class="phpdocumentor-element__extends">
-        extends <a href="classes/Model-Base.html"><abbr title="\Model_Base">Model_Base</abbr></a>
+        extends <a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -126,7 +130,8 @@
     <span class="phpdocumentor-element-found-in__line">6</span>
 </aside>
 
-        
+            <p class="phpdocumentor-summary">Orm を継承したアクティブレコードの基底クラス</p>
+
     <section class="phpdocumentor-description"></section>
 
 
@@ -150,11 +155,18 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__default_mysql_timestamp">$_default_mysql_timestamp</a>
+    <span>
+                &nbsp;: bool            </span>
+</dt>
+<dd>削除フラグをタイムスタンプにする</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Referencedate.html#property__deleted_at">$_deleted_at</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>削除フラグのカラム名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Referencedate.html#property__mysql_timestamp">$_mysql_timestamp</a>
@@ -162,6 +174,13 @@
                 &nbsp;: mixed            </span>
 </dt>
 <dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__observers">$_observers</a>
+    <span>
+                &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+<dd>作成・更新時にタイムスタンプを追加</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Model-Referencedate.html#property__primary_key">$_primary_key</a>
@@ -192,14 +211,7 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Base.html#method_is_deleted">is_deleted()</a>
-    <span>
-                        &nbsp;: mixed    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Model-Base.html#method_soft_delete">soft_delete()</a>
+    <a href="classes/MyApp-Abstracts-ActiveRecord.html#method_is_deleted">is_deleted()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -261,6 +273,38 @@
             -protected
             -static                                            "
 >
+    <h4 class="phpdocumentor-element__name" id="property__default_mysql_timestamp">
+        $_default_mysql_timestamp
+        <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__default_mysql_timestamp" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">26</span>
+</aside>
+
+        <p class="phpdocumentor-summary">削除フラグをタイムスタンプにする</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$_default_mysql_timestamp</span>
+     = <span class="phpdocumentor-signature__default-value">true</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                            "
+>
     <h4 class="phpdocumentor-element__name" id="property__deleted_at">
         $_deleted_at
         <a href="classes/Model-Referencedate.html#property__deleted_at" class="headerlink"><i class="fas fa-link"></i></a>
@@ -273,14 +317,16 @@
     <span class="phpdocumentor-element-found-in__line">12</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">削除フラグのカラム名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$_deleted_at</span>
      = <span class="phpdocumentor-signature__default-value">&#039;deleted_at&#039;</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -311,6 +357,38 @@
      = <span class="phpdocumentor-signature__default-value">	rue</span></code>
 
     
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property__observers">
+        $_observers
+        <a href="classes/MyApp-Abstracts-ActiveRecord.html#property__observers" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">32</span>
+</aside>
+
+        <p class="phpdocumentor-summary">作成・更新時にタイムスタンプを追加</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$_observers</span>
+     = <span class="phpdocumentor-signature__default-value">array(&#039;Orm\Observer_CreatedAt&#039; =&gt; array(&#039;events&#039; =&gt; array(&#039;before_insert&#039;), &#039;mysql_timestamp&#039; =&gt; true), &#039;Orm\Observer_UpdatedAt&#039; =&gt; array(&#039;events&#039; =&gt; array(&#039;before_save&#039;), &#039;mysql_timestamp&#039; =&gt; true))</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -451,50 +529,18 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_is_deleted">
         is_deleted()
-        <a href="classes/Model-Base.html#method_is_deleted" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-ActiveRecord.html#method_is_deleted" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/base.php"><a href="files/fuel-app-classes-model-base.html"><abbr title="fuel/app/classes/model/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/ActiveRecord.php"><a href="files/fuel-app-myapp-abstracts-activerecord.html"><abbr title="fuel/app/MyApp/Abstracts/ActiveRecord.php">ActiveRecord.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">is_deleted</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_soft_delete">
-        soft_delete()
-        <a href="classes/Model-Base.html#method_soft_delete" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/model/base.php"><a href="files/fuel-app-classes-model-base.html"><abbr title="fuel/app/classes/model/base.php">base.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">14</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">soft_delete</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
     

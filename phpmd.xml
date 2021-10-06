@@ -32,6 +32,7 @@
 
 		<!-- マイグレーションにありがちな長いクラス名を無視する -->
         <exclude name="LongClassName" />
+        <exclude name="LongVariable" />
     </rule>
     <rule ref="rulesets/naming.xml/ShortVariable">
         <properties>
@@ -55,6 +56,12 @@
         <properties>
             <!-- 50文字のクラス名を許容する -->
             <property name="maximum" value="50" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/LongVariable">
+        <properties>
+            <!-- 30文字の変数名を許容する -->
+            <property name="maximum" value="30" />
         </properties>
     </rule>
 

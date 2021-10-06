@@ -6,12 +6,16 @@
 
 namespace MyApp\Abstracts;
 
+/**
+ * 管理画面向けのコントローラの基底クラス
+ */
 abstract class AdminController extends Controller
 {
 	public function before()
 	{
 		parent::before();
 
+		// ログインしていないユーザをログイン画面へリダイレクト
 		try {
 			$this->requireUser();
 		} catch (\HttpNoAccessException $e) {

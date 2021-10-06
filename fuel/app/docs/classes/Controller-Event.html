@@ -54,11 +54,13 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-abstracts.html"><abbr title="\MyApp\Abstracts">Abstracts</abbr></a></li>
                                             <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
                                             <li><a href="namespaces/myapp-table.html"><abbr title="\MyApp\Table">Table</abbr></a></li>
+                                            <li><a href="namespaces/myapp-traits.html"><abbr title="\MyApp\Traits">Traits</abbr></a></li>
                                     </ul>
                             <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h4>
                 <ul class="phpdocumentor-list">
@@ -80,6 +82,8 @@
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
                                     <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
+                                    <li><a href="packages/App-Abstracts.html"><abbr title="\App\Abstracts">Abstracts</abbr></a></li>
+                                    <li><a href="packages/App-Traits.html"><abbr title="\App\Traits">Traits</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -106,7 +110,7 @@
     Controller_Event
 
         <span class="phpdocumentor-element__extends">
-        extends <a href="classes/Controller-Base.html"><abbr title="\Controller_Base">Controller_Base</abbr></a>
+        extends <a href="classes/MyApp-Abstracts-Controller.html"><abbr title="\MyApp\Abstracts\Controller">Controller</abbr></a>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -123,7 +127,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">13</span>
 </aside>
 
             <p class="phpdocumentor-summary">The Event Controller.</p>
@@ -151,11 +155,11 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Controller-Base.html#property_session_user">$session_user</a>
+    <a href="classes/MyApp-Abstracts-Controller.html#property_session_user">$session_user</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: <a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a>            </span>
 </dt>
-<dd></dd>
+<dd>ログイン状態を保存するセッション</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Controller-Event.html#method_action_delete">action_delete()</a>
@@ -165,7 +169,7 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Controller-Base.html#method_after">after()</a>
+    <a href="classes/MyApp-Abstracts-Controller.html#method_after">after()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -193,18 +197,18 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Controller-Base.html#method_activity">activity()</a>
+    <a href="classes/MyApp-Abstracts-Controller.html#method_activity">activity()</a>
     <span>
                         &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>活動をログに保存</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Controller-Base.html#method_redirect">redirect()</a>
+    <a href="classes/MyApp-Abstracts-Controller.html#method_redirect">redirect()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>リダイレクト</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Controller-Event.html#method_requireEvent">requireEvent()</a>
@@ -214,11 +218,11 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Controller-Base.html#method_requireUser">requireUser()</a>
+    <a href="classes/MyApp-Abstracts-Controller.html#method_requireUser">requireUser()</a>
     <span>
                         &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>ログインしていない状態でアクセスすると例外を投げる</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/Controller-Event.html#method_submitDetails">submitDetails()</a>
@@ -235,11 +239,11 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Controller-Base.html#method_user">user()</a>
+    <a href="classes/MyApp-Abstracts-Controller.html#method_user">user()</a>
     <span>
                         &nbsp;: <a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a>|null    </span>
 </dt>
-<dd></dd>
+<dd>ログインしているユーザを取得</dd>
 
         </dl>
 
@@ -269,7 +273,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
     
@@ -293,25 +297,26 @@ ull</span></code>
 >
     <h4 class="phpdocumentor-element__name" id="property_session_user">
         $session_user
-        <a href="classes/Controller-Base.html#property_session_user" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-Controller.html#property_session_user" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Controller.php"><a href="files/fuel-app-myapp-abstracts-controller.html"><abbr title="fuel/app/MyApp/Abstracts/Controller.php">Controller.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ログイン状態を保存するセッション</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a></span>
     <span class="phpdocumentor-signature__name">$session_user</span>
-     = <span class="phpdocumentor-signature__default-value">
-ull</span></code>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -335,7 +340,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">196</span>
 </aside>
 
     
@@ -372,12 +377,12 @@ ull</span></code>
 >
     <h4 class="phpdocumentor-element__name" id="method_after">
         after()
-        <a href="classes/Controller-Base.html#method_after" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-Controller.html#method_after" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Controller.php"><a href="files/fuel-app-myapp-abstracts-controller.html"><abbr title="fuel/app/MyApp/Abstracts/Controller.php">Controller.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">56</span>
+    <span class="phpdocumentor-element-found-in__line">79</span>
 </aside>
 
     
@@ -419,7 +424,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 </aside>
 
     
@@ -451,7 +456,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">91</span>
 </aside>
 
     
@@ -483,7 +488,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">142</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 </aside>
 
     
@@ -520,20 +525,22 @@ ull</span></code>
 >
     <h4 class="phpdocumentor-element__name" id="method_activity">
         activity()
-        <a href="classes/Controller-Base.html#method_activity" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-Controller.html#method_activity" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Controller.php"><a href="files/fuel-app-myapp-abstracts-controller.html"><abbr title="fuel/app/MyApp/Abstracts/Controller.php">Controller.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">活動をログに保存</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
                 <span class="phpdocumentor-signature__name">activity</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$target</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -541,14 +548,18 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>活動内容</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$id</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>対象のモデルの ID</p>
+</section>
+
             </dd>
             </dl>
 
@@ -569,20 +580,22 @@ ull</span></code>
 >
     <h4 class="phpdocumentor-element__name" id="method_redirect">
         redirect()
-        <a href="classes/Controller-Base.html#method_redirect" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-Controller.html#method_redirect" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Controller.php"><a href="files/fuel-app-myapp-abstracts-controller.html"><abbr title="fuel/app/MyApp/Abstracts/Controller.php">Controller.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">63</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">リダイレクト</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
                 <span class="phpdocumentor-signature__name">redirect</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$config</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -590,14 +603,18 @@ ull</span></code>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>URL の設定名</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$params</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>URL のパラメータ</p>
+</section>
+
             </dd>
             </dl>
 
@@ -623,7 +640,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 </aside>
 
     
@@ -660,22 +677,40 @@ ull</span></code>
 >
     <h4 class="phpdocumentor-element__name" id="method_requireUser">
         requireUser()
-        <a href="classes/Controller-Base.html#method_requireUser" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-Controller.html#method_requireUser" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Controller.php"><a href="files/fuel-app-myapp-abstracts-controller.html"><abbr title="fuel/app/MyApp/Abstracts/Controller.php">Controller.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ログインしていない状態でアクセスすると例外を投げる</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
                 <span class="phpdocumentor-signature__name">requireUser</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\HttpNoAccessException">HttpNoAccessException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>未ログインの場合</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
@@ -697,7 +732,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 </aside>
 
     
@@ -753,7 +788,7 @@ ull</span></code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/event.php"><a href="files/fuel-app-classes-controller-event.html"><abbr title="fuel/app/classes/controller/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 </aside>
 
     
@@ -780,27 +815,30 @@ ull</span></code>
 >
     <h4 class="phpdocumentor-element__name" id="method_user">
         user()
-        <a href="classes/Controller-Base.html#method_user" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-Controller.html#method_user" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/base.php"><a href="files/fuel-app-classes-controller-base.html"><abbr title="fuel/app/classes/controller/base.php">base.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Controller.php"><a href="files/fuel-app-myapp-abstracts-controller.html"><abbr title="fuel/app/MyApp/Abstracts/Controller.php">Controller.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ログインしているユーザを取得</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
                 <span class="phpdocumentor-signature__name">user</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a>|null</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a>|null</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>ユーザオブジェクト、未ログインなら null</p>
+</section>
 
     
 </article>

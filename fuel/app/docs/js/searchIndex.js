@@ -1,25 +1,15 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\Controller_Admin_Base",
-            "name": "Controller_Admin_Base",
-            "summary": "The\u0020Admin\u0020Base\u0020Controller.",
-            "url": "classes/Controller-Admin-Base.html"
-        },                {
-            "fqsen": "\\Controller_Admin_Base\u003A\u003Abefore\u0028\u0029",
-            "name": "before",
-            "summary": "",
-            "url": "classes/Controller-Admin-Base.html#method_before"
-        },                {
-            "fqsen": "\\Controller_Admin_Base\u003A\u003Aafter\u0028\u0029",
-            "name": "after",
-            "summary": "",
-            "url": "classes/Controller-Admin-Base.html#method_after"
-        },                {
             "fqsen": "\\Controller_Admin_Db",
             "name": "Controller_Admin_Db",
             "summary": "The\u0020Admin\u0020Controller.",
             "url": "classes/Controller-Admin-Db.html"
+        },                {
+            "fqsen": "\\Controller_Admin_Db\u003A\u003Abefore\u0028\u0029",
+            "name": "before",
+            "summary": "",
+            "url": "classes/Controller-Admin-Db.html#method_before"
         },                {
             "fqsen": "\\Controller_Admin_Db\u003A\u003Aget_file\u0028\u0029",
             "name": "get_file",
@@ -51,10 +41,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Admin-Db.html#method_action_download"
         },                {
-            "fqsen": "\\Controller_Admin_Db\u003A\u003ASESSION_NAME_FLASH",
-            "name": "SESSION_NAME_FLASH",
-            "summary": "",
-            "url": "classes/Controller-Admin-Db.html#constant_SESSION_NAME_FLASH"
+            "fqsen": "\\Controller_Admin_Db\u003A\u003A\u0024session_flash",
+            "name": "session_flash",
+            "summary": "\u30D5\u30E9\u30C3\u30B7\u30E5\u30BB\u30C3\u30B7\u30E7\u30F3",
+            "url": "classes/Controller-Admin-Db.html#property_session_flash"
         },                {
             "fqsen": "\\Controller_Admin_Divisions",
             "name": "Controller_Admin_Divisions",
@@ -71,25 +61,40 @@ Search.appendIndex(
             "summary": "The\u0020Admin\u0020Controller.",
             "url": "classes/Controller-Admin-Page.html"
         },                {
+            "fqsen": "\\Controller_Admin_Page\u003A\u003AgetModelClass\u0028\u0029",
+            "name": "getModelClass",
+            "summary": "",
+            "url": "classes/Controller-Admin-Page.html#method_getModelClass"
+        },                {
+            "fqsen": "\\Controller_Admin_Page\u003A\u003Abefore\u0028\u0029",
+            "name": "before",
+            "summary": "",
+            "url": "classes/Controller-Admin-Page.html#method_before"
+        },                {
             "fqsen": "\\Controller_Admin_Page\u003A\u003Aaction_list\u0028\u0029",
             "name": "action_list",
             "summary": "",
             "url": "classes/Controller-Admin-Page.html#method_action_list"
         },                {
-            "fqsen": "\\Controller_Admin_Page\u003A\u003A_get_model\u0028\u0029",
-            "name": "_get_model",
+            "fqsen": "\\Controller_Admin_Page\u003A\u003A\u0024session_flash",
+            "name": "session_flash",
             "summary": "",
-            "url": "classes/Controller-Admin-Page.html#method__get_model"
-        },                {
-            "fqsen": "\\Controller_Admin_Page\u003A\u003ASESSION_NAME_FLASH",
-            "name": "SESSION_NAME_FLASH",
-            "summary": "",
-            "url": "classes/Controller-Admin-Page.html#constant_SESSION_NAME_FLASH"
+            "url": "classes/Controller-Admin-Page.html#property_session_flash"
         },                {
             "fqsen": "\\Controller_Admin_Reference",
             "name": "Controller_Admin_Reference",
             "summary": "The\u0020Admin\u0020Controller.",
             "url": "classes/Controller-Admin-Reference.html"
+        },                {
+            "fqsen": "\\Controller_Admin_Reference\u003A\u003AgetModelClass\u0028\u0029",
+            "name": "getModelClass",
+            "summary": "",
+            "url": "classes/Controller-Admin-Reference.html#method_getModelClass"
+        },                {
+            "fqsen": "\\Controller_Admin_Reference\u003A\u003Abefore\u0028\u0029",
+            "name": "before",
+            "summary": "",
+            "url": "classes/Controller-Admin-Reference.html#method_before"
         },                {
             "fqsen": "\\Controller_Admin_Reference\u003A\u003Aaction_list\u0028\u0029",
             "name": "action_list",
@@ -111,15 +116,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Admin-Reference.html#method_action_delete"
         },                {
-            "fqsen": "\\Controller_Admin_Reference\u003A\u003A_get_model\u0028\u0029",
-            "name": "_get_model",
+            "fqsen": "\\Controller_Admin_Reference\u003A\u003A\u0024session_flash",
+            "name": "session_flash",
             "summary": "",
-            "url": "classes/Controller-Admin-Reference.html#method__get_model"
-        },                {
-            "fqsen": "\\Controller_Admin_Reference\u003A\u003ASESSION_NAME_FLASH",
-            "name": "SESSION_NAME_FLASH",
-            "summary": "",
-            "url": "classes/Controller-Admin-Reference.html#constant_SESSION_NAME_FLASH"
+            "url": "classes/Controller-Admin-Reference.html#property_session_flash"
         },                {
             "fqsen": "\\Controller_Auth",
             "name": "Controller_Auth",
@@ -155,46 +155,6 @@ Search.appendIndex(
             "name": "COOKIE_REMEMBER_ME_EXPIRE",
             "summary": "",
             "url": "classes/Controller-Auth.html#constant_COOKIE_REMEMBER_ME_EXPIRE"
-        },                {
-            "fqsen": "\\Controller_Base",
-            "name": "Controller_Base",
-            "summary": "The\u0020Base\u0020Controller.",
-            "url": "classes/Controller-Base.html"
-        },                {
-            "fqsen": "\\Controller_Base\u003A\u003Auser\u0028\u0029",
-            "name": "user",
-            "summary": "",
-            "url": "classes/Controller-Base.html#method_user"
-        },                {
-            "fqsen": "\\Controller_Base\u003A\u003ArequireUser\u0028\u0029",
-            "name": "requireUser",
-            "summary": "",
-            "url": "classes/Controller-Base.html#method_requireUser"
-        },                {
-            "fqsen": "\\Controller_Base\u003A\u003Aactivity\u0028\u0029",
-            "name": "activity",
-            "summary": "",
-            "url": "classes/Controller-Base.html#method_activity"
-        },                {
-            "fqsen": "\\Controller_Base\u003A\u003Aredirect\u0028\u0029",
-            "name": "redirect",
-            "summary": "",
-            "url": "classes/Controller-Base.html#method_redirect"
-        },                {
-            "fqsen": "\\Controller_Base\u003A\u003Abefore\u0028\u0029",
-            "name": "before",
-            "summary": "",
-            "url": "classes/Controller-Base.html#method_before"
-        },                {
-            "fqsen": "\\Controller_Base\u003A\u003Aafter\u0028\u0029",
-            "name": "after",
-            "summary": "",
-            "url": "classes/Controller-Base.html#method_after"
-        },                {
-            "fqsen": "\\Controller_Base\u003A\u003A\u0024session_user",
-            "name": "session_user",
-            "summary": "",
-            "url": "classes/Controller-Base.html#property_session_user"
         },                {
             "fqsen": "\\Controller_Division",
             "name": "Controller_Division",
@@ -253,7 +213,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller_Error",
             "name": "Controller_Error",
-            "summary": "The\u0020Error\u0020Controller.",
+            "summary": "\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Controller-Error.html"
         },                {
             "fqsen": "\\Controller_Error\u003A\u003Arender\u0028\u0029",
@@ -421,16 +381,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Top.html#method_action_session_clear"
         },                {
-            "fqsen": "\\Helper_Breadcrumb",
-            "name": "Helper_Breadcrumb",
-            "summary": "",
-            "url": "classes/Helper-Breadcrumb.html"
-        },                {
-            "fqsen": "\\Helper_Breadcrumb\u003A\u003Abreadcrumb\u0028\u0029",
-            "name": "breadcrumb",
-            "summary": "",
-            "url": "classes/Helper-Breadcrumb.html#method_breadcrumb"
-        },                {
             "fqsen": "\\Helper_Division",
             "name": "Helper_Division",
             "summary": "",
@@ -475,16 +425,6 @@ Search.appendIndex(
             "name": "ip",
             "summary": "",
             "url": "classes/Helper-Input.html#method_ip"
-        },                {
-            "fqsen": "\\Helper_Number",
-            "name": "Helper_Number",
-            "summary": "",
-            "url": "classes/Helper-Number.html"
-        },                {
-            "fqsen": "\\Helper_Number\u003A\u003Abytes_format\u0028\u0029",
-            "name": "bytes_format",
-            "summary": "",
-            "url": "classes/Helper-Number.html#method_bytes_format"
         },                {
             "fqsen": "\\Helper_Random",
             "name": "Helper_Random",
@@ -558,7 +498,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Activity",
             "name": "Model_Activity",
-            "summary": "",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-Activity.html"
         },                {
             "fqsen": "\\Model_Activity\u003A\u003Ainsert_log\u0028\u0029",
@@ -593,7 +533,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Activity\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Activity.html#property__deleted_at"
         },                {
             "fqsen": "\\Model_Activity\u003A\u003A\u0024_mysql_timestamp",
@@ -601,40 +541,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Activity.html#property__mysql_timestamp"
         },                {
-            "fqsen": "\\Model_Base",
-            "name": "Model_Base",
-            "summary": "",
-            "url": "classes/Model-Base.html"
-        },                {
-            "fqsen": "\\Model_Base\u003A\u003Asoft_delete\u0028\u0029",
-            "name": "soft_delete",
-            "summary": "",
-            "url": "classes/Model-Base.html#method_soft_delete"
-        },                {
-            "fqsen": "\\Model_Base\u003A\u003Ais_deleted\u0028\u0029",
-            "name": "is_deleted",
-            "summary": "",
-            "url": "classes/Model-Base.html#method_is_deleted"
-        },                {
-            "fqsen": "\\Model_Base\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "",
-            "url": "classes/Model-Base.html#property__deleted_at"
-        },                {
             "fqsen": "\\Model_Division",
             "name": "Model_Division",
-            "summary": "",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-Division.html"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Apmodel\u0028\u0029",
-            "name": "pmodel",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_pmodel"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Agetter\u0028\u0029",
-            "name": "getter",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_getter"
         },                {
             "fqsen": "\\Model_Division\u003A\u003Avalidation\u0028\u0029",
             "name": "validation",
@@ -698,7 +608,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Division.html#property__deleted_at"
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024_mysql_timestamp",
@@ -715,6 +625,16 @@ Search.appendIndex(
             "name": "_belongs_to",
             "summary": "",
             "url": "classes/Model-Division.html#property__belongs_to"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003A\u0024pmodel_class",
+            "name": "pmodel_class",
+            "summary": "",
+            "url": "classes/Model-Division.html#property_pmodel_class"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003A\u0024getter_class",
+            "name": "getter_class",
+            "summary": "",
+            "url": "classes/Model-Division.html#property_getter_class"
         },                {
             "fqsen": "\\Model_Event_Detail",
             "name": "Model_Event_Detail",
@@ -778,13 +698,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Event",
             "name": "Model_Event",
-            "summary": "",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-Event.html"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003Apmodel\u0028\u0029",
-            "name": "pmodel",
-            "summary": "",
-            "url": "classes/Model-Event.html#method_pmodel"
         },                {
             "fqsen": "\\Model_Event\u003A\u003Avalidation\u0028\u0029",
             "name": "validation",
@@ -823,7 +738,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Event\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Event.html#property__deleted_at"
         },                {
             "fqsen": "\\Model_Event\u003A\u003A\u0024_mysql_timestamp",
@@ -836,9 +751,14 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Model-Event.html#property__has_many"
         },                {
+            "fqsen": "\\Model_Event\u003A\u003A\u0024pmodel_class",
+            "name": "pmodel_class",
+            "summary": "",
+            "url": "classes/Model-Event.html#property_pmodel_class"
+        },                {
             "fqsen": "\\Model_Page",
             "name": "Model_Page",
-            "summary": "",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-Page.html"
         },                {
             "fqsen": "\\Model_Page\u003A\u003A\u0024_table_name",
@@ -863,7 +783,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Page\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Page.html#property__deleted_at"
         },                {
             "fqsen": "\\Model_Page\u003A\u003A\u0024_mysql_timestamp",
@@ -873,7 +793,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Referencedate",
             "name": "Model_Referencedate",
-            "summary": "",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-Referencedate.html"
         },                {
             "fqsen": "\\Model_Referencedate\u003A\u003Avalidation\u0028\u0029",
@@ -908,7 +828,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-Referencedate.html#property__deleted_at"
         },                {
             "fqsen": "\\Model_Referencedate\u003A\u003A\u0024_mysql_timestamp",
@@ -918,7 +838,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_User",
             "name": "Model_User",
-            "summary": "",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/Model-User.html"
         },                {
             "fqsen": "\\Model_User\u003A\u003Avalidation\u0028\u0029",
@@ -968,7 +888,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_User\u003A\u003A\u0024_deleted_at",
             "name": "_deleted_at",
-            "summary": "",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
             "url": "classes/Model-User.html#property__deleted_at"
         },                {
             "fqsen": "\\Model_User\u003A\u003A\u0024_mysql_timestamp",
@@ -1268,7 +1188,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division",
             "name": "Division",
-            "summary": "",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-PresentationModel-Division.html"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003A__construct\u0028\u0029",
@@ -1503,7 +1423,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\\Tree",
             "name": "Tree",
-            "summary": "",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-PresentationModel-Division-Tree.html"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\\Tree\u003A\u003A__construct\u0028\u0029",
@@ -1818,7 +1738,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Event",
             "name": "Event",
-            "summary": "",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-PresentationModel-Event.html"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Event\u003A\u003A__construct\u0028\u0029",
@@ -2076,6 +1996,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Model-File.html#method___get"
         },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003Adelete\u0028\u0029",
+            "name": "delete",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#method_delete"
+        },                {
             "fqsen": "\\MyApp\\Model\\File\u003A\u003A\u0024fullpath",
             "name": "fullpath",
             "summary": "",
@@ -2085,6 +2010,11 @@ Search.appendIndex(
             "name": "props",
             "summary": "",
             "url": "classes/MyApp-Model-File.html#property_props"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003A\u0024pmodel_class",
+            "name": "pmodel_class",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#property_pmodel_class"
         },                {
             "fqsen": "\\FileTest",
             "name": "FileTest",
@@ -2126,10 +2056,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/FileTest.html#method_test_notfound"
         },                {
-            "fqsen": "\\FileTest\u003A\u003Atest_size\u0028\u0029",
-            "name": "test_size",
+            "fqsen": "\\FileTest\u003A\u003Atest_bytes\u0028\u0029",
+            "name": "test_bytes",
             "summary": "",
-            "url": "classes/FileTest.html#method_test_size"
+            "url": "classes/FileTest.html#method_test_bytes"
         },                {
             "fqsen": "\\FileTest\u003A\u003Atest_exists\u0028\u0029",
             "name": "test_exists",
@@ -2146,15 +2076,225 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/FileTest.html#method_test_create_fail"
         },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_delete\u0028\u0029",
+            "name": "test_delete",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_delete"
+        },                {
             "fqsen": "\\FileTest\u003A\u003A\u0024tmp_dir",
             "name": "tmp_dir",
             "summary": "",
             "url": "classes/FileTest.html#property_tmp_dir"
         },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord",
+            "name": "ActiveRecord",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003Ais_deleted\u0028\u0029",
+            "name": "is_deleted",
+            "summary": "",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#method_is_deleted"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_deleted_at",
+            "name": "_deleted_at",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u306E\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__deleted_at"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_default_mysql_timestamp",
+            "name": "_default_mysql_timestamp",
+            "summary": "\u524A\u9664\u30D5\u30E9\u30B0\u3092\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u306B\u3059\u308B",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__default_mysql_timestamp"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_observers",
+            "name": "_observers",
+            "summary": "\u4F5C\u6210\u30FB\u66F4\u65B0\u6642\u306B\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u3092\u8FFD\u52A0",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__observers"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\AdminController",
+            "name": "AdminController",
+            "summary": "\u7BA1\u7406\u753B\u9762\u5411\u3051\u306E\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Abstracts-AdminController.html"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\AdminController\u003A\u003Abefore\u0028\u0029",
+            "name": "before",
+            "summary": "",
+            "url": "classes/MyApp-Abstracts-AdminController.html#method_before"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\AdminController\u003A\u003Aafter\u0028\u0029",
+            "name": "after",
+            "summary": "",
+            "url": "classes/MyApp-Abstracts-AdminController.html#method_after"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller",
+            "name": "Controller",
+            "summary": "\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Abstracts-Controller.html"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Auser\u0028\u0029",
+            "name": "user",
+            "summary": "\u30ED\u30B0\u30A4\u30F3\u3057\u3066\u3044\u308B\u30E6\u30FC\u30B6\u3092\u53D6\u5F97",
+            "url": "classes/MyApp-Abstracts-Controller.html#method_user"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003ArequireUser\u0028\u0029",
+            "name": "requireUser",
+            "summary": "\u30ED\u30B0\u30A4\u30F3\u3057\u3066\u3044\u306A\u3044\u72B6\u614B\u3067\u30A2\u30AF\u30BB\u30B9\u3059\u308B\u3068\u4F8B\u5916\u3092\u6295\u3052\u308B",
+            "url": "classes/MyApp-Abstracts-Controller.html#method_requireUser"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Aactivity\u0028\u0029",
+            "name": "activity",
+            "summary": "\u6D3B\u52D5\u3092\u30ED\u30B0\u306B\u4FDD\u5B58",
+            "url": "classes/MyApp-Abstracts-Controller.html#method_activity"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Aredirect\u0028\u0029",
+            "name": "redirect",
+            "summary": "\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
+            "url": "classes/MyApp-Abstracts-Controller.html#method_redirect"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Abefore\u0028\u0029",
+            "name": "before",
+            "summary": "",
+            "url": "classes/MyApp-Abstracts-Controller.html#method_before"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Aafter\u0028\u0029",
+            "name": "after",
+            "summary": "",
+            "url": "classes/MyApp-Abstracts-Controller.html#method_after"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003A\u0024session_user",
+            "name": "session_user",
+            "summary": "\u30ED\u30B0\u30A4\u30F3\u72B6\u614B\u3092\u4FDD\u5B58\u3059\u308B\u30BB\u30C3\u30B7\u30E7\u30F3",
+            "url": "classes/MyApp-Abstracts-Controller.html#property_session_user"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Getter",
+            "name": "Getter",
+            "summary": "\u30B2\u30C3\u30BF\u30FC\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Abstracts-Getter.html"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\PresentationModel",
+            "name": "PresentationModel",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Abstracts-PresentationModel.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Number",
+            "name": "Number",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Number.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Number\u003A\u003Aformat\u0028\u0029",
+            "name": "format",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Number.html#method_format"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Flash",
+            "name": "Flash",
+            "summary": "\u7279\u5B9A\u306E\u30BB\u30C3\u30B7\u30E7\u30F3\u3092\u7BA1\u7406\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Helper-Session-Flash.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Flash\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u30BB\u30C3\u30B7\u30E7\u30F3\u540D\u3092\u8A2D\u5B9A",
+            "url": "classes/MyApp-Helper-Session-Flash.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Flash\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "\u30BB\u30C3\u30B7\u30E7\u30F3\u5909\u6570\u3092\u53D6\u5F97",
+            "url": "classes/MyApp-Helper-Session-Flash.html#method_get"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Flash\u003A\u003Aset\u0028\u0029",
+            "name": "set",
+            "summary": "\u30BB\u30C3\u30B7\u30E7\u30F3\u5909\u6570\u3092\u767B\u9332",
+            "url": "classes/MyApp-Helper-Session-Flash.html#method_set"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Flash\u003A\u003Adelete\u0028\u0029",
+            "name": "delete",
+            "summary": "\u30BB\u30C3\u30B7\u30E7\u30F3\u5909\u6570\u3092\u524A\u9664",
+            "url": "classes/MyApp-Helper-Session-Flash.html#method_delete"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Flash\u003A\u003A\u0024key",
+            "name": "key",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30BB\u30C3\u30B7\u30E7\u30F3\u540D",
+            "url": "classes/MyApp-Helper-Session-Flash.html#property_key"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\File",
+            "name": "File",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-PresentationModel-File.html"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\File\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-File.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\File\u003A\u003Abytes_formatted\u0028\u0029",
+            "name": "bytes_formatted",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-File.html#method_bytes_formatted"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\File\u003A\u003A\u0024model",
+            "name": "model",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-File.html#property_model"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Controller\\ModelRelated",
+            "name": "ModelRelated",
+            "summary": "\u30E2\u30C7\u30EB\u3068\u95A2\u9023\u4ED8\u3051\u308B\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u306E\u30C8\u30EC\u30A4\u30C8",
+            "url": "classes/MyApp-Traits-Controller-ModelRelated.html"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Controller\\ModelRelated\u003A\u003AgetModelClass\u0028\u0029",
+            "name": "getModelClass",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D\u3092\u8FD4\u3059",
+            "url": "classes/MyApp-Traits-Controller-ModelRelated.html#method_getModelClass"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Controller\\ModelRelated\u003A\u003AgetModel\u0028\u0029",
+            "name": "getModel",
+            "summary": "\u30E2\u30C7\u30EB\u3092\u53D6\u5F97\u3059\u308B",
+            "url": "classes/MyApp-Traits-Controller-ModelRelated.html#method_getModel"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Model\\Gettable",
+            "name": "Gettable",
+            "summary": "\u30B2\u30C3\u30BF\u30FC\u3092\u547C\u3073\u51FA\u305B\u308B\u30E2\u30C7\u30EB\u306E\u30C8\u30EC\u30A4\u30C8",
+            "url": "classes/MyApp-Traits-Model-Gettable.html"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Model\\Gettable\u003A\u003Agetter\u0028\u0029",
+            "name": "getter",
+            "summary": "",
+            "url": "classes/MyApp-Traits-Model-Gettable.html#method_getter"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Model\\Presentable",
+            "name": "Presentable",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u3092\u547C\u3073\u51FA\u305B\u308B\u30E2\u30C7\u30EB\u306E\u30C8\u30EC\u30A4\u30C8",
+            "url": "classes/MyApp-Traits-Model-Presentable.html"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Model\\Presentable\u003A\u003Apmodel\u0028\u0029",
+            "name": "pmodel",
+            "summary": "",
+            "url": "classes/MyApp-Traits-Model-Presentable.html#method_pmodel"
+        },                {
+            "fqsen": "\\NumberTest",
+            "name": "NumberTest",
+            "summary": "",
+            "url": "classes/NumberTest.html"
+        },                {
+            "fqsen": "\\NumberTest\u003A\u003Atest_no_unit\u0028\u0029",
+            "name": "test_no_unit",
+            "summary": "",
+            "url": "classes/NumberTest.html#method_test_no_unit"
+        },                {
+            "fqsen": "\\NumberTest\u003A\u003Atest_any_unit\u0028\u0029",
+            "name": "test_any_unit",
+            "summary": "",
+            "url": "classes/NumberTest.html#method_test_any_unit"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts",
+            "name": "Abstracts",
+            "summary": "",
+            "url": "namespaces/myapp-abstracts.html"
         },                {
             "fqsen": "\\MyApp\\Getter",
             "name": "Getter",
@@ -2210,6 +2350,21 @@ Search.appendIndex(
             "name": "Table",
             "summary": "",
             "url": "namespaces/myapp-table.html"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Controller",
+            "name": "Controller",
+            "summary": "",
+            "url": "namespaces/myapp-traits-controller.html"
+        },                {
+            "fqsen": "\\MyApp\\Traits",
+            "name": "Traits",
+            "summary": "",
+            "url": "namespaces/myapp-traits.html"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Model",
+            "name": "Model",
+            "summary": "",
+            "url": "namespaces/myapp-traits-model.html"
         },                {
             "fqsen": "\\Fuel\\Tasks",
             "name": "Tasks",

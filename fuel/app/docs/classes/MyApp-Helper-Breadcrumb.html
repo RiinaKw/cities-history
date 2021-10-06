@@ -54,11 +54,13 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-abstracts.html"><abbr title="\MyApp\Abstracts">Abstracts</abbr></a></li>
                                             <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
                                             <li><a href="namespaces/myapp-table.html"><abbr title="\MyApp\Table">Table</abbr></a></li>
+                                            <li><a href="namespaces/myapp-traits.html"><abbr title="\MyApp\Traits">Traits</abbr></a></li>
                                     </ul>
                             <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h4>
                 <ul class="phpdocumentor-list">
@@ -80,6 +82,8 @@
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
                                     <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
+                                    <li><a href="packages/App-Abstracts.html"><abbr title="\App\Abstracts">Abstracts</abbr></a></li>
+                                    <li><a href="packages/App-Traits.html"><abbr title="\App\Traits">Traits</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -143,7 +147,7 @@
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Helper-Breadcrumb.html#method_division">division()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd></dd>
 
@@ -179,7 +183,7 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">division</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$root_label</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;Top&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$root_uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;top&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$item_uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;division.detail&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">division</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$secondary_label</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$secondary_uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -187,28 +191,21 @@
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$division</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
-                            </dt>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$root_label</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;Top&#039;</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$secondary_label</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$root_uri</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;top&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$item_uri</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;division.detail&#039;</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$secondary_uri</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -217,7 +214,7 @@
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 

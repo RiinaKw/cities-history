@@ -54,11 +54,13 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/myapp.html"><abbr title="\MyApp">MyApp</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/myapp-abstracts.html"><abbr title="\MyApp\Abstracts">Abstracts</abbr></a></li>
                                             <li><a href="namespaces/myapp-getter.html"><abbr title="\MyApp\Getter">Getter</abbr></a></li>
                                             <li><a href="namespaces/myapp-helper.html"><abbr title="\MyApp\Helper">Helper</abbr></a></li>
                                             <li><a href="namespaces/myapp-model.html"><abbr title="\MyApp\Model">Model</abbr></a></li>
                                             <li><a href="namespaces/myapp-presentationmodel.html"><abbr title="\MyApp\PresentationModel">PresentationModel</abbr></a></li>
                                             <li><a href="namespaces/myapp-table.html"><abbr title="\MyApp\Table">Table</abbr></a></li>
+                                            <li><a href="namespaces/myapp-traits.html"><abbr title="\MyApp\Traits">Traits</abbr></a></li>
                                     </ul>
                             <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h4>
                 <ul class="phpdocumentor-list">
@@ -80,6 +82,8 @@
                                     <li><a href="packages/App-PresentationModel.html"><abbr title="\App\PresentationModel">PresentationModel</abbr></a></li>
                                     <li><a href="packages/App-Table.html"><abbr title="\App\Table">Table</abbr></a></li>
                                     <li><a href="packages/App-Getter.html"><abbr title="\App\Getter">Getter</abbr></a></li>
+                                    <li><a href="packages/App-Abstracts.html"><abbr title="\App\Abstracts">Abstracts</abbr></a></li>
+                                    <li><a href="packages/App-Traits.html"><abbr title="\App\Traits">Traits</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Fuel.html"><abbr title="\Fuel">Fuel</abbr></a></h3>
                         </section>
@@ -99,30 +103,25 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/myapp.html">MyApp</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/myapp-traits.html">Traits</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/myapp-traits-controller.html">Controller</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -class">
+    <article class="phpdocumentor-element -trait">
         <h2 class="phpdocumentor-content__title">
-    Helper_Breadcrumb
-
-    
-            <div class="phpdocumentor-element__package">
-            in package
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Default.html">Default</a></li>
-                            </ul>
-        </div>
-    
-    
+    ModelRelated
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/helper/breadcrumb.php"><a href="files/fuel-app-classes-helper-breadcrumb.html"><abbr title="fuel/app/classes/helper/breadcrumb.php">breadcrumb.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Traits/Controller/ModelRelated.php"><a href="files/fuel-app-myapp-traits-controller-modelrelated.html"><abbr title="fuel/app/MyApp/Traits/Controller/ModelRelated.php">ModelRelated.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">3</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 </aside>
 
-        
+            <p class="phpdocumentor-summary">モデルと関連付けるコントローラのトレイト</p>
+
+    <section class="phpdocumentor-description"></section>
 
 
 
@@ -137,12 +136,19 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Helper-Breadcrumb.html#method_breadcrumb">breadcrumb()</a>
+                    <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_getModel">getModel()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: <a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>モデルを取得する</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_getModelClass">getModelClass()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>関連するモデルのクラス名を返す</dd>
 
         </dl>
 
@@ -150,71 +156,122 @@
 
         
 
-        
-
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Helper-Breadcrumb.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/MyApp-Traits-Controller-ModelRelated.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_breadcrumb">
-        breadcrumb()
-        <a href="classes/Helper-Breadcrumb.html#method_breadcrumb" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getModel">
+        getModel()
+        <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_getModel" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/helper/breadcrumb.php"><a href="files/fuel-app-classes-helper-breadcrumb.html"><abbr title="fuel/app/classes/helper/breadcrumb.php">breadcrumb.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Traits/Controller/ModelRelated.php"><a href="files/fuel-app-myapp-traits-controller-modelrelated.html"><abbr title="fuel/app/MyApp/Traits/Controller/ModelRelated.php">ModelRelated.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">5</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 </aside>
 
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">breadcrumb</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$root_label</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;Top&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$root_uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;top&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$item_uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;division.detail&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+        <p class="phpdocumentor-summary">モデルを取得する</p>
 
-    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">getModel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$force</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$division</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>レコードの ID</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$root_label</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;Top&#039;</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$force</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$root_uri</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;top&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$item_uri</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;division.detail&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>削除済みのレコードを取得するかどうか</p>
+</section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\HttpBadRequestException">HttpBadRequestException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>ID が不正な場合（引数のタイプヒンティングで制限かかってるから必要ないかも？）</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\HttpBadRequestException">HttpBadRequestException</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>レコードが存在しない場合、あるいは削除済みの場合</p>
+</section>
+
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>取得されたモデル</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                        -abstract            -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getModelClass">
+        getModelClass()
+        <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_getModelClass" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Traits/Controller/ModelRelated.php"><a href="files/fuel-app-myapp-traits-controller-modelrelated.html"><abbr title="fuel/app/MyApp/Traits/Controller/ModelRelated.php">ModelRelated.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">17</span>
+</aside>
+
+        <p class="phpdocumentor-summary">関連するモデルのクラス名を返す</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__abstract">abstract</span>        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">getModelClass</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -236,7 +293,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Helper-Breadcrumb.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/MyApp-Traits-Controller-ModelRelated.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

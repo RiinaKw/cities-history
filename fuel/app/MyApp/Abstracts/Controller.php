@@ -8,15 +8,30 @@ namespace MyApp\Abstracts;
 
 use MyApp\Helper\Session\Item as SessionItem;
 
+/**
+ * コントローラの基底クラス
+ */
 abstract class Controller extends \Controller
 {
+	/**
+	 * ログイン状態を保存するセッション
+	 * @var \Model_User
+	 */
 	protected $session_user = null;
 
+	/**
+	 * ログインしているユーザを取得
+	 * @return \Model_User|null  ユーザオブジェクト、未ログインなら null
+	 */
 	protected function user(): ?\Model_User
 	{
 		return $this->session_user->get();
 	}
 
+	/**
+	 * ログインしていない状態でアクセスすると例外を投げる
+	 * @throws \HttpNoAccessException  未ログインの場合
+	 */
 	protected function requireUser(): void
 	{
 		$user = $this->user();
@@ -26,6 +41,11 @@ abstract class Controller extends \Controller
 		$this->user = $user;
 	}
 
+	/**
+	 * 活動をログに保存
+	 * @param string $target  活動内容
+	 * @param int    $id      対象のモデルの ID
+	 */
 	protected function activity(string $target, int $id): void
 	{
 		\Model_Activity::insert_log([
@@ -35,6 +55,11 @@ abstract class Controller extends \Controller
 		]);
 	}
 
+	/**
+	 * リダイレクト
+	 * @param  string $config               URL の設定名
+	 * @param  array  $params               URL のパラメータ
+	 */
 	protected function redirect(string $config, array $params = [])
 	{
 		\Helper_Uri::redirect($config, $params);
