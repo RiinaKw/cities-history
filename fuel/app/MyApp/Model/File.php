@@ -14,7 +14,7 @@ class File
 	public function __construct($path)
 	{
 		if (! realpath($path)) {
-			throw new \Exception('File not found');
+			throw new \Exception("File '{$path}' not found");
 		}
 		$this->fullpath = realpath($path);
 		$this->refresh();
@@ -23,7 +23,7 @@ class File
 	public static function create($path)
 	{
 		if (realpath($path)) {
-			throw new \Exception('File already exists');
+			throw new \Exception("File '{$path}' already exists");
 		}
 		touch($path);
 		return new static($path);

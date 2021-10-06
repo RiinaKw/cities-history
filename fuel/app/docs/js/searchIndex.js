@@ -416,6 +416,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Top.html#method_action_index"
         },                {
+            "fqsen": "\\Controller_Top\u003A\u003Aaction_session_clear\u0028\u0029",
+            "name": "action_session_clear",
+            "summary": "",
+            "url": "classes/Controller-Top.html#method_action_session_clear"
+        },                {
             "fqsen": "\\Helper_Breadcrumb",
             "name": "Helper_Breadcrumb",
             "summary": "",
@@ -646,21 +651,6 @@ Search.appendIndex(
             "summary": "\u30D1\u30B9\u5F62\u5F0F\u306E\u0020ID\u0020\u3092\u5206\u5272\u3057\u3001\u5404\u0020ID\u0020\u3054\u3068\u306B\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3092\u5B9F\u884C",
             "url": "classes/Model-Division.html#method_id_chain"
         },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_path\u0028\u0029",
-            "name": "get_path",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_path"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Aget_parent_path\u0028\u0029",
-            "name": "get_parent_path",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_get_parent_path"
-        },                {
-            "fqsen": "\\Model_Division\u003A\u003Abelongs\u0028\u0029",
-            "name": "belongs",
-            "summary": "",
-            "url": "classes/Model-Division.html#method_belongs"
-        },                {
             "fqsen": "\\Model_Division\u003A\u003AcallIfNotEmpty\u0028\u0029",
             "name": "callIfNotEmpty",
             "summary": "\u5FC5\u8981\u306A\u30D1\u30E9\u30E1\u30FC\u30BF\u304C\u8A2D\u5B9A\u3055\u308C\u3066\u3044\u308B\u5834\u5408\u306E\u307F\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3092\u5B9F\u884C",
@@ -720,6 +710,11 @@ Search.appendIndex(
             "name": "_has_many",
             "summary": "",
             "url": "classes/Model-Division.html#property__has_many"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003A\u0024_belongs_to",
+            "name": "_belongs_to",
+            "summary": "",
+            "url": "classes/Model-Division.html#property__belongs_to"
         },                {
             "fqsen": "\\Model_Event_Detail",
             "name": "Model_Event_Detail",
@@ -845,16 +840,6 @@ Search.appendIndex(
             "name": "Model_Page",
             "summary": "",
             "url": "classes/Model-Page.html"
-        },                {
-            "fqsen": "\\Model_Page\u003A\u003Aget_all\u0028\u0029",
-            "name": "get_all",
-            "summary": "",
-            "url": "classes/Model-Page.html#method_get_all"
-        },                {
-            "fqsen": "\\Model_Page\u003A\u003Aget_one_by_slug\u0028\u0029",
-            "name": "get_one_by_slug",
-            "summary": "",
-            "url": "classes/Model-Page.html#method_get_one_by_slug"
         },                {
             "fqsen": "\\Model_Page\u003A\u003A\u0024_table_name",
             "name": "_table_name",
@@ -1176,70 +1161,25 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Fuel-Tasks-Db.html"
         },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Adelay\u0028\u0029",
-            "name": "delay",
-            "summary": "\u9032\u6357\u304C\u5206\u304B\u308A\u3084\u3059\u3044\u3088\u3046\u3001\u5B9F\u884C\u3092\u6562\u3048\u3066\u9045\u3089\u305B\u308B",
-            "url": "classes/Fuel-Tasks-Db.html#method_delay"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Aconnection\u0028\u0029",
-            "name": "connection",
-            "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u63A5\u7D9A\u60C5\u5831\u3092\u53D6\u5F97",
-            "url": "classes/Fuel-Tasks-Db.html#method_connection"
-        },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Abackup\u0028\u0029",
             "name": "backup",
             "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u306E\u30D0\u30C3\u30AF\u30A2\u30C3\u30D7\u3092\u5B9F\u884C",
             "url": "classes/Fuel-Tasks-Db.html#method_backup"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Afiles\u0028\u0029",
-            "name": "files",
-            "summary": "\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA\u5185\u306E\u0020sql\u0020\u30D5\u30A1\u30A4\u30EB\u4E00\u89A7\u3092\u53D6\u5F97",
-            "url": "classes/Fuel-Tasks-Db.html#method_files"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AshowFiles\u0028\u0029",
             "name": "showFiles",
             "summary": "\u30D5\u30A1\u30A4\u30EB\u4E00\u89A7\u3092\u6574\u5F62\u3057\u3066\u8868\u793A",
             "url": "classes/Fuel-Tasks-Db.html#method_showFiles"
         },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Apath\u0028\u0029",
-            "name": "path",
+            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AuseFile\u0028\u0029",
+            "name": "useFile",
             "summary": "\u8AAD\u307F\u8FBC\u3080\u30D5\u30A1\u30A4\u30EB\u3092\u6C7A\u5B9A",
-            "url": "classes/Fuel-Tasks-Db.html#method_path"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Atables\u0028\u0029",
-            "name": "tables",
-            "summary": "\u30C6\u30FC\u30D6\u30EB\u4E00\u89A7\u3092\u53D6\u5F97",
-            "url": "classes/Fuel-Tasks-Db.html#method_tables"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AtruncateRestore\u0028\u0029",
-            "name": "truncateRestore",
-            "summary": "\u30EA\u30B9\u30C8\u30A2\u7528\u306E\u30C6\u30FC\u30D6\u30EB\u3092\u521D\u671F\u5316",
-            "url": "classes/Fuel-Tasks-Db.html#method_truncateRestore"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Atruncate\u0028\u0029",
-            "name": "truncate",
-            "summary": "\u914D\u5217\u3067\u6307\u5B9A\u3055\u308C\u305F\u30C6\u30FC\u30D6\u30EB\u3092\u7A7A\u306B\u3059\u308B",
-            "url": "classes/Fuel-Tasks-Db.html#method_truncate"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003AloadSQL\u0028\u0029",
-            "name": "loadSQL",
-            "summary": "\u30D5\u30A1\u30A4\u30EB\u304B\u3089\u0020SQL\u0020\u3092\u8AAD\u307F\u8FBC\u3080",
-            "url": "classes/Fuel-Tasks-Db.html#method_loadSQL"
+            "url": "classes/Fuel-Tasks-Db.html#method_useFile"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003Arestore\u0028\u0029",
             "name": "restore",
             "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u306E\u30EA\u30B9\u30C8\u30A2\u3092\u5B9F\u884C",
             "url": "classes/Fuel-Tasks-Db.html#method_restore"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003ADELAY",
-            "name": "DELAY",
-            "summary": "",
-            "url": "classes/Fuel-Tasks-Db.html#constant_DELAY"
-        },                {
-            "fqsen": "\\Fuel\\Tasks\\Db\u003A\u003ARESTORE_TABLE",
-            "name": "RESTORE_TABLE",
-            "summary": "",
-            "url": "classes/Fuel-Tasks-Db.html#constant_RESTORE_TABLE"
         },                {
             "fqsen": "\\Fuel\\Tasks\\Robots",
             "name": "Robots",
@@ -2036,6 +1976,171 @@ Search.appendIndex(
             "summary": "oil\u0020\u30B3\u30DE\u30F3\u30C9\u3092\u5B9F\u884C",
             "url": "classes/MyApp-MyFuel.html#method_oil"
         },                {
+            "fqsen": "\\MyApp\\Model\\Backup",
+            "name": "Backup",
+            "summary": "",
+            "url": "classes/MyApp-Model-Backup.html"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003A\u0024connection",
+            "name": "connection",
+            "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u63A5\u7D9A\u60C5\u5831",
+            "url": "classes/MyApp-Model-Backup.html#property_connection"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003Adb\u0028\u0029",
+            "name": "db",
+            "summary": "\u5BFE\u8C61\u306E\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u540D",
+            "url": "classes/MyApp-Model-Backup.html#method_db"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003Atables\u0028\u0029",
+            "name": "tables",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u4E00\u89A7\u3092\u53D6\u5F97",
+            "url": "classes/MyApp-Model-Backup.html#method_tables"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003Atruncate\u0028\u0029",
+            "name": "truncate",
+            "summary": "\u3059\u3079\u3066\u306E\u30C6\u30FC\u30D6\u30EB\u3092\u7A7A\u306B\u3059\u308B",
+            "url": "classes/MyApp-Model-Backup.html#method_truncate"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003Aexport\u0028\u0029",
+            "name": "export",
+            "summary": "mysql\u0020\u304B\u3089\u30A8\u30AF\u30B9\u30DD\u30FC\u30C8",
+            "url": "classes/MyApp-Model-Backup.html#method_export"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003Aimport\u0028\u0029",
+            "name": "import",
+            "summary": "mysql\u0020\u3078\u30A4\u30F3\u30DD\u30FC\u30C8",
+            "url": "classes/MyApp-Model-Backup.html#method_import"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003AcorrectPath\u0028\u0029",
+            "name": "correctPath",
+            "summary": "\u6B63\u3057\u3044\u30D5\u30A1\u30A4\u30EB\u540D\u3092\u751F\u6210\u3059\u308B",
+            "url": "classes/MyApp-Model-Backup.html#method_correctPath"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003AinitDir\u0028\u0029",
+            "name": "initDir",
+            "summary": "\u30D0\u30C3\u30AF\u30A2\u30C3\u30D7\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA\u8A2D\u5B9A",
+            "url": "classes/MyApp-Model-Backup.html#method_initDir"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003AopenDir\u0028\u0029",
+            "name": "openDir",
+            "summary": "\u30D0\u30C3\u30AF\u30A2\u30C3\u30D7\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA\u304B\u3089\u0020sql\u0020\u30D5\u30A1\u30A4\u30EB\u306E\u4E00\u89A7\u3092\u53D6\u5F97",
+            "url": "classes/MyApp-Model-Backup.html#method_openDir"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003Afiles\u0028\u0029",
+            "name": "files",
+            "summary": "sql\u0020\u30D5\u30A1\u30A4\u30EB\u306E\u4E00\u89A7\u3092\u53D6\u5F97",
+            "url": "classes/MyApp-Model-Backup.html#method_files"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003Afind\u0028\u0029",
+            "name": "find",
+            "summary": "\u30D5\u30A1\u30A4\u30EB\u540D\u304B\u3089\u30D5\u30A1\u30A4\u30EB\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u6C7A\u5B9A",
+            "url": "classes/MyApp-Model-Backup.html#method_find"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003A\u0024dir",
+            "name": "dir",
+            "summary": "\u30D0\u30C3\u30AF\u30A2\u30C3\u30D7\u30D5\u30A1\u30A4\u30EB\u306E\u4FDD\u5B58\u5148\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA",
+            "url": "classes/MyApp-Model-Backup.html#property_dir"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Backup\u003A\u003A\u0024ext",
+            "name": "ext",
+            "summary": "\u30D0\u30C3\u30AF\u30A2\u30C3\u30D7\u30D5\u30A1\u30A4\u30EB\u3068\u3057\u3066\u8A8D\u8B58\u3059\u308B\u30D5\u30A1\u30A4\u30EB\u306E\u62E1\u5F35\u5B50",
+            "url": "classes/MyApp-Model-Backup.html#property_ext"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File",
+            "name": "File",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#method_create"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003Arefresh\u0028\u0029",
+            "name": "refresh",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#method_refresh"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003A__get\u0028\u0029",
+            "name": "__get",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#method___get"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003A\u0024fullpath",
+            "name": "fullpath",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#property_fullpath"
+        },                {
+            "fqsen": "\\MyApp\\Model\\File\u003A\u003A\u0024props",
+            "name": "props",
+            "summary": "",
+            "url": "classes/MyApp-Model-File.html#property_props"
+        },                {
+            "fqsen": "\\FileTest",
+            "name": "FileTest",
+            "summary": "",
+            "url": "classes/FileTest.html"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003AsetUp\u0028\u0029",
+            "name": "setUp",
+            "summary": "",
+            "url": "classes/FileTest.html#method_setUp"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003AunlinkIfExists\u0028\u0029",
+            "name": "unlinkIfExists",
+            "summary": "",
+            "url": "classes/FileTest.html#method_unlinkIfExists"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_load\u0028\u0029",
+            "name": "test_load",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_load"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_property\u0028\u0029",
+            "name": "test_property",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_property"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_filename\u0028\u0029",
+            "name": "test_filename",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_filename"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_date\u0028\u0029",
+            "name": "test_date",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_date"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_notfound\u0028\u0029",
+            "name": "test_notfound",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_notfound"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_size\u0028\u0029",
+            "name": "test_size",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_size"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_create\u0028\u0029",
+            "name": "test_create",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_create"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003Atest_create_fail\u0028\u0029",
+            "name": "test_create_fail",
+            "summary": "",
+            "url": "classes/FileTest.html#method_test_create_fail"
+        },                {
+            "fqsen": "\\FileTest\u003A\u003A\u0024tmp_dir",
+            "name": "tmp_dir",
+            "summary": "",
+            "url": "classes/FileTest.html#property_tmp_dir"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -2061,15 +2166,15 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/myapp-helper-session.html"
         },                {
-            "fqsen": "\\MyApp\\Model\\Division",
-            "name": "Division",
-            "summary": "",
-            "url": "namespaces/myapp-model-division.html"
-        },                {
             "fqsen": "\\MyApp\\Model",
             "name": "Model",
             "summary": "",
             "url": "namespaces/myapp-model.html"
+        },                {
+            "fqsen": "\\MyApp\\Model\\Division",
+            "name": "Division",
+            "summary": "",
+            "url": "namespaces/myapp-model-division.html"
         },                {
             "fqsen": "\\MyApp",
             "name": "MyApp",

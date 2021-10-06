@@ -122,7 +122,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 </aside>
 
         
@@ -140,20 +140,6 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/Fuel-Tasks-Db.html#constant_DELAY">DELAY</a>
-    <span>
-        &nbsp;= 10000                    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/Fuel-Tasks-Db.html#constant_RESTORE_TABLE">RESTORE_TABLE</a>
-    <span>
-        &nbsp;= &#039;restore&#039;                    </span>
-</dt>
-<dd></dd>
-
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Fuel-Tasks-Db.html#method_backup">backup()</a>
     <span>
@@ -169,129 +155,24 @@
 <dd>データベースのリストアを実行</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_connection">connection()</a>
-    <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>データベース接続情報を取得</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_delay">delay()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>進捗が分かりやすいよう、実行を敢えて遅らせる</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_files">files()</a>
-    <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>ディレクトリ内の sql ファイル一覧を取得</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_loadSQL">loadSQL()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>ファイルから SQL を読み込む</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_path">path()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd>読み込むファイルを決定</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Fuel-Tasks-Db.html#method_showFiles">showFiles()</a>
     <span>
-                        &nbsp;: void    </span>
+                        &nbsp;: array&lt;int, <a href="classes/MyApp-Model-File.html"><abbr title="\MyApp\Model\File">File</abbr></a>&gt;    </span>
 </dt>
 <dd>ファイル一覧を整形して表示</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_tables">tables()</a>
+    <a href="classes/Fuel-Tasks-Db.html#method_useFile">useFile()</a>
     <span>
-                        &nbsp;: array&lt;string, bool&gt;    </span>
+                        &nbsp;: <a href="classes/MyApp-Model-File.html"><abbr title="\MyApp\Model\File">File</abbr></a>    </span>
 </dt>
-<dd>テーブル一覧を取得</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_truncate">truncate()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>配列で指定されたテーブルを空にする</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Fuel-Tasks-Db.html#method_truncateRestore">truncateRestore()</a>
-    <span>
-                        &nbsp;: void    </span>
-</dt>
-<dd>リストア用のテーブルを初期化</dd>
+<dd>読み込むファイルを決定</dd>
 
         </dl>
 
 
 
         
-    <section class="phpdocumentor-constants">
-        <h3 class="phpdocumentor-elements__header" id="constants">
-            Constants
-            <a href="classes/Fuel-Tasks-Db.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
-        </h3>
-                    <article class="phpdocumentor-element -constant -private ">
-    <h4 class="phpdocumentor-element__name" id="constant_DELAY">
-        DELAY
-        <a href="classes/Fuel-Tasks-Db.html#constant_DELAY" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">14</span>
-</aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">DELAY</span>
-    = <span class="phpdocumentor-signature__default-value">10000</span>
-</code>
-
-
-    
-    
-
-</article>
-                    <article class="phpdocumentor-element -constant -private ">
-    <h4 class="phpdocumentor-element__name" id="constant_RESTORE_TABLE">
-        RESTORE_TABLE
-        <a href="classes/Fuel-Tasks-Db.html#constant_RESTORE_TABLE" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">15</span>
-</aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">RESTORE_TABLE</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;restore&#039;</span>
-</code>
-
-
-    
-    
-
-</article>
-            </section>
 
         
 
@@ -313,7 +194,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 </aside>
 
         <p class="phpdocumentor-summary">データベースのバックアップを実行</p>
@@ -360,7 +241,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">287</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 </aside>
 
         <p class="phpdocumentor-summary">データベースのリストアを実行</p>
@@ -400,215 +281,6 @@
             -private
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_connection">
-        connection()
-        <a href="classes/Fuel-Tasks-Db.html#method_connection" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">29</span>
-</aside>
-
-        <p class="phpdocumentor-summary">データベース接続情報を取得</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">connection</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>接続情報</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_delay">
-        delay()
-        <a href="classes/Fuel-Tasks-Db.html#method_delay" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">20</span>
-</aside>
-
-        <p class="phpdocumentor-summary">進捗が分かりやすいよう、実行を敢えて遅らせる</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">delay</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_files">
-        files()
-        <a href="classes/Fuel-Tasks-Db.html#method_files" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">130</span>
-</aside>
-
-        <p class="phpdocumentor-summary">ディレクトリ内の sql ファイル一覧を取得</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">files</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dir</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$dir</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>対象ディレクトリ</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>ファイル一覧</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_loadSQL">
-        loadSQL()
-        <a href="classes/Fuel-Tasks-Db.html#method_loadSQL" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">254</span>
-</aside>
-
-        <p class="phpdocumentor-summary">ファイルから SQL を読み込む</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">loadSQL</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$path</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>ファイル名</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_path">
-        path()
-        <a href="classes/Fuel-Tasks-Db.html#method_path" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">173</span>
-</aside>
-
-        <p class="phpdocumentor-summary">読み込むファイルを決定</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">path</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$file</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>ファイル名、空の場合は選択肢を提示</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>ファイルパス</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
     <h4 class="phpdocumentor-element__name" id="method_showFiles">
         showFiles()
         <a href="classes/Fuel-Tasks-Db.html#method_showFiles" class="headerlink"><i class="fas fa-link"></i></a>
@@ -616,36 +288,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">152</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 </aside>
 
         <p class="phpdocumentor-summary">ファイル一覧を整形して表示</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">showFiles</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$files</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">showFiles</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, <a href="classes/MyApp-Model-File.html"><abbr title="\MyApp\Model\File">File</abbr></a>&gt;</span></code>
 
         <section class="phpdocumentor-description"></section>
 
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$files</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>ファイル一覧</p>
-</section>
-
-            </dd>
-            </dl>
-
+    
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;int, <a href="classes/MyApp-Model-File.html"><abbr title="\MyApp\Model\File">File</abbr></a>&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>ファイルの配列（作成日の降順）</p>
+</section>
 
     
 </article>
@@ -655,124 +316,42 @@
             -private
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_tables">
-        tables()
-        <a href="classes/Fuel-Tasks-Db.html#method_tables" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_useFile">
+        useFile()
+        <a href="classes/Fuel-Tasks-Db.html#method_useFile" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">213</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 </aside>
 
-        <p class="phpdocumentor-summary">テーブル一覧を取得</p>
+        <p class="phpdocumentor-summary">読み込むファイルを決定</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">tables</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$db</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, bool&gt;</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">useFile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$filename</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Model-File.html"><abbr title="\MyApp\Model\File">File</abbr></a></span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$db</span>
+                <span class="phpdocumentor-signature__argument__name">$filename</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>データベース名</p>
-</section>
-
+                
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string, bool&gt;</span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Model-File.html"><abbr title="\MyApp\Model\File">File</abbr></a></span>
             &mdash;
-            <section class="phpdocumentor-description"><p>テーブル名をキーとした配列</p>
+            <section class="phpdocumentor-description"><p>ファイルオブジェクト</p>
 </section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_truncate">
-        truncate()
-        <a href="classes/Fuel-Tasks-Db.html#method_truncate" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">236</span>
-</aside>
-
-        <p class="phpdocumentor-summary">配列で指定されたテーブルを空にする</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">truncate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, bool&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tables</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$tables</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, bool&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>テーブル一覧</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_truncateRestore">
-        truncateRestore()
-        <a href="classes/Fuel-Tasks-Db.html#method_truncateRestore" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/tasks/db.php"><a href="files/fuel-app-tasks-db.html"><abbr title="fuel/app/tasks/db.php">db.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">227</span>
-</aside>
-
-        <p class="phpdocumentor-summary">リストア用のテーブルを初期化</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">truncateRestore</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
 
     
 </article>
