@@ -21,8 +21,10 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		$this->filter = Input::get('filter');
 
 		$this->breadcrumbs
-			= \MyApp\Helper\Breadcrumb::forge('自治体管理', Uri::create('admin.division.list'))
-			->division($this->parent);
+			= \MyApp\Helper\Breadcrumb::forge('自治体管理', Uri::create('admin.division.list'));
+		if ($this->parent) {
+			$this->breadcrumbs->division($this->parent);
+		}
 
 		$this->title = '自治体管理';
 		$this->nav_item = 'admin-division';
