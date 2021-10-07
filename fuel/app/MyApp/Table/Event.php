@@ -6,6 +6,7 @@
 
 namespace MyApp\Table;
 
+use Fuel\Core\Database_Result_Cached as Result;
 use DB;
 use Model_Division;
 use Model_Event;
@@ -61,40 +62,13 @@ class Event extends \MyApp\Abstracts\Table
 
 	//================ 各種メソッド ================//
 
-	public static function get_by_division($divisions, $start_date = null, $end_date = null)
-	{
-		$query = DB::select('d.*', 'e.title', 'e.date', 'e.comment', 'e.source')
-			->from([static::DETAIL_TABLE, 'd'])
-			->join([static::EVENT_TABLE, 'e'])
-			->on('e.id', '=', 'd.event_id')
-			->where('d.is_refer', '=', false)
-			->where('e.deleted_at', '=', null)
-			->where('d.deleted_at', '=', null);
-
-		if (is_array($divisions) || $divisions instanceof \Fuel\Core\Database_Result_Cached) {
-			$ids = [];
-			foreach ($divisions as $division) {
-				$ids[] = $division->id;
-			}
-			if ($ids) {
-				$query->where('d.division_id', 'in', $ids);
-			}
-		} else {
-			$query->where('d.division_id', '=', $divisions->id);
-		}
-		if ($start_date) {
-			$query->where('e.date', '>=', $start_date);
-		}
-		if ($end_date) {
-			$query->where('e.date', '<=', $end_date);
-		}
-		$query->order_by('e.date', 'desc');
-
-		return $query->as_object(static::$model_name_detail)->execute()->as_array();
-	}
-	// function get_by_division()
-
-	public static function get_relative_division(int $event_id)
+	/**
+	 * イベントに関連する自治体一覧を取得
+	 *
+	 * @param  int    $event_id                   イベント ID
+	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
+	 */
+	public static function get_relative_division(int $event_id): Result
 	{
 		$query = DB::select(
 			'd.*',
@@ -116,11 +90,19 @@ class Event extends \MyApp\Abstracts\Table
 	}
 	// function get_relative_division()
 
+	/**
+	 * 親自治体と期間から、配下の自治体のイベント一覧を取得
+	 *
+	 * @param  Model_Division $parent             基準となる親自治体
+	 * @param  string|null    $start_date         集計開始日付、null の場合は指定なし
+	 * @param  string|null    $end_date           集計終了日付、null の場合は指定なし
+	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
+	 */
 	public static function get_by_parent_division_and_date(
 		Model_Division $parent,
 		string $start_date = null,
 		string $end_date = null
-	) {
+	): Result {
 		$query = DB::select('ev.*')
 			->distinct(true)
 			->from([static::DETAIL_TABLE, 'dt'])
@@ -141,6 +123,8 @@ class Event extends \MyApp\Abstracts\Table
 		}
 		$query->order_by('ev.date', 'desc');
 
-		return $query->as_object(static::$model_name_event)->execute()->as_array();
+		return $query->as_object(static::$model_name_event)->execute();
 	}
+	// function get_by_parent_division_and_date()
 }
+// class Event

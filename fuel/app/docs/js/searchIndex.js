@@ -1101,19 +1101,14 @@ Search.appendIndex(
             "summary": "\u81EA\u6CBB\u4F53\u30C6\u30FC\u30D6\u30EB\u3092\u7BA1\u7406\u3059\u308B\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Table-Division.html"
         },                {
-            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_all_id\u0028\u0029",
-            "name": "get_all_id",
-            "summary": "",
-            "url": "classes/MyApp-Table-Division.html#method_get_all_id"
-        },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aquery\u0028\u0029",
             "name": "query",
-            "summary": "",
+            "summary": "\u524A\u9664\u3055\u308C\u3066\u3044\u306A\u3044\u3059\u3079\u3066\u306E\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Table-Division.html#method_query"
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Asearch\u0028\u0029",
             "name": "search",
-            "summary": "",
+            "summary": "\u81EA\u6CBB\u4F53\u691C\u7D22",
             "url": "classes/MyApp-Table-Division.html#method_search"
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aset_path\u0028\u0029",
@@ -1143,7 +1138,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_top_level\u0028\u0029",
             "name": "get_top_level",
-            "summary": "",
+            "summary": "\u3069\u306E\u81EA\u6CBB\u4F53\u306B\u3082\u5C5E\u3057\u3066\u3044\u306A\u3044\u81EA\u6CBB\u4F53\uFF08\u3060\u3044\u305F\u3044\u90FD\u9053\u5E9C\u770C\uFF09\u306E\u4E00\u89A7\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Table-Division.html#method_get_top_level"
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_by_parent_division_and_date\u0028\u0029",
@@ -1153,13 +1148,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_by_admin_filter\u0028\u0029",
             "name": "get_by_admin_filter",
-            "summary": "",
+            "summary": "\u60C5\u5831\u4E0D\u8DB3\u306E\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Table-Division.html#method_get_by_admin_filter"
-        },                {
-            "fqsen": "\\MyApp\\Table\\Division\u003A\u003ARE_SUFFIX",
-            "name": "RE_SUFFIX",
-            "summary": "",
-            "url": "classes/MyApp-Table-Division.html#constant_RE_SUFFIX"
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003ATABLE_NAME",
             "name": "TABLE_NAME",
@@ -1170,6 +1160,11 @@ Search.appendIndex(
             "name": "TABLE_PK",
             "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u306E\u4E3B\u30AD\u30FC",
             "url": "classes/MyApp-Table-Division.html#constant_TABLE_PK"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003ARE_SUFFIX",
+            "name": "RE_SUFFIX",
+            "summary": "\u81EA\u6CBB\u4F53\u306E\u7A2E\u5225\u3092\u5224\u5B9A\u3059\u308B\u6B63\u898F\u8868\u73FE",
+            "url": "classes/MyApp-Table-Division.html#constant_RE_SUFFIX"
         },                {
             "fqsen": "\\MyApp\\Helper\\Iterator",
             "name": "Iterator",
@@ -1301,19 +1296,14 @@ Search.appendIndex(
             "summary": "\u30A4\u30D9\u30F3\u30C8\u30C6\u30FC\u30D6\u30EB\u3092\u7BA1\u7406\u3059\u308B\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Table-Event.html"
         },                {
-            "fqsen": "\\MyApp\\Table\\Event\u003A\u003Aget_by_division\u0028\u0029",
-            "name": "get_by_division",
-            "summary": "",
-            "url": "classes/MyApp-Table-Event.html#method_get_by_division"
-        },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003Aget_relative_division\u0028\u0029",
             "name": "get_relative_division",
-            "summary": "",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u306B\u95A2\u9023\u3059\u308B\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Table-Event.html#method_get_relative_division"
         },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003Aget_by_parent_division_and_date\u0028\u0029",
             "name": "get_by_parent_division_and_date",
-            "summary": "",
+            "summary": "\u89AA\u81EA\u6CBB\u4F53\u3068\u671F\u9593\u304B\u3089\u3001\u914D\u4E0B\u306E\u81EA\u6CBB\u4F53\u306E\u30A4\u30D9\u30F3\u30C8\u4E00\u89A7\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Table-Event.html#method_get_by_parent_division_and_date"
         },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003ATABLE_NAME",

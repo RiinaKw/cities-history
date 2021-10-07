@@ -6,6 +6,7 @@
 
 namespace MyApp\Table;
 
+use Fuel\Core\Database_Result_Cached as Result;
 use DB;
 use Model_Division;
 
@@ -14,31 +15,26 @@ use Model_Division;
  */
 class Division extends \MyApp\Abstracts\Table
 {
+	public const TABLE_NAME = 'divisions';
+	public const TABLE_PK = ['id'];
+
+	/**
+	 * 自治体の種別を判定する正規表現
+	 * @var string
+	 */
 	public const RE_SUFFIX =
 		'/^(?<place>.+?)'
 		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
 		. '(\((?<identifier>.+?)\))?$/';
 
-	public const TABLE_NAME = 'divisions';
-	public const TABLE_PK = ['id'];
-
-	public static function get_all_id()
-	{
-		$query = DB::select('id')
-			->from(self::TABLE_NAME)
-			->where('deleted_at', '=', null)
-			->order_by('name_kana', 'ASC');
-
-		$result = $query->execute();
-		$arr = [];
-		foreach ($result as $item) {
-			$arr[] = $item['id'];
-		}
-		return $arr;
-	}
-	// function get_all_id()
-
-	public static function query($q)
+	/**
+	 * 削除されていないすべての自治体一覧を取得
+	 * @param  string $q                          検索キーワード
+	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
+	 *
+	 * @todo 使いみちがよく分からない、Controller_Rest_Division で使っているようだが……
+	 */
+	public static function query(string $q): Result
 	{
 		$query = DB::select()
 			->from(self::TABLE_NAME)
@@ -50,7 +46,15 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function query()
 
-	public static function search($q)
+	/**
+	 * 自治体検索
+	 *
+	 * スラッシュ区切りでないフルパス（例：群馬県佐波郡伊勢崎町）と読みがなを検索対象とする
+	 *
+	 * @param  string $q                          検索キーワード
+	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
+	 */
+	public static function search(string $q): Result
 	{
 		$q = str_replace(array('\\', '%', '_'), array('\\\\', '\%', '\_'), $q);
 		$q_arr = preg_split('/(\s+)|(　+)/', $q);
@@ -74,6 +78,9 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function search()
 
+	/**
+	 * @todo 意図がよく分からない
+	 */
 	public static function set_path($path)
 	{
 		$arr = explode('/', $path);
@@ -135,6 +142,9 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function set_path()
 
+	/**
+	 * @todo 意図がよく分からない
+	 */
 	public static function set_path_as_array($arr)
 	{
 		foreach ($arr as $item) {
@@ -156,6 +166,9 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function set_path_as_array()
 
+	/**
+	 * @todo 意図がよく分からない
+	 */
 	public static function make_id_path($path, $self_id)
 	{
 		$parents = [];
@@ -185,6 +198,9 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function make_id_path()
 
+	/**
+	 * @todo 意図がよく分からない
+	 */
 	public static function get_by_path($path): ?Model_Division
 	{
 		$result = Model_Division::query()->where('path', $path)->get();
@@ -192,6 +208,9 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function get_by_path()
 
+	/**
+	 * @todo 意図がよく分からない
+	 */
 	public static function get_one_by_name_and_parent($name, $parent)
 	{
 		if ($parent) {
@@ -227,7 +246,12 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function get_one_by_name_and_parent()
 
-	public static function get_top_level()
+	/**
+	 * どの自治体にも属していない自治体（だいたい都道府県）の一覧を取得
+	 *
+	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
+	 */
+	public static function get_top_level(): Result
 	{
 		$query = DB::select()
 			->from(self::TABLE_NAME)
@@ -239,6 +263,9 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function get_top_level()
 
+	/**
+	 * @todo 意図がよく分からない
+	 */
 	public static function get_by_parent_division_and_date($parent, $date = null)
 	{
 		$query = DB::select('d.*')
@@ -274,6 +301,9 @@ class Division extends \MyApp\Abstracts\Table
 	}
 	// function get_by_parent_division_and_date()
 
+	/**
+	 * 情報不足の自治体一覧を取得
+	 */
 	public static function get_by_admin_filter($parent, $filter)
 	{
 		$query = DB::select()
