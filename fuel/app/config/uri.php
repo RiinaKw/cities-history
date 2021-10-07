@@ -9,9 +9,13 @@ return array(
 	'link'    => 'page/link',
 
 	'admin' => array(
-		'divisions' => array(
-			'list'   => 'admin/divisions',
-			'detail' => 'admin/divisions/:path',
+		'division' => array(
+			'list'    => 'admin/division',
+			'add'     => 'admin/division/add',
+			'add_csv' => 'admin/division/add_csv',
+			'edit'    => 'admin/division/edit/:path',
+			'delete'  => 'admin/division/delete/:path',
+			'detail'  => 'admin/division/:path',
 		),
 		'reference' => array(
 			'list'   => 'admin/reference',
@@ -42,10 +46,6 @@ return array(
 	'division' => array(
 		'detail'   => 'division/:path',
 		'children' => 'division/children/:path?label=:label&start=:start&end=:end',
-		'add'      => 'division/add',
-		'add_csv'  => 'division/add_csv',
-		'edit'     => 'division/edit/:path',
-		'delete'   => 'division/delete/:path',
 	),
 	'list' => array(
 		'division' => 'list/:path',

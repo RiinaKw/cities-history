@@ -2,7 +2,7 @@
 			<div id="add-division" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<form class="modal-content"
-							action="{{\MyApp\Helper\Uri::create('division.add')}}"
+							action="{{\MyApp\Helper\Uri::create('admin.division.add')}}"
 							method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">自治体を追加……</h5>

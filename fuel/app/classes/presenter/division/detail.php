@@ -10,8 +10,8 @@ class Presenter_Division_Detail extends Presenter_Layout
 		$getter = $this->division->getter();
 		$path = $getter->path;
 
-		$this->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
-		$this->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
+		$this->url_edit = Helper_Uri::create('admin.division.edit', ['path' => $path]);
+		$this->url_delete = Helper_Uri::create('admin.division.delete', ['path' => $path]);
 		$this->url_event_detail = Helper_Uri::create('event.detail');
 		$this->url_event_add = Helper_Uri::create('event.add');
 		$this->url_event_edit = Helper_Uri::create('event.edit');

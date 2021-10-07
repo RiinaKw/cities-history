@@ -104,7 +104,7 @@
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-division'}}active{{/if}}"
-									href="{{\MyApp\Helper\Uri::create('admin.divisions.list')}}"
+									href="{{\MyApp\Helper\Uri::create('admin.division.list')}}"
 									data-toggle="tooltip"
 									title="Manage Division">
 								<i class="fa fa-fw fa-map"></i>

@@ -21,17 +21,17 @@ return array(
 	'event/(.+?)/delete' => 'event/delete/$1',
 	'event/(.+?)'        => 'rest/event/detail/$1',
 
-	'division/add'            => 'division/add',
-	'division/add_csv'        => 'division/add_csv',
-	'division/edit/:path'     => 'division/edit',
-	'division/delete/:path'   => 'division/delete',
 	'division/children/:path' => 'division/children',
 	'division/:path'          => 'division/detail',
 
 	'list/:path'         => 'list/detail',
 	'list'               => 'list/index',
 
-	'admin/divisions/:path'        => 'admin/divisions/index',
+	'admin/division/add'          => 'admin/division/add',
+	'admin/division/add_csv'      => 'admin/division/add_csv',
+	'admin/division/edit/:path'   => 'admin/division/edit',
+	'admin/division/delete/:path' => 'admin/division/delete',
+	'admin/division/:path'        => 'admin/division/index',
 
 	'admin/reference/add'          => 'admin/reference/add',
 	'admin/reference/(.+?)/edit'   => 'admin/reference/edit/$1',
