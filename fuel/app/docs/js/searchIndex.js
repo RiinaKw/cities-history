@@ -46,16 +46,6 @@ Search.appendIndex(
             "summary": "\u30D5\u30E9\u30C3\u30B7\u30E5\u30BB\u30C3\u30B7\u30E7\u30F3",
             "url": "classes/Controller-Admin-Db.html#property_session_flash"
         },                {
-            "fqsen": "\\Controller_Admin_Divisions",
-            "name": "Controller_Admin_Divisions",
-            "summary": "The\u0020Admin\u0020Controller.",
-            "url": "classes/Controller-Admin-Divisions.html"
-        },                {
-            "fqsen": "\\Controller_Admin_Divisions\u003A\u003Aaction_index\u0028\u0029",
-            "name": "action_index",
-            "summary": "",
-            "url": "classes/Controller-Admin-Divisions.html#method_action_index"
-        },                {
             "fqsen": "\\Controller_Admin_Page",
             "name": "Controller_Admin_Page",
             "summary": "The\u0020Admin\u0020Controller.",
@@ -185,26 +175,6 @@ Search.appendIndex(
             "name": "action_children",
             "summary": "",
             "url": "classes/Controller-Division.html#method_action_children"
-        },                {
-            "fqsen": "\\Controller_Division\u003A\u003Apost_add\u0028\u0029",
-            "name": "post_add",
-            "summary": "",
-            "url": "classes/Controller-Division.html#method_post_add"
-        },                {
-            "fqsen": "\\Controller_Division\u003A\u003Apost_add_csv\u0028\u0029",
-            "name": "post_add_csv",
-            "summary": "",
-            "url": "classes/Controller-Division.html#method_post_add_csv"
-        },                {
-            "fqsen": "\\Controller_Division\u003A\u003Aaction_edit\u0028\u0029",
-            "name": "action_edit",
-            "summary": "",
-            "url": "classes/Controller-Division.html#method_action_edit"
-        },                {
-            "fqsen": "\\Controller_Division\u003A\u003Aaction_delete\u0028\u0029",
-            "name": "action_delete",
-            "summary": "",
-            "url": "classes/Controller-Division.html#method_action_delete"
         },                {
             "fqsen": "\\Controller_Division\u003A\u003A\u0024session_url",
             "name": "session_url",
@@ -381,16 +351,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Top.html#method_action_session_clear"
         },                {
-            "fqsen": "\\Helper_Division",
-            "name": "Helper_Division",
-            "summary": "",
-            "url": "classes/Helper-Division.html"
-        },                {
-            "fqsen": "\\Helper_Division\u003A\u003Aget_children_url\u0028\u0029",
-            "name": "get_children_url",
-            "summary": "",
-            "url": "classes/Helper-Division.html#method_get_children_url"
-        },                {
             "fqsen": "\\Helper_Governmentcode",
             "name": "Helper_Governmentcode",
             "summary": "",
@@ -546,9 +506,24 @@ Search.appendIndex(
             "summary": "\u5FC5\u8981\u306A\u30D1\u30E9\u30E1\u30FC\u30BF\u304C\u8A2D\u5B9A\u3055\u308C\u3066\u3044\u308B\u5834\u5408\u306E\u307F\u30B3\u30FC\u30EB\u30D0\u30C3\u30AF\u3092\u5B9F\u884C",
             "url": "classes/Model-Division.html#method_callIfNotEmpty"
         },                {
+            "fqsen": "\\Model_Division\u003A\u003Amake\u0028\u0029",
+            "name": "make",
+            "summary": "\u81EA\u6CBB\u4F53\u306E\u57FA\u672C\u60C5\u5831\u3092\u8A2D\u5B9A",
+            "url": "classes/Model-Division.html#method_make"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003AmakePath\u0028\u0029",
+            "name": "makePath",
+            "summary": "\u89AA\u81EA\u6CBB\u4F53\u3092\u5143\u306B\u30D1\u30B9\u306A\u3069\u306E\u9805\u76EE\u3092\u8A2D\u5B9A",
+            "url": "classes/Model-Division.html#method_makePath"
+        },                {
+            "fqsen": "\\Model_Division\u003A\u003AupdateChild\u0028\u0029",
+            "name": "updateChild",
+            "summary": "\u81EA\u5206\u81EA\u8EAB\u3092\u89AA\u3068\u3059\u308B\u81EA\u6CBB\u4F53\u3092\u4E00\u62EC\u66F4\u65B0",
+            "url": "classes/Model-Division.html#method_updateChild"
+        },                {
             "fqsen": "\\Model_Division\u003A\u003Acreate2\u0028\u0029",
             "name": "create2",
-            "summary": "",
+            "summary": "\u5165\u529B\u30D1\u30E9\u30E1\u30FC\u30BF\u3068\u89AA\u81EA\u6CBB\u4F53\u304B\u3089\u65B0\u898F\u306B\u81EA\u6CBB\u4F53\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u767B\u9332\u3059\u308B",
             "url": "classes/Model-Division.html#method_create2"
         },                {
             "fqsen": "\\Model_Division\u003A\u003AcreateDivision\u0028\u0029",
@@ -588,12 +563,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024pmodel_class",
             "name": "pmodel_class",
-            "summary": "",
+            "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D",
             "url": "classes/Model-Division.html#property_pmodel_class"
         },                {
             "fqsen": "\\Model_Division\u003A\u003A\u0024getter_class",
             "name": "getter_class",
-            "summary": "",
+            "summary": "\u30B2\u30C3\u30BF\u30FC\u306E\u30AF\u30E9\u30B9\u540D",
             "url": "classes/Model-Division.html#property_getter_class"
         },                {
             "fqsen": "\\Model_Event_Detail",
@@ -805,16 +780,6 @@ Search.appendIndex(
             "name": "alt_view",
             "summary": "\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\u306E\u3082\u3068\u306B\u306A\u308B\u30AF\u30E9\u30B9\u540D\u304C\u7570\u306A\u308B\u5834\u5408\u3001\u3053\u3053\u3067\u6307\u5B9A\u3059\u308B\ntrue\u3092\u6307\u5B9A\u3059\u308B\u3068\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u3001\u30A2\u30AF\u30B7\u30E7\u30F3\u304B\u3089view\u3092\u5C0E\u304D\u51FA\u3059",
             "url": "classes/Presenter-Base.html#property_alt_view"
-        },                {
-            "fqsen": "\\Presenter_Division_Children",
-            "name": "Presenter_Division_Children",
-            "summary": "",
-            "url": "classes/Presenter-Division-Children.html"
-        },                {
-            "fqsen": "\\Presenter_Division_Children\u003A\u003Aview\u0028\u0029",
-            "name": "view",
-            "summary": "",
-            "url": "classes/Presenter-Division-Children.html#method_view"
         },                {
             "fqsen": "\\Presenter_Division_Detail",
             "name": "Presenter_Division_Detail",
@@ -1058,8 +1023,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Aurl\u0028\u0029",
             "name": "url",
-            "summary": "",
+            "summary": "\u81EA\u6CBB\u4F53\u30BF\u30A4\u30E0\u30E9\u30A4\u30F3\u306E\u0020URI",
             "url": "classes/MyApp-PresentationModel-Division.html#method_url"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AurlTree\u0028\u0029",
+            "name": "urlTree",
+            "summary": "\u81EA\u6CBB\u4F53\u30C4\u30EA\u30FC\u306E\u0020URI",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_urlTree"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AurlListChildren\u0028\u0029",
+            "name": "urlListChildren",
+            "summary": "\u5B50\u5B6B\u81EA\u6CBB\u4F53\u30BF\u30A4\u30E0\u30E9\u30A4\u30F3\u306E\u0020URI\u0020\u306E\u914D\u5217",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_urlListChildren"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AhtmlAnchor\u0028\u0029",
             "name": "htmlAnchor",
@@ -1096,6 +1071,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#property_model"
         },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003A\u0024suffixes",
+            "name": "suffixes",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division.html#property_suffixes"
+        },                {
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003A\u0024periods",
+            "name": "periods",
+            "summary": "",
+            "url": "classes/MyApp-PresentationModel-Division.html#property_periods"
+        },                {
             "fqsen": "\\MyApp\\Table\\Division",
             "name": "Division",
             "summary": "\u81EA\u6CBB\u4F53\u30C6\u30FC\u30D6\u30EB\u3092\u7BA1\u7406\u3059\u308B\u30AF\u30E9\u30B9",
@@ -1126,10 +1111,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Table-Division.html#method_make_id_path"
         },                {
-            "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_by_path\u0028\u0029",
-            "name": "get_by_path",
-            "summary": "",
-            "url": "classes/MyApp-Table-Division.html#method_get_by_path"
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003AfindByPath\u0028\u0029",
+            "name": "findByPath",
+            "summary": "\u30D1\u30B9\u5F62\u5F0F\u304B\u3089\u81EA\u6CBB\u4F53\u3092\u691C\u7D22",
+            "url": "classes/MyApp-Table-Division.html#method_findByPath"
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_one_by_name_and_parent\u0028\u0029",
             "name": "get_one_by_name_and_parent",
@@ -1486,10 +1471,40 @@ Search.appendIndex(
             "summary": "\u30D1\u30F3\u304F\u305A\u30EA\u30B9\u30C8\u3092\u751F\u6210\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Helper-Breadcrumb.html"
         },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003AgetIterator\u0028\u0029",
+            "name": "getIterator",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Breadcrumb.html#method_getIterator"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003Acount\u0028\u0029",
+            "name": "count",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Breadcrumb.html#method_count"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Breadcrumb.html#method___construct"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003Aforge\u0028\u0029",
+            "name": "forge",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Breadcrumb.html#method_forge"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003Apush\u0028\u0029",
+            "name": "push",
+            "summary": "\u30D1\u30F3\u304F\u305A\u306E\u672B\u5C3E\u306B\u9805\u76EE\u3092\u8FFD\u52A0",
+            "url": "classes/MyApp-Helper-Breadcrumb.html#method_push"
+        },                {
             "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003Adivision\u0028\u0029",
             "name": "division",
             "summary": "",
             "url": "classes/MyApp-Helper-Breadcrumb.html#method_division"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Breadcrumb\u003A\u003A\u0024array",
+            "name": "array",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Breadcrumb.html#property_array"
         },                {
             "fqsen": "\\MyApp\\Helper\\CountHash",
             "name": "CountHash",
@@ -1625,6 +1640,21 @@ Search.appendIndex(
             "name": "test_create",
             "summary": "",
             "url": "classes/DivisionTest.html#method_test_create"
+        },                {
+            "fqsen": "\\DivisionTest\u003A\u003Atest_create_child\u0028\u0029",
+            "name": "test_create_child",
+            "summary": "",
+            "url": "classes/DivisionTest.html#method_test_create_child"
+        },                {
+            "fqsen": "\\DivisionTest\u003A\u003Atest_create_grandchild\u0028\u0029",
+            "name": "test_create_grandchild",
+            "summary": "",
+            "url": "classes/DivisionTest.html#method_test_create_grandchild"
+        },                {
+            "fqsen": "\\DivisionTest\u003A\u003Atest_edit\u0028\u0029",
+            "name": "test_edit",
+            "summary": "",
+            "url": "classes/DivisionTest.html#method_test_edit"
         },                {
             "fqsen": "\\CountHashTest",
             "name": "CountHashTest",
@@ -2026,11 +2056,6 @@ Search.appendIndex(
             "summary": "\u6D3B\u52D5\u3092\u30ED\u30B0\u306B\u4FDD\u5B58",
             "url": "classes/MyApp-Abstracts-Controller.html#method_activity"
         },                {
-            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Aredirect\u0028\u0029",
-            "name": "redirect",
-            "summary": "\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
-            "url": "classes/MyApp-Abstracts-Controller.html#method_redirect"
-        },                {
             "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Abefore\u0028\u0029",
             "name": "before",
             "summary": "",
@@ -2210,6 +2235,76 @@ Search.appendIndex(
             "name": "TABLE_PK",
             "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u306E\u4E3B\u30AD\u30FC",
             "url": "classes/MyApp-Table-Event-detail.html#constant_TABLE_PK"
+        },                {
+            "fqsen": "\\Controller_Admin_Division",
+            "name": "Controller_Admin_Division",
+            "summary": "The\u0020Admin\u0020Controller.",
+            "url": "classes/Controller-Admin-Division.html"
+        },                {
+            "fqsen": "\\Controller_Admin_Division\u003A\u003Aaction_index\u0028\u0029",
+            "name": "action_index",
+            "summary": "",
+            "url": "classes/Controller-Admin-Division.html#method_action_index"
+        },                {
+            "fqsen": "\\Controller_Admin_Division\u003A\u003Apost_add\u0028\u0029",
+            "name": "post_add",
+            "summary": "",
+            "url": "classes/Controller-Admin-Division.html#method_post_add"
+        },                {
+            "fqsen": "\\Controller_Admin_Division\u003A\u003Apost_add_csv\u0028\u0029",
+            "name": "post_add_csv",
+            "summary": "",
+            "url": "classes/Controller-Admin-Division.html#method_post_add_csv"
+        },                {
+            "fqsen": "\\Controller_Admin_Division\u003A\u003Aaction_edit\u0028\u0029",
+            "name": "action_edit",
+            "summary": "",
+            "url": "classes/Controller-Admin-Division.html#method_action_edit"
+        },                {
+            "fqsen": "\\Controller_Admin_Division\u003A\u003Aaction_delete\u0028\u0029",
+            "name": "action_delete",
+            "summary": "",
+            "url": "classes/Controller-Admin-Division.html#method_action_delete"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri",
+            "name": "Uri",
+            "summary": "URI\u0020\u306B\u95A2\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Helper-Uri.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003A\u0024root",
+            "name": "root",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Uri.html#property_root"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "URI\u0020\u8A2D\u5B9A\u30D5\u30A1\u30A4\u30EB\u304B\u3089\u8A72\u5F53\u3059\u308B\u0020URI\u0020\u3092\u751F\u6210",
+            "url": "classes/MyApp-Helper-Uri.html#method_create"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Aredirect\u0028\u0029",
+            "name": "redirect",
+            "summary": "URI\u0020\u8A2D\u5B9A\u30D5\u30A1\u30A4\u30EB\u304B\u3089\u8A72\u5F53\u3059\u308B\u0020URI\u0020\u3092\u751F\u6210\u3057\u3001\u305D\u306E\u0020URI\u0020\u306B\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
+            "url": "classes/MyApp-Helper-Uri.html#method_redirect"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Acurrent\u0028\u0029",
+            "name": "current",
+            "summary": "\u73FE\u5728\u306E\u0020URI",
+            "url": "classes/MyApp-Helper-Uri.html#method_current"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Alogin\u0028\u0029",
+            "name": "login",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Uri.html#method_login"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Alogout\u0028\u0029",
+            "name": "logout",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Uri.html#method_logout"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003ArestDivisionList\u0028\u0029",
+            "name": "restDivisionList",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Uri.html#method_restDivisionList"
         },                {
             "fqsen": "\\",
             "name": "\\",

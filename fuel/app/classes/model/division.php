@@ -32,7 +32,16 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
 		. '(\((?<identifier>.+?)\))?$/';
 
+	/**
+	 * プレゼンテーションモデルのクラス名
+	 * @var string
+	 */
 	protected static $pmodel_class = \MyApp\PresentationModel\Division::class;
+
+	/**
+	 * ゲッターのクラス名
+	 * @var string
+	 */
 	protected static $getter_class = \MyApp\Getter\Division::class;
 
 	public function validation()
@@ -116,7 +125,7 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 	 * @param  Model_Division|null $division  編集するオブジェクト、null の場合は新規作成
 	 * @return self                           情報が設定されたオブジェクト（未保存であることに注意）
 	 */
-	public static function make(array $params, Model_Division $division = null): self
+	public static function make(array $params, self $division = null): self
 	{
 		if (! $division) {
 			$division = new static();
@@ -187,7 +196,7 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 	 * @param  Model_Division|null $parent  親自治体オブジェクト、なければ null
 	 * @return self                         自分自身
 	 */
-	public function makePath(Model_Division $parent = null): self
+	public function makePath(self $parent = null): self
 	{
 		$name = $this->name . $this->suffix;
 		$kana = $this->name_kana . $this->suffix_kana;
@@ -206,7 +215,7 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 	 */
 	public function updateChild(): self
 	{
-		$children = Model_Division::query()
+		$children = static::query()
 			->where('id_path', 'LIKE', $this->id_path . '%_')
 			->get();
 		foreach ($children as $child) {
@@ -216,9 +225,16 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		return $this;
 	}
 
-	public static function create2(array $params, Model_Division $parent = null): self
+	/**
+	 * 入力パラメータと親自治体から新規に自治体オブジェクトを登録する
+	 * @param  array<string, string>  $params  フォームからの入力
+	 * @param  Model_Division|null  $parent    親自治体、なければ null
+	 * @return self                            DB に保存された自治体オブジェクト
+	 * @todo メソッド名をなんとかしろ
+	 */
+	public static function create2(array $params, self $parent = null): self
 	{
-		$division = Model_Division::make($params);
+		$division = static::make($params);
 		$division->save();
 
 		$division->makePath($parent);

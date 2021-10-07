@@ -129,7 +129,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">13</span>
 </aside>
 
             <p class="phpdocumentor-summary">プレゼンテーションモデルの基底クラス</p>
@@ -151,6 +151,20 @@
 <dl class="phpdocumentor-table-of-contents">
                 <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-PresentationModel-Division.html#property_model">$model</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MyApp-PresentationModel-Division.html#property_periods">$periods</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/MyApp-PresentationModel-Division.html#property_suffixes">$suffixes</a>
     <span>
                 &nbsp;: mixed            </span>
 </dt>
@@ -224,7 +238,21 @@
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>自治体タイムラインの URI</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MyApp-PresentationModel-Division.html#method_urlListChildren">urlListChildren()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>子孫自治体タイムラインの URI の配列</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MyApp-PresentationModel-Division.html#method_urlTree">urlTree()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>自治体ツリーの URI</dd>
 
         </dl>
 
@@ -254,7 +282,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
     
@@ -263,6 +291,66 @@
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$model</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_periods">
+        $periods
+        <a href="classes/MyApp-PresentationModel-Division.html#property_periods" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">30</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$periods</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;平成～令和&#039; =&gt; [&#039;label&#039; =&gt; &#039;平成～令和&#039;, &#039;start&#039; =&gt; &#039;1989-01-01&#039;, &#039;end&#039; =&gt; &#039;2019-04-01&#039;], &#039;昭和後期&#039; =&gt; [&#039;label&#039; =&gt; &#039;昭和後期&#039;, &#039;start&#039; =&gt; &#039;1950-01-01&#039;, &#039;end&#039; =&gt; &#039;1988-12-31&#039;], &#039;大正～昭和前期&#039; =&gt; [&#039;label&#039; =&gt; &#039;大正～昭和前期&#039;, &#039;start&#039; =&gt; &#039;1912-01-01&#039;, &#039;end&#039; =&gt; &#039;1949-12-31&#039;], &#039;明治&#039; =&gt; [&#039;label&#039; =&gt; &#039;明治&#039;, &#039;start&#039; =&gt; &#039;1878-01-01&#039;, &#039;end&#039; =&gt; &#039;1911-12-31&#039;]]</span></code>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_suffixes">
+        $suffixes
+        <a href="classes/MyApp-PresentationModel-Division.html#property_suffixes" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">17</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$suffixes</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;支庁&#039; =&gt; &#039;支庁&#039;, &#039;振興局&#039; =&gt; &#039;支庁&#039;, &#039;総合振興局&#039; =&gt; &#039;支庁&#039;, &#039;都&#039; =&gt; true, &#039;道&#039; =&gt; true, &#039;府&#039; =&gt; true, &#039;県&#039; =&gt; true, &#039;市&#039; =&gt; true, &#039;区&#039; =&gt; true, &#039;郡&#039; =&gt; true]</span></code>
 
     
     
@@ -288,7 +376,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">53</span>
 </aside>
 
     
@@ -330,7 +418,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">114</span>
 </aside>
 
     
@@ -372,7 +460,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">86</span>
+    <span class="phpdocumentor-element-found-in__line">142</span>
 </aside>
 
     
@@ -404,7 +492,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">133</span>
 </aside>
 
     
@@ -436,7 +524,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">98</span>
+    <span class="phpdocumentor-element-found-in__line">154</span>
 </aside>
 
     
@@ -478,7 +566,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">131</span>
+    <span class="phpdocumentor-element-found-in__line">187</span>
 </aside>
 
     
@@ -510,7 +598,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">182</span>
 </aside>
 
     
@@ -542,7 +630,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 </aside>
 
     
@@ -574,7 +662,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">21</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 </aside>
 
     
@@ -606,15 +694,85 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">自治体タイムラインの URI</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">url</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
     
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_urlListChildren">
+        urlListChildren()
+        <a href="classes/MyApp-PresentationModel-Division.html#method_urlListChildren" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">102</span>
+</aside>
+
+        <p class="phpdocumentor-summary">子孫自治体タイムラインの URI の配列</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">urlListChildren</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_urlTree">
+        urlTree()
+        <a href="classes/MyApp-PresentationModel-Division.html#method_urlTree" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/PresentationModel/Division.php"><a href="files/fuel-app-myapp-presentationmodel-division.html"><abbr title="fuel/app/MyApp/PresentationModel/Division.php">Division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">90</span>
+</aside>
+
+        <p class="phpdocumentor-summary">自治体ツリーの URI</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">urlTree</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
     
     
 
