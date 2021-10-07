@@ -26,7 +26,7 @@ class Presenter_Admin_Db_List extends Presenter_Layout
 
 		$this->title = 'バックアップ一覧';
 		$this->nav_item = 'admin-db';
-		$this->breadcrumbs = ['バックアップ' => ''];
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::forge('バックアップ');
 		$this->show_share = false;
 	}
 	// function view()

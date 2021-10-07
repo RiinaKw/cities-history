@@ -13,9 +13,8 @@ class Presenter_Page extends Presenter_Layout
 		$this->description = Helper_Html::excerpt($html_content, 200);
 
 		$this->og_type = 'article';
-		$this->breadcrumbs = [
-			$this->title => '',
-		];
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::forge($this->title)
+
 		$this->nav_item = $this->page->slug;
 		$this->show_share = true;
 

@@ -46,7 +46,7 @@ class Presenter_List_Search extends Presenter_Layout
 		$this->title = $title;
 		$this->description = $description;
 		$this->og_type = 'article';
-		$this->breadcrumbs = [];
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::forge('検索');
 		$this->show_share = true;
 	}
 	// function view()

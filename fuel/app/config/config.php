@@ -186,6 +186,7 @@ return array(
 			'Closure',
 			MyApp\Model\Division\Tree::class,
 			MyApp\Model\File::class,
+			MyApp\Helper\Breadcrumb::class,
 		),
 	),
 

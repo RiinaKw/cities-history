@@ -66,7 +66,8 @@ class Presenter_Division_Detail extends Presenter_Layout
 
 		$this->description = $description;
 		$this->og_type = 'article';
-		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::division($this->division);
+		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::forge()->division($this->division);
+
 		$this->show_share = true;
 	}
 	// function view()
