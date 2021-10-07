@@ -83,7 +83,7 @@ class Uri
 	 */
 	public static function redirect(string $config, array $params = [], array $get_params = []): void
 	{
-		$uri = self::create($uri, $params, $get_params);
+		$uri = self::create($config, $params, $get_params);
 		\Response::redirect($uri);
 	}
 	// function redirect()
