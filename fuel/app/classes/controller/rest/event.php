@@ -12,7 +12,7 @@ class Controller_Rest_Event extends Controller_Rest
 {
 	public function get_detail($event_id)
 	{
-		$event = Model_Event::find_by_pk($event_id);
+		$event = Model_Event::find($event_id);
 
 		if (! $event) {
 			$response = array(

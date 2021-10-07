@@ -71,7 +71,7 @@
 							{{if $event->live}}live{{/if}}
 							{{if $event->death}}death{{/if}}
 						{{/strip}}"
-						data-event-id="{{$event.event_id}}">
+						data-event-id="{{$event->id}}">
 						<section class="col-sm-7">
 							<header>
 								<div class="clearfix">
