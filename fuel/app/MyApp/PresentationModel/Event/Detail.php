@@ -7,7 +7,6 @@
 namespace MyApp\PresentationModel\Event;
 
 use MyApp\Abstracts\PresentationModel;
-
 use Model_Event_Detail;
 
 class Detail extends PresentationModel
