@@ -101,10 +101,10 @@
 			<script>
 $(function(){
 	$("#edit-parent-division").devbridgeAutocomplete({
-		serviceUrl: "{{$url_root}}/division/list.json"
+		serviceUrl: "{{\MyApp\Helper\Uri::restDivisionList()}}"
 	});
 	$("#edit-belongs-division").devbridgeAutocomplete({
-		serviceUrl: "{{$url_root}}/division/list.json"
+		serviceUrl: "{{\MyApp\Helper\Uri::restDivisionList()}}"
 	});
 });
 			</script>

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @todo 廃止予定
+ */
 class Helper_Uri
 {
 	/**

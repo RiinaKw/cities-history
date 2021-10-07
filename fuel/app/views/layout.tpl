@@ -19,7 +19,7 @@
 {{if isset($robots)}}
 		<meta name="robots" content="{{$robots}}" />
 {{/if}}
-		<meta property="og:url" content="{{$url_current}}" />
+		<meta property="og:url" content="{{\MyApp\Helper\Uri::current()}}" />
 		<meta property="og:title" content="{{$title}}" />
 		<meta property="og:site_name" content="{{Config::get('common.title')}}" />
 		<meta property="og:description" content="{{$description}}" />
@@ -74,7 +74,7 @@
 		<!-- Fixed navbar -->
 		<header class="navbar fixed-top navbar-expand-md navbar-light">
 			<h1>
-				<a class="navbar-brand" href="{{$url_root}}">
+				<a class="navbar-brand" href="{{\MyApp\Helper\Uri::root()}}">
 					{{Config::get('common.title')}}
 				</a>
 			</h1>
@@ -85,14 +85,14 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'about'}}active{{/if}}"
-							href="{{$url_about}}">
+							href="{{\MyApp\Helper\Uri::create('about')}}">
 							<i class="fa fa-fw fa-question"></i>
 							<span>About</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link {{if $nav_item == 'link'}}active{{/if}}"
-							href="{{$url_link}}">
+							href="{{\MyApp\Helper\Uri::create('link')}}">
 							<i class="fa fa-fw fa-link"></i>
 							<span>Link</span>
 						</a>
@@ -104,7 +104,7 @@
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-division'}}active{{/if}}"
-									href="{{$url_admin_divisions}}"
+									href="{{\MyApp\Helper\Uri::create('admin.divisions.list')}}"
 									data-toggle="tooltip"
 									title="Manage Division">
 								<i class="fa fa-fw fa-map"></i>
@@ -113,7 +113,7 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-reference'}}active{{/if}}"
-									href="{{$url_admin_reference}}"
+									href="{{\MyApp\Helper\Uri::create('admin.reference.list')}}"
 									data-toggle="tooltip"
 									title="Manage Date Reference">
 								<i class="fa fa-fw fa-calendar-alt"></i>
@@ -122,7 +122,7 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-page'}}active{{/if}}"
-									href="{{$url_admin_page}}"
+									href="{{\MyApp\Helper\Uri::create('admin.page.list')}}"
 									data-toggle="tooltip"
 									title="Manage Pages">
 								<i class="fa fa-fw fa-file-alt"></i>
@@ -131,7 +131,7 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{if $nav_item == 'admin-db'}}active{{/if}}"
-									href="{{$url_admin_db}}"
+									href="{{\MyApp\Helper\Uri::create('admin.db.list')}}"
 									data-toggle="tooltip"
 									title="Database">
 								<i class="fa fa-fw fa-database"></i>
@@ -141,7 +141,10 @@
 					</ul>
 				</div>
 {{/if}}
-				<form id="search" class="form-inline mt-2 mt-md-0 mr-2" method="get" action="{{$url_search}}">
+				<form id="search"
+						class="form-inline mt-2 mt-md-0 mr-2"
+						method="get"
+						action="{{\MyApp\Helper\Uri::create('search')}}">
 					<div class="input-group">
 						<input class="form-control" type="search" name="q" value="{{$q}}" placeholder="Search" aria-label="Search">
 						<span class="input-group-append">
@@ -152,9 +155,9 @@
 					</div>
 				</form>
 {{if $user}}
-				<a class="btn btn-outline-danger mt-sm-2 mt-md-0" href="{{$url_logout}}">Logout</a>
+				<a class="btn btn-outline-danger mt-sm-2 mt-md-0" href="{{\MyApp\Helper\Uri::logout()}}">Logout</a>
 {{else}}
-				<a class="btn btn-outline-success mt-sm-2 mt-md-0" href="{{$url_login}}">Login</a>
+				<a class="btn btn-outline-success mt-sm-2 mt-md-0" href="{{\MyApp\Helper\Uri::login()}}">Login</a>
 {{/if}}
 			</nav>
 		</header>
