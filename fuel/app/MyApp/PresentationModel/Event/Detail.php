@@ -8,6 +8,7 @@ namespace MyApp\PresentationModel\Event;
 
 use MyApp\Abstracts\PresentationModel;
 use Model_Event_Detail;
+use MyApp\Helper\Uri;
 
 class Detail extends PresentationModel
 {
@@ -21,7 +22,7 @@ class Detail extends PresentationModel
 	public function geoshape(): ?string
 	{
 		if ($this->model->geoshape) {
-			return \Helper_Uri::create(
+			return Uri::create(
 				'geoshape',
 				['path' => $this->model->geoshape]
 			);

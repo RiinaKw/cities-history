@@ -65,6 +65,10 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 	}
 	// function get_relative_division()
 */
+
+	/**
+	 * @todo なぜこんなところにリダイレクトがある！？
+	 */
 	public function deleteEvent()
 	{
 		$detail = Model_Event_Detail::find_by_event_id($this->id);
@@ -73,7 +77,7 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 		}
 		$this->delete();
 
-		Helper_Uri::redirect('top');
+		\MyApp\Helper\Uri::redirect('top');
 	}
 	// function delete()
 }

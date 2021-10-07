@@ -35,7 +35,9 @@
 	</head>
 	<body class="text-center">
 
-		<form class="form-signin col-8 offset-4 py-4" action="{{$url_login}}" method="post">
+		<form class="form-signin col-8 offset-4 py-4"
+				action="{{\MyApp\Helper\Uri::login()}}"
+				method="post">
 			<header>
 				{{Asset::img('icon.png', ['width' => 100])}}
 				<h1 class="h3 mt-3 font-weight-normal">{{Config::get('common.title')}}</h1>

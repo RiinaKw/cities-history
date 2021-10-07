@@ -6,6 +6,8 @@
 
 namespace MyApp\Abstracts;
 
+use MyApp\Helper\Uri;
+
 /**
  * 管理画面向けのコントローラの基底クラス
  */
@@ -20,7 +22,7 @@ abstract class AdminController extends Controller
 			$this->requireUser();
 		} catch (\HttpNoAccessException $e) {
 			// redirect to login form
-			\Helper_Uri::redirect('login');
+			Uri::redirect('login');
 		}
 	}
 	// function before()

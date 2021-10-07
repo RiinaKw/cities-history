@@ -7,6 +7,7 @@
 namespace MyApp\Abstracts;
 
 use MyApp\Helper\Session\Item as SessionItem;
+use MyApp\Helper\Uri;
 
 /**
  * コントローラの基底クラス
@@ -53,16 +54,6 @@ abstract class Controller extends \Controller
 			'target' => $target,
 			'target_id' => $id,
 		]);
-	}
-
-	/**
-	 * リダイレクト
-	 * @param  string $config               URL の設定名
-	 * @param  array  $params               URL のパラメータ
-	 */
-	protected function redirect(string $config, array $params = [])
-	{
-		\Helper_Uri::redirect($config, $params);
 	}
 
 	public function before()

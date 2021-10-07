@@ -4,6 +4,7 @@ use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Table\Event as EventTable;
 use MyApp\Helper\Session\Url as SessionUrl;
+use MyApp\Helper\Uri;
 
 /**
  * The Division Controller.
@@ -123,7 +124,7 @@ class Controller_Division extends Controller
 			throw new HttpServerErrorException($e->getMessage());
 		}
 
-		$this->redirect('division.detail', ['path' => $path_new]);
+		Uri::redirect('division.detail', ['path' => $path_new]);
 		return;
 	}
 	// function action_add()
@@ -166,7 +167,7 @@ class Controller_Division extends Controller
 
 			DB::commit_transaction();
 
-			$this->redirect('division.detail', ['path' => $division->get_path()]);
+			Uri::redirect('division.detail', ['path' => $division->get_path()]);
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
@@ -196,7 +197,7 @@ class Controller_Division extends Controller
 
 			$path_new = $division->get_path();
 
-			$this->redirect('division.detail', ['path' => $path_new]);
+			Uri::redirect('division.detail', ['path' => $path_new]);
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
@@ -218,9 +219,9 @@ class Controller_Division extends Controller
 		$this->activity('delete division', $division->id);
 
 		if ($division->get_parent_path()) {
-			$this->redirect('division.detail', ['path' => $division->get_parent_path()]);
+			Uri::redirect('division.detail', ['path' => $division->get_parent_path()]);
 		} else {
-			$this->redirect('top');
+			Uri::redirect('top');
 		}
 	}
 	// function action_delete()

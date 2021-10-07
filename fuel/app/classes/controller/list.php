@@ -3,6 +3,7 @@
 use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Model\Division\Tree;
+use MyApp\Helper\Uri;
 
 /**
  * The List Controller.
@@ -14,7 +15,7 @@ class Controller_List extends Controller
 {
 	public function action_index()
 	{
-		Helper_Uri::redirect('top');
+		Uri::redirect('top');
 	}
 	// function action_index()
 

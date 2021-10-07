@@ -8,6 +8,7 @@ namespace MyApp\PresentationModel;
 
 use MyApp\Abstracts\PresentationModel;
 use Model_Division;
+use MyApp\Helper\Uri;
 
 class Division extends PresentationModel
 {
@@ -49,7 +50,7 @@ class Division extends PresentationModel
 
 	public function url(): string
 	{
-		return \Helper_Uri::create(
+		return Uri::create(
 			'division.detail',
 			['path' => $this->model->path]
 		);

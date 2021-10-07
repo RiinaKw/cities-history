@@ -1,6 +1,7 @@
 <?php
 
 use MyApp\Abstracts\Controller;
+use MyApp\Helper\Uri;
 
 /**
  * The Auth Controller.
@@ -27,7 +28,7 @@ class Controller_Auth extends Controller
 	{
 		if ($this->user()) {
 			// already logined
-			Helper_Uri::redirect('top');
+			Uri::redirect('top');
 		} else {
 			// check remember-me cookie
 			$remember_me_hash = Cookie::get(self::COOKIE_REMEMBER_ME);
@@ -43,7 +44,7 @@ class Controller_Auth extends Controller
 			}
 		}
 		// if is not logined, redirect to login form
-		Helper_Uri::redirect('login');
+		Uri::redirect('login');
 	}
 	// function action_index()
 
@@ -77,7 +78,7 @@ class Controller_Auth extends Controller
 				// redirect to previous page
 				Response::redirect($redirect);
 			} else {
-				Helper_Uri::redirect('top');
+				Uri::redirect('top');
 			}
 		}
 
@@ -130,7 +131,7 @@ class Controller_Auth extends Controller
 	{
 		$redirect = Input::get('url');
 		if (! $redirect) {
-			$redirect = Helper_Uri::create('top');
+			$redirect = Uri::create('top');
 		}
 		if ($this->user()) {
 			// forget remember-me
