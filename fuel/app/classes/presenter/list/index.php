@@ -34,7 +34,6 @@ class Presenter_List_Index extends Presenter_Layout
 			'list.division',
 			['path' => '']
 		);
-		$this->url_add = Helper_Uri::create('division.add');
 
 		$components = [
 			'add_division' => View_Smarty::forge('components/add_division.tpl'),
@@ -49,8 +48,6 @@ class Presenter_List_Index extends Presenter_Layout
 		$this->og_type = 'article';
 		$this->breadcrumbs = [];
 		$this->show_share = true;
-
-		$this->url_add = Helper_Uri::create('division.add');
 	}
 	// function view()
 }

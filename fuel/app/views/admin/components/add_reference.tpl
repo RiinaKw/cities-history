@@ -1,7 +1,9 @@
 
 			<div id="add-reference" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
-					<form class="modal-content" action="{{$url_add}}" method="post">
+					<form class="modal-content"
+							action="{{\MyApp\Helper\Uri::create('admin.reference.add')}}"
+							method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">参照を追加……</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">

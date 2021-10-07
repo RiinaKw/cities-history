@@ -3,6 +3,7 @@
 use MyApp\Abstracts\AdminController;
 use MyApp\Traits\Controller\ModelRelated;
 use MyApp\Helper\Session\Flash as FlashSession;
+use MyApp\Helper\Uri;
 
 /**
  * The Admin Controller.
@@ -64,7 +65,7 @@ class Controller_Admin_Reference extends AdminController
 				'status'  => 'success',
 				'message' => '追加に成功しました。',
 			]);
-			Helper_Uri::redirect('admin.reference.list');
+			Uri::redirect('admin.reference.list');
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
@@ -91,7 +92,7 @@ class Controller_Admin_Reference extends AdminController
 			]);
 			DB::commit_transaction();
 
-			Helper_Uri::redirect('admin.reference.list');
+			Uri::redirect('admin.reference.list');
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
@@ -117,7 +118,7 @@ class Controller_Admin_Reference extends AdminController
 				'status'  => 'success',
 				'message' => '削除に成功しました。',
 			]);
-			Helper_Uri::redirect('admin.reference.list');
+			Uri::redirect('admin.reference.list');
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();

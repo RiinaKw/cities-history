@@ -3,7 +3,7 @@
 namespace MyApp\Helper;
 
 use Model_Division;
-use Helper_Uri;
+use MyApp\Helper\Uri;
 
 /**
  * パンくずリストを生成するヘルパークラス
@@ -18,10 +18,10 @@ class Breadcrumb
 		string $secondary_uri = null
 	): array {
 		$breadcrumbs = [
-			'Top' => Helper_Uri::create('top'),
+			'Top' => Uri::create('top'),
 		];
 		if ($secondary_label) {
-			$breadcrumbs[$secondary_label] = Helper_Uri::create($secondary_uri);
+			$breadcrumbs[$secondary_label] = Uri::create($secondary_uri);
 		}
 
 		if ($division) {

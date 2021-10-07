@@ -3,7 +3,7 @@
 namespace MyApp\Helper\Session;
 
 use Response;
-use Helper_Uri;
+use MyApp\Helper\Uri;
 
 /**
  * URL の保存に特化したセッション
@@ -17,7 +17,7 @@ class Url extends Item
 	 */
 	public function set_url()
 	{
-		$this->set(Helper_Uri::current());
+		$this->set(Uri::current());
 	}
 	// function set()
 

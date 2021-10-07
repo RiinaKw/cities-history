@@ -1,6 +1,7 @@
 
 			<div id="edit-reference" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document" data-url="{{$url_edit}}">
+				<div class="modal-dialog" role="document"
+						data-url="{{\MyApp\Helper\Uri::create('admin.reference.edit')}}">
 					<form class="modal-content" action="" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">参照を変更……</h5>

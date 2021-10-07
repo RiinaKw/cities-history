@@ -17,9 +17,6 @@ class Presenter_Top extends Presenter_Layout
 		$this->description = '日本全国の市区町村合併をまとめたデータベースサイトです。';
 		$this->og_type = 'website';
 		$this->show_share = true;
-
-		$this->url_add = Helper_Uri::create('division.add');
-		$this->url_add_csv = Helper_Uri::create('division.add_csv');
 	}
 	// function view()
 }

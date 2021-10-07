@@ -1,7 +1,9 @@
 
 			<div id="add-divisions-csv" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal-lg" role="document">
-					<form class="modal-content" action="{{$url_add_csv}}" method="post">
+					<form class="modal-content"
+							action="{{\MyApp\Helper\Uri::create('division.add_csv')}}"
+							method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">自治体を一括追加……</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">

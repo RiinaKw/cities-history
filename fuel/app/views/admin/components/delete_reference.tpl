@@ -1,6 +1,7 @@
 
 			<div id="delete-reference" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document" data-url="{{$url_delete}}">
+				<div class="modal-dialog" role="document"
+						data-url="{{\MyApp\Helper\Uri::create('admin.reference.delete')}}">
 					<form class="modal-content" action="" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">参照を削除……</h5>

@@ -45,7 +45,6 @@ class Presenter_List_Detail extends Presenter_Layout
 			'list.division',
 			['path' => $this->division->path]
 		);
-		$this->url_add = Helper_Uri::create('division.add');
 
 		$components = [
 			'add_division' => View_Smarty::forge('components/add_division.tpl'),
@@ -75,8 +74,6 @@ class Presenter_List_Detail extends Presenter_Layout
 		$this->year_list = range(1878, date('Y'));
 		$this->month_list = range(1, 12);
 		$this->day_list = range(1, 31);
-
-		$this->url_add = Helper_Uri::create('division.add');
 	}
 	// function view()
 }

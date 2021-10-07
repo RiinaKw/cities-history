@@ -14,7 +14,6 @@ class Presenter_Page extends Presenter_Layout
 
 		$this->og_type = 'article';
 		$this->breadcrumbs = [
-			'Top' => Helper_Uri::create('top'),
 			$this->title => '',
 		];
 		$this->nav_item = $this->page->slug;

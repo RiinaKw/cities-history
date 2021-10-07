@@ -1,6 +1,7 @@
 <?php
 
 use MyApp\Abstracts\Controller;
+use MyApp\Helper\Uri;
 
 /**
  * The Page Controller.
@@ -12,7 +13,7 @@ class Controller_Page extends Controller
 {
 	public function action_index()
 	{
-		Helper_Uri::redirect('top');
+		Uri::redirect('top');
 	}
 	// function action_index()
 

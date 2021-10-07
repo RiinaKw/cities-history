@@ -5,6 +5,7 @@ use MyApp\MyFuel;
 use MyApp\Model\Backup;
 use MyApp\Model\File;
 use MyApp\Helper\Session\Flash as FlashSession;
+use MyApp\Helper\Uri;
 
 /**
  * The Admin Controller.
@@ -73,7 +74,7 @@ class Controller_Admin_Db extends AdminController
 				'status'  => 'success',
 				'message' => 'バックアップに成功しました。',
 			]);
-			Helper_Uri::redirect('admin.db.list');
+			Uri::redirect('admin.db.list');
 		} catch (\Exception $e) {
 			$this->session_flash->set([
 				'status'  => 'error',
@@ -97,7 +98,7 @@ class Controller_Admin_Db extends AdminController
 				'status'  => 'success',
 				'message' => '復元に成功しました。',
 			]);
-			Helper_Uri::redirect('admin.db.list');
+			Uri::redirect('admin.db.list');
 		} catch (\Exception $e) {
 			$this->session_flash->set([
 				'status'  => 'error',
@@ -118,7 +119,7 @@ class Controller_Admin_Db extends AdminController
 			'status'  => 'success',
 			'message' => '削除に成功しました。',
 		]);
-		Helper_Uri::redirect('admin.db.list');
+		Uri::redirect('admin.db.list');
 	}
 	// function post_delete()
 

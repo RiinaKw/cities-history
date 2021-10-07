@@ -9,9 +9,6 @@ class Presenter_Admin_Reference_List extends Presenter_Layout
 	{
 		$this->dates = Model_Referencedate::get_all();
 
-		$this->url_add    = Helper_Uri::create('admin.reference.add');
-		$this->url_edit   = Helper_Uri::create('admin.reference.edit');
-		$this->url_delete = Helper_Uri::create('admin.reference.delete');
 		$components = [
 			'add_reference' => View_Smarty::forge('admin/components/add_reference.tpl'),
 			'edit_reference' => View_Smarty::forge('admin/components/edit_reference.tpl'),
