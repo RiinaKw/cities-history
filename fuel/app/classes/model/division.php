@@ -110,40 +110,119 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		}
 	}
 
-	public static function create2(array $params, Model_Division $parent = null): self
+	/**
+	 * 自治体の基本情報を設定
+	 * @param  array               $params    フォームからの入力
+	 * @param  Model_Division|null $division  編集するオブジェクト、null の場合は新規作成
+	 * @return self                           情報が設定されたオブジェクト（未保存であることに注意）
+	 */
+	public static function make(array $params, Model_Division $division = null): self
 	{
-		$fullname = $params['fullname'];
-		preg_match(static::RE_SUFFIX, $fullname, $matches);
-		if (! $matches) {
-			$matches = [
-				'place' => $fullname,
-				'suffix' => '',
-			];
+		if (! $division) {
+			$division = new static();
 		}
+
+		$name = $params['name'] ?? null;
+		$suffix = $params['suffix'] ?? null;
+		if (! $name || ! $suffix) {
+			$fullname = $params['fullname'];
+			preg_match(static::RE_SUFFIX, $fullname, $matches);
+			if (! $matches) {
+				$matches = [
+					'place' => $fullname,
+					'suffix' => '',
+				];
+			}
+			$name = $matches['place'];
+			$suffix = $matches['suffix'];
+		} else {
+			$fullname = $name . $suffix;
+		}
+		$fullname .= $params['identifier'] ?? '';
 
 		$params = array_merge(
 			[
-				'id_path' => '',
-				'name' => $matches['place'],
+				'name' => $name,
 				'name_kana' => '',
-				'suffix' => $matches['suffix'],
+				'suffix' => $suffix,
 				'suffix_kana' => '',
 				'search_path' => '',
 				'search_path_kana' => '',
 				'fullname' => $fullname,
 				'path' => '',
+				'government_code' => '',
+				'display_order' => '',
+				'source' => '',
 			],
 			$params
 		);
 
+		// 基本情報を設定
+		$division->name            = $params['name'];
+		$division->suffix          = $params['suffix'];
+		$division->identifier      = $params['identifier'] ?? '';
+		$division->fullname        = $fullname;
+		$division->name_kana       = $params['name_kana'];
+		$division->suffix_kana     = $params['suffix_kana'];
+		$division->government_code = $params['government_code'];
+		$division->show_suffix     = isset($params['show_suffix']);
+		$division->is_unfinished   = isset($params['is_unfinished']);
+		$division->display_order   = $params['display_order'] ?: null;
+		$division->source          = $params['source'] ?: null;
 
-		$division = Model_Division::forge($params);
+		$division->is_empty_government_code = ($params['government_code'] === '');
+		$division->is_empty_kana = ($params['name_kana'] === '');
+
+		// パスなど、親自治体が決定しないと設定できない項目は仮のデータを入れておく
+		$division->path = '';
+		$division->id_path = '';
+		$division->search_path = '';
+		$division->search_path_kana = '';
+
+		return $division;
+	}
+
+	/**
+	 * 親自治体を元にパスなどの項目を設定
+	 * @param  Model_Division|null $parent  親自治体オブジェクト、なければ null
+	 * @return self                         自分自身
+	 */
+	public function makePath(Model_Division $parent = null): self
+	{
+		$name = $this->name . $this->suffix;
+		$kana = $this->name_kana . $this->suffix_kana;
+
+		$this->id_path = ($parent ? $parent->id_path : '') . $this->id . '/';
+		$this->path = (($parent ? $parent->path . '/' : '') . $this->fullname);
+		$this->search_path = (($parent ? $parent->search_path : '') . $name);
+		$this->search_path_kana = (($parent ? $parent->search_path_kana : '') . $kana);
+
+		return $this;
+	}
+
+	/**
+	 * 自分自身を親とする自治体を一括更新
+	 * @return self  自分自身
+	 */
+	public function updateChild(): self
+	{
+		$children = Model_Division::query()
+			->where('id_path', 'LIKE', $this->id_path . '%_')
+			->get();
+		foreach ($children as $child) {
+			$child->makePath($this);
+			$child->save();
+		}
+		return $this;
+	}
+
+	public static function create2(array $params, Model_Division $parent = null): self
+	{
+		$division = Model_Division::make($params);
 		$division->save();
 
-		$division->id_path = ($parent ? $parent->id_path : '') . $division->id . '/';
-		$division->path = (($parent ? $parent->path . '/' : '') . $division->fullname);
+		$division->makePath($parent);
 		$division->save();
-
 		return $division;
 	}
 
@@ -156,7 +235,7 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		$parent = $input['parent'] ?? null;
 
 		if ($belongs) {
-			$belongs_division = Table::get_by_path($belongs);
+			$belongs_division = Table::findByPath($belongs);
 			if (! $belongs_division) {
 				$belongs_division = Table::set_path($belongs);
 				$belongs_division = array_pop($belongs_division);

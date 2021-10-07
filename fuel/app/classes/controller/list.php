@@ -43,7 +43,7 @@ class Controller_List extends Controller
 
 		$top_division = null;
 		if ($path) {
-			$top_division = DivisionTable::get_by_path($path);
+			$top_division = DivisionTable::findByPath($path);
 			if (! $top_division || $top_division->get_path() != $path) {
 				throw new HttpNotFoundException('自治体が見つかりません。');
 			}

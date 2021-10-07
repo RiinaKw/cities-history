@@ -32,12 +32,7 @@ class TreeTest extends TestCase
 			$input
 		);
 
-		$division = Model_Division::forge($input);
-		$division->path = $division->fullname;
-		$division->save();
-
-		$division->id_path = ($parent ? $parent->id_path : '') . $division->id . '/';
-		$division->path = (($parent ? $parent->path . '/' : '') . $division->fullname);
+		$division = Model_Division::create2($input, $parent);
 		$division->save();
 
 		return $division;

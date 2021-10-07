@@ -20,7 +20,7 @@ class Controller_Admin_Divisions extends AdminController
 		/*
 		if ($path)
 		{
-			$parent = DivisionTable::get_by_path($path);
+			$parent = DivisionTable::findByPath($path);
 			$ids = DivisionTable::get_by_parent_division_and_date($parent);
 			array_unshift($ids, $parent->id);
 		}
@@ -39,7 +39,7 @@ class Controller_Admin_Divisions extends AdminController
 
 		$parent = null;
 		if ($path) {
-			$parent = DivisionTable::get_by_path($path);
+			$parent = DivisionTable::findByPath($path);
 		}
 		$divisions = DivisionTable::get_by_admin_filter($parent, $filter);
 

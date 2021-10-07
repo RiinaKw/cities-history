@@ -188,7 +188,7 @@ class Division extends \MyApp\Abstracts\Table
 
 		$id_arr = [];
 		foreach ($parents as $parent_path) {
-			$d = self::get_by_path($parent_path);
+			$d = self::findByPath($parent_path);
 			if ($d) {
 				$id_arr[] = $d->id;
 			}
@@ -199,12 +199,11 @@ class Division extends \MyApp\Abstracts\Table
 	// function make_id_path()
 
 	/**
-	 * @todo 意図がよく分からない
+	 * パス形式から自治体を検索
 	 */
-	public static function get_by_path($path): ?Model_Division
+	public static function findByPath($path): ?Model_Division
 	{
-		$result = Model_Division::query()->where('path', $path)->get();
-		return count($result) ? array_pop($result) : null;
+		return Model_Division::query()->where('path', $path)->get_one();
 	}
 	// function get_by_path()
 

@@ -28,7 +28,7 @@ class Controller_Division extends Controller
 	protected function requirePath(): Model_Division
 	{
 		$path = $this->param('path');
-		$division = DivisionTable::get_by_path($path);
+		$division = DivisionTable::findByPath($path);
 		if (! $division || $division->deleted_at !== null) {
 			throw new HttpNotFoundException('自治体が見つかりません。');
 		}
@@ -105,8 +105,8 @@ class Controller_Division extends Controller
 		try {
 			DB::start_transaction();
 
-			$division = Model_Division::forge();
-			$division->create(Input::post());
+			$parent = DivisionTable::findByPath(Input::post('parent'));
+			$division = Model_Division::create2(Input::post(), $parent);
 
 			$this->activity('add division', $division->id);
 
@@ -187,22 +187,27 @@ class Controller_Division extends Controller
 		try {
 			DB::start_transaction();
 
-			$path = $this->param('path');
-			$division = DivisionTable::get_by_path($path);
-			$division->create($input);
+			$division = DivisionTable::findByPath($this->param('path'));
 
-			$this->activity('edit division', $division->id);
+			$parent = DivisionTable::findByPath($input['parent']);
+			$input['fullname'] = $input['name'] . $input['suffix'];
+			$new = Model_Division::make($input, $division);
+			$new->makePath($parent);
+			$new->save();
+			$new->updateChild();
+
+			$this->activity('edit division', $new->id);
 
 			DB::commit_transaction();
 
-			$path_new = $division->get_path();
+			$path_new = $new->get_path();
 
 			Uri::redirect('division.detail', ['path' => $path_new]);
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
-			//Debug::dump($e);
-			throw new HttpServerErrorException($e->getMessage());
+			Debug::dump($e);
+			//throw new HttpServerErrorException($e->getMessage());
 		}
 		// try
 	}
@@ -213,7 +218,7 @@ class Controller_Division extends Controller
 		$this->requireUser();
 
 		$path = $this->param('path');
-		$division = DivisionTable::get_by_path($path);
+		$division = DivisionTable::findByPath($path);
 		$division->delete();
 
 		$this->activity('delete division', $division->id);
