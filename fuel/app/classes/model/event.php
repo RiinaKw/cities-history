@@ -4,12 +4,14 @@
  * @package  App\Model
  */
 
+use MyApp\Table\Event as Table;
+
 class Model_Event extends \MyApp\Abstracts\ActiveRecord
 {
 	use MyApp\Traits\Model\Presentable;
 
-	protected static $_table_name  = 'events';
-	protected static $_primary_key = ['id'];
+	protected static $_table_name  = Table::TABLE_NAME;
+	protected static $_primary_key = Table::TABLE_PK;
 
 	protected static $_has_many = ['event_details'];
 

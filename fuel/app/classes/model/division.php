@@ -4,7 +4,7 @@
  * @package  App\Model
  */
 
-use MyApp\Table\Division as DivisionTable;
+use MyApp\Table\Division as Table;
 use MyApp\Model\Division\Tree;
 
 class Model_Division extends \MyApp\Abstracts\ActiveRecord
@@ -12,8 +12,8 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 	use MyApp\Traits\Model\Presentable;
 	use MyApp\Traits\Model\Gettable;
 
-	protected static $_table_name  = 'divisions';
-	protected static $_primary_key = ['id'];
+	protected static $_table_name  = Table::TABLE_NAME;
+	protected static $_primary_key = Table::TABLE_PK;
 
 	protected static $_has_many = ['event_details'];
 
@@ -156,9 +156,9 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		$parent = $input['parent'] ?? null;
 
 		if ($belongs) {
-			$belongs_division = DivisionTable::get_by_path($belongs);
+			$belongs_division = Table::get_by_path($belongs);
 			if (! $belongs_division) {
-				$belongs_division = DivisionTable::set_path($belongs);
+				$belongs_division = Table::set_path($belongs);
 				$belongs_division = array_pop($belongs_division);
 			}
 			$this->belongs_division_id = $belongs_division->id;

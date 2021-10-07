@@ -7,25 +7,30 @@
 namespace MyApp\Table;
 
 use DB;
+use MyApp\Table\Division as DivisionTable;
+use MyApp\Table\Event\Detail as DetailTable;
 use Model_Division;
 use Model_Event;
 use Model_Event_Detail;
 
 class Event
 {
-	protected static $table_name_division = 'divisions';
-	protected static $table_name_event = 'events';
-	protected static $table_name_detail = 'event_details';
+	public const TABLE_NAME = 'events';
+	public const TABLE_PK = ['id'];
+
+	protected const DIVISION_TABLE = DivisionTable::TABLE_NAME;
+	protected const EVENT_TABLE    = self::TABLE_NAME;
+	protected const DETAIL_TABLE   = DetailTable::TABLE_NAME;
 
 	protected static $model_name_division = Model_Division::class;
-	protected static $model_name_event = Model_Event::class;
-	protected static $model_name_detail = Model_Event_Detail::class;
+	protected static $model_name_event    = Model_Event::class;
+	protected static $model_name_detail   = Model_Event_Detail::class;
 
 	public static function get_by_division($divisions, $start_date = null, $end_date = null)
 	{
 		$query = DB::select('d.*', 'e.title', 'e.date', 'e.comment', 'e.source')
-			->from([static::$table_name_detail, 'd'])
-			->join([static::$table_name_event, 'e'])
+			->from([static::DETAIL_TABLE, 'd'])
+			->join([static::EVENT_TABLE, 'e'])
 			->on('e.id', '=', 'd.event_id')
 			->where('d.is_refer', '=', false)
 			->where('e.deleted_at', '=', null)
@@ -64,8 +69,8 @@ class Event
 			'e.geoshape',
 			'e.is_refer'
 		)
-			->from([static::$table_name_detail, 'e'])
-			->join([static::$table_name_division, 'd'])
+			->from([static::DETAIL_TABLE, 'e'])
+			->join([static::DIVISION_TABLE, 'd'])
 			->on('e.division_id', '=', 'd.id')
 
 			->where('e.deleted_at', '=', null)
@@ -83,10 +88,10 @@ class Event
 	) {
 		$query = DB::select('ev.*')
 			->distinct(true)
-			->from([static::$table_name_detail, 'dt'])
-			->join([static::$table_name_event, 'ev'])
+			->from([static::DETAIL_TABLE, 'dt'])
+			->join([static::EVENT_TABLE, 'ev'])
 			->on('ev.id', '=', 'dt.event_id')
-			->join([static::$table_name_division, 'dv'])
+			->join([static::DIVISION_TABLE, 'dv'])
 			->on('dv.id', '=', 'dt.division_id')
 			->where('dt.is_refer', '=', false)
 			->where('ev.deleted_at', '=', null)

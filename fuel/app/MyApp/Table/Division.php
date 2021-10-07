@@ -16,12 +16,13 @@ class Division
 		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
 		. '(\((?<identifier>.+?)\))?$/';
 
-	protected static $_table_name  = 'divisions';
+	public const TABLE_NAME = 'divisions';
+	public const TABLE_PK = ['id'];
 
 	public static function get_all_id()
 	{
 		$query = DB::select('id')
-			->from(self::$_table_name)
+			->from(self::TABLE_NAME)
 			->where('deleted_at', '=', null)
 			->order_by('name_kana', 'ASC');
 
@@ -37,7 +38,7 @@ class Division
 	public static function query($q)
 	{
 		$query = DB::select()
-			->from(self::$_table_name)
+			->from(self::TABLE_NAME)
 			->where('deleted_at', '=', null)
 			//->where(DB::expr('MATCH(fullname)'), 'AGAINST', DB::expr('(\'+'.$q.'\' IN BOOLEAN MODE)'));
 			->where('fullname', 'LIKE', '%' . $q . '%');
@@ -51,7 +52,7 @@ class Division
 		$q = str_replace(array('\\', '%', '_'), array('\\\\', '\%', '\_'), $q);
 		$q_arr = preg_split('/(\s+)|(　+)/', $q);
 		$query = DB::select()
-			->from(self::$_table_name)
+			->from(self::TABLE_NAME)
 			->where('deleted_at', '=', null);
 		foreach ($q_arr as $word) {
 			$query->and_where_open()
@@ -196,7 +197,7 @@ class Division
 			$id_path = 'CONCAT(id, "/")';
 		}
 		$query = DB::select()
-			->from(self::$_table_name)
+			->from(self::TABLE_NAME)
 			->and_where_open()
 			->and_where_open()
 			->where('name', '=', $name['place'])
@@ -226,7 +227,7 @@ class Division
 	public static function get_top_level()
 	{
 		$query = DB::select()
-			->from(self::$_table_name)
+			->from(self::TABLE_NAME)
 			->where('deleted_at', '=', null)
 			->where('id_path', '=', DB::expr('CONCAT(id, "/")'))
 			->order_by('display_order', 'asc');
@@ -238,7 +239,7 @@ class Division
 	public static function get_by_parent_division_and_date($parent, $date = null)
 	{
 		$query = DB::select('d.*')
-			->from([self::$_table_name, 'd'])
+			->from([self::TABLE_NAME, 'd'])
 			->join(['events', 's'], 'LEFT OUTER')
 			->on('d.start_event_id', '=', 's.id')
 			->join(['events', 'e'], 'LEFT OUTER')
@@ -273,7 +274,7 @@ class Division
 	public static function get_by_admin_filter($parent, $filter)
 	{
 		$query = DB::select()
-			->from([self::$_table_name, 'd'])
+			->from([self::TABLE_NAME, 'd'])
 			->where('d.deleted_at', null);
 		if ($parent) {
 			$query->where('d.id_path', 'LIKE', DB::expr('CONCAT("' . $parent->id_path . '", "_%")'));
