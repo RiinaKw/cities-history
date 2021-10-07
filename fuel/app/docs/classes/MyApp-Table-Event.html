@@ -111,6 +111,9 @@
         <h2 class="phpdocumentor-content__title">
     Event
 
+        <span class="phpdocumentor-element__extends">
+        extends <a href="classes/MyApp-Abstracts-Table.html"><abbr title="\MyApp\Abstracts\Table">Table</abbr></a>
+    </span>
     
             <div class="phpdocumentor-element__package">
             in package
@@ -126,10 +129,12 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 </aside>
 
-        
+            <p class="phpdocumentor-summary">イベントテーブルを管理するクラス</p>
+
+    <section class="phpdocumentor-description"></section>
 
 
 
@@ -144,47 +149,61 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MyApp-Table-Event.html#constant_TABLE_NAME">TABLE_NAME</a>
+    <span>
+        &nbsp;= &#039;events&#039;                    </span>
+</dt>
+<dd>管理するテーブル名</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MyApp-Table-Event.html#constant_TABLE_PK">TABLE_PK</a>
+    <span>
+        &nbsp;= [&#039;id&#039;]                    </span>
+</dt>
+<dd>管理するテーブルの主キー</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -protected">
+    <a href="classes/MyApp-Table-Event.html#constant_DETAIL_TABLE">DETAIL_TABLE</a>
+    <span>
+        &nbsp;= MyAppTableEvent_detail::TABLE_NAME                    </span>
+</dt>
+<dd>イベント詳細テーブルのテーブル名</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -protected">
+    <a href="classes/MyApp-Table-Event.html#constant_DIVISION_TABLE">DIVISION_TABLE</a>
+    <span>
+        &nbsp;= MyAppTableDivision::TABLE_NAME                    </span>
+</dt>
+<dd>自治体テーブルのテーブル名</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -protected">
+    <a href="classes/MyApp-Table-Event.html#constant_EVENT_TABLE">EVENT_TABLE</a>
+    <span>
+        &nbsp;= self::TABLE_NAME                    </span>
+</dt>
+<dd>イベントテーブルのテーブル名（つまり自分自身）</dd>
+
                 <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Table-Event.html#property_model_name_detail">$model_name_detail</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>イベント詳細モデルのクラス名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Table-Event.html#property_model_name_division">$model_name_division</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>自治体モデルのクラス名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Table-Event.html#property_model_name_event">$model_name_event</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/MyApp-Table-Event.html#property_table_name_detail">$table_name_detail</a>
-    <span>
-                &nbsp;: mixed            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/MyApp-Table-Event.html#property_table_name_division">$table_name_division</a>
-    <span>
-                &nbsp;: mixed            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/MyApp-Table-Event.html#property_table_name_event">$table_name_event</a>
-    <span>
-                &nbsp;: mixed            </span>
-</dt>
-<dd></dd>
+<dd>イベントモデルのクラス名</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Table-Event.html#method_get_by_division">get_by_division()</a>
@@ -212,6 +231,147 @@
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/MyApp-Table-Event.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_TABLE_NAME">
+        TABLE_NAME
+        <a href="classes/MyApp-Table-Event.html#constant_TABLE_NAME" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">19</span>
+</aside>
+
+        <p class="phpdocumentor-summary">管理するテーブル名</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">TABLE_NAME</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;events&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_TABLE_PK">
+        TABLE_PK
+        <a href="classes/MyApp-Table-Event.html#constant_TABLE_PK" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+</aside>
+
+        <p class="phpdocumentor-summary">管理するテーブルの主キー</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">array&lt;int, string&gt;</span>
+    <span class="phpdocumentor-signature__name">TABLE_PK</span>
+    = <span class="phpdocumentor-signature__default-value">[&#039;id&#039;]</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -protected ">
+    <h4 class="phpdocumentor-element__name" id="constant_DETAIL_TABLE">
+        DETAIL_TABLE
+        <a href="classes/MyApp-Table-Event.html#constant_DETAIL_TABLE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">40</span>
+</aside>
+
+        <p class="phpdocumentor-summary">イベント詳細テーブルのテーブル名</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">DETAIL_TABLE</span>
+    = <span class="phpdocumentor-signature__default-value">MyAppTableEvent_detail::TABLE_NAME</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -protected ">
+    <h4 class="phpdocumentor-element__name" id="constant_DIVISION_TABLE">
+        DIVISION_TABLE
+        <a href="classes/MyApp-Table-Event.html#constant_DIVISION_TABLE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+</aside>
+
+        <p class="phpdocumentor-summary">自治体テーブルのテーブル名</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">DIVISION_TABLE</span>
+    = <span class="phpdocumentor-signature__default-value">MyAppTableDivision::TABLE_NAME</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -protected ">
+    <h4 class="phpdocumentor-element__name" id="constant_EVENT_TABLE">
+        EVENT_TABLE
+        <a href="classes/MyApp-Table-Event.html#constant_EVENT_TABLE" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">28</span>
+</aside>
+
+        <p class="phpdocumentor-summary">イベントテーブルのテーブル名（つまり自分自身）</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">EVENT_TABLE</span>
+    = <span class="phpdocumentor-signature__default-value">self::TABLE_NAME</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
@@ -235,17 +395,19 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">60</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">イベント詳細モデルのクラス名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$model_name_detail</span>
      = <span class="phpdocumentor-signature__default-value">Model_Event_Detail::class</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -265,17 +427,19 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">自治体モデルのクラス名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$model_name_division</span>
      = <span class="phpdocumentor-signature__default-value">Model_Division::class</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -295,107 +459,19 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">21</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">イベントモデルのクラス名</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$model_name_event</span>
      = <span class="phpdocumentor-signature__default-value">Model_Event::class</span></code>
 
-    
-    
+        <section class="phpdocumentor-description"></section>
 
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_table_name_detail">
-        $table_name_detail
-        <a href="classes/MyApp-Table-Event.html#property_table_name_detail" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">18</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$table_name_detail</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;event_details&#039;</span></code>
-
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_table_name_division">
-        $table_name_division
-        <a href="classes/MyApp-Table-Event.html#property_table_name_division" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">16</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$table_name_division</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;divisions&#039;</span></code>
-
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-            -static                                            "
->
-    <h4 class="phpdocumentor-element__name" id="property_table_name_event">
-        $table_name_event
-        <a href="classes/MyApp-Table-Event.html#property_table_name_event" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">17</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$table_name_event</span>
-     = <span class="phpdocumentor-signature__default-value">&#039;events&#039;</span></code>
-
-    
     
 
 </article>
@@ -419,7 +495,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 </aside>
 
     
@@ -475,7 +551,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">119</span>
 </aside>
 
     
@@ -531,7 +607,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Event.php"><a href="files/fuel-app-myapp-table-event.html"><abbr title="fuel/app/MyApp/Table/Event.php">Event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">97</span>
 </aside>
 
     

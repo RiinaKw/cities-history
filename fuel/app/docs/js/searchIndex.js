@@ -1098,7 +1098,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Table\\Division",
             "name": "Division",
-            "summary": "",
+            "summary": "\u81EA\u6CBB\u4F53\u30C6\u30FC\u30D6\u30EB\u3092\u7BA1\u7406\u3059\u308B\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Table-Division.html"
         },                {
             "fqsen": "\\MyApp\\Table\\Division\u003A\u003Aget_all_id\u0028\u0029",
@@ -1161,10 +1161,15 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Table-Division.html#constant_RE_SUFFIX"
         },                {
-            "fqsen": "\\MyApp\\Table\\Division\u003A\u003A\u0024_table_name",
-            "name": "_table_name",
-            "summary": "",
-            "url": "classes/MyApp-Table-Division.html#property__table_name"
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003ATABLE_NAME",
+            "name": "TABLE_NAME",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Table-Division.html#constant_TABLE_NAME"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Division\u003A\u003ATABLE_PK",
+            "name": "TABLE_PK",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u306E\u4E3B\u30AD\u30FC",
+            "url": "classes/MyApp-Table-Division.html#constant_TABLE_PK"
         },                {
             "fqsen": "\\MyApp\\Helper\\Iterator",
             "name": "Iterator",
@@ -1293,7 +1298,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Table\\Event",
             "name": "Event",
-            "summary": "",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u30C6\u30FC\u30D6\u30EB\u3092\u7BA1\u7406\u3059\u308B\u30AF\u30E9\u30B9",
             "url": "classes/MyApp-Table-Event.html"
         },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003Aget_by_division\u0028\u0029",
@@ -1311,34 +1316,44 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-Table-Event.html#method_get_by_parent_division_and_date"
         },                {
-            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024table_name_division",
-            "name": "table_name_division",
-            "summary": "",
-            "url": "classes/MyApp-Table-Event.html#property_table_name_division"
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003ATABLE_NAME",
+            "name": "TABLE_NAME",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Table-Event.html#constant_TABLE_NAME"
         },                {
-            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024table_name_event",
-            "name": "table_name_event",
-            "summary": "",
-            "url": "classes/MyApp-Table-Event.html#property_table_name_event"
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003ATABLE_PK",
+            "name": "TABLE_PK",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u306E\u4E3B\u30AD\u30FC",
+            "url": "classes/MyApp-Table-Event.html#constant_TABLE_PK"
         },                {
-            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024table_name_detail",
-            "name": "table_name_detail",
-            "summary": "",
-            "url": "classes/MyApp-Table-Event.html#property_table_name_detail"
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003AEVENT_TABLE",
+            "name": "EVENT_TABLE",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u30C6\u30FC\u30D6\u30EB\u306E\u30C6\u30FC\u30D6\u30EB\u540D\uFF08\u3064\u307E\u308A\u81EA\u5206\u81EA\u8EAB\uFF09",
+            "url": "classes/MyApp-Table-Event.html#constant_EVENT_TABLE"
         },                {
-            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_division",
-            "name": "model_name_division",
-            "summary": "",
-            "url": "classes/MyApp-Table-Event.html#property_model_name_division"
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003ADIVISION_TABLE",
+            "name": "DIVISION_TABLE",
+            "summary": "\u81EA\u6CBB\u4F53\u30C6\u30FC\u30D6\u30EB\u306E\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Table-Event.html#constant_DIVISION_TABLE"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003ADETAIL_TABLE",
+            "name": "DETAIL_TABLE",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u8A73\u7D30\u30C6\u30FC\u30D6\u30EB\u306E\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Table-Event.html#constant_DETAIL_TABLE"
         },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_event",
             "name": "model_name_event",
-            "summary": "",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D",
             "url": "classes/MyApp-Table-Event.html#property_model_name_event"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_division",
+            "name": "model_name_division",
+            "summary": "\u81EA\u6CBB\u4F53\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D",
+            "url": "classes/MyApp-Table-Event.html#property_model_name_division"
         },                {
             "fqsen": "\\MyApp\\Table\\Event\u003A\u003A\u0024model_name_detail",
             "name": "model_name_detail",
-            "summary": "",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u8A73\u7D30\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D",
             "url": "classes/MyApp-Table-Event.html#property_model_name_detail"
         },                {
             "fqsen": "\\MyApp\\Helper\\Session\\Item",
@@ -2175,6 +2190,36 @@ Search.appendIndex(
             "name": "re",
             "summary": "URL\u0020\u89E3\u6790\u306B\u5229\u7528\u3059\u308B\u6B63\u898F\u8868\u73FE",
             "url": "classes/MyApp-Helper-GeoShape.html#property_re"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Table",
+            "name": "Table",
+            "summary": "\u30C7\u30FC\u30BF\u30D9\u30FC\u30B9\u306E\u30C6\u30FC\u30D6\u30EB\u64CD\u4F5C\u306B\u7279\u5316\u3057\u305F\u57FA\u5E95\u30AF\u30E9\u30B9\n\uFF08ActiveRecord\u0020\u6A5F\u80FD\u306F\u4E00\u5207\u6301\u305F\u306A\u3044\uFF09",
+            "url": "classes/MyApp-Abstracts-Table.html"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Table\u003A\u003ATABLE_NAME",
+            "name": "TABLE_NAME",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Abstracts-Table.html#constant_TABLE_NAME"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\Table\u003A\u003ATABLE_PK",
+            "name": "TABLE_PK",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u306E\u4E3B\u30AD\u30FC",
+            "url": "classes/MyApp-Abstracts-Table.html#constant_TABLE_PK"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event_detail",
+            "name": "Event_detail",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u8A73\u7D30\u30C6\u30FC\u30D6\u30EB\u3092\u7BA1\u7406\u3059\u308B\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Table-Event-detail.html"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event_detail\u003A\u003ATABLE_NAME",
+            "name": "TABLE_NAME",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Table-Event-detail.html#constant_TABLE_NAME"
+        },                {
+            "fqsen": "\\MyApp\\Table\\Event_detail\u003A\u003ATABLE_PK",
+            "name": "TABLE_PK",
+            "summary": "\u7BA1\u7406\u3059\u308B\u30C6\u30FC\u30D6\u30EB\u306E\u4E3B\u30AD\u30FC",
+            "url": "classes/MyApp-Table-Event-detail.html#constant_TABLE_PK"
         },                {
             "fqsen": "\\",
             "name": "\\",

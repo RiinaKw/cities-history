@@ -9,7 +9,10 @@ namespace MyApp\Table;
 use DB;
 use Model_Division;
 
-class Division
+/**
+ * 自治体テーブルを管理するクラス
+ */
+class Division extends \MyApp\Abstracts\Table
 {
 	public const RE_SUFFIX =
 		'/^(?<place>.+?)'

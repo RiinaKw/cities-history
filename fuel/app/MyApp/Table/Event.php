@@ -7,24 +7,59 @@
 namespace MyApp\Table;
 
 use DB;
-use MyApp\Table\Division as DivisionTable;
-use MyApp\Table\Event\Detail as DetailTable;
 use Model_Division;
 use Model_Event;
 use Model_Event_Detail;
 
-class Event
+/**
+ * イベントテーブルを管理するクラス
+ */
+class Event extends \MyApp\Abstracts\Table
 {
 	public const TABLE_NAME = 'events';
 	public const TABLE_PK = ['id'];
 
-	protected const DIVISION_TABLE = DivisionTable::TABLE_NAME;
-	protected const EVENT_TABLE    = self::TABLE_NAME;
-	protected const DETAIL_TABLE   = DetailTable::TABLE_NAME;
+	//================ 各種テーブル名 ================//
 
-	protected static $model_name_division = Model_Division::class;
+	/**
+	 * イベントテーブルのテーブル名（つまり自分自身）
+	 * @var string
+	 */
+	protected const EVENT_TABLE    = self::TABLE_NAME;
+
+	/**
+	 * 自治体テーブルのテーブル名
+	 * @var string
+	 */
+	protected const DIVISION_TABLE = \MyApp\Table\Division::TABLE_NAME;
+
+	/**
+	 * イベント詳細テーブルのテーブル名
+	 * @var string
+	 */
+	protected const DETAIL_TABLE   = \MyApp\Table\Event_detail::TABLE_NAME;
+
+	//================ 各種モデル名 ================//
+
+	/**
+	 * イベントモデルのクラス名
+	 * @var string
+	 */
 	protected static $model_name_event    = Model_Event::class;
+
+	/**
+	 * 自治体モデルのクラス名
+	 * @var string
+	 */
+	protected static $model_name_division = Model_Division::class;
+
+	/**
+	 * イベント詳細モデルのクラス名
+	 * @var string
+	 */
 	protected static $model_name_detail   = Model_Event_Detail::class;
+
+	//================ 各種メソッド ================//
 
 	public static function get_by_division($divisions, $start_date = null, $end_date = null)
 	{
