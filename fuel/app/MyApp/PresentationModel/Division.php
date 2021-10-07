@@ -14,6 +14,42 @@ class Division extends PresentationModel
 {
 	protected $model = null;
 
+	protected static $suffixes = [
+		'支庁'       => '支庁',
+		'振興局'     => '支庁',
+		'総合振興局' => '支庁',
+		'都'         => true,
+		'道'         => true,
+		'府'         => true,
+		'県'         => true,
+		'市'         => true,
+		'区'         => true,
+		'郡'         => true,
+	];
+
+	protected static $periods = [
+		'平成～令和' => [
+			'label' => '平成～令和',
+			'start' => '1989-01-01',
+			'end' => '2019-04-01',
+		],
+		'昭和後期' => [
+			'label' => '昭和後期',
+			'start' => '1950-01-01',
+			'end' => '1988-12-31',
+		],
+		'大正～昭和前期' => [
+			'label' => '大正～昭和前期',
+			'start' => '1912-01-01',
+			'end' => '1949-12-31',
+		],
+		'明治' => [
+			'label' => '明治',
+			'start' => '1878-01-01',
+			'end' => '1911-12-31',
+		],
+	];
+
 	public function __construct(Model_Division $model)
 	{
 		$this->model = $model;
@@ -21,24 +57,11 @@ class Division extends PresentationModel
 
 	public function suffix_classification(): string
 	{
-		$arr = [
-			'支庁'       => '支庁',
-			'振興局'     => '支庁',
-			'総合振興局' => '支庁',
-			'都'         => true,
-			'道'         => true,
-			'府'         => true,
-			'県'         => true,
-			'市'         => true,
-			'区'         => true,
-			'郡'         => true,
-		];
-
 		$suffix = $this->model->suffix;
-		if (! isset($arr[$suffix])) {
+		if (! isset(static::$suffixes[$suffix])) {
 			return '町村';
 		}
-		$type = $arr[$suffix];
+		$type = static::$suffixes[$suffix];
 		return is_string($type) ? $type : $suffix;
 	}
 
@@ -48,6 +71,10 @@ class Division extends PresentationModel
 	}
 	// function source()
 
+	/**
+	 * 自治体タイムラインの URI
+	 * @return string
+	 */
 	public function url(): string
 	{
 		return Uri::create(
@@ -55,6 +82,34 @@ class Division extends PresentationModel
 			['path' => $this->model->path]
 		);
 	}
+
+	/**
+	 * 自治体ツリーの URI
+	 * @return string
+	 */
+	public function urlTree(): string
+	{
+		return Uri::create(
+			'list.division',
+			['path' => $this->model->path]
+		);
+	}
+
+	/**
+	 * 子孫自治体タイムラインの URI の配列
+	 * @return array
+	 */
+	public function urlListChildren(): array
+	{
+		$arr = [];
+		foreach (static::$periods as $params) {
+			$params['path'] = $this->model->path;
+			$params['label'] = $params['label'];
+			$arr[$params['label']] = Uri::create('division.children', $params);
+		}
+		return $arr;
+	}
+	// function urlListChildren()
 
 	public function htmlAnchor(string $label = ''): string
 	{

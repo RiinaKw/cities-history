@@ -10,9 +10,6 @@ class Presenter_Division_Detail extends Presenter_Layout
 		$getter = $this->division->getter();
 		$path = $getter->path;
 
-		$this->url_detail = Helper_Uri::create('list.division', ['path' => $path]);
-		$this->url_detail_timeline = Helper_Uri::create('division.detail', ['path' => $path]);
-		$this->url_children_timeline = Helper_Division::get_children_url($path);
 		$this->url_edit = Helper_Uri::create('division.edit', ['path' => $path]);
 		$this->url_delete = Helper_Uri::create('division.delete', ['path' => $path]);
 		$this->url_event_detail = Helper_Uri::create('event.detail');

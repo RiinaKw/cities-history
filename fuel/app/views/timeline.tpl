@@ -44,15 +44,15 @@
 			<nav class="timeline-nav">
 				<ul>
 					<li class="{{if $current === 'detail'}}active{{/if}}">
-						<a href="{{$url_detail_timeline}}">自治体タイムライン</a>
+						<a href="{{$pmodel->url()}}">自治体タイムライン</a>
 					</li>
 					<li class="">
-						<a href="{{$url_detail}}">所属自治体</a>
+						<a href="{{$pmodel->urlTree()}}">所属自治体</a>
 					</li>
 					<li>
 						所属自治体タイムライン
 						<ul>
-{{foreach from=$url_children_timeline key=label item=url}}
+{{foreach from=$pmodel->urlListChildren() key=label item=url}}
 							<li class="{{if $current == $label}}active{{/if}}">
 								<a href="{{$url}}">{{$label}}</a>
 							</li>
