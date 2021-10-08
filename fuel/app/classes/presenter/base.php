@@ -16,6 +16,7 @@ abstract class Presenter_Base extends Fuel\Core\Presenter
 	public static function forge($presenter = null, $method = 'view', $auto_filter = null, $view = null)
 	{
 		$presenter = preg_replace('/^Presenter_/', '', static::class);
+		$presenter = str_replace('_', '/', strtolower($presenter));
 		return parent::forge($presenter, $method, $auto_filter, $view);
 	}
 

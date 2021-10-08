@@ -52,7 +52,7 @@ class Controller_List extends Controller
 		$tree = Tree::create($top_division, $date);
 
 		// create Presenter object
-		$content = Presenter::forge('list/detail', 'view', null, 'list.tpl');
+		$content = Presenter_Division_Tree::forge();
 		$content->date = $date;
 		$content->year = $year;
 		$content->month = $month;
