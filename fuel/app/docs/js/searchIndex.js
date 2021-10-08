@@ -211,10 +211,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Division.html#method_action_tree"
         },                {
-            "fqsen": "\\Controller_Division\u003A\u003A\u0024session_url",
-            "name": "session_url",
+            "fqsen": "\\Controller_Division\u003A\u003A\u0024session_uri",
+            "name": "session_uri",
             "summary": "",
-            "url": "classes/Controller-Division.html#property_session_url"
+            "url": "classes/Controller-Division.html#property_session_uri"
         },                {
             "fqsen": "\\Controller_Error",
             "name": "Controller_Error",
@@ -286,10 +286,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Event.html#method_action_delete"
         },                {
-            "fqsen": "\\Controller_Event\u003A\u003A\u0024session_url",
-            "name": "session_url",
+            "fqsen": "\\Controller_Event\u003A\u003A\u0024session_uri",
+            "name": "session_uri",
             "summary": "",
-            "url": "classes/Controller-Event.html#property_session_url"
+            "url": "classes/Controller-Event.html#property_session_uri"
         },                {
             "fqsen": "\\Controller_Geoshape",
             "name": "Controller_Geoshape",
@@ -406,21 +406,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Helper-Governmentcode.html#method_normalize"
         },                {
-            "fqsen": "\\Helper_Html",
-            "name": "Helper_Html",
-            "summary": "",
-            "url": "classes/Helper-Html.html"
-        },                {
-            "fqsen": "\\Helper_Html\u003A\u003Aexcerpt\u0028\u0029",
-            "name": "excerpt",
-            "summary": "",
-            "url": "classes/Helper-Html.html#method_excerpt"
-        },                {
-            "fqsen": "\\Helper_Html\u003A\u003Awiki\u0028\u0029",
-            "name": "wiki",
-            "summary": "",
-            "url": "classes/Helper-Html.html#method_wiki"
-        },                {
             "fqsen": "\\Helper_Input",
             "name": "Helper_Input",
             "summary": "",
@@ -450,16 +435,6 @@ Search.appendIndex(
             "name": "string",
             "summary": "",
             "url": "classes/Helper-Random.html#method_string"
-        },                {
-            "fqsen": "\\Helper_String",
-            "name": "Helper_String",
-            "summary": "",
-            "url": "classes/Helper-String.html"
-        },                {
-            "fqsen": "\\Helper_String\u003A\u003Ato_hiragana\u0028\u0029",
-            "name": "to_hiragana",
-            "summary": "",
-            "url": "classes/Helper-String.html#method_to_hiragana"
         },                {
             "fqsen": "\\Helper_Uri",
             "name": "Helper_Uri",
@@ -796,25 +771,10 @@ Search.appendIndex(
             "summary": "\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\u306E\u3082\u3068\u306B\u306A\u308B\u30AF\u30E9\u30B9\u540D\u304C\u7570\u306A\u308B\u5834\u5408\u3001\u3053\u3053\u3067\u6307\u5B9A\u3059\u308B\ntrue\u3092\u6307\u5B9A\u3059\u308B\u3068\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u3001\u30A2\u30AF\u30B7\u30E7\u30F3\u304B\u3089view\u3092\u5C0E\u304D\u51FA\u3059",
             "url": "classes/Presenter-Base.html#property_alt_view"
         },                {
-            "fqsen": "\\Presenter_Division_Detail",
-            "name": "Presenter_Division_Detail",
-            "summary": "",
-            "url": "classes/Presenter-Division-Detail.html"
-        },                {
-            "fqsen": "\\Presenter_Division_Detail\u003A\u003Aview\u0028\u0029",
-            "name": "view",
-            "summary": "",
-            "url": "classes/Presenter-Division-Detail.html#method_view"
-        },                {
             "fqsen": "\\Presenter_Division_Tree",
             "name": "Presenter_Division_Tree",
             "summary": "",
             "url": "classes/Presenter-Division-Tree.html"
-        },                {
-            "fqsen": "\\Presenter_Division_Tree\u003A\u003A_get_path\u0028\u0029",
-            "name": "_get_path",
-            "summary": "",
-            "url": "classes/Presenter-Division-Tree.html#method__get_path"
         },                {
             "fqsen": "\\Presenter_Division_Tree\u003A\u003Aview\u0028\u0029",
             "name": "view",
@@ -840,21 +800,6 @@ Search.appendIndex(
             "name": "after",
             "summary": "",
             "url": "classes/Presenter-Layout.html#method_after"
-        },                {
-            "fqsen": "\\Presenter_List_Index",
-            "name": "Presenter_List_Index",
-            "summary": "",
-            "url": "classes/Presenter-List-Index.html"
-        },                {
-            "fqsen": "\\Presenter_List_Index\u003A\u003A_get_path\u0028\u0029",
-            "name": "_get_path",
-            "summary": "",
-            "url": "classes/Presenter-List-Index.html#method__get_path"
-        },                {
-            "fqsen": "\\Presenter_List_Index\u003A\u003Aview\u0028\u0029",
-            "name": "view",
-            "summary": "",
-            "url": "classes/Presenter-List-Index.html#method_view"
         },                {
             "fqsen": "\\Presenter_Login",
             "name": "Presenter_Login",
@@ -1375,21 +1320,6 @@ Search.appendIndex(
             "name": "key",
             "summary": "\u7BA1\u7406\u3059\u308B\u30BB\u30C3\u30B7\u30E7\u30F3\u540D",
             "url": "classes/MyApp-Helper-Session-Item.html#property_key"
-        },                {
-            "fqsen": "\\MyApp\\Helper\\Session\\Url",
-            "name": "Url",
-            "summary": "URL\u0020\u306E\u4FDD\u5B58\u306B\u7279\u5316\u3057\u305F\u30BB\u30C3\u30B7\u30E7\u30F3",
-            "url": "classes/MyApp-Helper-Session-Url.html"
-        },                {
-            "fqsen": "\\MyApp\\Helper\\Session\\Url\u003A\u003Aset_url\u0028\u0029",
-            "name": "set_url",
-            "summary": "\u73FE\u5728\u306E\u0020URL\u0020\u3092\u767B\u9332",
-            "url": "classes/MyApp-Helper-Session-Url.html#method_set_url"
-        },                {
-            "fqsen": "\\MyApp\\Helper\\Session\\Url\u003A\u003Aredirect\u0028\u0029",
-            "name": "redirect",
-            "summary": "\u767B\u9332\u3055\u308C\u305F\u0020URL\u0020\u3078\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
-            "url": "classes/MyApp-Helper-Session-Url.html#method_redirect"
         },                {
             "fqsen": "\\MyApp\\Helper\\Uri",
             "name": "Uri",
@@ -2335,6 +2265,51 @@ Search.appendIndex(
             "name": "tmp_dir",
             "summary": "",
             "url": "classes/FileTest.html#property_tmp_dir"
+        },                {
+            "fqsen": "\\Presenter_Division_Timeline",
+            "name": "Presenter_Division_Timeline",
+            "summary": "",
+            "url": "classes/Presenter-Division-Timeline.html"
+        },                {
+            "fqsen": "\\Presenter_Division_Timeline\u003A\u003Aview\u0028\u0029",
+            "name": "view",
+            "summary": "",
+            "url": "classes/Presenter-Division-Timeline.html#method_view"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Uri",
+            "name": "Uri",
+            "summary": "URI\u0020\u306E\u4FDD\u5B58\u306B\u7279\u5316\u3057\u305F\u30BB\u30C3\u30B7\u30E7\u30F3",
+            "url": "classes/MyApp-Helper-Session-Uri.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Uri\u003A\u003Aset_uri\u0028\u0029",
+            "name": "set_uri",
+            "summary": "\u73FE\u5728\u306E\u0020URI\u0020\u3092\u767B\u9332",
+            "url": "classes/MyApp-Helper-Session-Uri.html#method_set_uri"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Session\\Uri\u003A\u003Aredirect\u0028\u0029",
+            "name": "redirect",
+            "summary": "\u767B\u9332\u3055\u308C\u305F\u0020URI\u0020\u3078\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
+            "url": "classes/MyApp-Helper-Session-Uri.html#method_redirect"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Str",
+            "name": "Str",
+            "summary": "\u6587\u5B57\u5217\u64CD\u4F5C\u306B\u95A2\u3059\u308B\u30D8\u30EB\u30D1\u30FC\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Helper-Str.html"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Str\u003A\u003AconvertKana\u0028\u0029",
+            "name": "convertKana",
+            "summary": "\u3072\u3089\u304C\u306A\u306B\u5909\u63DB",
+            "url": "classes/MyApp-Helper-Str.html#method_convertKana"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Str\u003A\u003Aexcerpt\u0028\u0029",
+            "name": "excerpt",
+            "summary": "HTM\u0020\u6587\u5B57\u5217\u304B\u3089\u6587\u7AE0\u3092\u5207\u308A\u51FA\u3059",
+            "url": "classes/MyApp-Helper-Str.html#method_excerpt"
+        },                {
+            "fqsen": "\\MyApp\\Helper\\Str\u003A\u003Awiki\u0028\u0029",
+            "name": "wiki",
+            "summary": "Wiki\u0020\u69CB\u6587\u3092\u0020HTML\u0020\u306B\u5909\u63DB",
+            "url": "classes/MyApp-Helper-Str.html#method_wiki"
         },                {
             "fqsen": "\\",
             "name": "\\",
