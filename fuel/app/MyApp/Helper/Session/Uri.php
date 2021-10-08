@@ -2,9 +2,6 @@
 
 namespace MyApp\Helper\Session;
 
-use Response;
-use MyApp\Helper\Uri;
-
 /**
  * URI の保存に特化したセッション
  *
@@ -17,7 +14,7 @@ class Uri extends Item
 	 */
 	public function set_uri()
 	{
-		$this->set(Uri::current());
+		$this->set(\MyApp\Helper\Uri::current());
 	}
 	// function set()
 
@@ -30,7 +27,7 @@ class Uri extends Item
 	{
 		$uri = $this->get();
 		$this->delete();
-		Response::redirect($uri, 'location', $code);
+		\Response::redirect($uri, 'location', $code);
 	}
 	// function redirect()
 }
