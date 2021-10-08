@@ -2,7 +2,7 @@
 
 use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
-use MyApp\Helper\Session\Url as SessionUrl;
+use MyApp\Helper\Session\Uri as SessionUri;
 use MyApp\Helper\GeoShape;
 
 /**
@@ -13,13 +13,13 @@ use MyApp\Helper\GeoShape;
  */
 class Controller_Event extends Controller
 {
-	protected $session_url = null;
+	protected $session_uri = null;
 
 	public function before()
 	{
 		parent::before();
 
-		$this->session_url = new SessionUrl('division');
+		$this->session_uri = new SessionUri('division');
 
 		$this->requireUser();
 	}
@@ -137,7 +137,7 @@ class Controller_Event extends Controller
 		}
 		// try
 
-		$this->session_url->redirect();
+		$this->session_uri->redirect();
 		return;
 	}
 	// function post_add()
@@ -181,7 +181,7 @@ class Controller_Event extends Controller
 
 			DB::commit_transaction();
 
-			$this->session_url->redirect();
+			$this->session_uri->redirect();
 		} catch (Exception $e) {
 			// internal error
 			//Debug::dump($e);exit;

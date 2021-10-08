@@ -71,7 +71,7 @@ class Controller_Auth extends Controller
 	 */
 	public function action_login()
 	{
-		$redirect = Input::get('url');
+		$redirect = Input::get('uri');
 		if ($this->user()) {
 			// already logined
 			if ($redirect) {
@@ -129,7 +129,7 @@ class Controller_Auth extends Controller
 	 */
 	public function action_logout()
 	{
-		$redirect = Input::get('url');
+		$redirect = Input::get('uri');
 		if (! $redirect) {
 			$redirect = Uri::create('top');
 		}

@@ -6,31 +6,31 @@ use Response;
 use MyApp\Helper\Uri;
 
 /**
- * URL の保存に特化したセッション
+ * URI の保存に特化したセッション
  *
  * @package  App\Helper\Session
  */
-class Url extends Item
+class Uri extends Item
 {
 	/**
-	 * 現在の URL を登録
+	 * 現在の URI を登録
 	 */
-	public function set_url()
+	public function set_uri()
 	{
 		$this->set(Uri::current());
 	}
 	// function set()
 
 	/**
-	 * 登録された URL へリダイレクト
+	 * 登録された URI へリダイレクト
 	 *
 	 * @param integer $code レスポンスコード デフォルトは 303
 	 */
 	public function redirect(int $code = 303): void
 	{
-		$url = $this->get();
+		$uri = $this->get();
 		$this->delete();
-		Response::redirect($url, 'location', $code);
+		Response::redirect($uri, 'location', $code);
 	}
 	// function redirect()
 }

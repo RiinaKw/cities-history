@@ -4,7 +4,7 @@ use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Model\Division\Tree;
 use MyApp\Table\Event as EventTable;
-use MyApp\Helper\Session\Url as SessionUrl;
+use MyApp\Helper\Session\Uri as SessionUri;
 
 /**
  * The Division Controller.
@@ -14,14 +14,14 @@ use MyApp\Helper\Session\Url as SessionUrl;
  */
 class Controller_Division extends Controller
 {
-	protected $session_url = null;
+	protected $session_uri = null;
 
 	public function before()
 	{
 		parent::before();
 
-		$this->session_url = new SessionUrl('division');
-		$this->session_url->set_url();
+		$this->session_uri = new SessionUri('division');
+		$this->session_uri->set_uri();
 	}
 	// function before()
 

@@ -47,13 +47,13 @@ return array(
 
 	'rest/code/(.+?)' => 'rest/code/detail/$1',
 
-	/* 古い URL のリダイレクト */
+	/* 古い URI のリダイレクト */
 	'list/:path'              => 'redirect/list_detail',
 	'list'                    => 'redirect/list_index',
 	'division/children/:path' => 'redirect/division_children',
 	'division/:path'          => 'redirect/division_detail',
 
-	/* 自治体関連の新しい URL */
+	/* 自治体関連の新しい URI */
 	'children/:path' => 'division/children',
 	'tree/:path'     => 'division/tree',
 	':path'          => 'division/detail',

@@ -161,7 +161,7 @@ class Uri
 	 */
 	public static function login(): string
 	{
-		return static::create('login', [], ['url' => static::current()]);
+		return static::create('login', [], ['uri' => static::current()]);
 	}
 
 	/**
@@ -170,7 +170,7 @@ class Uri
 	 */
 	public static function logout(): string
 	{
-		return static::create('logout', [], ['url' => static::current()]);
+		return static::create('logout', [], ['uri' => static::current()]);
 	}
 
 	/**
