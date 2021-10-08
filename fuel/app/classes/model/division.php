@@ -27,11 +27,6 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		]
 	];
 
-	public const RE_SUFFIX =
-		'/^(?<place>.+?)'
-		. '(?<suffix>都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)'
-		. '(\((?<identifier>.+?)\))?$/';
-
 	/**
 	 * プレゼンテーションモデルのクラス名
 	 * @var string
