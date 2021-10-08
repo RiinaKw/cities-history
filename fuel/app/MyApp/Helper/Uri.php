@@ -81,10 +81,29 @@ class Uri
 	 * @param  array  $params      URI の置換に必要なパラメータ
 	 * @param  array  $get_params  URI に繋げるハッシュ
 	 */
-	public static function redirect(string $config, array $params = [], array $get_params = []): void
-	{
+	public static function redirect(
+		string $config,
+		array $params = [],
+		array $get_params = []
+	): void {
 		$uri = self::create($config, $params, $get_params);
 		\Response::redirect($uri);
+	}
+	// function redirect()
+
+	/**
+	 * redirect() で 301 リダイレクト（恒久的な URL 変更）
+	 * @param  string $config      設定名
+	 * @param  array  $params      URI の置換に必要なパラメータ
+	 * @param  array  $get_params  URI に繋げるハッシュ
+	 */
+	public static function redirectPermanently(
+		string $config,
+		array $params = [],
+		array $get_params = []
+	): void {
+		$uri = self::create($config, $params, $get_params);
+		\Response::redirect($uri, 'location', 301);
 	}
 	// function redirect()
 

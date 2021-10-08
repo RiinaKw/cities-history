@@ -27,6 +27,8 @@ return array(
 	'list/:path'         => 'list/detail',
 	'list'               => 'list/index',
 
+	'tree/:path'         => 'division/tree',
+
 	'admin/division/add'          => 'admin/division/add',
 	'admin/division/add_csv'      => 'admin/division/add_csv',
 	'admin/division/edit/:path'   => 'admin/division/edit',

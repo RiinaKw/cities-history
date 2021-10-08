@@ -31,7 +31,7 @@ class Presenter_Division_Tree extends Presenter_Layout
 			$cur_date->month = (int)date('m', $timestamp);
 			$cur_date->day   = (int)date('d', $timestamp);
 			$cur_date->url = Helper_Uri::create(
-				'list.division',
+				'division.tree',
 				['path' => $this->division->path],
 				[
 					'year'  => $cur_date->year,
@@ -42,7 +42,7 @@ class Presenter_Division_Tree extends Presenter_Layout
 		}
 		$this->reference_dates = $dates;
 		$this->url_all = Helper_Uri::create(
-			'list.division',
+			'division.tree',
 			['path' => $this->division->path]
 		);
 

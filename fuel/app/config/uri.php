@@ -46,9 +46,7 @@ return array(
 	'division' => array(
 		'detail'   => 'division/:path',
 		'children' => 'division/children/:path?label=:label&start=:start&end=:end',
-	),
-	'list' => array(
-		'division' => 'list/:path',
+		'tree'     => 'tree/:path',
 	),
 	'geoshape' => 'geoshape?path=:path',
 );

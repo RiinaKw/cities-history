@@ -24,14 +24,14 @@ class Presenter_List_Index extends Presenter_Layout
 		$dates = Model_Referencedate::get_all();
 		foreach ($dates as &$cur_date) {
 			$cur_date->url = Helper_Uri::create(
-				'list.division',
+				'division.tree',
 				['path' => ''],
 				['date' => $cur_date->date]
 			);
 		}
 		$this->reference_dates = $dates;
 		$this->url_all = Helper_Uri::create(
-			'list.division',
+			'division.tree',
 			['path' => '']
 		);
 

@@ -90,7 +90,7 @@ class Division extends PresentationModel
 	public function urlTree(): string
 	{
 		return Uri::create(
-			'list.division',
+			'division.tree',
 			['path' => $this->model->path]
 		);
 	}

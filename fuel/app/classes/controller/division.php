@@ -2,6 +2,7 @@
 
 use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
+use MyApp\Model\Division\Tree;
 use MyApp\Table\Event as EventTable;
 use MyApp\Helper\Session\Url as SessionUrl;
 
@@ -96,5 +97,43 @@ class Controller_Division extends Controller
 		return $content;
 	}
 	// function action_children()
+
+	public function action_tree()
+	{
+		$division = $this->requirePath();
+
+		$path = $this->param('path');
+
+		$year = (int)Input::get('year');
+		$month = (int)Input::get('month');
+		$day = (int)Input::get('day');
+
+		if ($year && $month && $day) {
+			$date_str = $year . '-' . $month . '-' . $day;
+			$timestamp = strtotime($date_str);
+			$date = date('Y-m-d', $timestamp);
+			$year = (int)date('Y', $timestamp);
+			$month = (int)date('m', $timestamp);
+			$day = (int)date('d', $timestamp);
+		} else {
+			$date = null;
+			$year = 0;
+			$month = 0;
+			$day = 0;
+		}
+
+		$tree = Tree::create($division, $date);
+
+		// create Presenter object
+		$content = Presenter_Division_Tree::forge();
+		$content->date = $date;
+		$content->year = $year;
+		$content->month = $month;
+		$content->day = $day;
+		$content->division = $division;
+		$content->tree = $tree;
+		return $content;
+	}
+	// function action_tree()
 }
 // class Controller_Division
