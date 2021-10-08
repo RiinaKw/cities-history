@@ -12,7 +12,7 @@ return array(
 	'login'    => 'auth/login',
 	'logout'   => 'auth/logout',
 
-	'search'   => 'list/search',
+	'search'   => 'top/search',
 
 	'division/list' => 'rest/division/list',
 
