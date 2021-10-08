@@ -21,13 +21,6 @@ return array(
 	'event/(.+?)/delete' => 'event/delete/$1',
 	'event/(.+?)'        => 'rest/event/detail/$1',
 
-	'division/children/:path' => 'division/children',
-	'division/:path'          => 'division/detail',
-	'tree/:path'              => 'division/tree',
-
-	'list/:path'         => 'redirect/list_detail',
-	'list'               => 'redirect/list_index',
-
 	'admin/division/add'          => 'admin/division/add',
 	'admin/division/add_csv'      => 'admin/division/add_csv',
 	'admin/division/edit/:path'   => 'admin/division/edit',
@@ -53,4 +46,15 @@ return array(
 	'page/:slug' => 'page/detail',
 
 	'rest/code/(.+?)' => 'rest/code/detail/$1',
+
+	/* 古い URL のリダイレクト */
+	'list/:path'              => 'redirect/list_detail',
+	'list'                    => 'redirect/list_index',
+	'division/children/:path' => 'redirect/division_children',
+	'division/:path'          => 'redirect/division_detail',
+
+	/* 自治体関連の新しい URL */
+	'children/:path' => 'division/children',
+	'tree/:path'     => 'division/tree',
+	':path'          => 'division/detail',
 );

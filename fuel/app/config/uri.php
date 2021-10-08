@@ -44,8 +44,8 @@ return array(
 		'delete'   => 'event/:id/delete',
 	),
 	'division' => array(
-		'detail'   => 'division/:path',
-		'children' => 'division/children/:path?label=:label&start=:start&end=:end',
+		'detail'   => ':path',
+		'children' => 'children/:path?label=:label&start=:start&end=:end',
 		'tree'     => 'tree/:path',
 	),
 	'geoshape' => 'geoshape?path=:path',
