@@ -1,8 +1,32 @@
 <?php
 
-class Helper_Html
+namespace MyApp\Helper;
+
+/**
+ * 文字列操作に関するヘルパークラス
+ *
+ * @package  App\Helper
+ */
+class Str
 {
-	public static function excerpt($source, $length = 100)
+	/**
+	 * ひらがなに変換
+	 * @param  string $str  元の文字列
+	 * @return string       ひらがなに変換された文字列
+	 */
+	public static function convertKana(string $str): string
+	{
+		return mb_convert_kana($str, "HVc");
+	}
+	// function convertKana()
+
+	/**
+	 * HTM 文字列から文章を切り出す
+	 * @param  string  $source  元の HTML
+	 * @param  integer $length  切り出す最大文字数
+	 * @return string           切り出された文章
+	 */
+	public static function excerpt(string $source, int $length = 100): string
 	{
 		$source = preg_replace('/<script\s.*?>.*?<\/script>/', '', $source);
 		$source = strip_tags($source);
@@ -18,7 +42,12 @@ class Helper_Html
 	}
 	// function excerpt()
 
-	public static function wiki($source)
+	/**
+	 * Wiki 構文を HTML に変換
+	 * @param  string $source  Wiki 構文の文字列
+	 * @return string          変換された HTML 文字列
+	 */
+	public static function wiki(string $source): string
 	{
 		$arrSource = [
 			'[cite]',
@@ -72,4 +101,4 @@ class Helper_Html
 	}
 	// function wiki()
 }
-// class Helper_Html
+// class Helper_String

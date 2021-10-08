@@ -20,7 +20,7 @@ class Event extends PresentationModel
 
 	public function source(): string
 	{
-		return \Helper_Html::wiki($this->model->source);
+		return \MyApp\Helper\Str::wiki($this->model->source);
 	}
 	// function source()
 }

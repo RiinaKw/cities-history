@@ -2,6 +2,7 @@
 
 use MyApp\Abstracts\Controller;
 use MyApp\Table\Division as DivisionTable;
+use MyApp\Helper\Str;
 
 /**
  * The Top Controller.
@@ -23,9 +24,7 @@ class Controller_Top extends Controller
 
 	public function action_search()
 	{
-		$q = Helper_String::to_hiragana(Input::get('q'));
-
-		$egg_q = strtolower($q);
+		$egg_q = strtolower(Input::get('q'));
 		$eggs = [
 			'coffee' => [
 				'code' => 418,
@@ -46,6 +45,7 @@ class Controller_Top extends Controller
 			}
 		}
 
+		$q = Str::convertKana(Input::get('q'));
 		$result = DivisionTable::search($q);
 
 		// create Presenter object
