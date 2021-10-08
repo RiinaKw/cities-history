@@ -1,5 +1,8 @@
 <?php
 
+use MyApp\Helper\Uri;
+use MyApp\Helper\Breadcrumb;
+
 /**
  * @package  App\Presenter
  */
@@ -8,7 +11,7 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 	public function view()
 	{
 		foreach ($this->divisions as $division) {
-			$division->url_belongto = Helper_Uri::create('admin.division.detail', ['path' => $division->path]);
+			$division->url_belongto = Uri::create('admin.division.detail', ['path' => $division->path]);
 		}
 
 		$this->filters = [
@@ -20,8 +23,7 @@ class Presenter_Admin_Divisions_List extends Presenter_Layout
 		];
 		$this->filter = Input::get('filter');
 
-		$this->breadcrumbs
-			= \MyApp\Helper\Breadcrumb::forge('自治体管理', Uri::create('admin.division.list'));
+		$this->breadcrumbs = Breadcrumb::forge('自治体管理', Uri::create('admin.division.list'));
 		if ($this->parent) {
 			$this->breadcrumbs->division($this->parent);
 		}

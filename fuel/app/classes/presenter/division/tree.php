@@ -1,27 +1,12 @@
 <?php
 
+use MyApp\Helper\Uri;
+
 /**
  * @package  App\Presenter
  */
 class Presenter_Division_Tree extends Presenter_Layout
 {
-	protected function _get_path($obj)
-	{
-		if (is_object($obj)) {
-			$obj->path = $obj->get_path();
-			$obj->url_detail = Helper_Uri::create(
-				'division.detail',
-				['path' => $obj->path]
-			);
-			$this->_get_path($obj->_children);
-		} else {
-			foreach ($obj as $item) {
-				$this->_get_path($item);
-			}
-		}
-	}
-	// function _get_path()
-
 	public function view()
 	{
 		$dates = Model_Referencedate::get_all();
@@ -30,7 +15,7 @@ class Presenter_Division_Tree extends Presenter_Layout
 			$cur_date->year  = (int)date('Y', $timestamp);
 			$cur_date->month = (int)date('m', $timestamp);
 			$cur_date->day   = (int)date('d', $timestamp);
-			$cur_date->url = Helper_Uri::create(
+			$cur_date->url = Uri::create(
 				'division.tree',
 				['path' => $this->division->path],
 				[
@@ -41,7 +26,7 @@ class Presenter_Division_Tree extends Presenter_Layout
 			);
 		}
 		$this->reference_dates = $dates;
-		$this->url_all = Helper_Uri::create(
+		$this->url_all = Uri::create(
 			'division.tree',
 			['path' => $this->division->path]
 		);
@@ -57,7 +42,7 @@ class Presenter_Division_Tree extends Presenter_Layout
 		$this->search_path_kana = $getter->search_path_kana;
 
 		$title = $this->division->path . 'の自治体一覧';
-		$description = $this->division->path . 'の自治体一覧 ' . $this->search_path . ' ' . $this->search_path_kana;
+		$description = "{$title} {$this->search_path} {$this->search_path_kana}";
 
 		if ($this->date) {
 			$description .= MyApp\Helper\Date::format(' Y(Jk)-m-d', $this->date);
