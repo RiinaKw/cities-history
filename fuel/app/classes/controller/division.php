@@ -102,8 +102,6 @@ class Controller_Division extends Controller
 	{
 		$division = $this->requirePath();
 
-		$path = $this->param('path');
-
 		$year = (int)Input::get('year');
 		$month = (int)Input::get('month');
 		$day = (int)Input::get('day');

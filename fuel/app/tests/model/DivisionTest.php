@@ -239,7 +239,7 @@ class DivisionTest extends TestCase
 
 	public function test_createFromPath()
 	{
-		$gunma = Model_Division::create2(
+		Model_Division::create2(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',

@@ -131,9 +131,9 @@ class Controller_Event extends Controller
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
-			var_dump($e);
-			exit;
-			//throw new HttpServerErrorException($e->getMessage());
+			//var_dump($e);
+			//exit;
+			throw new HttpServerErrorException($e->getMessage());
 		}
 		// try
 
