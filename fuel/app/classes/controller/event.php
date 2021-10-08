@@ -158,8 +158,7 @@ class Controller_Event extends Controller
 			$event->save();
 
 			foreach ($post as $item) {
-				$divisions = DivisionTable::set_path($item['division']);
-				$division = array_pop($divisions);
+				$division = DivisionTable::getOrCreateFromPath($item['division']);
 
 				$this->submitDetails($item, $event->id, $division->id);
 

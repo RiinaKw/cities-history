@@ -28,6 +28,17 @@ class Division extends \MyApp\Abstracts\Table
 		. '(\((?<identifier>.+?)\))?$/';
 
 	/**
+	 * パス形式から自治体を検索
+	 * @param  string $path         指定したパス
+	 * @return Model_Division|null  自治体オブジェクト、見つからなかった場合は null
+	 */
+	public static function findByPath(string $path): ?Model_Division
+	{
+		return Model_Division::query()->where('path', $path)->get_one();
+	}
+	// function get_by_path()
+
+	/**
 	 * 削除されていないすべての自治体一覧を取得
 	 * @param  string $q                          検索キーワード
 	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
@@ -205,11 +216,8 @@ class Division extends \MyApp\Abstracts\Table
 	 */
 	protected static function requireUnique(string $path, int $ignore_id = null): void
 	{
-		$query = Model_Division::query()->where('path', $path);
-		if ($ignore_id) {
-			$query->where('id', '!=', $ignore_id);
-		}
-		if ($query->get_one()) {
+		$division = static::findByPath($path);
+		if ($division && $division->id !== $ignore_id) {
 			throw new \Exception("重複しています : '{$path}'");
 		}
 	}
@@ -258,179 +266,12 @@ class Division extends \MyApp\Abstracts\Table
 	 */
 	public static function getOrCreateFromPath(string $path): Model_Division
 	{
-		$division = Model_Division::query()->where('path', $path)->get_one();
+		$division = static::findByPath($path);
 		if (! $division) {
 			$division = static::makeFromPath($path);
 		}
 		return $division;
 	}
-
-	/**
-	 * @todo 意図がよく分からない
-	 */
-	public static function set_path($path)
-	{
-		$arr = explode('/', $path);
-		$parent = null;
-		$divisions = [];
-		foreach ($arr as $name) {
-			if (! $name) {
-				throw new \Exception('自治体名が入力されていません');
-			}
-			preg_match(static::RE_SUFFIX, $name, $matches);
-			if (! $matches) {
-				$matches = [
-					'place' => $name,
-					'suffix' => '',
-				];
-			}
-			if (! $division = self::get_one_by_name_and_parent($matches, $parent)) {
-				$division = Model_Division::forge([
-					'id_path' => '',
-					'name' => $matches['place'],
-					'name_kana' => '',
-					'suffix' => $matches['suffix'],
-					'suffix_kana' => '',
-					'fullname' => '',
-					'path' => '',
-					'show_suffix' => true,
-					'identifier' => (isset($matches['identifier']) ? $matches['identifier'] : null),
-					'is_unfinished' => true,
-					'is_empty_government_code' => true,
-					'is_empty_kana' => true,
-					'search_path' => '',
-					'search_path_kana' => '',
-					'end_date' => '9999-12-31',
-					'source' => '',
-				]);
-
-				$division->save();
-
-				$division->id_path = self::make_id_path($path, $division->id);
-
-				$division->fullname         = $division->get_fullname();
-				$division->path             = $division->make_path();
-
-				$division->search_path      = $division->make_search_path();
-				$division->search_path_kana = $division->make_search_path_kana();
-
-				$division->save();
-
-				Model_Activity::insert_log([
-					'user_id' => Session::get('user_id'),
-					'target' => 'add division',
-					'target_id' => $division->id,
-				]);
-			}
-			$divisions[] = $division;
-			$parent = $division;
-		}
-		return $divisions;
-	}
-	// function set_path()
-
-	/**
-	 * @todo 意図がよく分からない
-	 */
-	public static function set_path_as_array($arr)
-	{
-		foreach ($arr as $item) {
-			if (trim($item['path']) === '') {
-				continue;
-			}
-			$divisions = self::set_path($item['path']);
-
-			$division = array_pop($divisions);
-			$division->name_kana = $item['name_kana'] ?: null;
-			$division->suffix_kana = $item['suffix_kana'] ?: null;
-			$division->government_code = $item['code'] ?: null;
-
-			$division->fullname      = $division->get_fullname();
-			$division->path          = $division->make_path();
-
-			$division->save();
-		}
-	}
-	// function set_path_as_array()
-
-	/**
-	 * @todo 意図がよく分からない
-	 */
-	public static function make_id_path($path, $self_id)
-	{
-		$parents = [];
-		$cur_path = $path;
-		while ($cur_path) {
-			$parent = dirname($cur_path);
-			if ($parent === '\\' || $parent === '/' || $parent === '.') {
-				break;
-			}
-			$parents[] = $parent;
-			if (strpos($parent, '/') === false) {
-				break;
-			}
-			$cur_path = $parent;
-		}
-		$parents = array_reverse($parents);
-
-		$id_arr = [];
-		foreach ($parents as $parent_path) {
-			$d = self::findByPath($parent_path);
-			if ($d) {
-				$id_arr[] = $d->id;
-			}
-		}
-		$id_arr[] = $self_id;
-		return implode('/', $id_arr) . '/';
-	}
-	// function make_id_path()
-
-	/**
-	 * パス形式から自治体を検索
-	 */
-	public static function findByPath($path): ?Model_Division
-	{
-		return Model_Division::query()->where('path', $path)->get_one();
-	}
-	// function get_by_path()
-
-	/**
-	 * @todo 意図がよく分からない
-	 */
-	public static function get_one_by_name_and_parent($name, $parent)
-	{
-		if ($parent) {
-			$id_path = 'CONCAT("' . $parent->id_path . '", id, "/")';
-		} else {
-			$id_path = 'CONCAT(id, "/")';
-		}
-		$query = DB::select()
-			->from(self::TABLE_NAME)
-			->and_where_open()
-			->and_where_open()
-			->where('name', '=', $name['place'])
-			->where('suffix', '=', $name['suffix'])
-			->where('show_suffix', '=', true)
-			->and_where_close()
-			->or_where_open()
-			->where('name', '=', $name['place'] . $name['suffix'])
-			->where('show_suffix', '=', false)
-			->or_where_close()
-			->and_where_close()
-			->where('deleted_at', '=', null);
-		$query->where('id_path', '=', DB::expr($id_path));
-		if (isset($name['identifier'])) {
-			$query->where('identifier', '=', $name['identifier']);
-		}
-
-		$result = $query->as_object(Model_Division::class)->execute();
-		if ($result->count()) {
-			return $result[0];
-		} else {
-			return null;
-		}
-	}
-	// function get_one_by_name_and_parent()
 
 	/**
 	 * どの自治体にも属していない自治体（だいたい都道府県）の一覧を取得
@@ -450,9 +291,12 @@ class Division extends \MyApp\Abstracts\Table
 	// function get_top_level()
 
 	/**
-	 * @todo 意図がよく分からない
+	 * 親自治体と日付から、その日に存在した自治体一覧を取得
+	 * @param  Model_Division $parent  親自治体
+	 * @param  string|null    $date    日付、null の場合は過去に存在したすべての所属自治体を取得
+	 * @return [type]                 [description]
 	 */
-	public static function get_by_parent_division_and_date($parent, $date = null)
+	public static function get_by_parent_division_and_date(Model_Division $parent, string $date = null)
 	{
 		$query = DB::select('d.*')
 			->from([self::TABLE_NAME, 'd'])

@@ -87,7 +87,7 @@ class Uri
 		array $get_params = []
 	): void {
 		$uri = self::create($config, $params, $get_params);
-		\Response::redirect($uri);
+		\Response::redirect($uri, 'location', 303);
 	}
 	// function redirect()
 
@@ -106,6 +106,16 @@ class Uri
 		\Response::redirect($uri, 'location', 301);
 	}
 	// function redirect()
+
+	/**
+	 * 自治体の詳細ページへリダイレクト
+	 * @param  Model_Division $division  対象の自治体オブジェクト
+	 */
+	public static function redirectDivision(Model_Division $division): void
+	{
+		static::redirect('division.detail', ['path' => $division->path]);
+	}
+	// function redirectDivision()
 
 	/**
 	 * 現在の URI

@@ -119,14 +119,12 @@ class Controller_Admin_Division extends AdminController
 				}
 				$arr['parent'] = dirname($arr['path']);
 
-				$divisions = DivisionTable::set_path($arr['path']);
-				$division = array_pop($divisions);
-				$division->create($arr);
+				$division = DivisionTable::getOrCreateFromPath($arr['path']);
 			}
 
 			DB::commit_transaction();
 
-			Uri::redirect('division.detail', ['path' => $division->get_path()]);
+			Uri::redirectDivision($division);
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
