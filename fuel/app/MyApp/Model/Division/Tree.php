@@ -135,50 +135,30 @@ class Tree
 	 */
 	protected function add(Model_Division $division): void
 	{
-
-/*
-Model_Division::id_chain() を使え
-Model_Division のテストを作れ　parent(), id_chain()
-env の切り替えってどうするの
-Tree::ref もハッシュにするか
-てか ref って static で良くね？
-*/
-
 		$root_tree = $this;
 		$target = $division;
 
 		$division->id_chain(function ($division) use ($target, $root_tree) {
-			//var_dump("======== target: [$target->id] '{$target->path}', context: '{$division->fullname}' ========");
 
 			if ($division === $target) {
-				//var_dump("    current division, **no op**");
 				return;
 			}
-
 			if ($root_tree->self()->parent() === $division) {
-				//var_dump("    '{$division->fullname}' is not under '{$root_tree->self()->fullname}', **no op**");
 				return;
 			}
 
-			//var_dump("==== create '{$division->path}' ?");
 			$parent_tree = $root_tree->ref($division);
 
-			//var_dump("        todo: increment suffix '{$target->path}' in '{$parent_tree->self()->path}'");
 			$parent_tree->addSuffix($target->suffix);
 
 			if ($target->parent() !== $division) {
-				//var_dump("    '{$division->fullname}' is not under '{$parent->fullname}', **no op**");
 				return;
 			}
-
-			//var_dump("            todo: {$target->path} into '{$parent_tree->self()->path}'");
-
 
 			$suffix = $target->pmodel()->suffix_classification();
 
 			$tree = $root_tree->ref($target);
 			$parent_tree->children->push($suffix, $tree);
-			//var_dump("            success : '{$target->path}' into '{$parent_tree->self()->path}'");
 		});
 	}
 	// function add()
