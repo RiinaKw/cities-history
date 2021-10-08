@@ -6,6 +6,7 @@
 
 namespace MyApp\Table;
 
+use Fuel\Core\Database_Query_Builder as Query;
 use Fuel\Core\Database_Result_Cached as Result;
 use DB;
 use Model_Division;
@@ -39,6 +40,16 @@ class Division extends \MyApp\Abstracts\Table
 	// function get_by_path()
 
 	/**
+	 * クエリを自治体オブジェクトに変換
+	 * @param  \Fuel\Core\Database_Query_Builder $query  検索クエリ
+	 * @return \Fuel\Core\Database_Result_Cached         Fuel のデータベースキャッシュ
+	 */
+	public static function getAsModel(Query $query): Result
+	{
+		return $query->as_object(Model_Division::class)->execute();
+	}
+
+	/**
 	 * 削除されていないすべての自治体一覧を取得
 	 * @param  string $q                          検索キーワード
 	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
@@ -53,7 +64,7 @@ class Division extends \MyApp\Abstracts\Table
 			//->where(DB::expr('MATCH(fullname)'), 'AGAINST', DB::expr('(\'+'.$q.'\' IN BOOLEAN MODE)'));
 			->where('fullname', 'LIKE', '%' . $q . '%');
 
-		return $query->as_object(Model_Division::class)->execute();
+		return static::getAsModel($query);
 	}
 	// function query()
 
@@ -85,7 +96,7 @@ class Division extends \MyApp\Abstracts\Table
 			->order_by('name_kana', 'asc')
 			->order_by('end_date', 'desc');
 
-		return $query->as_object(Model_Division::class)->execute();
+		return static::getAsModel($query);
 	}
 	// function search()
 
@@ -286,7 +297,7 @@ class Division extends \MyApp\Abstracts\Table
 			->where('id_path', '=', DB::expr('CONCAT(id, "/")'))
 			->order_by('display_order', 'asc');
 
-		return $query->as_object(Model_Division::class)->execute();
+		return static::getAsModel($query);
 	}
 	// function get_top_level()
 
@@ -327,7 +338,7 @@ class Division extends \MyApp\Abstracts\Table
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
-		return $query->as_object(Model_Division::class)->execute();
+		return static::getAsModel($query);
 	}
 	// function get_by_parent_division_and_date()
 
@@ -388,7 +399,7 @@ class Division extends \MyApp\Abstracts\Table
 			->order_by('d.name_kana', 'asc')
 			->order_by('d.end_date', 'desc');
 
-		return $query->as_object(Model_Division::class)->execute();
+		return static::getAsModel($query);
 	}
 	// functiob get_by_admin_filter()
 }
