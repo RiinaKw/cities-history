@@ -96,15 +96,6 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 			}
 		}
 	}
-/*
-	public function belongs(): ?self
-	{
-		if ($this->belongs_division_id) {
-			return static::find($this->belongs_division_id);
-		}
-		return null;
-	}
-*/
 
 	public function dump(): void
 	{
