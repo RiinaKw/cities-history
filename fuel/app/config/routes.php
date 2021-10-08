@@ -23,11 +23,10 @@ return array(
 
 	'division/children/:path' => 'division/children',
 	'division/:path'          => 'division/detail',
+	'tree/:path'              => 'division/tree',
 
-	'list/:path'         => 'list/detail',
-	'list'               => 'list/index',
-
-	'tree/:path'         => 'division/tree',
+	'list/:path'         => 'redirect/list_detail',
+	'list'               => 'redirect/list_index',
 
 	'admin/division/add'          => 'admin/division/add',
 	'admin/division/add_csv'      => 'admin/division/add_csv',
