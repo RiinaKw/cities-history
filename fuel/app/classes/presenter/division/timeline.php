@@ -1,11 +1,12 @@
 <?php
 
 use MyApp\Helper\Uri;
+use MyApp\Helper\Breadcrumb;
 
 /**
  * @package  App\Presenter
  */
-class Presenter_Division_Detail extends Presenter_Layout
+class Presenter_Division_Timeline extends Presenter_Layout
 {
 	public function view()
 	{
@@ -20,10 +21,10 @@ class Presenter_Division_Detail extends Presenter_Layout
 		$this->url_event_delete = Uri::create('event.delete');
 
 		$components = [
-			'add_division' => View_Smarty::forge('components/add_division.tpl'),
-			'edit_division' => View_Smarty::forge('components/edit_division.tpl'),
+			'add_division'    => View_Smarty::forge('components/add_division.tpl'),
+			'edit_division'   => View_Smarty::forge('components/edit_division.tpl'),
 			'delete_division' => View_Smarty::forge('components/delete_division.tpl'),
-			'change_event' => View_Smarty::forge('components/change_event.tpl'),
+			'change_event'    => View_Smarty::forge('components/change_event.tpl'),
 		];
 		$this->components = $components;
 
@@ -65,8 +66,7 @@ class Presenter_Division_Detail extends Presenter_Layout
 
 		$this->description = $description;
 		$this->og_type = 'article';
-		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::forge()->division($this->division);
-
+		$this->breadcrumbs = Breadcrumb::forge()->division($this->division);
 		$this->show_share = true;
 	}
 	// function view()
