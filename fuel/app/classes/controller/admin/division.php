@@ -69,7 +69,7 @@ class Controller_Admin_Division extends AdminController
 			DB::start_transaction();
 
 			$parent = DivisionTable::findByPath($input['parent']);
-			$new = Model_Division::make($input)->makePath($parent);
+			$new = DivisionTable::create($input, $parent);
 
 			$this->activity('add division', $new->id);
 			DB::commit_transaction();
@@ -146,17 +146,14 @@ class Controller_Admin_Division extends AdminController
 			DB::start_transaction();
 
 			$division = DivisionTable::findByPath($this->param('path'));
-
 			$parent = DivisionTable::findByPath($input['parent']);
-			$new = Model_Division::make($input, $division)->makePath($parent)->updateChild();
+
+			$new = DivisionTable::update($division, $input, $parent);
 
 			$this->activity('edit division', $new->id);
-
 			DB::commit_transaction();
 
-			$path_new = $new->get_path();
-
-			Uri::redirect('division.detail', ['path' => $path_new]);
+			Uri::redirect('division.detail', ['path' => $new->path]);
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();

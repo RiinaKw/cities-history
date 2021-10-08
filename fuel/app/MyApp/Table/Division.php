@@ -79,6 +79,193 @@ class Division extends \MyApp\Abstracts\Table
 	// function search()
 
 	/**
+	 * 自治体の基本情報を設定
+	 * @param  array               $params    フォームからの入力
+	 * @param  Model_Division|null $division  編集するオブジェクト、null の場合は新規作成
+	 * @return Model_Division                 情報が設定されたオブジェクト
+	 */
+	protected static function make(array $params, Model_Division $division = null): Model_Division
+	{
+		if (! $division) {
+			$division = new Model_Division();
+		}
+
+		$fullname = $params['fullname'] ?? '';
+		if (! $fullname) {
+			$fullname = ($params['name'] ?? '') . ($suffix = $params['suffix'] ?? '');
+		}
+		preg_match(static::RE_SUFFIX, $fullname, $matches);
+		if (! $matches) {
+			$matches = [
+				'place' => $fullname,
+				'suffix' => '',
+			];
+			$params['show_suffix'] = false;
+		}
+		$name = $matches['place'];
+		$suffix = $matches['suffix'];
+		$fullname = $name . $suffix . ($params['identifier'] ?? '');
+
+		$params = array_merge(
+			[
+				'name_kana' => '',
+				'suffix_kana' => '',
+				'search_path' => '',
+				'search_path_kana' => '',
+				'path' => '',
+				'government_code' => '',
+				'display_order' => '',
+				'source' => '',
+			],
+			$params
+		);
+
+		// 基本情報を設定
+		$division->name            = $name;
+		$division->suffix          = $suffix;
+		$division->identifier      = $params['identifier'] ?? '';
+		$division->fullname        = $fullname;
+		$division->name_kana       = $params['name_kana'];
+		$division->suffix_kana     = $params['suffix_kana'];
+		$division->government_code = $params['government_code'];
+		$division->show_suffix     = isset($params['show_suffix']);
+		$division->is_unfinished   = isset($params['is_unfinished']);
+		$division->display_order   = $params['display_order'] ?: null;
+		$division->source          = $params['source'] ?: null;
+
+		$division->show_suffix = (isset($params['show_suffix']) ? (bool)$params['show_suffix'] : false);
+		$division->is_empty_government_code = ($params['government_code'] === '');
+		$division->is_empty_kana = ($params['name_kana'] === '');
+
+		// パスなど、親自治体が決定しないと設定できない項目は仮のデータを入れておく
+		$division->path = '';
+		$division->id_path = '';
+		$division->search_path = '';
+		$division->search_path_kana = '';
+		$division->save();
+
+		return $division;
+	}
+
+	/**
+	 * 親自治体を元にパスなどの項目を設定
+	 * @param  Model_Division      $division  対象の自治体オブジェクト
+	 * @param  Model_Division|null $parent    親自治体オブジェクト、なければ null
+	 */
+	protected static function makePath(Model_Division $division, Model_Division $parent = null): void
+	{
+		$name = $division->name . $division->suffix;
+		$kana = $division->name_kana . $division->suffix_kana;
+
+		$division->id_path = ($parent ? $parent->id_path : '') . $division->id . '/';
+		$division->path = (($parent ? $parent->path . '/' : '') . $division->fullname);
+		$division->search_path = (($parent ? $parent->search_path : '') . $name);
+		$division->search_path_kana = (($parent ? $parent->search_path_kana : '') . $kana);
+
+		static::requireUnique($division->path, $division->id);
+		$division->save();
+	}
+
+	/**
+	 * 入力パラメータと親自治体から新規に自治体オブジェクトを登録する
+	 * @param  array<string, string>  $params  フォームからの入力
+	 * @param  Model_Division|null    $parent  親自治体、なければ null
+	 * @return Model_Division                  作成された自治体オブジェクト
+	 */
+	public static function create(array $params, Model_Division $parent = null): Model_Division
+	{
+		$division = static::make($params);
+		static::makePath($division, $parent);
+		return $division;
+	}
+
+	/**
+	 * 入力パラメータと親自治体から自治体オブジェクトを更新する
+	 * @param  Model_Division         $division  更新対象の自治体オブジェクト
+	 * @param  array<string, string>  $params    フォームからの入力
+	 * @param  Model_Division|null    $parent    親自治体、なければ null
+	 * @return Model_Division                    更新された自治体オブジェクト
+	 */
+	public static function update(
+		Model_Division $division,
+		array $params,
+		Model_Division $parent = null
+	): Model_Division {
+		$division = static::make($params, $division);
+		static::makePath($division, $parent);
+		static::updateChild($division);
+		return $division;
+	}
+
+	/**
+	 * 自治体のパスが一意であることを保証する
+	 * @param string   $path       対象のパス
+	 * @param int|null $ignore_id  除外する自治体 ID
+	 * @throws \Exception  すでにパスが存在する場合
+	 */
+	protected static function requireUnique(string $path, int $ignore_id = null): void
+	{
+		$query = Model_Division::query()->where('path', $path);
+		if ($ignore_id) {
+			$query->where('id', '!=', $ignore_id);
+		}
+		if ($query->get_one()) {
+			throw new \Exception("重複しています : '{$path}'");
+		}
+	}
+
+	/**
+	 * 指定した自治体に所属する自治体を一括更新
+	 * @param  Model_Division $division  親となる自治体
+	 */
+	protected static function updateChild(Model_Division $division): void
+	{
+		$children = Model_Division::query()
+			->where('id_path', 'LIKE', $division->id_path . '%_')
+			->get();
+		foreach ($children as $child) {
+			static::makePath($child, $division);
+		}
+	}
+
+	/**
+	 * パス形式から自治体オブジェクトを生成する
+	 * @param  string         $path  パス
+	 * @return Model_Division        生成された自治体オブジェクト
+	 */
+	public static function makeFromPath(string $path): Model_Division
+	{
+		static::requireUnique($path);
+		$name = basename($path);
+		$parent_path = dirname($path);
+
+		// 親を取得
+		$parent = static::getOrCreateFromPath($parent_path);
+
+		$division = static::make([
+			'fullname' => $name,
+			'show_suffix' => true,
+		]);
+		static::makePath($division, $parent);
+		$division->save();
+		return $division;
+	}
+
+	/**
+	 * パスから自治体オブジェクトを取得するか、なければ作る
+	 * @param  string $path    パス
+	 * @return Model_Division  自治体オブジェクト
+	 */
+	public static function getOrCreateFromPath(string $path): Model_Division
+	{
+		$division = Model_Division::query()->where('path', $path)->get_one();
+		if (! $division) {
+			$division = static::makeFromPath($path);
+		}
+		return $division;
+	}
+
+	/**
 	 * @todo 意図がよく分からない
 	 */
 	public static function set_path($path)

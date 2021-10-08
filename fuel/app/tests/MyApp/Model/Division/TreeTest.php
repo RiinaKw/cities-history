@@ -1,8 +1,9 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use MyApp\Model\Division\Tree;
 use MyApp\MyFuel;
+use MyApp\Model\Division\Tree;
+use MyApp\Table\Division as DivisionTable;
 
 class TreeTest extends TestCase
 {
@@ -15,68 +16,45 @@ class TreeTest extends TestCase
 		DBUtil::truncate_table('divisions');
 	}
 
-	protected function insert(array $input, Model_Division $parent = null): Model_Division
-	{
-		$input = array_merge(
-			[
-				'id_path' => '',
-				'name' => '',
-				'name_kana' => '',
-				'suffix' => '',
-				'suffix_kana' => '',
-				'search_path' => '',
-				'search_path_kana' => '',
-				'fullname' => '',
-				'path' => '',
-			],
-			$input
-		);
-
-		$division = Model_Division::create2($input, $parent);
-		$division->save();
-
-		return $division;
-	}
-
 	public function test_create()
 	{
-		$gunma = Model_Division::create2(
+		$gunma = DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 			],
 			null
 		);
-		$isesaki = Model_Division::create2(
+		$isesaki = DivisionTable::create(
 			[
 				'fullname' => '伊勢崎市',
 			],
 			$gunma
 		);
-		$sawa = Model_Division::create2(
+		$sawa = DivisionTable::create(
 			[
 				'fullname' => '佐波郡',
 			],
 			$gunma
 		);
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '赤堀町',
 			],
 			$sawa
 		);
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '境町',
 			],
 			$sawa
 		);
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '東村',
 			],
 			$sawa
 		);
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '玉村町',
 			],

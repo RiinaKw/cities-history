@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use MyApp\MyFuel;
+use MyApp\Table\Division as DivisionTable;
 
 class DivisionTest extends TestCase
 {
@@ -16,7 +17,7 @@ class DivisionTest extends TestCase
 
 	public function test_create()
 	{
-		$gunma = Model_Division::create2(
+		$gunma = DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
@@ -39,7 +40,7 @@ class DivisionTest extends TestCase
 
 	public function test_create_child()
 	{
-		$gunma = Model_Division::create2(
+		$gunma = DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
@@ -47,7 +48,7 @@ class DivisionTest extends TestCase
 			],
 			null
 		);
-		$isesaki = Model_Division::create2(
+		$isesaki = DivisionTable::create(
 			[
 				'fullname' => '伊勢崎市',
 				'name_kana' => 'いせさき',
@@ -71,7 +72,7 @@ class DivisionTest extends TestCase
 
 	public function test_create_grandchild()
 	{
-		$gunma = Model_Division::create2(
+		$gunma = DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
@@ -79,7 +80,7 @@ class DivisionTest extends TestCase
 			],
 			null
 		);
-		$sawa = Model_Division::create2(
+		$sawa = DivisionTable::create(
 			[
 				'fullname' => '佐波郡',
 				'name_kana' => 'さわ',
@@ -87,7 +88,7 @@ class DivisionTest extends TestCase
 			],
 			$gunma
 		);
-		$akabori = Model_Division::create2(
+		$akabori = DivisionTable::create(
 			[
 				'fullname' => '赤堀町',
 				'name_kana' => 'あかぼり',
@@ -95,7 +96,7 @@ class DivisionTest extends TestCase
 			],
 			$sawa
 		);
-		$sakai = Model_Division::create2(
+		$sakai = DivisionTable::create(
 			[
 				'fullname' => '境町',
 				'name_kana' => 'さかい',
@@ -103,7 +104,7 @@ class DivisionTest extends TestCase
 			],
 			$sawa
 		);
-		$azuma = Model_Division::create2(
+		$azuma = DivisionTable::create(
 			[
 				'fullname' => '東村',
 				'name_kana' => 'あずま',
@@ -111,7 +112,7 @@ class DivisionTest extends TestCase
 			],
 			$sawa
 		);
-		$tamamura = Model_Division::create2(
+		$tamamura = DivisionTable::create(
 			[
 				'fullname' => '玉村町',
 				'name_kana' => 'たまむら',
@@ -171,7 +172,7 @@ class DivisionTest extends TestCase
 
 	public function test_edit()
 	{
-		$gunma = Model_Division::create2(
+		$gunma = DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
@@ -179,7 +180,7 @@ class DivisionTest extends TestCase
 			],
 			null
 		);
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '伊勢崎市',
 				'name_kana' => 'いせさき',
@@ -187,7 +188,7 @@ class DivisionTest extends TestCase
 			],
 			$gunma
 		);
-		$sawa = Model_Division::create2(
+		$sawa = DivisionTable::create(
 			[
 				'fullname' => '佐波郡',
 				'name_kana' => 'さわ',
@@ -195,7 +196,7 @@ class DivisionTest extends TestCase
 			],
 			$gunma
 		);
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '赤堀町',
 				'name_kana' => 'あかぼり',
@@ -205,13 +206,16 @@ class DivisionTest extends TestCase
 		);
 
 		// 佐波郡を前橋市(2021)にしてみる
-		$new = Model_Division::make([
-			'fullname' => '前橋市',
-			'identifier' => '(2021)',
-			'name_kana' => 'まえばし',
-			'suffix_kana' => 'し',
-		], $sawa)
-			->makePath($gunma);
+		$new = DivisionTable::update(
+			$sawa,
+			[
+				'fullname' => '前橋市',
+				'identifier' => '(2021)',
+				'name_kana' => 'まえばし',
+				'suffix_kana' => 'し',
+			],
+			$gunma
+		);
 
 		// 自分自身のパスが正しく設定されているか
 		$this->assertSame(3, (int)$new->id);
@@ -228,7 +232,7 @@ class DivisionTest extends TestCase
 		$this->assertSame($gunma, $new->parent());
 
 		// 子孫を更新
-		$new->updateChild();
+		//$new->updateChild();
 
 		// 子孫のパスが正しく設定されているか
 		$akabori = Model_Division::find(4);
@@ -239,7 +243,7 @@ class DivisionTest extends TestCase
 
 	public function test_createFromPath()
 	{
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
@@ -247,7 +251,7 @@ class DivisionTest extends TestCase
 			]
 		);
 
-		$saba = Model_Division::makeFromPath('群馬県/鯖郡');
+		$saba = DivisionTable::makeFromPath('群馬県/鯖郡');
 		$this->assertSame(2, (int)$saba->id);
 		$this->assertSame('1/2/', $saba->id_path);
 		$this->assertSame('鯖郡', $saba->fullname);
@@ -256,7 +260,7 @@ class DivisionTest extends TestCase
 		$this->assertSame('群馬県/鯖郡', $saba->path);
 		$this->assertSame('群馬県鯖郡', $saba->search_path);
 
-		$kujira = Model_Division::makeFromPath('群馬県/海豚郡/鯨町');
+		$kujira = DivisionTable::makeFromPath('群馬県/海豚郡/鯨町');
 		$this->assertSame(4, (int)$kujira->id);
 		$this->assertSame('1/3/4/', $kujira->id_path);
 		$this->assertSame('鯨町', $kujira->fullname);
@@ -272,14 +276,14 @@ class DivisionTest extends TestCase
 		$this->expectExceptionMessage("重複しています");
 		$this->expectExceptionMessage("群馬県");
 
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
 				'suffix_kana' => 'けん',
 			]
 		);
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
@@ -294,7 +298,7 @@ class DivisionTest extends TestCase
 		$this->expectExceptionMessage("重複しています");
 		$this->expectExceptionMessage("群馬県/鯖郡");
 
-		Model_Division::create2(
+		DivisionTable::create(
 			[
 				'fullname' => '群馬県',
 				'name_kana' => 'ぐんま',
@@ -302,7 +306,7 @@ class DivisionTest extends TestCase
 			]
 		);
 
-		Model_Division::makeFromPath('群馬県/鯖郡');
-		Model_Division::makeFromPath('群馬県/鯖郡');
+		DivisionTable::makeFromPath('群馬県/鯖郡');
+		DivisionTable::makeFromPath('群馬県/鯖郡');
 	}
 }
