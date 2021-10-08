@@ -2,6 +2,10 @@
 
 namespace MyApp\Helper;
 
+use Config;
+use Response;
+use Model_Division;
+
 /**
  * URI に関するヘルパークラス
  *
@@ -9,7 +13,12 @@ namespace MyApp\Helper;
  */
 class Uri
 {
+	/**
+	 * ドキュメントルート
+	 * @var string
+	 */
 	protected static $root = '';
+
 	/**
 	 * ドキュメントルートの URI を取得
 	 *
@@ -20,7 +29,7 @@ class Uri
 	{
 		if (! static::$root) {
 			// get server information
-			$base = \Config::get('base_url');
+			$base = Config::get('base_url');
 			if ($base) {
 				if (strrpos($base, '/') === strlen($base) - 1) {
 					// remove last slash
@@ -58,8 +67,8 @@ class Uri
 	 */
 	public static function create($config, array $params = [], array $get_params = []): string
 	{
-		$root = self::root();
-		$path = \Config::get('uri.' . $config);
+		$root = static::root();
+		$path = Config::get('uri.' . $config);
 		if ($path === null) {
 			throw new \Exception('path missing "' . $config . '"');
 		}
@@ -86,8 +95,8 @@ class Uri
 		array $params = [],
 		array $get_params = []
 	): void {
-		$uri = self::create($config, $params, $get_params);
-		\Response::redirect($uri, 'location', 303);
+		$uri = static::create($config, $params, $get_params);
+		Response::redirect($uri, 'location', 303);
 	}
 	// function redirect()
 
@@ -102,10 +111,20 @@ class Uri
 		array $params = [],
 		array $get_params = []
 	): void {
-		$uri = self::create($config, $params, $get_params);
-		\Response::redirect($uri, 'location', 301);
+		$uri = static::create($config, $params, $get_params);
+		Response::redirect($uri, 'location', 301);
 	}
 	// function redirect()
+
+	/**
+	 * 自治体の詳細ページの URL
+	 * @param  Model_Division $division  対象の自治体オブジェクト
+	 * @return string                    詳細ページの URL
+	 */
+	public static function division(Model_Division $division): string
+	{
+		return static::create('division.detail', ['path' => $division->path]);
+	}
 
 	/**
 	 * 自治体の詳細ページへリダイレクト
@@ -113,7 +132,8 @@ class Uri
 	 */
 	public static function redirectDivision(Model_Division $division): void
 	{
-		static::redirect('division.detail', ['path' => $division->path]);
+		$uri = static::division($division);
+		Response::redirect($uri, 'location', 303);
 	}
 	// function redirectDivision()
 
@@ -131,20 +151,32 @@ class Uri
 			$item = urlencode($item);
 		}
 		$path = implode('/', $segments);
-		return self::root() . $path;
+		return static::root() . $path;
 	}
 	// function current()
 
+	/**
+	 * ログインページの URI
+	 * @return string  URI
+	 */
 	public static function login(): string
 	{
 		return static::create('login', [], ['url' => static::current()]);
 	}
 
+	/**
+	 * ログアウトページの URI
+	 * @return string  URI
+	 */
 	public static function logout(): string
 	{
 		return static::create('logout', [], ['url' => static::current()]);
 	}
 
+	/**
+	 * 自治体一覧を返す API の URI
+	 * @return string  URI
+	 */
 	public static function restDivisionList(): string
 	{
 		return static::root() . '/division/list.json';

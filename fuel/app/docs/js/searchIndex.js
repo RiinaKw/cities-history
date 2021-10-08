@@ -1398,7 +1398,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003A\u0024root",
             "name": "root",
-            "summary": "",
+            "summary": "\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\u30EB\u30FC\u30C8",
             "url": "classes/MyApp-Helper-Uri.html#property_root"
         },                {
             "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Acreate\u0028\u0029",
@@ -1416,6 +1416,11 @@ Search.appendIndex(
             "summary": "redirect\u0028\u0029\u0020\u3067\u0020301\u0020\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8\uFF08\u6052\u4E45\u7684\u306A\u0020URL\u0020\u5909\u66F4\uFF09",
             "url": "classes/MyApp-Helper-Uri.html#method_redirectPermanently"
         },                {
+            "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Adivision\u0028\u0029",
+            "name": "division",
+            "summary": "\u81EA\u6CBB\u4F53\u306E\u8A73\u7D30\u30DA\u30FC\u30B8\u306E\u0020URL",
+            "url": "classes/MyApp-Helper-Uri.html#method_division"
+        },                {
             "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003AredirectDivision\u0028\u0029",
             "name": "redirectDivision",
             "summary": "\u81EA\u6CBB\u4F53\u306E\u8A73\u7D30\u30DA\u30FC\u30B8\u3078\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8",
@@ -1428,17 +1433,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Alogin\u0028\u0029",
             "name": "login",
-            "summary": "",
+            "summary": "\u30ED\u30B0\u30A4\u30F3\u30DA\u30FC\u30B8\u306E\u0020URI",
             "url": "classes/MyApp-Helper-Uri.html#method_login"
         },                {
             "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003Alogout\u0028\u0029",
             "name": "logout",
-            "summary": "",
+            "summary": "\u30ED\u30B0\u30A2\u30A6\u30C8\u30DA\u30FC\u30B8\u306E\u0020URI",
             "url": "classes/MyApp-Helper-Uri.html#method_logout"
         },                {
             "fqsen": "\\MyApp\\Helper\\Uri\u003A\u003ArestDivisionList\u0028\u0029",
             "name": "restDivisionList",
-            "summary": "",
+            "summary": "\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u8FD4\u3059\u0020API\u0020\u306E\u0020URI",
             "url": "classes/MyApp-Helper-Uri.html#method_restDivisionList"
         },                {
             "fqsen": "\\MyApp\\Model\\Backup",

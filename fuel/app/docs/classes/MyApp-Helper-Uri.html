@@ -126,7 +126,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">10</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 </aside>
 
             <p class="phpdocumentor-summary">URI に関するヘルパークラス</p>
@@ -149,9 +149,9 @@
                 <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Helper-Uri.html#property_root">$root</a>
     <span>
-                &nbsp;: mixed            </span>
+                &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>ドキュメントルート</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Helper-Uri.html#method_create">create()</a>
@@ -168,18 +168,25 @@
 <dd>現在の URI</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MyApp-Helper-Uri.html#method_division">division()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>自治体の詳細ページの URL</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Helper-Uri.html#method_login">login()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>ログインページの URI</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Helper-Uri.html#method_logout">logout()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>ログアウトページの URI</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Helper-Uri.html#method_redirect">redirect()</a>
@@ -207,7 +214,7 @@
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>自治体一覧を返す API の URI</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Helper-Uri.html#method_root">root()</a>
@@ -244,17 +251,19 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ドキュメントルート</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$root</span>
      = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
 
 </article>
@@ -278,7 +287,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 </aside>
 
         <p class="phpdocumentor-summary">URI 設定ファイルから該当する URI を生成</p>
@@ -343,7 +352,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">146</span>
 </aside>
 
         <p class="phpdocumentor-summary">現在の URI</p>
@@ -386,6 +395,53 @@
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_division">
+        division()
+        <a href="classes/MyApp-Helper-Uri.html#method_division" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">124</span>
+</aside>
+
+        <p class="phpdocumentor-summary">自治体の詳細ページの URL</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">division</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$division</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>対象の自治体オブジェクト</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>詳細ページの URL</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_login">
         login()
         <a href="classes/MyApp-Helper-Uri.html#method_login" class="headerlink"><i class="fas fa-link"></i></a>
@@ -393,22 +449,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">138</span>
+    <span class="phpdocumentor-element-found-in__line">162</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ログインページの URI</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">login</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>URI</p>
+</section>
 
     
 </article>
@@ -425,22 +484,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">143</span>
+    <span class="phpdocumentor-element-found-in__line">171</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">ログアウトページの URI</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">logout</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>URI</p>
+</section>
 
     
 </article>
@@ -457,7 +519,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">93</span>
 </aside>
 
         <p class="phpdocumentor-summary">URI 設定ファイルから該当する URI を生成し、その URI にリダイレクト</p>
@@ -521,14 +583,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">133</span>
 </aside>
 
         <p class="phpdocumentor-summary">自治体の詳細ページへリダイレクト</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">redirectDivision</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\MyApp\Helper\Model_Division">Model_Division</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">redirectDivision</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -536,7 +598,7 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$division</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\MyApp\Helper\Model_Division">Model_Division</abbr></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>対象の自治体オブジェクト</p>
@@ -567,7 +629,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 </aside>
 
         <p class="phpdocumentor-summary">redirect() で 301 リダイレクト（恒久的な URL 変更）</p>
@@ -631,22 +693,25 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">148</span>
+    <span class="phpdocumentor-element-found-in__line">180</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">自治体一覧を返す API の URI</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">restDivisionList</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>URI</p>
+</section>
 
     
 </article>
@@ -663,7 +728,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Uri.php"><a href="files/fuel-app-myapp-helper-uri.html"><abbr title="fuel/app/MyApp/Helper/Uri.php">Uri.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 </aside>
 
         <p class="phpdocumentor-summary">ドキュメントルートの URI を取得</p>

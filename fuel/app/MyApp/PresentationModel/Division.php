@@ -77,10 +77,7 @@ class Division extends PresentationModel
 	 */
 	public function url(): string
 	{
-		return Uri::create(
-			'division.detail',
-			['path' => $this->model->path]
-		);
+		return Uri::division($this->model);
 	}
 
 	/**
