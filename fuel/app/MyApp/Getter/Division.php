@@ -29,11 +29,7 @@ class Division extends Getter
 		$arr = [
 			'path' => function () {
 				// 群馬県/甘楽郡(1950-)/下仁田町(1955-)
-				$name_arr = [];
-				$this->model->id_chain(function ($d) use (&$name_arr) {
-					$name_arr[] = $d->getter()->fullname;
-				});
-				return implode('/', $name_arr);
+				return $this->model->path;
 			},
 			'path_kana' => function () {
 				// ぐんま・けん/かんら・ぐん/しもにた・まち

@@ -59,8 +59,6 @@ class Controller_Admin_Division extends AdminController
 	}
 	// function action_index()
 
-
-
 	public function post_add()
 	{
 		$input = Input::post();

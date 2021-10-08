@@ -131,33 +131,28 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 			$division = new static();
 		}
 
-		$name = $params['name'] ?? null;
-		$suffix = $params['suffix'] ?? null;
-		if (! $name || ! $suffix) {
-			$fullname = $params['fullname'];
-			preg_match(static::RE_SUFFIX, $fullname, $matches);
-			if (! $matches) {
-				$matches = [
-					'place' => $fullname,
-					'suffix' => '',
-				];
-			}
-			$name = $matches['place'];
-			$suffix = $matches['suffix'];
-		} else {
-			$fullname = $name . $suffix;
+		$fullname = $params['fullname'] ?? '';
+		if (! $fullname) {
+			$fullname = ($params['name'] ?? '') . ($suffix = $params['suffix'] ?? '');
 		}
-		$fullname .= $params['identifier'] ?? '';
+		preg_match(static::RE_SUFFIX, $fullname, $matches);
+		if (! $matches) {
+			$matches = [
+				'place' => $fullname,
+				'suffix' => '',
+			];
+			$params['show_suffix'] = false;
+		}
+		$name = $matches['place'];
+		$suffix = $matches['suffix'];
+		$fullname = $name . $suffix . ($params['identifier'] ?? '');
 
 		$params = array_merge(
 			[
-				'name' => $name,
 				'name_kana' => '',
-				'suffix' => $suffix,
 				'suffix_kana' => '',
 				'search_path' => '',
 				'search_path_kana' => '',
-				'fullname' => $fullname,
 				'path' => '',
 				'government_code' => '',
 				'display_order' => '',
@@ -167,8 +162,8 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		);
 
 		// 基本情報を設定
-		$division->name            = $params['name'];
-		$division->suffix          = $params['suffix'];
+		$division->name            = $name;
+		$division->suffix          = $suffix;
 		$division->identifier      = $params['identifier'] ?? '';
 		$division->fullname        = $fullname;
 		$division->name_kana       = $params['name_kana'];
@@ -179,6 +174,7 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		$division->display_order   = $params['display_order'] ?: null;
 		$division->source          = $params['source'] ?: null;
 
+		$division->show_suffix = (isset($params['show_suffix']) ? (bool)$params['show_suffix'] : false);
 		$division->is_empty_government_code = ($params['government_code'] === '');
 		$division->is_empty_kana = ($params['name_kana'] === '');
 
@@ -207,7 +203,7 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		$this->search_path = (($parent ? $parent->search_path : '') . $name);
 		$this->search_path_kana = (($parent ? $parent->search_path_kana : '') . $kana);
 
-		static::requireUnique($this->path);
+		static::requireUnique($this->path, $this->id);
 		$this->save();
 		return $this;
 	}
@@ -240,9 +236,13 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		return static::make($params)->makePath($parent);
 	}
 
-	public static function requireUnique(string $path): void
+	public static function requireUnique(string $path, int $ignore_id = null): void
 	{
-		if (static::query()->where('path', $path)->get_one()) {
+		$query = static::query()->where('path', $path);
+		if ($ignore_id) {
+			$query->where('id', '!=', $ignore_id);
+		}
+		if ($query->get_one()) {
 			throw new Exception("重複しています : '{$path}'");
 		}
 	}
@@ -259,13 +259,28 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		$parent_path = dirname($path);
 
 		// 親を取得
-		$parent = static::query()->where('path', $parent_path)->get_one();
-		if ($parent_path && ! $parent) {
-			// 親もいないので作る
-			$parent = static::makeFromPath($parent_path);
-		}
+		$parent = static::getOrCreateFromPath($parent_path);
 
-		return static::make(['fullname' => $name])->makePath($parent);
+		$division = static::make([
+			'fullname' => $name,
+			'show_suffix' => true,
+		])->makePath($parent);
+		$division->save();
+		return $division;
+	}
+
+	/**
+	 * パスから取得するか、なければ作る
+	 * @param  string $path  パス
+	 * @return self          自治体オブジェクト
+	 */
+	public static function getOrCreateFromPath(string $path): self
+	{
+		$division = static::query()->where('path', $path)->get_one();
+		if (! $division) {
+			$division = Model_Division::makeFromPath($path);
+		}
+		return $division;
 	}
 
 	/**

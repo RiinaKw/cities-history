@@ -109,6 +109,7 @@ class Controller_Event extends Controller
 				if (! $id) {
 					continue;
 				}
+				$division = Model_Division::getOrCreateFromPath($item['division']);
 
 				$item['id'] = 'new';
 				$this->submitDetails($item, $event->id, $division->id);
