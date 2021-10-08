@@ -109,8 +109,6 @@ class Controller_Event extends Controller
 				if (! $id) {
 					continue;
 				}
-				$divisions = DivisionTable::set_path($item['division']);
-				$division = array_pop($divisions);
 
 				$item['id'] = 'new';
 				$this->submitDetails($item, $event->id, $division->id);
@@ -132,7 +130,9 @@ class Controller_Event extends Controller
 		} catch (Exception $e) {
 			// internal error
 			DB::rollback_transaction();
-			throw new HttpServerErrorException($e->getMessage());
+			var_dump($e);
+			exit;
+			//throw new HttpServerErrorException($e->getMessage());
 		}
 		// try
 

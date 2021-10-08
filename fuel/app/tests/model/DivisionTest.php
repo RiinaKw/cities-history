@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 use MyApp\MyFuel;
-use MyApp\Table\Division as DivisionTable;
 
 class DivisionTest extends TestCase
 {
@@ -211,11 +210,8 @@ class DivisionTest extends TestCase
 			'identifier' => '(2021)',
 			'name_kana' => 'まえばし',
 			'suffix_kana' => 'し',
-		], $sawa);
-		$new->save();
-
-		$new->makePath($gunma);
-		$new->save();
+		], $sawa)
+			->makePath($gunma);
 
 		// 自分自身のパスが正しく設定されているか
 		$this->assertSame(3, (int)$new->id);
@@ -239,5 +235,74 @@ class DivisionTest extends TestCase
 		$this->assertSame('群馬県/前橋市(2021)/赤堀町', $akabori->path);
 		$this->assertSame('群馬県前橋市赤堀町', $akabori->search_path);
 		$this->assertSame('ぐんまけんまえばししあかぼりまち', $akabori->search_path_kana);
+	}
+
+	public function test_createFromPath()
+	{
+		$gunma = Model_Division::create2(
+			[
+				'fullname' => '群馬県',
+				'name_kana' => 'ぐんま',
+				'suffix_kana' => 'けん',
+			]
+		);
+
+		$saba = Model_Division::makeFromPath('群馬県/鯖郡');
+		$this->assertSame(2, (int)$saba->id);
+		$this->assertSame('1/2/', $saba->id_path);
+		$this->assertSame('鯖郡', $saba->fullname);
+		$this->assertSame('鯖', $saba->name);
+		$this->assertSame('郡', $saba->suffix);
+		$this->assertSame('群馬県/鯖郡', $saba->path);
+		$this->assertSame('群馬県鯖郡', $saba->search_path);
+
+		$kujira = Model_Division::makeFromPath('群馬県/海豚郡/鯨町');
+		$this->assertSame(4, (int)$kujira->id);
+		$this->assertSame('1/3/4/', $kujira->id_path);
+		$this->assertSame('鯨町', $kujira->fullname);
+		$this->assertSame('鯨', $kujira->name);
+		$this->assertSame('町', $kujira->suffix);
+		$this->assertSame('群馬県/海豚郡/鯨町', $kujira->path);
+		$this->assertSame('群馬県海豚郡鯨町', $kujira->search_path);
+	}
+
+	public function test_duplicate()
+	{
+		$this->expectException(\Exception::class);
+		$this->expectExceptionMessage("重複しています");
+		$this->expectExceptionMessage("群馬県");
+
+		Model_Division::create2(
+			[
+				'fullname' => '群馬県',
+				'name_kana' => 'ぐんま',
+				'suffix_kana' => 'けん',
+			]
+		);
+		Model_Division::create2(
+			[
+				'fullname' => '群馬県',
+				'name_kana' => 'ぐんま',
+				'suffix_kana' => 'けん',
+			]
+		);
+	}
+
+	public function test_duplicateWithPath()
+	{
+		$this->expectException(\Exception::class);
+		$this->expectExceptionMessage("重複しています");
+		$this->expectExceptionMessage("群馬県/鯖郡");
+
+		Model_Division::create2(
+			[
+				'fullname' => '群馬県',
+				'name_kana' => 'ぐんま',
+				'suffix_kana' => 'けん',
+			]
+		);
+
+		Model_Division::makeFromPath('群馬県/鯖郡');
+		Model_Division::makeFromPath('群馬県/鯖郡');
 	}
 }

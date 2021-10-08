@@ -63,15 +63,17 @@ class Controller_Admin_Division extends AdminController
 
 	public function post_add()
 	{
+		$input = Input::post();
+		$input['is_unfinished'] = isset($input['is_unfinished']) ? $input['is_unfinished'] : false;
+		$input['fullname'] = $input['name'] . $input['suffix'];
+
 		try {
 			DB::start_transaction();
 
-			$parent = DivisionTable::findByPath(Input::post('parent'));
-			$division = Model_Division::create2(Input::post(), $parent);
+			$parent = DivisionTable::findByPath($input['parent']);
+			$new = Model_Division::make($input)->makePath($parent);
 
-			$this->activity('add division', $division->id);
-
-			$path_new = $division->get_path();
+			$this->activity('add division', $new->id);
 			DB::commit_transaction();
 		} catch (HttpBadRequestException $e) {
 			// internal error
@@ -85,7 +87,7 @@ class Controller_Admin_Division extends AdminController
 			throw new HttpServerErrorException($e->getMessage());
 		}
 
-		Uri::redirect('division.detail', ['path' => $path_new]);
+		Uri::redirect('division.detail', ['path' => $new->path]);
 		return;
 	}
 	// function action_add()
@@ -140,6 +142,7 @@ class Controller_Admin_Division extends AdminController
 	{
 		$input = Input::post();
 		$input['is_unfinished'] = isset($input['is_unfinished']) ? $input['is_unfinished'] : false;
+		$input['fullname'] = $input['name'] . $input['suffix'];
 
 		try {
 			DB::start_transaction();
@@ -147,11 +150,7 @@ class Controller_Admin_Division extends AdminController
 			$division = DivisionTable::findByPath($this->param('path'));
 
 			$parent = DivisionTable::findByPath($input['parent']);
-			$input['fullname'] = $input['name'] . $input['suffix'];
-			$new = Model_Division::make($input, $division);
-			$new->makePath($parent);
-			$new->save();
-			$new->updateChild();
+			$new = Model_Division::make($input, $division)->makePath($parent)->updateChild();
 
 			$this->activity('edit division', $new->id);
 

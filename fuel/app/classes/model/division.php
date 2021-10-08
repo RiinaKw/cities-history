@@ -187,6 +187,7 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		$division->id_path = '';
 		$division->search_path = '';
 		$division->search_path_kana = '';
+		$division->save();
 
 		return $division;
 	}
@@ -206,6 +207,8 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 		$this->search_path = (($parent ? $parent->search_path : '') . $name);
 		$this->search_path_kana = (($parent ? $parent->search_path_kana : '') . $kana);
 
+		static::requireUnique($this->path);
+		$this->save();
 		return $this;
 	}
 
@@ -234,12 +237,35 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 	 */
 	public static function create2(array $params, self $parent = null): self
 	{
-		$division = static::make($params);
-		$division->save();
+		return static::make($params)->makePath($parent);
+	}
 
-		$division->makePath($parent);
-		$division->save();
-		return $division;
+	public static function requireUnique(string $path): void
+	{
+		if (static::query()->where('path', $path)->get_one()) {
+			throw new Exception("重複しています : '{$path}'");
+		}
+	}
+
+	/**
+	 * パス形式から自治体オブジェクトを生成する
+	 * @param  string         $path  パス
+	 * @return Model_Division        生成された自治体オブジェクト
+	 */
+	public static function makeFromPath(string $path): self
+	{
+		static::requireUnique($path);
+		$name = basename($path);
+		$parent_path = dirname($path);
+
+		// 親を取得
+		$parent = static::query()->where('path', $parent_path)->get_one();
+		if ($parent_path && ! $parent) {
+			// 親もいないので作る
+			$parent = static::makeFromPath($parent_path);
+		}
+
+		return static::make(['fullname' => $name])->makePath($parent);
 	}
 
 	/**

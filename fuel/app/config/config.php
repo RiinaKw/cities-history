@@ -81,7 +81,7 @@ return array(
 	'language_fallback'  => 'en', // Fallback language when file isn't available for default language
 
 	// For Windows, "ja-JP", NOT underscore
-	'locale' => DIRECTORY_SEPARATOR === '\\' ? 'ja-JP' : 'ja_JP', // PHP set_locale() setting, null to not set
+	'locale' => (DIRECTORY_SEPARATOR === '\\' ? 'ja-JP' : 'ja_JP') . '.UTF-8', // PHP set_locale() setting, null to not set
 
 	/**
 	 * Internal string encoding charset
