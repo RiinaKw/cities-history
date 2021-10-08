@@ -37,11 +37,11 @@ return array(
 	'admin/page/(.+?)/edit'   => 'admin/page/edit/$1',
 	'admin/page/(.+?)/delete' => 'admin/page/delete/$1',
 
-	'admin/db'          => 'admin/db/index',
-	'admin/db/backup'   => 'admin/db/backup',
-	'admin/db/restore'  => 'admin/db/restore',
-	'admin/db/delete'   => 'admin/db/delete',
-	'admin/db/download' => 'admin/db/download',
+	'admin/db'                => 'admin/db/index',
+	'admin/db/backup'         => 'admin/db/backup',
+	'admin/db/(.+?)/restore'  => 'admin/db/restore/$1',
+	'admin/db/(.+?)/delete'   => 'admin/db/delete/$1',
+	'admin/db/(.+?)/download' => 'admin/db/download/$1',
 
 	'page/:slug' => 'page/detail',
 

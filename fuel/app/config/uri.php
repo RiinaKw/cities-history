@@ -32,9 +32,9 @@ return array(
 		'db' => array(
 			'list'     => 'admin/db',
 			'backup'   => 'admin/db/backup',
-			'restore'  => 'admin/db/restore/:file',
-			'delete'   => 'admin/db/delete/:file',
-			'download' => 'admin/db/download/:file',
+			'restore'  => 'admin/db/:file/restore',
+			'delete'   => 'admin/db/:file/delete',
+			'download' => 'admin/db/:file/download',
 		),
 	),
 	'event' => array(

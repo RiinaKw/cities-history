@@ -38,7 +38,7 @@ class Controller_Admin_Db extends AdminController
 	protected function get_file(string $filename): File
 	{
 		try {
-			$path = Backup::correctPath($filename . '.sql');
+			$path = Backup::correctPath($filename);
 			return new File($path);
 		} catch (\Exception $e) {
 			throw new HttpNotFoundException('バックアップファイルが見つかりません。 : ' . $e->getMessage());
@@ -92,7 +92,7 @@ class Controller_Admin_Db extends AdminController
 			Backup::truncate();
 			Backup::import($file->path);
 
-			$this->activity('restore db', null);
+			$this->activity('restore db', 0);
 
 			$this->session_flash->set([
 				'status'  => 'success',
