@@ -29,9 +29,9 @@ class Presenter_Layout extends Presenter_Base
 
 		$this->title = $title;
 		$this->page_title = $page_title;
-		$this->og_type = isset($param['og_type']) ? $param['og_type'] : '';
-		$this->nav_item = isset($param['nav_item']) ? $param['nav_item'] : '';
-		$this->breadcrumbs = isset($param['breadcrumbs']) ? $param['breadcrumbs'] : [];
+		$this->og_type = $param['og_type'] ?? '';
+		$this->nav_item = $param['nav_item'] ?? '';
+		$this->breadcrumbs = $param['breadcrumbs'] ?? [];
 	}
 	// function after()
 }
