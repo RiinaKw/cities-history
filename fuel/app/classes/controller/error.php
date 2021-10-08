@@ -13,7 +13,7 @@ class Controller_Error extends Controller
 {
 	protected function render($e, $code)
 	{
-		$content = Presenter::forge('error', 'view', null, 'error.tpl');
+		$content = Presenter_Error::forge();
 
 		$content->code = $code;
 		$content->message = $e->getMessage();

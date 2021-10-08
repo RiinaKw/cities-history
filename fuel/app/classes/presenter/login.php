@@ -2,9 +2,8 @@
 
 /**
  * @package  App\Presenter
- * @todo 廃止予定
  */
-class Presenter_Login extends Presenter
+class Presenter_Login extends Presenter_Base
 {
 	public function view()
 	{

@@ -13,6 +13,12 @@ abstract class Presenter_Base extends Fuel\Core\Presenter
 	 */
 	protected $alt_view = null;
 
+	public static function forge($presenter = null, $method = 'view', $auto_filter = null, $view = null)
+	{
+		$presenter = preg_replace('/^Presenter_/', '', static::class);
+		return parent::forge($presenter, $method, $auto_filter, $view);
+	}
+
 	/**
 	 * テンプレートエンジンはsmartyを使うので、View_Smartyを利用
 	 *
@@ -20,6 +26,9 @@ abstract class Presenter_Base extends Fuel\Core\Presenter
 	 */
 	public function set_view($view = null)
 	{
+		// 拡張子を強制的に .tpl にする
+		$this->_view .= strpos($this->_view, '.') ? '' : '.tpl';
+
 		if ($this->alt_view === true) {
 			$ctrl = preg_replace('/^Controller_/', '', Request::active()->controller);
 			$this->alt_view = strtolower($ctrl) . '\\' . Request::active()->action;

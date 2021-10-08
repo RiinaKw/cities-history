@@ -27,7 +27,7 @@ class Controller_Page extends Controller
 		}
 
 		// create Presenter object
-		$content = Presenter::forge('page', 'view', null, 'page.tpl');
+		$content = Presenter_Page::forge();
 		$content->page = $page;
 
 		return $content;

@@ -14,7 +14,7 @@ class Controller_Top extends Controller
 	public function action_index()
 	{
 		// create Presenter object
-		$content = Presenter::forge('top', 'view', null, 'top.tpl');
+		$content = Presenter_Top::forge();
 		$content->divisions = DivisionTable::get_top_level();
 
 		return $content;
@@ -39,7 +39,7 @@ class Controller_Top extends Controller
 		foreach ($eggs as $key => $config) {
 			if (strpos($egg_q, $key) !== false) {
 				$code = $config['code'];
-				$view = Presenter::forge('presenter/error', 'view', null, 'error.tpl');
+				$view = Presenter_Error::forge();
 				$view->code = $code;
 				$view->message = $config['message'];
 				return Response::forge($view, $code);
@@ -49,7 +49,7 @@ class Controller_Top extends Controller
 		$result = DivisionTable::search($q);
 
 		// create Presenter object
-		$content = Presenter::forge('search', 'view', null, 'search.tpl');
+		$content = Presenter_Search::forge();
 		$content->divisions = $result;
 		$content->q = $q;
 

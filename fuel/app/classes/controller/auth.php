@@ -114,7 +114,7 @@ class Controller_Auth extends Controller
 		}
 
 		// create Presenter object
-		$content = Presenter::forge('login', 'view', null, 'login.tpl');
+		$content = Presenter_Login::forge();
 		$content->error_string = $error_string;
 
 		return $content;
