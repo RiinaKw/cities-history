@@ -177,7 +177,7 @@ $(function(){
 	$(document).on("click", ".add", function(){
 		var $modal = $('#change-event').modal();
 		$(".modal-title", $modal).text("イベントを追加…");
-		$("form", $modal).attr("action", "{{$url_event_add}}");
+		$("form", $modal).attr("action", "{{\MyApp\Helper\Uri::create('admin.event.add')}}");
 		$("#event-id", $modal).val("");
 		$("#path", $modal).val("");
 		$("#title", $modal).val("");
@@ -199,7 +199,7 @@ $(function(){
 		var date = $("time", $(this)).attr("datetime");
 		var comment = $(".comment", $(this)).html();
 		var source = $(".source_preformat", $(this)).html();
-		var url = "{{$url_event_edit}}".replace(":id", event_id);
+		var url = "{{\MyApp\Helper\Uri::create('admin.event.edit')}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
 		$("#event-id", $modal).val(event_id);
 		$("#path", $modal).val(path);
@@ -211,7 +211,7 @@ $(function(){
 
 		$.ajax({
 			type: "get",
-			url: "{{$url_event_detail}}".replace(":id", event_id),
+			url: "{{\MyApp\Helper\Uri::create('event.detail')}}".replace(":id", event_id),
 		})
 		.done(function(data, message, xhr){
 			var $tbody = $("#change-event-sortable", $modal).empty();
@@ -232,7 +232,7 @@ $(function(){
 	$(document).on("click", "#change-event .btn-danger", function(){
 		var $modal = $('#change-event');
 		var event_id = $("#event-id", $modal).val();
-		var url = "{{$url_event_delete}}".replace(":id", event_id);
+		var url = "{{\MyApp\Helper\Uri::create('admin.event.delete')}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
 	});
 });

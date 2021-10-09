@@ -15,10 +15,6 @@ class Presenter_Division_Timeline extends Presenter_Layout
 
 		$this->url_edit         = Uri::create('admin.division.edit', ['path' => $path]);
 		$this->url_delete       = Uri::create('admin.division.delete', ['path' => $path]);
-		$this->url_event_detail = Uri::create('event.detail');
-		$this->url_event_add    = Uri::create('event.add');
-		$this->url_event_edit   = Uri::create('event.edit');
-		$this->url_event_delete = Uri::create('event.delete');
 
 		$components = [
 			'add_division'    => View_Smarty::forge('components/add_division.tpl'),

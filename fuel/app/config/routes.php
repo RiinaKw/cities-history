@@ -16,9 +16,9 @@ return array(
 
 	'division/list' => 'rest/division/list',
 
-	'event/add'          => 'event/add',
-	'event/(.+?)/edit'   => 'event/edit/$1',
-	'event/(.+?)/delete' => 'event/delete/$1',
+	'event/add'          => 'admin/event/add',
+	'event/(.+?)/edit'   => 'admin/event/edit/$1',
+	'event/(.+?)/delete' => 'admin/event/delete/$1',
 	'event/(.+?)'        => 'rest/event/detail/$1',
 
 	'admin/division/add'          => 'admin/division/add',

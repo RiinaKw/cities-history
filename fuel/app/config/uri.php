@@ -36,12 +36,14 @@ return array(
 			'delete'   => 'admin/db/:file/delete',
 			'download' => 'admin/db/:file/download',
 		),
+		'event' => array(
+			'add'      => 'event/add',
+			'edit'     => 'event/:id/edit',
+			'delete'   => 'event/:id/delete',
+		),
 	),
 	'event' => array(
-		'add'      => 'event/add',
 		'detail'   => 'event/:id.json',
-		'edit'     => 'event/:id/edit',
-		'delete'   => 'event/:id/delete',
 	),
 	'division' => array(
 		'detail'   => ':path',

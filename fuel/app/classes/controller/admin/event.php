@@ -1,6 +1,7 @@
 <?php
 
-use MyApp\Abstracts\Controller;
+use MyApp\Abstracts\AdminController;
+use MyApp\Traits\Controller\ModelRelated;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Helper\Session\Uri as SessionUri;
 use MyApp\Helper\GeoShape;
@@ -11,9 +12,9 @@ use MyApp\Helper\GeoShape;
  * @package  Fuel\Controller
  * @extends  MyApp\Abstracts\Controller
  */
-class Controller_Event extends Controller
+class Controller_Admin_Event extends AdminController
 {
-	use MyApp\Traits\Controller\ModelRelated;
+	use ModelRelated;
 
 	protected $session_uri = null;
 
