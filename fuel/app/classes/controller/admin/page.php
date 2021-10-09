@@ -18,9 +18,37 @@ class Controller_Admin_Page extends AdminController
 
 	protected $session_flash = null;
 
+	/**
+	 * 関連するモデルのクラス名
+	 * @return string
+	 */
 	protected static function getModelClass(): string
 	{
 		return Model_Page::class;
+	}
+
+	/**
+	 * 関連するモデルで検索に使うカラム名
+	 * @return string
+	 */
+	protected static function getModelKey(): ?string
+	{
+		return 'id';
+	}
+
+	/**
+	 * 検索で見つからなかった場合のメッセージ
+	 * @param  int|string                         $value  getModelKey() で指定したキーに対する値
+	 * @param  \MyApp\Abstracts\ActiveRecord|null $obj    削除済みを取得した場合、そのオブジェクト
+	 * @return string
+	 */
+	protected static function notFound($value, Model_Page $obj = null)
+	{
+		if ($obj) {
+			return "削除済みのページです。 slug : {$value}";
+		} else {
+			return "ページが見つかりません。 slug : {$value}";
+		}
 	}
 
 	public function before()
