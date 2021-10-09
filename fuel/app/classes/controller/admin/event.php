@@ -24,8 +24,6 @@ class Controller_Admin_Event extends AdminController
 		parent::before();
 
 		$this->session_uri = new SessionUri('division');
-
-		$this->requireUser();
 	}
 	// function before()
 

@@ -30,19 +30,6 @@ abstract class Controller extends \Controller
 	}
 
 	/**
-	 * ログインしていない状態でアクセスすると例外を投げる
-	 * @throws \HttpNoAccessException  未ログインの場合
-	 */
-	protected function requireUser(): void
-	{
-		$user = $this->user();
-		if (! $user) {
-			throw new \HttpNoAccessException('permission denied');
-		}
-		$this->user = $user;
-	}
-
-	/**
 	 * 活動をログに保存
 	 * @param string $target  活動内容
 	 * @param int    $id      対象のモデルの ID

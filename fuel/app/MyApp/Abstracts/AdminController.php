@@ -17,13 +17,11 @@ abstract class AdminController extends Controller
 	{
 		parent::before();
 
-		// ログインしていないユーザをログイン画面へリダイレクト
-		try {
-			$this->requireUser();
-		} catch (\HttpNoAccessException $e) {
-			// redirect to login form
+		$user = $this->user();
+		if (! $user) {
 			Uri::redirect('login');
 		}
+		$this->user = $user;
 	}
 	// function before()
 

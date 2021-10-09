@@ -896,11 +896,6 @@ Search.appendIndex(
             "summary": "\u30ED\u30B0\u30A4\u30F3\u3057\u3066\u3044\u308B\u30E6\u30FC\u30B6\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Abstracts-Controller.html#method_user"
         },                {
-            "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003ArequireUser\u0028\u0029",
-            "name": "requireUser",
-            "summary": "\u30ED\u30B0\u30A4\u30F3\u3057\u3066\u3044\u306A\u3044\u72B6\u614B\u3067\u30A2\u30AF\u30BB\u30B9\u3059\u308B\u3068\u4F8B\u5916\u3092\u6295\u3052\u308B",
-            "url": "classes/MyApp-Abstracts-Controller.html#method_requireUser"
-        },                {
             "fqsen": "\\MyApp\\Abstracts\\Controller\u003A\u003Aactivity\u0028\u0029",
             "name": "activity",
             "summary": "\u6D3B\u52D5\u3092\u30ED\u30B0\u306B\u4FDD\u5B58",
