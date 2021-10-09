@@ -53,7 +53,6 @@ class Controller_Rest_Event extends Controller_Rest
 			);
 		}
 
-		$divisions = EventTable::getRelativeDivision($event->id);
 		$response = [
 			'event' => [
 				'id'      => $event->id,
@@ -64,16 +63,16 @@ class Controller_Rest_Event extends Controller_Rest
 			],
 			'details' => [],
 		];
-		foreach ($divisions as $division) {
+		foreach ($event->details as $details) {
 			$response['details'][] = [
-				'id'        => $division->event_detail_id,
-				'name'      => $division->name,
-				'path'      => $division->path,
-				'result'    => $division->result,
-				'birth'     => ($division->start_event_id == $event->id),
-				'death'     => ($division->end_event_id == $event->id),
-				'geoshape'  => $division->geoshape,
-				'is_refer'  => (int)$division->is_refer,
+				'id'        => $details->id,
+				'name'      => $details->division->name,
+				'path'      => $details->division->path,
+				'result'    => $details->result,
+				'birth'     => ($details->division->start_event_id == $event->id),
+				'death'     => ($details->division->end_event_id == $event->id),
+				'geoshape'  => $details->geoshape,
+				'is_refer'  => (int)$details->is_refer,
 			];
 		}
 		return $this->response($response);

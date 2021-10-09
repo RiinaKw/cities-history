@@ -13,7 +13,19 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 	protected static $_table_name  = Table::TABLE_NAME;
 	protected static $_primary_key = Table::TABLE_PK;
 
-	protected static $_has_many = ['event_details'];
+	protected static $_has_many = [
+		'details' => [
+			'key_from' => 'id',
+			'model_to' => 'Model_Event_Detail',
+			'key_to' => 'event_id',
+			'cascade_save' => true,
+			'conditions' => [
+				'order_by' => [
+					'order' => 'asc'
+				],
+			],
+		],
+	];
 
 	/**
 	 * プレゼンテーションモデルのクラス名

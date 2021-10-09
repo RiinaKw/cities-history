@@ -63,34 +63,6 @@ class Event extends \MyApp\Abstracts\Table
 	//================ 各種メソッド ================//
 
 	/**
-	 * イベントに関連する自治体一覧を取得
-	 *
-	 * @param  int    $event_id                   イベント ID
-	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
-	 */
-	public static function getRelativeDivision(int $event_id): Result
-	{
-		$query = DB::select(
-			'd.*',
-			[DB::expr('concat(d.name, d.suffix)'), 'fullname'],
-			['e.id', 'event_detail_id'],
-			'e.result',
-			'e.geoshape',
-			'e.is_refer'
-		)
-			->from([static::DETAIL_TABLE, 'e'])
-			->join([static::DIVISION_TABLE, 'd'])
-			->on('e.division_id', '=', 'd.id')
-
-			->where('e.deleted_at', '=', null)
-			->where('e.event_id', '=', $event_id)
-			->order_by('e.order', 'asc');
-
-		return $query->as_object(static::$model_name_division)->execute();
-	}
-	// function getRelativeDivision()
-
-	/**
 	 * 親自治体と期間から、配下の自治体のイベント一覧を取得
 	 *
 	 * @param  Model_Division $parent             基準となる親自治体

@@ -89,7 +89,7 @@
 {{/if}}
 							</header>
 							<ul class="details">
-{{foreach from=$event->event_details item=detail}}
+{{foreach from=$event->details item=detail}}
 {{assign var=div value=$detail->division}}
 {{if ! $detail->is_refer}}
 								<li class="{{$detail->pmodel()->htmlClass()}}">
@@ -112,7 +112,7 @@
 						<script>
 							$(function(){
 								var shapes = [];
-{{foreach from=$event->event_details item=detail}}
+{{foreach from=$event->details item=detail}}
 {{if $detail->pmodel()->geoshape()}}
 								shapes.push({
 									name: "{{$detail->division->fullname}}",
