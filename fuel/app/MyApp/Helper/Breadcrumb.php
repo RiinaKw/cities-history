@@ -61,7 +61,7 @@ class Breadcrumb implements \IteratorAggregate, \Countable
 				if (! $parent) {
 					break;
 				}
-				$this->push($parent->fullname, $parent->pmodel()->url());
+				$this->push($parent->fullname, $parent->pmodel()->uri('timeline'));
 			}
 		}
 		return $this;

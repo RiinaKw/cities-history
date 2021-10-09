@@ -72,48 +72,40 @@ class Division extends PresentationModel
 	// function source()
 
 	/**
-	 * 自治体タイムラインの URI
-	 * @return string
+	 * 自治体に関する各種 URI を生成
+	 * @param  string $type  取得する URI の種別
+	 * @return string|null   生成された URL
 	 */
-	public function url(): string
+	public function uri(string $type): ?string
 	{
-		return Uri::division($this->model);
-	}
+		switch ($type) {
+			case 'timeline':
+				// 自治体タイムラインの URI
+				return Uri::division($this->model);
 
-	/**
-	 * 自治体ツリーの URI
-	 * @return string
-	 */
-	public function urlTree(): string
-	{
-		return Uri::create(
-			'division.tree',
-			['path' => $this->model->path]
-		);
-	}
+			case 'tree':
+				// 自治体ツリーの URI
+				return Uri::create(
+					'division.tree',
+					['path' => $this->model->path]
+				);
 
-	/**
-	 * 自治体変更 Ajax の URL
-	 * @return string
-	 */
-	public function uriEdit(): string
-	{
-		return Uri::create(
-			'admin.division.edit',
-			['path' => $this->model->path]
-		);
-	}
+			case 'edit':
+				// 自治体変更 Ajax の URL
+				return Uri::create(
+					'admin.division.edit',
+					['path' => $this->model->path]
+				);
 
-	/**
-	 * 自治体変更 Ajax の URL
-	 * @return string
-	 */
-	public function uriDelete(): string
-	{
-		return Uri::create(
-			'admin.division.delete',
-			['path' => $this->model->path]
-		);
+			case 'delete':
+				// 自治体削除 Ajax の URL
+				return Uri::create(
+					'admin.division.delete',
+					['path' => $this->model->path]
+				);
+		}
+
+		return null;
 	}
 
 	/**
@@ -139,7 +131,7 @@ class Division extends PresentationModel
 		}
 		$attributes = [
 			'class' => $this->model->is_unfinished ? 'unfinished' : '',
-			'href' => $this->url(),
+			'href' => $this->uri('timeline'),
 			'data-toggle' => 'tooltip',
 			'title' => $this->model->path,
 		];

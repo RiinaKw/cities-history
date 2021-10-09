@@ -1,7 +1,7 @@
 
 			<div id="edit-division" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
-					<form class="modal-content" action="{{$division->pmodel()->uriEdit()}}" method="post">
+					<form class="modal-content" action="{{$division->pmodel()->uri('edit')}}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">自治体を変更……</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">

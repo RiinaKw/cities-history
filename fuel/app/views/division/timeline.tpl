@@ -44,10 +44,10 @@
 			<nav class="timeline-nav">
 				<ul>
 					<li class="{{if $current === 'detail'}}active{{/if}}">
-						<a href="{{$pmodel->url()}}">自治体タイムライン</a>
+						<a href="{{$pmodel->uri('timeline')}}">自治体タイムライン</a>
 					</li>
 					<li class="">
-						<a href="{{$pmodel->urlTree()}}">所属自治体</a>
+						<a href="{{$pmodel->uri('tree')}}">所属自治体</a>
 					</li>
 					<li>
 						所属自治体タイムライン
