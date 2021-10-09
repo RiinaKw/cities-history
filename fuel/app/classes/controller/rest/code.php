@@ -19,8 +19,7 @@ class Controller_Rest_Code extends Controller_Rest
 			return $this->response($response, 400);
 		}
 
-		$divisions = Model_Division::find_by_government_code($normalized);
-
+		$divisions = Model_Division::query()->where('government_code', $normalized)->get();
 		$arr = [];
 		if ($divisions) {
 			foreach ($divisions as $division) {
@@ -46,8 +45,8 @@ class Controller_Rest_Code extends Controller_Rest
 
 	protected function division_to_array($division)
 	{
-		$birth_event = Model_Event::find_by_pk($division->start_event_id);
-		$death_event = Model_Event::find_by_pk($division->end_event_id);
+		$birth_event = Model_Event::find($division->start_event_id);
+		$death_event = Model_Event::find($division->end_event_id);
 
 		$birth_date = null;
 		$death_date = null;

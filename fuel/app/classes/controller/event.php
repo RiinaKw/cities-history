@@ -27,7 +27,7 @@ class Controller_Event extends Controller
 
 	protected function requireEvent($event_id): Model_Event
 	{
-		$event = Model_Event::find_by_pk($event_id);
+		$event = Model_Event::find($event_id);
 		if (! $event) {
 			throw new HttpNotFoundException('イベントが見つかりません。');
 		}
@@ -62,7 +62,7 @@ class Controller_Event extends Controller
 		$is_new = ($id === 'new');
 		if ($item['delete']) {
 			if (! $is_new) {
-				$detail = Model_Event_Detail::find_by_pk($id);
+				$detail = Model_Event_Detail::find($id);
 				$detail->delete();
 			}
 		} else {
@@ -77,7 +77,7 @@ class Controller_Event extends Controller
 				]);
 				$detail->save();
 			} else {
-				$detail = Model_Event_Detail::find_by_pk($id);
+				$detail = Model_Event_Detail::find($id);
 				$detail->order = $item['order'];
 				$detail->result = $item['result'];
 				$detail->geoshape = $item['geoshape'];
