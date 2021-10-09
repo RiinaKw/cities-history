@@ -248,14 +248,16 @@ class Division extends \MyApp\Abstracts\Table
 	public static function makeFromPath(string $path): Model_Division
 	{
 		static::requireUniquePath($path);
-		$name = basename($path);
-		$parent_path = dirname($path);
 
 		// 親を取得
-		$parent = static::getOrCreateFromPath($parent_path);
+		$parent = null;
+		if ( strpos($path, '/') !== false) {
+			$parent_path = dirname($path);
+			$parent = static::getOrCreateFromPath($parent_path);
+		}
 
 		$division = static::make([
-			'fullname' => $name,
+			'fullname' => basename($path),
 			'show_suffix' => true,
 		]);
 		static::makePath($division, $parent);
