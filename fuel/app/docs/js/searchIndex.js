@@ -1976,26 +1976,6 @@ Search.appendIndex(
             "summary": "\u30D7\u30EC\u30BC\u30F3\u30C6\u30FC\u30B7\u30E7\u30F3\u30E2\u30C7\u30EB\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Traits-Model-Presentable.html#method_pmodel"
         },                {
-            "fqsen": "\\smarty_modifier_date_format2\u0028\u0029",
-            "name": "smarty_modifier_date_format2",
-            "summary": "\u65E5\u672C\u8A9E\u306B\u5BFE\u5FDC\u3057\u305F\u0020date_format",
-            "url": "namespaces/default.html#function_smarty_modifier_date_format2"
-        },                {
-            "fqsen": "\\smarty_modifier_division_h4\u0028\u0029",
-            "name": "smarty_modifier_division_h4",
-            "summary": "\u81EA\u6CBB\u4F53\u306E\u30D8\u30C3\u30C0\u30FC\uFF08h4\uFF09\u30BF\u30B0\u3092\u51FA\u529B",
-            "url": "namespaces/default.html#function_smarty_modifier_division_h4"
-        },                {
-            "fqsen": "\\smarty_modifier_tree_body\u0028\u0029",
-            "name": "smarty_modifier_tree_body",
-            "summary": "\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u51FA\u529B",
-            "url": "namespaces/default.html#function_smarty_modifier_tree_body"
-        },                {
-            "fqsen": "\\smarty_modifier_tree_header\u0028\u0029",
-            "name": "smarty_modifier_tree_header",
-            "summary": "\u81EA\u6CBB\u4F53\u30C4\u30EA\u30FC\u306E\u30D8\u30C3\u30C0\u3092\u51FA\u529B",
-            "url": "namespaces/default.html#function_smarty_modifier_tree_header"
-        },                {
             "fqsen": "\\Fuel\\Tasks\\Db",
             "name": "Db",
             "summary": "",
@@ -2356,6 +2336,36 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Test-MyApp-PresentationModel-DivisionTest.html#method_test_anchorPath"
         },                {
+            "fqsen": "\\MyApp\\Smarty\\Modifier",
+            "name": "Modifier",
+            "summary": "",
+            "url": "classes/MyApp-Smarty-Modifier.html"
+        },                {
+            "fqsen": "\\MyApp\\Smarty\\Modifier\u003A\u003Ainit\u0028\u0029",
+            "name": "init",
+            "summary": "\u30D7\u30E9\u30B0\u30A4\u30F3\u95A2\u6570\u3092\u0020Smarty\u0020\u306B\u767B\u9332\u3059\u308B",
+            "url": "classes/MyApp-Smarty-Modifier.html#method_init"
+        },                {
+            "fqsen": "\\MyApp\\Smarty\\Modifier\u003A\u003Adate_format2\u0028\u0029",
+            "name": "date_format2",
+            "summary": "\u65E5\u672C\u8A9E\u306B\u5BFE\u5FDC\u3057\u305F\u0020date_format",
+            "url": "classes/MyApp-Smarty-Modifier.html#method_date_format2"
+        },                {
+            "fqsen": "\\MyApp\\Smarty\\Modifier\u003A\u003Adivision_h4\u0028\u0029",
+            "name": "division_h4",
+            "summary": "\u81EA\u6CBB\u4F53\u306E\u30D8\u30C3\u30C0\u30FC\uFF08h4\uFF09\u30BF\u30B0\u3092\u51FA\u529B",
+            "url": "classes/MyApp-Smarty-Modifier.html#method_division_h4"
+        },                {
+            "fqsen": "\\MyApp\\Smarty\\Modifier\u003A\u003Atree_body\u0028\u0029",
+            "name": "tree_body",
+            "summary": "\u81EA\u6CBB\u4F53\u4E00\u89A7\u3092\u51FA\u529B",
+            "url": "classes/MyApp-Smarty-Modifier.html#method_tree_body"
+        },                {
+            "fqsen": "\\MyApp\\Smarty\\Modifier\u003A\u003Atree_header\u0028\u0029",
+            "name": "tree_header",
+            "summary": "\u81EA\u6CBB\u4F53\u30C4\u30EA\u30FC\u306E\u30D8\u30C3\u30C0\u3092\u51FA\u529B",
+            "url": "classes/MyApp-Smarty-Modifier.html#method_tree_header"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -2415,6 +2425,11 @@ Search.appendIndex(
             "name": "Event",
             "summary": "",
             "url": "namespaces/myapp-presentationmodel-event.html"
+        },                {
+            "fqsen": "\\MyApp\\Smarty",
+            "name": "Smarty",
+            "summary": "",
+            "url": "namespaces/myapp-smarty.html"
         },                {
             "fqsen": "\\MyApp\\Table",
             "name": "Table",

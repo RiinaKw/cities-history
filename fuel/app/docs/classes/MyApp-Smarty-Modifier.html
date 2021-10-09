@@ -117,56 +117,38 @@
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/myapp.html">MyApp</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/myapp-helper.html">Helper</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/myapp-smarty.html">Smarty</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Breadcrumb
+    Modifier
 
     
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
                                     <li class="phpdocumentor-breadcrumb"><a href="packages/App.html">App</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/App-Helper.html">Helper</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/App-Smarty.html">Smarty</a></li>
                             </ul>
         </div>
     
-            <span class="phpdocumentor-element__implements">
-            implements
-                            <abbr title="\IteratorAggregate">IteratorAggregate</abbr>,                             <abbr title="\Countable">Countable</abbr>                    </span>
     
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Smarty/Modifier.php"><a href="files/fuel-app-myapp-smarty-modifier.html"><abbr title="fuel/app/MyApp/Smarty/Modifier.php">Modifier.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 </aside>
 
-            <p class="phpdocumentor-summary">パンくずリストを生成するヘルパークラス</p>
-
-    <section class="phpdocumentor-description"></section>
+        
 
 
 
 
 
 
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes and Traits
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
-
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\IteratorAggregate">IteratorAggregate</abbr></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><abbr title="\Countable">Countable</abbr></dt>
-        <dd></dd>
-    
-    
-    </dl>
 
 
 <h3 id="toc">
@@ -175,54 +157,40 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/MyApp-Helper-Breadcrumb.html#property_array">$array</a>
+                    <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MyApp-Smarty-Modifier.html#method_date_format2">date_format2()</a>
     <span>
-                &nbsp;: mixed            </span>
+                        &nbsp;: string    </span>
 </dt>
-<dd></dd>
-
-                <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Helper-Breadcrumb.html#method_count">count()</a>
-    <span>
-                        &nbsp;: int    </span>
-</dt>
-<dd></dd>
+<dd>日本語に対応した date_format</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Helper-Breadcrumb.html#method_division">division()</a>
+    <a href="classes/MyApp-Smarty-Modifier.html#method_division_h4">division_h4()</a>
     <span>
-                        &nbsp;: self    </span>
+                        &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>自治体のヘッダー（h4）タグを出力</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Helper-Breadcrumb.html#method_forge">forge()</a>
+    <a href="classes/MyApp-Smarty-Modifier.html#method_init">init()</a>
     <span>
-                        &nbsp;: self    </span>
+                        &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>プラグイン関数を Smarty に登録する</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Helper-Breadcrumb.html#method_getIterator">getIterator()</a>
+    <a href="classes/MyApp-Smarty-Modifier.html#method_tree_body">tree_body()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>自治体一覧を出力</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Helper-Breadcrumb.html#method_push">push()</a>
+    <a href="classes/MyApp-Smarty-Modifier.html#method_tree_header">tree_header()</a>
     <span>
-                        &nbsp;: self    </span>
+                        &nbsp;: string    </span>
 </dt>
-<dd>パンくずの末尾に項目を追加</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MyApp-Helper-Breadcrumb.html#method___construct">__construct()</a>
-    <span>
-                        &nbsp;: mixed    </span>
-</dt>
-<dd></dd>
+<dd>自治体ツリーのヘッダを出力</dd>
 
         </dl>
 
@@ -231,77 +199,65 @@
         
 
         
-    <section class="phpdocumentor-properties">
-        <h3 class="phpdocumentor-elements__header" id="properties">
-            Properties
-            <a href="classes/MyApp-Helper-Breadcrumb.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
-        </h3>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_array">
-        $array
-        <a href="classes/MyApp-Helper-Breadcrumb.html#property_array" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">15</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">$array</span>
-    </code>
-
-    
-    
-
-</article>
-            </section>
 
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/MyApp-Helper-Breadcrumb.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/MyApp-Smarty-Modifier.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+                                    -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_count">
-        count()
-        <a href="classes/MyApp-Helper-Breadcrumb.html#method_count" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_date_format2">
+        date_format2()
+        <a href="classes/MyApp-Smarty-Modifier.html#method_date_format2" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Smarty/Modifier.php"><a href="files/fuel-app-myapp-smarty-modifier.html"><abbr title="fuel/app/MyApp/Smarty/Modifier.php">Modifier.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">日本語に対応した date_format</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">count</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">date_format2</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$format</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
-    
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$input</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>日時の文字列あるいはタイムスタンプ</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$format</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>フォーマット形式</p>
+</section>
+
+            </dd>
+            </dl>
+
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>出力文字列</p>
+</section>
 
     
 </article>
@@ -309,24 +265,26 @@
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+                                    -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_division">
-        division()
-        <a href="classes/MyApp-Helper-Breadcrumb.html#method_division" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_division_h4">
+        division_h4()
+        <a href="classes/MyApp-Smarty-Modifier.html#method_division_h4" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Smarty/Modifier.php"><a href="files/fuel-app-myapp-smarty-modifier.html"><abbr title="fuel/app/MyApp/Smarty/Modifier.php">Modifier.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">54</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 </aside>
 
-    
+        <p class="phpdocumentor-summary">自治体のヘッダー（h4）タグを出力</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">division</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">division_h4</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$indentWidth</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$indentType</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;tab&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -334,14 +292,69 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>自治体オブジェクト</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$indentWidth</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>インデント幅</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$indentType</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;tab&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>インデントタイプ( sp or tab)</p>
+</section>
+
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>出力 HTML</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_init">
+        init()
+        <a href="classes/MyApp-Smarty-Modifier.html#method_init" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Smarty/Modifier.php"><a href="files/fuel-app-myapp-smarty-modifier.html"><abbr title="fuel/app/MyApp/Smarty/Modifier.php">Modifier.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+</aside>
+
+        <p class="phpdocumentor-summary">プラグイン関数を Smarty に登録する</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">init</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -353,180 +366,127 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_forge">
-        forge()
-        <a href="classes/MyApp-Helper-Breadcrumb.html#method_forge" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_tree_body">
+        tree_body()
+        <a href="classes/MyApp-Smarty-Modifier.html#method_tree_body" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Smarty/Modifier.php"><a href="files/fuel-app-myapp-smarty-modifier.html"><abbr title="fuel/app/MyApp/Smarty/Modifier.php">Modifier.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">85</span>
 </aside>
 
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">forge</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$label</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$label</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$uri</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getIterator">
-        getIterator()
-        <a href="classes/MyApp-Helper-Breadcrumb.html#method_getIterator" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">17</span>
-</aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getIterator</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_push">
-        push()
-        <a href="classes/MyApp-Helper-Breadcrumb.html#method_push" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">48</span>
-</aside>
-
-        <p class="phpdocumentor-summary">パンくずの末尾に項目を追加</p>
+        <p class="phpdocumentor-summary">自治体一覧を出力</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">push</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$label</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">tree_body</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\MyApp\Smarty\MyApp\Helper\Iterator">Iterator</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$iterator</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$indentWidth</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$indentType</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;tab&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$label</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$iterator</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\MyApp\Smarty\MyApp\Helper\Iterator">Iterator</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>項目の表示名</p>
+                    <section class="phpdocumentor-description"><p>自治体リスト</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$uri</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$indentWidth</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>インデント幅</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$indentType</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;tab&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>インデントタイプ( sp or tab)</p>
+</section>
+
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>出力 HTML</p>
+</section>
 
     
 </article>
                     <article
         class="phpdocumentor-element
             -method
-            -protected
-                                                        "
+            -public
+                                    -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method___construct">
-        __construct()
-        <a href="classes/MyApp-Helper-Breadcrumb.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_tree_header">
+        tree_header()
+        <a href="classes/MyApp-Smarty-Modifier.html#method_tree_header" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Breadcrumb.php"><a href="files/fuel-app-myapp-helper-breadcrumb.html"><abbr title="fuel/app/MyApp/Helper/Breadcrumb.php">Breadcrumb.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Smarty/Modifier.php"><a href="files/fuel-app-myapp-smarty-modifier.html"><abbr title="fuel/app/MyApp/Smarty/Modifier.php">Modifier.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">120</span>
 </aside>
 
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$label</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uri</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+        <p class="phpdocumentor-summary">自治体ツリーのヘッダを出力</p>
 
-    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">tree_header</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\MyApp\Smarty\MyApp\Model\Division\Tree">Tree</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tree</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$indentWidth</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$indentType</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;tab&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$label</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$tree</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\MyApp\Smarty\MyApp\Model\Division\Tree">Tree</abbr></span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>自治体ツリー</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$uri</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$indentWidth</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>インデント幅</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$indentType</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;tab&#039;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>インデントタイプ( sp or tab)</p>
+</section>
+
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>出力 HTML</p>
+</section>
 
     
 </article>
@@ -546,7 +506,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/MyApp-Helper-Breadcrumb.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/MyApp-Smarty-Modifier.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

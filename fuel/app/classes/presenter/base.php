@@ -36,6 +36,9 @@ abstract class Presenter_Base extends Fuel\Core\Presenter
 		}
 		$auto_encode = \Config::get('parser.View_Smarty.auto_encode', null);
 		$this->_view = \View_Smarty::forge($this->alt_view ?: $this->_view, null, $auto_encode);
+
+		// 独自プラグインを登録
+		MyApp\Smarty\Modifier::init();
 	}
 	/**
 	 * レンダリング処理を実装しているメソッドにコントローラの引数を渡して、
