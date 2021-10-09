@@ -18,60 +18,23 @@ class TreeTest extends TestCase
 
 	public function test_create()
 	{
-		$gunma = DivisionTable::create(
-			[
-				'fullname' => '群馬県',
-			],
-			null
-		);
-		$isesaki = DivisionTable::create(
-			[
-				'fullname' => '伊勢崎市',
-			],
-			$gunma
-		);
-		$sawa = DivisionTable::create(
-			[
-				'fullname' => '佐波郡',
-			],
-			$gunma
-		);
-		DivisionTable::create(
-			[
-				'fullname' => '赤堀町',
-			],
-			$sawa
-		);
-		DivisionTable::create(
-			[
-				'fullname' => '境町',
-			],
-			$sawa
-		);
-		DivisionTable::create(
-			[
-				'fullname' => '東村',
-			],
-			$sawa
-		);
-		DivisionTable::create(
-			[
-				'fullname' => '玉村町',
-			],
-			$sawa
-		);
+		$gunma = DivisionTable::makeFromPath('群馬県');
+		$isesaki = DivisionTable::makeFromPath('群馬県/伊勢崎市');
+		$sawa = DivisionTable::makeFromPath('群馬県/佐波郡');
+		DivisionTable::makeFromPath('群馬県/佐波郡/赤堀町');
+		DivisionTable::makeFromPath('群馬県/佐波郡/境町');
+		DivisionTable::makeFromPath('群馬県/佐波郡/東村');
+		DivisionTable::makeFromPath('群馬県/佐波郡/玉村町');
 
 		$tree = Tree::create($gunma);
 		$this->assertSame($gunma, $tree->self());
 
 		$this->assertSame(['市' => 1, '郡' => 1, '町' => 3, '村' => 1], $tree->suffixes());
 
-		$iterator = $tree->get_by_suffix('市');
-		$subtree = $iterator->get(0);
+		$subtree = $tree->get_by_suffix('市')->get(0);
 		$this->assertSame($isesaki->id_path, $subtree->self()->id_path);
 
-		$iterator = $tree->get_by_suffix('郡');
-		$subtree = $iterator->get(0);
+		$subtree = $tree->get_by_suffix('郡')->get(0);
 		$this->assertSame($sawa->id_path, $subtree->self()->id_path);
 		$this->assertSame(['町' => 3, '村' => 1], $subtree->suffixes());
 
