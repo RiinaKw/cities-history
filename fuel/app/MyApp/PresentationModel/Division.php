@@ -127,6 +127,11 @@ class Division extends PresentationModel
 		return "<a {$attr_html}>{$label}</a>";
 	}
 
+	public function htmlAnchorPath(): string
+	{
+		return $this->htmlAnchor($this->model->path);
+	}
+
 	public function htmlDebugCode(): string
 	{
 		if (\Input::get('debug') && $this->model->government_code) {

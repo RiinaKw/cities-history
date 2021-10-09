@@ -13,7 +13,7 @@
 {{foreach from=$divisions item=division}}
 					<li>
 						<h5>
-							{{$division->pmodel()->htmlAnchor($division->path)}}
+							{{$division->pmodel()->htmlAnchorPath()}}
 						</h5>
 					</li>
 {{/foreach}}
