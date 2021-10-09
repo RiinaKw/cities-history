@@ -66,6 +66,11 @@
                 <ul class="phpdocumentor-list">
                                             <li><a href="namespaces/fuel-tasks.html"><abbr title="\Fuel\Tasks">Tasks</abbr></a></li>
                                     </ul>
+                            <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/test.html"><abbr title="\Test">Test</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/test-fuel.html"><abbr title="\Test\Fuel">Fuel</abbr></a></li>
+                                            <li><a href="namespaces/test-myapp.html"><abbr title="\Test\MyApp">MyApp</abbr></a></li>
+                                    </ul>
                         </section>
 
         <section class="phpdocumentor-sidebar__category">
@@ -150,6 +155,13 @@
 
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/MyApp-Table-Division.html#constant_MODEL_NAME">MODEL_NAME</a>
+    <span>
+        &nbsp;= Model_Division::class                    </span>
+</dt>
+<dd>管理するテーブルに紐づくアクティブレコードのクラス名</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/MyApp-Table-Division.html#constant_RE_SUFFIX">RE_SUFFIX</a>
     <span>
         &nbsp;= &#039;/^(?&lt;place&gt;.+?)&#039; . &#039;(?&lt;suffix&gt;都|府|県|支庁|庁|総合振興局|振興局|市|郡|区|町|村|郷|城下|駅|宿|新宿|組|新田|新地)&#039; . &#039;(\((?&lt;identifier&gt;.+?)\))?$/&#039;                    </span>
@@ -192,25 +204,18 @@
 <dd>情報不足の自治体一覧を取得</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Table-Division.html#method_get_by_parent_division_and_date">get_by_parent_division_and_date()</a>
+    <a href="classes/MyApp-Abstracts-Table.html#method_getAsModel">getAsModel()</a>
+    <span>
+                        &nbsp;: <abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr>    </span>
+</dt>
+<dd>クエリをモデルオブジェクトに変換</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MyApp-Table-Division.html#method_getByParentDate">getByParentDate()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
 <dd>親自治体と日付から、その日に存在した自治体一覧を取得</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Table-Division.html#method_get_top_level">get_top_level()</a>
-    <span>
-                        &nbsp;: <abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr>    </span>
-</dt>
-<dd>どの自治体にも属していない自治体（だいたい都道府県）の一覧を取得</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Table-Division.html#method_getAsModel">getAsModel()</a>
-    <span>
-                        &nbsp;: <abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr>    </span>
-</dt>
-<dd>クエリを自治体オブジェクトに変換</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Table-Division.html#method_getOrCreateFromPath">getOrCreateFromPath()</a>
@@ -241,11 +246,25 @@
 <dd>自治体検索</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/MyApp-Table-Division.html#method_topLevel">topLevel()</a>
+    <span>
+                        &nbsp;: <abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr>    </span>
+</dt>
+<dd>どの自治体にも属していない自治体（だいたい都道府県）の一覧を取得</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Table-Division.html#method_update">update()</a>
     <span>
                         &nbsp;: <a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>    </span>
 </dt>
 <dd>入力パラメータと親自治体から自治体オブジェクトを更新する</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MyApp-Abstracts-Table.html#method_findBy">findBy()</a>
+    <span>
+                        &nbsp;: <a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a>|null    </span>
+</dt>
+<dd>指定したキーでテーブルを検索</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/MyApp-Table-Division.html#method_make">make()</a>
@@ -262,7 +281,14 @@
 <dd>親自治体を元にパスなどの項目を設定</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/MyApp-Table-Division.html#method_requireUnique">requireUnique()</a>
+    <a href="classes/MyApp-Abstracts-Table.html#method_requireUnique">requireUnique()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>指定したキーが一意であることを保証する</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MyApp-Table-Division.html#method_requireUniquePath">requireUniquePath()</a>
     <span>
                         &nbsp;: void    </span>
 </dt>
@@ -286,6 +312,33 @@
             <a href="classes/MyApp-Table-Division.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_MODEL_NAME">
+        MODEL_NAME
+        <a href="classes/MyApp-Table-Division.html#constant_MODEL_NAME" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">21</span>
+</aside>
+
+        <p class="phpdocumentor-summary">管理するテーブルに紐づくアクティブレコードのクラス名</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">MODEL_NAME</span>
+    = <span class="phpdocumentor-signature__default-value">Model_Division::class</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_RE_SUFFIX">
         RE_SUFFIX
         <a href="classes/MyApp-Table-Division.html#constant_RE_SUFFIX" class="headerlink"><i class="fas fa-link"></i></a>
@@ -294,7 +347,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 </aside>
 
         <p class="phpdocumentor-summary">自治体の種別を判定する正規表現</p>
@@ -388,7 +441,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">197</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 </aside>
 
         <p class="phpdocumentor-summary">入力パラメータと親自治体から新規に自治体オブジェクトを登録する</p>
@@ -444,7 +497,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 </aside>
 
         <p class="phpdocumentor-summary">パス形式から自治体を検索</p>
@@ -491,7 +544,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">348</span>
+    <span class="phpdocumentor-element-found-in__line">343</span>
 </aside>
 
         <p class="phpdocumentor-summary">情報不足の自治体一覧を取得</p>
@@ -535,21 +588,68 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_get_by_parent_division_and_date">
-        get_by_parent_division_and_date()
-        <a href="classes/MyApp-Table-Division.html#method_get_by_parent_division_and_date" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getAsModel">
+        getAsModel()
+        <a href="classes/MyApp-Abstracts-Table.html#method_getAsModel" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Table.php"><a href="files/fuel-app-myapp-abstracts-table.html"><abbr title="fuel/app/MyApp/Abstracts/Table.php">Table.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">57</span>
+</aside>
+
+        <p class="phpdocumentor-summary">クエリをモデルオブジェクトに変換</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">getAsModel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Fuel\Core\Database_Query_Builder">Database_Query_Builder</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$query</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$query</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Fuel\Core\Database_Query_Builder">Database_Query_Builder</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>検索クエリ</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Fuel のデータベースキャッシュ</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getByParentDate">
+        getByParentDate()
+        <a href="classes/MyApp-Table-Division.html#method_getByParentDate" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">310</span>
+    <span class="phpdocumentor-element-found-in__line">305</span>
 </aside>
 
         <p class="phpdocumentor-summary">親自治体と日付から、その日に存在した自治体一覧を取得</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">get_by_parent_division_and_date</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parent</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$date</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">getByParentDate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/Model-Division.html"><abbr title="\Model_Division">Model_Division</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parent</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$date</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -590,88 +690,6 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_get_top_level">
-        get_top_level()
-        <a href="classes/MyApp-Table-Division.html#method_get_top_level" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">292</span>
-</aside>
-
-        <p class="phpdocumentor-summary">どの自治体にも属していない自治体（だいたい都道府県）の一覧を取得</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">get_top_level</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Fuel のデータベースキャッシュ</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_getAsModel">
-        getAsModel()
-        <a href="classes/MyApp-Table-Division.html#method_getAsModel" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">47</span>
-</aside>
-
-        <p class="phpdocumentor-summary">クエリを自治体オブジェクトに変換</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">getAsModel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Fuel\Core\Database_Query_Builder">Database_Query_Builder</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$query</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$query</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Fuel\Core\Database_Query_Builder">Database_Query_Builder</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>検索クエリ</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Fuel のデータベースキャッシュ</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                    -static                    "
->
     <h4 class="phpdocumentor-element__name" id="method_getOrCreateFromPath">
         getOrCreateFromPath()
         <a href="classes/MyApp-Table-Division.html#method_getOrCreateFromPath" class="headerlink"><i class="fas fa-link"></i></a>
@@ -679,7 +697,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">278</span>
+    <span class="phpdocumentor-element-found-in__line">273</span>
 </aside>
 
         <p class="phpdocumentor-summary">パスから自治体オブジェクトを取得するか、なければ作る</p>
@@ -726,7 +744,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">255</span>
+    <span class="phpdocumentor-element-found-in__line">248</span>
 </aside>
 
         <p class="phpdocumentor-summary">パス形式から自治体オブジェクトを生成する</p>
@@ -773,7 +791,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 </aside>
 
         <p class="phpdocumentor-summary">削除されていないすべての自治体一覧を取得</p>
@@ -835,7 +853,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 </aside>
 
         <p class="phpdocumentor-summary">自治体検索</p>
@@ -876,6 +894,41 @@
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_topLevel">
+        topLevel()
+        <a href="classes/MyApp-Table-Division.html#method_topLevel" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">287</span>
+</aside>
+
+        <p class="phpdocumentor-summary">どの自治体にも属していない自治体（だいたい都道府県）の一覧を取得</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">topLevel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Fuel\Core\Database_Result_Cached">Database_Result_Cached</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Fuel のデータベースキャッシュ</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_update">
         update()
         <a href="classes/MyApp-Table-Division.html#method_update" class="headerlink"><i class="fas fa-link"></i></a>
@@ -883,7 +936,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">218</span>
 </aside>
 
         <p class="phpdocumentor-summary">入力パラメータと親自治体から自治体オブジェクトを更新する</p>
@@ -941,6 +994,62 @@
             -protected
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_findBy">
+        findBy()
+        <a href="classes/MyApp-Abstracts-Table.html#method_findBy" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Table.php"><a href="files/fuel-app-myapp-abstracts-table.html"><abbr title="fuel/app/MyApp/Abstracts/Table.php">Table.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+</aside>
+
+        <p class="phpdocumentor-summary">指定したキーでテーブルを検索</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">findBy</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$column</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a>|null</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$column</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>テーブルのキー</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>検索する値</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a>|null</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>見つかったモデル、見つからなければ null</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_make">
         make()
         <a href="classes/MyApp-Table-Division.html#method_make" class="headerlink"><i class="fas fa-link"></i></a>
@@ -948,7 +1057,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">109</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 </aside>
 
         <p class="phpdocumentor-summary">自治体の基本情報を設定</p>
@@ -1004,7 +1113,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">184</span>
 </aside>
 
         <p class="phpdocumentor-summary">親自治体を元にパスなどの項目を設定</p>
@@ -1054,19 +1163,97 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_requireUnique">
         requireUnique()
-        <a href="classes/MyApp-Table-Division.html#method_requireUnique" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Abstracts-Table.html#method_requireUnique" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Table.php"><a href="files/fuel-app-myapp-abstracts-table.html"><abbr title="fuel/app/MyApp/Abstracts/Table.php">Table.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">76</span>
+</aside>
+
+        <p class="phpdocumentor-summary">指定したキーが一意であることを保証する</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">requireUnique</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ignore_id</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$key</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>検索する値</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$ignore_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>除外するモデルの ID, 除外するものがなければ null</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>すでに値が存在している場合</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_requireUniquePath">
+        requireUniquePath()
+        <a href="classes/MyApp-Table-Division.html#method_requireUniquePath" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">228</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 </aside>
 
         <p class="phpdocumentor-summary">自治体のパスが一意であることを保証する</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">requireUnique</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ignore_id</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">requireUniquePath</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ignore_id</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -1130,7 +1317,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Table/Division.php"><a href="files/fuel-app-myapp-table-division.html"><abbr title="fuel/app/MyApp/Table/Division.php">Division.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">240</span>
+    <span class="phpdocumentor-element-found-in__line">233</span>
 </aside>
 
         <p class="phpdocumentor-summary">指定した自治体に所属する自治体を一括更新</p>
