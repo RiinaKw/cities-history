@@ -19,6 +19,7 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 			'model_to' => 'Model_Event_Detail',
 			'key_to' => 'event_id',
 			'cascade_save' => true,
+			'cascade_delete' => true,
 			'conditions' => [
 				'order_by' => [
 					'order' => 'asc'
