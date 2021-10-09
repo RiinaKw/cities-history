@@ -45,12 +45,12 @@ return array(
 	'admin/db/(.+?)/download' => 'admin/db/download/$1',
 
 	'page/(.+?)' => 'page/detail/$1',
-	'page'       => 'page/index',
 
 	'rest/code'       => 'rest/code/index',
 	'rest/code/(.+?)' => 'rest/code/detail/$1',
 
 	/* 古い URI のリダイレクト */
+	'page'                    => 'redirect/page_index',
 	'list/:path'              => 'redirect/list_detail',
 	'list'                    => 'redirect/list_index',
 	'division/children/:path' => 'redirect/division_children',

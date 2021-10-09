@@ -40,16 +40,6 @@ class Controller_Page extends Controller
 	}
 
 	/**
-	 * 何もせずトップにリダイレクトするだけ
-	 * @return \Response
-	 */
-	public function action_index()
-	{
-		Uri::redirect('top');
-	}
-	// function action_index()
-
-	/**
 	 * 固定ページを表示
 	 * @param  string   $slug  ページ名
 	 * @return \Response

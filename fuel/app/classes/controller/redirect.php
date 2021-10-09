@@ -11,6 +11,11 @@ use MyApp\Helper\Uri;
  */
 class Controller_Redirect extends Controller
 {
+	public function action_page_index()
+	{
+		Uri::redirectPermanently('top');
+	}
+
 	public function action_list_index()
 	{
 		Uri::redirectPermanently('top');
