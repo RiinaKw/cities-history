@@ -85,7 +85,7 @@ class Controller_Division extends Controller
 		$start = Input::get('start');
 		$end = Input::get('end');
 
-		$events = EventTable::get_by_parent_division_and_date($division, $start, $end);
+		$events = EventTable::getByParentStartEnd($division, $start, $end);
 
 		// create Presenter object
 		$content = Presenter_Division_Timeline::forge();
@@ -128,7 +128,6 @@ class Controller_Division extends Controller
 		$content->year = $year;
 		$content->month = $month;
 		$content->day = $day;
-		$content->division = $division;
 		$content->tree = $tree;
 		return $content;
 	}

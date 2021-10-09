@@ -3,10 +3,10 @@
 {{block name=content}}
 			<header class="clearfix">
 				<div class="float-left">
-					<h2>{{$division->path|escape}}</h2>
-					<p>{{$path_kana}}</p>
-{{if $division->government_code}}
-					<p>全国地方公共団体コード : {{$division->government_code|escape}}</p>
+					<h2>{{$parent->path|escape}}</h2>
+					<p>{{$parent->getter()->path_kana}}</p>
+{{if $parent->government_code}}
+					<p>全国地方公共団体コード : {{$parent->government_code|escape}}</p>
 {{/if}}
 				</div>
 {{if $user}}
@@ -74,8 +74,8 @@
 
 			<section>
 				<h3>
-					{{$division->pmodel()->htmlAnchor()}}
-					{{$division->pmodel()->htmlDebugCode()}}
+					{{$parent->pmodel()->htmlAnchor()}}
+					{{$parent->pmodel()->htmlDebugCode()}}
 				</h3>
 				<p class="count">{{$tree->pmodel()->suffiexes()}}</p>
 

@@ -18,25 +18,6 @@ class Controller_Admin_Division extends AdminController
 	{
 		$path = $this->param('path');
 		$filter = Input::get('filter');
-		/*
-		if ($path)
-		{
-			$parent = DivisionTable::findByPath($path);
-			$ids = DivisionTable::get_by_parent_division_and_date($parent);
-			array_unshift($ids, $parent->id);
-		}
-		else
-		{
-			$ids = DivisionTable::get_all_id();
-
-			$top_arr = DivisionTable::get_top_level();
-			$ids = [];
-			foreach ($top_arr as $d)
-			{
-				$ids[] = $d->id;
-			}
-		}
-		*/
 
 		$parent = null;
 		if ($path) {

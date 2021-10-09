@@ -16,7 +16,7 @@ class Controller_Top extends Controller
 	{
 		// create Presenter object
 		$content = Presenter_Top::forge();
-		$content->divisions = DivisionTable::get_top_level();
+		$content->divisions = DivisionTable::topLevel();
 
 		return $content;
 	}

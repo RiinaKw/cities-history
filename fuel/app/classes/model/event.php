@@ -42,29 +42,6 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 		return $object;
 	}
 	// function create()
-/*
-	public static function get_relative_division($event_id): Fuel\Core\Database_Result_Cached
-	{
-		$query = DB::select(
-			'd.*',
-			[DB::expr('concat(d.name, d.suffix)'), 'fullname'],
-			['e.id', 'event_detail_id'],
-			'e.result',
-			'e.geoshape',
-			'e.is_refer'
-		)
-			->from(['event_details', 'e'])
-			->join(['divisions', 'd'])
-			->on('e.division_id', '=', 'd.id')
-
-			->where('e.deleted_at', '=', null)
-			->where('e.event_id', '=', $event_id)
-			->order_by('e.order', 'asc');
-
-		return $query->as_object('Model_Division')->execute();
-	}
-	// function get_relative_division()
-*/
 
 	/**
 	 * @todo なぜこんなところにリダイレクトがある！？

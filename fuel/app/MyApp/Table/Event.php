@@ -68,7 +68,7 @@ class Event extends \MyApp\Abstracts\Table
 	 * @param  int    $event_id                   イベント ID
 	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
 	 */
-	public static function get_relative_division(int $event_id): Result
+	public static function getRelativeDivision(int $event_id): Result
 	{
 		$query = DB::select(
 			'd.*',
@@ -88,7 +88,7 @@ class Event extends \MyApp\Abstracts\Table
 
 		return $query->as_object(static::$model_name_division)->execute();
 	}
-	// function get_relative_division()
+	// function getRelativeDivision()
 
 	/**
 	 * 親自治体と期間から、配下の自治体のイベント一覧を取得
@@ -98,7 +98,7 @@ class Event extends \MyApp\Abstracts\Table
 	 * @param  string|null    $end_date           集計終了日付、null の場合は指定なし
 	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
 	 */
-	public static function get_by_parent_division_and_date(
+	public static function getByParentStartEnd(
 		Model_Division $parent,
 		string $start_date = null,
 		string $end_date = null
@@ -125,6 +125,6 @@ class Event extends \MyApp\Abstracts\Table
 
 		return $query->as_object(static::$model_name_event)->execute();
 	}
-	// function get_by_parent_division_and_date()
+	// function getByParentStartEnd()
 }
 // class Event

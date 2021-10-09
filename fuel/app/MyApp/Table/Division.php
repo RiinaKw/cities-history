@@ -282,7 +282,7 @@ class Division extends \MyApp\Abstracts\Table
 	 *
 	 * @return \Fuel\Core\Database_Result_Cached  Fuel のデータベースキャッシュ
 	 */
-	public static function get_top_level(): Result
+	public static function topLevel(): Result
 	{
 		$query = DB::select()
 			->from(self::TABLE_NAME)
@@ -292,7 +292,7 @@ class Division extends \MyApp\Abstracts\Table
 
 		return static::getAsModel($query);
 	}
-	// function get_top_level()
+	// function topLevel()
 
 	/**
 	 * 親自治体と日付から、その日に存在した自治体一覧を取得
@@ -300,7 +300,7 @@ class Division extends \MyApp\Abstracts\Table
 	 * @param  string|null    $date    日付、null の場合は過去に存在したすべての所属自治体を取得
 	 * @return [type]                 [description]
 	 */
-	public static function get_by_parent_division_and_date(Model_Division $parent, string $date = null)
+	public static function getByParentDate(Model_Division $parent, string $date = null)
 	{
 		$query = DB::select('d.*')
 			->from([self::TABLE_NAME, 'd'])
@@ -333,7 +333,7 @@ class Division extends \MyApp\Abstracts\Table
 
 		return static::getAsModel($query);
 	}
-	// function get_by_parent_division_and_date()
+	// function getByParentDate()
 
 	/**
 	 * 情報不足の自治体一覧を取得

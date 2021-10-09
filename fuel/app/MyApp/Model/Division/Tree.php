@@ -66,7 +66,7 @@ class Tree
 	{
 		$tree = new static($division);
 
-		$divisions = DivisionTable::get_by_parent_division_and_date($division, $date);
+		$divisions = DivisionTable::getByParentDate($division, $date);
 		foreach ($divisions as $division) {
 			$tree->add($division);
 		}

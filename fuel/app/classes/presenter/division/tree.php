@@ -1,6 +1,7 @@
 <?php
 
 use MyApp\Helper\Uri;
+use MyApp\Helper\Breadcrumb;
 
 /**
  * @package  App\Presenter
@@ -9,6 +10,9 @@ class Presenter_Division_Tree extends Presenter_Layout
 {
 	public function view()
 	{
+		$this->parent = $this->tree->self();
+		$getter = $this->parent->getter();
+
 		$dates = Model_Referencedate::get_all();
 		foreach ($dates as &$cur_date) {
 			$timestamp = strtotime($cur_date->date);
@@ -17,7 +21,7 @@ class Presenter_Division_Tree extends Presenter_Layout
 			$cur_date->day   = (int)date('d', $timestamp);
 			$cur_date->url = Uri::create(
 				'division.tree',
-				['path' => $this->division->path],
+				['path' => $this->parent->path],
 				[
 					'year'  => $cur_date->year,
 					'month' => $cur_date->month,
@@ -28,7 +32,7 @@ class Presenter_Division_Tree extends Presenter_Layout
 		$this->reference_dates = $dates;
 		$this->url_all = Uri::create(
 			'division.tree',
-			['path' => $this->division->path]
+			['path' => $this->parent->path]
 		);
 
 		$components = [
@@ -36,24 +40,17 @@ class Presenter_Division_Tree extends Presenter_Layout
 		];
 		$this->components = $components;
 
-		$getter = $this->division->getter();
-
-		$this->search_path = $getter->search_path;
-		$this->search_path_kana = $getter->search_path_kana;
-
-		$title = $this->division->path . 'の自治体一覧';
-		$description = "{$title} {$this->search_path} {$this->search_path_kana}";
+		$title = $getter->path . 'の自治体一覧';
+		$description = "{$title} {$getter->search_path} {$getter->search_path_kana}";
 
 		if ($this->date) {
 			$description .= MyApp\Helper\Date::format(' Y(Jk)-m-d', $this->date);
 		}
 
-		$this->path_kana = $getter->path_kana;
-
 		$this->title = $title;
 		$this->description = $description;
 		$this->og_type = 'article';
-		$this->breadcrumbs = \MyApp\Helper\Breadcrumb::forge()->division($this->division);
+		$this->breadcrumbs = Breadcrumb::forge()->division($this->parent);
 		$this->show_share = true;
 
 		$this->year_list = range(1878, date('Y'));
