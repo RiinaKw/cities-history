@@ -8,6 +8,14 @@
  */
 class Controller_Rest_Code extends Controller_Rest
 {
+	public function get_index()
+	{
+		$response = [
+			'error' => 'No code specified',
+		];
+		return $this->response($response, 400);
+	}
+
 	public function get_detail($code)
 	{
 		try {

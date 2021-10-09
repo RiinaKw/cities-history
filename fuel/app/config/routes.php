@@ -46,6 +46,7 @@ return array(
 
 	'page/:slug' => 'page/detail',
 
+	'rest/code'       => 'rest/code/index',
 	'rest/code/(.+?)' => 'rest/code/detail/$1',
 
 	/* 古い URI のリダイレクト */
