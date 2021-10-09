@@ -57,6 +57,11 @@ class Controller_Top extends Controller
 	}
 	// function action_search()
 
+	public function action_session_dump()
+	{
+		var_dump(Session::get());exit;
+	}
+
 	public function action_session_clear()
 	{
 		$division = Session::get('division');

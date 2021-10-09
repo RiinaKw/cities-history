@@ -116,7 +116,7 @@ class Controller_Admin_Event extends AdminController
 
 			$event = Model_Event::forge([
 				'date' => Date::format('Y-m-d', Input::post('date')),
-				'title' => DateInput::post('title'),
+				'title' => Input::post('title'),
 				'comment' => Input::post('comment'),
 				'source' => Input::post('source'),
 			]);
@@ -216,11 +216,24 @@ class Controller_Admin_Event extends AdminController
 	{
 		$event = $this->getModel($event_id);
 
-		$event->delete();
+		try {
+			DB::start_transaction();
 
-		$this->activity('delete event', $event_id);
+			$event->delete();
 
-		Debug::dump($event_id, Input::post());
+			$this->activity('delete event', $event_id);
+
+			DB::commit_transaction();
+
+			$this->session_uri->redirect();
+		} catch (Exception $e) {
+			// internal error
+			DB::rollback_transaction();
+			//Debug::dump($e);exit;
+			throw $e;
+		}
+
+		//Debug::dump($event_id, Input::post());
 		//exit;
 	}
 	// function action_delete()
