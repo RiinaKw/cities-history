@@ -28,13 +28,13 @@ class Controller_Admin_Reference extends AdminController
 
 	/**
 	 * 検索で見つからなかった場合のメッセージ
-	 * @param  in                                $value  getModelKey() で指定したキーに対する値
+	 * @param  int                                $value  getModelKey() で指定したキーに対する値
 	 * @param  \MyApp\Abstracts\ActiveRecord|null $obj    削除済みを取得した場合、そのオブジェクト
 	 * @return string
 	 */
 	protected static function notFound(int $value, Model_Referencedate $obj = null)
 	{
-		$key = static::MODEL_KEY;
+		$key = static::MODEL_RELATED['key'];
 		if ($obj) {
 			return "削除済みの参照日付です。 {$key} : {$value}";
 		} else {

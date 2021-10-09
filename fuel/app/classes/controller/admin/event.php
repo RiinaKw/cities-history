@@ -34,7 +34,7 @@ class Controller_Admin_Event extends AdminController
 	 */
 	protected static function notFound(int $value, Model_Event $obj = null)
 	{
-		$key = static::MODEL_KEY;
+		$key = static::MODEL_RELATED['key'];
 		if ($obj) {
 			return "削除済みのイベントです。 {$key} : {$value}";
 		} else {
@@ -218,7 +218,7 @@ class Controller_Admin_Event extends AdminController
 
 		$event->delete();
 
-		$this->activity('delete event', $event->id);
+		$this->activity('delete event', $event_id);
 
 		Debug::dump($event_id, Input::post());
 		//exit;
