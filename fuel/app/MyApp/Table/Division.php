@@ -18,6 +18,7 @@ class Division extends \MyApp\Abstracts\Table
 {
 	public const TABLE_NAME = 'divisions';
 	public const TABLE_PK = ['id'];
+	public const MODEL_NAME = Model_Division::class;
 
 	/**
 	 * 自治体の種別を判定する正規表現
@@ -35,18 +36,24 @@ class Division extends \MyApp\Abstracts\Table
 	 */
 	public static function findByPath(string $path): ?Model_Division
 	{
-		return Model_Division::query()->where('path', $path)->get_one();
+		$result = static::findBy('path', $path);
+		return $result;
 	}
 	// function get_by_path()
 
 	/**
-	 * クエリを自治体オブジェクトに変換
-	 * @param  \Fuel\Core\Database_Query_Builder $query  検索クエリ
-	 * @return \Fuel\Core\Database_Result_Cached         Fuel のデータベースキャッシュ
+	 * 自治体のパスが一意であることを保証する
+	 * @param string   $path       対象のパス
+	 * @param int|null $ignore_id  除外する自治体 ID
+	 * @throws \Exception  すでにパスが存在する場合
 	 */
-	public static function getAsModel(Query $query): Result
+	protected static function requireUniquePath(string $path, int $ignore_id = null): void
 	{
-		return $query->as_object(Model_Division::class)->execute();
+		try {
+			static::requireUnique('path', $path, $ignore_id);
+		} catch (\Exception $e) {
+			throw new \Exception("パスが重複しています : '$path'");
+		}
 	}
 
 	/**
@@ -184,7 +191,7 @@ class Division extends \MyApp\Abstracts\Table
 		$division->search_path = (($parent ? $parent->search_path : '') . $name);
 		$division->search_path_kana = (($parent ? $parent->search_path_kana : '') . $kana);
 
-		static::requireUnique($division->path, $division->id);
+		static::requireUniquePath($division->path, $division->id);
 		$division->save();
 	}
 
@@ -220,20 +227,6 @@ class Division extends \MyApp\Abstracts\Table
 	}
 
 	/**
-	 * 自治体のパスが一意であることを保証する
-	 * @param string   $path       対象のパス
-	 * @param int|null $ignore_id  除外する自治体 ID
-	 * @throws \Exception  すでにパスが存在する場合
-	 */
-	protected static function requireUnique(string $path, int $ignore_id = null): void
-	{
-		$division = static::findByPath($path);
-		if ($division && $division->id !== $ignore_id) {
-			throw new \Exception("重複しています : '{$path}'");
-		}
-	}
-
-	/**
 	 * 指定した自治体に所属する自治体を一括更新
 	 * @param  Model_Division $division  親となる自治体
 	 */
@@ -254,7 +247,7 @@ class Division extends \MyApp\Abstracts\Table
 	 */
 	public static function makeFromPath(string $path): Model_Division
 	{
-		static::requireUnique($path);
+		static::requireUniquePath($path);
 		$name = basename($path);
 		$parent_path = dirname($path);
 

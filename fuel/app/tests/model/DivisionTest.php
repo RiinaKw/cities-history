@@ -273,7 +273,7 @@ class DivisionTest extends TestCase
 	public function test_duplicate()
 	{
 		$this->expectException(\Exception::class);
-		$this->expectExceptionMessage("重複しています");
+		$this->expectExceptionMessage("パスが重複しています");
 		$this->expectExceptionMessage("群馬県");
 
 		DivisionTable::create(
@@ -294,9 +294,10 @@ class DivisionTest extends TestCase
 
 	public function test_duplicateWithPath()
 	{
+
 		$this->expectException(\Exception::class);
-		$this->expectExceptionMessage("重複しています");
-		$this->expectExceptionMessage("群馬県/鯖郡");
+		$this->expectExceptionMessage("パスが重複しています");
+		$this->expectExceptionMessage("'群馬県/鯖郡'");
 
 		DivisionTable::create(
 			[
