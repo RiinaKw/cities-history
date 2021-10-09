@@ -30,7 +30,7 @@ class Controller_Division extends Controller
 		$path = $this->param('path');
 		$division = DivisionTable::findByPath($path);
 		if (! $division || $division->deleted_at !== null) {
-			throw new HttpNotFoundException('自治体が見つかりません。');
+			throw new HttpNotFoundException("自治体が見つかりません。 '{$path}' does not exist");
 		}
 		return $division;
 	}
