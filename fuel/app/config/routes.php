@@ -25,6 +25,7 @@ return array(
 	'admin/division/add_csv'      => 'admin/division/add_csv',
 	'admin/division/edit/:path'   => 'admin/division/edit',
 	'admin/division/delete/:path' => 'admin/division/delete',
+	'admin/division'              => 'admin/division/index',
 	'admin/division/:path'        => 'admin/division/index',
 
 	'admin/reference/add'          => 'admin/reference/add',
