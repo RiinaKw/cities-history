@@ -6,12 +6,10 @@
 
 namespace MyApp\Abstracts;
 
-use Orm\Model_Soft as Orm;
-
 /**
  * Orm を継承したアクティブレコードの基底クラス
  */
-abstract class ActiveRecord extends Orm
+abstract class ActiveRecord extends \Orm\Model_Soft
 {
 	/**
 	 * テーブル名
@@ -38,26 +36,23 @@ abstract class ActiveRecord extends Orm
 	protected static $_updated_at  = 'updated_at';
 
 	/**
-	 * 削除日時のカラム名
-	 * @var string
-	 */
-	protected static $_deleted_at = 'deleted_at';
-
-	/**
 	 * 作成・更新日時をタイムスタンプにする
 	 * @var bool
 	 */
 	protected static $_mysql_timestamp = true;
 
 	/**
-	 * 削除日時をタイムスタンプにする
-	 * @var bool
+	 * 削除日時のカラム設定（カラム名、タイムスタンプ）
+	 * @var array<string, mixed>
 	 */
-	protected static $_default_mysql_timestamp = true;
+	protected static $_soft_delete = array(
+		'deleted_field' => 'deleted_at',
+		'mysql_timestamp' => true,
+	);
 
 	/**
 	 * 作成・更新時にタイムスタンプを追加
-	 * @var array
+	 * @var array<string, array>
 	 */
 	protected static $_observers = array(
 		'Orm\Observer_CreatedAt' => array(
@@ -69,17 +64,5 @@ abstract class ActiveRecord extends Orm
 			'mysql_timestamp' => true,
 		),
 	);
-
-	/**
-	 * 削除済みかどうか
-	 * @return boolean  削除されていれば true
-	 * @todo これ Orm の機能にない？
-	 */
-	public function is_deleted(): bool
-	{
-		$property = static::$_deleted_at;
-		return (bool)$this->$property;
-	}
-	// function is_deleted()
 }
 // class ActiveRecord

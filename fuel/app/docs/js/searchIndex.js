@@ -821,56 +821,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Presenter-Top.html#method_view"
         },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord",
-            "name": "ActiveRecord",
-            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003Ais_deleted\u0028\u0029",
-            "name": "is_deleted",
-            "summary": "\u524A\u9664\u6E08\u307F\u304B\u3069\u3046\u304B",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#method_is_deleted"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_table_name",
-            "name": "_table_name",
-            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__table_name"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_primary_key",
-            "name": "_primary_key",
-            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__primary_key"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_created_at",
-            "name": "_created_at",
-            "summary": "\u4F5C\u6210\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__created_at"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_updated_at",
-            "name": "_updated_at",
-            "summary": "\u66F4\u65B0\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__updated_at"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_deleted_at",
-            "name": "_deleted_at",
-            "summary": "\u524A\u9664\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__deleted_at"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_mysql_timestamp",
-            "name": "_mysql_timestamp",
-            "summary": "\u4F5C\u6210\u30FB\u66F4\u65B0\u65E5\u6642\u3092\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u306B\u3059\u308B",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__mysql_timestamp"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_default_mysql_timestamp",
-            "name": "_default_mysql_timestamp",
-            "summary": "\u524A\u9664\u65E5\u6642\u3092\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u306B\u3059\u308B",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__default_mysql_timestamp"
-        },                {
-            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_observers",
-            "name": "_observers",
-            "summary": "\u4F5C\u6210\u30FB\u66F4\u65B0\u6642\u306B\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u3092\u8FFD\u52A0",
-            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__observers"
-        },                {
             "fqsen": "\\MyApp\\Abstracts\\AdminController",
             "name": "AdminController",
             "summary": "\u7BA1\u7406\u753B\u9762\u5411\u3051\u306E\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
@@ -2395,6 +2345,46 @@ Search.appendIndex(
             "name": "session_uri",
             "summary": "",
             "url": "classes/Controller-Admin-Event.html#property_session_uri"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord",
+            "name": "ActiveRecord",
+            "summary": "Orm\u0020\u3092\u7D99\u627F\u3057\u305F\u30A2\u30AF\u30C6\u30A3\u30D6\u30EC\u30B3\u30FC\u30C9\u306E\u57FA\u5E95\u30AF\u30E9\u30B9",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_table_name",
+            "name": "_table_name",
+            "summary": "\u30C6\u30FC\u30D6\u30EB\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__table_name"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_primary_key",
+            "name": "_primary_key",
+            "summary": "\u4E3B\u30AD\u30FC\u306E\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__primary_key"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_created_at",
+            "name": "_created_at",
+            "summary": "\u4F5C\u6210\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__created_at"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_updated_at",
+            "name": "_updated_at",
+            "summary": "\u66F4\u65B0\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__updated_at"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_mysql_timestamp",
+            "name": "_mysql_timestamp",
+            "summary": "\u4F5C\u6210\u30FB\u66F4\u65B0\u65E5\u6642\u3092\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u306B\u3059\u308B",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__mysql_timestamp"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_soft_delete",
+            "name": "_soft_delete",
+            "summary": "\u524A\u9664\u65E5\u6642\u306E\u30AB\u30E9\u30E0\u8A2D\u5B9A\uFF08\u30AB\u30E9\u30E0\u540D\u3001\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\uFF09",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__soft_delete"
+        },                {
+            "fqsen": "\\MyApp\\Abstracts\\ActiveRecord\u003A\u003A\u0024_observers",
+            "name": "_observers",
+            "summary": "\u4F5C\u6210\u30FB\u66F4\u65B0\u6642\u306B\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u3092\u8FFD\u52A0",
+            "url": "classes/MyApp-Abstracts-ActiveRecord.html#property__observers"
         },                {
             "fqsen": "\\",
             "name": "\\",
