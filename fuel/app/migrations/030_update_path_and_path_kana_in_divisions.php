@@ -6,11 +6,9 @@ class Update_path_and_path_kana_in_divisions
 {
 	public function up()
 	{
-		$divisions = \Model_Division::find('all');
+		$divisions = \Model_Division::query();
 		if ($divisions) {
 			foreach ($divisions as $division) {
-				$division->path = $division->get_path(null, true);
-
 				$cur_division = $division;
 				$kana = '';
 				while ($cur_division) {

@@ -6,7 +6,7 @@ class Update_search_path_in_divisions
 {
 	public function up()
 	{
-		$divisions = \Model_Division::find('all');
+		$divisions = \Model_Division::query();
 		if ($divisions) {
 			foreach ($divisions as $division) {
 				$getter = $division->getter();

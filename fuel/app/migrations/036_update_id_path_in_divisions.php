@@ -6,7 +6,7 @@ class Update_id_path_in_divisions
 {
 	public function up()
 	{
-		$divisions = \Model_Division::find('all');
+		$divisions = \Model_Division::query();
 		if ($divisions) {
 			foreach ($divisions as $division) {
 				if ($division->parent_division_id === null) {

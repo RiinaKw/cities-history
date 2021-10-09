@@ -20,6 +20,7 @@ class Delete_parent_division_id_from_divisions
 				'parent_division_id' => array('constraint' => 11,  'null' => true, 'type' => 'int'),
 			));
 		}
+		\DBUtil::drop_index('divisions', 'idx_divisions_parent_division_id');
 		\DBUtil::create_index('divisions', 'parent_division_id', 'idx_divisions_parent_division_id');
 	}
 }
