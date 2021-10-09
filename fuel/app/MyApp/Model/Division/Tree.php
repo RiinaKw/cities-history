@@ -11,10 +11,17 @@ use MyApp\Helper\CountHash;
 use MyApp\Helper\IteratorHash;
 use Model_Division;
 use MyApp\Table\Division as DivisionTable;
-use MyApp\PresentationModel\Division\Tree as PModel;
 
 class Tree
 {
+	use \MyApp\Traits\Model\Presentable;
+
+	/**
+	 * プレゼンテーションモデルのクラス名
+	 * @var string
+	 */
+	protected const PMODEL_CLASS = \MyApp\PresentationModel\Division\Tree::class;
+
 	/**
 	 * 自分自身の自治体オブジェクト
 	 * @var Model_Division
@@ -49,11 +56,6 @@ class Tree
 		$this->unknown = new Iterator();
 
 		static::$ref[$division->id_path] = $this;
-	}
-
-	public function pmodel(): PModel
-	{
-		return new PModel($this);
 	}
 
 	/**

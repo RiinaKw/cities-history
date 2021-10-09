@@ -1,6 +1,7 @@
 <?php
 
 use MyApp\Abstracts\Controller;
+use MyApp\Traits\Controller\ModelRelated;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Model\Division\Tree;
 use MyApp\Table\Event as EventTable;
@@ -14,6 +15,34 @@ use MyApp\Helper\Session\Uri as SessionUri;
  */
 class Controller_Division extends Controller
 {
+	use ModelRelated;
+
+	/**
+	 * 関連するモデルのクラス名とカラム名
+	 * @var array<string, string>
+	 */
+	protected const MODEL_RELATED = [
+		'model' => Model_Division::class,
+		'key' => 'path',
+	];
+
+	/**
+	 * 検索で見つからなかった場合のメッセージ
+	 * @param  int|string                         $value  getModelKey() で指定したキーに対する値
+	 * @param  \MyApp\Abstracts\ActiveRecord|null $obj    削除済みを取得した場合、そのオブジェクト
+	 * @return string
+	 */
+
+	protected static function notFound($value, Model_Division $obj = null)
+	{
+		$key = static::MODEL_RELATED['key'];
+		if ($obj) {
+			return "削除済みのページです。 {$key} : {$value}";
+		} else {
+			return "ページが見つかりません。 {$key} : {$value}";
+		}
+	}
+
 	protected $session_uri = null;
 
 	public function before()
@@ -24,16 +53,6 @@ class Controller_Division extends Controller
 		$this->session_uri->set_uri();
 	}
 	// function before()
-
-	protected function requirePath(): Model_Division
-	{
-		$path = $this->param('path');
-		$division = DivisionTable::findByPath($path);
-		if (! $division || $division->deleted_at !== null) {
-			throw new HttpNotFoundException("自治体が見つかりません。 '{$path}' does not exist");
-		}
-		return $division;
-	}
 
 	/**
 	 * 自治体に紐づくイベント一覧を取得
@@ -62,9 +81,9 @@ class Controller_Division extends Controller
 		return $events;
 	}
 
-	public function action_detail()
+	public function action_detail($test = null)
 	{
-		$division = $this->requirePath();
+		$division = static::getModel($this->param('path'));
 		$events = $this->events($division);
 
 		// create Presenter object
@@ -80,7 +99,7 @@ class Controller_Division extends Controller
 
 	public function action_children()
 	{
-		$division = $this->requirePath();
+		$division = static::getModel($this->param('path'));
 		$label = Input::get('label');
 		$start = Input::get('start');
 		$end = Input::get('end');
@@ -100,7 +119,7 @@ class Controller_Division extends Controller
 
 	public function action_tree()
 	{
-		$division = $this->requirePath();
+		$division = static::getModel($this->param('path'));
 
 		$year = (int)Input::get('year');
 		$month = (int)Input::get('month');

@@ -12,10 +12,14 @@ class File
 {
 	use \MyApp\Traits\Model\Presentable;
 
+	/**
+	 * プレゼンテーションモデルのクラス名
+	 * @var string
+	 */
+	protected const PMODEL_CLASS = \MyApp\PresentationModel\File::class;
+
 	protected $fullpath = '';
 	protected $props = [];
-
-	protected static $pmodel_class = \MyApp\PresentationModel\File::class;
 
 	public function __construct($path)
 	{
