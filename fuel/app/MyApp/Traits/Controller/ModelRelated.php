@@ -12,16 +12,13 @@ use MyApp\Abstracts\ActiveRecord;
 trait ModelRelated
 {
 	/**
-	 * 関連するモデルのクラス名
-	 * @return string
+	 * 関連するモデルのクラス名とカラム名
+	 * @var array<string, string>
 	 */
-	abstract static protected function getModelClass(): string;
-
-	/**
-	 * 関連するモデルで検索に使うカラム名
-	 * @return string
-	 */
-	abstract static protected function getModelKey(): ?string;
+	//protected const MODEL_RELATED = [
+	//	'model' => ActiveRecord::class,
+	//	'key' => 'slug',
+	//];
 
 	/**
 	 * 検索で見つからなかった場合のメッセージ
@@ -40,12 +37,12 @@ trait ModelRelated
 	 */
 	protected static function getModel($value, bool $force = false): ActiveRecord
 	{
-		$model = static::getModelClass();
-		$key = static ::getModelKey();
-
-		if (! $model || ! $key) {
-			throw new \Exception('モデル名とキーの指定がないよ');
+		$config_constant = static::class . '::MODEL_RELATED';
+		if (! defined($config_constant)) {
+			throw new \Exception("constant '{$config_constant}' must be implemented");
 		}
+		$model = static::MODEL_RELATED['model'];
+		$key = static::MODEL_RELATED['key'];
 
 		if ($force) {
 			$model::disable_filter();

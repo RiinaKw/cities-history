@@ -17,12 +17,32 @@ class Controller_Admin_Reference extends AdminController
 {
 	use ModelRelated;
 
-	protected $session_flash = null;
+	/**
+	 * 関連するモデルのクラス名とカラム名
+	 * @var array<string, string>
+	 */
+	protected const MODEL_RELATED = [
+		'model' => Model_Referencedate::class,
+		'key' => 'id',
+	];
 
-	protected static function getModelClass(): string
+	/**
+	 * 検索で見つからなかった場合のメッセージ
+	 * @param  in                                $value  getModelKey() で指定したキーに対する値
+	 * @param  \MyApp\Abstracts\ActiveRecord|null $obj    削除済みを取得した場合、そのオブジェクト
+	 * @return string
+	 */
+	protected static function notFound(int $value, Model_Referencedate $obj = null)
 	{
-		return Model_Referencedate::class;
+		$key = static::MODEL_KEY;
+		if ($obj) {
+			return "削除済みの参照日付です。 {$key} : {$value}";
+		} else {
+			return "参照日付が見つかりません。 {$key} : {$value}";
+		}
 	}
+
+	protected $session_flash = null;
 
 	public function before()
 	{

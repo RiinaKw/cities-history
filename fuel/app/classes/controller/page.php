@@ -1,6 +1,7 @@
 <?php
 
 use MyApp\Abstracts\Controller;
+use MyApp\Traits\Controller\ModelRelated;
 use MyApp\Helper\Uri;
 
 /**
@@ -11,25 +12,16 @@ use MyApp\Helper\Uri;
  */
 class Controller_Page extends Controller
 {
-	use MyApp\Traits\Controller\ModelRelated;
+	use ModelRelated;
 
 	/**
-	 * 関連するモデルのクラス名
-	 * @return string
+	 * 関連するモデルのクラス名とカラム名
+	 * @var array<string, string>
 	 */
-	protected static function getModelClass(): string
-	{
-		return Model_Page::class;
-	}
-
-	/**
-	 * 関連するモデルで検索に使うカラム名
-	 * @return string
-	 */
-	protected static function getModelKey(): ?string
-	{
-		return 'slug';
-	}
+	protected const MODEL_RELATED = [
+		'model' => Model_Page::class,
+		'key' => 'slug',
+	];
 
 	/**
 	 * 検索で見つからなかった場合のメッセージ
@@ -39,18 +31,19 @@ class Controller_Page extends Controller
 	 */
 	protected static function notFound($value, Model_Page $obj = null)
 	{
+		$key = static::MODEL_RELATED['key'];
 		if ($obj) {
-			return "削除済みのページです。 slug : {$value}";
+			return "削除済みのページです。 {$key} : {$value}";
 		} else {
-			return "ページが見つかりません。 slug : {$value}";
+			return "ページが見つかりません。 {$key} : {$value}";
 		}
 	}
 
 	/**
 	 * 何もせずトップにリダイレクトするだけ
-	 * @return Response
+	 * @return \Response
 	 */
-	public function action_index(): Response
+	public function action_index()
 	{
 		Uri::redirect('top');
 	}
@@ -59,9 +52,9 @@ class Controller_Page extends Controller
 	/**
 	 * 固定ページを表示
 	 * @param  string   $slug  ページ名
-	 * @return Response
+	 * @return \Response
 	 */
-	public function action_detail(string $slug): Response
+	public function action_detail(string $slug)
 	{
 		$page = static::getModel($slug);
 

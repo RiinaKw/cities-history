@@ -16,25 +16,14 @@ class Controller_Admin_Page extends AdminController
 {
 	use ModelRelated;
 
-	protected $session_flash = null;
-
 	/**
-	 * 関連するモデルのクラス名
-	 * @return string
+	 * 関連するモデルのクラス名とカラム名
+	 * @var array<string, string>
 	 */
-	protected static function getModelClass(): string
-	{
-		return Model_Page::class;
-	}
-
-	/**
-	 * 関連するモデルで検索に使うカラム名
-	 * @return string
-	 */
-	protected static function getModelKey(): ?string
-	{
-		return 'id';
-	}
+	protected const MODEL_RELATED = [
+		'model' => Model_Page::class,
+		'key' => 'id',
+	];
 
 	/**
 	 * 検索で見つからなかった場合のメッセージ
@@ -50,6 +39,8 @@ class Controller_Admin_Page extends AdminController
 			return "ページが見つかりません。 slug : {$value}";
 		}
 	}
+
+	protected $session_flash = null;
 
 	public function before()
 	{

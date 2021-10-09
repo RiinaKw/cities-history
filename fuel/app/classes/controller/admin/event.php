@@ -17,6 +17,31 @@ class Controller_Admin_Event extends AdminController
 {
 	use ModelRelated;
 
+	/**
+	 * 関連するモデルのクラス名とカラム名
+	 * @var array<string, string>
+	 */
+	protected const MODEL_RELATED = [
+		'model' => Model_Event::class,
+		'key' => 'id',
+	];
+
+	/**
+	 * 検索で見つからなかった場合のメッセージ
+	 * @param  in                                $value  getModelKey() で指定したキーに対する値
+	 * @param  \MyApp\Abstracts\ActiveRecord|null $obj    削除済みを取得した場合、そのオブジェクト
+	 * @return string
+	 */
+	protected static function notFound(int $value, Model_Event $obj = null)
+	{
+		$key = static::MODEL_KEY;
+		if ($obj) {
+			return "削除済みのイベントです。 {$key} : {$value}";
+		} else {
+			return "イベントが見つかりません。 {$key} : {$value}";
+		}
+	}
+
 	protected $session_uri = null;
 
 	public function before()
@@ -26,15 +51,6 @@ class Controller_Admin_Event extends AdminController
 		$this->session_uri = new SessionUri('division');
 	}
 	// function before()
-
-	/**
-	 * 関連するモデルのクラス名を返す
-	 * @return string  'Model_Event'
-	 */
-	protected static function getModelClass(): string
-	{
-		return Model_Event::class;
-	}
 
 	protected function unifyPost(): array
 	{

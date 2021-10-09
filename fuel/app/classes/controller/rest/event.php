@@ -1,6 +1,7 @@
 <?php
 
 use MyApp\Table\Event as EventTable;
+use MyApp\Traits\Controller\ModelRelated;
 
 /**
  * イベント情報を取得する REST コントローラ
@@ -10,25 +11,16 @@ use MyApp\Table\Event as EventTable;
  */
 class Controller_Rest_Event extends Controller_Rest
 {
-	use MyApp\Traits\Controller\ModelRelated;
+	use ModelRelated;
 
 	/**
-	 * 関連するモデルのクラス名
-	 * @return string
+	 * 関連するモデルのクラス名とカラム名
+	 * @var array<string, string>
 	 */
-	protected static function getModelClass(): string
-	{
-		return Model_Event::class;
-	}
-
-	/**
-	 * 関連するモデルで検索に使うカラム名
-	 * @return string
-	 */
-	protected static function getModelKey(): ?string
-	{
-		return 'id';
-	}
+	protected const MODEL_RELATED = [
+		'model' => Model_Event::class,
+		'key' => 'id',
+	];
 
 	/**
 	 * 検索で見つからなかった場合のメッセージ
@@ -39,9 +31,9 @@ class Controller_Rest_Event extends Controller_Rest
 	protected static function notFound($value, Model_Event $obj = null)
 	{
 		if ($obj) {
-			return "削除済みのイベントです。 id : {$value}";
+			return "削除済みのイベントです。 {$key} : {$value}";
 		} else {
-			return "イベントが見つかりません。 id : {$value}";
+			return "イベントが見つかりません。 {$key} : {$value}";
 		}
 	}
 
