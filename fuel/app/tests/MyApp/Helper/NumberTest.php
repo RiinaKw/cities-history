@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\MyApp\Helper;
+
 use PHPUnit\Framework\TestCase;
 use MyApp\Helper\Number;
 

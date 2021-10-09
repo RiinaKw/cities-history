@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\MyApp\Model;
+
 use PHPUnit\Framework\TestCase;
 use MyApp\Model\File;
 

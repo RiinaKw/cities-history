@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\MyApp\Model;
+namespace Test\MyApp\PresentationModel;
 
 use PHPUnit\Framework\TestCase;
 use MyApp\MyFuel;

@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\MyApp\Model;
+
 use PHPUnit\Framework\TestCase;
 use MyApp\MyFuel;
 use MyApp\Model\Division\Tree;
@@ -13,7 +15,7 @@ class TreeTest extends TestCase
 		MyFuel::env('test');
 		MyFuel::oil('migrate');
 
-		DBUtil::truncate_table('divisions');
+		\DBUtil::truncate_table('divisions');
 	}
 
 	public function test_create()
