@@ -93,6 +93,30 @@ class Division extends PresentationModel
 	}
 
 	/**
+	 * 自治体変更 Ajax の URL
+	 * @return string
+	 */
+	public function uriEdit(): string
+	{
+		return Uri::create(
+			'admin.division.edit',
+			['path' => $this->model->path]
+		);
+	}
+
+	/**
+	 * 自治体変更 Ajax の URL
+	 * @return string
+	 */
+	public function uriDelete(): string
+	{
+		return Uri::create(
+			'admin.division.delete',
+			['path' => $this->model->path]
+		);
+	}
+
+	/**
 	 * 子孫自治体タイムラインの URI の配列
 	 * @return array
 	 */

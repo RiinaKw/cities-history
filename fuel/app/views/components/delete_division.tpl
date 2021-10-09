@@ -1,7 +1,7 @@
 
 			<div id="delete-division" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
-					<form class="modal-content" action="{{$url_delete}}" method="post">
+					<form class="modal-content" action="{{$division->pmodel()->uriDelete()}}" method="post">
 						<div class="modal-header">
 							<h5 class="modal-title">自治体を削除……</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
