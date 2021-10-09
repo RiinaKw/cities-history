@@ -87,9 +87,33 @@ class Date
 			return time();
 		}
 		if (is_string($timestamp)) {
-			return strtotime($timestamp);
+			return static::forTimestamp($timestamp);
 		}
 		return $timestamp;
+	}
+
+	protected static function forTimestamp(string $formatted): int
+	{
+		preg_match('/^(((?<gengo_short>[A-Z]+)(?<year_gengo>\d{1,2}))|(?<year_ad>\d{1,4}))-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $formatted, $matches);
+
+		if (! isset($matches['gengo_short']) || ! $matches['gengo_short']) {
+			$date = new \DateTime($formatted);
+			return $date->format('U');
+		} else {
+			$gengo = null;
+			foreach (static::$gengoList as $cur) {
+				if ($matches['gengo_short'] == $cur['name_short']) {
+					$gengo = $cur;
+					break;
+				}
+			}
+			if (! $gengo) {
+				throw new \Exception('Unknown gengo : ' . $matches['gengo_short']);
+			}
+			$start_year = (int)date('Y', $gengo['timestamp']);
+			$year = $start_year + (int)$matches['year_gengo'] - 1;
+			return mktime(0, 0, 0, $matches['month'], $matches['day'], $year);
+		}
 	}
 
 	/**
@@ -170,39 +194,5 @@ class Date
 		return date($format, $timestamp);
 	}
 	// function format()
-
-	public static function normalize($exp)
-	{
-		if (preg_match('/^(?<year>\d{1,4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $exp, $matches)) {
-			return sprintf(
-				'%d-%02d-%02d',
-				$matches['year'],
-				$matches['month'],
-				$matches['day']
-			);
-		}
-		if (
-			preg_match(
-				'/^(?<gengo>[A-Z])(?<year>\d{1,4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/',
-				$exp,
-				$matches
-			)
-		) {
-			$gengo = $matches['gengo'];
-			foreach (static::$gengoList as $g) {
-				if ($gengo === $g['name_short']) {
-					$base = date('Y', $g['timestamp']) - 1;
-					return sprintf(
-						'%d-%02d-%02d',
-						$base + $matches['year'],
-						$matches['month'],
-						$matches['day']
-					);
-				}
-			}
-		}
-		return '0000-00-00';
-	}
-	// function normalize()
 }
 // Helper_Date

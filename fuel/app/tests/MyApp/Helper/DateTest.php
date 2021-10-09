@@ -28,4 +28,10 @@ class DateTest extends TestCase
 		$formatted = Date::format('Ep時', mktime(13, 0, 0));
 		$this->assertSame('午後1時', $formatted);
 	}
+
+	public function test_fromGengo()
+	{
+		$formatted = Date::format('Y-m-d', 'H03-01-01');
+		$this->assertSame('1991-01-01', $formatted);
+	}
 }
