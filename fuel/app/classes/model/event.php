@@ -29,33 +29,5 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 		return $validation;
 	}
 	// function validation()
-
-	public static function createEvent($param): self
-	{
-		$object = self::forge([
-			'date' => $param['date'],
-			'title' => $param['title'],
-			'comment' => $param['comment'],
-			'source' => $param['source'],
-		]);
-		$object->save();
-		return $object;
-	}
-	// function create()
-
-	/**
-	 * @todo なぜこんなところにリダイレクトがある！？
-	 */
-	public function deleteEvent()
-	{
-		$detail = Model_Event_Detail::find_by_event_id($this->id);
-		foreach ($detail as $d) {
-			$d->delete();
-		}
-		$this->delete();
-
-		\MyApp\Helper\Uri::redirect('top');
-	}
-	// function delete()
 }
 // class Model_Event
