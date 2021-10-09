@@ -5,6 +5,7 @@ use MyApp\Traits\Controller\ModelRelated;
 use MyApp\Table\Division as DivisionTable;
 use MyApp\Helper\Session\Uri as SessionUri;
 use MyApp\Helper\GeoShape;
+use MyApp\Helper\Date;
 
 /**
  * The Event Controller.
@@ -100,8 +101,8 @@ class Controller_Admin_Event extends AdminController
 			DB::start_transaction();
 
 			$event = Model_Event::forge([
-				'date' => MyApp\Helper\Date::normalize(Input::post('date')),
-				'title' => Input::post('title'),
+				'date' => Date::format('Y-m-d', Input::post('date')),
+				'title' => DateInput::post('title'),
 				'comment' => Input::post('comment'),
 				'source' => Input::post('source'),
 			]);
@@ -154,7 +155,7 @@ class Controller_Admin_Event extends AdminController
 		try {
 			DB::start_transaction();
 
-			$event->date = Input::post('date');
+			$event->date = Date::format('Y-m-d', Input::post('date'));
 			$event->title = Input::post('title');
 			$event->comment = Input::post('comment');
 			$event->source = Input::post('source');
