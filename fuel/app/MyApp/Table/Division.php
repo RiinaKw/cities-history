@@ -251,7 +251,7 @@ class Division extends \MyApp\Abstracts\Table
 
 		// 親を取得
 		$parent = null;
-		if ( strpos($path, '/') !== false) {
+		if (strpos($path, '/') !== false) {
 			$parent_path = dirname($path);
 			$parent = static::getOrCreateFromPath($parent_path);
 		}
