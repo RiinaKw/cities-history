@@ -20,7 +20,7 @@
 							<label class="row">
 								<span class="col-4">日付</span>
 								<div class="col-8">
-									<input class="form-control" type="text" id="date" name="date" required="required" pattern="^(\d{+4}|[A-Z]\d{1-2})-(\d{1-2})-(\d{1-2})+$" />
+									<input class="form-control" type="text" id="date" name="date" required="required" pattern="^([0-9]{1-4}|[A-Z][0-9]{1-2})-[0-9]{1-2}-[0-9]{1-2}$" />
 								</div>
 							</label>
 							<label class="row">
