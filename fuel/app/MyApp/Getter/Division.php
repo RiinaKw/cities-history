@@ -92,7 +92,7 @@ class Division extends Getter
 			},
 			'belongs_path' => function () {
 				$division = $this->belongs(function ($division) {
-					return $division->get_path();
+					return $division->path;
 				});
 			},
 			'belongs_name' => function () {

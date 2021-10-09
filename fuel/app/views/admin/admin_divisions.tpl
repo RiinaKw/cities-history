@@ -30,7 +30,7 @@
 					<article class="card mb-4">
 						<header class="card-header px-3 pb-1">
 							<h3 class="h5 float-left">
-								<a href="{{$pmodel->url()}}">{{$division->get_path()}}</a>
+								<a href="{{$pmodel->url()}}">{{$division->path}}</a>
 							</h3>
 							<a class="float-left ml-4" href="{{$division.url_belongto}}">所属自治体</a>
 						</header>

@@ -20,7 +20,7 @@ class Controller_Rest_Division extends Controller_Rest
 		$sql = DB::last_query();
 		$pathes = [];
 		foreach ($divisions as $division) {
-			$path = $division->get_path();
+			$path = $division->path;
 			if (strpos($path, $query) !== false) {
 				$pathes[] = $path;
 			}

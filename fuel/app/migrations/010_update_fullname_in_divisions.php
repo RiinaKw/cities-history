@@ -9,7 +9,7 @@ class Update_fullname_in_divisions
 		$divisions = \Model_Division::find('all');
 		if ($divisions) {
 			foreach ($divisions as $division) {
-				$division->fullname = $division->get_path(null, true);
+				$division->fullname = basename($division->path);
 				$division->fullname_kana = $division->name_kana . $division->postfix_kana;
 				$division->save();
 			}
