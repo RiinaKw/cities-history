@@ -33,5 +33,8 @@ class DateTest extends TestCase
 	{
 		$formatted = Date::format('Y-m-d', 'H03-01-01');
 		$this->assertSame('1991-01-01', $formatted);
+
+		$formatted = Date::format('Y-m-d H:i:s', 'R02-01-01 11:53');
+		$this->assertSame('2020-01-01 11:53:00', $formatted);
 	}
 }

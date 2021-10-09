@@ -81,7 +81,7 @@ class Date
 	 * @param  int|string|null  $timestamp  タイムスタンプもしくは日時を示す文字列、null の場合は現在時刻
 	 * @return int  正規化されたタイムスタンプ
 	 */
-	private static function getTimestamp($timestamp = null): int
+	private static function getTimestamp($timestamp = null): ?int
 	{
 		if (is_null($timestamp)) {
 			return time();
@@ -92,27 +92,36 @@ class Date
 		return $timestamp;
 	}
 
-	protected static function forTimestamp(string $formatted): int
+	protected static function forTimestamp(string $formatted): ?int
 	{
-		preg_match('/^(((?<gengo_short>[A-Z]+)(?<year_gengo>\d{1,2}))|(?<year_ad>\d{1,4}))-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $formatted, $matches);
+		$hour = 0;
+		$min = 0;
+		$sec = 0;
+		if (preg_match('/(?<hour>\d{1,2}):(?<min>\d{1,2})(:(?<sec>\d{1,2}))?$/', $formatted, $matches)) {
+			$hour = (int)$matches['hour'];
+			$min = (int)$matches['min'];
+			$sec = (int)($matches['sec'] ?? 0);
+		}
 
-		if (! isset($matches['gengo_short']) || ! $matches['gengo_short']) {
+		if (preg_match('/^(?<year>\d{1,4})-(?<month>\d{1,2})-(?<day>\d{1,2})/', $formatted)) {
 			$date = new \DateTime($formatted);
 			return $date->format('U');
-		} else {
+		} else if (preg_match('/^(?<gengo>[A-Z]{1,2})(?<year>\d{1,2})-(?<month>\d{1,2})-(?<day>\d{1,2})/', $formatted, $matches)) {
 			$gengo = null;
 			foreach (static::$gengoList as $cur) {
-				if ($matches['gengo_short'] == $cur['name_short']) {
+				if ($matches['gengo'] == $cur['name_short']) {
 					$gengo = $cur;
 					break;
 				}
 			}
 			if (! $gengo) {
-				throw new \Exception('Unknown gengo : ' . $matches['gengo_short']);
+				throw new \Exception('Unknown gengo : ' . $matches['gengo']);
 			}
 			$start_year = (int)date('Y', $gengo['timestamp']);
-			$year = $start_year + (int)$matches['year_gengo'] - 1;
-			return mktime(0, 0, 0, $matches['month'], $matches['day'], $year);
+			$year = $start_year + (int)$matches['year'] - 1;
+			return mktime($hour, $min, $sec, $matches['month'], $matches['day'], $year);
+		} else {
+			return null;
 		}
 	}
 
