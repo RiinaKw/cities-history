@@ -31,13 +31,13 @@ class Model_Division extends \MyApp\Abstracts\ActiveRecord
 	 * プレゼンテーションモデルのクラス名
 	 * @var string
 	 */
-	protected static $pmodel_class = \MyApp\PresentationModel\Division::class;
+	protected const PMODEL_CLASS = \MyApp\PresentationModel\Division::class;
 
 	/**
 	 * ゲッターのクラス名
 	 * @var string
 	 */
-	protected static $getter_class = \MyApp\Getter\Division::class;
+	protected const GETTER_CLASS = \MyApp\Getter\Division::class;
 
 	public function validation()
 	{

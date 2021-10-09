@@ -12,7 +12,7 @@ use MyApp\Abstracts\PresentationModel;
 trait Presentable
 {
 	// Property to implement in the model
-	// protected static $pmodel_class = '';
+	// protected const PMODEL_CLASS = Getter::class;
 
 	/**
 	 * プレゼンテーションモデルを取得
@@ -20,7 +20,11 @@ trait Presentable
 	 */
 	public function pmodel(): PresentationModel
 	{
-		$class = static::$pmodel_class;
+		$const_name = static::class . '::PMODEL_CLASS';
+		if (! defined($const_name)) {
+			throw new \Exception("constant '{$const_name}' must be implemented");
+		}
+		$class = static::PMODEL_CLASS;
 		return new $class($this);
 	}
 }

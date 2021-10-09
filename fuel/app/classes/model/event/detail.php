@@ -16,7 +16,11 @@ class Model_Event_Detail extends \MyApp\Abstracts\ActiveRecord
 		'division',
 	];
 
-	protected static $pmodel_class = \MyApp\PresentationModel\Event\Detail::class;
+	/**
+	 * プレゼンテーションモデルのクラス名
+	 * @var string
+	 */
+	protected const PMODEL_CLASS = \MyApp\PresentationModel\Event\Detail::class;
 
 	public function validation()
 	{

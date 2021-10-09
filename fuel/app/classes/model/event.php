@@ -15,7 +15,11 @@ class Model_Event extends \MyApp\Abstracts\ActiveRecord
 
 	protected static $_has_many = ['event_details'];
 
-	protected static $pmodel_class = \MyApp\PresentationModel\Event::class;
+	/**
+	 * プレゼンテーションモデルのクラス名
+	 * @var string
+	 */
+	protected const PMODEL_CLASS = \MyApp\PresentationModel\Event::class;
 
 	public function validation(): Validation
 	{
