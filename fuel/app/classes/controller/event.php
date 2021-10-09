@@ -13,6 +13,8 @@ use MyApp\Helper\GeoShape;
  */
 class Controller_Event extends Controller
 {
+	use MyApp\Traits\Controller\ModelRelated;
+
 	protected $session_uri = null;
 
 	public function before()
@@ -25,13 +27,13 @@ class Controller_Event extends Controller
 	}
 	// function before()
 
-	protected function requireEvent($event_id): Model_Event
+	/**
+	 * 関連するモデルのクラス名を返す
+	 * @return string  'Model_Event'
+	 */
+	protected static function getModelClass(): string
 	{
-		$event = Model_Event::find($event_id);
-		if (! $event) {
-			throw new HttpNotFoundException('イベントが見つかりません。');
-		}
-		return $event;
+		return Model_Event::class;
 	}
 
 	protected function unifyPost(): array
@@ -144,7 +146,7 @@ class Controller_Event extends Controller
 
 	public function post_edit($event_id)
 	{
-		$event = $this->requireEvent($event_id);
+		$event = $this->getModel($event_id);
 
 		$post = $this->unifyPost();
 
@@ -196,7 +198,7 @@ class Controller_Event extends Controller
 
 	public function action_delete($event_id)
 	{
-		$event = $this->requireEvent($event_id);
+		$event = $this->getModel($event_id);
 
 		$event->delete();
 

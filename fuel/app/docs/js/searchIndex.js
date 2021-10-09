@@ -256,10 +256,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Controller-Event.html#method_before"
         },                {
-            "fqsen": "\\Controller_Event\u003A\u003ArequireEvent\u0028\u0029",
-            "name": "requireEvent",
-            "summary": "",
-            "url": "classes/Controller-Event.html#method_requireEvent"
+            "fqsen": "\\Controller_Event\u003A\u003AgetModelClass\u0028\u0029",
+            "name": "getModelClass",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D\u3092\u8FD4\u3059",
+            "url": "classes/Controller-Event.html#method_getModelClass"
         },                {
             "fqsen": "\\Controller_Event\u003A\u003AunifyPost\u0028\u0029",
             "name": "unifyPost",
@@ -345,6 +345,11 @@ Search.appendIndex(
             "name": "Controller_Rest_Code",
             "summary": "The\u0020Rest\u0020Code\u0020Controller.",
             "url": "classes/Controller-Rest-Code.html"
+        },                {
+            "fqsen": "\\Controller_Rest_Code\u003A\u003Aget_index\u0028\u0029",
+            "name": "get_index",
+            "summary": "",
+            "url": "classes/Controller-Rest-Code.html#method_get_index"
         },                {
             "fqsen": "\\Controller_Rest_Code\u003A\u003Aget_detail\u0028\u0029",
             "name": "get_detail",
@@ -595,16 +600,6 @@ Search.appendIndex(
             "name": "validation",
             "summary": "",
             "url": "classes/Model-Event.html#method_validation"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003AcreateEvent\u0028\u0029",
-            "name": "createEvent",
-            "summary": "",
-            "url": "classes/Model-Event.html#method_createEvent"
-        },                {
-            "fqsen": "\\Model_Event\u003A\u003AdeleteEvent\u0028\u0029",
-            "name": "deleteEvent",
-            "summary": "",
-            "url": "classes/Model-Event.html#method_deleteEvent"
         },                {
             "fqsen": "\\Model_Event\u003A\u003A\u0024_table_name",
             "name": "_table_name",
