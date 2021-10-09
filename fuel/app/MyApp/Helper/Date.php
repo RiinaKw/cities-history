@@ -15,12 +15,13 @@ class Date
 	 * @var array<int, array<string, int|string>>
 	 */
 	private static $gengoList = [
-		['name' => '令和', 'name_short' => 'R',  'timestamp' =>  1556636400], // 2019-05-01,
-		['name' => '平成', 'name_short' => 'H',  'timestamp' =>   600188400], // 1989-01-08,
-		['name' => '昭和', 'name_short' => 'S',  'timestamp' => -1357635600], // 1926-12-25'
-		['name' => '大正', 'name_short' => 'T',  'timestamp' => -1812186000], // 1912-07-30
-		['name' => '明治', 'name_short' => 'M',  'timestamp' => -3216790800], // 1868-01-25
-		['name' => '西暦', 'name_short' => 'AD', 'timestamp' => 0]
+		['name' => '令和',   'name_short' => 'R',  'timestamp' =>   1556636400], // 2019-05-01,
+		['name' => '平成',   'name_short' => 'H',  'timestamp' =>    600188400], // 1989-01-08,
+		['name' => '昭和',   'name_short' => 'S',  'timestamp' =>  -1357635600], // 1926-12-25'
+		['name' => '大正',   'name_short' => 'T',  'timestamp' =>  -1812186000], // 1912-07-30
+		['name' => '明治',   'name_short' => 'M',  'timestamp' =>  -3216790800], // 1868-01-25
+		['name' => '西暦',   'name_short' => 'AD', 'timestamp' => -62135630339],
+		['name' => '紀元前', 'name_short' => 'BC', 'timestamp' => PHP_INT_MIN],
 	];
 
 	/**
@@ -71,7 +72,7 @@ class Date
 			}
 		}
 		// 元号が取得できない場合はException
-		throw new Exception('Cannot be converted to gengo : ' . $timestamp);
+		throw new \Exception('Cannot be converted to gengo : ' . $timestamp);
 	}
 
 	/**
@@ -127,12 +128,18 @@ class Date
 
 		// K : 和暦用年(元年表示)
 		$format = static::replace($format, 'K', function () use ($gengo, $timestamp) {
+			if ($gengo['name_short'] == 'BC') {
+				return abs(date('Y', $timestamp));
+			}
 			$year = date('Y', $timestamp) - date('Y', $gengo['timestamp']) + 1;
 			return $year == 1 ? '元' : $year;
 		});
 
 		// k : 和暦用年
 		$format = static::replace($format, 'k', function () use ($gengo, $timestamp) {
+			if ($gengo['name_short'] == 'BC') {
+				return abs(date('Y', $timestamp));
+			}
 			return (int)date('Y', $timestamp) - (int)date('Y', (int)$gengo['timestamp']) + 1;
 		});
 
