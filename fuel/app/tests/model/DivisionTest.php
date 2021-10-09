@@ -1,8 +1,11 @@
 <?php
 
+namespace Test\Fuel\Model;
+
 use PHPUnit\Framework\TestCase;
 use MyApp\MyFuel;
 use MyApp\Table\Division as DivisionTable;
+use Model_Division;
 
 class DivisionTest extends TestCase
 {
@@ -12,7 +15,7 @@ class DivisionTest extends TestCase
 		MyFuel::env('test');
 		MyFuel::oil('migrate');
 
-		DBUtil::truncate_table('divisions');
+		\DBUtil::truncate_table('divisions');
 	}
 
 	public function test_create()
