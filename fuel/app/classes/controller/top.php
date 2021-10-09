@@ -7,8 +7,8 @@ use MyApp\Helper\Str;
 /**
  * The Top Controller.
  *
- * @package  App\Controller
- * @extends  Controller_Base
+ * @package  Fuel\Controller
+ * @extends  MyApp\Abstracts\Controller
  */
 class Controller_Top extends Controller
 {

@@ -4,7 +4,7 @@ use MyApp\Helper\Uri;
 use MyApp\Helper\Breadcrumb;
 
 /**
- * @package  App\Presenter
+ * @package  Fuel\Presenter
  */
 class Presenter_Division_Tree extends Presenter_Layout
 {

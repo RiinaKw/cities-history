@@ -6,8 +6,8 @@ use MyApp\Helper\Uri;
 /**
  * The Page Controller.
  *
- * @package  App\Controller
- * @extends  Controller_Base
+ * @package  Fuel\Controller
+ * @extends  MyApp\Abstracts\Controller
  */
 class Controller_Page extends Controller
 {

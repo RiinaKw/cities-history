@@ -4,7 +4,7 @@ use MyApp\Helper\Breadcrumb;
 use MyApp\Helper\Str;
 
 /**
- * @package  App\Presenter
+ * @package  Fuel\Presenter
  */
 class Presenter_Page extends Presenter_Layout
 {

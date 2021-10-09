@@ -5,8 +5,8 @@ use MyApp\Abstracts\Controller;
 /**
  * The Geoshape Controller.
  *
- * @package  App\Controller
- * @extends  Controller
+ * @package  Fuel\Controller
+ * @extends  MyApp\Abstracts\Controller
  */
 class Controller_Geoshape extends Controller
 {

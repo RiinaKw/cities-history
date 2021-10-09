@@ -9,7 +9,7 @@ use MyApp\Helper\Uri;
  *
  * Admin controller for edit divisions.
  *
- * @package  App\Controller
+ * @package  Fuel\Controller
  * @extends  Controller_Admin_Base
  */
 class Controller_Admin_Division extends AdminController

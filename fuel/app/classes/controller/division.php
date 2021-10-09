@@ -9,8 +9,8 @@ use MyApp\Helper\Session\Uri as SessionUri;
 /**
  * The Division Controller.
  *
- * @package  App\Controller
- * @extends  Controller_Base
+ * @package  Fuel\Controller
+ * @extends  MyApp\Abstracts\Controller
  */
 class Controller_Division extends Controller
 {

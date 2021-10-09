@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package  App\Presenter
+ * @package  Fuel\Presenter
  */
 class Presenter_Top extends Presenter_Layout
 {

@@ -12,7 +12,7 @@ use MyApp\Helper\Uri;
  *
  * Admin controller for edit date references.
  *
- * @package  App\Controller
+ * @package  Fuel\Controller
  * @extends  Controller_Admin_Base
  */
 class Controller_Admin_Db extends AdminController

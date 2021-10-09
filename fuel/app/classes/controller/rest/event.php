@@ -5,7 +5,7 @@ use MyApp\Table\Event as EventTable;
 /**
  * The Rest Event Controller.
  *
- * @package  App\Controller
+ * @package  Fuel\Controller
  * @extends  Controller_Rest
  */
 class Controller_Rest_Event extends Controller_Rest

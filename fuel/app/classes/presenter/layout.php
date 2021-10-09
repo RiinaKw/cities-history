@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package  App\Presenter
+ * @package  Fuel\Presenter
  */
 
 use MyApp\Helper\Uri;

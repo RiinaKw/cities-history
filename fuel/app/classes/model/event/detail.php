@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package  App\Model
+ * @package  Fuel\Model
  */
 
 class Model_Event_Detail extends \MyApp\Abstracts\ActiveRecord

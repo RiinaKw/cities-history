@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  Fuel\Helper
+ */
 class Helper_Random
 {
 	public static function forge($exists)

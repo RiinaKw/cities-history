@@ -9,7 +9,7 @@ use MyApp\Helper\Session\Flash as FlashSession;
  *
  * Admin controller for edit date references.
  *
- * @package  App\Controller
+ * @package  Fuel\Controller
  * @extends  Controller_Admin_Base
  */
 class Controller_Admin_Page extends AdminController

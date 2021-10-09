@@ -3,7 +3,7 @@
 /**
  * The Rest Code Controller.
  *
- * @package  App\Controller
+ * @package  Fuel\Controller
  * @extends  Controller_Rest
  */
 class Controller_Rest_Code extends Controller_Rest

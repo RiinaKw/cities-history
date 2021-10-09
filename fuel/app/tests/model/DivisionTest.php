@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @package  Fuel\Test
+ */
+
 namespace Test\Fuel\Model;
 
 use PHPUnit\Framework\TestCase;

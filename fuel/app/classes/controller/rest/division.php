@@ -5,7 +5,7 @@ use MyApp\Table\Division as DivisionTable;
 /**
  * The Rest Division Controller.
  *
- * @package  App\Controller
+ * @package  Fuel\Controller
  * @extends  Controller_Rest
  */
 class Controller_Rest_Division extends Controller_Rest

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @package  App\Test
+ */
+
 namespace Test\MyApp\PresentationModel;
 
 use PHPUnit\Framework\TestCase;

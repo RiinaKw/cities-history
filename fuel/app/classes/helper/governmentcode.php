@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @package  Fuel\Helper
+ */
 class Helper_Governmentcode
 {
 	public static function normalize($code)
