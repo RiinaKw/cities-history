@@ -26,9 +26,18 @@ class Controller_Rest_Event extends Controller_Rest
 		// if ( ! $event)
 
 		$divisions = EventTable::getRelativeDivision($event_id);
-		$response = [];
+		$response = [
+			'event' => [
+				'id'      => $event->id,
+				'title'   => $event->title,
+				'date'    => $event->date,
+				'comment' => $event->comment,
+				'source'  => $event->source,
+			],
+			'details' => [],
+		];
 		foreach ($divisions as $division) {
-			$response[] = [
+			$response['details'][] = [
 				'id'        => $division->event_detail_id,
 				'name'      => $division->name,
 				'path'      => $division->path,

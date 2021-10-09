@@ -191,32 +191,27 @@ $(function(){
 	});
 
 	$(document).on("dblclick", ".editable", function(){
+		let event_id = $(this).data("event-id");
 		var $modal = $('#change-event').modal();
 		$(".modal-title", $modal).text("イベントを変更…");
-		var event_id = $(this).data("event-id");
-		var path = $("h2", $(this)).html();
-		var title = $("h3", $(this)).html();
-		var date = $("time", $(this)).attr("datetime");
-		var comment = $(".comment", $(this)).html();
-		var source = $(".source_preformat", $(this)).html();
 		var url = "{{\MyApp\Helper\Uri::create('admin.event.edit')}}".replace(":id", event_id);
 		$("form", $modal).attr("action", url);
-		$("#event-id", $modal).val(event_id);
-		$("#path", $modal).val(path);
-		$("#title", $modal).val(title);
-		$("#date", $modal).val(date);
-		$("#comment", $modal).val(comment);
-		$("#source", $modal).val(source);
-		$(".btn-danger", $modal).show();
 
 		$.ajax({
 			type: "get",
 			url: "{{\MyApp\Helper\Uri::create('event.detail')}}".replace(":id", event_id),
 		})
 		.done(function(data, message, xhr){
+			$("#event-id", $modal).val(data['event']['id']);
+			$("#title", $modal).val(data['event']['title']);
+			$("#date", $modal).val(data['event']['date']);
+			$("#comment", $modal).val(data['event']['comment']);
+			$("#source", $modal).val(data['event']['source']);
+			$(".btn-danger", $modal).show();
+
 			var $tbody = $("#change-event-sortable", $modal).empty();
-			for (idx in data) {
-				add_row($tbody, idx, data[idx]);
+			for (idx in data["details"]) {
+				add_row($tbody, idx, data["details"][idx]);
 			}
 		});
 	});
