@@ -120,10 +120,10 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Controller_Page
+    Controller_Admin_Event
 
         <span class="phpdocumentor-element__extends">
-        extends <a href="classes/MyApp-Abstracts-Controller.html"><abbr title="\MyApp\Abstracts\Controller">Controller</abbr></a>
+        extends <a href="classes/MyApp-Abstracts-AdminController.html"><abbr title="\MyApp\Abstracts\AdminController">AdminController</abbr></a>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -141,12 +141,12 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/page.php"><a href="files/fuel-app-classes-controller-page.html"><abbr title="fuel/app/classes/controller/page.php">page.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">12</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 </aside>
 
-            <p class="phpdocumentor-summary">固定ページの表示を管理するコントローラ</p>
+            <p class="phpdocumentor-summary">The Event Controller.</p>
 
     <section class="phpdocumentor-description"></section>
 
@@ -164,6 +164,13 @@
 
 <dl class="phpdocumentor-table-of-contents">
                 <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Controller-Admin-Event.html#property_session_uri">$session_uri</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/MyApp-Abstracts-Controller.html#property_session_user">$session_user</a>
     <span>
                 &nbsp;: <a href="classes/Model-User.html"><abbr title="\Model_User">Model_User</abbr></a>            </span>
@@ -171,18 +178,11 @@
 <dd>ログイン状態を保存するセッション</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Controller-Page.html#method_action_detail">action_detail()</a>
+    <a href="classes/Controller-Admin-Event.html#method_action_delete">action_delete()</a>
     <span>
-                        &nbsp;: <abbr title="\Response">Response</abbr>    </span>
+                        &nbsp;: mixed    </span>
 </dt>
-<dd>固定ページを表示</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Controller-Page.html#method_action_index">action_index()</a>
-    <span>
-                        &nbsp;: <abbr title="\Response">Response</abbr>    </span>
-</dt>
-<dd>何もせずトップにリダイレクトするだけ</dd>
+<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/MyApp-Abstracts-Controller.html#method_after">after()</a>
@@ -192,7 +192,21 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Abstracts-Controller.html#method_before">before()</a>
+    <a href="classes/Controller-Admin-Event.html#method_before">before()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Controller-Admin-Event.html#method_post_add">post_add()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Controller-Admin-Event.html#method_post_edit">post_edit()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
@@ -213,21 +227,21 @@
 <dd>モデルを取得する</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Controller-Page.html#method_getModelClass">getModelClass()</a>
+    <a href="classes/Controller-Admin-Event.html#method_getModelClass">getModelClass()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd>関連するモデルのクラス名</dd>
+<dd>関連するモデルのクラス名を返す</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Controller-Page.html#method_getModelKey">getModelKey()</a>
+    <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_getModelKey">getModelKey()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
 <dd>関連するモデルで検索に使うカラム名</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Controller-Page.html#method_notFound">notFound()</a>
+    <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_notFound">notFound()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
@@ -239,6 +253,20 @@
                         &nbsp;: void    </span>
 </dt>
 <dd>ログインしていない状態でアクセスすると例外を投げる</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Controller-Admin-Event.html#method_submitDetails">submitDetails()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Controller-Admin-Event.html#method_unifyPost">unifyPost()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/MyApp-Abstracts-Controller.html#method_user">user()</a>
@@ -257,8 +285,39 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/Controller-Page.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Controller-Admin-Event.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_session_uri">
+        $session_uri
+        <a href="classes/Controller-Admin-Event.html#property_session_uri" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$session_uri</span>
+     = <span class="phpdocumentor-signature__default-value">
+ull</span></code>
+
+    
+    
+
+</article>
                     <article
         class="
             phpdocumentor-element
@@ -296,7 +355,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Controller-Page.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Controller-Admin-Event.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -304,75 +363,37 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_action_detail">
-        action_detail()
-        <a href="classes/Controller-Page.html#method_action_detail" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_action_delete">
+        action_delete()
+        <a href="classes/Controller-Admin-Event.html#method_action_delete" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/page.php"><a href="files/fuel-app-classes-controller-page.html"><abbr title="fuel/app/classes/controller/page.php">page.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">64</span>
+    <span class="phpdocumentor-element-found-in__line">201</span>
 </aside>
 
-        <p class="phpdocumentor-summary">固定ページを表示</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">action_detail</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$slug</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Response">Response</abbr></span></code>
+                <span class="phpdocumentor-signature__name">action_delete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$event_id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$slug</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$event_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>ページ名</p>
-</section>
-
+                
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Response">Response</abbr></span>
-            &mdash;
-            <section class="phpdocumentor-description"></section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_action_index">
-        action_index()
-        <a href="classes/Controller-Page.html#method_action_index" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/page.php"><a href="files/fuel-app-classes-controller-page.html"><abbr title="fuel/app/classes/controller/page.php">page.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">53</span>
-</aside>
-
-        <p class="phpdocumentor-summary">何もせずトップにリダイレクトするだけ</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">action_index</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Response">Response</abbr></span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Response">Response</abbr></span>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -428,12 +449,12 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_before">
         before()
-        <a href="classes/MyApp-Abstracts-Controller.html#method_before" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Controller-Admin-Event.html#method_before" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Abstracts/Controller.php"><a href="files/fuel-app-myapp-abstracts-controller.html"><abbr title="fuel/app/MyApp/Abstracts/Controller.php">Controller.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 </aside>
 
     
@@ -443,6 +464,80 @@
 
     
     
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_post_add">
+        post_add()
+        <a href="classes/Controller-Admin-Event.html#method_post_add" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">96</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">post_add</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_post_edit">
+        post_edit()
+        <a href="classes/Controller-Admin-Event.html#method_post_edit" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">149</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">post_edit</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$event_id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$event_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -587,15 +682,15 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_getModelClass">
         getModelClass()
-        <a href="classes/Controller-Page.html#method_getModelClass" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Controller-Admin-Event.html#method_getModelClass" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/page.php"><a href="files/fuel-app-classes-controller-page.html"><abbr title="fuel/app/classes/controller/page.php">page.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 </aside>
 
-        <p class="phpdocumentor-summary">関連するモデルのクラス名</p>
+        <p class="phpdocumentor-summary">関連するモデルのクラス名を返す</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -609,7 +704,8 @@
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
+            <section class="phpdocumentor-description"><p>'Model_Event'</p>
+</section>
 
     
 </article>
@@ -617,23 +713,23 @@
         class="phpdocumentor-element
             -method
             -protected
-                                    -static                    "
+                        -abstract            -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_getModelKey">
         getModelKey()
-        <a href="classes/Controller-Page.html#method_getModelKey" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_getModelKey" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/page.php"><a href="files/fuel-app-classes-controller-page.html"><abbr title="fuel/app/classes/controller/page.php">page.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Traits/Controller/ModelRelated.php"><a href="files/fuel-app-myapp-traits-controller-modelrelated.html"><abbr title="fuel/app/MyApp/Traits/Controller/ModelRelated.php">ModelRelated.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 </aside>
 
         <p class="phpdocumentor-summary">関連するモデルで検索に使うカラム名</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">getModelKey</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+    <span class="phpdocumentor-signature__abstract">abstract</span>        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">getModelKey</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -651,23 +747,23 @@
         class="phpdocumentor-element
             -method
             -protected
-                                    -static                    "
+                        -abstract            -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_notFound">
         notFound()
-        <a href="classes/Controller-Page.html#method_notFound" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/MyApp-Traits-Controller-ModelRelated.html#method_notFound" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/page.php"><a href="files/fuel-app-classes-controller-page.html"><abbr title="fuel/app/classes/controller/page.php">page.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Traits/Controller/ModelRelated.php"><a href="files/fuel-app-myapp-traits-controller-modelrelated.html"><abbr title="fuel/app/MyApp/Traits/Controller/ModelRelated.php">ModelRelated.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 </aside>
 
         <p class="phpdocumentor-summary">検索で見つからなかった場合のメッセージ</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">notFound</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$obj</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+    <span class="phpdocumentor-signature__abstract">abstract</span>        <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">notFound</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/MyApp-Abstracts-ActiveRecord.html"><abbr title="\MyApp\Abstracts\ActiveRecord">ActiveRecord</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$obj</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -758,6 +854,94 @@
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_submitDetails">
+        submitDetails()
+        <a href="classes/Controller-Admin-Event.html#method_submitDetails" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">63</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">submitDetails</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$item</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$event_id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$division_id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$item</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$event_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$division_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_unifyPost">
+        unifyPost()
+        <a href="classes/Controller-Admin-Event.html#method_unifyPost" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/classes/controller/admin/event.php"><a href="files/fuel-app-classes-controller-admin-event.html"><abbr title="fuel/app/classes/controller/admin/event.php">event.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">unifyPost</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_user">
         user()
         <a href="classes/MyApp-Abstracts-Controller.html#method_user" class="headerlink"><i class="fas fa-link"></i></a>
@@ -803,7 +987,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Controller-Page.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Controller-Admin-Event.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

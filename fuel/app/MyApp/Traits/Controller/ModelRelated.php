@@ -12,37 +12,58 @@ use MyApp\Abstracts\ActiveRecord;
 trait ModelRelated
 {
 	/**
-	 * 関連するモデルのクラス名を返す
+	 * 関連するモデルのクラス名
+	 * @return string
 	 */
-	abstract protected static function getModelClass(): string;
+	abstract static protected function getModelClass(): string;
+
+	/**
+	 * 関連するモデルで検索に使うカラム名
+	 * @return string
+	 */
+	abstract static protected function getModelKey(): ?string;
+
+	/**
+	 * 検索で見つからなかった場合のメッセージ
+	 * @param  int|string                         $value  getModelKey() で指定したキーに対する値
+	 * @param  \MyApp\Abstracts\ActiveRecord|null $obj    削除済みを取得した場合、そのオブジェクト
+	 * @return string
+	 */
+	abstract static protected function notFound($value, ActiveRecord $obj = null): string;
 
 	/**
 	 * モデルを取得する
-	 * @param  int   $id                      レコードの ID
-	 * @param  bool  $force                   削除済みのレコードを取得するかどうか
+	 * @param  int|string  $value             getModelKey() で指定したキーに対する値
+	 * @param  bool        $force             削除済みのレコードを取得するかどうか
 	 * @return \MyApp\Abstracts\ActiveRecord  取得されたモデル
-	 * @throws \HttpBadRequestException  ID が不正な場合（引数のタイプヒンティングで制限かかってるから必要ないかも？）
 	 * @throws \HttpBadRequestException  レコードが存在しない場合、あるいは削除済みの場合
 	 */
-	protected static function getModel(int $id, bool $force = false): ActiveRecord
+	protected static function getModel($value, bool $force = false): ActiveRecord
 	{
-		if (! $id || ! is_numeric($id)) {
-			throw new \HttpBadRequestException('不正なIDです。');
-		}
-
 		$model = static::getModelClass();
-		if ($force) {
-			$obj = $model::find_deleted($id);
-		} else {
-			$obj = $model::find($id);
+		$key = static ::getModelKey();
+
+		if (! $model || ! $key) {
+			throw new \Exception('モデル名とキーの指定がないよ');
 		}
 
-		if (! $obj) {
-			throw new \HttpNotFoundException('参照が見つかりません。');
+		if ($force) {
+			$model::disable_filter();
 		}
-		if (! $force && $obj->deleted_at) {
-			throw new \HttpNotFoundException('削除済みです。');
+		$obj = $model::query()->where($key, $value)->get_one();
+		if ($force) {
+			$model::enable_filter();
+		}
+		if (! $obj) {
+			$message = static::notFound($value);
+			throw new \HttpNotFoundException($message);
+		}
+		if ($obj->deleted_at) {
+			$message = static::notFound($value, $obj);
+			throw new \HttpNotFoundException($message);
 		}
 		return $obj;
 	}
+	// function getModel()
 }
+// trait ModelRelated

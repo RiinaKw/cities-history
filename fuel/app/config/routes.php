@@ -44,7 +44,8 @@ return array(
 	'admin/db/(.+?)/delete'   => 'admin/db/delete/$1',
 	'admin/db/(.+?)/download' => 'admin/db/download/$1',
 
-	'page/:slug' => 'page/detail',
+	'page/(.+?)' => 'page/detail/$1',
+	'page'       => 'page/index',
 
 	'rest/code'       => 'rest/code/index',
 	'rest/code/(.+?)' => 'rest/code/detail/$1',

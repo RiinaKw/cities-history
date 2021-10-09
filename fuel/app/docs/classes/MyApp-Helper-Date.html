@@ -187,10 +187,10 @@
 </dt>
 <dd>和暦などを追加したdate関数</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/MyApp-Helper-Date.html#method_normalize">normalize()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/MyApp-Helper-Date.html#method_forTimestamp">forTimestamp()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: int|null    </span>
 </dt>
 <dd></dd>
 
@@ -243,7 +243,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Date.php"><a href="files/fuel-app-myapp-helper-date.html"><abbr title="fuel/app/MyApp/Helper/Date.php">Date.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 </aside>
 
         <p class="phpdocumentor-summary">午前午後</p>
@@ -295,7 +295,8 @@
     // 1912-07-30
     [&#039;name&#039; =&gt; &#039;明治&#039;, &#039;name_short&#039; =&gt; &#039;M&#039;, &#039;timestamp&#039; =&gt; -3216790800],
     // 1868-01-25
-    [&#039;name&#039; =&gt; &#039;西暦&#039;, &#039;name_short&#039; =&gt; &#039;AD&#039;, &#039;timestamp&#039; =&gt; 0],
+    [&#039;name&#039; =&gt; &#039;西暦&#039;, &#039;name_short&#039; =&gt; &#039;AD&#039;, &#039;timestamp&#039; =&gt; -62135630339],
+    [&#039;name&#039; =&gt; &#039;紀元前&#039;, &#039;name_short&#039; =&gt; &#039;BC&#039;, &#039;timestamp&#039; =&gt; PHP_INT_MIN],
 ]</span></code>
 
         <section class="phpdocumentor-description"><p>参考 : http://ja.wikipedia.org/wiki/%E5%85%83%E5%8F%B7%E4%B8%80%E8%A6%A7_%28%E6%97%A5%E6%9C%AC%29</p>
@@ -320,7 +321,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Date.php"><a href="files/fuel-app-myapp-helper-date.html"><abbr title="fuel/app/MyApp/Helper/Date.php">Date.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 </aside>
 
         <p class="phpdocumentor-summary">日本語曜日設定</p>
@@ -356,7 +357,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Date.php"><a href="files/fuel-app-myapp-helper-date.html"><abbr title="fuel/app/MyApp/Helper/Date.php">Date.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">109</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 </aside>
 
         <p class="phpdocumentor-summary">和暦などを追加したdate関数</p>
@@ -409,30 +410,30 @@ E : 午前午後</p>
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_normalize">
-        normalize()
-        <a href="classes/MyApp-Helper-Date.html#method_normalize" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_forTimestamp">
+        forTimestamp()
+        <a href="classes/MyApp-Helper-Date.html#method_forTimestamp" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Date.php"><a href="files/fuel-app-myapp-helper-date.html"><abbr title="fuel/app/MyApp/Helper/Date.php">Date.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">167</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">normalize</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$exp</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+    <span class="phpdocumentor-signature__visibility">protected</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">forTimestamp</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$formatted</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|null</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$exp</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                <span class="phpdocumentor-signature__argument__name">$formatted</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -442,7 +443,7 @@ E : 午前午後</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">int|null</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 
@@ -461,7 +462,7 @@ E : 午前午後</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Date.php"><a href="files/fuel-app-myapp-helper-date.html"><abbr title="fuel/app/MyApp/Helper/Date.php">Date.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 </aside>
 
     
@@ -503,7 +504,7 @@ E : 午前午後</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Date.php"><a href="files/fuel-app-myapp-helper-date.html"><abbr title="fuel/app/MyApp/Helper/Date.php">Date.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">84</span>
 </aside>
 
         <p class="phpdocumentor-summary">タイムスタンプを取得</p>
@@ -550,7 +551,7 @@ E : 午前午後</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="fuel/app/MyApp/Helper/Date.php"><a href="files/fuel-app-myapp-helper-date.html"><abbr title="fuel/app/MyApp/Helper/Date.php">Date.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 </aside>
 
         <p class="phpdocumentor-summary">フォーマット内の文字を置換する</p>

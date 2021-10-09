@@ -246,51 +246,6 @@ Search.appendIndex(
             "summary": "The\u0020500\u0020action\u0020for\u0020the\u0020application.",
             "url": "classes/Controller-Error.html#method_action_500"
         },                {
-            "fqsen": "\\Controller_Event",
-            "name": "Controller_Event",
-            "summary": "The\u0020Event\u0020Controller.",
-            "url": "classes/Controller-Event.html"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003Abefore\u0028\u0029",
-            "name": "before",
-            "summary": "",
-            "url": "classes/Controller-Event.html#method_before"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003AgetModelClass\u0028\u0029",
-            "name": "getModelClass",
-            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D\u3092\u8FD4\u3059",
-            "url": "classes/Controller-Event.html#method_getModelClass"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003AunifyPost\u0028\u0029",
-            "name": "unifyPost",
-            "summary": "",
-            "url": "classes/Controller-Event.html#method_unifyPost"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003AsubmitDetails\u0028\u0029",
-            "name": "submitDetails",
-            "summary": "",
-            "url": "classes/Controller-Event.html#method_submitDetails"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003Apost_add\u0028\u0029",
-            "name": "post_add",
-            "summary": "",
-            "url": "classes/Controller-Event.html#method_post_add"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003Apost_edit\u0028\u0029",
-            "name": "post_edit",
-            "summary": "",
-            "url": "classes/Controller-Event.html#method_post_edit"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003Aaction_delete\u0028\u0029",
-            "name": "action_delete",
-            "summary": "",
-            "url": "classes/Controller-Event.html#method_action_delete"
-        },                {
-            "fqsen": "\\Controller_Event\u003A\u003A\u0024session_uri",
-            "name": "session_uri",
-            "summary": "",
-            "url": "classes/Controller-Event.html#property_session_uri"
-        },                {
             "fqsen": "\\Controller_Geoshape",
             "name": "Controller_Geoshape",
             "summary": "The\u0020Geoshape\u0020Controller.",
@@ -303,17 +258,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller_Page",
             "name": "Controller_Page",
-            "summary": "The\u0020Page\u0020Controller.",
+            "summary": "\u56FA\u5B9A\u30DA\u30FC\u30B8\u306E\u8868\u793A\u3092\u7BA1\u7406\u3059\u308B\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9",
             "url": "classes/Controller-Page.html"
+        },                {
+            "fqsen": "\\Controller_Page\u003A\u003AgetModelClass\u0028\u0029",
+            "name": "getModelClass",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D",
+            "url": "classes/Controller-Page.html#method_getModelClass"
+        },                {
+            "fqsen": "\\Controller_Page\u003A\u003AgetModelKey\u0028\u0029",
+            "name": "getModelKey",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u3067\u691C\u7D22\u306B\u4F7F\u3046\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/Controller-Page.html#method_getModelKey"
+        },                {
+            "fqsen": "\\Controller_Page\u003A\u003AnotFound\u0028\u0029",
+            "name": "notFound",
+            "summary": "\u691C\u7D22\u3067\u898B\u3064\u304B\u3089\u306A\u304B\u3063\u305F\u5834\u5408\u306E\u30E1\u30C3\u30BB\u30FC\u30B8",
+            "url": "classes/Controller-Page.html#method_notFound"
         },                {
             "fqsen": "\\Controller_Page\u003A\u003Aaction_index\u0028\u0029",
             "name": "action_index",
-            "summary": "",
+            "summary": "\u4F55\u3082\u305B\u305A\u30C8\u30C3\u30D7\u306B\u30EA\u30C0\u30A4\u30EC\u30AF\u30C8\u3059\u308B\u3060\u3051",
             "url": "classes/Controller-Page.html#method_action_index"
         },                {
             "fqsen": "\\Controller_Page\u003A\u003Aaction_detail\u0028\u0029",
             "name": "action_detail",
-            "summary": "",
+            "summary": "\u56FA\u5B9A\u30DA\u30FC\u30B8\u3092\u8868\u793A",
             "url": "classes/Controller-Page.html#method_action_detail"
         },                {
             "fqsen": "\\Controller_Redirect",
@@ -373,12 +343,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Controller_Rest_Event",
             "name": "Controller_Rest_Event",
-            "summary": "The\u0020Rest\u0020Event\u0020Controller.",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u60C5\u5831\u3092\u53D6\u5F97\u3059\u308B\u0020REST\u0020\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9",
             "url": "classes/Controller-Rest-Event.html"
+        },                {
+            "fqsen": "\\Controller_Rest_Event\u003A\u003AgetModelClass\u0028\u0029",
+            "name": "getModelClass",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D",
+            "url": "classes/Controller-Rest-Event.html#method_getModelClass"
+        },                {
+            "fqsen": "\\Controller_Rest_Event\u003A\u003AgetModelKey\u0028\u0029",
+            "name": "getModelKey",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u3067\u691C\u7D22\u306B\u4F7F\u3046\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/Controller-Rest-Event.html#method_getModelKey"
+        },                {
+            "fqsen": "\\Controller_Rest_Event\u003A\u003AnotFound\u0028\u0029",
+            "name": "notFound",
+            "summary": "\u691C\u7D22\u3067\u898B\u3064\u304B\u3089\u306A\u304B\u3063\u305F\u5834\u5408\u306E\u30E1\u30C3\u30BB\u30FC\u30B8",
+            "url": "classes/Controller-Rest-Event.html#method_notFound"
         },                {
             "fqsen": "\\Controller_Rest_Event\u003A\u003Aget_detail\u0028\u0029",
             "name": "get_detail",
-            "summary": "",
+            "summary": "\u30A4\u30D9\u30F3\u30C8\u60C5\u5831\u3068\u8A73\u7D30\u3092\u53D6\u5F97",
             "url": "classes/Controller-Rest-Event.html#method_get_detail"
         },                {
             "fqsen": "\\Controller_Top",
@@ -1151,15 +1136,15 @@ Search.appendIndex(
             "summary": "\u30BF\u30A4\u30E0\u30B9\u30BF\u30F3\u30D7\u3092\u53D6\u5F97",
             "url": "classes/MyApp-Helper-Date.html#method_getTimestamp"
         },                {
+            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003AforTimestamp\u0028\u0029",
+            "name": "forTimestamp",
+            "summary": "",
+            "url": "classes/MyApp-Helper-Date.html#method_forTimestamp"
+        },                {
             "fqsen": "\\MyApp\\Helper\\Date\u003A\u003Aformat\u0028\u0029",
             "name": "format",
             "summary": "\u548C\u66A6\u306A\u3069\u3092\u8FFD\u52A0\u3057\u305Fdate\u95A2\u6570",
             "url": "classes/MyApp-Helper-Date.html#method_format"
-        },                {
-            "fqsen": "\\MyApp\\Helper\\Date\u003A\u003Anormalize\u0028\u0029",
-            "name": "normalize",
-            "summary": "",
-            "url": "classes/MyApp-Helper-Date.html#method_normalize"
         },                {
             "fqsen": "\\MyApp\\Helper\\Date\u003A\u003A\u0024gengoList",
             "name": "gengoList",
@@ -1636,15 +1621,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/MyApp-PresentationModel-Division.html#method_source"
         },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Aurl\u0028\u0029",
-            "name": "url",
-            "summary": "\u81EA\u6CBB\u4F53\u30BF\u30A4\u30E0\u30E9\u30A4\u30F3\u306E\u0020URI",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_url"
-        },                {
-            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AurlTree\u0028\u0029",
-            "name": "urlTree",
-            "summary": "\u81EA\u6CBB\u4F53\u30C4\u30EA\u30FC\u306E\u0020URI",
-            "url": "classes/MyApp-PresentationModel-Division.html#method_urlTree"
+            "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003Auri\u0028\u0029",
+            "name": "uri",
+            "summary": "\u81EA\u6CBB\u4F53\u306B\u95A2\u3059\u308B\u5404\u7A2E\u0020URI\u0020\u3092\u751F\u6210",
+            "url": "classes/MyApp-PresentationModel-Division.html#method_uri"
         },                {
             "fqsen": "\\MyApp\\PresentationModel\\Division\u003A\u003AurlListChildren\u0028\u0029",
             "name": "urlListChildren",
@@ -1943,8 +1923,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\MyApp\\Traits\\Controller\\ModelRelated\u003A\u003AgetModelClass\u0028\u0029",
             "name": "getModelClass",
-            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D\u3092\u8FD4\u3059",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D",
             "url": "classes/MyApp-Traits-Controller-ModelRelated.html#method_getModelClass"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Controller\\ModelRelated\u003A\u003AgetModelKey\u0028\u0029",
+            "name": "getModelKey",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u3067\u691C\u7D22\u306B\u4F7F\u3046\u30AB\u30E9\u30E0\u540D",
+            "url": "classes/MyApp-Traits-Controller-ModelRelated.html#method_getModelKey"
+        },                {
+            "fqsen": "\\MyApp\\Traits\\Controller\\ModelRelated\u003A\u003AnotFound\u0028\u0029",
+            "name": "notFound",
+            "summary": "\u691C\u7D22\u3067\u898B\u3064\u304B\u3089\u306A\u304B\u3063\u305F\u5834\u5408\u306E\u30E1\u30C3\u30BB\u30FC\u30B8",
+            "url": "classes/MyApp-Traits-Controller-ModelRelated.html#method_notFound"
         },                {
             "fqsen": "\\MyApp\\Traits\\Controller\\ModelRelated\u003A\u003AgetModel\u0028\u0029",
             "name": "getModel",
@@ -2120,6 +2110,11 @@ Search.appendIndex(
             "name": "test_ja",
             "summary": "",
             "url": "classes/Test-MyApp-Helper-DateTest.html#method_test_ja"
+        },                {
+            "fqsen": "\\Test\\MyApp\\Helper\\DateTest\u003A\u003Atest_fromGengo\u0028\u0029",
+            "name": "test_fromGengo",
+            "summary": "",
+            "url": "classes/Test-MyApp-Helper-DateTest.html#method_test_fromGengo"
         },                {
             "fqsen": "\\Test\\MyApp\\Helper\\IteratorHashTest",
             "name": "IteratorHashTest",
@@ -2360,6 +2355,51 @@ Search.appendIndex(
             "name": "tree_header",
             "summary": "\u81EA\u6CBB\u4F53\u30C4\u30EA\u30FC\u306E\u30D8\u30C3\u30C0\u3092\u51FA\u529B",
             "url": "classes/MyApp-Smarty-Modifier.html#method_tree_header"
+        },                {
+            "fqsen": "\\Controller_Admin_Event",
+            "name": "Controller_Admin_Event",
+            "summary": "The\u0020Event\u0020Controller.",
+            "url": "classes/Controller-Admin-Event.html"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003Abefore\u0028\u0029",
+            "name": "before",
+            "summary": "",
+            "url": "classes/Controller-Admin-Event.html#method_before"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003AgetModelClass\u0028\u0029",
+            "name": "getModelClass",
+            "summary": "\u95A2\u9023\u3059\u308B\u30E2\u30C7\u30EB\u306E\u30AF\u30E9\u30B9\u540D\u3092\u8FD4\u3059",
+            "url": "classes/Controller-Admin-Event.html#method_getModelClass"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003AunifyPost\u0028\u0029",
+            "name": "unifyPost",
+            "summary": "",
+            "url": "classes/Controller-Admin-Event.html#method_unifyPost"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003AsubmitDetails\u0028\u0029",
+            "name": "submitDetails",
+            "summary": "",
+            "url": "classes/Controller-Admin-Event.html#method_submitDetails"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003Apost_add\u0028\u0029",
+            "name": "post_add",
+            "summary": "",
+            "url": "classes/Controller-Admin-Event.html#method_post_add"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003Apost_edit\u0028\u0029",
+            "name": "post_edit",
+            "summary": "",
+            "url": "classes/Controller-Admin-Event.html#method_post_edit"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003Aaction_delete\u0028\u0029",
+            "name": "action_delete",
+            "summary": "",
+            "url": "classes/Controller-Admin-Event.html#method_action_delete"
+        },                {
+            "fqsen": "\\Controller_Admin_Event\u003A\u003A\u0024session_uri",
+            "name": "session_uri",
+            "summary": "",
+            "url": "classes/Controller-Admin-Event.html#property_session_uri"
         },                {
             "fqsen": "\\",
             "name": "\\",
