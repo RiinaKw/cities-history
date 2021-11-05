@@ -18,7 +18,9 @@ class DivisionTest extends TestCase
 		MyFuel::env('test');
 		MyFuel::oil('migrate');
 
+		\DB::query('SET FOREIGN_KEY_CHECKS = 0;')->execute();
 		\DBUtil::truncate_table('divisions');
+		\DB::query('SET FOREIGN_KEY_CHECKS = 1;')->execute();
 
 		\Config::set('uri.division.detail', '/:path');
 
