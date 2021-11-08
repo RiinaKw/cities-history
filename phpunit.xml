@@ -2,6 +2,9 @@
 <phpunit colors="true"
          verbose="true"
          bootstrap="./fuel/vendor/autoload.php">
+    <php>
+        <server name="FUEL_ENV" value="test"/>
+    </php>
     <testsuites>
         <testsuite name="App">
             <directory>fuel/app/tests</directory>

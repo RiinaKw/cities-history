@@ -24,7 +24,9 @@ class Modifier
 
 		foreach (get_class_methods(static::class) as $name) {
 			if ($name !== 'init') {
-				$smarty->registerPlugin('modifier', $name, "{$class}::{$name}");
+				if (! isset($smarty->registered_plugins['modifier'][$name])) {
+					$smarty->registerPlugin('modifier', $name, "{$class}::{$name}");
+				}
 			}
 		}
 	}

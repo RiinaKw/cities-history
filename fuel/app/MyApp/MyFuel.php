@@ -20,18 +20,32 @@ class MyFuel
 	protected static function load(): void
 	{
 		if (! defined('DOCROOT')) {
-			define('DOCROOT',  __DIR__);
+		//if (! class_exists(\Autoloader::class)) {
+			define('DOCROOT',  __DIR__ . '/../../../public/');
+
 			define('FUELPATH', __DIR__  . '/../..');
 			define('APPPATH',  FUELPATH . '/app/');
 			define('PKGPATH',  FUELPATH . '/packages/');
 			define('COREPATH', FUELPATH . '/core/');
-			require COREPATH . 'classes/autoloader.php';
 
+			require COREPATH . 'classes/autoloader.php';
 			class_alias('Fuel\\Core\\Autoloader', 'Autoloader');
+
+			//define('FUEL_START_TIME', microtime(true));
+			//define('FUEL_START_MEM', memory_get_usage());
+
 			require APPPATH . '/bootstrap.php';
 
 			restore_error_handler();
 		}
+	}
+
+	public static function createServerHost(): void
+	{
+		chdir(FUELPATH . '/../public/');
+		$parsed = parse_url(\Config::get('base_url'));
+		$_SERVER['HTTP_HOST'] = $parsed['host'];
+		$_SERVER['REQUEST_URI'] = $parsed['path'];
 	}
 
 	/**
@@ -41,6 +55,7 @@ class MyFuel
 	public static function env(string $name): void
 	{
 		// Fuel のコアを読み込む
+		//var_dump($name);
 		static::load();
 
 		// 環境を切り替え
